@@ -22,6 +22,7 @@ double t3p3ValueLow;
 datetime t3p4DateTime;
 double t3p4ValueHigh;
 double t3p4ValueLow;
+datetime t3StartDateTime;
 datetime t3EndDateTime;
 
 int t3trendDirection;

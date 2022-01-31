@@ -25,6 +25,7 @@ void initializeGlobalsAction() {
    t3p4DateTime = 0;
    t3p4ValueHigh = 0;
    t3p4ValueLow = 0;
+   t3StartDateTime = 0;
    t3EndDateTime = 0;
 
    t3trendDirection = TREND_DIRECTION_ROTATION;

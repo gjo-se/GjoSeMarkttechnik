@@ -45,6 +45,7 @@ bool objectChanged() {
       || t3p2DateTime != getVlineDatetimeByText(T3_P2_VLINE)
       || t3p3DateTime != getVlineDatetimeByText(T3_P3_VLINE)
       || t3p4DateTime != getVlineDatetimeByText(T3_P4_VLINE)
+      || t3StartDateTime != getVlineDatetimeByText(T3_START_VLINE)
       || t3EndDateTime != getVlineDatetimeByText(T3_END_VLINE)
    ) {
       objectHasChanged = true;
