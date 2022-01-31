@@ -7,7 +7,8 @@
    Version History
    ===============
 
-   1.0.0 Initial version
+   1.0  Initial version
+   1.1  GWL Features
 
    ===============
 
@@ -24,7 +25,7 @@
 #property copyright   "2022, GjoSe"
 #property link        "http://www.gjo-se.com"
 #property description "GjoSe Markttechnik"
-#define   VERSION "1.0"
+#define   VERSION "1.1"
 #property version VERSION
 #property strict
 

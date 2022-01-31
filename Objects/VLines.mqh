@@ -28,6 +28,7 @@ void setT3VLineValues() {
    t3p4ValueHigh = iHigh(Symbol(), PERIOD_CURRENT, iBarShift(Symbol(), PERIOD_CURRENT, t3p4DateTime));
    t3p4ValueLow = iLow(Symbol(), PERIOD_CURRENT, iBarShift(Symbol(), PERIOD_CURRENT, t3p4DateTime));
 
+   t3StartDateTime = getVlineDatetimeByText(T3_START_VLINE);
    t3EndDateTime = getVlineDatetimeByText(T3_END_VLINE);
 
 }

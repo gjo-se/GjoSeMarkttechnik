@@ -8,6 +8,7 @@ const string   T3_P1_VLINE =              "T3-P1";
 const string   T3_P2_VLINE =              "T3-P2";
 const string   T3_P3_VLINE =              "T3-P3";
 const string   T3_P4_VLINE =              "T3-P4";
+const string   T3_START_VLINE =           "T3-Start";
 const string   T3_END_VLINE =             "T3-End";
 const string   T3_TRENDLINE =             "T3TrendLine";
 const string   T3_REGRESSION_CHANNEL =    "T3RegressionChannel";
