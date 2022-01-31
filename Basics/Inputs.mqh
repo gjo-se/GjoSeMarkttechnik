@@ -12,6 +12,7 @@ input string            InpT3FiboLevels = "10, 20, 30, 40, 50, 60, 70, 80, 90, 1
 input color             InpT3FiboLevelsColor = clrTomato;
 input color             InpT3TrendLineColor = clrTomato;
 input color             InpT3MinMaxRegressionColor = clrBlue;
+input bool              InpT3AlertOn = true;
 input int               InpT3AlertOnRegressionChannelLevel = 60;
 input int               InpT3MinRegressionChannelLevel = 70;
 input int               InpT3MaxRegressionChannelLevel = 110;

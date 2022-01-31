@@ -66,7 +66,7 @@ void createT3RegressionChannelLevels() {
       color  levelColor = InpT3FiboLevelsColor;
       ENUM_LINE_STYLE style = STYLE_SOLID;
 
-      if(level == InpT3AlertOnRegressionChannelLevel) {
+      if(level == InpT3AlertOnRegressionChannelLevel && InpT3AlertOn == true) {
         lineWidth = 1;
         style = STYLE_DASH;
         levelColor = InpT3MinMaxRegressionColor;
