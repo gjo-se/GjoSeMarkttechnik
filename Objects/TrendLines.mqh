@@ -6,9 +6,9 @@
 
 
 void createT3TrendLines() {
-    createTrendLine(T3_TRENDLINE + "P1-P2", t3p1DateTime, getP1HighLowValueByTrendDirection(), t3p2DateTime, getP2HighLowValueByTrendDirection(), InpT3TrendLineColor, 3);
-    createTrendLine(T3_TRENDLINE + "P2-P3", t3p2DateTime, getP2HighLowValueByTrendDirection(), t3p3DateTime, getP3HighLowValueByTrendDirection(), InpT3TrendLineColor, 3);
-    createTrendLine(T3_TRENDLINE + "P3-P4", t3p3DateTime, getP3HighLowValueByTrendDirection(), t3p4DateTime, getP4HighLowValueByTrendDirection(), InpT3TrendLineColor, 3);
+    if(t3p1DateTime != 0 && t3p2DateTime != 0) createTrendLine(T3_TRENDLINE + "P1-P2", t3p1DateTime, getP1HighLowValueByTrendDirection(), t3p2DateTime, getP2HighLowValueByTrendDirection(), InpT3TrendLineColor, 3);
+    if(t3p2DateTime != 0 && t3p3DateTime != 0) createTrendLine(T3_TRENDLINE + "P2-P3", t3p2DateTime, getP2HighLowValueByTrendDirection(), t3p3DateTime, getP3HighLowValueByTrendDirection(), InpT3TrendLineColor, 3);
+    if(t3p3DateTime != 0 && t3p4DateTime != 0) createTrendLine(T3_TRENDLINE + "P3-P4", t3p3DateTime, getP3HighLowValueByTrendDirection(), t3p4DateTime, getP4HighLowValueByTrendDirection(), InpT3TrendLineColor, 3);
 }
 
 void deleteTrendLineObject(const string pDimension) {
