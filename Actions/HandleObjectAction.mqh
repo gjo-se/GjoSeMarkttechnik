@@ -6,7 +6,7 @@
 void handleObjectsAction() {
 
    if(InpT3ObjectsShow == true) {
-      if(NewCurrentBar() == true) { // || objectChanged() == true) { // ghet on Tester nicht
+      if(NewCurrentBar() == true || objectChanged() == true) {
          setLineValues();
 
          getT3TrendDirection();
@@ -37,6 +37,8 @@ void handleObjectsAction() {
 //+------------------------------------------------------------------+
 bool objectChanged() {
    bool objectHasChanged = false;
+
+   if(MQLInfoInteger(MQL_TESTER) == 1) return false;
 
    if(
       t3p1DateTime != getVlineDatetimeByText(T3_P1_VLINE)
