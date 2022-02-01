@@ -24,11 +24,12 @@ void alertSellRegressionAction() {
    }
 }
 
-void commentAction(){
+void commentAction(string pVersion){
 
     string comment;
 
     comment += "\n\n";
+    comment += "EA Version: " + pVersion + "\n";
     comment += "T3 Direction: " + getT3TrendDirectionString() + "\n";
     comment += "T3 Start: " + TimeToString(t3StartDateTime) + "\n";
     comment += "T3 P1: " + TimeToString(t3p1DateTime) + " - " + DoubleToString(getP1HighLowValueByTrendDirection(), 2) + "\n";

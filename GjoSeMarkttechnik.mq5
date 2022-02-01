@@ -42,17 +42,15 @@ int OnInit() {
    getT3TrendDirection();
 
    handleObjectsAction();
-
-   commentAction();
-
+   commentAction(VERSION);
+   
    return(0);
 }
 
 void OnTick() {
 
    handleObjectsAction();
-
-   commentAction();
+   commentAction(VERSION);
 
    if(getBuyAlertRegressionSignal() == true) alertBuyRegressionAction();
    if(getSellAlertRegressionSignal() == true) alertSellRegressionAction();
