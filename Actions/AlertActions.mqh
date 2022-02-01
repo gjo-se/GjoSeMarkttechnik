@@ -40,6 +40,8 @@ void commentAction(string pVersion){
     comment += "Alert RegressionChannel: " + DoubleToString(alertRegressionChannelLevel, 2) + "\n";
     comment += "Alert FiboRetracement: " + DoubleToString(alertFiboRetracementLevel, 2) + "\n";
     comment += "Alert isSellRegressionAlertSendable: " + (string)isSellRegressionAlertSendable + "\n";
+    comment += "INSignalArea MIN: " + DoubleToString(inSignalAreaMinStartValue, 2) + " - " + DoubleToString(inSignalAreaMinEndValue, 2) + "\n";
+    comment += "INSignalArea MAX: " + DoubleToString(inSignalAreaMaxStartValue, 2) + " - " + DoubleToString(inSignalAreaMaxEndValue, 2) + "\n";
 
     Comment(comment);
 }

@@ -34,12 +34,19 @@ bool objectHasChanged;
 // Alerts
 double alertRegressionChannelLevel;
 double alertFiboRetracementLevel;
-
 bool isBuyRegressionAlertSendable;
 bool isBuyRegressionAlertSended;
 bool isSellRegressionAlertSendable;
 bool isSellRegressionAlertSended;
 
+// INSignal
+double inSignalAreaMinStartValue;
+double inSignalAreaMinEndValue;
+double inSignalAreaMaxStartValue;
+double inSignalAreaMaxEndValue;
+
+
+double highestHighValue;
 bool bidGreaterLowestLowAndOffsetSignal;
 bool bidLowerHighestHighAndOffsetSignal;
 

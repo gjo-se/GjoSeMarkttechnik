@@ -39,6 +39,12 @@ void initializeGlobalsAction() {
    isSellRegressionAlertSendable = false;
    isSellRegressionAlertSended = false;
 
+   inSignalAreaMinStartValue = 0;
+   inSignalAreaMinEndValue = 0;
+   inSignalAreaMaxStartValue = 0;
+   inSignalAreaMaxEndValue = 0;
+
+   highestHighValue = 0;
    bidGreaterLowestLowAndOffsetSignal = false;
    bidLowerHighestHighAndOffsetSignal = false;
    buyPositionIsOpen = false;

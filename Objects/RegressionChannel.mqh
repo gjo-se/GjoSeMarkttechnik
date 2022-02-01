@@ -49,9 +49,17 @@ void createT3RegressionChannelLevels() {
         alertRegressionChannelLevel = t3TrendlineEndValue;
       }
 
-      if(level == InpT3MinRegressionChannelLevel || level == InpT3MaxRegressionChannelLevel) {
+      if(level == InpT3MinRegressionChannelLevel) {
         lineWidth = 2;
         levelColor = InpT3MinMaxRegressionColor;
+        inSignalAreaMinStartValue = ObjectGetValueByTime(ChartID(), T3_REGRESSION_CHANNEL + DoubleToString(level, 1), t3p4DateTime);
+        inSignalAreaMinEndValue = t3TrendlineEndValue;
+      }
+      if(level == InpT3MaxRegressionChannelLevel) {
+        lineWidth = 2;
+        levelColor = InpT3MinMaxRegressionColor;
+        inSignalAreaMaxStartValue = ObjectGetValueByTime(ChartID(), T3_REGRESSION_CHANNEL + DoubleToString(level, 1), t3p4DateTime);
+        inSignalAreaMaxEndValue = t3TrendlineEndValue;
       }
 
       createTrendLine(T3_REGRESSION_CHANNEL + DoubleToString(level, 1), t3StartDateTime, t3TrendlineStartValue, iTime(Symbol(), PERIOD_CURRENT, 0), t3TrendlineEndValue, levelColor, lineWidth, style, " " + DoubleToString(level, 1) + "%");

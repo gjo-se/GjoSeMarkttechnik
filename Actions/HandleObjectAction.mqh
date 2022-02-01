@@ -12,11 +12,12 @@ void handleObjectsAction() {
             createT3RegressionChannel();
             createT3RegressionChannelLevels();
             createT3FiboRetracement();
-
+            createT3InSignalArea();
          } else {
             deleteTrendLineObject(T3_TRENDLINE);
             deleteRegressionChannelObject(T3_REGRESSION_CHANNEL);
             deleteFiboLevelsObject(T3_FIBO_LEVELS);
+            deleteInSignalAreaObject(T3_IN_SIGNAL_AREA);
          }
 
          objectHasChanged = false;
@@ -25,6 +26,7 @@ void handleObjectsAction() {
       deleteTrendLineObject(T3_TRENDLINE);
       deleteRegressionChannelObject(T3_REGRESSION_CHANNEL);
       deleteFiboLevelsObject(T3_FIBO_LEVELS);
+      deleteInSignalAreaObject(T3_IN_SIGNAL_AREA);
    }
 
 }

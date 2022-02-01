@@ -35,10 +35,12 @@
 #include <GjoSe\\Objects\\InclVLine.mqh>
 #include <GjoSe\\Objects\\InclTrendLine.mqh>
 #include <GjoSe\\Objects\\InclRegressionChannel.mqh>
+#include <GjoSe\\Objects\\InclChannel.mqh>
 
 #include "..\\Objects\\RegressionChannel.mqh"
 #include "..\\Objects\\FiboRetracement.mqh"
 #include "..\\Objects\\VLines.mqh"
 #include "..\\Objects\\TrendLines.mqh"
+#include "..\\Objects\\Channel.mqh"
 
 

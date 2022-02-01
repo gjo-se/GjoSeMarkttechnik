@@ -13,6 +13,7 @@ const string   T3_END_VLINE =             "T3-End";
 const string   T3_TRENDLINE =             "T3TrendLine";
 const string   T3_REGRESSION_CHANNEL =    "T3RegressionChannel";
 const string   T3_FIBO_LEVELS =           "T3FiboLevels";
+const string   T3_IN_SIGNAL_AREA =        "T3InSignalArea";
 
 const int      TREND_DIRECTION_ROTATION = 0;
 const int      TREND_DIRECTION_LONG =     1;

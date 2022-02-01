@@ -24,6 +24,7 @@ input int               InpT3MinRegressionChannelLevel = 70;
 input int               InpT3MaxRegressionChannelLevel = 110;
 input int               InpT3MinFiboRetracmentLevel = 50;
 input int               InpT3MaxFiboRetracmentLevel = 80;
+input color             InpT3InSignalAreaColor = clrPaleGreen;
 
 input group             "---------- SL & TP ---------"
 input int               InpStopLoss = 0; // StopLoss
