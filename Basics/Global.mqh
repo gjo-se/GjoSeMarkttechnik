@@ -29,6 +29,9 @@ int t3trendDirection;
 
 string t3FiboLevelsArray[];
 
+bool objectHasChanged;
+
+// Alerts
 double alertRegressionChannelLevel;
 double alertFiboRetracementLevel;
 

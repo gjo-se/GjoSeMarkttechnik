@@ -38,6 +38,9 @@ int OnInit() {
    initializeGlobalsAction();
    initializeArraysAction();
 
+   setLineValues();
+   getT3TrendDirection();
+
    handleObjectsAction();
 
    commentAction();
@@ -69,5 +72,18 @@ void OnDeinit(const int reason) {
    Comment("");
 
    Print(__FUNCTION__, " UninitializeReason() = ", getUninitReasonText(UninitializeReason()));
+}
+//+------------------------------------------------------------------+
+void OnChartEvent(const int id,
+                  const long &lparam,
+                  const double &dparam,
+                  const string &sparam) {
+
+   if(id == CHARTEVENT_OBJECT_CLICK) {
+      setLineValues();
+      getT3TrendDirection();
+      objectHasChanged = true;
+   }
+
 }
 //+------------------------------------------------------------------+

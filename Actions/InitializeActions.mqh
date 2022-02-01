@@ -30,6 +30,8 @@ void initializeGlobalsAction() {
 
    t3trendDirection = TREND_DIRECTION_ROTATION;
 
+   objectHasChanged = false;
+
    alertRegressionChannelLevel = 0;
    alertFiboRetracementLevel = 0;
    isBuyRegressionAlertSendable = false;

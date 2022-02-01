@@ -8,11 +8,7 @@ void createT3FiboRetracement() {
    if(t3p4DateTime != 0) {
    
       datetime t3EndDatetime = 0;
-      if(getVlineDatetimeByText(T3_END_VLINE) != 0) {
-         t3EndDatetime = getVlineDatetimeByText(T3_END_VLINE);
-      } else {
-         t3EndDatetime = iTime(Symbol(), PERIOD_CURRENT, InpT3ChannelEndShift);
-      }
+      if(t3EndDateTime == 0) t3EndDatetime = iTime(Symbol(), PERIOD_CURRENT, InpT3ChannelEndShift);
 
       createTrendLine(T3_FIBO_LEVELS + "100", t3p3DateTime, getP3HighLowValueByTrendDirection(), iTime(Symbol(), PERIOD_CURRENT, 0), getP3HighLowValueByTrendDirection(), InpT3FiboLevelsColor, 2, STYLE_SOLID, " 100%");
       createTrendLine(T3_FIBO_LEVELS + "0", t3p3DateTime, getP4HighLowValueByTrendDirection(), iTime(Symbol(), PERIOD_CURRENT, 0), getP4HighLowValueByTrendDirection(), InpT3FiboLevelsColor, 2, STYLE_SOLID, " 0%");
