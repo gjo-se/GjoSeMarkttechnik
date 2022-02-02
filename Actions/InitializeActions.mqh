@@ -45,10 +45,10 @@ void initializeGlobalsAction() {
    inSignalAreaMaxEndValue = 0;
 
 //    t3highestHighStartCandleShift = 0;
-    t3HighestHighValue = 0;
-    t3HighestHighDateTime = 0;
-    t3LowestLowValue = 0;
-    t3LowestLowDateTime = 0;
+   t3HighestHighValue = 0;
+   t3HighestHighDateTime = 0;
+   t3LowestLowValue = 0;
+   t3LowestLowDateTime = 0;
 
 
    bidGreaterLowestLowAndOffsetSignal = false;
@@ -72,5 +72,37 @@ void initializeIndicatorsAction() {
 //+------------------------------------------------------------------+
 void convertInpStringsToArray() {
    StringSplit(InpT3FiboLevels, StringGetCharacter(",", 0), t3FiboLevelsArray);
+
+   if(InpT3AlertOnRegressionChannelLevel != 0) {
+      ArrayResize(t3FiboLevelsArray, ArraySize(t3FiboLevelsArray) + 1);
+      t3FiboLevelsArray[ArraySize(t3FiboLevelsArray) - 1] = InpT3AlertOnRegressionChannelLevel;
+   }
+
+   if(InpT3AlertOnFiboRetracmentLevel != 0) {
+      ArrayResize(t3FiboLevelsArray, ArraySize(t3FiboLevelsArray) + 1);
+      t3FiboLevelsArray[ArraySize(t3FiboLevelsArray) - 1] = InpT3AlertOnFiboRetracmentLevel;
+   }
+
+   if(InpT3MinRegressionChannelLevel != 0) {
+      ArrayResize(t3FiboLevelsArray, ArraySize(t3FiboLevelsArray) + 1);
+      t3FiboLevelsArray[ArraySize(t3FiboLevelsArray) - 1] = InpT3MinRegressionChannelLevel;
+   }
+
+   if(InpT3MaxRegressionChannelLevel != 0) {
+      ArrayResize(t3FiboLevelsArray, ArraySize(t3FiboLevelsArray) + 1);
+      t3FiboLevelsArray[ArraySize(t3FiboLevelsArray) - 1] = InpT3MaxRegressionChannelLevel;
+   }
+
+   if(InpT3MinFiboRetracmentLevel != 0) {
+      ArrayResize(t3FiboLevelsArray, ArraySize(t3FiboLevelsArray) + 1);
+      t3FiboLevelsArray[ArraySize(t3FiboLevelsArray) - 1] = InpT3MinFiboRetracmentLevel;
+
+   }
+
+   if(InpT3MaxFiboRetracmentLevel != 0) {
+      ArrayResize(t3FiboLevelsArray, ArraySize(t3FiboLevelsArray) + 1);
+      t3FiboLevelsArray[ArraySize(t3FiboLevelsArray) - 1] = InpT3MaxFiboRetracmentLevel;
+
+   }
 }
 //+------------------------------------------------------------------+
