@@ -41,6 +41,9 @@ input bool              InpUseBreakEven = true;
 input int               InpBreakEvenProfit = 50;
 input int               InpLockProfit = 10;
 
+//+------------------------------------------------------------------+
+//|                                                                  |
+//+------------------------------------------------------------------+
 input group             "---------- Basics (Fix) ---------"
 input long              InpMagicNumber = 1619769100; // MagicNumber (TODO: Logik bauen: SymbolPaar, Strategy, Version)
 input string            InpComment = "MarktTechnik EA"; // Comment

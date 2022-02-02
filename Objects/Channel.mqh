@@ -6,13 +6,13 @@
 void createT3InSignalArea() {
 
    if(
-   inSignalAreaMinStartValue != 0
-   && inSignalAreaMinEndValue != 0
-   && inSignalAreaMaxStartValue != 0
-   && inSignalAreaMaxEndValue != 0
+      inSignalAreaMinStartValue != 0
+      && inSignalAreaMinEndValue != 0
+      && inSignalAreaMaxStartValue != 0
+      && inSignalAreaMaxEndValue != 0
    ) {
 
-   createChannel(T3_IN_SIGNAL_AREA, t3p4DateTime, inSignalAreaMaxStartValue, iTime(Symbol(), PERIOD_CURRENT, 0), inSignalAreaMaxEndValue, t3p4DateTime, inSignalAreaMinStartValue, InpT3InSignalAreaColor);
+      createChannel(T3_IN_SIGNAL_AREA, t3p4DateTime, inSignalAreaMaxStartValue, iTime(Symbol(), PERIOD_CURRENT, 0), inSignalAreaMaxEndValue, t3p4DateTime, inSignalAreaMinStartValue, InpT3InSignalAreaColor);
 
    }
 }
