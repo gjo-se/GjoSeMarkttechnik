@@ -46,7 +46,13 @@ double inSignalAreaMaxStartValue;
 double inSignalAreaMaxEndValue;
 
 
-double highestHighValue;
+//int         t3highestHighStartCandleShift;
+double      t3HighestHighValue;
+datetime    t3HighestHighDateTime;
+double      t3LowestLowValue;
+datetime    t3LowestLowDateTime;
+
+
 bool bidGreaterLowestLowAndOffsetSignal;
 bool bidLowerHighestHighAndOffsetSignal;
 
@@ -54,3 +60,4 @@ bool buyPositionIsOpen;
 bool sellPositionIsOpen;
 
 long  positionTickets[];
+//+------------------------------------------------------------------+

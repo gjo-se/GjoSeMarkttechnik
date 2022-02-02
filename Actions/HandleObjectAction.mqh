@@ -6,6 +6,19 @@
 void handleObjectsAction() {
 
    if(InpT3ObjectsShow == true) {
+
+       if(t3trendDirection == TREND_DIRECTION_LONG){
+          if(t3LowestLowValue != iLow(Symbol(), PERIOD_CURRENT, iBarShift(Symbol(), PERIOD_CURRENT, t3LowestLowDateTime))) {
+             createT3LowestLowTrendLine();
+          }
+       }
+
+       if(t3trendDirection == TREND_DIRECTION_SHORT){
+          if(t3HighestHighValue != iHigh(Symbol(), PERIOD_CURRENT, iBarShift(Symbol(), PERIOD_CURRENT, t3HighestHighDateTime))) {
+             createT3HighestHighTrendLine();
+          }
+       }
+
       if(NewCurrentBar() == true || objectHasChanged == true) {
          if(Period() <= InpT3MaxTimeframe) {
             createT3TrendLines();
@@ -13,6 +26,8 @@ void handleObjectsAction() {
             createT3RegressionChannelLevels();
             createT3FiboRetracement();
             createT3InSignalArea();
+            if(t3trendDirection == TREND_DIRECTION_LONG) createT3LowestLowTrendLine();
+            if(t3trendDirection == TREND_DIRECTION_SHORT) createT3HighestHighTrendLine();
          } else {
             deleteTrendLineObject(T3_TRENDLINE);
             deleteRegressionChannelObject(T3_REGRESSION_CHANNEL);

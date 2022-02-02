@@ -44,7 +44,13 @@ void initializeGlobalsAction() {
    inSignalAreaMaxStartValue = 0;
    inSignalAreaMaxEndValue = 0;
 
-   highestHighValue = 0;
+//    t3highestHighStartCandleShift = 0;
+    t3HighestHighValue = 0;
+    t3HighestHighDateTime = 0;
+    t3LowestLowValue = 0;
+    t3LowestLowDateTime = 0;
+
+
    bidGreaterLowestLowAndOffsetSignal = false;
    bidLowerHighestHighAndOffsetSignal = false;
    buyPositionIsOpen = false;

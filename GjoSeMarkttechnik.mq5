@@ -56,8 +56,8 @@ void OnTick() {
    if(getBuyAlertRegressionSignal() == true) alertBuyRegressionAction();
    if(getSellAlertRegressionSignal() == true) alertSellRegressionAction();
 
-//   if(getBuyInSignal() == true) openBuyOrderAction();
-//   if(getSellInSignal() == true) openSellOrderAction();
+   if(getBuyInSignal() == true) openBuyOrderAction();
+   if(getSellInSignal() == true) openSellOrderAction();
 
 //   if(InpUseBreakEven == true) setBreakevenAction();
 

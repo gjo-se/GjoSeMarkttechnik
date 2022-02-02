@@ -11,6 +11,16 @@ void createT3TrendLines() {
     if(t3p3DateTime != 0 && t3p4DateTime != 0) createTrendLine(T3_TRENDLINE + "P3-P4", t3p3DateTime, getP3HighLowValueByTrendDirection(), t3p4DateTime, getP4HighLowValueByTrendDirection(), InpT3TrendLineColor, 3);
 }
 
+void createT3HighestHighTrendLine(){
+    t3HighestHighValue = iHigh(Symbol(), PERIOD_CURRENT, iBarShift(Symbol(), PERIOD_CURRENT, t3HighestHighDateTime));
+    createTrendLine(T3_HIGHEST_HIGH_TLINE, iTime(Symbol(), Period(), iBarShift(Symbol(), Period(), t3HighestHighDateTime) + 3), t3HighestHighValue, iTime(Symbol(), Period(), 0), t3HighestHighValue, InpT3TrendLineColor, 3, STYLE_SOLID, T3_HIGHEST_HIGH_TLINE);
+}
+
+void createT3LowestLowTrendLine(){
+    t3LowestLowValue = iLow(Symbol(), PERIOD_CURRENT, iBarShift(Symbol(), PERIOD_CURRENT, t3LowestLowDateTime));
+    createTrendLine(T3_LOWEST_LOW_TLINE, iTime(Symbol(), Period(), iBarShift(Symbol(), Period(), t3LowestLowDateTime) + 3), t3LowestLowValue, iTime(Symbol(), Period(), 0), t3LowestLowValue, InpT3TrendLineColor, 3, STYLE_SOLID, T3_LOWEST_LOW_TLINE);
+}
+
 void deleteTrendLineObject(const string pDimension) {
 
    long chartId = ChartID();
