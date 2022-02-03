@@ -16,6 +16,7 @@ void handleObjectsAction() {
        if(t3trendDirection == TREND_DIRECTION_SHORT){
           if(t3HighestHighValue != iHigh(Symbol(), PERIOD_CURRENT, iBarShift(Symbol(), PERIOD_CURRENT, t3HighestHighDateTime))) {
              createT3HighestHighTrendLine();
+             createT3ShortEntryTrendLine();
           }
        }
 

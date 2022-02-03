@@ -10,6 +10,7 @@ CTrailing   Trail;
 CTimer      Timer;
 CNewBar     NewBar;
 
+datetime t3StartDateTime;
 datetime t3p1DateTime;
 double t3p1ValueHigh;
 double t3p1ValueLow;
@@ -22,7 +23,7 @@ double t3p3ValueLow;
 datetime t3p4DateTime;
 double t3p4ValueHigh;
 double t3p4ValueLow;
-datetime t3StartDateTime;
+datetime t3HhDateTime;
 datetime t3EndDateTime;
 
 int t3trendDirection;
@@ -49,6 +50,8 @@ double inSignalAreaMaxEndValue;
 //int         t3highestHighStartCandleShift;
 double      t3HighestHighValue;
 datetime    t3HighestHighDateTime;
+double      t3ShortEntryValue;
+bool        t3ShortIsTradable;
 double      t3LowestLowValue;
 datetime    t3LowestLowDateTime;
 

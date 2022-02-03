@@ -13,6 +13,7 @@ void initializeEAAction() {
 
 void initializeGlobalsAction() {
 
+   t3StartDateTime = 0;
    t3p1DateTime = 0;
    t3p1ValueHigh = 0;
    t3p1ValueLow = 0;
@@ -25,7 +26,7 @@ void initializeGlobalsAction() {
    t3p4DateTime = 0;
    t3p4ValueHigh = 0;
    t3p4ValueLow = 0;
-   t3StartDateTime = 0;
+   t3HhDateTime = 0;
    t3EndDateTime = 0;
 
    t3trendDirection = TREND_DIRECTION_ROTATION;
@@ -47,6 +48,10 @@ void initializeGlobalsAction() {
 //    t3highestHighStartCandleShift = 0;
    t3HighestHighValue = 0;
    t3HighestHighDateTime = 0;
+   t3ShortEntryValue = 0;
+   t3ShortIsTradable = false;
+
+
    t3LowestLowValue = 0;
    t3LowestLowDateTime = 0;
 
