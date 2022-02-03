@@ -55,7 +55,6 @@ void setHighestHighDateTime() {
             && PositionMagicNumber(positionTicket) == InpMagicNumber
          ) {
             sellPositionIsOpen = true;
-            //               Print("buyPositionIsOpen == true");
          }
       }
 
@@ -65,23 +64,14 @@ void setHighestHighDateTime() {
 
    }
 
-
    if(t3HhDateTime != 0) startCandleShift = iBarShift(Symbol(), Period(), t3HhDateTime);
 
-//h3highestHighStartCandleShift = startCandleShift;
-//    t3highestHighValue = iHigh(Symbol(), PERIOD_CURRENT, iHighest(Symbol(), PERIOD_CURRENT, MODE_HIGH, startCandleShift, 0));
     if(startCandleShift != 0){
         t3HighestHighDateTime = iTime(Symbol(), PERIOD_CURRENT, iHighest(Symbol(), PERIOD_CURRENT, MODE_HIGH, startCandleShift, 0));
     }else{
         t3HighestHighDateTime = iTime(Symbol(), PERIOD_CURRENT, 0);
     }
-
-
 }
-
-
-
-//###################################################################
 
 bool getBidLowerShortEntryLevelSignal() {
 

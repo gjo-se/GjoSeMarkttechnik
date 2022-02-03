@@ -10,6 +10,7 @@ const string   T3_P2_VLINE =              "T3-P2";
 const string   T3_P3_VLINE =              "T3-P3";
 const string   T3_P4_VLINE =              "T3-P4";
 const string   T3_HH_VLINE =              "T3-HH";
+const string   T3_LL_VLINE =              "T3-LL";
 const string   T3_END_VLINE =             "T3-End";
 const string   T3_TRENDLINE =             "T3TrendLine";
 const string   T3_REGRESSION_CHANNEL =    "T3RegressionChannel";
@@ -17,6 +18,7 @@ const string   T3_FIBO_LEVELS =           "T3FiboLevels";
 const string   T3_IN_SIGNAL_AREA =        "T3InSignalArea";
 const string   T3_HIGHEST_HIGH_TLINE =    "T3HighestHigh";
 const string   T3_SHORT_ENTRY_TLINE =     "T3ShortEntry";
+const string   T3_LONG_ENTRY_TLINE =      "T3LongEntry";
 const string   T3_LOWEST_LOW_TLINE =      "T3LowestLow";
 
 const int      TREND_DIRECTION_ROTATION = 0;

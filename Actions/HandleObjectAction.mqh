@@ -10,6 +10,7 @@ void handleObjectsAction() {
        if(t3trendDirection == TREND_DIRECTION_LONG){
           if(t3LowestLowValue != iLow(Symbol(), PERIOD_CURRENT, iBarShift(Symbol(), PERIOD_CURRENT, t3LowestLowDateTime))) {
              createT3LowestLowTrendLine();
+             createT3LongEntryTrendLine();
           }
        }
 

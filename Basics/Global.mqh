@@ -24,6 +24,7 @@ datetime t3p4DateTime;
 double t3p4ValueHigh;
 double t3p4ValueLow;
 datetime t3HhDateTime;
+datetime t3LlDateTime;
 datetime t3EndDateTime;
 
 int t3trendDirection;
@@ -46,18 +47,20 @@ double inSignalAreaMinEndValue;
 double inSignalAreaMaxStartValue;
 double inSignalAreaMaxEndValue;
 
-
-//int         t3highestHighStartCandleShift;
+//SHORT
 double      t3HighestHighValue;
 datetime    t3HighestHighDateTime;
 double      t3ShortEntryValue;
 bool        t3ShortIsTradable;
+
+// LONG
 double      t3LowestLowValue;
 datetime    t3LowestLowDateTime;
+double      t3LongEntryValue;
+bool        t3LongIsTradable;
 
-
-bool bidGreaterLowestLowAndOffsetSignal;
-bool bidLowerHighestHighAndOffsetSignal;
+//bool bidGreaterLowestLowAndOffsetSignal;
+//bool bidLowerHighestHighAndOffsetSignal;
 
 bool buyPositionIsOpen;
 bool sellPositionIsOpen;

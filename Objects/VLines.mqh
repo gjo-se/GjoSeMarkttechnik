@@ -31,6 +31,7 @@ void setT3VLineValues() {
    t3p4ValueLow = iLow(Symbol(), PERIOD_CURRENT, iBarShift(Symbol(), PERIOD_CURRENT, t3p4DateTime));
 
    t3HhDateTime = getVlineDatetimeByText(T3_HH_VLINE);
+   t3LlDateTime = getVlineDatetimeByText(T3_LL_VLINE);
    t3EndDateTime = getVlineDatetimeByText(T3_END_VLINE);
 
 }
@@ -41,4 +42,12 @@ void createT3HighestHighVLine(){
     createVLine(T3_HH_VLINE, iTime(Symbol(), Period(), barShift), clrRed, 2, STYLE_SOLID, T3_HH_VLINE);
 
     t3HhDateTime = iTime(Symbol(), Period(), barShift);
+}
+
+void createT3LowestLowVLine(){
+
+    int barShift = 0;
+    createVLine(T3_LL_VLINE, iTime(Symbol(), Period(), barShift), clrRed, 2, STYLE_SOLID, T3_LL_VLINE);
+
+    t3LlDateTime = iTime(Symbol(), Period(), barShift);
 }

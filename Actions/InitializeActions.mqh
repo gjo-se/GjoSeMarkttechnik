@@ -45,19 +45,21 @@ void initializeGlobalsAction() {
    inSignalAreaMaxStartValue = 0;
    inSignalAreaMaxEndValue = 0;
 
-//    t3highestHighStartCandleShift = 0;
+// SHORT
    t3HighestHighValue = 0;
    t3HighestHighDateTime = 0;
    t3ShortEntryValue = 0;
    t3ShortIsTradable = false;
 
-
+// LONG
    t3LowestLowValue = 0;
    t3LowestLowDateTime = 0;
+   t3LongEntryValue = 0;
+   t3LongIsTradable = false;
 
 
-   bidGreaterLowestLowAndOffsetSignal = false;
-   bidLowerHighestHighAndOffsetSignal = false;
+//   bidGreaterLowestLowAndOffsetSignal = false;
+//   bidLowerHighestHighAndOffsetSignal = false;
    buyPositionIsOpen = false;
    sellPositionIsOpen = false;
 
@@ -80,33 +82,33 @@ void convertInpStringsToArray() {
 
    if(InpT3AlertOnRegressionChannelLevel != 0) {
       ArrayResize(t3FiboLevelsArray, ArraySize(t3FiboLevelsArray) + 1);
-      t3FiboLevelsArray[ArraySize(t3FiboLevelsArray) - 1] = InpT3AlertOnRegressionChannelLevel;
+      t3FiboLevelsArray[ArraySize(t3FiboLevelsArray) - 1] = (string)InpT3AlertOnRegressionChannelLevel;
    }
 
    if(InpT3AlertOnFiboRetracmentLevel != 0) {
       ArrayResize(t3FiboLevelsArray, ArraySize(t3FiboLevelsArray) + 1);
-      t3FiboLevelsArray[ArraySize(t3FiboLevelsArray) - 1] = InpT3AlertOnFiboRetracmentLevel;
+      t3FiboLevelsArray[ArraySize(t3FiboLevelsArray) - 1] = (string)InpT3AlertOnFiboRetracmentLevel;
    }
 
    if(InpT3MinRegressionChannelLevel != 0) {
       ArrayResize(t3FiboLevelsArray, ArraySize(t3FiboLevelsArray) + 1);
-      t3FiboLevelsArray[ArraySize(t3FiboLevelsArray) - 1] = InpT3MinRegressionChannelLevel;
+      t3FiboLevelsArray[ArraySize(t3FiboLevelsArray) - 1] = (string)InpT3MinRegressionChannelLevel;
    }
 
    if(InpT3MaxRegressionChannelLevel != 0) {
       ArrayResize(t3FiboLevelsArray, ArraySize(t3FiboLevelsArray) + 1);
-      t3FiboLevelsArray[ArraySize(t3FiboLevelsArray) - 1] = InpT3MaxRegressionChannelLevel;
+      t3FiboLevelsArray[ArraySize(t3FiboLevelsArray) - 1] = (string)InpT3MaxRegressionChannelLevel;
    }
 
    if(InpT3MinFiboRetracmentLevel != 0) {
       ArrayResize(t3FiboLevelsArray, ArraySize(t3FiboLevelsArray) + 1);
-      t3FiboLevelsArray[ArraySize(t3FiboLevelsArray) - 1] = InpT3MinFiboRetracmentLevel;
+      t3FiboLevelsArray[ArraySize(t3FiboLevelsArray) - 1] = (string)InpT3MinFiboRetracmentLevel;
 
    }
 
    if(InpT3MaxFiboRetracmentLevel != 0) {
       ArrayResize(t3FiboLevelsArray, ArraySize(t3FiboLevelsArray) + 1);
-      t3FiboLevelsArray[ArraySize(t3FiboLevelsArray) - 1] = InpT3MaxFiboRetracmentLevel;
+      t3FiboLevelsArray[ArraySize(t3FiboLevelsArray) - 1] = (string)InpT3MaxFiboRetracmentLevel;
 
    }
 }
