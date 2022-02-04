@@ -48,6 +48,11 @@ double inSignalAreaMinStartValue;
 double inSignalAreaMinEndValue;
 double inSignalAreaMaxStartValue;
 double inSignalAreaMaxEndValue;
+double reEntryAreaMinStartValue;
+double reEntryAreaMinEndValue;
+double reEntryAreaMaxStartValue;
+double reEntryAreaMaxEndValue;
+
 
 //SHORT
 double      t3HighestHighValue;

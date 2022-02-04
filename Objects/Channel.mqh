@@ -17,7 +17,21 @@ void createT3InSignalArea() {
    }
 }
 
-void deleteInSignalAreaObject(const string pDimension) {
+void createT3ReEntryArea() {
+
+   if(
+      reEntryAreaMinStartValue != 0
+      && reEntryAreaMinEndValue != 0
+      && reEntryAreaMaxStartValue != 0
+      && reEntryAreaMaxEndValue != 0
+   ) {
+
+      createChannel(T3_RE_ENTRY_AREA, t3p4DateTime, reEntryAreaMaxStartValue, iTime(Symbol(), PERIOD_CURRENT, 0), reEntryAreaMaxEndValue, t3p4DateTime, reEntryAreaMinStartValue, InpT3ReEntryAreaColor);
+
+   }
+}
+
+void deleteChannelObject(const string pDimension) {
 
    long chartId = ChartID();
    int objectsTotal = ObjectsTotal(chartId, 0, -1);

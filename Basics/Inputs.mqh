@@ -26,6 +26,12 @@ input int               InpT3MinFiboRetracmentLevel = 50;
 input int               InpT3MaxFiboRetracmentLevel = 80;
 input color             InpT3InSignalAreaColor = clrPaleGreen;
 
+input group             "------------------------------ ReEntry - T3 ---------------------------"
+input int               InpT3MinReEntryRegressionChannelLevel = 20;
+input int               InpT3MinReEntryFiboRetracmentLevel = 20;
+input color             InpT3ReEntryMinRegressionColor = clrDarkKhaki;
+input color             InpT3ReEntryAreaColor = clrBeige;
+
 input group             "---------- SL & TP ---------"
 input int               InpStopLoss = 0; // StopLoss
 input int               InpTakeProfit = 90; // TakeProfit

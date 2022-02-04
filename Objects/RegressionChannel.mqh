@@ -54,11 +54,11 @@ void createT3RegressionChannelLevels() {
          lineWidth = 2;
          levelColor = InpT3MinMaxRegressionColor;
 
-         if(t3trendDirection == TREND_DIRECTION_LONG){
-             inSignalAreaMaxStartValue = ObjectGetValueByTime(ChartID(), T3_REGRESSION_CHANNEL + DoubleToString(level, 1), t3p4DateTime);
-             inSignalAreaMaxEndValue = t3TrendlineEndValue;
-         }else{
-             inSignalAreaMinStartValue = ObjectGetValueByTime(ChartID(), T3_REGRESSION_CHANNEL + DoubleToString(level, 1), t3p4DateTime);
+         if(t3trendDirection == TREND_DIRECTION_LONG) {
+            inSignalAreaMaxStartValue = ObjectGetValueByTime(ChartID(), T3_REGRESSION_CHANNEL + DoubleToString(level, 1), t3p4DateTime);
+            inSignalAreaMaxEndValue = t3TrendlineEndValue;
+         } else {
+            inSignalAreaMinStartValue = ObjectGetValueByTime(ChartID(), T3_REGRESSION_CHANNEL + DoubleToString(level, 1), t3p4DateTime);
             inSignalAreaMinEndValue = t3TrendlineEndValue;
          }
       }
@@ -67,15 +67,30 @@ void createT3RegressionChannelLevels() {
          lineWidth = 2;
          levelColor = InpT3MinMaxRegressionColor;
 
-         if(t3trendDirection == TREND_DIRECTION_LONG){
-             inSignalAreaMinStartValue = ObjectGetValueByTime(ChartID(), T3_REGRESSION_CHANNEL + DoubleToString(level, 1), t3p4DateTime);
+         if(t3trendDirection == TREND_DIRECTION_LONG) {
+            inSignalAreaMinStartValue = ObjectGetValueByTime(ChartID(), T3_REGRESSION_CHANNEL + DoubleToString(level, 1), t3p4DateTime);
             inSignalAreaMinEndValue = t3TrendlineEndValue;
-         }else{
-             inSignalAreaMaxStartValue = ObjectGetValueByTime(ChartID(), T3_REGRESSION_CHANNEL + DoubleToString(level, 1), t3p4DateTime);
-             inSignalAreaMaxEndValue = t3TrendlineEndValue;
+         } else {
+            inSignalAreaMaxStartValue = ObjectGetValueByTime(ChartID(), T3_REGRESSION_CHANNEL + DoubleToString(level, 1), t3p4DateTime);
+            inSignalAreaMaxEndValue = t3TrendlineEndValue;
          }
+      }
+      if(level == InpT3MinReEntryRegressionChannelLevel) {
 
+         lineWidth = 2;
+         levelColor = InpT3ReEntryMinRegressionColor;
 
+         if(t3trendDirection == TREND_DIRECTION_LONG) {
+            reEntryAreaMinStartValue = inSignalAreaMinStartValue;
+            reEntryAreaMinEndValue = inSignalAreaMinEndValue;
+            reEntryAreaMaxStartValue = ObjectGetValueByTime(ChartID(), T3_REGRESSION_CHANNEL + DoubleToString(level, 1), t3p4DateTime);
+            reEntryAreaMaxEndValue = t3TrendlineEndValue;
+         } else {
+            reEntryAreaMinStartValue = ObjectGetValueByTime(ChartID(), T3_REGRESSION_CHANNEL + DoubleToString(level, 1), t3p4DateTime);
+            reEntryAreaMinEndValue = t3TrendlineEndValue;
+            reEntryAreaMaxStartValue = inSignalAreaMaxStartValue;
+            reEntryAreaMaxEndValue = inSignalAreaMaxEndValue;
+         }
       }
 
       createTrendLine(T3_REGRESSION_CHANNEL + DoubleToString(level, 1), t3StartDateTime, t3TrendlineStartValue, iTime(Symbol(), PERIOD_CURRENT, 0), t3TrendlineEndValue, levelColor, lineWidth, style, " " + DoubleToString(level, 1) + "%");

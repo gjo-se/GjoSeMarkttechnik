@@ -7,19 +7,19 @@ void handleObjectsAction() {
 
    if(InpT3ObjectsShow == true) {
 
-       if(t3trendDirection == TREND_DIRECTION_LONG){
-          if(t3LowestLowValue != iLow(Symbol(), PERIOD_CURRENT, iBarShift(Symbol(), PERIOD_CURRENT, t3LowestLowDateTime))) {
-             createT3LowestLowTrendLine();
-             createT3LongEntryTrendLine();
-          }
-       }
+      if(t3trendDirection == TREND_DIRECTION_LONG) {
+         if(t3LowestLowValue != iLow(Symbol(), PERIOD_CURRENT, iBarShift(Symbol(), PERIOD_CURRENT, t3LowestLowDateTime))) {
+            createT3LowestLowTrendLine();
+            createT3LongEntryTrendLine();
+         }
+      }
 
-       if(t3trendDirection == TREND_DIRECTION_SHORT){
-          if(t3HighestHighValue != iHigh(Symbol(), PERIOD_CURRENT, iBarShift(Symbol(), PERIOD_CURRENT, t3HighestHighDateTime))) {
-             createT3HighestHighTrendLine();
-             createT3ShortEntryTrendLine();
-          }
-       }
+      if(t3trendDirection == TREND_DIRECTION_SHORT) {
+         if(t3HighestHighValue != iHigh(Symbol(), PERIOD_CURRENT, iBarShift(Symbol(), PERIOD_CURRENT, t3HighestHighDateTime))) {
+            createT3HighestHighTrendLine();
+            createT3ShortEntryTrendLine();
+         }
+      }
 
       if(isNewCurrentBar == true || objectHasChanged == true) {
          if(Period() <= InpT3MaxTimeframe) {
@@ -28,13 +28,15 @@ void handleObjectsAction() {
             createT3RegressionChannelLevels();
             createT3FiboRetracement();
             createT3InSignalArea();
+            createT3ReEntryArea();
             if(t3trendDirection == TREND_DIRECTION_LONG) createT3LowestLowTrendLine();
             if(t3trendDirection == TREND_DIRECTION_SHORT) createT3HighestHighTrendLine();
          } else {
             deleteTrendLineObject(T3_TRENDLINE);
             deleteRegressionChannelObject(T3_REGRESSION_CHANNEL);
             deleteFiboLevelsObject(T3_FIBO_LEVELS);
-            deleteInSignalAreaObject(T3_IN_SIGNAL_AREA);
+            deleteChannelObject(T3_IN_SIGNAL_AREA);
+            deleteChannelObject(T3_RE_ENTRY_AREA);
          }
 
          objectHasChanged = false;
@@ -43,7 +45,8 @@ void handleObjectsAction() {
       deleteTrendLineObject(T3_TRENDLINE);
       deleteRegressionChannelObject(T3_REGRESSION_CHANNEL);
       deleteFiboLevelsObject(T3_FIBO_LEVELS);
-      deleteInSignalAreaObject(T3_IN_SIGNAL_AREA);
+      deleteChannelObject(T3_IN_SIGNAL_AREA);
+      deleteChannelObject(T3_RE_ENTRY_AREA);
    }
 
 }

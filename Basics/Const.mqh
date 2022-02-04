@@ -16,6 +16,7 @@ const string   T3_TRENDLINE =             "T3TrendLine";
 const string   T3_REGRESSION_CHANNEL =    "T3RegressionChannel";
 const string   T3_FIBO_LEVELS =           "T3FiboLevels";
 const string   T3_IN_SIGNAL_AREA =        "T3InSignalArea";
+const string   T3_RE_ENTRY_AREA =         "T3ReEntryArea";
 const string   T3_HIGHEST_HIGH_TLINE =    "T3HighestHigh";
 const string   T3_SHORT_ENTRY_TLINE =     "T3ShortEntry";
 const string   T3_LONG_ENTRY_TLINE =      "T3LongEntry";

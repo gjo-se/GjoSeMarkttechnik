@@ -46,6 +46,10 @@ void initializeGlobalsAction() {
    inSignalAreaMinEndValue = 0;
    inSignalAreaMaxStartValue = 0;
    inSignalAreaMaxEndValue = 0;
+   reEntryAreaMinStartValue = 0;
+   reEntryAreaMinEndValue = 0;
+   reEntryAreaMaxStartValue = 0;
+   reEntryAreaMaxEndValue = 0;
 
 // SHORT
    t3HighestHighValue = 0;
@@ -105,13 +109,21 @@ void convertInpStringsToArray() {
    if(InpT3MinFiboRetracmentLevel != 0) {
       ArrayResize(t3FiboLevelsArray, ArraySize(t3FiboLevelsArray) + 1);
       t3FiboLevelsArray[ArraySize(t3FiboLevelsArray) - 1] = (string)InpT3MinFiboRetracmentLevel;
-
    }
 
    if(InpT3MaxFiboRetracmentLevel != 0) {
       ArrayResize(t3FiboLevelsArray, ArraySize(t3FiboLevelsArray) + 1);
       t3FiboLevelsArray[ArraySize(t3FiboLevelsArray) - 1] = (string)InpT3MaxFiboRetracmentLevel;
+   }
 
+   if(InpT3MinReEntryRegressionChannelLevel != 0) {
+      ArrayResize(t3FiboLevelsArray, ArraySize(t3FiboLevelsArray) + 1);
+      t3FiboLevelsArray[ArraySize(t3FiboLevelsArray) - 1] = (string)InpT3MinReEntryRegressionChannelLevel;
+   }
+
+   if(InpT3MinReEntryFiboRetracmentLevel != 0) {
+      ArrayResize(t3FiboLevelsArray, ArraySize(t3FiboLevelsArray) + 1);
+      t3FiboLevelsArray[ArraySize(t3FiboLevelsArray) - 1] = (string)InpT3MinReEntryFiboRetracmentLevel;
    }
 }
 //+------------------------------------------------------------------+

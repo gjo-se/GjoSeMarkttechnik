@@ -16,6 +16,8 @@ bool getBuyInSignal() {
    if(t3trendDirection != TREND_DIRECTION_LONG) return false;
    if(getBidInInSignalAreaState() == false) return false;
    if(getOpenBuyPositionsFilter() == true) return false;
+   if(getBidGreaterLongReEntryAreaFilter() == true) return false;
+   if(t3LongIsTradable == false) return false;
 
    setLowestLowDateTime();
 
@@ -52,13 +54,13 @@ void setLowestLowDateTime() {
 
    }
 
-      if(t3LlDateTime != 0) startCandleShift = iBarShift(Symbol(), Period(), t3LlDateTime);
+   if(t3LlDateTime != 0) startCandleShift = iBarShift(Symbol(), Period(), t3LlDateTime);
 
-       if(startCandleShift != 0){
-           t3LowestLowDateTime = iTime(Symbol(), PERIOD_CURRENT, iLowest(Symbol(), PERIOD_CURRENT, MODE_LOW, startCandleShift, 0));
-       }else{
-           t3LowestLowDateTime = iTime(Symbol(), PERIOD_CURRENT, 0);
-       }
+   if(startCandleShift != 0) {
+      t3LowestLowDateTime = iTime(Symbol(), PERIOD_CURRENT, iLowest(Symbol(), PERIOD_CURRENT, MODE_LOW, startCandleShift, 0));
+   } else {
+      t3LowestLowDateTime = iTime(Symbol(), PERIOD_CURRENT, 0);
+   }
 }
 
 bool getOpenBuyPositionsFilter() {
@@ -96,6 +98,18 @@ bool getBidGreaterLongEntryLevelSignal() {
    return signal;
 }
 
+bool getBidGreaterLongReEntryAreaFilter() {
+
+   bool filter = false;
+
+   if(Bid() > reEntryAreaMaxEndValue) {
+      filter = true;
+      t3LongIsTradable = false;
+   }
+
+   return filter;
+}
+
 bool spreadGreaterThanMaxSpreadBuyInFilter() {
 
    bool filter = true;
@@ -110,3 +124,4 @@ bool spreadGreaterThanMaxSpreadBuyInFilter() {
 
 }
 
+//+------------------------------------------------------------------+
