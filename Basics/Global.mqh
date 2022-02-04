@@ -10,6 +10,8 @@ CTrailing   Trail;
 CTimer      Timer;
 CNewBar     NewBar;
 
+bool isNewCurrentBar;
+
 datetime t3StartDateTime;
 datetime t3p1DateTime;
 double t3p1ValueHigh;

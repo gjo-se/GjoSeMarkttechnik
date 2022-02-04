@@ -21,7 +21,7 @@ void handleObjectsAction() {
           }
        }
 
-      if(NewCurrentBar() == true || objectHasChanged == true) {
+      if(isNewCurrentBar == true || objectHasChanged == true) {
          if(Period() <= InpT3MaxTimeframe) {
             createT3TrendLines();
             createT3RegressionChannel();

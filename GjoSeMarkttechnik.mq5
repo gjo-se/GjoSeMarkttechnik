@@ -50,6 +50,8 @@ int OnInit() {
 
 void OnTick() {
 
+   (NewCurrentBar() == true) ? isNewCurrentBar = true : isNewCurrentBar = false;
+
    handleObjectsAction();
    commentAction(VERSION);
 

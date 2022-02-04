@@ -13,6 +13,8 @@ void initializeEAAction() {
 
 void initializeGlobalsAction() {
 
+   isNewCurrentBar = false;
+
    t3StartDateTime = 0;
    t3p1DateTime = 0;
    t3p1ValueHigh = 0;
