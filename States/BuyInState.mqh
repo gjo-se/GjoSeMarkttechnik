@@ -16,10 +16,11 @@ bool getBuyInSignal() {
    if(t3trendDirection != TREND_DIRECTION_LONG) return false;
    if(getBidInInSignalAreaState() == false) return false;
    if(getOpenBuyPositionsFilter() == true) return false;
-   if(getBidGreaterLongReEntryAreaFilter() == true) return false;
-   if(t3LongIsTradable == false) return false;
 
    setLowestLowDateTime();
+
+   if(getBidGreaterLongReEntryAreaFilter() == true) return false;
+   if(t3LongIsTradable == false) return false;
 
    if(getBidGreaterLongEntryLevelSignal() == true) signal = true;
 
