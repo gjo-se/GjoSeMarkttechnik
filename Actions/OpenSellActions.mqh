@@ -38,12 +38,12 @@ double getSellStopLoss() {
 
    double stopLoss = 0;
 
-   stopLoss = SellStopLoss(Symbol(), InpStopLoss, Bid());
+//   stopLoss = SellStopLoss(Symbol(), InpStopLoss, Bid());
 
    // Varainten in Settings setzen:
    // Fix: in Punkten (InpStopLoss) // von Points in Level umrechnen:
 
-   if(stopLoss > 0) AdjustBelowStopLevel(Symbol(), stopLoss);
+//   if(stopLoss > 0) AdjustBelowStopLevel(Symbol(), stopLoss);
 
    return stopLoss;
 }

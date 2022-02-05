@@ -27,12 +27,12 @@ double getBuyStopLoss() {
 
    double stopLoss = 0;
 
-   stopLoss = BuyStopLoss(Symbol(), InpStopLoss, Ask());
+//   stopLoss = BuyStopLoss(Symbol(), InpStopLoss, Ask());
 
    // Varainten in Settings setzen:
    // Fix: in Punkten (InpStopLoss) // von Points in Level umrechnen:
 
-   if(stopLoss > 0) AdjustAboveStopLevel(Symbol(), stopLoss);
+//   if(stopLoss > 0) AdjustAboveStopLevel(Symbol(), stopLoss);
 
    return stopLoss;
 }
