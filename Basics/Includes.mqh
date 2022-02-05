@@ -18,12 +18,13 @@
 #include <Mql5Book\Timer.mqh>
 
 #include "Global.mqh"
-#include "..\\Actions\\InitializeActions.mqh"
 #include "..\\Actions\\AlertActions.mqh"
+#include "..\\Actions\\CloseActions.mqh"
+#include "..\\Actions\\HandleObjectAction.mqh"
+#include "..\\Actions\\InitializeActions.mqh"
 #include "..\\Actions\\OpenBuyActions.mqh"
 #include "..\\Actions\\OpenSellActions.mqh"
 #include "..\\Actions\\TrailingActions.mqh"
-#include "..\\Actions\\HandleObjectAction.mqh"
 
 #include "..\\States\\BuyAlertState.mqh"
 #include "..\\States\\BuyInState.mqh"

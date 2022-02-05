@@ -52,6 +52,8 @@ void OnTick() {
 
    (NewCurrentBar()) ? isNewCurrentBar = true : isNewCurrentBar = false;
 
+   closeActions();
+
    handleObjectsAction();
    commentAction(VERSION);
 
@@ -62,6 +64,7 @@ void OnTick() {
    if(getSellInSignal() == true) openSellOrderAction();
 
    if(InpUseBreakEven == true) setBreakevenAction();
+   if(InpUseTrailing == true) setTrailingStopAction();
 
 }
 

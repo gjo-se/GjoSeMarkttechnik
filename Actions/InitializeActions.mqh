@@ -69,6 +69,8 @@ void initializeGlobalsAction() {
    buyPositionIsOpen = false;
    sellPositionIsOpen = false;
 
+   t3TrailingStopLevel = 0;
+
 }
 
 void initializeArraysAction() {

@@ -33,6 +33,11 @@ void createT3LongEntryTrendLine(){
     createTrendLine(T3_LONG_ENTRY_TLINE, iTime(Symbol(), Period(), iBarShift(Symbol(), Period(), t3LowestLowDateTime) + 3), t3LongEntryValue, iTime(Symbol(), Period(), 0), t3LongEntryValue, InpT3TrendLineColor, 3, STYLE_SOLID, T3_LONG_ENTRY_TLINE);
 }
 
+void createT3TrailingStopTrendLine(){
+    int barShift = 3;
+    createTrendLine(T3_TRAILING_STOP_TLINE, iTime(Symbol(), Period(), barShift), t3TrailingStopLevel, iTime(Symbol(), Period(), 0), t3TrailingStopLevel, InpT3TailingStopLineColor, 3, STYLE_SOLID, T3_TRAILING_STOP_TLINE);
+}
+
 void deleteTrendLineObject(const string pDimension) {
 
    long chartId = ChartID();

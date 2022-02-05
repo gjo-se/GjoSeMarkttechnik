@@ -33,7 +33,7 @@ input color             InpT3ReEntryMinRegressionColor = clrDarkKhaki;
 input color             InpT3ReEntryAreaColor = clrBeige;
 
 input group             "---------- SL & TP ---------"
-input int               InpStopLoss = 0; // StopLoss
+input int               InpStopLoss = 200; // StopLoss
 input int               InpTakeProfit = 90; // TakeProfit
 
 input group             "---------- MoneyManagement ---------"
@@ -46,6 +46,11 @@ input group             "---------- Break Even ---------"
 input bool              InpUseBreakEven = true;
 input int               InpBreakEvenProfit = 50;
 input int               InpLockProfit = 10;
+
+input group             "---------- Trailing ---------"
+input bool              InpUseTrailing = true;
+input color             InpT3TailingStopLineColor = clrRed;
+
 
 //+------------------------------------------------------------------+
 //|                                                                  |

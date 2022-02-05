@@ -53,7 +53,6 @@ double reEntryAreaMinEndValue;
 double reEntryAreaMaxStartValue;
 double reEntryAreaMaxEndValue;
 
-
 //SHORT
 double      t3HighestHighValue;
 datetime    t3HighestHighDateTime;
@@ -71,6 +70,8 @@ bool        t3LongIsTradable;
 
 bool buyPositionIsOpen;
 bool sellPositionIsOpen;
+
+double      t3TrailingStopLevel;
 
 long  positionTickets[];
 //+------------------------------------------------------------------+

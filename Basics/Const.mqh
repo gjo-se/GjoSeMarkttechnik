@@ -21,6 +21,7 @@ const string   T3_HIGHEST_HIGH_TLINE =    "T3HighestHigh";
 const string   T3_SHORT_ENTRY_TLINE =     "T3ShortEntry";
 const string   T3_LONG_ENTRY_TLINE =      "T3LongEntry";
 const string   T3_LOWEST_LOW_TLINE =      "T3LowestLow";
+const string   T3_TRAILING_STOP_TLINE =   "T3TrailingStop";
 
 const int      TREND_DIRECTION_ROTATION = 0;
 const int      TREND_DIRECTION_LONG =     1;

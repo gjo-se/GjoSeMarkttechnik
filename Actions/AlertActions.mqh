@@ -56,6 +56,8 @@ void commentAction(string pVersion) {
    comment += "LowestLowLine: " + TimeToString(t3LlDateTime) + "\n";
    comment += "LowestLow: " + TimeToString(t3LowestLowDateTime) + " - " + DoubleToString(iLow(Symbol(), PERIOD_CURRENT, iBarShift(Symbol(), PERIOD_CURRENT, t3LowestLowDateTime)), 2) + "\n";
    comment += "LongEntryLevel: " + TimeToString(t3LowestLowDateTime) + " - " + DoubleToString(t3LongEntryValue, 2) + "\n";
+   comment += "\n";
+   comment += "TrailingStopLevel: " + DoubleToString(t3TrailingStopLevel, 2) + "\n";
 
    Comment(comment);
 }
