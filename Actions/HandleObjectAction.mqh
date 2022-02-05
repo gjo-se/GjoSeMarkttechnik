@@ -112,7 +112,14 @@ void handleInsideBars() {
    double penultimateHigh = iHigh(Symbol(), InpInsideBarTimeframe, penultimateBarShift);
    double penultimateLow = iLow(Symbol(), InpInsideBarTimeframe, penultimateBarShift);
 
-   if(outSideBarDateTime == 0 && lastClose < penultimateHigh && lastClose > penultimateLow) outSideBarDateTime = iTime(Symbol(), InpInsideBarTimeframe, penultimateBarShift);
+   if(
+      outSideBarDateTime == 0
+      && lastClose < penultimateHigh
+      && lastClose > penultimateLow
+      && (penultimateHigh - penultimateLow) >= InpInsideBarMinRange * Point()
+   ) {
+      outSideBarDateTime = iTime(Symbol(), InpInsideBarTimeframe, penultimateBarShift);
+   }
 
    if(outSideBarDateTime != 0) {
       createT3InsideBarTrendLines();

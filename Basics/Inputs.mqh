@@ -50,6 +50,8 @@ input int               InpLockProfit = 10;
 input group             "---------- InsideBar ---------"
 input color             InpInsideBarLineColor = clrBlue;
 input ENUM_TIMEFRAMES   InpInsideBarTimeframe = PERIOD_CURRENT;
+input double            InpInsideBarMinRange = 200;
+input double            InpInsideBarMaxStopLossMulti = 0.5;
 
 
 input group             "---------- Trailing ---------"
