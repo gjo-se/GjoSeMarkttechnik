@@ -19,8 +19,8 @@ bool getSellInSignal() {
 
    setHighestHighDateTime();
 
-   if(getBidLowerShortReEntryAreaFilter() == true) return false;
-   if(t3ShortIsTradable == false) return false;
+//   if(getBidLowerShortReEntryAreaFilter() == true) return false;
+//   if(t3ShortIsTradable == false) return false;
 
    if(getBidLowerShortEntryLevelSignal() == true) signal = true;
 
@@ -30,6 +30,7 @@ bool getSellInSignal() {
 
 }
 
+// für BUY & SELL Seite
 bool getBidInInSignalAreaState() {
 
    bool state = false;
@@ -37,6 +38,13 @@ bool getBidInInSignalAreaState() {
    if(inSignalAreaMinEndValue != 0 && Bid() > inSignalAreaMinEndValue
          && inSignalAreaMaxEndValue != 0 && Bid() < inSignalAreaMaxEndValue) {
       state = true;
+   }
+   
+   if(useReEntryArea == true){
+      if(reEntryAreaMinEndValue != 0 && Bid() > reEntryAreaMinEndValue
+            && reEntryAreaMaxEndValue != 0 && Bid() < reEntryAreaMaxEndValue) {
+         state = true;
+      }
    }
 
    return state;

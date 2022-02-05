@@ -50,6 +50,8 @@ void initializeGlobalsAction() {
    reEntryAreaMinEndValue = 0;
    reEntryAreaMaxStartValue = 0;
    reEntryAreaMaxEndValue = 0;
+   useReEntryArea = false;
+
 
 // SHORT
    t3HighestHighValue = 0;

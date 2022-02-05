@@ -13,6 +13,7 @@ void openSellOrderAction() {
 
    cleanPositionTicketsArrayAction(positionTickets, InpMagicNumber);
    sellPositionIsOpen = true;
+   useReEntryArea = true;
 }
 
 double getSellTakeProfit() {

@@ -19,8 +19,8 @@ bool getBuyInSignal() {
 
    setLowestLowDateTime();
 
-   if(getBidGreaterLongReEntryAreaFilter() == true) return false;
-   if(t3LongIsTradable == false) return false;
+//   if(getBidGreaterLongReEntryAreaFilter() == true) return false;
+//   if(t3LongIsTradable == false) return false;
 
    if(getBidGreaterLongEntryLevelSignal() == true) signal = true;
 

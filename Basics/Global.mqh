@@ -52,6 +52,7 @@ double reEntryAreaMinStartValue;
 double reEntryAreaMinEndValue;
 double reEntryAreaMaxStartValue;
 double reEntryAreaMaxEndValue;
+bool   useReEntryArea;
 
 //SHORT
 double      t3HighestHighValue;
