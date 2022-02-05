@@ -7,8 +7,10 @@
    Version History
    ===============
 
-   1.0  Initial version
-   1.1  GWL Features
+   1.0   Initial version
+   1.1   GWL Features
+   1.2   solved PerformanceProblem
+   1.3   first Testversion
 
    ===============
 
@@ -25,7 +27,7 @@
 #property copyright   "2022, GjoSe"
 #property link        "http://www.gjo-se.com"
 #property description "GjoSe Markttechnik"
-#define   VERSION "1.1"
+#define   VERSION "1.3"
 #property version VERSION
 #property strict
 
@@ -38,26 +40,32 @@ int OnInit() {
    initializeGlobalsAction();
    initializeArraysAction();
 
+   setLineValues();
+   getT3TrendDirection();
+
    handleObjectsAction();
-
-   commentAction();
-
+   commentAction(VERSION);
+   
    return(0);
 }
 
 void OnTick() {
 
-   handleObjectsAction();
+   (NewCurrentBar()) ? isNewCurrentBar = true : isNewCurrentBar = false;
 
-   commentAction();
+   closeActions();
+
+   handleObjectsAction();
+   commentAction(VERSION);
 
    if(getBuyAlertRegressionSignal() == true) alertBuyRegressionAction();
    if(getSellAlertRegressionSignal() == true) alertSellRegressionAction();
 
-//   if(getBuyInSignal() == true) openBuyOrderAction();
-//   if(getSellInSignal() == true) openSellOrderAction();
+   if(getBuyInSignal() == true) openBuyOrderAction();
+   if(getSellInSignal() == true) openSellOrderAction();
 
 //   if(InpUseBreakEven == true) setBreakevenAction();
+   if(InpUseTrailing == true) setTrailingStopAction();
 
 }
 
@@ -69,5 +77,18 @@ void OnDeinit(const int reason) {
    Comment("");
 
    Print(__FUNCTION__, " UninitializeReason() = ", getUninitReasonText(UninitializeReason()));
+}
+//+------------------------------------------------------------------+
+void OnChartEvent(const int id,
+                  const long &lparam,
+                  const double &dparam,
+                  const string &sparam) {
+
+   if(id == CHARTEVENT_OBJECT_CLICK) {
+      setLineValues();
+      getT3TrendDirection();
+      objectHasChanged = true;
+   }
+
 }
 //+------------------------------------------------------------------+
