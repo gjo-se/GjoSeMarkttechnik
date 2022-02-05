@@ -41,6 +41,9 @@ void handleObjectsAction() {
 
          objectHasChanged = false;
       }
+
+      handleInsideBars();
+
    } else {
       deleteTrendLineObject(T3_TRENDLINE);
       deleteRegressionChannelObject(T3_REGRESSION_CHANNEL);
@@ -97,5 +100,30 @@ double getP3HighLowValueByTrendDirection() {
 //+------------------------------------------------------------------+
 double getP4HighLowValueByTrendDirection() {
    return (t3trendDirection == TREND_DIRECTION_LONG) ? t3p4ValueHigh : t3p4ValueLow;
+}
+//+------------------------------------------------------------------+
+
+void handleInsideBars() {
+
+   int lastBarShift = 1;
+   int penultimateBarShift = 2;
+
+   double lastClose = iClose(Symbol(), InpInsideBarTimeframe, lastBarShift);
+   double penultimateHigh = iHigh(Symbol(), InpInsideBarTimeframe, penultimateBarShift);
+   double penultimateLow = iLow(Symbol(), InpInsideBarTimeframe, penultimateBarShift);
+
+   if(outSideBarDateTime == 0 && lastClose < penultimateHigh && lastClose > penultimateLow) outSideBarDateTime = iTime(Symbol(), InpInsideBarTimeframe, penultimateBarShift);
+
+   if(outSideBarDateTime != 0) {
+      createT3InsideBarTrendLines();
+      if(
+         lastClose > iHigh(Symbol(), InpInsideBarTimeframe, iBarShift(Symbol(), InpInsideBarTimeframe, outSideBarDateTime))
+         || lastClose < iLow(Symbol(), InpInsideBarTimeframe, iBarShift(Symbol(), InpInsideBarTimeframe, outSideBarDateTime))
+      ) {
+         outSideBarDateTime = 0;
+         deleteTrendLineObject(T3_INSIDEBAR_TOP_TLINE);
+         deleteTrendLineObject(T3_INSIDEBAR_BUTTOM_TLINE);
+      }
+   }
 }
 //+------------------------------------------------------------------+

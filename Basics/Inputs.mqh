@@ -47,6 +47,11 @@ input bool              InpUseBreakEven = true;
 input int               InpBreakEvenProfit = 50;
 input int               InpLockProfit = 10;
 
+input group             "---------- InsideBar ---------"
+input color             InpInsideBarLineColor = clrBlue;
+input ENUM_TIMEFRAMES   InpInsideBarTimeframe = PERIOD_CURRENT;
+
+
 input group             "---------- Trailing ---------"
 input bool              InpUseTrailing = true;
 input color             InpT3TailingStopLineColor = clrRed;

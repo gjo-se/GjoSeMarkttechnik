@@ -71,6 +71,7 @@ void initializeGlobalsAction() {
    buyPositionIsOpen = false;
    sellPositionIsOpen = false;
 
+   outSideBarDateTime = 0;
    t3TrailingStopLevel = 0;
 
 }

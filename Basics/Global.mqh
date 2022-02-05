@@ -72,6 +72,7 @@ bool        t3LongIsTradable;
 bool buyPositionIsOpen;
 bool sellPositionIsOpen;
 
+datetime    outSideBarDateTime;
 double      t3TrailingStopLevel;
 
 long  positionTickets[];
