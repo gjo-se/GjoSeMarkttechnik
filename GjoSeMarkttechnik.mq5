@@ -54,6 +54,7 @@ void OnTick() {
    (NewCurrentBar()) ? isNewCurrentBar = true : isNewCurrentBar = false;
 
    closeActions();
+   alertOnBidStopLossLineOffset();
 
    handleObjectsAction();
    commentAction(VERSION);

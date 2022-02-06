@@ -42,6 +42,8 @@ void handleObjectsAction() {
          objectHasChanged = false;
       }
 
+      t3StopLossLineLevel = ObjectGetValueByTime(0, T3_STOP_LOSS_TLINE, iTime(Symbol(), Period(), 0));
+
       handleInsideBars();
 
    } else {

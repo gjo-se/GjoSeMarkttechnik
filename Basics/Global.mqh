@@ -42,6 +42,8 @@ bool isBuyRegressionAlertSendable;
 bool isBuyRegressionAlertSended;
 bool isSellRegressionAlertSendable;
 bool isSellRegressionAlertSended;
+bool isBidStopLossLineOffsetAlertSendable;
+bool isBidStopLossLineOffsetAlertSended;
 
 // INSignal
 double inSignalAreaMinStartValue;
@@ -73,6 +75,7 @@ bool buyPositionIsOpen;
 bool sellPositionIsOpen;
 
 datetime    outSideBarDateTime;
+double      t3StopLossLineLevel;
 double      t3TrailingStopLevel;
 
 long  positionTickets[];

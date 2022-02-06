@@ -18,6 +18,7 @@ input group             "------------------------------ Alert - T3 -------------
 input bool              InpT3AlertOn = true;
 input int               InpT3AlertOnRegressionChannelLevel = 60;
 input int               InpT3AlertOnFiboRetracmentLevel = 40;
+input int               InpT3AlertOnBidStopLossLineOffset = 400;
 
 input group             "------------------------------ INSignal - T3 ---------------------------"
 input int               InpT3MinRegressionChannelLevel = 70;
