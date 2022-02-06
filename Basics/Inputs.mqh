@@ -34,6 +34,7 @@ input color             InpT3ReEntryAreaColor = clrBeige;
 
 input group             "---------- SL & TP ---------"
 input int               InpStopLoss = 200; // StopLoss
+input color             InpStopLossLineColor = clrRed;
 input int               InpTakeProfit = 90; // TakeProfit
 
 input group             "---------- MoneyManagement ---------"

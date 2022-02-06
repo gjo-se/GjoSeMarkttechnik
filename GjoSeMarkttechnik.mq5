@@ -64,8 +64,8 @@ void OnTick() {
    if(getBuyInSignal() == true) openBuyOrderAction();
    if(getSellInSignal() == true) openSellOrderAction();
 
-//   if(InpUseBreakEven == true) setBreakevenAction();
-   if(InpUseTrailing == true) setTrailingStopAction();
+   //if(InpUseBreakEven == true) setBreakevenAction();
+   //if(InpUseTrailing == true) setTrailingStopAction();
 
 }
 

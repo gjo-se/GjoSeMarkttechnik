@@ -27,12 +27,14 @@ double getBuyStopLoss() {
 
    double stopLoss = 0;
 
-//   stopLoss = BuyStopLoss(Symbol(), InpStopLoss, Ask());
+   stopLoss = BuyStopLoss(Symbol(), InpStopLoss, Ask());
 
    // Varainten in Settings setzen:
    // Fix: in Punkten (InpStopLoss) // von Points in Level umrechnen:
 
-//   if(stopLoss > 0) AdjustAboveStopLevel(Symbol(), stopLoss);
+   if(stopLoss > 0) AdjustAboveStopLevel(Symbol(), stopLoss);
+
+   createStopLossTrendline(stopLoss);
 
    return stopLoss;
 }
@@ -58,11 +60,11 @@ double getBuyVolume() {
 
 //   Print("SymbolInfoDouble(SYMBOL_VOLUME_STEP);: " + SymbolInfoDouble(Symbol(), SYMBOL_VOLUME_STEP));
 
-  // Symbole haben unterschiedliche Anforderungen ans Limit
-    // - SYMBOL_VOLUME_MIN - Minimale Volumen für Dealsabschluss
-    // - SYMBOL_VOLUME_MAX - Maximales Volumen für Dealsabschluss
-    // - SYMBOL_VOLUME_STEP - Minimaler Schritt der Volumenveränderung für Dealsabschluss
-    // - SYMBOL_VOLUME_LIMIT - Die maximale zulässige gesamte Volumen von einer offenen Position und schwebende Ordern in einer Richtung (Kauf oder Verkauf) für das Symbol. Zum Beispiel mit der Begrenzung von 5 Lots, können Sie eine offene Kaufposition mit dem Volumen von 5 Lots haben und eine schwebende Order Sell Limit mit dem Volumen von 5 Lots stellen. Aber in diesem Fall können Sie nicht Buy Limit (seit dem Gesamtvolumen in eine Richtung wird die Begrenzung überschreiten) oder Sell Limit mit dem Volumen von mehr als 5 Lots stellen.
+   // Symbole haben unterschiedliche Anforderungen ans Limit
+   // - SYMBOL_VOLUME_MIN - Minimale Volumen für Dealsabschluss
+   // - SYMBOL_VOLUME_MAX - Maximales Volumen für Dealsabschluss
+   // - SYMBOL_VOLUME_STEP - Minimaler Schritt der Volumenveränderung für Dealsabschluss
+   // - SYMBOL_VOLUME_LIMIT - Die maximale zulässige gesamte Volumen von einer offenen Position und schwebende Ordern in einer Richtung (Kauf oder Verkauf) für das Symbol. Zum Beispiel mit der Begrenzung von 5 Lots, können Sie eine offene Kaufposition mit dem Volumen von 5 Lots haben und eine schwebende Order Sell Limit mit dem Volumen von 5 Lots stellen. Aber in diesem Fall können Sie nicht Buy Limit (seit dem Gesamtvolumen in eine Richtung wird die Begrenzung überschreiten) oder Sell Limit mit dem Volumen von mehr als 5 Lots stellen.
 
 
 
@@ -84,36 +86,36 @@ double getPipValueBySymbol(string pPositionSymbol) {
 
    //TODO: Werte für Idezes hinterlegen
    // SYMBOL_CURRENCY_BASE
-    // AUD
-        // AUD200
-    // CAD
-        // CA60
-    // HKD
-       // CHINAH
-    // NOK
-        // NOR25
-    // ZAR
-        // SA40
-    // SEK
-        // SE30
+   // AUD
+   // AUD200
+   // CAD
+   // CA60
+   // HKD
+   // CHINAH
+   // NOK
+   // NOR25
+   // ZAR
+   // SA40
+   // SEK
+   // SE30
    // CHF
-        // SWI20
+   // SWI20
 
-    // EUR
-       // TecDE30
-       if(pPositionSymbol == "DE40") pipValue =  0.10;
-       // ES35
-       // NETH25
+   // EUR
+   // TecDE30
+   if(pPositionSymbol == "DE40") pipValue =  0.10;
+   // ES35
+   // NETH25
 
-    // GBP
-       // UK100
-    // JPY
-        // JP225
+   // GBP
+   // UK100
+   // JPY
+   // JP225
    // USD
-           // CHINA50
-           // US2000
-           // US30
-           // USTEC
+   // CHINA50
+   // US2000
+   // US30
+   // USTEC
 
    return pipValue;
 
