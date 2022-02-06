@@ -67,3 +67,9 @@ input long              InpMagicNumber = 1619769100; // MagicNumber (TODO: Logik
 input string            InpComment = "MarktTechnik EA"; // Comment
 input long              InpMaxSlippage = 3; // max Slippage (TODO: Funktionlität klären)
 input int               InpMaxSpread = 10; // max Spread
+
+input group             "---------- StrategyTester ---------" // (Objects in Strategy Tester nicht vorhanden)
+input datetime          InpT3p1DateTime = D'2022.01.01 00:00';
+input datetime          InpT3p2DateTime = D'2022.01.01 00:00';
+input datetime          InpT3p3DateTime = D'2022.01.01 00:00';
+input datetime          InpT3p4DateTime = D'2022.01.01 00:00';
