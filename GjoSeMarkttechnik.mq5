@@ -13,6 +13,7 @@
    1.3   first Testversion
    1.4   Trailing per Trendline
    1.5   isTradeableButton activeted
+   1.6   fixed LotsSize Automatic
 
    ===============
 
@@ -29,7 +30,7 @@
 #property copyright   "2022, GjoSe"
 #property link        "http://www.gjo-se.com"
 #property description "GjoSe Markttechnik"
-#define   VERSION "1.5"
+#define   VERSION "1.6"
 #property version VERSION
 #property strict
 
