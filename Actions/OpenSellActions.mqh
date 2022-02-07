@@ -55,18 +55,17 @@ double getSellVolume() {
    // TODO: Varianten laut Settings bauen
    //  Fix:
    // Risk % Balance
+   // getTradeSize(InpUseMoneyManagement, InpLotsPerEquity, InpFixedVolume);
 
    double volume = 0;
    double maxPositionRiskValue = 0;
    double positionPipRisk = 0;
 
-   // TODO: Variante einbauen
-   // getTradeSize(InpUseMoneyManagement, InpLotsPerEquity, InpFixedVolume);
-
+   // % Risk per Balance
    maxPositionRiskValue = AccountInfoDouble(ACCOUNT_BALANCE) * InpMaxPositionRiskPercent / 100;
    positionPipRisk = InpStopLoss / 10 * getPipValueBySymbol(Symbol());
-   volume = NormalizeDouble(maxPositionRiskValue / positionPipRisk, 2);
+   volume = maxPositionRiskValue / positionPipRisk;
 
-   return volume;
+   return VerifyVolume(Symbol(), volume);
 }
 //+------------------------------------------------------------------+
