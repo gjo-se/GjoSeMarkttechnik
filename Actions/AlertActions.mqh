@@ -24,6 +24,38 @@ void alertSellRegressionAction() {
    }
 }
 
+//+------------------------------------------------------------------+
+//|                                                                  |
+//+------------------------------------------------------------------+
+void alertOnBidStopLossLineOffset() {
+
+   if(t3StopLossLineLevel != 0) {
+      if(t3trendDirection == TREND_DIRECTION_LONG) {
+         if(Bid() > t3StopLossLineLevel + InpT3AlertOnBidStopLossLineOffset * Point()) {
+            if(isBidStopLossLineOffsetAlertSendable == true && isBidStopLossLineOffsetAlertSended == false) {
+               string message = Symbol() + ": LONG-BidStopLossLineOffset ";
+               Alert(message);
+               if(!SendNotification(message)) Alert("Cannot BidStopLossLineOffset Push", GetLastError());
+               isBidStopLossLineOffsetAlertSended = true;
+            }
+         } else {
+            isBidStopLossLineOffsetAlertSendable = true;
+         }
+      } else {
+         if(Bid() < t3StopLossLineLevel - InpT3AlertOnBidStopLossLineOffset * Point()) {
+            if(isBidStopLossLineOffsetAlertSendable == true && isBidStopLossLineOffsetAlertSended == false) {
+               string message = Symbol() + ": SHORT-BidStopLossLineOffset ";
+               Alert(message);
+               if(!SendNotification(message)) Alert("Cannot BidStopLossLineOffset Push", GetLastError());
+               isBidStopLossLineOffsetAlertSended = true;
+            }
+         } else {
+            isBidStopLossLineOffsetAlertSendable = true;
+         }
+      }
+   }
+}
+
 void commentAction(string pVersion) {
 
    string comment;
@@ -58,6 +90,7 @@ void commentAction(string pVersion) {
    comment += "LongEntryLevel: " + TimeToString(t3LowestLowDateTime) + " - " + DoubleToString(t3LongEntryValue, 2) + "\n";
    comment += "\n";
    comment += "OutSideBar: " + TimeToString(outSideBarDateTime) + "\n";
+   comment += "StopLossLineLevel: " + DoubleToString(t3StopLossLineLevel, 5) + "\n";
    comment += "TrailingStopLevel: " + DoubleToString(t3TrailingStopLevel, 2) + "\n";
 
    Comment(comment);

@@ -11,6 +11,7 @@
    1.1   GWL Features
    1.2   solved PerformanceProblem
    1.3   first Testversion
+   1.4   Trailing per Trendline & isTradeableButton
 
    ===============
 
@@ -27,7 +28,7 @@
 #property copyright   "2022, GjoSe"
 #property link        "http://www.gjo-se.com"
 #property description "GjoSe Markttechnik"
-#define   VERSION "1.3"
+#define   VERSION "1.4"
 #property version VERSION
 #property strict
 
@@ -54,6 +55,7 @@ void OnTick() {
    (NewCurrentBar()) ? isNewCurrentBar = true : isNewCurrentBar = false;
 
    closeActions();
+   alertOnBidStopLossLineOffset();
 
    handleObjectsAction();
    commentAction(VERSION);
@@ -64,8 +66,8 @@ void OnTick() {
    if(getBuyInSignal() == true) openBuyOrderAction();
    if(getSellInSignal() == true) openSellOrderAction();
 
-//   if(InpUseBreakEven == true) setBreakevenAction();
-   if(InpUseTrailing == true) setTrailingStopAction();
+   //if(InpUseBreakEven == true) setBreakevenAction();
+   //if(InpUseTrailing == true) setTrailingStopAction();
 
 }
 
@@ -88,6 +90,10 @@ void OnChartEvent(const int id,
       setLineValues();
       getT3TrendDirection();
       objectHasChanged = true;
+
+      if(sparam == IS_TRADEABLE_BUTTON) {
+            handleIsTradeableButton();
+      }
    }
 
 }

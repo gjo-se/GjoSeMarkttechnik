@@ -15,6 +15,8 @@ void initializeGlobalsAction() {
 
    isNewCurrentBar = false;
 
+   isTradabelButtonState = false;
+
    t3StartDateTime = 0;
    t3p1DateTime = 0;
    t3p1ValueHigh = 0;
@@ -41,6 +43,8 @@ void initializeGlobalsAction() {
    isBuyRegressionAlertSended = false;
    isSellRegressionAlertSendable = false;
    isSellRegressionAlertSended = false;
+   isBidStopLossLineOffsetAlertSendable = false;
+   isBidStopLossLineOffsetAlertSended = false;
 
    inSignalAreaMinStartValue = 0;
    inSignalAreaMinEndValue = 0;
@@ -72,6 +76,7 @@ void initializeGlobalsAction() {
    sellPositionIsOpen = false;
 
    outSideBarDateTime = 0;
+   t3StopLossLineLevel = 0;
    t3TrailingStopLevel = 0;
 
 }

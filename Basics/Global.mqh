@@ -12,6 +12,8 @@ CNewBar     NewBar;
 
 bool isNewCurrentBar;
 
+bool  isTradabelButtonState;
+
 datetime t3StartDateTime;
 datetime t3p1DateTime;
 double t3p1ValueHigh;
@@ -42,6 +44,8 @@ bool isBuyRegressionAlertSendable;
 bool isBuyRegressionAlertSended;
 bool isSellRegressionAlertSendable;
 bool isSellRegressionAlertSended;
+bool isBidStopLossLineOffsetAlertSendable;
+bool isBidStopLossLineOffsetAlertSended;
 
 // INSignal
 double inSignalAreaMinStartValue;
@@ -73,6 +77,7 @@ bool buyPositionIsOpen;
 bool sellPositionIsOpen;
 
 datetime    outSideBarDateTime;
+double      t3StopLossLineLevel;
 double      t3TrailingStopLevel;
 
 long  positionTickets[];

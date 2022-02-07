@@ -45,6 +45,22 @@ void createT3LongEntryTrendLine() {
 //+------------------------------------------------------------------+
 //|                                                                  |
 //+------------------------------------------------------------------+
+void createStopLossTrendline(double pStopLossLevel) {
+   int barShift = 10;
+   bool rayLeft = false;
+   bool rayRight = true;
+   long zOrder = 0;
+   bool isBackground = true;
+   bool isSelected = false;
+   bool isSelectable = true;
+   double offsetTrendline = (t3trendDirection == TREND_DIRECTION_LONG) ? -20 : 20;
+
+   createTrendLine(T3_STOP_LOSS_TLINE, iTime(Symbol(), Period(), barShift), pStopLossLevel + (offsetTrendline * Point()), iTime(Symbol(), Period(), 0), pStopLossLevel + (offsetTrendline * Point()), InpStopLossLineColor, 2, STYLE_SOLID, T3_STOP_LOSS_TLINE, rayLeft, rayRight, zOrder, isBackground, isSelected, isSelectable);
+}
+
+//+------------------------------------------------------------------+
+//|                                                                  |
+//+------------------------------------------------------------------+
 void createT3TrailingStopTrendLine() {
    int barShift = 3;
    createTrendLine(T3_TRAILING_STOP_TLINE, iTime(Symbol(), Period(), barShift), t3TrailingStopLevel, iTime(Symbol(), Period(), 0), t3TrailingStopLevel, InpT3TailingStopLineColor, 3, STYLE_SOLID, T3_TRAILING_STOP_TLINE);
