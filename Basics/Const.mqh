@@ -4,6 +4,7 @@
 //|                                             https://www.mql5.com |
 //+------------------------------------------------------------------+
 
+const string   IS_TRADEABLE_BUTTON =     "isTradeableButton";
 const string   T3_START_VLINE =           "T3-Start";
 const string   T3_P1_VLINE =              "T3-P1";
 const string   T3_P2_VLINE =              "T3-P2";

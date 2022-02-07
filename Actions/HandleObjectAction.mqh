@@ -5,6 +5,12 @@
 //+------------------------------------------------------------------+
 void handleObjectsAction() {
 
+
+
+  if(ObjectFind(ChartID(), IS_TRADEABLE_BUTTON) < 0) {
+     createIsTradeableButton();
+  }
+
    if(InpT3ObjectsShow == true) {
 
       if(t3trendDirection == TREND_DIRECTION_LONG) {

@@ -12,6 +12,8 @@ CNewBar     NewBar;
 
 bool isNewCurrentBar;
 
+bool  isTradabelButtonState;
+
 datetime t3StartDateTime;
 datetime t3p1DateTime;
 double t3p1ValueHigh;

@@ -89,6 +89,10 @@ void OnChartEvent(const int id,
       setLineValues();
       getT3TrendDirection();
       objectHasChanged = true;
+
+      if(sparam == IS_TRADEABLE_BUTTON) {
+            handleIsTradeableButton();
+      }
    }
 
 }
