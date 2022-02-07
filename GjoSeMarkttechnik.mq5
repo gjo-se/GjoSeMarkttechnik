@@ -11,7 +11,8 @@
    1.1   GWL Features
    1.2   solved PerformanceProblem
    1.3   first Testversion
-   1.4   Trailing per Trendline & isTradeableButton
+   1.4   Trailing per Trendline
+   1.5   isTradeableButton activeted
 
    ===============
 
@@ -28,7 +29,7 @@
 #property copyright   "2022, GjoSe"
 #property link        "http://www.gjo-se.com"
 #property description "GjoSe Markttechnik"
-#define   VERSION "1.4"
+#define   VERSION "1.5"
 #property version VERSION
 #property strict
 
