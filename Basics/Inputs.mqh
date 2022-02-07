@@ -4,6 +4,11 @@
 //|                                             https://www.mql5.com |
 //+------------------------------------------------------------------+
 
+input group             "------------------------------ PRIO A je Symbol ---------------------------"
+input int               InpStopLoss = 200; // StopLoss
+input int               InpT3AlertOnBidStopLossLineOffset = 400;
+input double            InpInsideBarMinRange = 200;
+
 input group             "------------------------------ Trend - T3 ---------------------------"
 input bool              InpT3ObjectsShow = true;
 input ENUM_TIMEFRAMES   InpT3MaxTimeframe = PERIOD_H1;
@@ -18,7 +23,6 @@ input group             "------------------------------ Alert - T3 -------------
 input bool              InpT3AlertOn = true;
 input int               InpT3AlertOnRegressionChannelLevel = 60;
 input int               InpT3AlertOnFiboRetracmentLevel = 40;
-input int               InpT3AlertOnBidStopLossLineOffset = 400;
 
 input group             "------------------------------ INSignal - T3 ---------------------------"
 input int               InpT3MinRegressionChannelLevel = 70;
@@ -27,16 +31,15 @@ input int               InpT3MinFiboRetracmentLevel = 50;
 input int               InpT3MaxFiboRetracmentLevel = 80;
 input color             InpT3InSignalAreaColor = clrPaleGreen;
 
-input group             "------------------------------ ReEntry - T3 ---------------------------"
+input group             "------------------------------ ReEntryArea - T3 ---------------------------"
 input int               InpT3MinReEntryRegressionChannelLevel = 20;
 input int               InpT3MinReEntryFiboRetracmentLevel = 20;
 input color             InpT3ReEntryMinRegressionColor = clrDarkKhaki;
 input color             InpT3ReEntryAreaColor = clrBeige;
 
 input group             "---------- SL & TP ---------"
-input int               InpStopLoss = 200; // StopLoss
 input color             InpStopLossLineColor = clrRed;
-input int               InpTakeProfit = 90; // TakeProfit
+input int               InpTakeProfit = 0; // TakeProfit
 
 input group             "---------- MoneyManagement ---------"
 input bool              InpUseMoneyManagement = true; // Use Money Management
@@ -45,19 +48,17 @@ input double            InpFixedVolume = 0; // Fixe Lotgröße
 input double            InpMaxPositionRiskPercent = 1; // max Position Risk %
 
 input group             "---------- Break Even ---------"
-input bool              InpUseBreakEven = true;
-input int               InpBreakEvenProfit = 50;
-input int               InpLockProfit = 10;
+input bool              InpUseBreakEven = false;
+input int               InpBreakEvenProfit = 0;
+input int               InpLockProfit = 0;
 
 input group             "---------- InsideBar ---------"
 input color             InpInsideBarLineColor = clrBlue;
 input ENUM_TIMEFRAMES   InpInsideBarTimeframe = PERIOD_CURRENT;
-input double            InpInsideBarMinRange = 200;
 input double            InpInsideBarMaxStopLossMulti = 0.5;
 
-
 input group             "---------- Trailing ---------"
-input bool              InpUseTrailing = true;
+input bool              InpUseTrailing = false;
 input color             InpT3TailingStopLineColor = clrRed;
 
 
