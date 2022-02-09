@@ -14,7 +14,7 @@ bool getSellInSignal() {
    bool signal = false;
 
    if(t3trendDirection != TREND_DIRECTION_SHORT) return false;
-   if(isTradabelButtonState = false) return false;
+   if(isTradabelButtonState == false) return false;
    if(getBidInInSignalAreaState() == false) return false;
    if(getOpenSellPositionsFilter() == true) return false;
 

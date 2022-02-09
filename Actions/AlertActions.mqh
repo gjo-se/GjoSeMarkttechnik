@@ -62,6 +62,7 @@ void commentAction(string pVersion) {
 
    comment += "\n\n";
    comment += "EA Version: " + pVersion + "\n";
+   comment += "Tradabel Button State: " + IntegerToString(isTradabelButtonState) + "\n";
    comment += "T3 Direction: " + getT3TrendDirectionString() + "\n";
    comment += "T3 Start: " + TimeToString(t3StartDateTime) + "\n";
    comment += "T3 P1: " + TimeToString(t3p1DateTime) + " - " + DoubleToString(getP1HighLowValueByTrendDirection(), 2) + "\n";
