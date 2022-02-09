@@ -20,7 +20,7 @@ void createT3FiboRetracement() {
          color  levelColor = InpT3FiboLevelsColor;
          ENUM_LINE_STYLE style = STYLE_SOLID;
 
-         if(level == InpT3AlertOnFiboRetracmentLevel && InpT3AlertOn == true) {
+         if(level == InpT3AlertOnFiboRetracmentLevel && (InpT3AlertOnRegressionChannelLevel != 0 || InpT3AlertOnFiboRetracmentLevel != 0 )) {
             lineWidth = 1;
             style = STYLE_DASH;
             levelColor = InpT3MinMaxRegressionColor;

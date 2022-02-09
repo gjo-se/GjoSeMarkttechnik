@@ -6,7 +6,7 @@
 
 void alertBuyRegressionAction() {
 
-   if(InpT3AlertOn == true && isBuyRegressionAlertSendable == true && isBuyRegressionAlertSended == false) {
+   if((InpT3AlertOnRegressionChannelLevel != 0 || InpT3AlertOnFiboRetracmentLevel != 0 ) && isBuyRegressionAlertSendable == true && isBuyRegressionAlertSended == false) {
       string message = Symbol() + ": LONG-Regression ";
       Alert(message);
       if(!SendNotification(message)) Alert("Cannot sendRegressionAlert Push", GetLastError());
@@ -16,7 +16,7 @@ void alertBuyRegressionAction() {
 
 void alertSellRegressionAction() {
 
-   if(InpT3AlertOn == true && isSellRegressionAlertSendable == true && isSellRegressionAlertSended == false) {
+   if((InpT3AlertOnRegressionChannelLevel != 0 || InpT3AlertOnFiboRetracmentLevel != 0 ) && isSellRegressionAlertSendable == true && isSellRegressionAlertSended == false) {
       string message = Symbol() + ": SHORT-Regression ";
       Alert(message);
       if(!SendNotification(message)) Alert("Cannot sendRegressionAlert Push", GetLastError());
@@ -68,7 +68,6 @@ void commentAction(string pVersion) {
    comment += "T3 P2: " + TimeToString(t3p2DateTime) + " - " + DoubleToString(getP2HighLowValueByTrendDirection(), 2) + "\n";
    comment += "T3 P3: " + TimeToString(t3p3DateTime) + " - " + DoubleToString(getP3HighLowValueByTrendDirection(), 2) + "\n";
    comment += "T3 P4: " + TimeToString(t3p4DateTime) + " - " + DoubleToString(getP4HighLowValueByTrendDirection(), 2) + "\n";
-   comment += "Alert ON: " + IntegerToString(InpT3AlertOn) + "\n";
    comment += "Alert RegressionChannel: " + DoubleToString(alertRegressionChannelLevel, 2) + "\n";
    comment += "Alert FiboRetracement: " + DoubleToString(alertFiboRetracementLevel, 2) + "\n";
    comment += "Alert isSellRegressionAlertSendable: " + (string)isSellRegressionAlertSendable + "\n";
