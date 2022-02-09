@@ -27,8 +27,8 @@ double t3p3ValueLow;
 datetime t3p4DateTime;
 double t3p4ValueHigh;
 double t3p4ValueLow;
-datetime t3HhDateTime;
-datetime t3LlDateTime;
+datetime t3HighestHighVLineDateTime;
+datetime t3LowestLowVLineDateTime;
 datetime t3EndDateTime;
 
 int t3trendDirection;

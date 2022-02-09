@@ -30,8 +30,8 @@ void setT3VLineValues() {
    t3p4ValueHigh = iHigh(Symbol(), PERIOD_CURRENT, iBarShift(Symbol(), PERIOD_CURRENT, t3p4DateTime));
    t3p4ValueLow = iLow(Symbol(), PERIOD_CURRENT, iBarShift(Symbol(), PERIOD_CURRENT, t3p4DateTime));
 
-   t3HhDateTime = getVlineDatetimeByText(T3_HH_VLINE);
-   t3LlDateTime = getVlineDatetimeByText(T3_LL_VLINE);
+   t3HighestHighVLineDateTime = getVlineDatetimeByText(T3_HH_VLINE);
+   t3LowestLowVLineDateTime = getVlineDatetimeByText(T3_LL_VLINE);
    t3EndDateTime = getVlineDatetimeByText(T3_END_VLINE);
 
    if(MQLInfoInteger(MQL_TESTER) == 1 && MQLInfoInteger(MQL_VISUAL_MODE) == false){
@@ -52,7 +52,7 @@ void createT3HighestHighVLine(){
     int barShift = 0;
     createVLine(T3_HH_VLINE, iTime(Symbol(), Period(), barShift), clrRed, 2, STYLE_SOLID, T3_HH_VLINE, zOrder, isBackground, isSelected, isSelectable);
 
-    t3HhDateTime = iTime(Symbol(), Period(), barShift);
+    t3HighestHighVLineDateTime = iTime(Symbol(), Period(), barShift);
 }
 
 void createT3LowestLowVLine(){
@@ -65,5 +65,5 @@ void createT3LowestLowVLine(){
     int barShift = 0;
     createVLine(T3_LL_VLINE, iTime(Symbol(), Period(), barShift), clrRed, 2, STYLE_SOLID, T3_LL_VLINE, zOrder, isBackground, isSelected, isSelectable);
 
-    t3LlDateTime = iTime(Symbol(), Period(), barShift);
+    t3LowestLowVLineDateTime = iTime(Symbol(), Period(), barShift);
 }

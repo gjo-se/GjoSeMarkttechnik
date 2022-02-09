@@ -76,7 +76,7 @@ void setHighestHighDateTime() {
 
    }
 
-   if(t3HhDateTime != 0) startCandleShift = iBarShift(Symbol(), Period(), t3HhDateTime);
+   if(t3HighestHighVLineDateTime != 0) startCandleShift = iBarShift(Symbol(), Period(), t3HighestHighVLineDateTime);
 
    if(startCandleShift != 0) {
       t3HighestHighDateTime = iTime(Symbol(), PERIOD_CURRENT, iHighest(Symbol(), PERIOD_CURRENT, MODE_HIGH, startCandleShift, 0));

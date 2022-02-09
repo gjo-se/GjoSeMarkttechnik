@@ -56,7 +56,7 @@ void setLowestLowDateTime() {
 
    }
 
-   if(t3LlDateTime != 0) startCandleShift = iBarShift(Symbol(), Period(), t3LlDateTime);
+   if(t3LowestLowVLineDateTime != 0) startCandleShift = iBarShift(Symbol(), Period(), t3LowestLowVLineDateTime);
 
    if(startCandleShift != 0) {
       t3LowestLowDateTime = iTime(Symbol(), PERIOD_CURRENT, iLowest(Symbol(), PERIOD_CURRENT, MODE_LOW, startCandleShift, 0));
