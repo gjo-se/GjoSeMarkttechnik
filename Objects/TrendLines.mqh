@@ -30,7 +30,6 @@ void createT3ShortEntryTrendLine() {
 
 // LONG
 void createT3LowestLowTrendLine() {
-   t3LowestLowValue = MathMax(iLow(Symbol(), PERIOD_CURRENT, iBarShift(Symbol(), PERIOD_CURRENT, t3LowestLowDateTime)), inSignalAreaMinEndValue) ;
    createTrendLine(T3_LOWEST_LOW_TLINE, iTime(Symbol(), Period(), iBarShift(Symbol(), Period(), t3LowestLowDateTime) + 3), t3LowestLowValue, iTime(Symbol(), Period(), 0), t3LowestLowValue, InpT3TrendLineColor, 3, STYLE_SOLID, T3_LOWEST_LOW_TLINE);
 }
 
@@ -38,7 +37,6 @@ void createT3LowestLowTrendLine() {
 //|                                                                  |
 //+------------------------------------------------------------------+
 void createT3LongEntryTrendLine() {
-   t3LongEntryValue = t3LowestLowValue + InpStopLoss * Point();
    createTrendLine(T3_LONG_ENTRY_TLINE, iTime(Symbol(), Period(), iBarShift(Symbol(), Period(), t3LowestLowDateTime) + 3), t3LongEntryValue, iTime(Symbol(), Period(), 0), t3LongEntryValue, InpT3TrendLineColor, 3, STYLE_SOLID, T3_LONG_ENTRY_TLINE);
 }
 

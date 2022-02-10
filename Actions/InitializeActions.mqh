@@ -51,6 +51,9 @@ void initializeGlobalsAction() {
    inSignalAreaMinEndValue = 0;
    inSignalAreaMaxStartValue = 0;
    inSignalAreaMaxEndValue = 0;
+   isBidLowerInSignalAreaMaxEndValue = false;
+   isBidGreaterInSignalAreaMinEndValue = false;
+
    reEntryAreaMinStartValue = 0;
    reEntryAreaMinEndValue = 0;
    reEntryAreaMaxStartValue = 0;

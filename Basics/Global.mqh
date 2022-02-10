@@ -52,6 +52,9 @@ double inSignalAreaMinStartValue;
 double inSignalAreaMinEndValue;
 double inSignalAreaMaxStartValue;
 double inSignalAreaMaxEndValue;
+bool   isBidLowerInSignalAreaMaxEndValue;
+bool   isBidGreaterInSignalAreaMinEndValue;
+
 double reEntryAreaMinStartValue;
 double reEntryAreaMinEndValue;
 double reEntryAreaMaxStartValue;

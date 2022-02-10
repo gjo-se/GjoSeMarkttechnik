@@ -14,18 +14,15 @@ bool getBuyInSignal() {
    bool signal = false;
 
    if(t3trendDirection != TREND_DIRECTION_LONG) return false;
+   setLowestLowDateTime();
+   if(getBidGreaterLongEntryLevelSignal() == true) signal = true;
+
    if(isTradabelButtonState == false) return false;
    if(getBidInInSignalAreaState() == false) return false;
    if(getOpenBuyPositionsFilter() == true) return false;
 
-   setLowestLowDateTime();
-
 //   if(getBidGreaterLongReEntryAreaFilter() == true) return false;
 //   if(t3LongIsTradable == false) return false;
-
-   if(getBidGreaterLongEntryLevelSignal() == true) signal = true;
-
-
 //   if(spreadGreaterThanMaxSpreadBuyInFilter() == true) signal = false;
 
    return(signal);
@@ -53,7 +50,6 @@ void setLowestLowDateTime() {
       if(buyPositionIsOpen == false) {
          createT3LowestLowVLine();
       }
-
    }
 
    if(t3LowestLowVLineDateTime != 0) startCandleShift = iBarShift(Symbol(), Period(), t3LowestLowVLineDateTime);
@@ -92,7 +88,7 @@ bool getBidGreaterLongEntryLevelSignal() {
 
    if(Bid() < t3LongEntryValue) t3LongIsTradable = true;
 
-   if(t3LongIsTradable == true && Bid() > t3LongEntryValue) {
+   if(t3LongIsTradable == true && Bid() >= t3LongEntryValue) {
       signal = true;
       t3LongIsTradable = false;
    }

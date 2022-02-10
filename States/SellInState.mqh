@@ -14,17 +14,15 @@ bool getSellInSignal() {
    bool signal = false;
 
    if(t3trendDirection != TREND_DIRECTION_SHORT) return false;
+   setHighestHighDateTime();
+   if(getBidLowerShortEntryLevelSignal() == true) signal = true;
+
    if(isTradabelButtonState == false) return false;
    if(getBidInInSignalAreaState() == false) return false;
    if(getOpenSellPositionsFilter() == true) return false;
 
-   setHighestHighDateTime();
-
 //   if(getBidLowerShortReEntryAreaFilter() == true) return false;
 //   if(t3ShortIsTradable == false) return false;
-
-   if(getBidLowerShortEntryLevelSignal() == true) signal = true;
-
 //   if(spreadGreaterThanMaxSpreadSellInFilter() == true) signal = false;
 
    return(signal);
@@ -32,18 +30,19 @@ bool getSellInSignal() {
 }
 
 // für BUY & SELL Seite
+// TODO: auslagern in??
 bool getBidInInSignalAreaState() {
 
    bool state = false;
 
-   if(inSignalAreaMinEndValue != 0 && Bid() > inSignalAreaMinEndValue
-         && inSignalAreaMaxEndValue != 0 && Bid() < inSignalAreaMaxEndValue) {
+   if(inSignalAreaMinEndValue != 0 && Bid() >= inSignalAreaMinEndValue
+         && inSignalAreaMaxEndValue != 0 && Bid() <= inSignalAreaMaxEndValue) {
       state = true;
    }
-   
-   if(useReEntryArea == true){
-      if(reEntryAreaMinEndValue != 0 && Bid() > reEntryAreaMinEndValue
-            && reEntryAreaMaxEndValue != 0 && Bid() < reEntryAreaMaxEndValue) {
+
+   if(useReEntryArea == true) {
+      if(reEntryAreaMinEndValue != 0 && Bid() >= reEntryAreaMinEndValue
+            && reEntryAreaMaxEndValue != 0 && Bid() <= reEntryAreaMaxEndValue) {
          state = true;
       }
    }
@@ -91,7 +90,7 @@ bool getBidLowerShortEntryLevelSignal() {
 
    if(Bid() > t3ShortEntryValue) t3ShortIsTradable = true;
 
-   if(t3ShortIsTradable == true && Bid() < t3ShortEntryValue) {
+   if(t3ShortIsTradable == true && Bid() <= t3ShortEntryValue) {
       signal = true;
       t3ShortIsTradable = false;
    }

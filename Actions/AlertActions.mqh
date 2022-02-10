@@ -78,12 +78,14 @@ void commentAction(string pVersion) {
    comment += "reEntryArea MAX: " + DoubleToString(reEntryAreaMaxStartValue, Digits()) + " - " + DoubleToString(reEntryAreaMaxEndValue, Digits()) + "\n";
    comment += "\n";
    comment += "SHORT: " + "\n";
+   comment += "isBidGreaterInSignalAreaMinEndValue : " + IntegerToString(isBidGreaterInSignalAreaMinEndValue) + "\n";
    comment += "t3ShortIsTradable: " + IntegerToString(t3ShortIsTradable) + "\n";
    comment += "HihgestHighVLineDateTime: " + TimeToString(t3HighestHighVLineDateTime) + "\n";
    comment += "HihgestHigh: " + TimeToString(t3HighestHighDateTime) + " - " + DoubleToString(iHigh(Symbol(), PERIOD_CURRENT, iBarShift(Symbol(), PERIOD_CURRENT, t3HighestHighDateTime)), Digits()) + "\n";
    comment += "ShortEntry: " + TimeToString(t3HighestHighDateTime) + " - " + DoubleToString(t3ShortEntryValue, Digits()) + "\n";
    comment += "\n";
    comment += "LONG: " + "\n";
+   comment += "isBidLowerInSignalAreaMaxEndValue : " + IntegerToString(isBidLowerInSignalAreaMaxEndValue) + "\n";
    comment += "t3LongIsTradable: " + IntegerToString(t3LongIsTradable) + "\n";
    comment += "LowestLowVLineDateTime: " + TimeToString(t3LowestLowVLineDateTime) + "\n";
    comment += "LowestLow: " + TimeToString(t3LowestLowDateTime) + " - " + DoubleToString(t3LowestLowValue, Digits()) + "\n";

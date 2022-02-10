@@ -7,10 +7,16 @@
 //|                                                                  |
 //+------------------------------------------------------------------+
 
-void setLineValues(){
-    setT3VLineValues();
+//+------------------------------------------------------------------+
+//|                                                                  |
+//+------------------------------------------------------------------+
+void setLineValues() {
+   setT3VLineValues();
 }
 
+//+------------------------------------------------------------------+
+//|                                                                  |
+//+------------------------------------------------------------------+
 void setT3VLineValues() {
    t3StartDateTime = getVlineDatetimeByText(T3_START_VLINE);
 
@@ -42,28 +48,29 @@ void setT3VLineValues() {
    }
 }
 
-void createT3HighestHighVLine(){
+void createT3HighestHighVLine() {
 
-    long zOrder = 0;
-    bool isBackground = true;
-    bool isSelected = false;
-    bool isSelectable = true;
+   long zOrder = 0;
+   bool isBackground = true;
+   bool isSelected = false;
+   bool isSelectable = true;
 
-    int barShift = 0;
-    createVLine(T3_HH_VLINE, iTime(Symbol(), Period(), barShift), clrRed, 2, STYLE_SOLID, T3_HH_VLINE, zOrder, isBackground, isSelected, isSelectable);
+   int barShift = 0;
+   createVLine(T3_HH_VLINE, iTime(Symbol(), Period(), barShift), clrRed, 2, STYLE_SOLID, T3_HH_VLINE, zOrder, isBackground, isSelected, isSelectable);
 
-    t3HighestHighVLineDateTime = iTime(Symbol(), Period(), barShift);
+   t3HighestHighVLineDateTime = iTime(Symbol(), Period(), barShift);
 }
 
-void createT3LowestLowVLine(){
+void createT3LowestLowVLine() {
 
-    long zOrder = 0;
-    bool isBackground = true;
-    bool isSelected = false;
-    bool isSelectable = true;
+   long zOrder = 0;
+   bool isBackground = true;
+   bool isSelected = false;
+   bool isSelectable = true;
 
-    int barShift = 0;
-    createVLine(T3_LL_VLINE, iTime(Symbol(), Period(), barShift), clrRed, 2, STYLE_SOLID, T3_LL_VLINE, zOrder, isBackground, isSelected, isSelectable);
+   int barShift = 0;
+   createVLine(T3_LL_VLINE, iTime(Symbol(), Period(), barShift), clrRed, 2, STYLE_SOLID, T3_LL_VLINE, zOrder, isBackground, isSelected, isSelectable);
 
-    t3LowestLowVLineDateTime = iTime(Symbol(), Period(), barShift);
+   t3LowestLowVLineDateTime = iTime(Symbol(), Period(), barShift);
 }
+//+------------------------------------------------------------------+
