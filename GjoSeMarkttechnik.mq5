@@ -106,8 +106,14 @@ void OnChartEvent(const int id,
       objectHasChanged = true;
 
       if(sparam == IS_TRADEABLE_BUTTON) {
-            handleIsTradeableButton();
+         handleIsTradeableButton();
       }
+
+      if(sparam == T3_STOP_LOSS_TLINE) {
+         isBidStopLossLineOffsetAlertSendable = true;
+         isBidStopLossLineOffsetAlertSended = false;
+      }
+
    }
 
 }
