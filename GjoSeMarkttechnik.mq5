@@ -49,8 +49,6 @@ int OnInit() {
    handleObjectsAction();
    commentAction(VERSION);
 
-//      Print("MQLInfoInteger(MQL_VISUAL_MODE): " + MQLInfoInteger(MQL_VISUAL_MODE));
-
       if(MQLInfoInteger(MQL_TESTER) == 1) {
 
       isTradabelButtonState = true;
