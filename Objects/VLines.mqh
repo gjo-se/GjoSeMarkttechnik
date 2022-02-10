@@ -39,13 +39,6 @@ void setT3VLineValues() {
    t3HighestHighVLineDateTime = getVlineDatetimeByText(T3_HH_VLINE);
    t3LowestLowVLineDateTime = getVlineDatetimeByText(T3_LL_VLINE);
    t3EndDateTime = getVlineDatetimeByText(T3_END_VLINE);
-
-   if(MQLInfoInteger(MQL_TESTER) == 1 && MQLInfoInteger(MQL_VISUAL_MODE) == false){
-    t3p1DateTime = InpT3p1DateTime;
-    t3p2DateTime = InpT3p2DateTime;
-    t3p3DateTime = InpT3p3DateTime;
-    t3p4DateTime = InpT3p4DateTime;
-   }
 }
 
 void createT3HighestHighVLine() {
