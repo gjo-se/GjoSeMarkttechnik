@@ -49,18 +49,18 @@ int OnInit() {
    handleObjectsAction();
    commentAction(VERSION);
 
-      if(MQLInfoInteger(MQL_TESTER) == 1) {
+   if(MQLInfoInteger(MQL_TESTER) == 1) {
 
       isTradabelButtonState = true;
-      
-      if(MQLInfoInteger(MQL_VISUAL_MODE) != 1){
-           t3p1DateTime = InpT3p1DateTime;
-           t3p2DateTime = InpT3p2DateTime;
-           t3p3DateTime = InpT3p3DateTime;
-           t3p4DateTime = InpT3p4DateTime;
+
+      if(MQLInfoInteger(MQL_VISUAL_MODE) != 1) {
+         t3p1DateTime = InpT3p1DateTime;
+         t3p2DateTime = InpT3p2DateTime;
+         t3p3DateTime = InpT3p3DateTime;
+         t3p4DateTime = InpT3p4DateTime;
       }
-      }
-   
+   }
+
    return(0);
 }
 
