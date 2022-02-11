@@ -25,6 +25,7 @@
 #include "..\\Actions\\OpenBuyActions.mqh"
 #include "..\\Actions\\OpenSellActions.mqh"
 #include "..\\Actions\\TrailingActions.mqh"
+#include "..\\Actions\\ScreenshotActions.mqh"
 
 #include "..\\States\\BuyAlertState.mqh"
 #include "..\\States\\BuyInState.mqh"

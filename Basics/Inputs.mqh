@@ -9,32 +9,31 @@ input int               InpStopLoss = 200; // StopLoss
 input int               InpT3AlertOnBidStopLossLineOffset = 400;
 input double            InpInsideBarMinRange = 200;
 
-input group             "------------------------------ Trend - T3 ---------------------------"
-input bool              InpT3ObjectsShow = true;
-input ENUM_TIMEFRAMES   InpT3MaxTimeframe = PERIOD_H1;
-input color             InpT3RegressionChannelColor = clrSnow;
-input string            InpT3FiboLevels = "10, 20, 30, 40, 50, 60, 70, 80, 90, 110";
-input color             InpT3FiboLevelsColor = clrTomato;
-input color             InpT3TrendLineColor = clrTomato;
-input color             InpT3MinMaxRegressionColor = clrBlue;
-input int               InpT3ChannelEndShift = 10;
-
-input group             "------------------------------ Alert - T3 ---------------------------"
-input bool              InpT3AlertOn = true;
-input int               InpT3AlertOnRegressionChannelLevel = 60;
-input int               InpT3AlertOnFiboRetracmentLevel = 40;
-
-input group             "------------------------------ INSignal - T3 ---------------------------"
+input group             "------------------------------ RegressionChannel - T3 ----------------"
+input int               InpT3AlertOnRegressionChannelLevel = 0;
 input int               InpT3MinRegressionChannelLevel = 70;
 input int               InpT3MaxRegressionChannelLevel = 110;
-input int               InpT3MinFiboRetracmentLevel = 50;
-input int               InpT3MaxFiboRetracmentLevel = 80;
-input color             InpT3InSignalAreaColor = clrPaleGreen;
-
-input group             "------------------------------ ReEntryArea - T3 ---------------------------"
 input int               InpT3MinReEntryRegressionChannelLevel = 20;
-input int               InpT3MinReEntryFiboRetracmentLevel = 20;
+input int               InpT3ChannelEndShift = 10;
+
+input group             "---------------------- FiboRetracement - T3 ---------------------------"
+input int               InpT3AlertOnFiboRetracmentLevel = 0;
+input int               InpT3MinFiboRetracmentLevel = 0;
+input int               InpT3MaxFiboRetracmentLevel = 0;
+input int               InpT3MinReEntryFiboRetracmentLevel = 0;
+
+input group             "------------------------------ T3 Show Objects ---------------------------"
+input bool              InpT3ObjectsShow = true;
+input ENUM_TIMEFRAMES   InpT3MaxTimeframe = PERIOD_H1;
+input string            InpT3FiboLevels = "10, 20, 30, 40, 50, 60, 70, 80, 90, 110";
+
+input group             "------------------------ T3 Colors -----------------------------"
+input color             InpT3FiboLevelsColor = clrTomato;
+input color             InpT3TrendLineColor = clrTomato;
+input color             InpT3RegressionChannelColor = clrBisque;
+input color             InpT3MinMaxRegressionColor = clrBlue;
 input color             InpT3ReEntryMinRegressionColor = clrDarkKhaki;
+input color             InpT3InSignalAreaColor = clrPaleGreen;
 input color             InpT3ReEntryAreaColor = clrBeige;
 
 input group             "---------- SL & TP ---------"

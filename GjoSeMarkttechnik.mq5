@@ -14,6 +14,8 @@
    1.4   Trailing per Trendline
    1.5   isTradeableButton activeted
    1.6   fixed LotsSize Automatic
+   1.6.1 fixed isTradeableButton
+   1.6.2 fixed diverse
 
    ===============
 
@@ -30,7 +32,7 @@
 #property copyright   "2022, GjoSe"
 #property link        "http://www.gjo-se.com"
 #property description "GjoSe Markttechnik"
-#define   VERSION "1.6"
+#define   VERSION "1.6.1"
 #property version VERSION
 #property strict
 
@@ -48,8 +50,20 @@ int OnInit() {
 
    handleObjectsAction();
    commentAction(VERSION);
-   
-   return(0);
+
+   if(MQLInfoInteger(MQL_TESTER) == 1) {
+
+      isTradabelButtonState = true;
+
+      if(MQLInfoInteger(MQL_VISUAL_MODE) != 1) {
+         t3p1DateTime = InpT3p1DateTime;
+         t3p2DateTime = InpT3p2DateTime;
+         t3p3DateTime = InpT3p3DateTime;
+         t3p4DateTime = InpT3p4DateTime;
+      }
+   }
+
+   return(INIT_SUCCEEDED);
 }
 
 void OnTick() {
@@ -94,8 +108,14 @@ void OnChartEvent(const int id,
       objectHasChanged = true;
 
       if(sparam == IS_TRADEABLE_BUTTON) {
-            handleIsTradeableButton();
+         handleIsTradeableButton();
       }
+
+      if(sparam == T3_STOP_LOSS_TLINE) {
+         isBidStopLossLineOffsetAlertSendable = true;
+         isBidStopLossLineOffsetAlertSended = false;
+      }
+
    }
 
 }

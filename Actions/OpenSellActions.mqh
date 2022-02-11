@@ -14,6 +14,9 @@ void openSellOrderAction() {
    cleanPositionTicketsArrayAction(positionTickets, InpMagicNumber);
    sellPositionIsOpen = true;
    useReEntryArea = true;
+
+   handleScreenshotAction();
+
 }
 
 double getSellTakeProfit() {
@@ -63,9 +66,9 @@ double getSellVolume() {
 
    // % Risk per Balance
    maxPositionRiskValue = AccountInfoDouble(ACCOUNT_BALANCE) * InpMaxPositionRiskPercent / 100;
-   positionPipRisk = InpStopLoss / 10 * getPipValueBySymbol(Symbol());
-   volume = maxPositionRiskValue / positionPipRisk;
+   positionPipRisk = InpStopLoss * getPointValueBySymbol(Symbol());
+   volume = VerifyVolume(Symbol(), maxPositionRiskValue / positionPipRisk);
 
-   return VerifyVolume(Symbol(), volume);
+   return volume;
 }
 //+------------------------------------------------------------------+

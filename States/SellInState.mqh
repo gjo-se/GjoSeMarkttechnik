@@ -13,18 +13,17 @@ bool getSellInSignal() {
 
    bool signal = false;
 
-   if(t3trendDirection != TREND_DIRECTION_SHORT) return false;
-   if(isTradabelButtonState = false) return false;
-   if(getBidInInSignalAreaState() == false) return false;
-   if(getOpenSellPositionsFilter() == true) return false;
-
    setHighestHighDateTime();
+   if(getBidLowerShortEntryLevelSignal() == true) signal = true;
+
+   if(!TerminalInfoInteger(TERMINAL_TRADE_ALLOWED) || !MQLInfoInteger(MQL_TRADE_ALLOWED)) signal = false;
+   if(t3trendDirection != TREND_DIRECTION_SHORT) signal = false;
+   if(isTradabelButtonState == false) signal = false;
+   if(getBidInInSignalAreaState() == false) signal = false;
+   if(getOpenSellPositionsFilter() == true) signal = false;
 
 //   if(getBidLowerShortReEntryAreaFilter() == true) return false;
 //   if(t3ShortIsTradable == false) return false;
-
-   if(getBidLowerShortEntryLevelSignal() == true) signal = true;
-
 //   if(spreadGreaterThanMaxSpreadSellInFilter() == true) signal = false;
 
    return(signal);
@@ -32,18 +31,19 @@ bool getSellInSignal() {
 }
 
 // für BUY & SELL Seite
+// TODO: auslagern in??
 bool getBidInInSignalAreaState() {
 
    bool state = false;
 
-   if(inSignalAreaMinEndValue != 0 && Bid() > inSignalAreaMinEndValue
-         && inSignalAreaMaxEndValue != 0 && Bid() < inSignalAreaMaxEndValue) {
+   if(inSignalAreaMinEndValue != 0 && Bid() >= inSignalAreaMinEndValue
+         && inSignalAreaMaxEndValue != 0 && Bid() <= inSignalAreaMaxEndValue) {
       state = true;
    }
-   
-   if(useReEntryArea == true){
-      if(reEntryAreaMinEndValue != 0 && Bid() > reEntryAreaMinEndValue
-            && reEntryAreaMaxEndValue != 0 && Bid() < reEntryAreaMaxEndValue) {
+
+   if(useReEntryArea == true) {
+      if(reEntryAreaMinEndValue != 0 && Bid() >= reEntryAreaMinEndValue
+            && reEntryAreaMaxEndValue != 0 && Bid() <= reEntryAreaMaxEndValue) {
          state = true;
       }
    }
@@ -72,11 +72,12 @@ void setHighestHighDateTime() {
 
       if(sellPositionIsOpen == false) {
          createT3HighestHighVLine();
+         handleScreenshotAction();
       }
 
    }
 
-   if(t3HhDateTime != 0) startCandleShift = iBarShift(Symbol(), Period(), t3HhDateTime);
+   if(t3HighestHighVLineDateTime != 0) startCandleShift = iBarShift(Symbol(), Period(), t3HighestHighVLineDateTime);
 
    if(startCandleShift != 0) {
       t3HighestHighDateTime = iTime(Symbol(), PERIOD_CURRENT, iHighest(Symbol(), PERIOD_CURRENT, MODE_HIGH, startCandleShift, 0));
@@ -91,7 +92,7 @@ bool getBidLowerShortEntryLevelSignal() {
 
    if(Bid() > t3ShortEntryValue) t3ShortIsTradable = true;
 
-   if(t3ShortIsTradable == true && Bid() < t3ShortEntryValue) {
+   if(t3ShortIsTradable == true && Bid() <= t3ShortEntryValue) {
       signal = true;
       t3ShortIsTradable = false;
    }

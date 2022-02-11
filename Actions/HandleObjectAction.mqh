@@ -7,21 +7,59 @@ void handleObjectsAction() {
 
 
 
-  if(ObjectFind(ChartID(), IS_TRADEABLE_BUTTON) < 0) {
-     createIsTradeableButton();
-  }
+   if(ObjectFind(ChartID(), IS_TRADEABLE_BUTTON) < 0) {
+      createIsTradeableButton();
+   }
 
    if(InpT3ObjectsShow == true) {
 
       if(t3trendDirection == TREND_DIRECTION_LONG) {
-         if(t3LowestLowValue != iLow(Symbol(), PERIOD_CURRENT, iBarShift(Symbol(), PERIOD_CURRENT, t3LowestLowDateTime))) {
+         if(useReEntryArea == false && inSignalAreaMaxEndValue != 0 && Bid() < inSignalAreaMaxEndValue) {
+            if(isBidLowerInSignalAreaMaxEndValue == false) {
+               createT3LowestLowVLine();
+               isBidLowerInSignalAreaMaxEndValue = true;
+            }
+         } else {
+            isBidLowerInSignalAreaMaxEndValue = false;
+         }
+
+         double localT3LowestLowValue = 0;
+         if(iBarShift(Symbol(), Period(), t3LowestLowDateTime) != 0) {
+            localT3LowestLowValue = iLow(Symbol(), Period(), iLowest( Symbol(), Period(), MODE_LOW, iBarShift(Symbol(), Period(), t3LowestLowDateTime) + 1));
+         } else {
+            localT3LowestLowValue = iLow(Symbol(), PERIOD_CURRENT, 0);
+         }
+
+         if(localT3LowestLowValue != 0) {
+
+            t3LowestLowValue = MathMax(localT3LowestLowValue, inSignalAreaMinEndValue - InpStopLoss * Point());
+            t3LongEntryValue = t3LowestLowValue + InpStopLoss * Point();
             createT3LowestLowTrendLine();
             createT3LongEntryTrendLine();
          }
       }
 
       if(t3trendDirection == TREND_DIRECTION_SHORT) {
-         if(t3HighestHighValue != iHigh(Symbol(), PERIOD_CURRENT, iBarShift(Symbol(), PERIOD_CURRENT, t3HighestHighDateTime))) {
+         if(useReEntryArea == false && inSignalAreaMinEndValue != 0 && Bid() > inSignalAreaMinEndValue) {
+            if(isBidGreaterInSignalAreaMinEndValue == false) {
+               createT3LowestLowVLine();
+               isBidGreaterInSignalAreaMinEndValue = true;
+            }
+         } else {
+            isBidGreaterInSignalAreaMinEndValue = false;
+         }
+
+         double localT3HighestHighValue = 0;
+         if(iBarShift(Symbol(), Period(), t3HighestHighDateTime) != 0) {
+            localT3HighestHighValue = iHigh(Symbol(), Period(), iHighest( Symbol(), Period(), MODE_HIGH, iBarShift(Symbol(), Period(), t3HighestHighDateTime) + 1));
+         } else {
+            localT3HighestHighValue = iHigh(Symbol(), Period(), 0);
+         }
+
+         if(localT3HighestHighValue != 0) {
+
+            t3HighestHighValue = MathMin(localT3HighestHighValue, inSignalAreaMaxEndValue + InpStopLoss * Point());
+            t3ShortEntryValue = t3HighestHighValue - InpStopLoss * Point();
             createT3HighestHighTrendLine();
             createT3ShortEntryTrendLine();
          }
@@ -35,8 +73,8 @@ void handleObjectsAction() {
             createT3FiboRetracement();
             createT3InSignalArea();
             createT3ReEntryArea();
-            if(t3trendDirection == TREND_DIRECTION_LONG) createT3LowestLowTrendLine();
-            if(t3trendDirection == TREND_DIRECTION_SHORT) createT3HighestHighTrendLine();
+//            if(t3trendDirection == TREND_DIRECTION_LONG) createT3LowestLowTrendLine();
+//            if(t3trendDirection == TREND_DIRECTION_SHORT) createT3HighestHighTrendLine();
          } else {
             deleteTrendLineObject(T3_TRENDLINE);
             deleteRegressionChannelObject(T3_REGRESSION_CHANNEL);

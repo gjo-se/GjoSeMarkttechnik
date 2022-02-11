@@ -30,7 +30,8 @@ void initializeGlobalsAction() {
    t3p4DateTime = 0;
    t3p4ValueHigh = 0;
    t3p4ValueLow = 0;
-   t3HhDateTime = 0;
+   t3HighestHighVLineDateTime = 0;
+   t3LowestLowVLineDateTime = 0;
    t3EndDateTime = 0;
 
    t3trendDirection = TREND_DIRECTION_ROTATION;
@@ -50,6 +51,9 @@ void initializeGlobalsAction() {
    inSignalAreaMinEndValue = 0;
    inSignalAreaMaxStartValue = 0;
    inSignalAreaMaxEndValue = 0;
+   isBidLowerInSignalAreaMaxEndValue = false;
+   isBidGreaterInSignalAreaMinEndValue = false;
+
    reEntryAreaMinStartValue = 0;
    reEntryAreaMinEndValue = 0;
    reEntryAreaMaxStartValue = 0;

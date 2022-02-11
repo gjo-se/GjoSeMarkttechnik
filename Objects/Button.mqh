@@ -13,7 +13,7 @@ void createIsTradeableButton(){
     color objColor = clrBlack;
     color backgroundColor = C'236,233,216';
     color borderColor = clrNONE;
-    string objText = "OFF";
+    string objText = "initial off";
     string fontFamily = "Arial";
     int fontSize = 14;
     bool objState = false;
