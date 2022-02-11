@@ -30,7 +30,7 @@ input string            InpT3FiboLevels = "10, 20, 30, 40, 50, 60, 70, 80, 90, 1
 input group             "------------------------ T3 Colors -----------------------------"
 input color             InpT3FiboLevelsColor = clrTomato;
 input color             InpT3TrendLineColor = clrTomato;
-input color             InpT3RegressionChannelColor = clrSnow;
+input color             InpT3RegressionChannelColor = clrBisque;
 input color             InpT3MinMaxRegressionColor = clrBlue;
 input color             InpT3ReEntryMinRegressionColor = clrDarkKhaki;
 input color             InpT3InSignalAreaColor = clrPaleGreen;
