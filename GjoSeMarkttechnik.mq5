@@ -14,6 +14,8 @@
    1.4   Trailing per Trendline
    1.5   isTradeableButton activeted
    1.6   fixed LotsSize Automatic
+   1.6.1 fixed isTradeableButton
+   1.6.2 fixed diverse
 
    ===============
 
@@ -30,7 +32,7 @@
 #property copyright   "2022, GjoSe"
 #property link        "http://www.gjo-se.com"
 #property description "GjoSe Markttechnik"
-#define   VERSION "1.6"
+#define   VERSION "1.6.1"
 #property version VERSION
 #property strict
 
@@ -61,7 +63,7 @@ int OnInit() {
       }
    }
 
-   return(0);
+   return(INIT_SUCCEEDED);
 }
 
 void OnTick() {
