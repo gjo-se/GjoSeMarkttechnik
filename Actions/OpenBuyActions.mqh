@@ -12,6 +12,7 @@ void openBuyOrderAction() {
    buyPositionIsOpen = true;
    useReEntryArea = true;
 
+   handleScreenshotAction();
 }
 
 double getBuyTakeProfit() {

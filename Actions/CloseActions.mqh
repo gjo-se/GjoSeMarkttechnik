@@ -31,12 +31,14 @@ void closeOnT3StopLossLine() {
                ObjectSetString(chartId, objName, OBJPROP_TEXT, T3_STOP_LOSS_TLINE + "-triggert");
                ObjectSetInteger(chartId, objName, OBJPROP_WIDTH, 1);
                ObjectSetInteger(chartId, objName, OBJPROP_STYLE, STYLE_DASH);
+               handleScreenshotAction();
             }
             if(PositionType(positionTicket) == ORDER_TYPE_SELL && Bid() > t3StopLossLineLevel) {
                Trade.Close(positionTicket, PositionVolume(positionTicket), T3_STOP_LOSS_TLINE);
                ObjectSetString(chartId, objName, OBJPROP_TEXT, T3_STOP_LOSS_TLINE + "-triggert");
                ObjectSetInteger(chartId, objName, OBJPROP_WIDTH, 1);
                ObjectSetInteger(chartId, objName, OBJPROP_STYLE, STYLE_DASH);
+               handleScreenshotAction();
             }
          }
       }

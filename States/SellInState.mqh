@@ -72,6 +72,7 @@ void setHighestHighDateTime() {
 
       if(sellPositionIsOpen == false) {
          createT3HighestHighVLine();
+         handleScreenshotAction();
       }
 
    }

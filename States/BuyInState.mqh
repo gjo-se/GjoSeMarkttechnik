@@ -50,6 +50,7 @@ void setLowestLowDateTime() {
 
       if(buyPositionIsOpen == false) {
          createT3LowestLowVLine();
+         handleScreenshotAction();
       }
    }
 
