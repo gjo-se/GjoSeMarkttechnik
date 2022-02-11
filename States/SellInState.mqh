@@ -13,13 +13,14 @@ bool getSellInSignal() {
 
    bool signal = false;
 
-   if(t3trendDirection != TREND_DIRECTION_SHORT) return false;
    setHighestHighDateTime();
    if(getBidLowerShortEntryLevelSignal() == true) signal = true;
 
-   if(isTradabelButtonState == false) return false;
-   if(getBidInInSignalAreaState() == false) return false;
-   if(getOpenSellPositionsFilter() == true) return false;
+   if(!TerminalInfoInteger(TERMINAL_TRADE_ALLOWED) || !MQLInfoInteger(MQL_TRADE_ALLOWED)) signal = false;
+   if(t3trendDirection != TREND_DIRECTION_SHORT) signal = false;
+   if(isTradabelButtonState == false) signal = false;
+   if(getBidInInSignalAreaState() == false) signal = false;
+   if(getOpenSellPositionsFilter() == true) signal = false;
 
 //   if(getBidLowerShortReEntryAreaFilter() == true) return false;
 //   if(t3ShortIsTradable == false) return false;
