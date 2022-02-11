@@ -6,7 +6,7 @@
 
 void handleScreenshotAction() {
 
-   string screenShotName = Symbol() + "-" + (string)(int)TimeCurrent() + ".png";
+   string screenShotName = "Screenshots/" + Symbol() + "-" + (string)(int)TimeCurrent() + ".png";
    int    width = 1000;
    int    heigth = 800;
    if(!ChartScreenShot(ChartID(), screenShotName, width, heigth)) {
