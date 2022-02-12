@@ -66,6 +66,7 @@ double      t3HighestHighValue;
 datetime    t3HighestHighDateTime;
 double      t3ShortEntryValue;
 bool        t3ShortIsTradable;
+bool        t3ShortEntryIsTriggert;
 
 // LONG
 double      t3LowestLowValue;
@@ -73,6 +74,7 @@ datetime    t3LowestLowDateTime;
 double      t3LongEntryValue;
 bool        t3LongIsTradable;
 bool        t3LongEntryIsTriggert;
+
 double      orderGridLimitOrderValuesArray[];
 double      orderGridStopOrderValuesArray[];
 

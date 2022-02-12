@@ -43,7 +43,7 @@ void handleObjectsAction() {
       if(t3trendDirection == TREND_DIRECTION_SHORT) {
          if(useReEntryArea == false && inSignalAreaMinEndValue != 0 && Bid() > inSignalAreaMinEndValue) {
             if(isBidGreaterInSignalAreaMinEndValue == false) {
-               createT3LowestLowVLine();
+               createT3HighestHighVLine();
                isBidGreaterInSignalAreaMinEndValue = true;
             }
          } else {
@@ -63,6 +63,7 @@ void handleObjectsAction() {
             t3ShortEntryValue = t3HighestHighValue - InpStopLoss * Point();
             createT3HighestHighTrendLine();
             createT3ShortEntryTrendLine();
+            if(getT3ShortEntryIsTriggertFilter() == false) createT3OrderGridTrendLines();
          }
       }
 

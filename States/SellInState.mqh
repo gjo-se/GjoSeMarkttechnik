@@ -15,12 +15,15 @@ bool getSellInSignal() {
 
    setHighestHighDateTime();
    if(getBidLowerShortEntryLevelSignal() == true) signal = true;
+   if(getBidInInSignalAreaState() == false) signal = false;
+
+   if(getBidTriggerShortGridLimitOrderSignal() == true) signal = true;
+   if(getBidTriggerShortGridStopOrderSignal() == true) signal = true;
 
    if(!TerminalInfoInteger(TERMINAL_TRADE_ALLOWED) || !MQLInfoInteger(MQL_TRADE_ALLOWED)) signal = false;
    if(t3trendDirection != TREND_DIRECTION_SHORT) signal = false;
    if(isTradabelButtonState == false) signal = false;
-   if(getBidInInSignalAreaState() == false) signal = false;
-   if(getOpenSellPositionsFilter() == true) signal = false;
+   if(getOpenShortPositionCountFilter() == true) signal = false;
 
 //   if(getBidLowerShortReEntryAreaFilter() == true) return false;
 //   if(t3ShortIsTradable == false) return false;
@@ -86,15 +89,74 @@ void setHighestHighDateTime() {
    }
 }
 
+bool getT3ShortEntryIsTriggertFilter() {
+
+   bool filter = false;
+   long positionTicket = 0;
+
+   int positionTicketsId = 0;
+   for(positionTicketsId; positionTicketsId < ArraySize(positionTickets); positionTicketsId++) {
+      positionTicket = positionTickets[positionTicketsId];
+      if(
+         positionTicket > 0
+         && PositionSymbol(positionTicket) == Symbol()
+         && PositionMagicNumber(positionTicket) == InpMagicNumber
+         && PositionType(positionTicket) == ORDER_TYPE_SELL
+      ) {
+         filter = true;
+         t3ShortEntryIsTriggert = true;
+      }
+   }
+
+   if(filter == false) t3ShortEntryIsTriggert = false;
+
+   return (filter);
+}
+
 bool getBidLowerShortEntryLevelSignal() {
 
    bool signal = false;
 
    if(Bid() > t3ShortEntryValue) t3ShortIsTradable = true;
 
-   if(t3ShortIsTradable == true && Bid() <= t3ShortEntryValue) {
+   if(t3ShortEntryIsTriggert == false && t3ShortIsTradable == true && Bid() <= t3ShortEntryValue) {
       signal = true;
+      t3ShortEntryIsTriggert = true;
       t3ShortIsTradable = false;
+   }
+
+   return signal;
+}
+
+bool getBidTriggerShortGridLimitOrderSignal() {
+
+   bool signal = false;
+
+   if(t3ShortEntryIsTriggert) {
+      for(int orderGridLimitOrderValueId = 0; orderGridLimitOrderValueId < ArraySize(orderGridLimitOrderValuesArray); orderGridLimitOrderValueId++) {
+         if(orderGridLimitOrderValuesArray[orderGridLimitOrderValueId] != EMPTY_VALUE
+               && Bid() > orderGridLimitOrderValuesArray[orderGridLimitOrderValueId]) {
+            signal = true;
+            orderGridLimitOrderValuesArray[orderGridLimitOrderValueId] = EMPTY_VALUE;
+         }
+      }
+   }
+
+   return signal;
+}
+
+bool getBidTriggerShortGridStopOrderSignal() {
+
+   bool signal = false;
+
+   if(t3ShortEntryIsTriggert) {
+      for(int orderGridStopOrderValueId = 0; orderGridStopOrderValueId < ArraySize(orderGridStopOrderValuesArray); orderGridStopOrderValueId++) {
+         if(orderGridStopOrderValuesArray[orderGridStopOrderValueId] != EMPTY_VALUE
+               && Bid() < orderGridStopOrderValuesArray[orderGridStopOrderValueId]) {
+            signal = true;
+            orderGridStopOrderValuesArray[orderGridStopOrderValueId] = EMPTY_VALUE;
+         }
+      }
    }
 
    return signal;
@@ -112,40 +174,13 @@ bool getBidLowerShortReEntryAreaFilter() {
    return filter;
 }
 
-
-
-//bool spreadGreaterThanMaxSpreadSellInFilter() {
-//
-//   bool filter = true;
-//
-////  Print("Spread: " + Spread());
-//
-//   if(Spread() < InpMaxSpread) {
-//      filter = false;
-//   }
-//
-//   return(filter);
-//}
-
-//bool getTradeDirectionIsNotShortFilter() {
-//
-//   bool filter = true;
-//
-//   //if(p2Low > 0 && p3High > 0 && p2Low < p3High) {
-//   //   tradeDirection = SHORT;
-//   //   filter = false;
-//   //}
-//
-//   return(filter);
-//}
-
-bool getOpenSellPositionsFilter() {
+bool getOpenShortPositionCountFilter() {
 
    bool filter = false;
-   long positionTicket = 0;
+   long     positionTicket = 0;
+   int      openPositionCount = 0;
 
-   int positionTicketsId = 0;
-   for(positionTicketsId; positionTicketsId < ArraySize(positionTickets); positionTicketsId++) {
+   for(int positionTicketsId = 0; positionTicketsId < ArraySize(positionTickets); positionTicketsId++) {
       positionTicket = positionTickets[positionTicketsId];
       if(
          positionTicket > 0
@@ -153,23 +188,14 @@ bool getOpenSellPositionsFilter() {
          && PositionMagicNumber(positionTicket) == InpMagicNumber
          && PositionType(positionTicket) == ORDER_TYPE_SELL
       ) {
-         filter = true;
+         openPositionCount++;
       }
    }
 
-   return (filter);
-}
+   if(openPositionCount >= InpOrderGridCount) {
+      filter = true;
+   }
 
-bool getBidNotBetweenMinMaxValuesSellInFilter() {
-
-   bool filter = true;
-
-   //Print("minValue: " +  + " maxValue: " + maxValue);
-
-   //if(minValue != 0 && maxValue != 0 && Bid() > minValue && Bid() < maxValue) {
-   //   filter = false;
-   //}
-
-   return (filter);
+   return filter;
 }
 //+------------------------------------------------------------------+

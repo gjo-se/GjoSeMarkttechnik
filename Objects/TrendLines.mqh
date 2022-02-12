@@ -78,34 +78,64 @@ void createT3InsideBarTrendLines() {
 
 void createT3OrderGridTrendLines() {
 
-      int barShift = 10;
-      double orderGridLimitOrderValue = 0;
-      double orderGridStopOrderValue = 0;
+   int barShift = 10;
+   double orderGridLimitOrderValue = 0;
+   double orderGridStopOrderValue = 0;
 
-      ArrayResize(orderGridLimitOrderValuesArray, 0);
-      ArrayResize(orderGridStopOrderValuesArray, 0);
+   ArrayResize(orderGridLimitOrderValuesArray, 0);
+   ArrayResize(orderGridStopOrderValuesArray, 0);
 
-    // orderGridStopOrder
+   if(t3trendDirection == TREND_DIRECTION_LONG) {
+
+      // orderGridStopOrder
       for(int orderGridId = 1; orderGridId < InpOrderGridCount; orderGridId++)  {
-        orderGridStopOrderValue = t3LongEntryValue + (InpStopLoss / InpOrderGridCount * orderGridId * Point());
-        string realVolume = DoubleToString(getBuyVolume(orderGridStopOrderValue), 2);
-        string verifiedVolume = DoubleToString(VerifyVolume(Symbol(), getBuyVolume(orderGridStopOrderValue)), 2);
-        createTrendLine(T3_ORDER_GRID_STOP_TLINE + "_" + orderGridId, iTime(Symbol(), Period(), iBarShift(Symbol(), Period(), t3LowestLowDateTime) + barShift), orderGridStopOrderValue, iTime(Symbol(), Period(), 0), orderGridStopOrderValue, InpT3TrendLineColor, 1, STYLE_SOLID, T3_ORDER_GRID_STOP_TLINE + "_" + orderGridId + " V: " + realVolume + " (" + verifiedVolume + ")");
-
-        ArrayResize(orderGridStopOrderValuesArray, ArraySize(orderGridStopOrderValuesArray) + 1);
-        orderGridStopOrderValuesArray[ArraySize(orderGridStopOrderValuesArray) - 1] = orderGridStopOrderValue;
+         orderGridStopOrderValue = t3LongEntryValue + (InpStopLoss / InpOrderGridCount * orderGridId * Point());
+         string realVolume = DoubleToString(getBuyVolume(orderGridStopOrderValue), 2);
+         string verifiedVolume = DoubleToString(VerifyVolume(Symbol(), getBuyVolume(orderGridStopOrderValue)), 2);
+         createTrendLine(T3_ORDER_GRID_STOP_TLINE + "_" + IntegerToString(orderGridId), iTime(Symbol(), Period(), iBarShift(Symbol(), Period(), t3LowestLowDateTime) + barShift), orderGridStopOrderValue, iTime(Symbol(), Period(), 0), orderGridStopOrderValue, InpT3TrendLineColor, 1, STYLE_SOLID, T3_ORDER_GRID_STOP_TLINE + "_" + IntegerToString(orderGridId) + " V: " + realVolume + " (" + verifiedVolume + ")");
+         ArrayResize(orderGridStopOrderValuesArray, ArraySize(orderGridStopOrderValuesArray) + 1);
+         orderGridStopOrderValuesArray[ArraySize(orderGridStopOrderValuesArray) - 1] = orderGridStopOrderValue;
       }
 
-    // orderGridLimitOrder
+      // orderGridLimitOrder
       for(int orderGridId = 1; orderGridId < InpOrderGridCount; orderGridId++) {
-        orderGridLimitOrderValue = t3LongEntryValue - (InpStopLoss / InpOrderGridCount * orderGridId * Point());
-        string realVolume = DoubleToString(getBuyVolume(orderGridLimitOrderValue), 2);
-        string verifiedVolume = DoubleToString(VerifyVolume(Symbol(), getBuyVolume(orderGridLimitOrderValue)), 2);
-        createTrendLine(T3_ORDER_GRID_LIMIT_TLINE + "_" + orderGridId, iTime(Symbol(), Period(), iBarShift(Symbol(), Period(), t3LowestLowDateTime) + barShift), orderGridLimitOrderValue, iTime(Symbol(), Period(), 0), orderGridLimitOrderValue, InpT3TrendLineColor, 1, STYLE_SOLID, T3_ORDER_GRID_LIMIT_TLINE + "_" + orderGridId + " V: " + realVolume + " (" + verifiedVolume + ")");
+         orderGridLimitOrderValue = t3LongEntryValue - (InpStopLoss / InpOrderGridCount * orderGridId * Point());
+         string realVolume = DoubleToString(getBuyVolume(orderGridLimitOrderValue), 2);
+         string verifiedVolume = DoubleToString(VerifyVolume(Symbol(), getBuyVolume(orderGridLimitOrderValue)), 2);
+         createTrendLine(T3_ORDER_GRID_LIMIT_TLINE + "_" + IntegerToString(orderGridId), iTime(Symbol(), Period(), iBarShift(Symbol(), Period(), t3LowestLowDateTime) + barShift), orderGridLimitOrderValue, iTime(Symbol(), Period(), 0), orderGridLimitOrderValue, InpT3TrendLineColor, 1, STYLE_SOLID, T3_ORDER_GRID_LIMIT_TLINE + "_" + IntegerToString(orderGridId) + " V: " + realVolume + " (" + verifiedVolume + ")");
 
-        ArrayResize(orderGridLimitOrderValuesArray, ArraySize(orderGridLimitOrderValuesArray) + 1);
-        orderGridLimitOrderValuesArray[ArraySize(orderGridLimitOrderValuesArray) - 1] = orderGridLimitOrderValue;
+         ArrayResize(orderGridLimitOrderValuesArray, ArraySize(orderGridLimitOrderValuesArray) + 1);
+         orderGridLimitOrderValuesArray[ArraySize(orderGridLimitOrderValuesArray) - 1] = orderGridLimitOrderValue;
       }
+   }
+
+   if(t3trendDirection == TREND_DIRECTION_SHORT) {
+
+      // orderGridStopOrder
+      for(int orderGridId = 1; orderGridId < InpOrderGridCount; orderGridId++)  {
+         orderGridStopOrderValue = t3ShortEntryValue - (InpStopLoss / InpOrderGridCount * orderGridId * Point());
+         string realVolume = DoubleToString(getSellVolume(orderGridStopOrderValue), 2);
+         string verifiedVolume = DoubleToString(VerifyVolume(Symbol(), getSellVolume(orderGridStopOrderValue)), 2);
+         createTrendLine(T3_ORDER_GRID_STOP_TLINE + "_" + IntegerToString(orderGridId), iTime(Symbol(), Period(), iBarShift(Symbol(), Period(), t3HighestHighDateTime) + barShift), orderGridStopOrderValue, iTime(Symbol(), Period(), 0), orderGridStopOrderValue, InpT3TrendLineColor, 1, STYLE_SOLID, T3_ORDER_GRID_STOP_TLINE + "_" + IntegerToString(orderGridId) + " V: " + realVolume + " (" + verifiedVolume + ")");
+         ArrayResize(orderGridStopOrderValuesArray, ArraySize(orderGridStopOrderValuesArray) + 1);
+         orderGridStopOrderValuesArray[ArraySize(orderGridStopOrderValuesArray) - 1] = orderGridStopOrderValue;
+      }
+
+      // orderGridLimitOrder
+      for(int orderGridId = 1; orderGridId < InpOrderGridCount; orderGridId++) {
+         orderGridLimitOrderValue = t3ShortEntryValue + (InpStopLoss / InpOrderGridCount * orderGridId * Point());
+         string realVolume = DoubleToString(getSellVolume(orderGridLimitOrderValue), 2);
+         string verifiedVolume = DoubleToString(VerifyVolume(Symbol(), getSellVolume(orderGridLimitOrderValue)), 2);
+         createTrendLine(T3_ORDER_GRID_LIMIT_TLINE + "_" + IntegerToString(orderGridId), iTime(Symbol(), Period(), iBarShift(Symbol(), Period(), t3HighestHighDateTime) + barShift), orderGridLimitOrderValue, iTime(Symbol(), Period(), 0), orderGridLimitOrderValue, InpT3TrendLineColor, 1, STYLE_SOLID, T3_ORDER_GRID_LIMIT_TLINE + "_" + IntegerToString(orderGridId) + " V: " + realVolume + " (" + verifiedVolume + ")");
+
+         ArrayResize(orderGridLimitOrderValuesArray, ArraySize(orderGridLimitOrderValuesArray) + 1);
+         orderGridLimitOrderValuesArray[ArraySize(orderGridLimitOrderValuesArray) - 1] = orderGridLimitOrderValue;
+      }
+   }
+
+
+
+
 }
 
 void deleteTrendLineObject(const string pDimension) {

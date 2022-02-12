@@ -66,6 +66,7 @@ void initializeGlobalsAction() {
    t3HighestHighDateTime = 0;
    t3ShortEntryValue = 0;
    t3ShortIsTradable = false;
+   t3ShortEntryIsTriggert = false;
 
 // LONG
    t3LowestLowValue = 0;
