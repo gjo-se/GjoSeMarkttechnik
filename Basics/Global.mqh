@@ -72,6 +72,9 @@ double      t3LowestLowValue;
 datetime    t3LowestLowDateTime;
 double      t3LongEntryValue;
 bool        t3LongIsTradable;
+bool        t3LongEntryIsTriggert;
+double      orderGridLimitOrderValuesArray[];
+double      orderGridStopOrderValuesArray[];
 
 //bool bidGreaterLowestLowAndOffsetSignal;
 //bool bidLowerHighestHighAndOffsetSignal;

@@ -9,6 +9,9 @@ input int               InpStopLoss = 200; // StopLoss
 input int               InpT3AlertOnBidStopLossLineOffset = 400;
 input double            InpInsideBarMinRange = 200;
 
+input group             "------------------------------ Order Grid ---------------------------"
+input int               InpOrderGridCount = 5; // Anzahl Grid Orders
+
 input group             "------------------------------ RegressionChannel - T3 ----------------"
 input int               InpT3AlertOnRegressionChannelLevel = 0;
 input int               InpT3MinRegressionChannelLevel = 70;

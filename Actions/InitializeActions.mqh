@@ -72,6 +72,7 @@ void initializeGlobalsAction() {
    t3LowestLowDateTime = 0;
    t3LongEntryValue = 0;
    t3LongIsTradable = false;
+   t3LongEntryIsTriggert = false;
 
 
 //   bidGreaterLowestLowAndOffsetSignal = false;

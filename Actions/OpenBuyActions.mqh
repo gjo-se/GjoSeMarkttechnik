@@ -6,7 +6,7 @@
 void openBuyOrderAction() {
 
    Trade.FillType(SYMBOL_FILLING_FOK);
-   Trade.Buy(Symbol(), getBuyVolume(), getBuyStopLoss(), getBuyTakeProfit(), InpComment);
+   Trade.Buy(Symbol(), VerifyVolume(Symbol(), getBuyVolume()), getBuyStopLoss(), getBuyTakeProfit(), InpComment);
 
    cleanPositionTicketsArrayAction(positionTickets, InpMagicNumber);
    buyPositionIsOpen = true;
@@ -26,12 +26,10 @@ double getBuyTakeProfit() {
 
 double getBuyStopLoss() {
 
-   double stopLoss = 0;
-
-   stopLoss = BuyStopLoss(Symbol(), InpStopLoss, Ask());
-
    // Varainten in Settings setzen:
    // Fix: in Punkten (InpStopLoss) // von Points in Level umrechnen:
+
+   double stopLoss = t3LowestLowValue;
 
    if(stopLoss > 0) AdjustAboveStopLevel(Symbol(), stopLoss);
 
@@ -40,7 +38,7 @@ double getBuyStopLoss() {
    return stopLoss;
 }
 
-double getBuyVolume() {
+double getBuyVolume(double pLevel = 0) {
 
    // TODO: Varianten laut Settings bauen
    //  Fix:
@@ -49,15 +47,18 @@ double getBuyVolume() {
 
    double volume = 0;
    double maxPositionRiskValue = 0;
-   double positionPipRisk = 0;
+   double positionPointRisk = 0;
+
+   if(pLevel == 0) pLevel = Bid();
 
    // % Risk per Balance
-   maxPositionRiskValue = AccountInfoDouble(ACCOUNT_BALANCE) * InpMaxPositionRiskPercent / 100;
-   positionPipRisk = InpStopLoss * getPointValueBySymbol(Symbol());
-   volume = VerifyVolume(Symbol(), maxPositionRiskValue / positionPipRisk);
+   maxPositionRiskValue = AccountInfoDouble(ACCOUNT_BALANCE) * InpMaxPositionRiskPercent / 100 / InpOrderGridCount;
+   positionPointRisk = (pLevel - t3LowestLowValue) / Point() * getPointValueBySymbol(Symbol());
+   volume = maxPositionRiskValue / positionPointRisk;
 
    return volume;
 }
+
 // TODO: auslagern, für buy & Sell
 double getPointValueBySymbol(string pPositionSymbol) {
    return SymbolInfoDouble(Symbol(), SYMBOL_TRADE_TICK_VALUE) / SymbolInfoDouble(Symbol(), SYMBOL_TRADE_TICK_SIZE) * Point();

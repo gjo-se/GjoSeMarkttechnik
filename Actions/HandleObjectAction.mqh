@@ -36,6 +36,7 @@ void handleObjectsAction() {
             t3LongEntryValue = t3LowestLowValue + InpStopLoss * Point();
             createT3LowestLowTrendLine();
             createT3LongEntryTrendLine();
+            if(getT3LongEntryIsTriggertFilter() == false) createT3OrderGridTrendLines();
          }
       }
 
