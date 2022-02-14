@@ -9,7 +9,7 @@
 void openSellOrderAction() {
 
    Trade.FillType(SYMBOL_FILLING_FOK);
-   Trade.Sell(Symbol(), getSellVolume(), getSellStopLoss(), getSellTakeProfit(), InpComment);
+   Trade.Sell(Symbol(), VerifyVolume(Symbol(), getSellVolume()), getSellStopLoss(), getSellTakeProfit(), InpComment);
 
    cleanPositionTicketsArrayAction(positionTickets, InpMagicNumber);
    sellPositionIsOpen = true;
@@ -23,15 +23,6 @@ double getSellTakeProfit() {
 
    double takeProfit = 0;
 
-   // Varainten in Settings setzen:
-   // Fix: in Punkten (InpTakeProfit) // von Points in Level umrechnen:
-//    takeProfit = BuyTakeProfit(Symbol(), takeProfit, Ask());
-
-   // auf den p4High
-   //takeProfit = p4Low;
-
-   //Print("takeProfit: " + takeProfit);
-
    if(takeProfit > 0) AdjustBelowStopLevel(Symbol(), takeProfit);
 
    return takeProfit;
@@ -39,12 +30,10 @@ double getSellTakeProfit() {
 
 double getSellStopLoss() {
 
-   double stopLoss = 0;
-
-   stopLoss = SellStopLoss(Symbol(), InpStopLoss, Bid());
-
    // Varainten in Settings setzen:
    // Fix: in Punkten (InpStopLoss) // von Points in Level umrechnen:
+
+   double stopLoss = t3HighestHighValue;
 
    if(stopLoss > 0) AdjustBelowStopLevel(Symbol(), stopLoss);
 
@@ -53,7 +42,7 @@ double getSellStopLoss() {
    return stopLoss;
 }
 
-double getSellVolume() {
+double getSellVolume(double pLevel = 0) {
 
    // TODO: Varianten laut Settings bauen
    //  Fix:
@@ -62,12 +51,14 @@ double getSellVolume() {
 
    double volume = 0;
    double maxPositionRiskValue = 0;
-   double positionPipRisk = 0;
+   double positionPointRisk = 0;
+
+   if(pLevel == 0) pLevel = Bid();
 
    // % Risk per Balance
-   maxPositionRiskValue = AccountInfoDouble(ACCOUNT_BALANCE) * InpMaxPositionRiskPercent / 100;
-   positionPipRisk = InpStopLoss * getPointValueBySymbol(Symbol());
-   volume = VerifyVolume(Symbol(), maxPositionRiskValue / positionPipRisk);
+   maxPositionRiskValue = AccountInfoDouble(ACCOUNT_BALANCE) * InpMaxPositionRiskPercent / 100 / InpOrderGridCount;
+   positionPointRisk = (t3HighestHighValue - pLevel) / Point() * getPointValueBySymbol(Symbol());
+   volume = maxPositionRiskValue / positionPointRisk;
 
    return volume;
 }

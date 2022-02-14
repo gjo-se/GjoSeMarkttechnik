@@ -36,6 +36,9 @@ void initializeGlobalsAction() {
 
    t3trendDirection = TREND_DIRECTION_ROTATION;
 
+   t4StartDateTime = 0;
+   t4OKDateTime = 0;
+
    objectHasChanged = false;
 
    alertRegressionChannelLevel = 0;
@@ -66,12 +69,14 @@ void initializeGlobalsAction() {
    t3HighestHighDateTime = 0;
    t3ShortEntryValue = 0;
    t3ShortIsTradable = false;
+   t3ShortEntryIsTriggert = false;
 
 // LONG
    t3LowestLowValue = 0;
    t3LowestLowDateTime = 0;
    t3LongEntryValue = 0;
    t3LongIsTradable = false;
+   t3LongEntryIsTriggert = false;
 
 
 //   bidGreaterLowestLowAndOffsetSignal = false;
@@ -82,7 +87,7 @@ void initializeGlobalsAction() {
    outSideBarDateTime = 0;
    t3StopLossLineLevel = 0;
    t3TrailingStopLevel = 0;
-
+   t4RegressionChannelStopLossLineLevel = 0;
 }
 
 void initializeArraysAction() {

@@ -39,6 +39,9 @@ void setT3VLineValues() {
    t3HighestHighVLineDateTime = getVlineDatetimeByText(T3_HH_VLINE);
    t3LowestLowVLineDateTime = getVlineDatetimeByText(T3_LL_VLINE);
    t3EndDateTime = getVlineDatetimeByText(T3_END_VLINE);
+
+   t4StartDateTime = getVlineDatetimeByText(T4_START_VLINE);
+   t4OKDateTime = getVlineDatetimeByText(T4_OK_VLINE);
 }
 
 void createT3HighestHighVLine() {
@@ -65,5 +68,44 @@ void createT3LowestLowVLine() {
    createVLine(T3_LL_VLINE, iTime(Symbol(), Period(), barShift), clrRed, 2, STYLE_SOLID, T3_LL_VLINE, zOrder, isBackground, isSelected, isSelectable);
 
    t3LowestLowVLineDateTime = iTime(Symbol(), Period(), barShift);
+}
+
+void createT4StartVLine() {
+
+   int barShift = 0;
+   t4StartDateTime = iTime(Symbol(), Period(), barShift);
+   long zOrder = 0;
+   bool isBackground = false;
+   bool isSelected = false;
+   bool isSelectable = true;
+
+   createVLine(T4_START_VLINE, t4StartDateTime, clrRed, 2, STYLE_SOLID, T4_START_VLINE, zOrder, isBackground, isSelected, isSelectable);
+}
+
+void createT4OKVLine() {
+
+   int barShift = 0;
+   t4OKDateTime = iTime(Symbol(), Period(), barShift);
+   long zOrder = 0;
+   bool isBackground = false;
+   bool isSelected = false;
+   bool isSelectable = true;
+
+   createVLine(T4_OK_VLINE, t4OKDateTime, clrRed, 2, STYLE_SOLID, T4_OK_VLINE, zOrder, isBackground, isSelected, isSelectable);
+}
+//+------------------------------------------------------------------+
+
+void deleteVLineObject(const string pDimension) {
+
+   long chartId = ChartID();
+   int objectsTotal = ObjectsTotal(chartId, 0, -1);
+
+   string objectName;
+   for(int i = objectsTotal; i >= 0; i--) {
+      objectName = ObjectName(chartId, i);
+      if ( StringFind(objectName, pDimension) != -1 ) {
+         ObjectDelete(chartId, objectName);
+      }
+   }
 }
 //+------------------------------------------------------------------+

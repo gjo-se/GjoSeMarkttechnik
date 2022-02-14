@@ -15,12 +15,16 @@ bool getBuyInSignal() {
 
    setLowestLowDateTime();
    if(getBidGreaterLongEntryLevelSignal() == true) signal = true;
+   if(getBidInInSignalAreaState() == false) signal = false;
+
+   if(getBidTriggerLongGridLimitOrderSignal() == true) signal = true;
+   if(getBidTriggerLongGridStopOrderSignal() == true) signal = true;
 
    if(!TerminalInfoInteger(TERMINAL_TRADE_ALLOWED) || !MQLInfoInteger(MQL_TRADE_ALLOWED)) signal = false;
    if(t3trendDirection != TREND_DIRECTION_LONG) signal = false;
    if(isTradabelButtonState == false) signal = false;
-   if(getBidInInSignalAreaState() == false) signal = false;
-   if(getOpenBuyPositionsFilter() == true) signal = false;
+   if(getOpenLongPositionCountFilter() == true) signal = false;
+
 
 //   if(getBidGreaterLongReEntryAreaFilter() == true) return false;
 //   if(t3LongIsTradable == false) return false;
@@ -50,6 +54,15 @@ void setLowestLowDateTime() {
 
       if(buyPositionIsOpen == false) {
          createT3LowestLowVLine();
+
+         // TODO: VLines ok, Regression nicht, Trendline nicht
+         deleteVLineObject(T4_START_VLINE);
+         deleteVLineObject(T4_OK_VLINE);
+         deleteRegressionChannelObject(T4_REGRESSION_CHANNEL);
+         deleteTrendLineObject(T4_REGRESSION_CHANNEL);
+         deleteTrendLineObject(T4_TRAILING_STOP_LINE);
+
+         // TODO: dadurch eigentlich nicht mehr in den einzelnen Close-Methoden?!
          handleScreenshotAction();
       }
    }
@@ -63,7 +76,7 @@ void setLowestLowDateTime() {
    }
 }
 
-bool getOpenBuyPositionsFilter() {
+bool getT3LongEntryIsTriggertFilter() {
 
    bool filter = false;
    long positionTicket = 0;
@@ -78,8 +91,11 @@ bool getOpenBuyPositionsFilter() {
          && PositionType(positionTicket) == ORDER_TYPE_BUY
       ) {
          filter = true;
+         t3LongEntryIsTriggert = true;
       }
    }
+
+   if(filter == false) t3LongEntryIsTriggert = false;
 
    return (filter);
 }
@@ -90,9 +106,44 @@ bool getBidGreaterLongEntryLevelSignal() {
 
    if(Bid() < t3LongEntryValue) t3LongIsTradable = true;
 
-   if(t3LongIsTradable == true && Bid() >= t3LongEntryValue) {
+   if(t3LongEntryIsTriggert == false && t3LongIsTradable == true && Bid() >= t3LongEntryValue) {
       signal = true;
+      t3LongEntryIsTriggert = true;
       t3LongIsTradable = false;
+   }
+
+   return signal;
+}
+
+bool getBidTriggerLongGridLimitOrderSignal() {
+
+   bool signal = false;
+
+   if(t3LongEntryIsTriggert) {
+      for(int orderGridLimitOrderValueId = 0; orderGridLimitOrderValueId < ArraySize(orderGridLimitOrderValuesArray); orderGridLimitOrderValueId++) {
+         if(orderGridLimitOrderValuesArray[orderGridLimitOrderValueId] != EMPTY_VALUE
+               && Bid() < orderGridLimitOrderValuesArray[orderGridLimitOrderValueId]) {
+            signal = true;
+            orderGridLimitOrderValuesArray[orderGridLimitOrderValueId] = EMPTY_VALUE;
+         }
+      }
+   }
+
+   return signal;
+}
+
+bool getBidTriggerLongGridStopOrderSignal() {
+
+   bool signal = false;
+
+   if(t3LongEntryIsTriggert) {
+      for(int orderGridStopOrderValueId = 0; orderGridStopOrderValueId < ArraySize(orderGridStopOrderValuesArray); orderGridStopOrderValueId++) {
+         if(orderGridStopOrderValuesArray[orderGridStopOrderValueId] != EMPTY_VALUE
+               && Bid() > orderGridStopOrderValuesArray[orderGridStopOrderValueId]) {
+            signal = true;
+            orderGridStopOrderValuesArray[orderGridStopOrderValueId] = EMPTY_VALUE;
+         }
+      }
    }
 
    return signal;
@@ -104,6 +155,33 @@ bool getBidGreaterLongReEntryAreaFilter() {
 
    if(Bid() > reEntryAreaMaxEndValue) {
       filter = true;
+      t3LongIsTradable = false;
+   }
+
+   return filter;
+}
+
+bool getOpenLongPositionCountFilter() {
+
+   bool filter = false;
+   long     positionTicket = 0;
+   int      openPositionCount = 0;
+
+   for(int positionTicketsId = 0; positionTicketsId < ArraySize(positionTickets); positionTicketsId++) {
+      positionTicket = positionTickets[positionTicketsId];
+      if(
+         positionTicket > 0
+         && PositionSymbol(positionTicket) == Symbol()
+         && PositionMagicNumber(positionTicket) == InpMagicNumber
+         && PositionType(positionTicket) == ORDER_TYPE_BUY
+      ) {
+         openPositionCount++;
+      }
+   }
+
+   if(openPositionCount >= InpOrderGridCount) {
+      filter = true;
+      ArrayResize(orderGridStopOrderValuesArray, 0);
       t3LongIsTradable = false;
    }
 
