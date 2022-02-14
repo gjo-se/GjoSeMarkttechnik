@@ -32,8 +32,10 @@ datetime t3LowestLowVLineDateTime;
 datetime t3EndDateTime;
 
 int t3trendDirection;
-
 string t3FiboLevelsArray[];
+
+datetime t4StartDateTime;
+datetime t4OKDateTime;
 
 bool objectHasChanged;
 
@@ -78,15 +80,14 @@ bool        t3LongEntryIsTriggert;
 double      orderGridLimitOrderValuesArray[];
 double      orderGridStopOrderValuesArray[];
 
-//bool bidGreaterLowestLowAndOffsetSignal;
-//bool bidLowerHighestHighAndOffsetSignal;
-
 bool buyPositionIsOpen;
 bool sellPositionIsOpen;
 
 datetime    outSideBarDateTime;
 double      t3StopLossLineLevel;
 double      t3TrailingStopLevel;
+double      t4RegressionChannelStopLossLineLevel;
+
 
 long  positionTickets[];
 //+------------------------------------------------------------------+

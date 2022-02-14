@@ -5,8 +5,6 @@
 //+------------------------------------------------------------------+
 void handleObjectsAction() {
 
-
-
    if(ObjectFind(ChartID(), IS_TRADEABLE_BUTTON) < 0) {
       createIsTradeableButton();
    }
@@ -31,13 +29,20 @@ void handleObjectsAction() {
          }
 
          if(localT3LowestLowValue != 0) {
-
             t3LowestLowValue = MathMax(localT3LowestLowValue, inSignalAreaMinEndValue - InpStopLoss * Point());
             t3LongEntryValue = t3LowestLowValue + InpStopLoss * Point();
             createT3LowestLowTrendLine();
             createT3LongEntryTrendLine();
             if(getT3LongEntryIsTriggertFilter() == false) createT3OrderGridTrendLines();
          }
+
+         if(t3LongEntryIsTriggert == true && t4StartDateTime == 0) createT4StartVLine();
+         if(InpT4RegressionChannelShow == true && t4StartDateTime != 0) {
+            createT4RegressionChannel();
+            createT4RegressionChannelLevels();
+            if(Bid() > (t3LongEntryValue + InpStopLoss * Point() * InpT4TrendOKOnMulti) && t4OKDateTime == 0) createT4OKVLine();
+         }
+
       }
 
       if(t3trendDirection == TREND_DIRECTION_SHORT) {
@@ -65,6 +70,13 @@ void handleObjectsAction() {
             createT3ShortEntryTrendLine();
             if(getT3ShortEntryIsTriggertFilter() == false) createT3OrderGridTrendLines();
          }
+
+         if(t3ShortEntryIsTriggert == true && t4StartDateTime == 0) createT4StartVLine();
+         if(InpT4RegressionChannelShow == true && t4StartDateTime != 0) {
+            createT4RegressionChannel();
+            createT4RegressionChannelLevels();
+            if(Bid() < (t3ShortEntryValue - InpStopLoss * Point() * InpT4TrendOKOnMulti) && t4OKDateTime == 0) createT4OKVLine();
+         }
       }
 
       if(isNewCurrentBar == true || objectHasChanged == true) {
@@ -75,8 +87,6 @@ void handleObjectsAction() {
             createT3FiboRetracement();
             createT3InSignalArea();
             createT3ReEntryArea();
-//            if(t3trendDirection == TREND_DIRECTION_LONG) createT3LowestLowTrendLine();
-//            if(t3trendDirection == TREND_DIRECTION_SHORT) createT3HighestHighTrendLine();
          } else {
             deleteTrendLineObject(T3_TRENDLINE);
             deleteRegressionChannelObject(T3_REGRESSION_CHANNEL);

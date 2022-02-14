@@ -96,6 +96,7 @@ void commentAction(string pVersion) {
    comment += "OutSideBar: " + TimeToString(outSideBarDateTime) + "\n";
    comment += "StopLossLineLevel: " + DoubleToString(t3StopLossLineLevel, Digits()) + "\n";
    comment += "TrailingStopLevel: " + DoubleToString(t3TrailingStopLevel, Digits()) + "\n";
+   comment += "t4RegressionChannelStopLossLineLevel: " + DoubleToString(t4RegressionChannelStopLossLineLevel, Digits()) + "\n";
 
    Comment(comment);
 }

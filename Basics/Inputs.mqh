@@ -12,12 +12,14 @@ input double            InpInsideBarMinRange = 200;
 input group             "------------------------------ Order Grid ---------------------------"
 input int               InpOrderGridCount = 5; // Anzahl Grid Orders
 
-input group             "------------------------------ RegressionChannel - T3 ----------------"
+input group             "------------------------------ T3 + T4 RegressionChannel ----------------"
 input int               InpT3AlertOnRegressionChannelLevel = 0;
 input int               InpT3MinRegressionChannelLevel = 70;
 input int               InpT3MaxRegressionChannelLevel = 110;
 input int               InpT3MinReEntryRegressionChannelLevel = 20;
 input int               InpT3ChannelEndShift = 10;
+input int               InpT4StopLossOnRegressionChannelLevel = 120;
+input double            InpT4TrendOKOnMulti = 1.5;
 
 input group             "---------------------- FiboRetracement - T3 ---------------------------"
 input int               InpT3AlertOnFiboRetracmentLevel = 0;
@@ -30,7 +32,12 @@ input bool              InpT3ObjectsShow = true;
 input ENUM_TIMEFRAMES   InpT3MaxTimeframe = PERIOD_H1;
 input string            InpT3FiboLevels = "10, 20, 30, 40, 50, 60, 70, 80, 90, 110";
 
-input group             "------------------------ T3 Colors -----------------------------"
+input group             "------------------------------ T4 Show Objects ---------------------------"
+input bool              InpT4RegressionChannelShow = true;
+input ENUM_TIMEFRAMES   InpT4RegressionChannelTimeframe = PERIOD_M10;
+input int               InpT4RegressionChannelEndShift = 20;
+
+input group             "------------------------ T3+4 Colors -----------------------------"
 input color             InpT3FiboLevelsColor = clrTomato;
 input color             InpT3TrendLineColor = clrTomato;
 input color             InpT3RegressionChannelColor = clrBisque;
@@ -38,6 +45,7 @@ input color             InpT3MinMaxRegressionColor = clrBlue;
 input color             InpT3ReEntryMinRegressionColor = clrDarkKhaki;
 input color             InpT3InSignalAreaColor = clrPaleGreen;
 input color             InpT3ReEntryAreaColor = clrBeige;
+input color             InpT4RegressionChannelColor = clrMistyRose;
 
 input group             "---------- SL & TP ---------"
 input color             InpStopLossLineColor = clrRed;

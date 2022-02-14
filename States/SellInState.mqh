@@ -75,6 +75,15 @@ void setHighestHighDateTime() {
 
       if(sellPositionIsOpen == false) {
          createT3HighestHighVLine();
+
+         // TODO: VLines ok, Regression nicht, Trendline nicht
+         deleteVLineObject(T4_START_VLINE);
+         deleteVLineObject(T4_OK_VLINE);
+         deleteRegressionChannelObject(T4_REGRESSION_CHANNEL);
+         deleteTrendLineObject(T4_REGRESSION_CHANNEL);
+         deleteTrendLineObject(T4_TRAILING_STOP_LINE);
+
+         // TODO: dadurch eigentlich nicht mehr in den einzelnen Close-Methoden?!
          handleScreenshotAction();
       }
 
@@ -194,6 +203,8 @@ bool getOpenShortPositionCountFilter() {
 
    if(openPositionCount >= InpOrderGridCount) {
       filter = true;
+      ArrayResize(orderGridStopOrderValuesArray, 0);
+      t3ShortIsTradable = false;
    }
 
    return filter;
