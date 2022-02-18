@@ -38,13 +38,14 @@ void handleObjectsAction() {
             if(getFirstBuyPositionIsOpened() == false) createT3OrderGridTrendLines();
          }
 
-         if(t3LongEntryIsTriggert == true && t4StartDateTime == 0) createT4StartVLine();
-         if(InpT4RegressionChannelShow == true && t4StartDateTime != 0) {
-            createT4RegressionChannel();
-            createT4RegressionChannelLevels();
-            if(Bid() > (t3LongEntryValue + InpStopLoss * Point() * InpT4TrendOKOnMulti) && t4OKDateTime == 0) createT4OKVLine();
+         if(InpT4RegressionChannelShow == true) {
+            if(t3LongEntryIsTriggert == true && t4StartDateTime == 0) createT4StartVLine();
+            if(t4StartDateTime != 0) {
+               createT4RegressionChannel();
+               createT4RegressionChannelLevels();
+               if(Bid() > (t3LongEntryValue + InpStopLoss * Point() * InpT4TrendOKOnMulti) && t4OKDateTime == 0) createT4OKVLine();
+            }
          }
-
       }
 
       if(t3trendDirection == TREND_DIRECTION_SHORT) {
@@ -75,11 +76,13 @@ void handleObjectsAction() {
             if(getFirstSellPositionIsOpened() == false) createT3OrderGridTrendLines();
          }
 
-         if(t3ShortEntryIsTriggert == true && t4StartDateTime == 0) createT4StartVLine();
-         if(InpT4RegressionChannelShow == true && t4StartDateTime != 0) {
-            createT4RegressionChannel();
-            createT4RegressionChannelLevels();
-            if(Bid() < (t3ShortEntryValue - InpStopLoss * Point() * InpT4TrendOKOnMulti) && t4OKDateTime == 0) createT4OKVLine();
+         if(InpT4RegressionChannelShow == true) {
+            if(t3ShortEntryIsTriggert == true && t4StartDateTime == 0) createT4StartVLine();
+            if(t4StartDateTime != 0) {
+               createT4RegressionChannel();
+               createT4RegressionChannelLevels();
+               if(Bid() < (t3ShortEntryValue - InpStopLoss * Point() * InpT4TrendOKOnMulti) && t4OKDateTime == 0) createT4OKVLine();
+            }
          }
       }
 
@@ -230,3 +233,4 @@ void setLowestLowDateTime() {
       t3LowestLowDateTime = iTime(Symbol(), PERIOD_CURRENT, 0);
    }
 }
+//+------------------------------------------------------------------+
