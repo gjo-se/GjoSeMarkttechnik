@@ -26,11 +26,9 @@ void closeOnT3StopLossLine() {
          ) {
             if(PositionType(positionTicket) == ORDER_TYPE_BUY && Bid() < t3StopLossLineLevel) {
                Trade.Close(positionTicket, PositionVolume(positionTicket), T3_STOP_LOSS_TLINE);
-               handleScreenshotAction();
             }
             if(PositionType(positionTicket) == ORDER_TYPE_SELL && Bid() > t3StopLossLineLevel) {
                Trade.Close(positionTicket, PositionVolume(positionTicket), T3_STOP_LOSS_TLINE);
-               handleScreenshotAction();
             }
          }
       }
@@ -53,11 +51,9 @@ void closeOnT4RegressionChannelTrailingStop() {
          ) {
             if(PositionType(positionTicket) == ORDER_TYPE_BUY && Bid() < t4RegressionChannelStopLossLineLevel) {
                Trade.Close(positionTicket, PositionVolume(positionTicket), T4_REGRESSION_CHANNEL);
-               handleScreenshotAction();
             }
             if(PositionType(positionTicket) == ORDER_TYPE_SELL && Bid() > t4RegressionChannelStopLossLineLevel) {
                Trade.Close(positionTicket, PositionVolume(positionTicket), T4_REGRESSION_CHANNEL);
-               handleScreenshotAction();
             }
          }
       }

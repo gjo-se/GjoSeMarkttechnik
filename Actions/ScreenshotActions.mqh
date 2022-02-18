@@ -5,7 +5,9 @@
 //+------------------------------------------------------------------+
 
 void handleScreenshotAction() {
-    if(allSellPositionsAreClosedState || allBuyPositionsAreClosedState) createScreenshot();
+
+    if(buyPositionIsOpenState || sellPositionIsOpenState) createScreenshot();
+    if(allBuyPositionsAreClosedState || allSellPositionsAreClosedState) createScreenshot();
 }
 //+------------------------------------------------------------------+
 

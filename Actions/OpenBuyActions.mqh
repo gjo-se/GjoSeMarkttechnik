@@ -10,8 +10,6 @@ void openBuyOrderAction() {
 
    cleanPositionTicketsArrayAction(positionTickets, InpMagicNumber);
    useReEntryArea = true;
-
-   handleScreenshotAction();
 }
 
 double getBuyTakeProfit() {
