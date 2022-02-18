@@ -4,28 +4,43 @@
 //|                                             https://www.mql5.com |
 //+------------------------------------------------------------------+
 
+//+------------------------------------------------------------------+
+//|                                                                  |
+//+------------------------------------------------------------------+
 void handleStatesAction() {
    setAction();
    resetAction();
 }
 
+//+------------------------------------------------------------------+
+//|                                                                  |
+//+------------------------------------------------------------------+
 void setAction() {
-    if(getFirstBuyPositionIsOpened()) t3LongEntryIsTriggert = true;
-    if(getFirstSellPositionIsOpened()) t3ShortEntryIsTriggert = true;
+   if(getFirstBuyPositionIsOpened()) t3LongEntryIsTriggert = true;
+   if(getFirstSellPositionIsOpened()) t3ShortEntryIsTriggert = true;
 
-    if(maxBuyPositionsAreOpenState == true){
-       ArrayResize(orderGridStopOrderValuesArray, 0);
-       t3LongIsTradable = false;
-    }
+   if(maxBuyPositionsAreOpenState == true) {
+      ArrayResize(orderGridStopOrderValuesArray, 0);
+      t3LongIsTradable = false;
+   }
 
-    if(maxSellPositionsAreOpenState == true){
-       ArrayResize(orderGridStopOrderValuesArray, 0);
-       t3ShortIsTradable = false;
-    }
+   if(maxSellPositionsAreOpenState == true) {
+      ArrayResize(orderGridStopOrderValuesArray, 0);
+      t3ShortIsTradable = false;
+   }
 }
 
 void resetAction() {
-    if(allBuyPositionsAreClosedState) t3LongEntryIsTriggert = false;
-    if(allSellPositionsAreClosedState) t3ShortEntryIsTriggert = false;
+
+   if(allBuyPositionsAreClosedState) {
+      t3LongEntryIsTriggert = false;
+      maxBuyPositionsAreOpenState = false;
+   }
+
+   if(allSellPositionsAreClosedState) {
+      t3ShortEntryIsTriggert = false;
+      maxSellPositionsAreOpenState = false;
+   }
 }
 
+//+------------------------------------------------------------------+

@@ -23,19 +23,26 @@ void handleObjectsAction() {
             isBidLowerInSignalAreaMaxEndValue = false;
          }
 
-         double localT3LowestLowValue = 0;
-         if(iBarShift(Symbol(), Period(), t3LowestLowDateTime) != 0) {
-            localT3LowestLowValue = iLow(Symbol(), Period(), iLowest( Symbol(), Period(), MODE_LOW, iBarShift(Symbol(), Period(), t3LowestLowDateTime) + 1));
-         } else {
-            localT3LowestLowValue = iLow(Symbol(), PERIOD_CURRENT, 0);
-         }
+         if(maxBuyPositionsAreOpenState == false) {
+            double localT3LowestLowValue = 0;
+            if(iBarShift(Symbol(), Period(), t3LowestLowDateTime) != 0) {
+               localT3LowestLowValue = iLow(Symbol(), Period(), iLowest( Symbol(), Period(), MODE_LOW, iBarShift(Symbol(), Period(), t3LowestLowDateTime) + 1));
+            } else {
+               localT3LowestLowValue = iLow(Symbol(), PERIOD_CURRENT, 0);
+            }
 
-         if(localT3LowestLowValue != 0) {
-            t3LowestLowValue = MathMax(localT3LowestLowValue, inSignalAreaMinEndValue - InpStopLoss * Point());
-            t3LongEntryValue = t3LowestLowValue + InpStopLoss * Point();
-            createT3LowestLowTrendLine();
-            createT3LongEntryTrendLine();
-            if(getFirstBuyPositionIsOpened() == false) createT3OrderGridTrendLines();
+            if(localT3LowestLowValue != 0) {
+               t3LowestLowValue = MathMax(localT3LowestLowValue, inSignalAreaMinEndValue - InpStopLoss * Point());
+               t3LongEntryValue = t3LowestLowValue + InpStopLoss * Point();
+               createT3LowestLowTrendLine();
+               createT3LongEntryTrendLine();
+               if(getFirstBuyPositionIsOpened() == false) createT3OrderGridTrendLines();
+            }
+         } else {
+            deleteTrendLineObject(T3_HIGHEST_HIGH_TLINE);
+            deleteTrendLineObject(T3_SHORT_ENTRY_TLINE);
+            deleteTrendLineObject(T3_ORDER_GRID_LIMIT_TLINE);
+            deleteTrendLineObject(T3_ORDER_GRID_STOP_TLINE);
          }
 
          if(InpT4RegressionChannelShow == true) {
@@ -60,20 +67,26 @@ void handleObjectsAction() {
             isBidGreaterInSignalAreaMinEndValue = false;
          }
 
-         double localT3HighestHighValue = 0;
-         if(iBarShift(Symbol(), Period(), t3HighestHighDateTime) != 0) {
-            localT3HighestHighValue = iHigh(Symbol(), Period(), iHighest( Symbol(), Period(), MODE_HIGH, iBarShift(Symbol(), Period(), t3HighestHighDateTime) + 1));
+         if(maxSellPositionsAreOpenState == false) {
+            double localT3HighestHighValue = 0;
+            if(iBarShift(Symbol(), Period(), t3HighestHighDateTime) != 0) {
+               localT3HighestHighValue = iHigh(Symbol(), Period(), iHighest( Symbol(), Period(), MODE_HIGH, iBarShift(Symbol(), Period(), t3HighestHighDateTime) + 1));
+            } else {
+               localT3HighestHighValue = iHigh(Symbol(), Period(), 0);
+            }
+
+            if(localT3HighestHighValue != 0) {
+               t3HighestHighValue = MathMin(localT3HighestHighValue, inSignalAreaMaxEndValue + InpStopLoss * Point());
+               t3ShortEntryValue = t3HighestHighValue - InpStopLoss * Point();
+               createT3HighestHighTrendLine();
+               createT3ShortEntryTrendLine();
+               if(getFirstSellPositionIsOpened() == false) createT3OrderGridTrendLines();
+            }
          } else {
-            localT3HighestHighValue = iHigh(Symbol(), Period(), 0);
-         }
-
-         if(localT3HighestHighValue != 0) {
-
-            t3HighestHighValue = MathMin(localT3HighestHighValue, inSignalAreaMaxEndValue + InpStopLoss * Point());
-            t3ShortEntryValue = t3HighestHighValue - InpStopLoss * Point();
-            createT3HighestHighTrendLine();
-            createT3ShortEntryTrendLine();
-            if(getFirstSellPositionIsOpened() == false) createT3OrderGridTrendLines();
+            deleteTrendLineObject(T3_HIGHEST_HIGH_TLINE);
+            deleteTrendLineObject(T3_SHORT_ENTRY_TLINE);
+            deleteTrendLineObject(T3_ORDER_GRID_LIMIT_TLINE);
+            deleteTrendLineObject(T3_ORDER_GRID_STOP_TLINE);
          }
 
          if(InpT4RegressionChannelShow == true) {
@@ -84,6 +97,8 @@ void handleObjectsAction() {
                if(Bid() < (t3ShortEntryValue - InpStopLoss * Point() * InpT4TrendOKOnMulti) && t4OKDateTime == 0) createT4OKVLine();
             }
          }
+
+
       }
 
       if(isNewCurrentBar == true || objectHasChanged == true) {
