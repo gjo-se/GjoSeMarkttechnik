@@ -110,6 +110,10 @@ void handleObjectsAction() {
       deleteChannelObject(T3_RE_ENTRY_AREA);
    }
 
+   if(allBuyPositionsAreClosedState || allSellPositionsAreClosedState){
+        deleteTrendLineObject(T3_STOP_LOSS_TLINE);
+   }
+
 }
 
 //+------------------------------------------------------------------+

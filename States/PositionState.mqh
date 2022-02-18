@@ -20,21 +20,23 @@ void setPositionStates() {
 void setAllBuyPositionsAreClosedState() {
 
    long positionTicket = 0;
+   bool minOneBuyPositionIsOpen = false;
+
 
    if(buyPositionIsOpenState == true) {
-      buyPositionIsOpenState = false;
       for(int positionTicketsId = 0; positionTicketsId < ArraySize(positionTickets); positionTicketsId++) {
          positionTicket = positionTickets[positionTicketsId];
          if(
             positionTicket > 0
             && PositionSymbol(positionTicket) == Symbol()
             && PositionMagicNumber(positionTicket) == InpMagicNumber
+            && PositionType(positionTicket) == ORDER_TYPE_BUY
          ) {
-            buyPositionIsOpenState = true;
+            minOneBuyPositionIsOpen = true;
          }
       }
 
-      if(buyPositionIsOpenState == false) {
+      if(minOneBuyPositionIsOpen == false) {
          allBuyPositionsAreClosedState = true;
       } else {
          allBuyPositionsAreClosedState = false;
@@ -46,21 +48,22 @@ void setAllBuyPositionsAreClosedState() {
 void setAllSellPositionsAreClosedState() {
 
    long positionTicket = 0;
+   bool minOneSellPositionIsOpen = false;
 
    if(sellPositionIsOpenState == true) {
-      sellPositionIsOpenState = false;
       for(int positionTicketsId = 0; positionTicketsId < ArraySize(positionTickets); positionTicketsId++) {
          positionTicket = positionTickets[positionTicketsId];
          if(
             positionTicket > 0
             && PositionSymbol(positionTicket) == Symbol()
             && PositionMagicNumber(positionTicket) == InpMagicNumber
+            && PositionType(positionTicket) == ORDER_TYPE_SELL
          ) {
-            sellPositionIsOpenState = true;
+            minOneSellPositionIsOpen = true;
          }
       }
 
-      if(sellPositionIsOpenState == false) {
+      if(minOneSellPositionIsOpen == false) {
          allSellPositionsAreClosedState = true;
       } else {
          allSellPositionsAreClosedState = false;
