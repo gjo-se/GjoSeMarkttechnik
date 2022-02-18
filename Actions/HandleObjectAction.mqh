@@ -171,7 +171,8 @@ void handleInsideBars() {
    double penultimateLow = iLow(Symbol(), InpInsideBarTimeframe, penultimateBarShift);
 
    if(
-      outSideBarDateTime == 0
+      InpInsideBarMinRange != 0
+      && outSideBarDateTime == 0
       && lastClose < penultimateHigh
       && lastClose > penultimateLow
       && (penultimateHigh - penultimateLow) >= InpInsideBarMinRange * Point()

@@ -7,7 +7,6 @@
 input group             "------------------------------ PRIO A je Symbol ---------------------------"
 input int               InpStopLoss = 200; // StopLoss
 input int               InpT3AlertOnBidStopLossLineOffset = 400;
-input double            InpInsideBarMinRange = 200;
 
 input group             "------------------------------ Order Grid ---------------------------"
 input int               InpOrderGridCount = 5; // Anzahl Grid Orders
@@ -63,8 +62,9 @@ input int               InpBreakEvenProfit = 0;
 input int               InpLockProfit = 0;
 
 input group             "---------- InsideBar ---------"
-input color             InpInsideBarLineColor = clrBlue;
+input double            InpInsideBarMinRange = 200;
 input ENUM_TIMEFRAMES   InpInsideBarTimeframe = PERIOD_CURRENT;
+input color             InpInsideBarLineColor = clrBlue;
 input double            InpInsideBarMaxStopLossMulti = 0.5;
 
 input group             "---------- Trailing ---------"
