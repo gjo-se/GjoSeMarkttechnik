@@ -15,7 +15,7 @@ void initializeGlobalsAction() {
 
    isNewCurrentBar = false;
 
-   isTradabelButtonState = false;
+   isTradabelButtonState = ObjectGetInteger(0, IS_TRADEABLE_BUTTON, OBJPROP_STATE);
 
    t3StartDateTime = 0;
    t3p1DateTime = 0;
