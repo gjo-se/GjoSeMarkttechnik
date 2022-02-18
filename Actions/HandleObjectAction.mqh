@@ -35,7 +35,7 @@ void handleObjectsAction() {
             t3LongEntryValue = t3LowestLowValue + InpStopLoss * Point();
             createT3LowestLowTrendLine();
             createT3LongEntryTrendLine();
-            if(getT3LongEntryIsTriggertFilter() == false) createT3OrderGridTrendLines();
+            if(getFirstBuyPositionIsOpened() == false) createT3OrderGridTrendLines();
          }
 
          if(t3LongEntryIsTriggert == true && t4StartDateTime == 0) createT4StartVLine();
@@ -72,7 +72,7 @@ void handleObjectsAction() {
             t3ShortEntryValue = t3HighestHighValue - InpStopLoss * Point();
             createT3HighestHighTrendLine();
             createT3ShortEntryTrendLine();
-            if(getT3ShortEntryIsTriggertFilter() == false) createT3OrderGridTrendLines();
+            if(getFirstSellPositionIsOpened() == false) createT3OrderGridTrendLines();
          }
 
          if(t3ShortEntryIsTriggert == true && t4StartDateTime == 0) createT4StartVLine();

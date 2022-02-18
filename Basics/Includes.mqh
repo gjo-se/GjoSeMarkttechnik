@@ -26,6 +26,7 @@
 #include "..\\Actions\\OpenSellActions.mqh"
 #include "..\\Actions\\TrailingActions.mqh"
 #include "..\\Actions\\ScreenshotActions.mqh"
+#include "..\\Actions\\HandleStatesActions.mqh"
 
 #include "..\\States\\PositionState.mqh"
 #include "..\\States\\BuyAlertState.mqh"

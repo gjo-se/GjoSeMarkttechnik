@@ -71,6 +71,7 @@ void OnTick() {
 
    (NewCurrentBar()) ? isNewCurrentBar = true : isNewCurrentBar = false;
 
+   handleStatesAction();
    setPositionStates();
    handleScreenshotAction();
 

@@ -54,30 +54,6 @@ bool getBidInInSignalAreaState() {
 
 }
 
-bool getT3ShortEntryIsTriggertFilter() {
-
-   bool filter = false;
-   long positionTicket = 0;
-
-   int positionTicketsId = 0;
-   for(positionTicketsId; positionTicketsId < ArraySize(positionTickets); positionTicketsId++) {
-      positionTicket = positionTickets[positionTicketsId];
-      if(
-         positionTicket > 0
-         && PositionSymbol(positionTicket) == Symbol()
-         && PositionMagicNumber(positionTicket) == InpMagicNumber
-         && PositionType(positionTicket) == ORDER_TYPE_SELL
-      ) {
-         filter = true;
-         t3ShortEntryIsTriggert = true;
-      }
-   }
-
-   if(filter == false) t3ShortEntryIsTriggert = false;
-
-   return (filter);
-}
-
 bool getBidLowerShortEntryLevelSignal() {
 
    bool signal = false;

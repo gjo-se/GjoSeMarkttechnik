@@ -43,7 +43,50 @@ void setAllBuyPositionsAreClosedState() {
       }
    }
 }
+
+bool getFirstBuyPositionIsOpened() {
+
+   bool firstBuyPositionIsOpened = false;
+   long positionTicket = 0;
+
+    if(t3LongEntryIsTriggert == false){
+       for(int positionTicketsId = 0; positionTicketsId < ArraySize(positionTickets); positionTicketsId++) {
+          positionTicket = positionTickets[positionTicketsId];
+          if(
+             positionTicket > 0
+             && PositionSymbol(positionTicket) == Symbol()
+             && PositionMagicNumber(positionTicket) == InpMagicNumber
+             && PositionType(positionTicket) == ORDER_TYPE_BUY
+          ) {
+             firstBuyPositionIsOpened = true;
+          }
+       }
+    }
+
+   return (firstBuyPositionIsOpened);
+}
 //+------------------------------------------------------------------+
+
+
+bool getFirstSellPositionIsOpened() {
+
+   bool firstSellPositionIsOpened = false;
+   long positionTicket = 0;
+
+   for(int positionTicketsId = 0; positionTicketsId < ArraySize(positionTickets); positionTicketsId++) {
+      positionTicket = positionTickets[positionTicketsId];
+      if(
+         positionTicket > 0
+         && PositionSymbol(positionTicket) == Symbol()
+         && PositionMagicNumber(positionTicket) == InpMagicNumber
+         && PositionType(positionTicket) == ORDER_TYPE_SELL
+      ) {
+         firstSellPositionIsOpened = true;
+      }
+   }
+
+   return (firstSellPositionIsOpened);
+}
 
 void setAllSellPositionsAreClosedState() {
 

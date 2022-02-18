@@ -33,30 +33,6 @@ bool getBuyInSignal() {
 
 }
 
-bool getT3LongEntryIsTriggertFilter() {
-
-   bool filter = false;
-   long positionTicket = 0;
-
-   int positionTicketsId = 0;
-   for(positionTicketsId; positionTicketsId < ArraySize(positionTickets); positionTicketsId++) {
-      positionTicket = positionTickets[positionTicketsId];
-      if(
-         positionTicket > 0
-         && PositionSymbol(positionTicket) == Symbol()
-         && PositionMagicNumber(positionTicket) == InpMagicNumber
-         && PositionType(positionTicket) == ORDER_TYPE_BUY
-      ) {
-         filter = true;
-         t3LongEntryIsTriggert = true;
-      }
-   }
-
-   if(filter == false) t3LongEntryIsTriggert = false;
-
-   return (filter);
-}
-
 bool getBidGreaterLongEntryLevelSignal() {
 
    bool signal = false;
