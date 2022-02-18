@@ -14,9 +14,11 @@
 //+------------------------------------------------------------------+
 void setPositionStates() {
 
+   setBuyPositionIsOpen();
    setMaxBuyPositionsAreOpen();
    setAllBuyPositionsAreClosedState();
 
+   setSellPositionIsOpen();
    setMaxSellPositionsAreOpen();
    setAllSellPositionsAreClosedState();
 }
@@ -48,12 +50,11 @@ void setAllBuyPositionsAreClosedState() {
    }
 }
 
-bool getFirstBuyPositionIsOpened() {
+void setBuyPositionIsOpen() {
 
-   bool firstBuyPositionIsOpened = false;
    long positionTicket = 0;
 
-    if(t3LongEntryIsTriggert == false){
+   if(buyPositionIsOpenState == false) {
        for(int positionTicketsId = 0; positionTicketsId < ArraySize(positionTickets); positionTicketsId++) {
           positionTicket = positionTickets[positionTicketsId];
           if(
@@ -62,12 +63,10 @@ bool getFirstBuyPositionIsOpened() {
              && PositionMagicNumber(positionTicket) == InpMagicNumber
              && PositionType(positionTicket) == ORDER_TYPE_BUY
           ) {
-             firstBuyPositionIsOpened = true;
+             buyPositionIsOpenState = true;
           }
        }
-    }
-
-   return (firstBuyPositionIsOpened);
+   }
 }
 //+------------------------------------------------------------------+
 
@@ -117,25 +116,23 @@ void setMaxSellPositionsAreOpen() {
 }
 //+------------------------------------------------------------------+
 
+void setSellPositionIsOpen() {
 
-bool getFirstSellPositionIsOpened() {
-
-   bool firstSellPositionIsOpened = false;
    long positionTicket = 0;
 
-   for(int positionTicketsId = 0; positionTicketsId < ArraySize(positionTickets); positionTicketsId++) {
-      positionTicket = positionTickets[positionTicketsId];
-      if(
-         positionTicket > 0
-         && PositionSymbol(positionTicket) == Symbol()
-         && PositionMagicNumber(positionTicket) == InpMagicNumber
-         && PositionType(positionTicket) == ORDER_TYPE_SELL
-      ) {
-         firstSellPositionIsOpened = true;
-      }
+   if(sellPositionIsOpenState == false) {
+       for(int positionTicketsId = 0; positionTicketsId < ArraySize(positionTickets); positionTicketsId++) {
+          positionTicket = positionTickets[positionTicketsId];
+          if(
+             positionTicket > 0
+             && PositionSymbol(positionTicket) == Symbol()
+             && PositionMagicNumber(positionTicket) == InpMagicNumber
+             && PositionType(positionTicket) == ORDER_TYPE_SELL
+          ) {
+             sellPositionIsOpenState = true;
+          }
+       }
    }
-
-   return (firstSellPositionIsOpened);
 }
 
 void setAllSellPositionsAreClosedState() {

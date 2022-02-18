@@ -9,7 +9,6 @@ void openBuyOrderAction() {
    Trade.Buy(Symbol(), VerifyVolume(Symbol(), getBuyVolume()), getBuyStopLoss(), getBuyTakeProfit(), InpComment);
 
    cleanPositionTicketsArrayAction(positionTickets, InpMagicNumber);
-   buyPositionIsOpenState = true;
    useReEntryArea = true;
 
    handleScreenshotAction();

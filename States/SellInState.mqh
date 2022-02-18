@@ -60,9 +60,8 @@ bool getBidLowerShortEntryLevelSignal() {
 
    if(Bid() > t3ShortEntryValue) t3ShortIsTradable = true;
 
-   if(t3ShortEntryIsTriggert == false && t3ShortIsTradable == true && Bid() <= t3ShortEntryValue) {
+   if(sellPositionIsOpenState == false && t3ShortIsTradable == true && Bid() <= t3ShortEntryValue) {
       signal = true;
-      t3ShortEntryIsTriggert = true;
       t3ShortIsTradable = false;
    }
 
@@ -73,7 +72,7 @@ bool getBidTriggerShortGridLimitOrderSignal() {
 
    bool signal = false;
 
-   if(t3ShortEntryIsTriggert) {
+   if(sellPositionIsOpenState) {
       for(int orderGridLimitOrderValueId = 0; orderGridLimitOrderValueId < ArraySize(orderGridLimitOrderValuesArray); orderGridLimitOrderValueId++) {
          if(orderGridLimitOrderValuesArray[orderGridLimitOrderValueId] != EMPTY_VALUE
                && Bid() > orderGridLimitOrderValuesArray[orderGridLimitOrderValueId]) {
@@ -90,7 +89,7 @@ bool getBidTriggerShortGridStopOrderSignal() {
 
    bool signal = false;
 
-   if(t3ShortEntryIsTriggert) {
+   if(sellPositionIsOpenState) {
       for(int orderGridStopOrderValueId = 0; orderGridStopOrderValueId < ArraySize(orderGridStopOrderValuesArray); orderGridStopOrderValueId++) {
          if(orderGridStopOrderValuesArray[orderGridStopOrderValueId] != EMPTY_VALUE
                && Bid() < orderGridStopOrderValuesArray[orderGridStopOrderValueId]) {

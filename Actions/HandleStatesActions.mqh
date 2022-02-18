@@ -16,9 +16,6 @@ void handleStatesAction() {
 //|                                                                  |
 //+------------------------------------------------------------------+
 void setAction() {
-   if(getFirstBuyPositionIsOpened()) t3LongEntryIsTriggert = true;
-   if(getFirstSellPositionIsOpened()) t3ShortEntryIsTriggert = true;
-
    if(maxBuyPositionsAreOpenState == true) {
       ArrayResize(orderGridStopOrderValuesArray, 0);
       t3LongIsTradable = false;
@@ -33,12 +30,10 @@ void setAction() {
 void resetAction() {
 
    if(allBuyPositionsAreClosedState) {
-      t3LongEntryIsTriggert = false;
       maxBuyPositionsAreOpenState = false;
    }
 
    if(allSellPositionsAreClosedState) {
-      t3ShortEntryIsTriggert = false;
       maxSellPositionsAreOpenState = false;
    }
 }

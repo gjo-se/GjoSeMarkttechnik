@@ -36,7 +36,7 @@ void handleObjectsAction() {
                t3LongEntryValue = t3LowestLowValue + InpStopLoss * Point();
                createT3LowestLowTrendLine();
                createT3LongEntryTrendLine();
-               if(getFirstBuyPositionIsOpened() == false) createT3OrderGridTrendLines();
+               if(buyPositionIsOpenState == false) createT3OrderGridTrendLines();
             }
          } else {
             deleteTrendLineObject(T3_HIGHEST_HIGH_TLINE);
@@ -46,7 +46,7 @@ void handleObjectsAction() {
          }
 
          if(InpT4RegressionChannelShow == true) {
-            if(t3LongEntryIsTriggert == true && t4StartDateTime == 0) createT4StartVLine();
+            if(buyPositionIsOpenState == true && t4StartDateTime == 0) createT4StartVLine();
             if(t4StartDateTime != 0) {
                createT4RegressionChannel();
                createT4RegressionChannelLevels();
@@ -80,7 +80,7 @@ void handleObjectsAction() {
                t3ShortEntryValue = t3HighestHighValue - InpStopLoss * Point();
                createT3HighestHighTrendLine();
                createT3ShortEntryTrendLine();
-               if(getFirstSellPositionIsOpened() == false) createT3OrderGridTrendLines();
+               if(sellPositionIsOpenState == false) createT3OrderGridTrendLines();
             }
          } else {
             deleteTrendLineObject(T3_HIGHEST_HIGH_TLINE);
@@ -90,7 +90,7 @@ void handleObjectsAction() {
          }
 
          if(InpT4RegressionChannelShow == true) {
-            if(t3ShortEntryIsTriggert == true && t4StartDateTime == 0) createT4StartVLine();
+            if(sellPositionIsOpenState == true && t4StartDateTime == 0) createT4StartVLine();
             if(t4StartDateTime != 0) {
                createT4RegressionChannel();
                createT4RegressionChannelLevels();
