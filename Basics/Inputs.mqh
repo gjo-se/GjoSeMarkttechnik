@@ -32,7 +32,7 @@ input ENUM_TIMEFRAMES   InpT3MaxTimeframe = PERIOD_H1;
 input string            InpT3FiboLevels = "10, 20, 30, 40, 50, 60, 70, 80, 90, 110";
 
 input group             "------------------------------ T4 Show Objects ---------------------------"
-input bool              InpT4RegressionChannelShow = true;
+input bool              InpT4RegressionChannelShow = false;
 input ENUM_TIMEFRAMES   InpT4RegressionChannelTimeframe = PERIOD_M10;
 input int               InpT4RegressionChannelEndShift = 20;
 
