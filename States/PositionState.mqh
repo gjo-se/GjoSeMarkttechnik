@@ -13,7 +13,11 @@
 //|                                                                  |
 //+------------------------------------------------------------------+
 void setPositionStates() {
+
+   setMaxBuyPositionsAreOpen();
    setAllBuyPositionsAreClosedState();
+
+   setMaxSellPositionsAreOpen();
    setAllSellPositionsAreClosedState();
 }
 
@@ -64,6 +68,52 @@ bool getFirstBuyPositionIsOpened() {
     }
 
    return (firstBuyPositionIsOpened);
+}
+//+------------------------------------------------------------------+
+
+void setMaxBuyPositionsAreOpen() {
+
+   long     positionTicket = 0;
+   int      openPositionCount = 0;
+
+   for(int positionTicketsId = 0; positionTicketsId < ArraySize(positionTickets); positionTicketsId++) {
+      positionTicket = positionTickets[positionTicketsId];
+      if(
+         positionTicket > 0
+         && PositionSymbol(positionTicket) == Symbol()
+         && PositionMagicNumber(positionTicket) == InpMagicNumber
+         && PositionType(positionTicket) == ORDER_TYPE_BUY
+      ) {
+         openPositionCount++;
+      }
+   }
+
+   if(openPositionCount >= InpOrderGridCount) {
+      maxBuyPositionsAreOpenState = true;
+   }
+}
+
+
+void setMaxSellPositionsAreOpen() {
+
+   long     positionTicket = 0;
+   int      openPositionCount = 0;
+
+   for(int positionTicketsId = 0; positionTicketsId < ArraySize(positionTickets); positionTicketsId++) {
+      positionTicket = positionTickets[positionTicketsId];
+      if(
+         positionTicket > 0
+         && PositionSymbol(positionTicket) == Symbol()
+         && PositionMagicNumber(positionTicket) == InpMagicNumber
+         && PositionType(positionTicket) == ORDER_TYPE_SELL
+      ) {
+         openPositionCount++;
+      }
+   }
+
+   if(openPositionCount >= InpOrderGridCount) {
+      maxSellPositionsAreOpenState = true;
+   }
 }
 //+------------------------------------------------------------------+
 

@@ -16,9 +16,13 @@ void initializeGlobalsAction() {
    isNewCurrentBar = false;
 
    isTradabelButtonState = ObjectGetInteger(0, IS_TRADEABLE_BUTTON, OBJPROP_STATE);
+
    buyPositionIsOpenState = false;
+   maxBuyPositionsAreOpenState = false;
    allBuyPositionsAreClosedState = false;
+
    sellPositionIsOpenState = false;
+   maxSellPositionsAreOpenState = false;
    allSellPositionsAreClosedState = false;
 
    t3StartDateTime = 0;

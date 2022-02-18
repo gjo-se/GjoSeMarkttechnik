@@ -14,8 +14,11 @@ bool isNewCurrentBar;
 
 bool  isTradabelButtonState;
 bool  buyPositionIsOpenState;
+bool  maxBuyPositionsAreOpenState;
 bool  allBuyPositionsAreClosedState;
+
 bool  sellPositionIsOpenState;
+bool  maxSellPositionsAreOpenState;
 bool  allSellPositionsAreClosedState;
 
 

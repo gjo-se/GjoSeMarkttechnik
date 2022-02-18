@@ -22,7 +22,7 @@ bool getBuyInSignal() {
    if(!TerminalInfoInteger(TERMINAL_TRADE_ALLOWED) || !MQLInfoInteger(MQL_TRADE_ALLOWED)) signal = false;
    if(t3trendDirection != TREND_DIRECTION_LONG) signal = false;
    if(isTradabelButtonState == false) signal = false;
-   if(getOpenLongPositionCountFilter() == true) signal = false;
+   if(maxBuyPositionsAreOpenState == true) signal = false;
 
 
 //   if(getBidGreaterLongReEntryAreaFilter() == true) return false;
@@ -88,33 +88,6 @@ bool getBidGreaterLongReEntryAreaFilter() {
 
    if(Bid() > reEntryAreaMaxEndValue) {
       filter = true;
-      t3LongIsTradable = false;
-   }
-
-   return filter;
-}
-
-bool getOpenLongPositionCountFilter() {
-
-   bool filter = false;
-   long     positionTicket = 0;
-   int      openPositionCount = 0;
-
-   for(int positionTicketsId = 0; positionTicketsId < ArraySize(positionTickets); positionTicketsId++) {
-      positionTicket = positionTickets[positionTicketsId];
-      if(
-         positionTicket > 0
-         && PositionSymbol(positionTicket) == Symbol()
-         && PositionMagicNumber(positionTicket) == InpMagicNumber
-         && PositionType(positionTicket) == ORDER_TYPE_BUY
-      ) {
-         openPositionCount++;
-      }
-   }
-
-   if(openPositionCount >= InpOrderGridCount) {
-      filter = true;
-      ArrayResize(orderGridStopOrderValuesArray, 0);
       t3LongIsTradable = false;
    }
 
