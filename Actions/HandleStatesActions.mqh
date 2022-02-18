@@ -30,10 +30,12 @@ void setAction() {
 void resetAction() {
 
    if(allBuyPositionsAreClosedState) {
+      buyPositionIsOpenState = false;
       maxBuyPositionsAreOpenState = false;
    }
 
    if(allSellPositionsAreClosedState) {
+      sellPositionIsOpenState = false;
       maxSellPositionsAreOpenState = false;
    }
 }
