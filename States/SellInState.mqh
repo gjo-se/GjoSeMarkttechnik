@@ -60,8 +60,8 @@ void setHighestHighDateTime() {
    int      startCandleShift = iBarShift(Symbol(), Period(), t3p4DateTime);
 
    long     positionTicket = 0;
-   if(sellPositionIsOpen == true) {
-      sellPositionIsOpen = false;
+   if(sellPositionIsOpenState == true) {
+      sellPositionIsOpenState = false;
       for(int positionTicketsId = 0; positionTicketsId < ArraySize(positionTickets); positionTicketsId++) {
          positionTicket = positionTickets[positionTicketsId];
          if(
@@ -69,11 +69,11 @@ void setHighestHighDateTime() {
             && PositionSymbol(positionTicket) == Symbol()
             && PositionMagicNumber(positionTicket) == InpMagicNumber
          ) {
-            sellPositionIsOpen = true;
+            sellPositionIsOpenState = true;
          }
       }
 
-      if(sellPositionIsOpen == false) {
+      if(sellPositionIsOpenState == false) {
          createT3HighestHighVLine();
 
          // TODO: VLines ok, Regression nicht, Trendline nicht

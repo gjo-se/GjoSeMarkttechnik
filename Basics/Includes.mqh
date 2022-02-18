@@ -27,6 +27,7 @@
 #include "..\\Actions\\TrailingActions.mqh"
 #include "..\\Actions\\ScreenshotActions.mqh"
 
+#include "..\\States\\PositionState.mqh"
 #include "..\\States\\BuyAlertState.mqh"
 #include "..\\States\\BuyInState.mqh"
 #include "..\\States\\SellAlertState.mqh"

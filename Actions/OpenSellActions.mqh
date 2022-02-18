@@ -12,7 +12,7 @@ void openSellOrderAction() {
    Trade.Sell(Symbol(), VerifyVolume(Symbol(), getSellVolume()), getSellStopLoss(), getSellTakeProfit(), InpComment);
 
    cleanPositionTicketsArrayAction(positionTickets, InpMagicNumber);
-   sellPositionIsOpen = true;
+   sellPositionIsOpenState = true;
    useReEntryArea = true;
 
    handleScreenshotAction();

@@ -39,8 +39,8 @@ void setLowestLowDateTime() {
    int      startCandleShift = iBarShift(Symbol(), Period(), t3p4DateTime);
 
    long     positionTicket = 0;
-   if(buyPositionIsOpen == true) {
-      buyPositionIsOpen = false;
+   if(buyPositionIsOpenState == true) {
+      buyPositionIsOpenState = false;
       for(int positionTicketsId = 0; positionTicketsId < ArraySize(positionTickets); positionTicketsId++) {
          positionTicket = positionTickets[positionTicketsId];
          if(
@@ -48,11 +48,11 @@ void setLowestLowDateTime() {
             && PositionSymbol(positionTicket) == Symbol()
             && PositionMagicNumber(positionTicket) == InpMagicNumber
          ) {
-            buyPositionIsOpen = true;
+            buyPositionIsOpenState = true;
          }
       }
 
-      if(buyPositionIsOpen == false) {
+      if(buyPositionIsOpenState == false) {
          createT3LowestLowVLine();
 
          // TODO: VLines ok, Regression nicht, Trendline nicht

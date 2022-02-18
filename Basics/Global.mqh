@@ -13,6 +13,11 @@ CNewBar     NewBar;
 bool isNewCurrentBar;
 
 bool  isTradabelButtonState;
+bool  buyPositionIsOpenState;
+bool  allBuyPositionsAreClosedState;
+bool  sellPositionIsOpenState;
+bool  allSellPositionsAreClosedState;
+
 
 datetime t3StartDateTime;
 datetime t3p1DateTime;
@@ -79,9 +84,6 @@ bool        t3LongEntryIsTriggert;
 
 double      orderGridLimitOrderValuesArray[];
 double      orderGridStopOrderValuesArray[];
-
-bool buyPositionIsOpen;
-bool sellPositionIsOpen;
 
 datetime    outSideBarDateTime;
 double      t3StopLossLineLevel;

@@ -71,6 +71,8 @@ void OnTick() {
 
    (NewCurrentBar()) ? isNewCurrentBar = true : isNewCurrentBar = false;
 
+   setPositionStates();
+
    closeActions();
    alertOnBidStopLossLineOffset();
 
