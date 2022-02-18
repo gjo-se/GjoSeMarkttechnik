@@ -83,7 +83,9 @@ void createT3OrderGridTrendLines() {
    double orderGridStopOrderValue = 0;
 
    ArrayResize(orderGridLimitOrderValuesArray, 0);
+   deleteTrendLineObject(T3_ORDER_GRID_LIMIT_TLINE);
    ArrayResize(orderGridStopOrderValuesArray, 0);
+   deleteTrendLineObject(T3_ORDER_GRID_STOP_TLINE);
 
    if(t3trendDirection == TREND_DIRECTION_LONG) {
 
