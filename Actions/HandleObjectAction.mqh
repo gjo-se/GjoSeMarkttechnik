@@ -12,9 +12,11 @@ void handleObjectsAction() {
    if(InpT3ObjectsShow == true) {
 
       if(t3trendDirection == TREND_DIRECTION_LONG) {
+
+         setLowestLowDateTime();
+
          if(useReEntryArea == false && inSignalAreaMaxEndValue != 0 && Bid() < inSignalAreaMaxEndValue) {
             if(isBidLowerInSignalAreaMaxEndValue == false) {
-               createT3LowestLowVLine();
                isBidLowerInSignalAreaMaxEndValue = true;
             }
          } else {
@@ -46,9 +48,11 @@ void handleObjectsAction() {
       }
 
       if(t3trendDirection == TREND_DIRECTION_SHORT) {
+
+         setHighestHighDateTime();
+
          if(useReEntryArea == false && inSignalAreaMinEndValue != 0 && Bid() > inSignalAreaMinEndValue) {
             if(isBidGreaterInSignalAreaMinEndValue == false) {
-               createT3HighestHighVLine();
                isBidGreaterInSignalAreaMinEndValue = true;
             }
          } else {
@@ -110,8 +114,13 @@ void handleObjectsAction() {
       deleteChannelObject(T3_RE_ENTRY_AREA);
    }
 
-   if(allBuyPositionsAreClosedState || allSellPositionsAreClosedState){
-        deleteTrendLineObject(T3_STOP_LOSS_TLINE);
+   if(allBuyPositionsAreClosedState || allSellPositionsAreClosedState) {
+      deleteTrendLineObject(T3_STOP_LOSS_TLINE);
+      deleteVLineObject(T4_START_VLINE);
+      deleteVLineObject(T4_OK_VLINE);
+      deleteRegressionChannelObject(T4_REGRESSION_CHANNEL);
+      deleteTrendLineObject(T4_REGRESSION_CHANNEL);
+      deleteTrendLineObject(T4_TRAILING_STOP_LINE);
    }
 
 }
@@ -197,3 +206,27 @@ void handleInsideBars() {
    }
 }
 //+------------------------------------------------------------------+
+
+void setHighestHighDateTime() {
+
+   int startCandleShift = iBarShift(Symbol(), Period(), t3p4DateTime);
+   if(t3HighestHighVLineDateTime != 0) startCandleShift = iBarShift(Symbol(), Period(), t3HighestHighVLineDateTime);
+
+   if(startCandleShift != 0) {
+      t3HighestHighDateTime = iTime(Symbol(), PERIOD_CURRENT, iHighest(Symbol(), PERIOD_CURRENT, MODE_HIGH, startCandleShift, 0));
+   } else {
+      t3HighestHighDateTime = iTime(Symbol(), PERIOD_CURRENT, 0);
+   }
+}
+
+void setLowestLowDateTime() {
+
+   int startCandleShift = iBarShift(Symbol(), Period(), t3p4DateTime);
+   if(t3LowestLowVLineDateTime != 0) startCandleShift = iBarShift(Symbol(), Period(), t3LowestLowVLineDateTime);
+
+   if(startCandleShift != 0) {
+      t3LowestLowDateTime = iTime(Symbol(), PERIOD_CURRENT, iLowest(Symbol(), PERIOD_CURRENT, MODE_LOW, startCandleShift, 0));
+   } else {
+      t3LowestLowDateTime = iTime(Symbol(), PERIOD_CURRENT, 0);
+   }
+}

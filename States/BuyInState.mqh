@@ -13,7 +13,6 @@ bool getBuyInSignal() {
 
    bool signal = false;
 
-   setLowestLowDateTime();
    if(getBidGreaterLongEntryLevelSignal() == true) signal = true;
    if(getBidInInSignalAreaState() == false) signal = false;
 
@@ -32,48 +31,6 @@ bool getBuyInSignal() {
 
    return(signal);
 
-}
-
-void setLowestLowDateTime() {
-
-   int      startCandleShift = iBarShift(Symbol(), Period(), t3p4DateTime);
-
-   long     positionTicket = 0;
-   if(buyPositionIsOpenState == true) {
-      buyPositionIsOpenState = false;
-      for(int positionTicketsId = 0; positionTicketsId < ArraySize(positionTickets); positionTicketsId++) {
-         positionTicket = positionTickets[positionTicketsId];
-         if(
-            positionTicket > 0
-            && PositionSymbol(positionTicket) == Symbol()
-            && PositionMagicNumber(positionTicket) == InpMagicNumber
-         ) {
-            buyPositionIsOpenState = true;
-         }
-      }
-
-      if(buyPositionIsOpenState == false) {
-         createT3LowestLowVLine();
-
-         // TODO: VLines ok, Regression nicht, Trendline nicht
-         deleteVLineObject(T4_START_VLINE);
-         deleteVLineObject(T4_OK_VLINE);
-         deleteRegressionChannelObject(T4_REGRESSION_CHANNEL);
-         deleteTrendLineObject(T4_REGRESSION_CHANNEL);
-         deleteTrendLineObject(T4_TRAILING_STOP_LINE);
-
-         // TODO: dadurch eigentlich nicht mehr in den einzelnen Close-Methoden?!
-         handleScreenshotAction();
-      }
-   }
-
-   if(t3LowestLowVLineDateTime != 0) startCandleShift = iBarShift(Symbol(), Period(), t3LowestLowVLineDateTime);
-
-   if(startCandleShift != 0) {
-      t3LowestLowDateTime = iTime(Symbol(), PERIOD_CURRENT, iLowest(Symbol(), PERIOD_CURRENT, MODE_LOW, startCandleShift, 0));
-   } else {
-      t3LowestLowDateTime = iTime(Symbol(), PERIOD_CURRENT, 0);
-   }
 }
 
 bool getT3LongEntryIsTriggertFilter() {

@@ -72,6 +72,7 @@ void OnTick() {
    (NewCurrentBar()) ? isNewCurrentBar = true : isNewCurrentBar = false;
 
    setPositionStates();
+   handleScreenshotAction();
 
    closeActions();
    alertOnBidStopLossLineOffset();
@@ -85,8 +86,8 @@ void OnTick() {
    if(getBuyInSignal() == true) openBuyOrderAction();
    if(getSellInSignal() == true) openSellOrderAction();
 
-   //if(InpUseBreakEven == true) setBreakevenAction();
-   //if(InpUseTrailing == true) setTrailingStopAction();
+//if(InpUseBreakEven == true) setBreakevenAction();
+//if(InpUseTrailing == true) setTrailingStopAction();
 
 }
 
@@ -105,20 +106,21 @@ void OnChartEvent(const int id,
                   const double &dparam,
                   const string &sparam) {
 
-   if(id == CHARTEVENT_OBJECT_CLICK) {
+   if(id == CHARTEVENT_OBJECT_DRAG) {
       setLineValues();
       getT3TrendDirection();
       objectHasChanged = true;
-
-      if(sparam == IS_TRADEABLE_BUTTON) {
-         handleIsTradeableButton();
-      }
 
       if(sparam == T3_STOP_LOSS_TLINE) {
          isBidStopLossLineOffsetAlertSendable = true;
          isBidStopLossLineOffsetAlertSended = false;
       }
+   }
 
+   if(id == CHARTEVENT_OBJECT_CLICK) {
+      if(sparam == IS_TRADEABLE_BUTTON) {
+         handleIsTradeableButton();
+      }
    }
 
 }
