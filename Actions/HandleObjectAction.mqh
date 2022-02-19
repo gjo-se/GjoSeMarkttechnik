@@ -133,6 +133,7 @@ void handleObjectsAction() {
    }
 
    if(allBuyPositionsAreClosedState || allSellPositionsAreClosedState) {
+      setIsTradeableButtonFalse();
       deleteTrendLineObject(T3_STOP_LOSS_TLINE);
       deleteVLineObject(T4_START_VLINE);
       deleteVLineObject(T4_OK_VLINE);
