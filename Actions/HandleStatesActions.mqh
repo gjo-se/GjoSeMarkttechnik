@@ -37,11 +37,21 @@ void setAction() {
       t3LowestLowIsInSignalArea = false;
    }
 
-   if(Bid() >= t3InSignalAreaMinEndValue && Bid() <= t3InSignalAreaMaxEndValue) {
-      bidIsInSignalArea = true;
+   if(Bid() < t3InSignalAreaMinEndValue) {
+      isBidLowerInSignalAreaMinEndValue = true;
+      isBidHigherInSignalAreaMinEndValue = false;
    } else {
-      bidIsInSignalArea = false;
+      isBidLowerInSignalAreaMinEndValue = false;
+      isBidHigherInSignalAreaMinEndValue = true;
    }
+   if(Bid() < t3InSignalAreaMaxEndValue) {
+      isBidLowerInSignalAreaMaxEndValue = true;
+      isBidHigherInSignalAreaMaxEndValue = false;
+   } else {
+      isBidLowerInSignalAreaMaxEndValue = false;
+      isBidHigherInSignalAreaMaxEndValue = true;
+   }
+
 }
 
 void resetAction() {

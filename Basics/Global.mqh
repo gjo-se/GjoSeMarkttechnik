@@ -72,7 +72,10 @@ double t3InSignalAreaMinStartValue;
 double t3InSignalAreaMinEndValue;
 double t3InSignalAreaMaxStartValue;
 double t3InSignalAreaMaxEndValue;
-bool   bidIsInSignalArea;
+bool   isBidLowerInSignalAreaMinEndValue;
+bool   isBidLowerInSignalAreaMaxEndValue;
+bool   isBidHigherInSignalAreaMinEndValue;
+bool   isBidHigherInSignalAreaMaxEndValue;
 bool   t3HighestHighIsInSignalArea;
 bool   t3LowestLowIsInSignalArea;
 
