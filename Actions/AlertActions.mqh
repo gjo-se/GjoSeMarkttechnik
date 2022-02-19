@@ -29,7 +29,7 @@ void alertSellRegressionAction() {
 //+------------------------------------------------------------------+
 void alertOnBidStopLossLineOffset() {
 
-   if(t3StopLossLineLevel != 0) {
+   if(t3StopLossLineLevel != 0 && InpT3AlertOnBidStopLossLineOffset != 0) {
       if(t3trendDirection == TREND_DIRECTION_LONG) {
          if(Bid() > t3StopLossLineLevel + InpT3AlertOnBidStopLossLineOffset * Point()) {
             if(isBidStopLossLineOffsetAlertSendable == true && isBidStopLossLineOffsetAlertSended == false) {
@@ -41,7 +41,8 @@ void alertOnBidStopLossLineOffset() {
          } else {
             isBidStopLossLineOffsetAlertSendable = true;
          }
-      } else {
+      }
+      if(t3trendDirection == TREND_DIRECTION_SHORT) {
          if(Bid() < t3StopLossLineLevel - InpT3AlertOnBidStopLossLineOffset * Point()) {
             if(isBidStopLossLineOffsetAlertSendable == true && isBidStopLossLineOffsetAlertSended == false) {
                string message = Symbol() + ": SHORT-BidStopLossLineOffset ";

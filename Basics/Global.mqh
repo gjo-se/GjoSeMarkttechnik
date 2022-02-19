@@ -14,6 +14,15 @@ bool isNewCurrentBar;
 
 bool  isTradabelButtonState;
 
+bool  buyPositionIsOpenState;
+bool  maxBuyPositionsAreOpenState;
+bool  allBuyPositionsAreClosedState;
+
+bool  sellPositionIsOpenState;
+bool  maxSellPositionsAreOpenState;
+bool  allSellPositionsAreClosedState;
+
+
 datetime t3StartDateTime;
 datetime t3p1DateTime;
 double t3p1ValueHigh;
@@ -68,20 +77,15 @@ double      t3HighestHighValue;
 datetime    t3HighestHighDateTime;
 double      t3ShortEntryValue;
 bool        t3ShortIsTradable;
-bool        t3ShortEntryIsTriggert;
 
 // LONG
 double      t3LowestLowValue;
 datetime    t3LowestLowDateTime;
 double      t3LongEntryValue;
 bool        t3LongIsTradable;
-bool        t3LongEntryIsTriggert;
 
 double      orderGridLimitOrderValuesArray[];
 double      orderGridStopOrderValuesArray[];
-
-bool buyPositionIsOpen;
-bool sellPositionIsOpen;
 
 datetime    outSideBarDateTime;
 double      t3StopLossLineLevel;

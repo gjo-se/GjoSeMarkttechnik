@@ -15,7 +15,15 @@ void initializeGlobalsAction() {
 
    isNewCurrentBar = false;
 
-   isTradabelButtonState = false;
+   isTradabelButtonState = ObjectGetInteger(0, IS_TRADEABLE_BUTTON, OBJPROP_STATE);
+
+   buyPositionIsOpenState = false;
+   maxBuyPositionsAreOpenState = false;
+   allBuyPositionsAreClosedState = false;
+
+   sellPositionIsOpenState = false;
+   maxSellPositionsAreOpenState = false;
+   allSellPositionsAreClosedState = false;
 
    t3StartDateTime = 0;
    t3p1DateTime = 0;
@@ -69,20 +77,16 @@ void initializeGlobalsAction() {
    t3HighestHighDateTime = 0;
    t3ShortEntryValue = 0;
    t3ShortIsTradable = false;
-   t3ShortEntryIsTriggert = false;
 
 // LONG
    t3LowestLowValue = 0;
    t3LowestLowDateTime = 0;
    t3LongEntryValue = 0;
    t3LongIsTradable = false;
-   t3LongEntryIsTriggert = false;
 
 
 //   bidGreaterLowestLowAndOffsetSignal = false;
 //   bidLowerHighestHighAndOffsetSignal = false;
-   buyPositionIsOpen = false;
-   sellPositionIsOpen = false;
 
    outSideBarDateTime = 0;
    t3StopLossLineLevel = 0;

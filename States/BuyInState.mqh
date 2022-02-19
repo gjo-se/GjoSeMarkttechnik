@@ -13,7 +13,6 @@ bool getBuyInSignal() {
 
    bool signal = false;
 
-   setLowestLowDateTime();
    if(getBidGreaterLongEntryLevelSignal() == true) signal = true;
    if(getBidInInSignalAreaState() == false) signal = false;
 
@@ -23,7 +22,7 @@ bool getBuyInSignal() {
    if(!TerminalInfoInteger(TERMINAL_TRADE_ALLOWED) || !MQLInfoInteger(MQL_TRADE_ALLOWED)) signal = false;
    if(t3trendDirection != TREND_DIRECTION_LONG) signal = false;
    if(isTradabelButtonState == false) signal = false;
-   if(getOpenLongPositionCountFilter() == true) signal = false;
+   if(maxBuyPositionsAreOpenState == true) signal = false;
 
 
 //   if(getBidGreaterLongReEntryAreaFilter() == true) return false;
@@ -34,81 +33,14 @@ bool getBuyInSignal() {
 
 }
 
-void setLowestLowDateTime() {
-
-   int      startCandleShift = iBarShift(Symbol(), Period(), t3p4DateTime);
-
-   long     positionTicket = 0;
-   if(buyPositionIsOpen == true) {
-      buyPositionIsOpen = false;
-      for(int positionTicketsId = 0; positionTicketsId < ArraySize(positionTickets); positionTicketsId++) {
-         positionTicket = positionTickets[positionTicketsId];
-         if(
-            positionTicket > 0
-            && PositionSymbol(positionTicket) == Symbol()
-            && PositionMagicNumber(positionTicket) == InpMagicNumber
-         ) {
-            buyPositionIsOpen = true;
-         }
-      }
-
-      if(buyPositionIsOpen == false) {
-         createT3LowestLowVLine();
-
-         // TODO: VLines ok, Regression nicht, Trendline nicht
-         deleteVLineObject(T4_START_VLINE);
-         deleteVLineObject(T4_OK_VLINE);
-         deleteRegressionChannelObject(T4_REGRESSION_CHANNEL);
-         deleteTrendLineObject(T4_REGRESSION_CHANNEL);
-         deleteTrendLineObject(T4_TRAILING_STOP_LINE);
-
-         // TODO: dadurch eigentlich nicht mehr in den einzelnen Close-Methoden?!
-         handleScreenshotAction();
-      }
-   }
-
-   if(t3LowestLowVLineDateTime != 0) startCandleShift = iBarShift(Symbol(), Period(), t3LowestLowVLineDateTime);
-
-   if(startCandleShift != 0) {
-      t3LowestLowDateTime = iTime(Symbol(), PERIOD_CURRENT, iLowest(Symbol(), PERIOD_CURRENT, MODE_LOW, startCandleShift, 0));
-   } else {
-      t3LowestLowDateTime = iTime(Symbol(), PERIOD_CURRENT, 0);
-   }
-}
-
-bool getT3LongEntryIsTriggertFilter() {
-
-   bool filter = false;
-   long positionTicket = 0;
-
-   int positionTicketsId = 0;
-   for(positionTicketsId; positionTicketsId < ArraySize(positionTickets); positionTicketsId++) {
-      positionTicket = positionTickets[positionTicketsId];
-      if(
-         positionTicket > 0
-         && PositionSymbol(positionTicket) == Symbol()
-         && PositionMagicNumber(positionTicket) == InpMagicNumber
-         && PositionType(positionTicket) == ORDER_TYPE_BUY
-      ) {
-         filter = true;
-         t3LongEntryIsTriggert = true;
-      }
-   }
-
-   if(filter == false) t3LongEntryIsTriggert = false;
-
-   return (filter);
-}
-
 bool getBidGreaterLongEntryLevelSignal() {
 
    bool signal = false;
 
    if(Bid() < t3LongEntryValue) t3LongIsTradable = true;
 
-   if(t3LongEntryIsTriggert == false && t3LongIsTradable == true && Bid() >= t3LongEntryValue) {
+   if(buyPositionIsOpenState == false && t3LongIsTradable == true && Bid() >= t3LongEntryValue) {
       signal = true;
-      t3LongEntryIsTriggert = true;
       t3LongIsTradable = false;
    }
 
@@ -119,7 +51,7 @@ bool getBidTriggerLongGridLimitOrderSignal() {
 
    bool signal = false;
 
-   if(t3LongEntryIsTriggert) {
+   if(buyPositionIsOpenState) {
       for(int orderGridLimitOrderValueId = 0; orderGridLimitOrderValueId < ArraySize(orderGridLimitOrderValuesArray); orderGridLimitOrderValueId++) {
          if(orderGridLimitOrderValuesArray[orderGridLimitOrderValueId] != EMPTY_VALUE
                && Bid() < orderGridLimitOrderValuesArray[orderGridLimitOrderValueId]) {
@@ -136,7 +68,7 @@ bool getBidTriggerLongGridStopOrderSignal() {
 
    bool signal = false;
 
-   if(t3LongEntryIsTriggert) {
+   if(buyPositionIsOpenState) {
       for(int orderGridStopOrderValueId = 0; orderGridStopOrderValueId < ArraySize(orderGridStopOrderValuesArray); orderGridStopOrderValueId++) {
          if(orderGridStopOrderValuesArray[orderGridStopOrderValueId] != EMPTY_VALUE
                && Bid() > orderGridStopOrderValuesArray[orderGridStopOrderValueId]) {
@@ -155,33 +87,6 @@ bool getBidGreaterLongReEntryAreaFilter() {
 
    if(Bid() > reEntryAreaMaxEndValue) {
       filter = true;
-      t3LongIsTradable = false;
-   }
-
-   return filter;
-}
-
-bool getOpenLongPositionCountFilter() {
-
-   bool filter = false;
-   long     positionTicket = 0;
-   int      openPositionCount = 0;
-
-   for(int positionTicketsId = 0; positionTicketsId < ArraySize(positionTickets); positionTicketsId++) {
-      positionTicket = positionTickets[positionTicketsId];
-      if(
-         positionTicket > 0
-         && PositionSymbol(positionTicket) == Symbol()
-         && PositionMagicNumber(positionTicket) == InpMagicNumber
-         && PositionType(positionTicket) == ORDER_TYPE_BUY
-      ) {
-         openPositionCount++;
-      }
-   }
-
-   if(openPositionCount >= InpOrderGridCount) {
-      filter = true;
-      ArrayResize(orderGridStopOrderValuesArray, 0);
       t3LongIsTradable = false;
    }
 

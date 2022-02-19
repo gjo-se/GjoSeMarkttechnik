@@ -15,7 +15,6 @@ void  closeActions() {
 void closeOnT3StopLossLine() {
 
    int      chartId = 0;
-   string   objName = T3_STOP_LOSS_TLINE;
    long     positionTicket = 0;
 
    if(t3StopLossLineLevel != 0) {
@@ -27,17 +26,9 @@ void closeOnT3StopLossLine() {
          ) {
             if(PositionType(positionTicket) == ORDER_TYPE_BUY && Bid() < t3StopLossLineLevel) {
                Trade.Close(positionTicket, PositionVolume(positionTicket), T3_STOP_LOSS_TLINE);
-               ObjectSetString(chartId, objName, OBJPROP_TEXT, T3_STOP_LOSS_TLINE + "-triggert");
-               ObjectSetInteger(chartId, objName, OBJPROP_WIDTH, 1);
-               ObjectSetInteger(chartId, objName, OBJPROP_STYLE, STYLE_DASH);
-               handleScreenshotAction();
             }
             if(PositionType(positionTicket) == ORDER_TYPE_SELL && Bid() > t3StopLossLineLevel) {
                Trade.Close(positionTicket, PositionVolume(positionTicket), T3_STOP_LOSS_TLINE);
-               ObjectSetString(chartId, objName, OBJPROP_TEXT, T3_STOP_LOSS_TLINE + "-triggert");
-               ObjectSetInteger(chartId, objName, OBJPROP_WIDTH, 1);
-               ObjectSetInteger(chartId, objName, OBJPROP_STYLE, STYLE_DASH);
-               handleScreenshotAction();
             }
          }
       }
@@ -60,11 +51,9 @@ void closeOnT4RegressionChannelTrailingStop() {
          ) {
             if(PositionType(positionTicket) == ORDER_TYPE_BUY && Bid() < t4RegressionChannelStopLossLineLevel) {
                Trade.Close(positionTicket, PositionVolume(positionTicket), T4_REGRESSION_CHANNEL);
-               handleScreenshotAction();
             }
             if(PositionType(positionTicket) == ORDER_TYPE_SELL && Bid() > t4RegressionChannelStopLossLineLevel) {
                Trade.Close(positionTicket, PositionVolume(positionTicket), T4_REGRESSION_CHANNEL);
-               handleScreenshotAction();
             }
          }
       }

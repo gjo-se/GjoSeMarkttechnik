@@ -17,6 +17,7 @@
    1.6.1 fixed isTradeableButton
    1.6.2 fixed diverse
    1.7   TrailingStop on RegressionChannel
+   1.7.1 fixed diverse
 
    ===============
 
@@ -33,7 +34,7 @@
 #property copyright   "2022, GjoSe"
 #property link        "http://www.gjo-se.com"
 #property description "GjoSe Markttechnik"
-#define   VERSION "1.7"
+#define   VERSION "1.7.1"
 #property version VERSION
 #property strict
 
@@ -71,6 +72,10 @@ void OnTick() {
 
    (NewCurrentBar()) ? isNewCurrentBar = true : isNewCurrentBar = false;
 
+   handleStatesAction();
+   setPositionStates();
+   handleScreenshotAction();
+
    closeActions();
    alertOnBidStopLossLineOffset();
 
@@ -83,8 +88,8 @@ void OnTick() {
    if(getBuyInSignal() == true) openBuyOrderAction();
    if(getSellInSignal() == true) openSellOrderAction();
 
-   //if(InpUseBreakEven == true) setBreakevenAction();
-   //if(InpUseTrailing == true) setTrailingStopAction();
+//if(InpUseBreakEven == true) setBreakevenAction();
+//if(InpUseTrailing == true) setTrailingStopAction();
 
 }
 
@@ -103,20 +108,21 @@ void OnChartEvent(const int id,
                   const double &dparam,
                   const string &sparam) {
 
-   if(id == CHARTEVENT_OBJECT_CLICK) {
+   if(id == CHARTEVENT_OBJECT_DRAG) {
       setLineValues();
       getT3TrendDirection();
       objectHasChanged = true;
-
-      if(sparam == IS_TRADEABLE_BUTTON) {
-         handleIsTradeableButton();
-      }
 
       if(sparam == T3_STOP_LOSS_TLINE) {
          isBidStopLossLineOffsetAlertSendable = true;
          isBidStopLossLineOffsetAlertSended = false;
       }
+   }
 
+   if(id == CHARTEVENT_OBJECT_CLICK) {
+      if(sparam == IS_TRADEABLE_BUTTON) {
+         handleIsTradeableButton();
+      }
    }
 
 }

@@ -7,7 +7,6 @@
 input group             "------------------------------ PRIO A je Symbol ---------------------------"
 input int               InpStopLoss = 200; // StopLoss
 input int               InpT3AlertOnBidStopLossLineOffset = 400;
-input double            InpInsideBarMinRange = 200;
 
 input group             "------------------------------ Order Grid ---------------------------"
 input int               InpOrderGridCount = 5; // Anzahl Grid Orders
@@ -33,7 +32,7 @@ input ENUM_TIMEFRAMES   InpT3MaxTimeframe = PERIOD_H1;
 input string            InpT3FiboLevels = "10, 20, 30, 40, 50, 60, 70, 80, 90, 110";
 
 input group             "------------------------------ T4 Show Objects ---------------------------"
-input bool              InpT4RegressionChannelShow = true;
+input bool              InpT4RegressionChannelShow = false;
 input ENUM_TIMEFRAMES   InpT4RegressionChannelTimeframe = PERIOD_M10;
 input int               InpT4RegressionChannelEndShift = 20;
 
@@ -63,8 +62,9 @@ input int               InpBreakEvenProfit = 0;
 input int               InpLockProfit = 0;
 
 input group             "---------- InsideBar ---------"
-input color             InpInsideBarLineColor = clrBlue;
+input double            InpInsideBarMinRange = 200;
 input ENUM_TIMEFRAMES   InpInsideBarTimeframe = PERIOD_CURRENT;
+input color             InpInsideBarLineColor = clrBlue;
 input double            InpInsideBarMaxStopLossMulti = 0.5;
 
 input group             "---------- Trailing ---------"
