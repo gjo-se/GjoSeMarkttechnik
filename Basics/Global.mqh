@@ -59,12 +59,22 @@ bool isBidStopLossLineOffsetAlertSendable;
 bool isBidStopLossLineOffsetAlertSended;
 
 // INSignal
-double inSignalAreaMinStartValue;
-double inSignalAreaMinEndValue;
-double inSignalAreaMaxStartValue;
-double inSignalAreaMaxEndValue;
-bool   isBidLowerInSignalAreaMaxEndValue;
-bool   isBidGreaterInSignalAreaMinEndValue;
+double t3InSignalFiboLevelAreaMinStartValue;
+double t3InSignalFiboLevelAreaMinEndValue;
+double t3InSignalFiboLevelAreaMaxStartValue;
+double t3InSignalFiboLevelAreaMaxEndValue;
+double t3InSignalRegressionChannelAreaMinStartValue;
+double t3InSignalRegressionChannelAreaMinEndValue;
+double t3InSignalRegressionChannelAreaMaxStartValue;
+double t3InSignalRegressionChannelAreaMaxEndValue;
+
+double t3InSignalAreaMinStartValue;
+double t3InSignalAreaMinEndValue;
+double t3InSignalAreaMaxStartValue;
+double t3InSignalAreaMaxEndValue;
+bool   bidIsInSignalArea;
+bool   t3HighestHighIsInSignalArea;
+bool   t3LowestLowIsInSignalArea;
 
 double reEntryAreaMinStartValue;
 double reEntryAreaMinEndValue;

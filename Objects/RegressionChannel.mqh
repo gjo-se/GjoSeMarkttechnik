@@ -57,11 +57,11 @@ void createT3RegressionChannelLevels() {
          levelColor = InpT3MinMaxRegressionColor;
 
          if(t3trendDirection == TREND_DIRECTION_LONG) {
-            inSignalAreaMaxStartValue = ObjectGetValueByTime(ChartID(), T3_REGRESSION_CHANNEL + DoubleToString(level, 1), t3p4DateTime);
-            inSignalAreaMaxEndValue = t3TrendlineEndValue;
+            t3InSignalRegressionChannelAreaMaxStartValue = ObjectGetValueByTime(ChartID(), T3_REGRESSION_CHANNEL + DoubleToString(level, 1), t3p4DateTime);
+            t3InSignalRegressionChannelAreaMaxEndValue = t3TrendlineEndValue;
          } else {
-            inSignalAreaMinStartValue = ObjectGetValueByTime(ChartID(), T3_REGRESSION_CHANNEL + DoubleToString(level, 1), t3p4DateTime);
-            inSignalAreaMinEndValue = t3TrendlineEndValue;
+            t3InSignalRegressionChannelAreaMinStartValue = ObjectGetValueByTime(ChartID(), T3_REGRESSION_CHANNEL + DoubleToString(level, 1), t3p4DateTime);
+            t3InSignalRegressionChannelAreaMinEndValue = t3TrendlineEndValue;
          }
       }
       if(level == InpT3MaxRegressionChannelLevel) {
@@ -70,11 +70,11 @@ void createT3RegressionChannelLevels() {
          levelColor = InpT3MinMaxRegressionColor;
 
          if(t3trendDirection == TREND_DIRECTION_LONG) {
-            inSignalAreaMinStartValue = ObjectGetValueByTime(ChartID(), T3_REGRESSION_CHANNEL + DoubleToString(level, 1), t3p4DateTime);
-            inSignalAreaMinEndValue = t3TrendlineEndValue;
+            t3InSignalRegressionChannelAreaMinStartValue = ObjectGetValueByTime(ChartID(), T3_REGRESSION_CHANNEL + DoubleToString(level, 1), t3p4DateTime);
+            t3InSignalRegressionChannelAreaMinEndValue = t3TrendlineEndValue;
          } else {
-            inSignalAreaMaxStartValue = ObjectGetValueByTime(ChartID(), T3_REGRESSION_CHANNEL + DoubleToString(level, 1), t3p4DateTime);
-            inSignalAreaMaxEndValue = t3TrendlineEndValue;
+            t3InSignalRegressionChannelAreaMaxStartValue = ObjectGetValueByTime(ChartID(), T3_REGRESSION_CHANNEL + DoubleToString(level, 1), t3p4DateTime);
+            t3InSignalRegressionChannelAreaMaxEndValue = t3TrendlineEndValue;
          }
       }
       if(InpT3MinReEntryRegressionChannelLevel != 0 && level == InpT3MinReEntryRegressionChannelLevel) {
@@ -83,15 +83,15 @@ void createT3RegressionChannelLevels() {
          levelColor = InpT3ReEntryMinRegressionColor;
 
          if(t3trendDirection == TREND_DIRECTION_LONG) {
-            reEntryAreaMinStartValue = inSignalAreaMinStartValue;
-            reEntryAreaMinEndValue = inSignalAreaMinEndValue;
+            reEntryAreaMinStartValue = t3InSignalRegressionChannelAreaMinStartValue;
+            reEntryAreaMinEndValue = t3InSignalRegressionChannelAreaMinEndValue;
             reEntryAreaMaxStartValue = ObjectGetValueByTime(ChartID(), T3_REGRESSION_CHANNEL + DoubleToString(level, 1), t3p4DateTime);
             reEntryAreaMaxEndValue = t3TrendlineEndValue;
          } else {
             reEntryAreaMinStartValue = ObjectGetValueByTime(ChartID(), T3_REGRESSION_CHANNEL + DoubleToString(level, 1), t3p4DateTime);
             reEntryAreaMinEndValue = t3TrendlineEndValue;
-            reEntryAreaMaxStartValue = inSignalAreaMaxStartValue;
-            reEntryAreaMaxEndValue = inSignalAreaMaxEndValue;
+            reEntryAreaMaxStartValue = t3InSignalRegressionChannelAreaMaxStartValue;
+            reEntryAreaMaxEndValue = t3InSignalRegressionChannelAreaMaxEndValue;
          }
       }
 

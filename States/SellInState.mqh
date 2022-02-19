@@ -14,7 +14,7 @@ bool getSellInSignal() {
    bool signal = false;
 
    if(getBidLowerShortEntryLevelSignal() == true) signal = true;
-   if(getBidInInSignalAreaState() == false) signal = false;
+   if(getT3HighestHighIsInSignalAreaState() == false) signal = false;
 
    if(getBidTriggerShortGridLimitOrderSignal() == true) signal = true;
    if(getBidTriggerShortGridStopOrderSignal() == true) signal = true;
@@ -32,16 +32,11 @@ bool getSellInSignal() {
 
 }
 
-// für BUY & SELL Seite
-// TODO: auslagern in??
-bool getBidInInSignalAreaState() {
+bool getT3HighestHighIsInSignalAreaState() {
 
    bool state = false;
 
-   if(inSignalAreaMinEndValue != 0 && Bid() >= inSignalAreaMinEndValue
-         && inSignalAreaMaxEndValue != 0 && Bid() <= inSignalAreaMaxEndValue) {
-      state = true;
-   }
+   if(t3HighestHighIsInSignalArea) state = true;
 
    if(useReEntryArea == true) {
       if(reEntryAreaMinEndValue != 0 && Bid() >= reEntryAreaMinEndValue
@@ -49,9 +44,7 @@ bool getBidInInSignalAreaState() {
          state = true;
       }
    }
-
    return state;
-
 }
 
 bool getBidLowerShortEntryLevelSignal() {

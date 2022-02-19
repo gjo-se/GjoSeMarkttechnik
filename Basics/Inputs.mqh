@@ -51,6 +51,7 @@ input color             InpT4RegressionChannelColor = clrMistyRose;
 input group             "---------- SL & TP ---------"
 input color             InpStopLossLineColor = clrRed;
 input int               InpTakeProfit = 0; // TakeProfit
+input bool              InpSetIsTradabelButtonStateAfterClose = false; // nach Close Button OFF
 
 input group             "---------- MoneyManagement ---------"
 input bool              InpUseMoneyManagement = true; // Use Money Management

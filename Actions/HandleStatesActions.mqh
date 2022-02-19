@@ -25,6 +25,23 @@ void setAction() {
       ArrayResize(orderGridStopOrderValuesArray, 0);
       t3ShortIsTradable = false;
    }
+
+   if(t3HighestHighValue >= t3InSignalAreaMinEndValue && t3HighestHighValue <= t3InSignalAreaMaxEndValue) {
+      t3HighestHighIsInSignalArea = true;
+   } else {
+      t3HighestHighIsInSignalArea = false;
+   }
+   if(t3LowestLowValue >= t3InSignalAreaMinEndValue && t3LowestLowValue <= t3InSignalAreaMaxEndValue) {
+      t3LowestLowIsInSignalArea = true;
+   } else {
+      t3LowestLowIsInSignalArea = false;
+   }
+
+   if(Bid() >= t3InSignalAreaMinEndValue && Bid() <= t3InSignalAreaMaxEndValue) {
+      bidIsInSignalArea = true;
+   } else {
+      bidIsInSignalArea = false;
+   }
 }
 
 void resetAction() {
