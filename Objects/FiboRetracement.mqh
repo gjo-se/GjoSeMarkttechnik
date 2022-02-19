@@ -55,7 +55,7 @@ void createT3FiboRetracement() {
             }
          }
 
-         if(level == InpT3MinReEntryFiboRetracmentLevel) {
+         if(InpT3MinReEntryFiboRetracmentLevel != 0 && level == InpT3MinReEntryFiboRetracmentLevel) {
 
             lineWidth = 2;
             levelColor = InpT3ReEntryMinRegressionColor;

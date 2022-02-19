@@ -77,7 +77,7 @@ void createT3RegressionChannelLevels() {
             inSignalAreaMaxEndValue = t3TrendlineEndValue;
          }
       }
-      if(level == InpT3MinReEntryRegressionChannelLevel) {
+      if(InpT3MinReEntryRegressionChannelLevel != 0 && level == InpT3MinReEntryRegressionChannelLevel) {
 
          lineWidth = 2;
          levelColor = InpT3ReEntryMinRegressionColor;
