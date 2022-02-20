@@ -11,19 +11,24 @@ void handleObjectsAction() {
 
    if(InpT3ObjectsShow == true) {
 
+      if(t3InSignalFiboLevelAreaMinStartValue != 0 && t3InSignalRegressionChannelAreaMinStartValue != 0) t3InSignalAreaMinStartValue = MathMax(t3InSignalFiboLevelAreaMinStartValue, t3InSignalRegressionChannelAreaMinStartValue);
+      if(t3InSignalFiboLevelAreaMinStartValue == 0 && t3InSignalRegressionChannelAreaMinStartValue != 0) t3InSignalAreaMinStartValue = t3InSignalRegressionChannelAreaMinStartValue;
+      if(t3InSignalFiboLevelAreaMinStartValue != 0 && t3InSignalRegressionChannelAreaMinStartValue == 0) t3InSignalAreaMinStartValue = t3InSignalFiboLevelAreaMinStartValue;
+      if(t3InSignalFiboLevelAreaMaxStartValue != 0 && t3InSignalRegressionChannelAreaMaxStartValue != 0) t3InSignalAreaMaxStartValue = MathMin(t3InSignalFiboLevelAreaMaxStartValue, t3InSignalRegressionChannelAreaMaxStartValue);
+      if(t3InSignalFiboLevelAreaMaxStartValue == 0 && t3InSignalRegressionChannelAreaMaxStartValue != 0) t3InSignalAreaMaxStartValue = t3InSignalRegressionChannelAreaMaxStartValue;
+      if(t3InSignalFiboLevelAreaMaxStartValue != 0 && t3InSignalRegressionChannelAreaMaxStartValue == 0) t3InSignalAreaMaxStartValue = t3InSignalFiboLevelAreaMaxStartValue;
+      if(t3InSignalFiboLevelAreaMinEndValue != 0 && t3InSignalRegressionChannelAreaMinEndValue != 0) t3InSignalAreaMinEndValue = MathMax(t3InSignalFiboLevelAreaMinEndValue, t3InSignalRegressionChannelAreaMinEndValue);
+      if(t3InSignalFiboLevelAreaMinEndValue == 0 && t3InSignalRegressionChannelAreaMinEndValue != 0) t3InSignalAreaMinEndValue = t3InSignalRegressionChannelAreaMinEndValue;
+      if(t3InSignalFiboLevelAreaMinEndValue != 0 && t3InSignalRegressionChannelAreaMinEndValue == 0) t3InSignalAreaMinEndValue = t3InSignalFiboLevelAreaMinEndValue;
+      if(t3InSignalFiboLevelAreaMaxEndValue != 0 && t3InSignalRegressionChannelAreaMaxEndValue != 0) t3InSignalAreaMaxEndValue = MathMin(t3InSignalFiboLevelAreaMaxEndValue, t3InSignalRegressionChannelAreaMaxEndValue);
+      if(t3InSignalFiboLevelAreaMaxEndValue == 0 && t3InSignalRegressionChannelAreaMaxEndValue != 0) t3InSignalAreaMaxEndValue = t3InSignalRegressionChannelAreaMaxEndValue;
+      if(t3InSignalFiboLevelAreaMaxEndValue != 0 && t3InSignalRegressionChannelAreaMaxEndValue == 0) t3InSignalAreaMaxEndValue = t3InSignalFiboLevelAreaMaxEndValue;
+
       if(t3trendDirection == TREND_DIRECTION_LONG) {
 
          setLowestLowDateTime();
 
-         if(useReEntryArea == false && inSignalAreaMaxEndValue != 0 && Bid() < inSignalAreaMaxEndValue) {
-            if(isBidLowerInSignalAreaMaxEndValue == false) {
-               isBidLowerInSignalAreaMaxEndValue = true;
-            }
-         } else {
-            isBidLowerInSignalAreaMaxEndValue = false;
-         }
-
-         if(maxBuyPositionsAreOpenState == false) {
+         if(t3LowestLowDateTime != 0) {
             double localT3LowestLowValue = 0;
             if(iBarShift(Symbol(), Period(), t3LowestLowDateTime) != 0) {
                localT3LowestLowValue = iLow(Symbol(), Period(), iLowest( Symbol(), Period(), MODE_LOW, iBarShift(Symbol(), Period(), t3LowestLowDateTime) + 1));
@@ -32,13 +37,15 @@ void handleObjectsAction() {
             }
 
             if(localT3LowestLowValue != 0) {
-               t3LowestLowValue = MathMax(localT3LowestLowValue, inSignalAreaMinEndValue - InpStopLoss * Point());
+               t3LowestLowValue = localT3LowestLowValue;
                t3LongEntryValue = t3LowestLowValue + InpStopLoss * Point();
                createT3LowestLowTrendLine();
                createT3LongEntryTrendLine();
                if(buyPositionIsOpenState == false) createT3OrderGridTrendLines();
             }
-         } else {
+         }
+
+         if(t3LowestLowDateTime == 0 || maxBuyPositionsAreOpenState == true) {
             deleteTrendLineObject(T3_HIGHEST_HIGH_TLINE);
             deleteTrendLineObject(T3_SHORT_ENTRY_TLINE);
             deleteTrendLineObject(T3_ORDER_GRID_LIMIT_TLINE);
@@ -59,15 +66,7 @@ void handleObjectsAction() {
 
          setHighestHighDateTime();
 
-         if(useReEntryArea == false && inSignalAreaMinEndValue != 0 && Bid() > inSignalAreaMinEndValue) {
-            if(isBidGreaterInSignalAreaMinEndValue == false) {
-               isBidGreaterInSignalAreaMinEndValue = true;
-            }
-         } else {
-            isBidGreaterInSignalAreaMinEndValue = false;
-         }
-
-         if(maxSellPositionsAreOpenState == false) {
+         if(t3HighestHighDateTime != 0) {
             double localT3HighestHighValue = 0;
             if(iBarShift(Symbol(), Period(), t3HighestHighDateTime) != 0) {
                localT3HighestHighValue = iHigh(Symbol(), Period(), iHighest( Symbol(), Period(), MODE_HIGH, iBarShift(Symbol(), Period(), t3HighestHighDateTime) + 1));
@@ -76,13 +75,15 @@ void handleObjectsAction() {
             }
 
             if(localT3HighestHighValue != 0) {
-               t3HighestHighValue = MathMin(localT3HighestHighValue, inSignalAreaMaxEndValue + InpStopLoss * Point());
+               t3HighestHighValue = localT3HighestHighValue;
                t3ShortEntryValue = t3HighestHighValue - InpStopLoss * Point();
                createT3HighestHighTrendLine();
                createT3ShortEntryTrendLine();
                if(sellPositionIsOpenState == false) createT3OrderGridTrendLines();
             }
-         } else {
+         }
+
+         if(t3HighestHighDateTime == 0 || maxSellPositionsAreOpenState == true) {
             deleteTrendLineObject(T3_HIGHEST_HIGH_TLINE);
             deleteTrendLineObject(T3_SHORT_ENTRY_TLINE);
             deleteTrendLineObject(T3_ORDER_GRID_LIMIT_TLINE);
@@ -97,8 +98,6 @@ void handleObjectsAction() {
                if(Bid() < (t3ShortEntryValue - InpStopLoss * Point() * InpT4TrendOKOnMulti) && t4OKDateTime == 0) createT4OKVLine();
             }
          }
-
-
       }
 
       if(isNewCurrentBar == true || objectHasChanged == true) {
@@ -107,13 +106,15 @@ void handleObjectsAction() {
             createT3RegressionChannel();
             createT3RegressionChannelLevels();
             createT3FiboRetracement();
-            createT3InSignalArea();
+            createT3InSignalFiboLevelArea();
+            createt3InSignalRegressionChannelArea();
             createT3ReEntryArea();
          } else {
             deleteTrendLineObject(T3_TRENDLINE);
             deleteRegressionChannelObject(T3_REGRESSION_CHANNEL);
             deleteFiboLevelsObject(T3_FIBO_LEVELS);
-            deleteChannelObject(T3_IN_SIGNAL_AREA);
+            deleteChannelObject(T3_IN_SIGNAL_FIBO_LEVEL_AREA);
+            deleteChannelObject(T3_IN_SIGNAL_REGRESSION_CHANNEL_AREA);
             deleteChannelObject(T3_RE_ENTRY_AREA);
          }
 
@@ -127,13 +128,13 @@ void handleObjectsAction() {
    } else {
       deleteTrendLineObject(T3_TRENDLINE);
       deleteRegressionChannelObject(T3_REGRESSION_CHANNEL);
-      deleteFiboLevelsObject(T3_FIBO_LEVELS);
-      deleteChannelObject(T3_IN_SIGNAL_AREA);
+      deleteChannelObject(T3_IN_SIGNAL_FIBO_LEVEL_AREA);
+      deleteChannelObject(T3_IN_SIGNAL_REGRESSION_CHANNEL_AREA);
       deleteChannelObject(T3_RE_ENTRY_AREA);
    }
 
    if(allBuyPositionsAreClosedState || allSellPositionsAreClosedState) {
-      setIsTradeableButtonFalse();
+      if(InpSetIsTradabelButtonStateAfterClose == true) setIsTradeableButtonFalse();
       deleteTrendLineObject(T3_STOP_LOSS_TLINE);
       deleteVLineObject(T4_START_VLINE);
       deleteVLineObject(T4_OK_VLINE);
@@ -228,25 +229,42 @@ void handleInsideBars() {
 
 void setHighestHighDateTime() {
 
-   int startCandleShift = iBarShift(Symbol(), Period(), t3p4DateTime);
-   if(t3HighestHighVLineDateTime != 0) startCandleShift = iBarShift(Symbol(), Period(), t3HighestHighVLineDateTime);
+   if(isBidHigherInSignalAreaMinEndValue == true && isTradabelButtonState == true) {
+      int startCandleShift = iBarShift(Symbol(), Period(), t3p4DateTime);
+      if(t3HighestHighVLineDateTime == 0) createT3HighestHighVLine();
+      if(t3HighestHighVLineDateTime != 0) startCandleShift = iBarShift(Symbol(), Period(), t3HighestHighVLineDateTime);
 
-   if(startCandleShift != 0) {
-      t3HighestHighDateTime = iTime(Symbol(), PERIOD_CURRENT, iHighest(Symbol(), PERIOD_CURRENT, MODE_HIGH, startCandleShift, 0));
-   } else {
-      t3HighestHighDateTime = iTime(Symbol(), PERIOD_CURRENT, 0);
+      if(startCandleShift != 0) {
+         t3HighestHighDateTime = iTime(Symbol(), PERIOD_CURRENT, iHighest(Symbol(), PERIOD_CURRENT, MODE_HIGH, startCandleShift, 0));
+      } else {
+         t3HighestHighDateTime = iTime(Symbol(), PERIOD_CURRENT, 0);
+      }
+   }
+
+   if(isBidHigherInSignalAreaMaxEndValue == true) {
+      t3HighestHighDateTime = 0;
+      setIsTradeableButtonFalse();
    }
 }
 
 void setLowestLowDateTime() {
 
-   int startCandleShift = iBarShift(Symbol(), Period(), t3p4DateTime);
-   if(t3LowestLowVLineDateTime != 0) startCandleShift = iBarShift(Symbol(), Period(), t3LowestLowVLineDateTime);
+   if(isBidLowerInSignalAreaMaxEndValue == true && isTradabelButtonState == true) {
+      int startCandleShift = iBarShift(Symbol(), Period(), t3p4DateTime);
+      if(t3LowestLowVLineDateTime == 0) createT3LowestLowVLine();
+      if(t3LowestLowVLineDateTime != 0) startCandleShift = iBarShift(Symbol(), Period(), t3LowestLowVLineDateTime);
 
-   if(startCandleShift != 0) {
-      t3LowestLowDateTime = iTime(Symbol(), PERIOD_CURRENT, iLowest(Symbol(), PERIOD_CURRENT, MODE_LOW, startCandleShift, 0));
-   } else {
-      t3LowestLowDateTime = iTime(Symbol(), PERIOD_CURRENT, 0);
+      if(startCandleShift != 0) {
+         t3LowestLowDateTime = iTime(Symbol(), PERIOD_CURRENT, iLowest(Symbol(), PERIOD_CURRENT, MODE_LOW, startCandleShift, 0));
+      } else {
+         t3LowestLowDateTime = iTime(Symbol(), PERIOD_CURRENT, 0);
+      }
    }
+
+   if(isBidLowerInSignalAreaMinEndValue == true) {
+      t3LowestLowDateTime = 0;
+      setIsTradeableButtonFalse();
+   }
+
 }
 //+------------------------------------------------------------------+

@@ -58,12 +58,25 @@ void initializeGlobalsAction() {
    isBidStopLossLineOffsetAlertSendable = false;
    isBidStopLossLineOffsetAlertSended = false;
 
-   inSignalAreaMinStartValue = 0;
-   inSignalAreaMinEndValue = 0;
-   inSignalAreaMaxStartValue = 0;
-   inSignalAreaMaxEndValue = 0;
+   t3InSignalFiboLevelAreaMinStartValue = 0;
+   t3InSignalFiboLevelAreaMinEndValue = 0;
+   t3InSignalFiboLevelAreaMaxStartValue = 0;
+   t3InSignalFiboLevelAreaMaxEndValue = 0;
+   t3InSignalRegressionChannelAreaMinStartValue = 0;
+   t3InSignalRegressionChannelAreaMinEndValue = 0;
+   t3InSignalRegressionChannelAreaMaxStartValue = 0;
+   t3InSignalRegressionChannelAreaMaxEndValue = 0;
+
+   t3InSignalAreaMinStartValue = 0;
+   t3InSignalAreaMinEndValue = 0;
+   t3InSignalAreaMaxStartValue = 0;
+   t3InSignalAreaMaxEndValue = 0;
+   isBidLowerInSignalAreaMinEndValue = false;
    isBidLowerInSignalAreaMaxEndValue = false;
-   isBidGreaterInSignalAreaMinEndValue = false;
+   isBidHigherInSignalAreaMinEndValue = false;
+   isBidHigherInSignalAreaMaxEndValue = false;
+   t3HighestHighIsInSignalArea = false;
+   t3LowestLowIsInSignalArea = false;
 
    reEntryAreaMinStartValue = 0;
    reEntryAreaMinEndValue = 0;

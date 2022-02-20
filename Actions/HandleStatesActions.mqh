@@ -25,6 +25,37 @@ void setAction() {
       ArrayResize(orderGridStopOrderValuesArray, 0);
       t3ShortIsTradable = false;
    }
+
+   if(t3HighestHighValue >= t3InSignalAreaMinEndValue && t3HighestHighValue <= t3InSignalAreaMaxEndValue) {
+      t3HighestHighIsInSignalArea = true;
+   } else {
+      t3HighestHighIsInSignalArea = false;
+   }
+   if(t3LowestLowValue >= t3InSignalAreaMinEndValue && t3LowestLowValue <= t3InSignalAreaMaxEndValue) {
+      t3LowestLowIsInSignalArea = true;
+   } else {
+      t3LowestLowIsInSignalArea = false;
+   }
+
+   if(t3InSignalAreaMinEndValue != 0) {
+      if(Bid() < t3InSignalAreaMinEndValue) {
+         isBidLowerInSignalAreaMinEndValue = true;
+         isBidHigherInSignalAreaMinEndValue = false;
+      } else {
+         isBidLowerInSignalAreaMinEndValue = false;
+         isBidHigherInSignalAreaMinEndValue = true;
+      }
+   }
+
+   if(t3InSignalAreaMaxEndValue != 0) {
+      if(Bid() < t3InSignalAreaMaxEndValue) {
+         isBidLowerInSignalAreaMaxEndValue = true;
+         isBidHigherInSignalAreaMaxEndValue = false;
+      } else {
+         isBidLowerInSignalAreaMaxEndValue = false;
+         isBidHigherInSignalAreaMaxEndValue = true;
+      }
+   }
 }
 
 void resetAction() {

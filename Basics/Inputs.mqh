@@ -6,7 +6,7 @@
 
 input group             "------------------------------ PRIO A je Symbol ---------------------------"
 input int               InpStopLoss = 200; // StopLoss
-input int               InpT3AlertOnBidStopLossLineOffset = 400;
+input int               InpT3AlertOnBidStopLossLineOffset = 0;
 
 input group             "------------------------------ Order Grid ---------------------------"
 input int               InpOrderGridCount = 5; // Anzahl Grid Orders
@@ -15,7 +15,6 @@ input group             "------------------------------ T3 + T4 RegressionChanne
 input int               InpT3AlertOnRegressionChannelLevel = 0;
 input int               InpT3MinRegressionChannelLevel = 70;
 input int               InpT3MaxRegressionChannelLevel = 110;
-input int               InpT3MinReEntryRegressionChannelLevel = 20;
 input int               InpT3ChannelEndShift = 10;
 input int               InpT4StopLossOnRegressionChannelLevel = 120;
 input double            InpT4TrendOKOnMulti = 1.5;
@@ -24,7 +23,12 @@ input group             "---------------------- FiboRetracement - T3 -----------
 input int               InpT3AlertOnFiboRetracmentLevel = 0;
 input int               InpT3MinFiboRetracmentLevel = 0;
 input int               InpT3MaxFiboRetracmentLevel = 0;
+
+input group             "---------------------- T3 - ReEntry ---------------------------"
+input int               InpT3MinReEntryRegressionChannelLevel = 0;
 input int               InpT3MinReEntryFiboRetracmentLevel = 0;
+input color             InpT3ReEntryMinRegressionColor = clrDarkKhaki;
+input color             InpT3ReEntryAreaColor = clrBeige;
 
 input group             "------------------------------ T3 Show Objects ---------------------------"
 input bool              InpT3ObjectsShow = true;
@@ -41,14 +45,13 @@ input color             InpT3FiboLevelsColor = clrTomato;
 input color             InpT3TrendLineColor = clrTomato;
 input color             InpT3RegressionChannelColor = clrBisque;
 input color             InpT3MinMaxRegressionColor = clrBlue;
-input color             InpT3ReEntryMinRegressionColor = clrDarkKhaki;
 input color             InpT3InSignalAreaColor = clrPaleGreen;
-input color             InpT3ReEntryAreaColor = clrBeige;
 input color             InpT4RegressionChannelColor = clrMistyRose;
 
 input group             "---------- SL & TP ---------"
 input color             InpStopLossLineColor = clrRed;
 input int               InpTakeProfit = 0; // TakeProfit
+input bool              InpSetIsTradabelButtonStateAfterClose = false; // nach Close Button OFF
 
 input group             "---------- MoneyManagement ---------"
 input bool              InpUseMoneyManagement = true; // Use Money Management
