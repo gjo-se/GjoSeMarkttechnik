@@ -46,8 +46,8 @@ void handleObjectsAction() {
          }
 
          if(t3LowestLowDateTime == 0 || maxBuyPositionsAreOpenState == true) {
-            deleteTrendLineObject(T3_HIGHEST_HIGH_TLINE);
-            deleteTrendLineObject(T3_SHORT_ENTRY_TLINE);
+            deleteTrendLineObject(T3_LOWEST_LOW_TLINE);
+            deleteTrendLineObject(T3_LONG_ENTRY_TLINE);
             deleteTrendLineObject(T3_ORDER_GRID_LIMIT_TLINE);
             deleteTrendLineObject(T3_ORDER_GRID_STOP_TLINE);
          }
