@@ -18,6 +18,7 @@
    1.6.2 fixed diverse
    1.7   TrailingStop on RegressionChannel
    1.7.1 fixed diverse
+   1.7.2 fixed InSignalArea & Btoon OFF
 
    ===============
 
@@ -34,7 +35,7 @@
 #property copyright   "2022, GjoSe"
 #property link        "http://www.gjo-se.com"
 #property description "GjoSe Markttechnik"
-#define   VERSION "1.7.1"
+#define   VERSION "1.7.2"
 #property version VERSION
 #property strict
 
