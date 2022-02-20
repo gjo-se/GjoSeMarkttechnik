@@ -19,6 +19,7 @@
    1.7   TrailingStop on RegressionChannel
    1.7.1 fixed diverse
    1.7.2 fixed InSignalArea & Btoon OFF
+   1.7.3 remove LONG LL & EntryLevel
 
    ===============
 
@@ -35,7 +36,7 @@
 #property copyright   "2022, GjoSe"
 #property link        "http://www.gjo-se.com"
 #property description "GjoSe Markttechnik"
-#define   VERSION "1.7.2"
+#define   VERSION "1.7.3"
 #property version VERSION
 #property strict
 
