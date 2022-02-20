@@ -37,21 +37,25 @@ void setAction() {
       t3LowestLowIsInSignalArea = false;
    }
 
-   if(Bid() < t3InSignalAreaMinEndValue) {
-      isBidLowerInSignalAreaMinEndValue = true;
-      isBidHigherInSignalAreaMinEndValue = false;
-   } else {
-      isBidLowerInSignalAreaMinEndValue = false;
-      isBidHigherInSignalAreaMinEndValue = true;
-   }
-   if(Bid() < t3InSignalAreaMaxEndValue) {
-      isBidLowerInSignalAreaMaxEndValue = true;
-      isBidHigherInSignalAreaMaxEndValue = false;
-   } else {
-      isBidLowerInSignalAreaMaxEndValue = false;
-      isBidHigherInSignalAreaMaxEndValue = true;
+   if(t3InSignalAreaMinEndValue != 0) {
+      if(Bid() < t3InSignalAreaMinEndValue) {
+         isBidLowerInSignalAreaMinEndValue = true;
+         isBidHigherInSignalAreaMinEndValue = false;
+      } else {
+         isBidLowerInSignalAreaMinEndValue = false;
+         isBidHigherInSignalAreaMinEndValue = true;
+      }
    }
 
+   if(t3InSignalAreaMaxEndValue != 0) {
+      if(Bid() < t3InSignalAreaMaxEndValue) {
+         isBidLowerInSignalAreaMaxEndValue = true;
+         isBidHigherInSignalAreaMaxEndValue = false;
+      } else {
+         isBidLowerInSignalAreaMaxEndValue = false;
+         isBidHigherInSignalAreaMaxEndValue = true;
+      }
+   }
 }
 
 void resetAction() {

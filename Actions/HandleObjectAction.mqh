@@ -45,7 +45,7 @@ void handleObjectsAction() {
             }
          }
 
-         if(maxBuyPositionsAreOpenState == true) {
+         if(t3LowestLowDateTime == 0 || maxBuyPositionsAreOpenState == true) {
             deleteTrendLineObject(T3_HIGHEST_HIGH_TLINE);
             deleteTrendLineObject(T3_SHORT_ENTRY_TLINE);
             deleteTrendLineObject(T3_ORDER_GRID_LIMIT_TLINE);
@@ -83,7 +83,7 @@ void handleObjectsAction() {
             }
          }
 
-         if(maxSellPositionsAreOpenState == true) {
+         if(t3HighestHighDateTime == 0 || maxSellPositionsAreOpenState == true) {
             deleteTrendLineObject(T3_HIGHEST_HIGH_TLINE);
             deleteTrendLineObject(T3_SHORT_ENTRY_TLINE);
             deleteTrendLineObject(T3_ORDER_GRID_LIMIT_TLINE);
@@ -98,8 +98,6 @@ void handleObjectsAction() {
                if(Bid() < (t3ShortEntryValue - InpStopLoss * Point() * InpT4TrendOKOnMulti) && t4OKDateTime == 0) createT4OKVLine();
             }
          }
-
-
       }
 
       if(isNewCurrentBar == true || objectHasChanged == true) {
@@ -231,7 +229,7 @@ void handleInsideBars() {
 
 void setHighestHighDateTime() {
 
-   if(isBidLowerInSignalAreaMinEndValue == true) {
+   if(isBidHigherInSignalAreaMinEndValue == true && isTradabelButtonState == true) {
       int startCandleShift = iBarShift(Symbol(), Period(), t3p4DateTime);
       if(t3HighestHighVLineDateTime == 0) createT3HighestHighVLine();
       if(t3HighestHighVLineDateTime != 0) startCandleShift = iBarShift(Symbol(), Period(), t3HighestHighVLineDateTime);
@@ -241,14 +239,17 @@ void setHighestHighDateTime() {
       } else {
          t3HighestHighDateTime = iTime(Symbol(), PERIOD_CURRENT, 0);
       }
-   } else {
+   }
+
+   if(isBidHigherInSignalAreaMaxEndValue == true) {
       t3HighestHighDateTime = 0;
+      setIsTradeableButtonFalse();
    }
 }
 
 void setLowestLowDateTime() {
 
-   if(isBidHigherInSignalAreaMaxEndValue == true) {
+   if(isBidLowerInSignalAreaMaxEndValue == true && isTradabelButtonState == true) {
       int startCandleShift = iBarShift(Symbol(), Period(), t3p4DateTime);
       if(t3LowestLowVLineDateTime == 0) createT3LowestLowVLine();
       if(t3LowestLowVLineDateTime != 0) startCandleShift = iBarShift(Symbol(), Period(), t3LowestLowVLineDateTime);
@@ -258,8 +259,12 @@ void setLowestLowDateTime() {
       } else {
          t3LowestLowDateTime = iTime(Symbol(), PERIOD_CURRENT, 0);
       }
-   } else {
-      t3LowestLowDateTime = 0;
    }
+
+   if(isBidLowerInSignalAreaMinEndValue == true) {
+      t3LowestLowDateTime = 0;
+      setIsTradeableButtonFalse();
+   }
+
 }
 //+------------------------------------------------------------------+
