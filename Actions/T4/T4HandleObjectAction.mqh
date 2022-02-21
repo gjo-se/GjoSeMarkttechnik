@@ -6,7 +6,7 @@
 void t4HandleObjectsAction() {
 
    if(ObjectFind(ChartID(), T4_IS_TRADEABLE_BUTTON) < 0) {
-      createT3IsTradeableButton();
+      createT4IsTradeableButton();
    }
 
    if(InpT4ObjectsShow == true) {
@@ -134,7 +134,7 @@ void t4HandleObjectsAction() {
    }
 
    if(allBuyPositionsAreClosedState || allSellPositionsAreClosedState) {
-      if(InpT4SetIsTradabelButtonStateAfterClose == true) setT3IsTradeableButtonFalse();
+      if(InpT4SetIsTradabelButtonStateAfterClose == true) setT4IsTradeableButtonFalse();
       deleteTrendLineObject(T4_STOP_LOSS_TLINE);
       deleteVLineObject(T4_START_VLINE);
       deleteVLineObject(T4_OK_VLINE);
@@ -210,7 +210,7 @@ void setT4HighestHighDateTime() {
 
    if(t4IsBidHigherInSignalAreaMaxEndValue == true) {
       t4HighestHighDateTime = 0;
-      setT3IsTradeableButtonFalse();
+      setT4IsTradeableButtonFalse();
    }
 }
 
@@ -230,7 +230,7 @@ void setT4LowestLowDateTime() {
 
    if(t4IsBidLowerInSignalAreaMinEndValue == true) {
       t4LowestLowDateTime = 0;
-      setT3IsTradeableButtonFalse();
+      setT4IsTradeableButtonFalse();
    }
 
 }
