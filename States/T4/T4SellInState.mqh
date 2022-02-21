@@ -22,7 +22,7 @@ bool getT4SellInSignal() {
    if(!TerminalInfoInteger(TERMINAL_TRADE_ALLOWED) || !MQLInfoInteger(MQL_TRADE_ALLOWED)) signal = false;
    if(t4trendDirection != TREND_DIRECTION_SHORT) signal = false;
    if(t4IsTradabelButtonState == false) signal = false;
-   if(maxSellPositionsAreOpenState == true) signal = false;
+   if(maxT4SellPositionsAreOpenState == true) signal = false;
 
 //   if(getT4BidLowerShortReEntryAreaFilter() == true) return false;
 //   if(t4ShortIsTradable == false) return false;
@@ -53,7 +53,7 @@ bool getT4BidLowerShortEntryLevelSignal() {
 
    if(Bid() > t4ShortEntryValue) t4ShortIsTradable = true;
 
-   if(sellPositionIsOpenState == false && t4ShortIsTradable == true && Bid() <= t4ShortEntryValue) {
+   if(sellT4PositionIsOpenState == false && t4ShortIsTradable == true && Bid() <= t4ShortEntryValue) {
       signal = true;
       t4ShortIsTradable = false;
    }
@@ -65,7 +65,7 @@ bool getT4BidTriggerShortGridLimitOrderSignal() {
 
    bool signal = false;
 
-   if(sellPositionIsOpenState) {
+   if(sellT4PositionIsOpenState) {
       for(int orderGridLimitOrderValueId = 0; orderGridLimitOrderValueId < ArraySize(t4OrderGridLimitOrderValuesArray); orderGridLimitOrderValueId++) {
          if(t4OrderGridLimitOrderValuesArray[orderGridLimitOrderValueId] != EMPTY_VALUE
                && Bid() > t4OrderGridLimitOrderValuesArray[orderGridLimitOrderValueId]) {
@@ -82,7 +82,7 @@ bool getT4BidTriggerShortGridStopOrderSignal() {
 
    bool signal = false;
 
-   if(sellPositionIsOpenState) {
+   if(sellT4PositionIsOpenState) {
       for(int orderGridStopOrderValueId = 0; orderGridStopOrderValueId < ArraySize(t4OrderGridStopOrderValuesArray); orderGridStopOrderValueId++) {
          if(t4OrderGridStopOrderValuesArray[orderGridStopOrderValueId] != EMPTY_VALUE
                && Bid() < t4OrderGridStopOrderValuesArray[orderGridStopOrderValueId]) {
@@ -107,3 +107,4 @@ bool getT4BidLowerShortReEntryAreaFilter() {
    return filter;
 }
 
+//+------------------------------------------------------------------+
