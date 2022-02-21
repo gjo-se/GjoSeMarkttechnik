@@ -72,6 +72,7 @@ input long              InpMagicNumber = 1619769100; // MagicNumber (TODO: Logik
 input string            InpT3Comment = "MarktTechnik EA"; // Comment
 input long              InpMaxSlippage = 3; // max Slippage (TODO: Funktionlität klären)
 input int               InpMaxSpread = 10; // max Spread
+input bool              InpT3ShowCommentDashboard = false;
 
 //+------------------------------------------------------------------+
 //|                                                                  |

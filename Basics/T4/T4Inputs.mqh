@@ -58,6 +58,7 @@ input color             InpT4TailingStopLineColor = clrRed;
 //+------------------------------------------------------------------+
 input group             "---------- Basics (Fix) ---------"
 input string            InpT4Comment = "MarktTechnik EA"; // Comment
+input bool              InpT4ShowCommentDashboard = false;
 
 //+------------------------------------------------------------------+
 //|                                                                  |

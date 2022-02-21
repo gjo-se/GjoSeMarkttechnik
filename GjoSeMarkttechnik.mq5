@@ -59,8 +59,8 @@ int OnInit() {
 
    t3HandleObjectsAction();
    t4HandleObjectsAction();
-   t3CommentAction(VERSION);
-   t4CommentAction(VERSION);
+   if(InpT3ShowCommentDashboard) t3CommentAction(VERSION);
+   if(InpT3ShowCommentDashboard) t4CommentAction(VERSION);
 
    if(MQLInfoInteger(MQL_TESTER) == 1) {
 
@@ -99,8 +99,8 @@ void OnTick() {
 
    t3HandleObjectsAction();
    t4HandleObjectsAction();
-   t3CommentAction(VERSION);
-   t4CommentAction(VERSION);
+   if(InpT3ShowCommentDashboard) t3CommentAction(VERSION);
+   if(InpT3ShowCommentDashboard) t4CommentAction(VERSION);
 
    if(getT3BuyAlertRegressionSignal() == true) t3AlertBuyRegressionAction();
    if(getT4BuyAlertRegressionSignal() == true) t4AlertBuyRegressionAction();
