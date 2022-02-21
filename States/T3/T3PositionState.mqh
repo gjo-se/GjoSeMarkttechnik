@@ -29,7 +29,7 @@ void setT3AllBuyPositionsAreClosedState() {
    bool minOneBuyPositionIsOpen = false;
 
 
-   if(buyPositionIsOpenState == true) {
+   if(buyT3PositionIsOpenState == true) {
       for(int positionTicketsId = 0; positionTicketsId < ArraySize(positionTickets); positionTicketsId++) {
          positionTicket = positionTickets[positionTicketsId];
          if(
@@ -43,9 +43,9 @@ void setT3AllBuyPositionsAreClosedState() {
       }
 
       if(minOneBuyPositionIsOpen == false) {
-         allBuyPositionsAreClosedState = true;
+         allT3BuyPositionsAreClosedState = true;
       } else {
-         allBuyPositionsAreClosedState = false;
+         allT3BuyPositionsAreClosedState = false;
       }
    }
 }
@@ -54,18 +54,18 @@ void setT3BuyPositionIsOpen() {
 
    long positionTicket = 0;
 
-   if(buyPositionIsOpenState == false) {
-       for(int positionTicketsId = 0; positionTicketsId < ArraySize(positionTickets); positionTicketsId++) {
-          positionTicket = positionTickets[positionTicketsId];
-          if(
-             positionTicket > 0
-             && PositionSymbol(positionTicket) == Symbol()
-             && PositionMagicNumber(positionTicket) == InpMagicNumber
-             && PositionType(positionTicket) == ORDER_TYPE_BUY
-          ) {
-             buyPositionIsOpenState = true;
-          }
-       }
+   if(t3trendDirection == TREND_DIRECTION_LONG && buyT3PositionIsOpenState == false) {
+      for(int positionTicketsId = 0; positionTicketsId < ArraySize(positionTickets); positionTicketsId++) {
+         positionTicket = positionTickets[positionTicketsId];
+         if(
+            positionTicket > 0
+            && PositionSymbol(positionTicket) == Symbol()
+            && PositionMagicNumber(positionTicket) == InpMagicNumber
+            && PositionType(positionTicket) == ORDER_TYPE_BUY
+         ) {
+            buyT3PositionIsOpenState = true;
+         }
+      }
    }
 }
 //+------------------------------------------------------------------+
@@ -75,20 +75,23 @@ void setT3MaxBuyPositionsAreOpen() {
    long     positionTicket = 0;
    int      openPositionCount = 0;
 
-   for(int positionTicketsId = 0; positionTicketsId < ArraySize(positionTickets); positionTicketsId++) {
-      positionTicket = positionTickets[positionTicketsId];
-      if(
-         positionTicket > 0
-         && PositionSymbol(positionTicket) == Symbol()
-         && PositionMagicNumber(positionTicket) == InpMagicNumber
-         && PositionType(positionTicket) == ORDER_TYPE_BUY
-      ) {
-         openPositionCount++;
+   if(t3trendDirection == TREND_DIRECTION_LONG) {
+      for(int positionTicketsId = 0; positionTicketsId < ArraySize(positionTickets); positionTicketsId++) {
+         positionTicket = positionTickets[positionTicketsId];
+         if(
+            positionTicket > 0
+            && PositionSymbol(positionTicket) == Symbol()
+            && PositionMagicNumber(positionTicket) == InpMagicNumber
+            && PositionType(positionTicket) == ORDER_TYPE_BUY
+         ) {
+            openPositionCount++;
+         }
       }
+
    }
 
    if(openPositionCount >= InpT3OrderGridCount) {
-      maxBuyPositionsAreOpenState = true;
+      maxT3BuyPositionsAreOpenState = true;
    }
 }
 
@@ -98,20 +101,23 @@ void setT3MaxSellPositionsAreOpen() {
    long     positionTicket = 0;
    int      openPositionCount = 0;
 
-   for(int positionTicketsId = 0; positionTicketsId < ArraySize(positionTickets); positionTicketsId++) {
-      positionTicket = positionTickets[positionTicketsId];
-      if(
-         positionTicket > 0
-         && PositionSymbol(positionTicket) == Symbol()
-         && PositionMagicNumber(positionTicket) == InpMagicNumber
-         && PositionType(positionTicket) == ORDER_TYPE_SELL
-      ) {
-         openPositionCount++;
+   if(t3trendDirection == TREND_DIRECTION_SHORT) {
+      for(int positionTicketsId = 0; positionTicketsId < ArraySize(positionTickets); positionTicketsId++) {
+         positionTicket = positionTickets[positionTicketsId];
+         if(
+            positionTicket > 0
+            && PositionSymbol(positionTicket) == Symbol()
+            && PositionMagicNumber(positionTicket) == InpMagicNumber
+            && PositionType(positionTicket) == ORDER_TYPE_SELL
+         ) {
+            openPositionCount++;
+         }
       }
+
    }
 
    if(openPositionCount >= InpT3OrderGridCount) {
-      maxSellPositionsAreOpenState = true;
+      maxT3SellPositionsAreOpenState = true;
    }
 }
 //+------------------------------------------------------------------+
@@ -120,18 +126,18 @@ void setT3SellPositionIsOpen() {
 
    long positionTicket = 0;
 
-   if(sellPositionIsOpenState == false) {
-       for(int positionTicketsId = 0; positionTicketsId < ArraySize(positionTickets); positionTicketsId++) {
-          positionTicket = positionTickets[positionTicketsId];
-          if(
-             positionTicket > 0
-             && PositionSymbol(positionTicket) == Symbol()
-             && PositionMagicNumber(positionTicket) == InpMagicNumber
-             && PositionType(positionTicket) == ORDER_TYPE_SELL
-          ) {
-             sellPositionIsOpenState = true;
-          }
-       }
+   if(t3trendDirection == TREND_DIRECTION_SHORT && sellT3PositionIsOpenState == false) {
+      for(int positionTicketsId = 0; positionTicketsId < ArraySize(positionTickets); positionTicketsId++) {
+         positionTicket = positionTickets[positionTicketsId];
+         if(
+            positionTicket > 0
+            && PositionSymbol(positionTicket) == Symbol()
+            && PositionMagicNumber(positionTicket) == InpMagicNumber
+            && PositionType(positionTicket) == ORDER_TYPE_SELL
+         ) {
+            sellT3PositionIsOpenState = true;
+         }
+      }
    }
 }
 
@@ -140,7 +146,7 @@ void setT3AllSellPositionsAreClosedState() {
    long positionTicket = 0;
    bool minOneSellPositionIsOpen = false;
 
-   if(sellPositionIsOpenState == true) {
+   if(sellT3PositionIsOpenState == true) {
       for(int positionTicketsId = 0; positionTicketsId < ArraySize(positionTickets); positionTicketsId++) {
          positionTicket = positionTickets[positionTicketsId];
          if(
@@ -154,9 +160,9 @@ void setT3AllSellPositionsAreClosedState() {
       }
 
       if(minOneSellPositionIsOpen == false) {
-         allSellPositionsAreClosedState = true;
+         allT3SellPositionsAreClosedState = true;
       } else {
-         allSellPositionsAreClosedState = false;
+         allT3SellPositionsAreClosedState = false;
       }
    }
 }

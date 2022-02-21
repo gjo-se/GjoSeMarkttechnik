@@ -41,11 +41,11 @@ void t3HandleObjectsAction() {
                t3LongEntryValue = t3LowestLowValue + InpT3StopLoss * Point();
                createT3LowestLowTrendLine();
                createT3LongEntryTrendLine();
-               if(buyPositionIsOpenState == false) createT3OrderGridTrendLines();
+               if(buyT3PositionIsOpenState == false) createT3OrderGridTrendLines();
             }
          }
 
-         if(t3LowestLowDateTime == 0 || maxBuyPositionsAreOpenState == true) {
+         if(t3LowestLowDateTime == 0 || maxT3BuyPositionsAreOpenState == true) {
             deleteTrendLineObject(T3_LOWEST_LOW_TLINE);
             deleteTrendLineObject(T3_LONG_ENTRY_TLINE);
             deleteTrendLineObject(T3_ORDER_GRID_LIMIT_TLINE);
@@ -79,11 +79,11 @@ void t3HandleObjectsAction() {
                t3ShortEntryValue = t3HighestHighValue - InpT3StopLoss * Point();
                createT3HighestHighTrendLine();
                createT3ShortEntryTrendLine();
-               if(sellPositionIsOpenState == false) createT3OrderGridTrendLines();
+               if(sellT3PositionIsOpenState == false) createT3OrderGridTrendLines();
             }
          }
 
-         if(t3HighestHighDateTime == 0 || maxSellPositionsAreOpenState == true) {
+         if(t3HighestHighDateTime == 0 || maxT3SellPositionsAreOpenState == true) {
             deleteTrendLineObject(T3_HIGHEST_HIGH_TLINE);
             deleteTrendLineObject(T3_SHORT_ENTRY_TLINE);
             deleteTrendLineObject(T3_ORDER_GRID_LIMIT_TLINE);
@@ -133,14 +133,9 @@ void t3HandleObjectsAction() {
       deleteChannelObject(T3_RE_ENTRY_AREA);
    }
 
-   if(allBuyPositionsAreClosedState || allSellPositionsAreClosedState) {
+   if(allT3BuyPositionsAreClosedState || allT3SellPositionsAreClosedState) {
       if(InpT3SetIsTradabelButtonStateAfterClose == true) setT3IsTradeableButtonFalse();
       deleteTrendLineObject(T3_STOP_LOSS_TLINE);
-      deleteVLineObject(T4_START_VLINE);
-      deleteVLineObject(T4_OK_VLINE);
-      deleteRegressionChannelObject(T4_REGRESSION_CHANNEL);
-      deleteTrendLineObject(T4_REGRESSION_CHANNEL);
-      deleteTrendLineObject(T4_TRAILING_STOP_LINE);
    }
 
 }

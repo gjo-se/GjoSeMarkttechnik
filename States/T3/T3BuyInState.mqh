@@ -22,7 +22,7 @@ bool getT3BuyInSignal() {
    if(!TerminalInfoInteger(TERMINAL_TRADE_ALLOWED) || !MQLInfoInteger(MQL_TRADE_ALLOWED)) signal = false;
    if(t3trendDirection != TREND_DIRECTION_LONG) signal = false;
    if(t3IsTradabelButtonState == false) signal = false;
-   if(maxBuyPositionsAreOpenState == true) signal = false;
+   if(maxT3BuyPositionsAreOpenState == true) signal = false;
 
 
 //   if(getT3BidGreaterLongReEntryAreaFilter() == true) return false;
@@ -54,7 +54,7 @@ bool getT3BidGreaterLongEntryLevelSignal() {
 
    if(Bid() < t3LongEntryValue) t3LongIsTradable = true;
 
-   if(buyPositionIsOpenState == false && t3LongIsTradable == true && Bid() >= t3LongEntryValue) {
+   if(buyT3PositionIsOpenState == false && t3LongIsTradable == true && Bid() >= t3LongEntryValue) {
       signal = true;
       t3LongIsTradable = false;
    }
@@ -66,7 +66,7 @@ bool getT3BidTriggerLongGridLimitOrderSignal() {
 
    bool signal = false;
 
-   if(buyPositionIsOpenState) {
+   if(buyT3PositionIsOpenState) {
       for(int orderGridLimitOrderValueId = 0; orderGridLimitOrderValueId < ArraySize(t3OrderGridLimitOrderValuesArray); orderGridLimitOrderValueId++) {
          if(t3OrderGridLimitOrderValuesArray[orderGridLimitOrderValueId] != EMPTY_VALUE
                && Bid() < t3OrderGridLimitOrderValuesArray[orderGridLimitOrderValueId]) {
@@ -83,7 +83,7 @@ bool getT3BidTriggerLongGridStopOrderSignal() {
 
    bool signal = false;
 
-   if(buyPositionIsOpenState) {
+   if(buyT3PositionIsOpenState) {
       for(int orderGridStopOrderValueId = 0; orderGridStopOrderValueId < ArraySize(t3OrderGridStopOrderValuesArray); orderGridStopOrderValueId++) {
          if(t3OrderGridStopOrderValuesArray[orderGridStopOrderValueId] != EMPTY_VALUE
                && Bid() > t3OrderGridStopOrderValuesArray[orderGridStopOrderValueId]) {

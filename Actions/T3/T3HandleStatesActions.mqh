@@ -16,12 +16,12 @@ void handleT3StatesAction() {
 //|                                                                  |
 //+------------------------------------------------------------------+
 void setT3Action() {
-   if(maxBuyPositionsAreOpenState == true) {
+   if(maxT3BuyPositionsAreOpenState == true) {
       ArrayResize(t3OrderGridStopOrderValuesArray, 0);
       t3LongIsTradable = false;
    }
 
-   if(maxSellPositionsAreOpenState == true) {
+   if(maxT3SellPositionsAreOpenState == true) {
       ArrayResize(t3OrderGridStopOrderValuesArray, 0);
       t3ShortIsTradable = false;
    }
@@ -60,14 +60,14 @@ void setT3Action() {
 
 void resetT3Action() {
 
-   if(allBuyPositionsAreClosedState) {
-      buyPositionIsOpenState = false;
-      maxBuyPositionsAreOpenState = false;
+   if(allT3BuyPositionsAreClosedState) {
+      buyT3PositionIsOpenState = false;
+      maxT3BuyPositionsAreOpenState = false;
    }
 
-   if(allSellPositionsAreClosedState) {
-      sellPositionIsOpenState = false;
-      maxSellPositionsAreOpenState = false;
+   if(allT3SellPositionsAreClosedState) {
+      sellT3PositionIsOpenState = false;
+      maxT3SellPositionsAreOpenState = false;
    }
 }
 

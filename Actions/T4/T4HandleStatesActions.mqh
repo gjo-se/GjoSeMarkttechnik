@@ -16,12 +16,12 @@ void handleT4StatesAction() {
 //|                                                                  |
 //+------------------------------------------------------------------+
 void setT4Action() {
-   if(maxBuyPositionsAreOpenState == true) {
+   if(maxT4BuyPositionsAreOpenState == true) {
       ArrayResize(t4OrderGridStopOrderValuesArray, 0);
       t4LongIsTradable = false;
    }
 
-   if(maxSellPositionsAreOpenState == true) {
+   if(maxT4SellPositionsAreOpenState == true) {
       ArrayResize(t4OrderGridStopOrderValuesArray, 0);
       t4ShortIsTradable = false;
    }
@@ -60,14 +60,14 @@ void setT4Action() {
 
 void resetT4Action() {
 
-   if(allBuyPositionsAreClosedState) {
-      buyPositionIsOpenState = false;
-      maxBuyPositionsAreOpenState = false;
+   if(allT4BuyPositionsAreClosedState) {
+      buyT4PositionIsOpenState = false;
+      maxT4BuyPositionsAreOpenState = false;
    }
 
-   if(allSellPositionsAreClosedState) {
-      sellPositionIsOpenState = false;
-      maxSellPositionsAreOpenState = false;
+   if(allT4SellPositionsAreClosedState) {
+      sellT4PositionIsOpenState = false;
+      maxT4SellPositionsAreOpenState = false;
    }
 }
 

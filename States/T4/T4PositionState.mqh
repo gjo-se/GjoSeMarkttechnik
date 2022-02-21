@@ -29,7 +29,7 @@ void setT4AllBuyPositionsAreClosedState() {
    bool minOneBuyPositionIsOpen = false;
 
 
-   if(buyPositionIsOpenState == true) {
+   if(buyT4PositionIsOpenState == true) {
       for(int positionTicketsId = 0; positionTicketsId < ArraySize(positionTickets); positionTicketsId++) {
          positionTicket = positionTickets[positionTicketsId];
          if(
@@ -43,9 +43,9 @@ void setT4AllBuyPositionsAreClosedState() {
       }
 
       if(minOneBuyPositionIsOpen == false) {
-         allBuyPositionsAreClosedState = true;
+         allT4BuyPositionsAreClosedState = true;
       } else {
-         allBuyPositionsAreClosedState = false;
+         allT4BuyPositionsAreClosedState = false;
       }
    }
 }
@@ -54,18 +54,18 @@ void setT4BuyPositionIsOpen() {
 
    long positionTicket = 0;
 
-   if(buyPositionIsOpenState == false) {
-       for(int positionTicketsId = 0; positionTicketsId < ArraySize(positionTickets); positionTicketsId++) {
-          positionTicket = positionTickets[positionTicketsId];
-          if(
-             positionTicket > 0
-             && PositionSymbol(positionTicket) == Symbol()
-             && PositionMagicNumber(positionTicket) == InpMagicNumber
-             && PositionType(positionTicket) == ORDER_TYPE_BUY
-          ) {
-             buyPositionIsOpenState = true;
-          }
-       }
+   if(t4trendDirection == TREND_DIRECTION_LONG && buyT4PositionIsOpenState == false) {
+      for(int positionTicketsId = 0; positionTicketsId < ArraySize(positionTickets); positionTicketsId++) {
+         positionTicket = positionTickets[positionTicketsId];
+         if(
+            positionTicket > 0
+            && PositionSymbol(positionTicket) == Symbol()
+            && PositionMagicNumber(positionTicket) == InpMagicNumber
+            && PositionType(positionTicket) == ORDER_TYPE_BUY
+         ) {
+            buyT4PositionIsOpenState = true;
+         }
+      }
    }
 }
 //+------------------------------------------------------------------+
@@ -74,21 +74,23 @@ void setT4MaxBuyPositionsAreOpen() {
 
    long     positionTicket = 0;
    int      openPositionCount = 0;
-
-   for(int positionTicketsId = 0; positionTicketsId < ArraySize(positionTickets); positionTicketsId++) {
-      positionTicket = positionTickets[positionTicketsId];
-      if(
-         positionTicket > 0
-         && PositionSymbol(positionTicket) == Symbol()
-         && PositionMagicNumber(positionTicket) == InpMagicNumber
-         && PositionType(positionTicket) == ORDER_TYPE_BUY
-      ) {
-         openPositionCount++;
+   if(t4trendDirection == TREND_DIRECTION_LONG) {
+      for(int positionTicketsId = 0; positionTicketsId < ArraySize(positionTickets); positionTicketsId++) {
+         positionTicket = positionTickets[positionTicketsId];
+         if(
+            positionTicket > 0
+            && PositionSymbol(positionTicket) == Symbol()
+            && PositionMagicNumber(positionTicket) == InpMagicNumber
+            && PositionType(positionTicket) == ORDER_TYPE_BUY
+         ) {
+            openPositionCount++;
+         }
       }
    }
 
+
    if(openPositionCount >= InpT4OrderGridCount) {
-      maxBuyPositionsAreOpenState = true;
+      maxT4BuyPositionsAreOpenState = true;
    }
 }
 
@@ -98,20 +100,23 @@ void setT4MaxSellPositionsAreOpen() {
    long     positionTicket = 0;
    int      openPositionCount = 0;
 
-   for(int positionTicketsId = 0; positionTicketsId < ArraySize(positionTickets); positionTicketsId++) {
-      positionTicket = positionTickets[positionTicketsId];
-      if(
-         positionTicket > 0
-         && PositionSymbol(positionTicket) == Symbol()
-         && PositionMagicNumber(positionTicket) == InpMagicNumber
-         && PositionType(positionTicket) == ORDER_TYPE_SELL
-      ) {
-         openPositionCount++;
+   if(t4trendDirection == TREND_DIRECTION_SHORT) {
+      for(int positionTicketsId = 0; positionTicketsId < ArraySize(positionTickets); positionTicketsId++) {
+         positionTicket = positionTickets[positionTicketsId];
+         if(
+            positionTicket > 0
+            && PositionSymbol(positionTicket) == Symbol()
+            && PositionMagicNumber(positionTicket) == InpMagicNumber
+            && PositionType(positionTicket) == ORDER_TYPE_SELL
+         ) {
+            openPositionCount++;
+         }
       }
+
    }
 
    if(openPositionCount >= InpT4OrderGridCount) {
-      maxSellPositionsAreOpenState = true;
+      maxT4SellPositionsAreOpenState = true;
    }
 }
 //+------------------------------------------------------------------+
@@ -120,18 +125,18 @@ void setT4SellPositionIsOpen() {
 
    long positionTicket = 0;
 
-   if(sellPositionIsOpenState == false) {
-       for(int positionTicketsId = 0; positionTicketsId < ArraySize(positionTickets); positionTicketsId++) {
-          positionTicket = positionTickets[positionTicketsId];
-          if(
-             positionTicket > 0
-             && PositionSymbol(positionTicket) == Symbol()
-             && PositionMagicNumber(positionTicket) == InpMagicNumber
-             && PositionType(positionTicket) == ORDER_TYPE_SELL
-          ) {
-             sellPositionIsOpenState = true;
-          }
-       }
+   if(t4trendDirection == TREND_DIRECTION_SHORT && sellT4PositionIsOpenState == false) {
+      for(int positionTicketsId = 0; positionTicketsId < ArraySize(positionTickets); positionTicketsId++) {
+         positionTicket = positionTickets[positionTicketsId];
+         if(
+            positionTicket > 0
+            && PositionSymbol(positionTicket) == Symbol()
+            && PositionMagicNumber(positionTicket) == InpMagicNumber
+            && PositionType(positionTicket) == ORDER_TYPE_SELL
+         ) {
+            sellT4PositionIsOpenState = true;
+         }
+      }
    }
 }
 
@@ -140,7 +145,7 @@ void setT4AllSellPositionsAreClosedState() {
    long positionTicket = 0;
    bool minOneSellPositionIsOpen = false;
 
-   if(sellPositionIsOpenState == true) {
+   if(sellT4PositionIsOpenState == true) {
       for(int positionTicketsId = 0; positionTicketsId < ArraySize(positionTickets); positionTicketsId++) {
          positionTicket = positionTickets[positionTicketsId];
          if(
@@ -154,9 +159,9 @@ void setT4AllSellPositionsAreClosedState() {
       }
 
       if(minOneSellPositionIsOpen == false) {
-         allSellPositionsAreClosedState = true;
+         allT4SellPositionsAreClosedState = true;
       } else {
-         allSellPositionsAreClosedState = false;
+         allT4SellPositionsAreClosedState = false;
       }
    }
 }

@@ -27,6 +27,14 @@ void initializeT4GlobalsAction() {
 
    t4trendDirection = TREND_DIRECTION_ROTATION;
 
+   buyT4PositionIsOpenState = false;
+   maxT4BuyPositionsAreOpenState = false;
+   allT4BuyPositionsAreClosedState = false;
+
+   sellT4PositionIsOpenState = false;
+   maxT4SellPositionsAreOpenState = false;
+   allT4SellPositionsAreClosedState = false;
+
    t4OKDateTime = 0;
 
    t4AlertRegressionChannelLevel = 0;
@@ -90,6 +98,9 @@ void initializeT4ArraysAction() {
    convertInpT4StringsToArray();
 }
 
+//+------------------------------------------------------------------+
+//|                                                                  |
+//+------------------------------------------------------------------+
 void convertInpT4StringsToArray() {
    StringSplit(InpT4FiboLevels, StringGetCharacter(",", 0), t4FiboLevelsArray);
 

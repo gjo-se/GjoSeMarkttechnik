@@ -15,13 +15,13 @@ string comment;
 
 bool  t3IsTradabelButtonState;
 
-bool  buyPositionIsOpenState;
-bool  maxBuyPositionsAreOpenState;
-bool  allBuyPositionsAreClosedState;
+bool  buyT3PositionIsOpenState;
+bool  maxT3BuyPositionsAreOpenState;
+bool  allT3BuyPositionsAreClosedState;
 
-bool  sellPositionIsOpenState;
-bool  maxSellPositionsAreOpenState;
-bool  allSellPositionsAreClosedState;
+bool  sellT3PositionIsOpenState;
+bool  maxT3SellPositionsAreOpenState;
+bool  allT3SellPositionsAreClosedState;
 
 datetime t3StartDateTime;
 datetime t3p1DateTime;

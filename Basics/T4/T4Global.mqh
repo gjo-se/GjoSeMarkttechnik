@@ -6,6 +6,14 @@
 
 bool  t4IsTradabelButtonState;
 
+bool  buyT4PositionIsOpenState;
+bool  maxT4BuyPositionsAreOpenState;
+bool  allT4BuyPositionsAreClosedState;
+
+bool  sellT4PositionIsOpenState;
+bool  maxT4SellPositionsAreOpenState;
+bool  allT4SellPositionsAreClosedState;
+
 datetime t4StartDateTime;
 datetime t4p1DateTime;
 double t4p1ValueHigh;
@@ -86,3 +94,4 @@ double      t4TrailingStopLevel;
 
 double      t4RegressionChannelStopLossLineLevel;
 
+//+------------------------------------------------------------------+

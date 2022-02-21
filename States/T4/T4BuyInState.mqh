@@ -22,7 +22,7 @@ bool getT4BuyInSignal() {
    if(!TerminalInfoInteger(TERMINAL_TRADE_ALLOWED) || !MQLInfoInteger(MQL_TRADE_ALLOWED)) signal = false;
    if(t4trendDirection != TREND_DIRECTION_LONG) signal = false;
    if(t4IsTradabelButtonState == false) signal = false;
-   if(maxBuyPositionsAreOpenState == true) signal = false;
+   if(maxT4BuyPositionsAreOpenState == true) signal = false;
 
 
 //   if(getT4BidGreaterLongReEntryAreaFilter() == true) return false;
@@ -54,7 +54,7 @@ bool getT4BidGreaterLongEntryLevelSignal() {
 
    if(Bid() < t4LongEntryValue) t4LongIsTradable = true;
 
-   if(buyPositionIsOpenState == false && t4LongIsTradable == true && Bid() >= t4LongEntryValue) {
+   if(buyT4PositionIsOpenState == false && t4LongIsTradable == true && Bid() >= t4LongEntryValue) {
       signal = true;
       t4LongIsTradable = false;
    }
@@ -66,7 +66,7 @@ bool getT4BidTriggerLongGridLimitOrderSignal() {
 
    bool signal = false;
 
-   if(buyPositionIsOpenState) {
+   if(buyT4PositionIsOpenState) {
       for(int orderGridLimitOrderValueId = 0; orderGridLimitOrderValueId < ArraySize(t4OrderGridLimitOrderValuesArray); orderGridLimitOrderValueId++) {
          if(t4OrderGridLimitOrderValuesArray[orderGridLimitOrderValueId] != EMPTY_VALUE
                && Bid() < t4OrderGridLimitOrderValuesArray[orderGridLimitOrderValueId]) {
@@ -83,7 +83,7 @@ bool getT4BidTriggerLongGridStopOrderSignal() {
 
    bool signal = false;
 
-   if(buyPositionIsOpenState) {
+   if(buyT4PositionIsOpenState) {
       for(int orderGridStopOrderValueId = 0; orderGridStopOrderValueId < ArraySize(t4OrderGridStopOrderValuesArray); orderGridStopOrderValueId++) {
          if(t4OrderGridStopOrderValuesArray[orderGridStopOrderValueId] != EMPTY_VALUE
                && Bid() > t4OrderGridStopOrderValuesArray[orderGridStopOrderValueId]) {

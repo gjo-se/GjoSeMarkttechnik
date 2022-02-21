@@ -75,8 +75,8 @@ void t3CommentAction(string pVersion) {
    comment += "Alert FiboRetracement: " + DoubleToString(t3AlertFiboRetracementLevel, 2) + "\n";
    comment += "Alert t3IsSellRegressionAlertSendable: " + (string)t3IsSellRegressionAlertSendable + "\n";
    comment += "\n";
-   comment += "INSignalArea MIN: " + DoubleToString(t3InSignalFiboLevelAreaMinEndValue, Digits()) + " - "+ DoubleToString(t3InSignalRegressionChannelAreaMinEndValue, Digits()) + " - " + DoubleToString(t3InSignalAreaMinEndValue, Digits()) + "\n";
-   comment += "INSignalArea MAX: " + DoubleToString(t3InSignalFiboLevelAreaMaxEndValue, Digits()) + " - "+ DoubleToString(t3InSignalRegressionChannelAreaMaxEndValue, Digits()) + " - " + DoubleToString(t3InSignalAreaMaxEndValue, Digits()) + "\n";
+   comment += "INSignalArea MIN: " + DoubleToString(t3InSignalFiboLevelAreaMinEndValue, Digits()) + " - " + DoubleToString(t3InSignalRegressionChannelAreaMinEndValue, Digits()) + " - " + DoubleToString(t3InSignalAreaMinEndValue, Digits()) + "\n";
+   comment += "INSignalArea MAX: " + DoubleToString(t3InSignalFiboLevelAreaMaxEndValue, Digits()) + " - " + DoubleToString(t3InSignalRegressionChannelAreaMaxEndValue, Digits()) + " - " + DoubleToString(t3InSignalAreaMaxEndValue, Digits()) + "\n";
 //   comment += "reEntryArea MIN: " + DoubleToString(t3ReEntryAreaMinStartValue, Digits()) + " - " + DoubleToString(t3ReEntryAreaMinEndValue, Digits()) + "\n";
 //   comment += "reEntryArea MAX: " + DoubleToString(t3ReEntryAreaMaxStartValue, Digits()) + " - " + DoubleToString(t3ReEntryAreaMaxEndValue, Digits()) + "\n";
    comment += "\n";
@@ -97,7 +97,6 @@ void t3CommentAction(string pVersion) {
    comment += "OutSideBar: " + TimeToString(outSideBarDateTime) + "\n";
    comment += "StopLossLineLevel: " + DoubleToString(t3StopLossLineLevel, Digits()) + "\n";
    comment += "TrailingStopLevel: " + DoubleToString(t3TrailingStopLevel, Digits()) + "\n";
-   comment += "t4RegressionChannelStopLossLineLevel: " + DoubleToString(t4RegressionChannelStopLossLineLevel, Digits()) + "\n";
 
 //   Comment(comment);
 }

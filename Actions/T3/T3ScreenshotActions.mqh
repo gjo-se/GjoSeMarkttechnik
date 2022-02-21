@@ -5,13 +5,15 @@
 //+------------------------------------------------------------------+
 
 void handleScreenshotAction() {
-
-    if(buyPositionIsOpenState || sellPositionIsOpenState) createScreenshot();
-    if(allBuyPositionsAreClosedState || allSellPositionsAreClosedState) createScreenshot();
+   if(buyT3PositionIsOpenState || sellT3PositionIsOpenState) createScreenshot();
+   if(allT3BuyPositionsAreClosedState || allT3SellPositionsAreClosedState) createScreenshot();
 }
 //+------------------------------------------------------------------+
 
-void createScreenshot(){
+//+------------------------------------------------------------------+
+//|                                                                  |
+//+------------------------------------------------------------------+
+void createScreenshot() {
    string screenShotName = "Screenshots/" + Symbol() + "-" + (string)(int)TimeCurrent() + ".png";
    int    width = 1000;
    int    heigth = 800;
@@ -19,3 +21,4 @@ void createScreenshot(){
       Alert("konnte Screenshot nicht erstellen" + screenShotName);
    }
 }
+//+------------------------------------------------------------------+

@@ -18,13 +18,13 @@ void initializeT3GlobalsAction() {
 
    t3IsTradabelButtonState = ObjectGetInteger(0, T3_IS_TRADEABLE_BUTTON, OBJPROP_STATE);
 
-   buyPositionIsOpenState = false;
-   maxBuyPositionsAreOpenState = false;
-   allBuyPositionsAreClosedState = false;
+   buyT3PositionIsOpenState = false;
+   maxT3BuyPositionsAreOpenState = false;
+   allT3BuyPositionsAreClosedState = false;
 
-   sellPositionIsOpenState = false;
-   maxSellPositionsAreOpenState = false;
-   allSellPositionsAreClosedState = false;
+   sellT3PositionIsOpenState = false;
+   maxT3SellPositionsAreOpenState = false;
+   allT3SellPositionsAreClosedState = false;
 
    t3StartDateTime = 0;
    t3p1DateTime = 0;
@@ -44,9 +44,6 @@ void initializeT3GlobalsAction() {
    t3EndDateTime = 0;
 
    t3trendDirection = TREND_DIRECTION_ROTATION;
-
-   t4StartDateTime = 0;
-   t4OKDateTime = 0;
 
    objectHasChanged = false;
 
@@ -98,14 +95,9 @@ void initializeT3GlobalsAction() {
    t3LongEntryValue = 0;
    t3LongIsTradable = false;
 
-
-//   bidGreaterLowestLowAndOffsetSignal = false;
-//   bidLowerHighestHighAndOffsetSignal = false;
-
    outSideBarDateTime = 0;
    t3StopLossLineLevel = 0;
    t3TrailingStopLevel = 0;
-   t4RegressionChannelStopLossLineLevel = 0;
 }
 
 void initializeT3ArraysAction() {
