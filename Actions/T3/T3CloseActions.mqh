@@ -23,10 +23,10 @@ void closeOnT3StopLossLine() {
             PositionSymbol(positionTicket) == Symbol()
             && PositionMagicNumber(positionTicket) == InpMagicNumber
          ) {
-            if(PositionType(positionTicket) == ORDER_TYPE_BUY && Bid() < t3StopLossLineLevel) {
+            if(t3trendDirection == TREND_DIRECTION_LONG && PositionType(positionTicket) == ORDER_TYPE_BUY && Bid() < t3StopLossLineLevel) {
                Trade.Close(positionTicket, PositionVolume(positionTicket), T3_STOP_LOSS_TLINE);
             }
-            if(PositionType(positionTicket) == ORDER_TYPE_SELL && Bid() > t3StopLossLineLevel) {
+            if(t3trendDirection == TREND_DIRECTION_SHORT && PositionType(positionTicket) == ORDER_TYPE_SELL && Bid() > t3StopLossLineLevel) {
                Trade.Close(positionTicket, PositionVolume(positionTicket), T3_STOP_LOSS_TLINE);
             }
          }
