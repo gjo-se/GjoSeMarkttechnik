@@ -86,6 +86,11 @@ void OnTick() {
 
    (NewCurrentBar()) ? isNewCurrentBar = true : isNewCurrentBar = false;
 
+   if(MQLInfoInteger(MQL_VISUAL_MODE) == 1) {
+      setT3LineValues();
+      setT4LineValues();
+   }
+
    handleT3StatesAction();
    handleT4StatesAction();
    setT3PositionStates();

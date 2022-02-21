@@ -5,7 +5,7 @@
 
 void createT3FiboRetracement() {
 
-   if(t3p4DateTime != 0) {
+   if(t3p4DateTime != 0 && (int)t3p4DateTime < (int) TimeCurrent()) {
 
       datetime t3EndDatetime = 0;
       if(t3EndDateTime == 0) t3EndDatetime = iTime(Symbol(), PERIOD_CURRENT, InpT3ChannelEndShift);

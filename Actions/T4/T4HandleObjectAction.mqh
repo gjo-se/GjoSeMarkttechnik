@@ -196,7 +196,7 @@ double getT4P4HighLowValueByTrendDirection() {
 
 void setT4HighestHighDateTime() {
 
-   if(t4IsBidHigherInSignalAreaMinEndValue == true && t4IsTradabelButtonState == true) {
+   if((int)t4p4DateTime < (int) TimeCurrent() && t4IsBidHigherInSignalAreaMinEndValue == true && t4IsTradabelButtonState == true) {
       int startCandleShift = iBarShift(Symbol(), Period(), t4p4DateTime);
       if(t4HighestHighVLineDateTime == 0) createT4HighestHighVLine();
       if(t4HighestHighVLineDateTime != 0) startCandleShift = iBarShift(Symbol(), Period(), t4HighestHighVLineDateTime);
@@ -216,7 +216,7 @@ void setT4HighestHighDateTime() {
 
 void setT4LowestLowDateTime() {
 
-   if(t4IsBidLowerInSignalAreaMaxEndValue == true && t4IsTradabelButtonState == true) {
+   if((int)t4p4DateTime < (int) TimeCurrent() && t4IsBidLowerInSignalAreaMaxEndValue == true && t4IsTradabelButtonState == true) {
       int startCandleShift = iBarShift(Symbol(), Period(), t4p4DateTime);
       if(t4LowestLowVLineDateTime == 0) createT4LowestLowVLine();
       if(t4LowestLowVLineDateTime != 0) startCandleShift = iBarShift(Symbol(), Period(), t4LowestLowVLineDateTime);
