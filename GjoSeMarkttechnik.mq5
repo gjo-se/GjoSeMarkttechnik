@@ -20,6 +20,7 @@
    1.7.1 fixed diverse
    1.7.2 fixed InSignalArea & Btoon OFF
    1.7.3 remove LONG LL & EntryLevel
+   2.0   add T4
 
    ===============
 
@@ -28,7 +29,8 @@
 //+------------------------------------------------------------------+
 //| Includes                                                         |
 //+------------------------------------------------------------------+
-#include "Basics\\Includes.mqh"
+#include "Basics\\T3\\T3Includes.mqh"
+#include "Basics\\T4\\T4Includes.mqh"
 
 //+------------------------------------------------------------------+
 //| Headers                                                          |
@@ -36,7 +38,7 @@
 #property copyright   "2022, GjoSe"
 #property link        "http://www.gjo-se.com"
 #property description "GjoSe Markttechnik"
-#define   VERSION "1.7.3"
+#define   VERSION "2.0"
 #property version VERSION
 #property strict
 
@@ -46,24 +48,35 @@
 int OnInit() {
 
    initializeEAAction();
-   initializeGlobalsAction();
-   initializeArraysAction();
+   initializeT3GlobalsAction();
+   initializeT4GlobalsAction();
+   initializeT3ArraysAction();
+   initializeT4ArraysAction();
 
-   setLineValues();
+   setT3LineValues();
+   setT4LineValues();
    getT3TrendDirection();
+   getT4TrendDirection();
 
-   handleObjectsAction();
-   commentAction(VERSION);
+   t3HandleObjectsAction();
+   t4HandleObjectsAction();
+   if(InpT3ShowCommentDashboard) t3CommentAction(VERSION);
+   if(InpT3ShowCommentDashboard) t4CommentAction(VERSION);
 
    if(MQLInfoInteger(MQL_TESTER) == 1) {
 
-      isTradabelButtonState = true;
+      t3IsTradabelButtonState = true;
+      t4IsTradabelButtonState = true;
 
       if(MQLInfoInteger(MQL_VISUAL_MODE) != 1) {
          t3p1DateTime = InpT3p1DateTime;
          t3p2DateTime = InpT3p2DateTime;
          t3p3DateTime = InpT3p3DateTime;
          t3p4DateTime = InpT3p4DateTime;
+         t4p1DateTime = InpT4p1DateTime;
+         t4p2DateTime = InpT4p2DateTime;
+         t4p3DateTime = InpT4p3DateTime;
+         t4p4DateTime = InpT4p4DateTime;
       }
    }
 
@@ -74,21 +87,36 @@ void OnTick() {
 
    (NewCurrentBar()) ? isNewCurrentBar = true : isNewCurrentBar = false;
 
-   handleStatesAction();
-   setPositionStates();
+   if(MQLInfoInteger(MQL_VISUAL_MODE) == 1) {
+      setT3LineValues();
+      setT4LineValues();
+   }
+
+   handleT3StatesAction();
+   handleT4StatesAction();
+   setT3PositionStates();
+   setT4PositionStates();
    handleScreenshotAction();
 
-   closeActions();
-   alertOnBidStopLossLineOffset();
+   closeT3Actions();
+   closeT4Actions();
+   t3AlertOnBidStopLossLineOffset();
+   t4AlertOnBidStopLossLineOffset();
 
-   handleObjectsAction();
-   commentAction(VERSION);
+   t3HandleObjectsAction();
+   t4HandleObjectsAction();
+   if(InpT3ShowCommentDashboard) t3CommentAction(VERSION);
+   if(InpT3ShowCommentDashboard) t4CommentAction(VERSION);
 
-   if(getBuyAlertRegressionSignal() == true) alertBuyRegressionAction();
-   if(getSellAlertRegressionSignal() == true) alertSellRegressionAction();
+   if(getT3BuyAlertRegressionSignal() == true) t3AlertBuyRegressionAction();
+   if(getT4BuyAlertRegressionSignal() == true) t4AlertBuyRegressionAction();
+   if(getT3SellAlertRegressionSignal() == true) t3AlertSellRegressionAction();
+   if(getT4SellAlertRegressionSignal() == true) t4AlertSellRegressionAction();
 
-   if(getBuyInSignal() == true) openBuyOrderAction();
-   if(getSellInSignal() == true) openSellOrderAction();
+   if(getT3BuyInSignal() == true) openT3BuyOrderAction();
+   if(getT4BuyInSignal() == true) openT4BuyOrderAction();
+   if(getT3SellInSignal() == true) openT3SellOrderAction();
+   if(getT4SellInSignal() == true) openT4SellOrderAction();
 
 //if(InpUseBreakEven == true) setBreakevenAction();
 //if(InpUseTrailing == true) setTrailingStopAction();
@@ -111,21 +139,29 @@ void OnChartEvent(const int id,
                   const string &sparam) {
 
    if(id == CHARTEVENT_OBJECT_DRAG) {
-      setLineValues();
+      setT3LineValues();
+      setT4LineValues();
       getT3TrendDirection();
+      getT4TrendDirection();
       objectHasChanged = true;
 
       if(sparam == T3_STOP_LOSS_TLINE) {
-         isBidStopLossLineOffsetAlertSendable = true;
-         isBidStopLossLineOffsetAlertSended = false;
+         t3IsBidStopLossLineOffsetAlertSendable = true;
+         t3IsBidStopLossLineOffsetAlertSended = false;
+      }
+      if(sparam == T4_STOP_LOSS_TLINE) {
+         t4IsBidStopLossLineOffsetAlertSendable = true;
+         t4IsBidStopLossLineOffsetAlertSended = false;
       }
    }
 
    if(id == CHARTEVENT_OBJECT_CLICK) {
-      if(sparam == IS_TRADEABLE_BUTTON) {
-         handleIsTradeableButton();
+      if(sparam == T3_IS_TRADEABLE_BUTTON) {
+         handleT3IsTradeableButton();
+      }
+      if(sparam == T4_IS_TRADEABLE_BUTTON) {
+         handleT4IsTradeableButton();
       }
    }
-
 }
 //+------------------------------------------------------------------+
