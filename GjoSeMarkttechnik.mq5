@@ -20,6 +20,7 @@
    1.7.1 fixed diverse
    1.7.2 fixed InSignalArea & Btoon OFF
    1.7.3 remove LONG LL & EntryLevel
+   2.0   add T4
 
    ===============
 
@@ -37,7 +38,7 @@
 #property copyright   "2022, GjoSe"
 #property link        "http://www.gjo-se.com"
 #property description "GjoSe Markttechnik"
-#define   VERSION "1.7.3"
+#define   VERSION "2.0"
 #property version VERSION
 #property strict
 
