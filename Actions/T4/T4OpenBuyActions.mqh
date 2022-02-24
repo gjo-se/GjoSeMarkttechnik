@@ -23,24 +23,26 @@ double getT4BuyTakeProfit() {
 
 double getT4BuyStopLoss() {
 
-   // Varainten in Settings setzen:
-   // Fix: in Punkten (InpT4StopLoss) // von Points in Level umrechnen:
+// Varainten in Settings setzen:
+// Fix: in Punkten (InpT4StopLoss) // von Points in Level umrechnen:
 
-   double stopLoss = t4LowestLowValue;
+   double stopLossLineValue = t4LongEntryValue - InpT4StopLoss * InpT4StopLossLineMulti * Point() ;
+   double stopLossMarketValue = t4LongEntryValue - InpT4StopLoss * InpT4StopLossMarketMulti * Point() ;
 
-   if(stopLoss > 0) AdjustAboveStopLevel(Symbol(), stopLoss);
+   if(stopLossLineValue > 0) AdjustBelowStopLevel(Symbol(), stopLossLineValue);
+   if(stopLossMarketValue > 0) AdjustBelowStopLevel(Symbol(), stopLossMarketValue);
 
-   createT4StopLossTrendline(stopLoss);
+   createT4StopLossTrendline(stopLossLineValue);
 
-   return stopLoss;
+   return stopLossMarketValue;
 }
 
 double getT4BuyVolume(double pLevel = 0) {
 
-   // TODO: Varianten laut Settings bauen
-   //  Fix:
-   // Risk % Balance
-   // getTradeSize(InpUseMoneyManagement, InpLotsPerEquity, InpFixedVolume);
+// TODO: Varianten laut Settings bauen
+//  Fix:
+// Risk % Balance
+// getTradeSize(InpUseMoneyManagement, InpLotsPerEquity, InpFixedVolume);
 
    double volume = 0;
    double maxPositionRiskValue = 0;
@@ -48,9 +50,10 @@ double getT4BuyVolume(double pLevel = 0) {
 
    if(pLevel == 0) pLevel = Bid();
 
-   // % Risk per Balance
+// % Risk per Balance
    maxPositionRiskValue = AccountInfoDouble(ACCOUNT_BALANCE) * InpMaxPositionRiskPercent / 100 / InpT4OrderGridCount;
-   positionPointRisk = (pLevel - t4LowestLowValue) / Point() * getPointValueBySymbol(Symbol());
+   double stopLossLineValue = t4LongEntryValue - InpT4StopLoss * InpT4StopLossLineMulti * Point() ;
+   positionPointRisk = (pLevel - stopLossLineValue) / Point() * getPointValueBySymbol(Symbol());
    volume = maxPositionRiskValue / positionPointRisk;
 
    return volume;
