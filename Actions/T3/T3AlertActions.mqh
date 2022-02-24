@@ -61,44 +61,34 @@ void t3CommentAction(string pVersion) {
 
    comment = "\n\n";
    comment += "EA Version: " + pVersion + "\n";
-   comment += "T3: " + "\n";
-   comment += "Tradabel Button State: " + IntegerToString(t3IsTradabelButtonState) + "\n";
    if(!TerminalInfoInteger(TERMINAL_TRADE_ALLOWED)) comment += "TERMINAL_TRADE_ALLOWED: OFF" + "\n";
    if(!MQLInfoInteger(MQL_TRADE_ALLOWED)) comment += "MQL_TRADE_ALLOWED: OFF" + "\n";
-   comment += "T3 Direction: " + getT3TrendDirectionString() + "\n";
-   comment += "T3 Start: " + TimeToString(t3StartDateTime) + "\n";
-   comment += "T3 P1: " + TimeToString(t3p1DateTime) + " - " + DoubleToString(getT3P1HighLowValueByTrendDirection(), Digits()) + "\n";
-   comment += "T3 P2: " + TimeToString(t3p2DateTime) + " - " + DoubleToString(getT3P2HighLowValueByTrendDirection(), Digits()) + "\n";
-   comment += "T3 P3: " + TimeToString(t3p3DateTime) + " - " + DoubleToString(getT3P3HighLowValueByTrendDirection(), Digits()) + "\n";
-   comment += "T3 P4: " + TimeToString(t3p4DateTime) + " - " + DoubleToString(getT3P4HighLowValueByTrendDirection(), Digits()) + "\n";
-   comment += "Alert RegressionChannel: " + DoubleToString(t3AlertRegressionChannelLevel, 2) + "\n";
-   comment += "Alert FiboRetracement: " + DoubleToString(t3AlertFiboRetracementLevel, 2) + "\n";
-   comment += "Alert t3IsSellRegressionAlertSendable: " + (string)t3IsSellRegressionAlertSendable + "\n";
-   comment += "\n";
-   comment += "INSignalArea MIN: " + DoubleToString(t3InSignalFiboLevelAreaMinEndValue, Digits()) + " - " + DoubleToString(t3InSignalRegressionChannelAreaMinEndValue, Digits()) + " - " + DoubleToString(t3InSignalAreaMinEndValue, Digits()) + "\n";
-   comment += "INSignalArea MAX: " + DoubleToString(t3InSignalFiboLevelAreaMaxEndValue, Digits()) + " - " + DoubleToString(t3InSignalRegressionChannelAreaMaxEndValue, Digits()) + " - " + DoubleToString(t3InSignalAreaMaxEndValue, Digits()) + "\n";
-//   comment += "reEntryArea MIN: " + DoubleToString(t3ReEntryAreaMinStartValue, Digits()) + " - " + DoubleToString(t3ReEntryAreaMinEndValue, Digits()) + "\n";
-//   comment += "reEntryArea MAX: " + DoubleToString(t3ReEntryAreaMaxStartValue, Digits()) + " - " + DoubleToString(t3ReEntryAreaMaxEndValue, Digits()) + "\n";
-   comment += "\n";
-   comment += "SHORT: " + "\n";
-   comment += "t3HighestHighIsInSignalArea : " + IntegerToString(t3HighestHighIsInSignalArea) + "\n";
-   comment += "t3ShortIsTradable: " + IntegerToString(t3ShortIsTradable) + "\n";
-   comment += "HihgestHighVLineDateTime: " + TimeToString(t3HighestHighVLineDateTime) + "\n";
-   comment += "HihgestHigh: " + TimeToString(t3HighestHighDateTime) + " - " + DoubleToString(iHigh(Symbol(), PERIOD_CURRENT, iBarShift(Symbol(), PERIOD_CURRENT, t3HighestHighDateTime)), Digits()) + "\n";
-   comment += "ShortEntry: " + TimeToString(t3HighestHighDateTime) + " - " + DoubleToString(t3ShortEntryValue, Digits()) + "\n";
-   comment += "\n";
-   comment += "LONG: " + "\n";
-   comment += "t3LowestLowIsInSignalArea : " + IntegerToString(t3LowestLowIsInSignalArea) + "\n";
-   comment += "t3LongIsTradable: " + IntegerToString(t3LongIsTradable) + "\n";
-   comment += "LowestLowVLineDateTime: " + TimeToString(t3LowestLowVLineDateTime) + "\n";
-   comment += "LowestLow: " + TimeToString(t3LowestLowDateTime) + " - " + DoubleToString(t3LowestLowValue, Digits()) + "\n";
-   comment += "LongEntry: " + TimeToString(t3LowestLowDateTime) + " - " + DoubleToString(t3LongEntryValue, Digits()) + "\n";
-   comment += "\n";
-   comment += "OutSideBar: " + TimeToString(outSideBarDateTime) + "\n";
-   comment += "StopLossLineLevel: " + DoubleToString(t3StopLossLineLevel, Digits()) + "\n";
-   comment += "TrailingStopLevel: " + DoubleToString(t3TrailingStopLevel, Digits()) + "\n";
+   comment = "\n";
+   if(t3p1DateTime) {
+      comment += "T3: " + "\n";
+      comment += "Tradabel Button State: " + IntegerToString(t3IsTradabelButtonState) + "\n";
+      if(t3AlertRegressionChannelLevel != 0) comment += "Alert RegressionChannel: " + DoubleToString(t3AlertRegressionChannelLevel, 2) + "\n";
+      if(t3AlertFiboRetracementLevel != 0) comment += "Alert FiboRetracement: " + DoubleToString(t3AlertFiboRetracementLevel, 2) + "\n";
+      comment += "\n";
 
-//   Comment(comment);
+      if(getT3TrendDirectionString() == "LONG") {
+         comment += "LONG: " + "\n";
+         comment += "t3LongIsTradable: " + IntegerToString(t3LongIsTradable) + "\n";
+         comment += "LowestLowVLineDateTime: " + TimeToString(t3LowestLowVLineDateTime) + "\n";
+         comment += "LowestLow: " + " - " + DoubleToString(t3LowestLowValue, Digits()) + "\n";
+         comment += "LongEntry: " + " - " + DoubleToString(t3LongEntryValue, Digits()) + "\n";
+      }
+      if(getT3TrendDirectionString() == "SHORT") {
+         comment += "SHORT: " + "\n";
+         comment += "t3ShortIsTradable: " + IntegerToString(t3ShortIsTradable) + "\n";
+         comment += "HihgestHighVLineDateTime: " + TimeToString(t3HighestHighVLineDateTime) + "\n";
+         comment += "HihgestHigh: " + " - " + DoubleToString(iHigh(Symbol(), PERIOD_CURRENT, iBarShift(Symbol(), PERIOD_CURRENT, t3HighestHighDateTime)), Digits()) + "\n";
+         comment += "ShortEntry: " + " - " + DoubleToString(t3ShortEntryValue, Digits()) + "\n";
+      }
+      comment += "\n";
+      comment += "StopLossLineLevel: " + DoubleToString(t3StopLossLineLevel, Digits()) + "\n";
+      if(outSideBarDateTime != 0) comment += "OutSideBar: " + TimeToString(outSideBarDateTime) + "\n";
+   }
 }
 
 //+------------------------------------------------------------------+

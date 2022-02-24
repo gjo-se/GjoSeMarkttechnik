@@ -121,7 +121,8 @@ void t4HandleObjectsAction() {
          objectHasChanged = false;
       }
 
-      t4StopLossLineLevel = ObjectGetValueByTime(0, T4_STOP_LOSS_TLINE, iTime(Symbol(), Period(), 0));
+      double t4StopLossLineLevelLocal = ObjectGetValueByTime(0, T4_STOP_LOSS_TLINE, iTime(Symbol(), Period(), 0));
+      if(t4StopLossLineLevelLocal != 0) t4StopLossLineLevel = t4StopLossLineLevelLocal;      
 
       handleInsideBars();
 

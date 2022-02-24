@@ -9,7 +9,9 @@ input int               InpT4MinRegressionChannelLevel = 0; // T4 Min Regression
 input int               InpT4MaxRegressionChannelLevel = 0; // T4 Max RegressionChannel
 input int               InpT4MinFiboRetracmentLevel = 0; // T4 Min FiboRetracment
 input int               InpT4MaxFiboRetracmentLevel = 0; // T4 Max FiboRetracment
-input int               InpT4StopLoss = 0; // StopLoss
+input int               InpT4StopLoss = 0; // T4 StopLoss
+input double            InpT4StopLossLineMulti = 1.2; // T4 StopLossLine Multi
+input double            InpT4StopLossMarketMulti = 1.3; // T4 StopLossMarket Multi
 
 input group             "------------------------------ T4 Alerts ---------------------------"
 input int               InpT4AlertOnRegressionChannelLevel = 0;

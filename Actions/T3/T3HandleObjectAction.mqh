@@ -121,7 +121,8 @@ void t3HandleObjectsAction() {
          objectHasChanged = false;
       }
 
-      t3StopLossLineLevel = ObjectGetValueByTime(0, T3_STOP_LOSS_TLINE, iTime(Symbol(), Period(), 0));
+      double t3StopLossLineLevelLocal = ObjectGetValueByTime(0, T3_STOP_LOSS_TLINE, iTime(Symbol(), Period(), 0));
+      if(t3StopLossLineLevelLocal != 0) t3StopLossLineLevel = t3StopLossLineLevelLocal;
 
       handleInsideBars();
 

@@ -23,24 +23,26 @@ double getT3BuyTakeProfit() {
 
 double getT3BuyStopLoss() {
 
-   // Varainten in Settings setzen:
-   // Fix: in Punkten (InpT3StopLoss) // von Points in Level umrechnen:
+// Varainten in Settings setzen:
+// Fix: in Punkten (InpT3StopLoss) // von Points in Level umrechnen:
 
-   double stopLoss = t3LowestLowValue;
+   double stopLossLineValue = t3LongEntryValue - InpT3StopLoss * InpT3StopLossLineMulti * Point() ;
+   double stopLossMarketValue = t3LongEntryValue - InpT3StopLoss * InpT3StopLossMarketMulti * Point() ;
 
-   if(stopLoss > 0) AdjustAboveStopLevel(Symbol(), stopLoss);
+   if(stopLossLineValue > 0) AdjustBelowStopLevel(Symbol(), stopLossLineValue);
+   if(stopLossMarketValue > 0) AdjustBelowStopLevel(Symbol(), stopLossMarketValue);
 
-   createT3StopLossTrendline(stopLoss);
+   createT3StopLossTrendline(stopLossLineValue);
 
-   return stopLoss;
+   return stopLossMarketValue;
 }
 
 double getT3BuyVolume(double pLevel = 0) {
 
-   // TODO: Varianten laut Settings bauen
-   //  Fix:
-   // Risk % Balance
-   // getTradeSize(InpUseMoneyManagement, InpLotsPerEquity, InpFixedVolume);
+// TODO: Varianten laut Settings bauen
+//  Fix:
+// Risk % Balance
+// getTradeSize(InpUseMoneyManagement, InpLotsPerEquity, InpFixedVolume);
 
    double volume = 0;
    double maxPositionRiskValue = 0;
@@ -48,9 +50,10 @@ double getT3BuyVolume(double pLevel = 0) {
 
    if(pLevel == 0) pLevel = Bid();
 
-   // % Risk per Balance
+// % Risk per Balance
    maxPositionRiskValue = AccountInfoDouble(ACCOUNT_BALANCE) * InpMaxPositionRiskPercent / 100 / InpT3OrderGridCount;
-   positionPointRisk = (pLevel - t3LowestLowValue) / Point() * getPointValueBySymbol(Symbol());
+   double stopLossLineValue = t3LongEntryValue - InpT3StopLoss * InpT3StopLossLineMulti * Point() ;
+   positionPointRisk = (pLevel - stopLossLineValue) / Point() * getPointValueBySymbol(Symbol());
    volume = maxPositionRiskValue / positionPointRisk;
 
    return volume;
@@ -60,3 +63,4 @@ double getT3BuyVolume(double pLevel = 0) {
 double getPointValueBySymbol(string pPositionSymbol) {
    return SymbolInfoDouble(Symbol(), SYMBOL_TRADE_TICK_VALUE) / SymbolInfoDouble(Symbol(), SYMBOL_TRADE_TICK_SIZE) * Point();
 }
+//+------------------------------------------------------------------+

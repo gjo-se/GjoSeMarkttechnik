@@ -9,7 +9,9 @@ input int               InpT3MinRegressionChannelLevel = 0; // T3 Min Regression
 input int               InpT3MaxRegressionChannelLevel = 0; // T3 Max RegressionChannel
 input int               InpT3MinFiboRetracmentLevel = 0; // T3 Min FiboRetracment
 input int               InpT3MaxFiboRetracmentLevel = 0; // T3 Max FiboRetracment
-input int               InpT3StopLoss = 0; // StopLoss
+input int               InpT3StopLoss = 0; // T3 StopLoss
+input double            InpT3StopLossLineMulti = 1.2; // T3 StopLossLine Multi
+input double            InpT3StopLossMarketMulti = 1.3; // T3 StopLossMarket Multi
 
 input group             "------------------------------ T3 Alerts ---------------------------"
 input int               InpT3AlertOnRegressionChannelLevel = 0;
