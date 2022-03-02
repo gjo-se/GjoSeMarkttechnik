@@ -10,6 +10,7 @@
 void  closeT3Actions() {
    closeOnT3StopLossLine();
    closeOnT3TrailingStopMA();
+   if(InpT3UseMarketTrailingStop == true) closeOnT3MarketTrailingStop();
 }
 
 void closeOnT3StopLossLine() {
@@ -56,4 +57,18 @@ void closeOnT3TrailingStopMA() {
          }
       }
    }
+}
+
+void closeOnT3MarketTrailingStop() {
+
+   double trailingStop = InpT3StopLoss * InpT3MarketTrailingStopMulti;
+   long positionTicket = 0;
+
+   if(t3ProfitLevelGreaterMinProfitFiboRetracmentLevel == true) {
+       for(int positionTicketId = 0; positionTicketId < ArraySize(positionTickets); positionTicketId++) {
+          positionTicket = positionTickets[positionTicketId];
+          Trail.TrailingStop(positionTicket, (int)trailingStop);
+       }
+   }
+
 }
