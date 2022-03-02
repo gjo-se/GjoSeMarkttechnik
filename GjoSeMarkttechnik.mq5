@@ -22,6 +22,7 @@
    1.7.3 remove LONG LL & EntryLevel
    2.0   add T4
    2.1   changed stopLossLineValue incl OffsetMulti
+   2.2   added closeOnT3TrailingStopMA
 
    ===============
 
@@ -39,7 +40,7 @@
 #property copyright   "2022, GjoSe"
 #property link        "http://www.gjo-se.com"
 #property description "GjoSe Markttechnik"
-#define   VERSION "2.1"
+#define   VERSION "2.2"
 #property version VERSION
 #property strict
 
@@ -94,7 +95,6 @@ void OnTick() {
       setT4LineValues();
    }
 
-   handleT3Indictaors();
    handleT3StatesAction();
    handleT4StatesAction();
    setT3PositionStates();
