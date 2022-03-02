@@ -40,7 +40,7 @@ void closeOnT3TrailingStopMA() {
 
    long     positionTicket = 0;
 
-   if(t3ProfitLevelGreaterMinProfitFiboRetracmentLevel == true && trailingStopMABuffer[0] != 0) {
+   if(InpT3trailingStopMATimeframe == Period() && t3ProfitLevelGreaterMinProfitFiboRetracmentLevel == true && trailingStopMABuffer[0] != 0) {
       for(int positionTicketsId = 0; positionTicketsId < ArraySize(positionTickets); positionTicketsId++) {
          positionTicket = positionTickets[positionTicketsId];
          if(
