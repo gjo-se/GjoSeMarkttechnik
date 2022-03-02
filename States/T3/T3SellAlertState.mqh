@@ -16,9 +16,6 @@ bool getT3SellAlertRegressionSignal() {
    if(getT3SellRegressionIsGreaterAlertOnRegressionChannelSignal()) signal = true;
    if(getT3TrendIsNotShortFilter() == true) signal = false;
 
-   //if(signal) Print("getT3SellAlertRegressionSignal: " + signal);
-
-
    return(signal);
 
 }

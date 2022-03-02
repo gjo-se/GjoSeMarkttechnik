@@ -112,8 +112,6 @@ bool spreadGreaterThanMaxSpreadBuyInFilter() {
 
    bool filter = true;
 
-//   if(Spread() <= InpMaxSpread) Print("Spread: " + Spread());
-
    if(Spread() < InpMaxSpread) {
       filter = false;
    }

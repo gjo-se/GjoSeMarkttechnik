@@ -13,10 +13,6 @@ void initializeEAAction() {
 
 void initializeT3GlobalsAction() {
 
-// Indicators
-   initializeArray(trailingStopMABuffer);
-   trailingStopMAHandle = 0;
-
    isNewCurrentBar = false;
    comment = "";
 
@@ -115,6 +111,10 @@ void initializeT3ArraysAction() {
 }
 
 void initializeT3IndicatorsAction() {
+
+// Indicators
+   initializeArray(trailingStopMABuffer);
+   trailingStopMAHandle = 0;
 
    int sglSLowMAShift = 0;
    int subWindow = 0;

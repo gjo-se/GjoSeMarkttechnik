@@ -83,9 +83,7 @@ void createT4OrderGridTrendLines() {
    double orderGridStopOrderValue = 0;
 
    ArrayResize(t4OrderGridLimitOrderValuesArray, 0);
-   deleteTrendLineObject(T4_ORDER_GRID_LIMIT_TLINE);
    ArrayResize(t4OrderGridStopOrderValuesArray, 0);
-   deleteTrendLineObject(T4_ORDER_GRID_STOP_TLINE);
 
    if(t4trendDirection == TREND_DIRECTION_LONG) {
 

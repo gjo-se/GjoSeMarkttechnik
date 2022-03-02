@@ -45,11 +45,11 @@ void t3HandleObjectsAction() {
             }
          }
 
-         if(t3LowestLowDateTime == 0 || maxT3BuyPositionsAreOpenState == true) {
-            deleteTrendLineObject(T3_LOWEST_LOW_TLINE);
-            deleteTrendLineObject(T3_LONG_ENTRY_TLINE);
-            deleteTrendLineObject(T3_ORDER_GRID_LIMIT_TLINE);
-            deleteTrendLineObject(T3_ORDER_GRID_STOP_TLINE);
+         if(maxT3BuyPositionsAreOpenState == true) {
+            deleteTrendLine(T3_LOWEST_LOW_TLINE);
+            deleteTrendLine(T3_LONG_ENTRY_TLINE);
+            deleteTrendLineLike(T3_ORDER_GRID_LIMIT_TLINE);
+            deleteTrendLineLike(T3_ORDER_GRID_STOP_TLINE);
          }
 
 //         if(InpT4RegressionChannelShow == true) {
@@ -83,11 +83,11 @@ void t3HandleObjectsAction() {
             }
          }
 
-         if(t3HighestHighDateTime == 0 || maxT3SellPositionsAreOpenState == true) {
-            deleteTrendLineObject(T3_HIGHEST_HIGH_TLINE);
-            deleteTrendLineObject(T3_SHORT_ENTRY_TLINE);
-            deleteTrendLineObject(T3_ORDER_GRID_LIMIT_TLINE);
-            deleteTrendLineObject(T3_ORDER_GRID_STOP_TLINE);
+         if(maxT3SellPositionsAreOpenState == true) {
+            deleteTrendLine(T3_HIGHEST_HIGH_TLINE);
+            deleteTrendLine(T3_SHORT_ENTRY_TLINE);
+            deleteTrendLineLike(T3_ORDER_GRID_LIMIT_TLINE);
+            deleteTrendLineLike(T3_ORDER_GRID_STOP_TLINE);
          }
 
 //         if(InpT4RegressionChannelShow == true) {
@@ -110,7 +110,7 @@ void t3HandleObjectsAction() {
             createt3InSignalRegressionChannelArea();
             createT3ReEntryArea();
          } else {
-            deleteTrendLineObject(T3_TRENDLINE);
+            deleteTrendLineLike(T3_TRENDLINE);
             deleteRegressionChannelObject(T3_REGRESSION_CHANNEL);
             deleteFiboLevelsObject(T3_FIBO_LEVELS);
             deleteChannelObject(T3_IN_SIGNAL_FIBO_LEVEL_AREA);
@@ -127,7 +127,7 @@ void t3HandleObjectsAction() {
       handleInsideBars();
 
    } else {
-      deleteTrendLineObject(T3_TRENDLINE);
+      deleteTrendLineLike(T3_TRENDLINE);
       deleteRegressionChannelObject(T3_REGRESSION_CHANNEL);
       deleteChannelObject(T3_IN_SIGNAL_FIBO_LEVEL_AREA);
       deleteChannelObject(T3_IN_SIGNAL_REGRESSION_CHANNEL_AREA);
@@ -136,7 +136,7 @@ void t3HandleObjectsAction() {
 
    if(allT3BuyPositionsAreClosedState || allT3SellPositionsAreClosedState) {
       if(InpT3SetIsTradabelButtonStateAfterClose == true) setT3IsTradeableButtonFalse();
-      deleteTrendLineObject(T3_STOP_LOSS_TLINE);
+      deleteTrendLine(T3_STOP_LOSS_TLINE);
    }
 
 }
@@ -216,8 +216,8 @@ void handleInsideBars() {
          || lastClose < iLow(Symbol(), InpInsideBarTimeframe, iBarShift(Symbol(), InpInsideBarTimeframe, outSideBarDateTime))
       ) {
          outSideBarDateTime = 0;
-         deleteTrendLineObject(T3_INSIDEBAR_TOP_TLINE);
-         deleteTrendLineObject(T3_INSIDEBAR_BUTTOM_TLINE);
+         deleteTrendLine(T3_INSIDEBAR_TOP_TLINE);
+         deleteTrendLine(T3_INSIDEBAR_BUTTOM_TLINE);
       }
    }
 }

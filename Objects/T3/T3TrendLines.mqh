@@ -81,10 +81,8 @@ void createT3OrderGridTrendLines() {
    double orderGridLimitOrderValue = 0;
    double orderGridStopOrderValue = 0;
 
-   ArrayResize(t3OrderGridLimitOrderValuesArray, 0);
-   deleteTrendLineObject(T3_ORDER_GRID_LIMIT_TLINE);
-   ArrayResize(t3OrderGridStopOrderValuesArray, 0);
-   deleteTrendLineObject(T3_ORDER_GRID_STOP_TLINE);
+   initializeArray(t3OrderGridLimitOrderValuesArray);
+   initializeArray(t3OrderGridStopOrderValuesArray);
 
    if(t3trendDirection == TREND_DIRECTION_LONG) {
 
@@ -133,13 +131,9 @@ void createT3OrderGridTrendLines() {
          t3OrderGridLimitOrderValuesArray[ArraySize(t3OrderGridLimitOrderValuesArray) - 1] = orderGridLimitOrderValue;
       }
    }
-
-
-
-
 }
 
-void deleteTrendLineObject(const string pDimension) {
+void deleteTrendLineLike(const string pObjectNamePart) {
 
    long chartId = ChartID();
    int objectsTotal = ObjectsTotal(chartId, 0, -1);
@@ -147,7 +141,7 @@ void deleteTrendLineObject(const string pDimension) {
    string objectName;
    for(int i = objectsTotal; i >= 0; i--) {
       objectName = ObjectName(chartId, i);
-      if ( StringFind(objectName, pDimension) != -1 ) {
+      if ( StringFind(objectName, pObjectNamePart) != -1 ) {
          ObjectDelete(chartId, objectName);
       }
    }

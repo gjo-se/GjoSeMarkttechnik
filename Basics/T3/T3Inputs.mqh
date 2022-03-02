@@ -60,7 +60,8 @@ input ENUM_TIMEFRAMES   InpInsideBarTimeframe = PERIOD_CURRENT;
 input color             InpInsideBarLineColor = clrBlue;
 input double            InpInsideBarMaxStopLossMulti = 0.5;
 input group             "---------- Trailing ---------"
-input bool              InpUseTrailing = false;
+input bool              InpT3UseMarketTrailingStop = true;
+input double            InpT3MarketTrailingStopMulti = 1.5;
 input color             InpT3TailingStopLineColor = clrRed;
 input ENUM_TIMEFRAMES   InpT3trailingStopMATimeframe = PERIOD_M10;
 input int               InpT3trailingStopMAPeriod = 50;

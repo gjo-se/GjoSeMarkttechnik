@@ -46,10 +46,10 @@ void t4HandleObjectsAction() {
          }
 
          if(t4LowestLowDateTime == 0 || maxT4BuyPositionsAreOpenState == true) {
-            deleteTrendLineObject(T4_LOWEST_LOW_TLINE);
-            deleteTrendLineObject(T4_LONG_ENTRY_TLINE);
-            deleteTrendLineObject(T4_ORDER_GRID_LIMIT_TLINE);
-            deleteTrendLineObject(T4_ORDER_GRID_STOP_TLINE);
+            deleteTrendLine(T4_LOWEST_LOW_TLINE);
+            deleteTrendLine(T4_LONG_ENTRY_TLINE);
+            deleteTrendLineLike(T4_ORDER_GRID_LIMIT_TLINE);
+            deleteTrendLineLike(T4_ORDER_GRID_STOP_TLINE);
          }
 
 //         if(InpT4RegressionChannelShow == true) {
@@ -84,10 +84,10 @@ void t4HandleObjectsAction() {
          }
 
          if(t4HighestHighDateTime == 0 || maxT4SellPositionsAreOpenState == true) {
-            deleteTrendLineObject(T4_HIGHEST_HIGH_TLINE);
-            deleteTrendLineObject(T4_SHORT_ENTRY_TLINE);
-            deleteTrendLineObject(T4_ORDER_GRID_LIMIT_TLINE);
-            deleteTrendLineObject(T4_ORDER_GRID_STOP_TLINE);
+            deleteTrendLine(T4_HIGHEST_HIGH_TLINE);
+            deleteTrendLine(T4_SHORT_ENTRY_TLINE);
+            deleteTrendLineLike(T4_ORDER_GRID_LIMIT_TLINE);
+            deleteTrendLineLike(T4_ORDER_GRID_STOP_TLINE);
          }
 
 //         if(InpT4RegressionChannelShow == true) {
@@ -110,7 +110,7 @@ void t4HandleObjectsAction() {
             createt4InSignalRegressionChannelArea();
             createT4ReEntryArea();
          } else {
-            deleteTrendLineObject(T4_TRENDLINE);
+            deleteTrendLineLike(T4_TRENDLINE);
             deleteRegressionChannelObject(T4_REGRESSION_CHANNEL);
             deleteFiboLevelsObject(T4_FIBO_LEVELS);
             deleteChannelObject(T4_IN_SIGNAL_FIBO_LEVEL_AREA);
@@ -127,7 +127,7 @@ void t4HandleObjectsAction() {
       handleInsideBars();
 
    } else {
-      deleteTrendLineObject(T4_TRENDLINE);
+      deleteTrendLineLike(T4_TRENDLINE);
       deleteRegressionChannelObject(T4_REGRESSION_CHANNEL);
       deleteChannelObject(T4_IN_SIGNAL_FIBO_LEVEL_AREA);
       deleteChannelObject(T4_IN_SIGNAL_REGRESSION_CHANNEL_AREA);
@@ -136,7 +136,7 @@ void t4HandleObjectsAction() {
 
    if(allT4BuyPositionsAreClosedState || allT4SellPositionsAreClosedState) {
       if(InpT4SetIsTradabelButtonStateAfterClose == true) setT4IsTradeableButtonFalse();
-      deleteTrendLineObject(T4_STOP_LOSS_TLINE);
+      deleteTrendLine(T4_STOP_LOSS_TLINE);
    }
 
 }

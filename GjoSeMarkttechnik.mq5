@@ -23,6 +23,7 @@
    2.0   add T4
    2.1   changed stopLossLineValue incl OffsetMulti
    2.2   added closeOnT3TrailingStopMA
+   2.3   added MarketTrailingStop
 
    ===============
 
@@ -40,7 +41,7 @@
 #property copyright   "2022, GjoSe"
 #property link        "http://www.gjo-se.com"
 #property description "GjoSe Markttechnik"
-#define   VERSION "2.2"
+#define   VERSION "2.3"
 #property version VERSION
 #property strict
 
@@ -50,11 +51,11 @@
 int OnInit() {
 
    initializeEAAction();
-   initializeT3IndicatorsAction();
    initializeT3GlobalsAction();
    initializeT4GlobalsAction();
    initializeT3ArraysAction();
    initializeT4ArraysAction();
+   initializeT3IndicatorsAction();
 
    setT3LineValues();
    setT4LineValues();
@@ -95,6 +96,7 @@ void OnTick() {
       setT4LineValues();
    }
 
+   handleT3Indictaors();
    handleT3StatesAction();
    handleT4StatesAction();
    setT3PositionStates();

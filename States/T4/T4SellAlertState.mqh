@@ -16,11 +16,7 @@ bool getT4SellAlertRegressionSignal() {
    if(getT4SellRegressionIsGreaterAlertOnRegressionChannelSignal()) signal = true;
    if(getT4TrendIsNotShortFilter() == true) signal = false;
 
-   //if(signal) Print("getT4SellAlertRegressionSignal: " + signal);
-
-
    return(signal);
-
 }
 
 bool getT4SellRegressionIsGreaterAlertOnRegressionChannelSignal() {
