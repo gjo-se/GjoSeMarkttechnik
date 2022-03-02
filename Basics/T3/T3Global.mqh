@@ -10,6 +10,10 @@ CTrailing   Trail;
 CTimer      Timer;
 CNewBar     NewBar;
 
+// Indicators
+double      trailingStopMABuffer[];
+int         trailingStopMAHandle;
+
 bool isNewCurrentBar;
 string comment;
 
@@ -76,6 +80,10 @@ bool   t3IsBidHigherInSignalAreaMinEndValue;
 bool   t3IsBidHigherInSignalAreaMaxEndValue;
 bool   t3HighestHighIsInSignalArea;
 bool   t3LowestLowIsInSignalArea;
+
+// OUTSIgnal
+double t3MinProfitFiboRetracmentLevel;
+bool   t3ProfitLevelGreaterMinProfitFiboRetracmentLevel;
 
 double t3ReEntryAreaMinStartValue;
 double t3ReEntryAreaMinEndValue;

@@ -49,6 +49,7 @@
 int OnInit() {
 
    initializeEAAction();
+   initializeT3IndicatorsAction();
    initializeT3GlobalsAction();
    initializeT4GlobalsAction();
    initializeT3ArraysAction();
@@ -93,6 +94,7 @@ void OnTick() {
       setT4LineValues();
    }
 
+   handleT3Indictaors();
    handleT3StatesAction();
    handleT4StatesAction();
    setT3PositionStates();

@@ -72,6 +72,13 @@ void createT3FiboRetracement() {
                t3ReEntryAreaMaxEndValue = t3InSignalFiboLevelAreaMaxEndValue;
             }
          }
+
+          if(level == InpT3MinProfitFiboRetracmentLevel) {
+             lineWidth = 2;
+             levelColor = clrRed;
+             t3MinProfitFiboRetracmentLevel = t3FiboLevelValue;
+          }
+
          createTrendLine(T3_FIBO_LEVELS + DoubleToString(level, 1), t3p3DateTime, t3FiboLevelValue, iTime(Symbol(), PERIOD_CURRENT, 0), t3FiboLevelValue, levelColor, lineWidth, style, " " + DoubleToString(level, 1) + "%");
       }
    }
