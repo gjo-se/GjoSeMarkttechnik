@@ -13,6 +13,10 @@ void initializeEAAction() {
 
 void initializeT3GlobalsAction() {
 
+// Indicators
+   initializeArray(trailingStopMABuffer);
+   trailingStopMAHandle = 0;
+
    isNewCurrentBar = false;
    comment = "";
 
@@ -76,6 +80,10 @@ void initializeT3GlobalsAction() {
    t3HighestHighIsInSignalArea = false;
    t3LowestLowIsInSignalArea = false;
 
+   // OUTSIgnal
+   t3MinProfitFiboRetracmentLevel = 0;
+   t3ProfitLevelGreaterMinProfitFiboRetracmentLevel = false;
+
    t3ReEntryAreaMinStartValue = 0;
    t3ReEntryAreaMinEndValue = 0;
    t3ReEntryAreaMaxStartValue = 0;
@@ -104,6 +112,17 @@ void initializeT3ArraysAction() {
 
    initializeArray(positionTickets);
    convertInpT3StringsToArray();
+}
+
+void initializeT3IndicatorsAction() {
+
+   int sglSLowMAShift = 0;
+   int subWindow = 0;
+
+   if(InpT3trailingStopMATimeframe != Period()) Alert(Symbol() + " - Timeframe passt nicht zu InpT3trailingStopMATimeframe");
+   trailingStopMAHandle=iMA(Symbol(), InpT3trailingStopMATimeframe, InpT3trailingStopMAPeriod, sglSLowMAShift,MODE_SMA, PRICE_CLOSE);
+   ChartIndicatorAdd(ChartID(),subWindow,trailingStopMAHandle);
+
 }
 
 void convertInpT3StringsToArray() {
@@ -147,6 +166,11 @@ void convertInpT3StringsToArray() {
    if(InpT3MinReEntryFiboRetracmentLevel != 0) {
       ArrayResize(t3FiboLevelsArray, ArraySize(t3FiboLevelsArray) + 1);
       t3FiboLevelsArray[ArraySize(t3FiboLevelsArray) - 1] = (string)InpT3MinReEntryFiboRetracmentLevel;
+   }
+
+   if(InpT3MinProfitFiboRetracmentLevel != 0) {
+      ArrayResize(t3FiboLevelsArray, ArraySize(t3FiboLevelsArray) + 1);
+      t3FiboLevelsArray[ArraySize(t3FiboLevelsArray) - 1] = (string)InpT3MinProfitFiboRetracmentLevel;
    }
 }
 //+------------------------------------------------------------------+

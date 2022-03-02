@@ -56,6 +56,24 @@ void setT3Action() {
          t3IsBidHigherInSignalAreaMaxEndValue = true;
       }
    }
+   if(t3trendDirection == TREND_DIRECTION_LONG) {
+      if(t3LowestLowVLineDateTime != 0) {
+         double t3MaxProfitLevel = iHigh(Symbol(), Period(), iHighest( Symbol(), Period(), MODE_HIGH,  iBarShift(Symbol(), Period(), t3LowestLowVLineDateTime) + 1));
+         if(t3MinProfitFiboRetracmentLevel != 0 && t3MaxProfitLevel >= t3MinProfitFiboRetracmentLevel) t3ProfitLevelGreaterMinProfitFiboRetracmentLevel = true;
+      } else {
+         t3ProfitLevelGreaterMinProfitFiboRetracmentLevel = false;
+      }
+   }
+
+   if(t3trendDirection == TREND_DIRECTION_SHORT) {
+      if(t3HighestHighVLineDateTime != 0) {
+         double t3MaxProfitLevel = iLow(Symbol(), Period(), iLowest( Symbol(), Period(), MODE_LOW,  iBarShift(Symbol(), Period(), t3HighestHighVLineDateTime) + 1));
+         if(t3MinProfitFiboRetracmentLevel != 0 && t3MaxProfitLevel <= t3MinProfitFiboRetracmentLevel) t3ProfitLevelGreaterMinProfitFiboRetracmentLevel = true;
+      } else {
+         t3ProfitLevelGreaterMinProfitFiboRetracmentLevel = false;
+      }
+   }
+
 }
 
 void resetT3Action() {

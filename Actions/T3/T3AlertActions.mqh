@@ -63,7 +63,7 @@ void t3CommentAction(string pVersion) {
    comment += "EA Version: " + pVersion + "\n";
    if(!TerminalInfoInteger(TERMINAL_TRADE_ALLOWED)) comment += "TERMINAL_TRADE_ALLOWED: OFF" + "\n";
    if(!MQLInfoInteger(MQL_TRADE_ALLOWED)) comment += "MQL_TRADE_ALLOWED: OFF" + "\n";
-   comment = "\n";
+   comment += "\n";
    if(t3p1DateTime) {
       comment += "T3: " + "\n";
       comment += "Tradabel Button State: " + IntegerToString(t3IsTradabelButtonState) + "\n";

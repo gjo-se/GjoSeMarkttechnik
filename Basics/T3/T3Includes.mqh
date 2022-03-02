@@ -20,6 +20,7 @@
 #include "T3Global.mqh"
 #include "..\\..\\Actions\\T3\\T3AlertActions.mqh"
 #include "..\\..\\Actions\\T3\\T3CloseActions.mqh"
+#include "..\\..\\Actions\\T3\\T3HandleIndicators.mqh"
 #include "..\\..\\Actions\\T3\\T3HandleObjectAction.mqh"
 #include "..\\..\\Actions\\T3\\T3InitializeActions.mqh"
 #include "..\\..\\Actions\\T3\\T3OpenBuyActions.mqh"
