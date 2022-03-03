@@ -6,11 +6,11 @@
 
 void handleT3Indictaors() {
 
-   ArraySetAsSeries(trailingStopMABuffer, true);
+   ArraySetAsSeries(t3TrailingStopMABuffer, true);
    int bufferNumber = 0;
    int start = 0;
    int toCopy = 1;
-   CopyBuffer(trailingStopMAHandle, bufferNumber, start, toCopy, trailingStopMABuffer);
+   CopyBuffer(t3TrailingStopMAHandle, bufferNumber, start, toCopy, t3TrailingStopMABuffer);
 
 }
 //+------------------------------------------------------------------+

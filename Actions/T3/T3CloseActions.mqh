@@ -41,17 +41,17 @@ void closeOnT3TrailingStopMA() {
 
    long     positionTicket = 0;
 
-   if(InpT3trailingStopMATimeframe == Period() && t3ProfitLevelGreaterMinProfitFiboRetracmentLevel == true && trailingStopMABuffer[0] != 0) {
+   if(InpT3trailingStopMATimeframe == Period() && t3ProfitLevelGreaterMinProfitFiboRetracmentLevel == true && t3TrailingStopMABuffer[0] != 0) {
       for(int positionTicketsId = 0; positionTicketsId < ArraySize(positionTickets); positionTicketsId++) {
          positionTicket = positionTickets[positionTicketsId];
          if(
             PositionSymbol(positionTicket) == Symbol()
             && PositionMagicNumber(positionTicket) == InpMagicNumber
          ) {
-            if(t3trendDirection == TREND_DIRECTION_LONG && Bid() < trailingStopMABuffer[0]) {
+            if(t3trendDirection == TREND_DIRECTION_LONG && Bid() < t3TrailingStopMABuffer[0]) {
                Trade.Close(positionTicket, PositionVolume(positionTicket), "Close on trailingStopMA");
             }
-            if(t3trendDirection == TREND_DIRECTION_SHORT && Bid() > trailingStopMABuffer[0]) {
+            if(t3trendDirection == TREND_DIRECTION_SHORT && Bid() > t3TrailingStopMABuffer[0]) {
                Trade.Close(positionTicket, PositionVolume(positionTicket), "Close on trailingStopMA");
             }
          }

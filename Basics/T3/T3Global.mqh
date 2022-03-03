@@ -11,8 +11,8 @@ CTimer      Timer;
 CNewBar     NewBar;
 
 // Indicators
-double      trailingStopMABuffer[];
-int         trailingStopMAHandle;
+double      t3TrailingStopMABuffer[];
+int         t3TrailingStopMAHandle;
 
 bool isNewCurrentBar;
 string comment;

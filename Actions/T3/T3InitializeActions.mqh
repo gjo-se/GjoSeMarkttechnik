@@ -113,17 +113,15 @@ void initializeT3ArraysAction() {
 
 void initializeT3IndicatorsAction() {
 
-// Indicators
-   initializeArray(trailingStopMABuffer);
-   trailingStopMAHandle = 0;
+   initializeArray(t3TrailingStopMABuffer);
+   t3TrailingStopMAHandle = 0;
 
    int sglSLowMAShift = 0;
    int subWindow = 0;
 
    if(InpT3trailingStopMATimeframe != Period()) Alert(Symbol() + " - Timeframe passt nicht zu InpT3trailingStopMATimeframe");
-   trailingStopMAHandle=iMA(Symbol(), InpT3trailingStopMATimeframe, InpT3trailingStopMAPeriod, sglSLowMAShift,MODE_SMA, PRICE_CLOSE);
-   ChartIndicatorAdd(ChartID(),subWindow,trailingStopMAHandle);
-
+   t3TrailingStopMAHandle=iMA(Symbol(), InpT3trailingStopMATimeframe, InpT3trailingStopMAPeriod, sglSLowMAShift,MODE_SMA, PRICE_CLOSE);
+   ChartIndicatorAdd(ChartID(),subWindow,t3TrailingStopMAHandle);
 }
 
 void convertInpT3StringsToArray() {
