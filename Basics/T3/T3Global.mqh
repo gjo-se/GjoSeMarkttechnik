@@ -47,7 +47,8 @@ datetime t3EndDateTime;
 int t3trendDirection;
 string t3FiboLevelsArray[];
 
-bool objectHasChanged;
+bool t3ObjectHasChanged;
+bool t4ObjectHasChanged;
 
 // Alerts
 double t3AlertRegressionChannelLevel;

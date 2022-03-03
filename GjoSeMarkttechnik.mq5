@@ -148,7 +148,8 @@ void OnChartEvent(const int id,
       setT4LineValues();
       getT3TrendDirection();
       getT4TrendDirection();
-      objectHasChanged = true;
+      t3ObjectHasChanged = true;
+      t4ObjectHasChanged = true;
 
       if(sparam == T3_STOP_LOSS_TLINE) {
          t3IsBidStopLossLineOffsetAlertSendable = true;

@@ -45,7 +45,8 @@ void initializeT3GlobalsAction() {
 
    t3trendDirection = TREND_DIRECTION_ROTATION;
 
-   objectHasChanged = false;
+   t3ObjectHasChanged = false;
+   t4ObjectHasChanged = false;
 
    t3AlertRegressionChannelLevel = 0;
    t3AlertFiboRetracementLevel = 0;

@@ -100,7 +100,7 @@ void t3HandleObjectsAction() {
 //         }
       }
 
-      if(isNewCurrentBar == true || objectHasChanged == true) {
+      if(isNewCurrentBar == true || t3ObjectHasChanged == true) {
          if(Period() <= InpT3MaxTimeframe) {
             createT3TrendLines();
             createT3RegressionChannel();
@@ -118,7 +118,7 @@ void t3HandleObjectsAction() {
             deleteChannelObject(T3_RE_ENTRY_AREA);
          }
 
-         objectHasChanged = false;
+         t3ObjectHasChanged = false;
       }
 
       double t3StopLossLineLevelLocal = ObjectGetValueByTime(0, T3_STOP_LOSS_TLINE, iTime(Symbol(), Period(), 0));

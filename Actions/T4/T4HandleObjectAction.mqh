@@ -100,7 +100,7 @@ void t4HandleObjectsAction() {
 //         }
       }
 
-      if(isNewCurrentBar == true || objectHasChanged == true) {
+      if(isNewCurrentBar == true || t4ObjectHasChanged == true) {
          if(Period() <= InpT4MaxTimeframe) {
             createT4TrendLines();
             createT4RegressionChannel();
@@ -118,7 +118,7 @@ void t4HandleObjectsAction() {
             deleteChannelObject(T4_RE_ENTRY_AREA);
          }
 
-         objectHasChanged = false;
+         t4ObjectHasChanged = false;
       }
 
       double t4StopLossLineLevelLocal = ObjectGetValueByTime(0, T4_STOP_LOSS_TLINE, iTime(Symbol(), Period(), 0));
