@@ -104,7 +104,7 @@ void t4HandleObjectsAction() {
       }
 
       double t4StopLossLineLevelLocal = ObjectGetValueByTime(0, T4_STOP_LOSS_TLINE, iTime(Symbol(), Period(), 0));
-      if(t4StopLossLineLevelLocal != 0) t4StopLossLineLevel = t4StopLossLineLevelLocal;      
+      if(t4StopLossLineLevelLocal != 0) t4StopLossLineLevel = t4StopLossLineLevelLocal;
 
       handleInsideBars();
 
@@ -120,6 +120,18 @@ void t4HandleObjectsAction() {
    if(allT4BuyPositionsAreClosedState || allT4SellPositionsAreClosedState) {
       if(InpT4SetIsTradabelButtonStateAfterClose == true) setT4IsTradeableButtonFalse();
       deleteTrendLine(T4_STOP_LOSS_TLINE);
+   }
+
+// T4 LONG
+   if(t3HighestHighVLineDateTime != 0 && t4LowestLowVLineDateTime == 0) {
+      datetime highestHighDateTimeLocal = iTime(Symbol(), Period(), iHighest(Symbol(), Period(), MODE_HIGH,  iBarShift(Symbol(), Period(), t3HighestHighVLineDateTime) + 1));
+      if(t4p4DateTime != highestHighDateTimeLocal) createT4P4VLine();
+   }
+
+// T4 SHORT
+   if(t3LowestLowVLineDateTime != 0 && t4HighestHighVLineDateTime == 0) {
+      datetime lowestLowDateTimeLocal = iTime(Symbol(), Period(), iLowest(Symbol(), Period(), MODE_LOW,  iBarShift(Symbol(), Period(), t3LowestLowVLineDateTime) + 1));
+      if(t4p4DateTime != lowestLowDateTimeLocal) createT4P4VLine();
    }
 
 }
