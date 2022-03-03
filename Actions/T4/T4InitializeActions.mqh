@@ -98,6 +98,19 @@ void initializeT4ArraysAction() {
    convertInpT4StringsToArray();
 }
 
+void initializeT4IndicatorsAction() {
+
+   initializeArray(t4TrailingStopMABuffer);
+   t4TrailingStopMAHandle = 0;
+
+   int sglSLowMAShift = 0;
+   int subWindow = 0;
+
+   if(InpT4trailingStopMATimeframe != Period()) Alert(Symbol() + " - Timeframe passt nicht zu InpT4trailingStopMATimeframe");
+   t4TrailingStopMAHandle = iMA(Symbol(), InpT4trailingStopMATimeframe, InpT4trailingStopMAPeriod, sglSLowMAShift, MODE_SMA, PRICE_CLOSE);
+   ChartIndicatorAdd(ChartID(), subWindow, t4TrailingStopMAHandle);
+}
+
 //+------------------------------------------------------------------+
 //|                                                                  |
 //+------------------------------------------------------------------+
@@ -142,6 +155,11 @@ void convertInpT4StringsToArray() {
    if(InpT4MinReEntryFiboRetracmentLevel != 0) {
       ArrayResize(t4FiboLevelsArray, ArraySize(t4FiboLevelsArray) + 1);
       t4FiboLevelsArray[ArraySize(t4FiboLevelsArray) - 1] = (string)InpT4MinReEntryFiboRetracmentLevel;
+   }
+
+   if(InpT4MinProfitFiboRetracmentLevel != 0) {
+      ArrayResize(t4FiboLevelsArray, ArraySize(t4FiboLevelsArray) + 1);
+      t4FiboLevelsArray[ArraySize(t4FiboLevelsArray) - 1] = (string)InpT4MinProfitFiboRetracmentLevel;
    }
 }
 //+------------------------------------------------------------------+

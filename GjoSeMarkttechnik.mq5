@@ -56,6 +56,7 @@ int OnInit() {
    initializeT3ArraysAction();
    initializeT4ArraysAction();
    initializeT3IndicatorsAction();
+   initializeT4IndicatorsAction();
 
    setT3LineValues();
    setT4LineValues();
@@ -98,6 +99,7 @@ void OnTick() {
    }
 
    handleT3Indictaors();
+   handleT4Indictaors();
    handleT3StatesAction();
    handleT4StatesAction();
    setT3PositionStates();

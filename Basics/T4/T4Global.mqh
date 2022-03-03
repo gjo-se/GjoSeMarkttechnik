@@ -4,6 +4,10 @@
 //|                                             https://www.mql5.com |
 //+------------------------------------------------------------------+
 
+// Indicators
+double      t4TrailingStopMABuffer[];
+int         t4TrailingStopMAHandle;
+
 bool  t4IsTradabelButtonState;
 
 bool  buyT4PositionIsOpenState;
@@ -67,6 +71,10 @@ bool   t4IsBidHigherInSignalAreaMinEndValue;
 bool   t4IsBidHigherInSignalAreaMaxEndValue;
 bool   t4HighestHighIsInSignalArea;
 bool   t4LowestLowIsInSignalArea;
+
+// OUTSIgnal
+double t4MinProfitFiboRetracmentLevel;
+bool   t4ProfitLevelGreaterMinProfitFiboRetracmentLevel;
 
 double t4ReEntryAreaMinStartValue;
 double t4ReEntryAreaMinEndValue;

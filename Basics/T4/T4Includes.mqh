@@ -13,6 +13,7 @@
 #include "T4Global.mqh"
 #include "..\\..\\Actions\\T4\\T4AlertActions.mqh"
 #include "..\\..\\Actions\\T4\\T4CloseActions.mqh"
+#include "..\\..\\Actions\\T4\\T4HandleIndicators.mqh"
 #include "..\\..\\Actions\\T4\\T4HandleObjectAction.mqh"
 #include "..\\..\\Actions\\T4\\T4HandleStatesActions.mqh"
 #include "..\\..\\Actions\\T4\\T4InitializeActions.mqh"
