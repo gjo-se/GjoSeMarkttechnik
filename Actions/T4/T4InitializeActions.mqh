@@ -106,7 +106,9 @@ void initializeT4IndicatorsAction() {
    int sglSLowMAShift = 0;
    int subWindow = 0;
 
-   if(InpT4trailingStopMATimeframe != Period()) Alert(Symbol() + " - Timeframe passt nicht zu InpT4trailingStopMATimeframe");
+   if(InpT4ObjectsShow == true && InpT4trailingStopMATimeframe != Period()) {
+      Alert(Symbol() + " (" + getPeriodNameByPeriod(Period()) + ") - Timeframe passt nicht zu InpT4trailingStopMATimeframe (" + getPeriodNameByPeriod(InpT4trailingStopMATimeframe) + ")");
+   }
    t4TrailingStopMAHandle = iMA(Symbol(), InpT4trailingStopMATimeframe, InpT4trailingStopMAPeriod, sglSLowMAShift, MODE_SMA, PRICE_CLOSE);
    ChartIndicatorAdd(ChartID(), subWindow, t4TrailingStopMAHandle);
 }

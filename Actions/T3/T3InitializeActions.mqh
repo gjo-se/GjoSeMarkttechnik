@@ -77,7 +77,7 @@ void initializeT3GlobalsAction() {
    t3HighestHighIsInSignalArea = false;
    t3LowestLowIsInSignalArea = false;
 
-   // OUTSIgnal
+// OUTSIgnal
    t3MinProfitFiboRetracmentLevel = 0;
    t3ProfitLevelGreaterMinProfitFiboRetracmentLevel = false;
 
@@ -119,11 +119,16 @@ void initializeT3IndicatorsAction() {
    int sglSLowMAShift = 0;
    int subWindow = 0;
 
-   if(InpT3trailingStopMATimeframe != Period()) Alert(Symbol() + " - Timeframe passt nicht zu InpT3trailingStopMATimeframe");
-   t3TrailingStopMAHandle=iMA(Symbol(), InpT3trailingStopMATimeframe, InpT3trailingStopMAPeriod, sglSLowMAShift,MODE_SMA, PRICE_CLOSE);
-   ChartIndicatorAdd(ChartID(),subWindow,t3TrailingStopMAHandle);
+   if(InpT3ObjectsShow == true && InpT4ObjectsShow == false && InpT3trailingStopMATimeframe != Period()) {
+      Alert(Symbol() + " (" + getPeriodNameByPeriod(Period()) + ") - Timeframe passt nicht zu InpT3trailingStopMATimeframe (" + getPeriodNameByPeriod(InpT3trailingStopMATimeframe) + ")");
+   }
+   t3TrailingStopMAHandle = iMA(Symbol(), InpT3trailingStopMATimeframe, InpT3trailingStopMAPeriod, sglSLowMAShift, MODE_SMA, PRICE_CLOSE);
+   ChartIndicatorAdd(ChartID(), subWindow, t3TrailingStopMAHandle);
 }
 
+//+------------------------------------------------------------------+
+//|                                                                  |
+//+------------------------------------------------------------------+
 void convertInpT3StringsToArray() {
    StringSplit(InpT3FiboLevels, StringGetCharacter(",", 0), t3FiboLevelsArray);
 
