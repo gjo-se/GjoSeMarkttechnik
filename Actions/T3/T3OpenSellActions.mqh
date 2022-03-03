@@ -8,10 +8,11 @@
 //+------------------------------------------------------------------+
 void openT3SellOrderAction() {
 
+   Trade.MagicNumber(InpT3MagicNumber);
    Trade.FillType(SYMBOL_FILLING_FOK);
    Trade.Sell(Symbol(), VerifyVolume(Symbol(), getT3SellVolume()), getT3SellStopLoss(), getT3SellTakeProfit(), InpT3Comment);
 
-   cleanPositionTicketsArrayAction(positionTickets, InpMagicNumber);
+   cleanPositionTicketsArrayAction(positionTickets, InpT3MagicNumber);
    t3UseReEntryArea = true;
 }
 

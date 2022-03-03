@@ -35,7 +35,7 @@ void setT3AllBuyPositionsAreClosedState() {
          if(
             positionTicket > 0
             && PositionSymbol(positionTicket) == Symbol()
-            && PositionMagicNumber(positionTicket) == InpMagicNumber
+            && PositionMagicNumber(positionTicket) == InpT3MagicNumber
             && PositionType(positionTicket) == ORDER_TYPE_BUY
          ) {
             minOneBuyPositionIsOpen = true;
@@ -60,7 +60,7 @@ void setT3BuyPositionIsOpen() {
          if(
             positionTicket > 0
             && PositionSymbol(positionTicket) == Symbol()
-            && PositionMagicNumber(positionTicket) == InpMagicNumber
+            && PositionMagicNumber(positionTicket) == InpT3MagicNumber
             && PositionType(positionTicket) == ORDER_TYPE_BUY
          ) {
             buyT3PositionIsOpenState = true;
@@ -81,7 +81,7 @@ void setT3MaxBuyPositionsAreOpen() {
          if(
             positionTicket > 0
             && PositionSymbol(positionTicket) == Symbol()
-            && PositionMagicNumber(positionTicket) == InpMagicNumber
+            && PositionMagicNumber(positionTicket) == InpT3MagicNumber
             && PositionType(positionTicket) == ORDER_TYPE_BUY
          ) {
             openPositionCount++;
@@ -107,7 +107,7 @@ void setT3MaxSellPositionsAreOpen() {
          if(
             positionTicket > 0
             && PositionSymbol(positionTicket) == Symbol()
-            && PositionMagicNumber(positionTicket) == InpMagicNumber
+            && PositionMagicNumber(positionTicket) == InpT3MagicNumber
             && PositionType(positionTicket) == ORDER_TYPE_SELL
          ) {
             openPositionCount++;
@@ -132,7 +132,7 @@ void setT3SellPositionIsOpen() {
          if(
             positionTicket > 0
             && PositionSymbol(positionTicket) == Symbol()
-            && PositionMagicNumber(positionTicket) == InpMagicNumber
+            && PositionMagicNumber(positionTicket) == InpT3MagicNumber
             && PositionType(positionTicket) == ORDER_TYPE_SELL
          ) {
             sellT3PositionIsOpenState = true;
@@ -152,7 +152,7 @@ void setT3AllSellPositionsAreClosedState() {
          if(
             positionTicket > 0
             && PositionSymbol(positionTicket) == Symbol()
-            && PositionMagicNumber(positionTicket) == InpMagicNumber
+            && PositionMagicNumber(positionTicket) == InpT3MagicNumber
             && PositionType(positionTicket) == ORDER_TYPE_SELL
          ) {
             minOneSellPositionIsOpen = true;

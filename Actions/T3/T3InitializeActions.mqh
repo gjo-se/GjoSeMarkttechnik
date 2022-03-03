@@ -5,10 +5,7 @@
 //+------------------------------------------------------------------+
 
 void initializeEAAction() {
-
    Trade.Deviation(InpMaxSlippage);
-   Trade.MagicNumber(InpMagicNumber);
-
 }
 
 void initializeT3GlobalsAction() {

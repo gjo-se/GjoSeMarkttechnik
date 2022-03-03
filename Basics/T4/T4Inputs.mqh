@@ -26,6 +26,7 @@ input bool              InpT4SetIsTradabelButtonStateAfterClose = false; // nach
 
 input group             "------------------------------ T4 PRIO C ----------------"
 input string            InpT4Comment = "T4 MarktTechnik"; // T4 Comment
+input long              InpT4MagicNumber = 1619769104; // T4 MagicNumber
 input bool              InpT4ShowCommentDashboard = false;
 input bool              InpT4ObjectsShow = true;
 input ENUM_TIMEFRAMES   InpT4MaxTimeframe = PERIOD_H1;

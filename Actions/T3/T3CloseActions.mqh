@@ -23,7 +23,7 @@ void closeOnT3StopLossLine() {
          positionTicket = positionTickets[positionTicketsId];
          if(
             PositionSymbol(positionTicket) == Symbol()
-            && PositionMagicNumber(positionTicket) == InpMagicNumber
+            && PositionMagicNumber(positionTicket) == InpT3MagicNumber
          ) {
             if(t3trendDirection == TREND_DIRECTION_LONG && PositionType(positionTicket) == ORDER_TYPE_BUY && Bid() < t3StopLossLineLevel) {
                Trade.Close(positionTicket, PositionVolume(positionTicket), T3_STOP_LOSS_TLINE);
@@ -46,7 +46,7 @@ void closeOnT3TrailingStopMA() {
          positionTicket = positionTickets[positionTicketsId];
          if(
             PositionSymbol(positionTicket) == Symbol()
-            && PositionMagicNumber(positionTicket) == InpMagicNumber
+            && PositionMagicNumber(positionTicket) == InpT3MagicNumber
          ) {
             if(t3trendDirection == TREND_DIRECTION_LONG && PositionType(positionTicket) == ORDER_TYPE_BUY && Bid() < t3TrailingStopMABuffer[0]) {
                Trade.Close(positionTicket, PositionVolume(positionTicket), "Close on trailingStopMA");

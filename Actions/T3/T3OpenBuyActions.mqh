@@ -5,10 +5,11 @@
 //+------------------------------------------------------------------+
 void openT3BuyOrderAction() {
 
+   Trade.MagicNumber(InpT3MagicNumber);
    Trade.FillType(SYMBOL_FILLING_FOK);
    Trade.Buy(Symbol(), VerifyVolume(Symbol(), getT3BuyVolume()), getT3BuyStopLoss(), getT3BuyTakeProfit(), InpT3Comment);
 
-   cleanPositionTicketsArrayAction(positionTickets, InpMagicNumber);
+   cleanPositionTicketsArrayAction(positionTickets, InpT3MagicNumber);
    t3UseReEntryArea = true;
 }
 

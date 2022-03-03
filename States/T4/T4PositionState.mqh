@@ -35,7 +35,7 @@ void setT4AllBuyPositionsAreClosedState() {
          if(
             positionTicket > 0
             && PositionSymbol(positionTicket) == Symbol()
-            && PositionMagicNumber(positionTicket) == InpMagicNumber
+            && PositionMagicNumber(positionTicket) == InpT4MagicNumber
             && PositionType(positionTicket) == ORDER_TYPE_BUY
          ) {
             minOneBuyPositionIsOpen = true;
@@ -60,7 +60,7 @@ void setT4BuyPositionIsOpen() {
          if(
             positionTicket > 0
             && PositionSymbol(positionTicket) == Symbol()
-            && PositionMagicNumber(positionTicket) == InpMagicNumber
+            && PositionMagicNumber(positionTicket) == InpT4MagicNumber
             && PositionType(positionTicket) == ORDER_TYPE_BUY
          ) {
             buyT4PositionIsOpenState = true;
@@ -80,7 +80,7 @@ void setT4MaxBuyPositionsAreOpen() {
          if(
             positionTicket > 0
             && PositionSymbol(positionTicket) == Symbol()
-            && PositionMagicNumber(positionTicket) == InpMagicNumber
+            && PositionMagicNumber(positionTicket) == InpT4MagicNumber
             && PositionType(positionTicket) == ORDER_TYPE_BUY
          ) {
             openPositionCount++;
@@ -106,7 +106,7 @@ void setT4MaxSellPositionsAreOpen() {
          if(
             positionTicket > 0
             && PositionSymbol(positionTicket) == Symbol()
-            && PositionMagicNumber(positionTicket) == InpMagicNumber
+            && PositionMagicNumber(positionTicket) == InpT4MagicNumber
             && PositionType(positionTicket) == ORDER_TYPE_SELL
          ) {
             openPositionCount++;
@@ -131,7 +131,7 @@ void setT4SellPositionIsOpen() {
          if(
             positionTicket > 0
             && PositionSymbol(positionTicket) == Symbol()
-            && PositionMagicNumber(positionTicket) == InpMagicNumber
+            && PositionMagicNumber(positionTicket) == InpT4MagicNumber
             && PositionType(positionTicket) == ORDER_TYPE_SELL
          ) {
             sellT4PositionIsOpenState = true;
@@ -151,7 +151,7 @@ void setT4AllSellPositionsAreClosedState() {
          if(
             positionTicket > 0
             && PositionSymbol(positionTicket) == Symbol()
-            && PositionMagicNumber(positionTicket) == InpMagicNumber
+            && PositionMagicNumber(positionTicket) == InpT4MagicNumber
             && PositionType(positionTicket) == ORDER_TYPE_SELL
          ) {
             minOneSellPositionIsOpen = true;

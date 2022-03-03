@@ -26,7 +26,7 @@ input int               InpT3OrderGridCount = 5; // T3 Anzahl Grid Orders
 input bool              InpT3SetIsTradabelButtonStateAfterClose = false; // nach Close Button OFF
 
 input group             "------------------------------ T3 PRIO C ---------------------------"
-input long              InpMagicNumber = 1619769100; // T3 & T4 MagicNumber
+input long              InpT3MagicNumber = 1619769103; // T3 MagicNumber
 input string            InpT3Comment = "T3 MarktTechnik"; // T3 Comment
 input long              InpMaxSlippage = 3; // T3 & T4 max Slippage
 input bool              InpT3ShowCommentDashboard = true;
