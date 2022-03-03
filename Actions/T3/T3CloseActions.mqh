@@ -48,10 +48,10 @@ void closeOnT3TrailingStopMA() {
             PositionSymbol(positionTicket) == Symbol()
             && PositionMagicNumber(positionTicket) == InpMagicNumber
          ) {
-            if(t3trendDirection == TREND_DIRECTION_LONG && Bid() < t3TrailingStopMABuffer[0]) {
+            if(t3trendDirection == TREND_DIRECTION_LONG && PositionType(positionTicket) == ORDER_TYPE_BUY && Bid() < t3TrailingStopMABuffer[0]) {
                Trade.Close(positionTicket, PositionVolume(positionTicket), "Close on trailingStopMA");
             }
-            if(t3trendDirection == TREND_DIRECTION_SHORT && Bid() > t3TrailingStopMABuffer[0]) {
+            if(t3trendDirection == TREND_DIRECTION_SHORT && PositionType(positionTicket) == ORDER_TYPE_SELL && Bid() > t3TrailingStopMABuffer[0]) {
                Trade.Close(positionTicket, PositionVolume(positionTicket), "Close on trailingStopMA");
             }
          }
