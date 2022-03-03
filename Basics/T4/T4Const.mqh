@@ -30,7 +30,6 @@ const string   T4_INSIDEBAR_BUTTOM_TLINE = "T4InsideBarButtom";
 const string   T4_ORDER_GRID_LIMIT_TLINE = "T4OrderGridLimit";
 const string   T4_ORDER_GRID_STOP_TLINE = "T4OrderGridStop";
 
-//const string   T4_START_VLINE =           "T4-Start";
 const string   T4_OK_VLINE =              "T4-OK";
 //const string   T4_REGRESSION_CHANNEL =    "T4RegressionChannel";
 const string   T4_TRAILING_STOP_LINE =    "T4TrailingStopLine";

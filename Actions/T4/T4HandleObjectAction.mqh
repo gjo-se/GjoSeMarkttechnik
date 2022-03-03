@@ -51,15 +51,6 @@ void t4HandleObjectsAction() {
             deleteTrendLineLike(T4_ORDER_GRID_LIMIT_TLINE);
             deleteTrendLineLike(T4_ORDER_GRID_STOP_TLINE);
          }
-
-//         if(InpT4RegressionChannelShow == true) {
-//            if(buyPositionIsOpenState == true && t4StartDateTime == 0) createT4StartVLine();
-//            if(t4StartDateTime != 0) {
-//               createT4RegressionChannel();
-//               createT4RegressionChannelLevels();
-//               if(Bid() > (t4LongEntryValue + InpT4StopLoss * Point() * InpT4TrendOKOnMulti) && t4OKDateTime == 0) createT4OKVLine();
-//            }
-//         }
       }
 
       if(t4trendDirection == TREND_DIRECTION_SHORT) {
@@ -89,15 +80,6 @@ void t4HandleObjectsAction() {
             deleteTrendLineLike(T4_ORDER_GRID_LIMIT_TLINE);
             deleteTrendLineLike(T4_ORDER_GRID_STOP_TLINE);
          }
-
-//         if(InpT4RegressionChannelShow == true) {
-//            if(sellPositionIsOpenState == true && t4StartDateTime == 0) createT4StartVLine();
-//            if(t4StartDateTime != 0) {
-//               createT4RegressionChannel();
-//               createT4RegressionChannelLevels();
-//               if(Bid() < (t4ShortEntryValue - InpT4StopLoss * Point() * InpT4TrendOKOnMulti) && t4OKDateTime == 0) createT4OKVLine();
-//            }
-//         }
       }
 
       if(isNewCurrentBar == true || t4ObjectHasChanged == true) {
