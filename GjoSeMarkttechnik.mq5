@@ -94,6 +94,7 @@ void OnTick() {
    if(MQLInfoInteger(MQL_VISUAL_MODE) == 1) {
       setT3LineValues();
       setT4LineValues();
+      getT4TrendDirection();
    }
 
    handleT3Indictaors();
