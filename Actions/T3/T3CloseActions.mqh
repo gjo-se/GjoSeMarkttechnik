@@ -67,8 +67,17 @@ void closeOnT3MarketTrailingStop() {
    if(t3ProfitLevelGreaterMinProfitFiboRetracmentLevel == true) {
        for(int positionTicketId = 0; positionTicketId < ArraySize(positionTickets); positionTicketId++) {
           positionTicket = positionTickets[positionTicketId];
-          Trail.TrailingStop(positionTicket, (int)trailingStop);
+         if(
+            PositionSymbol(positionTicket) == Symbol()
+            && PositionMagicNumber(positionTicket) == InpT3MagicNumber
+         ) {
+            if(t3trendDirection == TREND_DIRECTION_LONG && PositionType(positionTicket) == ORDER_TYPE_BUY) {
+               Trail.TrailingStop(positionTicket, (int)trailingStop);
+            }
+            if(t3trendDirection == TREND_DIRECTION_SHORT && PositionType(positionTicket) == ORDER_TYPE_SELL) {
+               Trail.TrailingStop(positionTicket, (int)trailingStop);
+            }
+         }
        }
    }
-
 }

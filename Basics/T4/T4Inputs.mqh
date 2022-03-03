@@ -50,6 +50,8 @@ input int               InpT4RegressionChannelEndShift = 20;
 input int               InpT4StopLossOnRegressionChannelLevel = 120;
 input double            InpT4TrendOKOnMulti = 1.5;
 input group             "---------- Trailing ---------"
+input bool              InpT4UseMarketTrailingStop = true;
+input double            InpT4MarketTrailingStopMulti = 1.5;
 input color             InpT4TailingStopLineColor = clrRed;
 input ENUM_TIMEFRAMES   InpT4trailingStopMATimeframe = PERIOD_M1;
 input int               InpT4trailingStopMAPeriod = 50;
