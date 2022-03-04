@@ -126,9 +126,6 @@ void OnTick() {
    if(getT3SellInSignal() == true) openT3SellOrderAction();
    if(getT4SellInSignal() == true) openT4SellOrderAction();
 
-//if(InpUseBreakEven == true) setBreakevenAction();
-//if(InpUseTrailing == true) setTrailingStopAction();
-
 }
 
 //+------------------------------------------------------------------+
