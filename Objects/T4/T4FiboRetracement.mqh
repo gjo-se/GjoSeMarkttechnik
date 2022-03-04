@@ -35,9 +35,11 @@ void createT4FiboRetracement() {
             if(t4trendDirection == TREND_DIRECTION_LONG) {
                t4InSignalFiboLevelAreaMaxStartValue = t4FiboLevelValue;
                t4InSignalFiboLevelAreaMaxEndValue = t4FiboLevelValue;
+               t3ShortEntryValue = t4FiboLevelValue;
             } else {
                t4InSignalFiboLevelAreaMinStartValue = t4FiboLevelValue;
                t4InSignalFiboLevelAreaMinEndValue = t4FiboLevelValue;
+               t3LongEntryValue = t4FiboLevelValue;
             }
          }
 

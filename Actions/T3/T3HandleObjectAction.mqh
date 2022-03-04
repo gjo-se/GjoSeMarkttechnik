@@ -38,7 +38,6 @@ void t3HandleObjectsAction() {
 
             if(localT3LowestLowValue != 0) {
                t3LowestLowValue = localT3LowestLowValue;
-               t3LongEntryValue = t3LowestLowValue + InpT3StopLoss * Point();
                createT3LowestLowTrendLine();
                createT3LongEntryTrendLine();
                if(buyT3PositionIsOpenState == false) createT3OrderGridTrendLines();
@@ -67,7 +66,6 @@ void t3HandleObjectsAction() {
 
             if(localT3HighestHighValue != 0) {
                t3HighestHighValue = localT3HighestHighValue;
-               t3ShortEntryValue = t3HighestHighValue - InpT3StopLoss * Point();
                createT3HighestHighTrendLine();
                createT3ShortEntryTrendLine();
                if(sellT3PositionIsOpenState == false) createT3OrderGridTrendLines();

@@ -25,9 +25,9 @@ double getT3BuyStopLoss() {
 
 // Varainten in Settings setzen:
 // Fix: in Punkten (InpT3StopLoss) // von Points in Level umrechnen:
-
-   double stopLossLineValue = t3LongEntryValue - InpT3StopLoss * InpT3StopLossLineMulti * Point() ;
-   double stopLossMarketValue = t3LongEntryValue - InpT3StopLoss * InpT3StopLossMarketMulti * Point() ;
+   double minRegressionPoints = t3LongEntryValue / Point() - t3LowestLowValue / Point();
+   double stopLossLineValue = t3LongEntryValue - minRegressionPoints * InpT3StopLossLineMulti * Point() ;
+   double stopLossMarketValue = t3LongEntryValue - minRegressionPoints * InpT3StopLossMarketMulti * Point() ;
 
    if(stopLossLineValue > 0) AdjustBelowStopLevel(Symbol(), stopLossLineValue);
    if(stopLossMarketValue > 0) AdjustBelowStopLevel(Symbol(), stopLossMarketValue);
@@ -52,7 +52,8 @@ double getT3BuyVolume(double pLevel = 0) {
 
 // % Risk per Balance
    maxPositionRiskValue = AccountInfoDouble(ACCOUNT_BALANCE) * InpMaxPositionRiskPercent / 100 / InpT3OrderGridCount;
-   double stopLossLineValue = t3LongEntryValue - InpT3StopLoss * InpT3StopLossLineMulti * Point() ;
+   double minRegressionPoints = t3LongEntryValue / Point() - t3LowestLowValue / Point();
+   double stopLossLineValue = t3LongEntryValue - minRegressionPoints * InpT3StopLossLineMulti * Point() ;
    positionPointRisk = (pLevel - stopLossLineValue) / Point() * getPointValueBySymbol(Symbol());
    volume = maxPositionRiskValue / positionPointRisk;
 
