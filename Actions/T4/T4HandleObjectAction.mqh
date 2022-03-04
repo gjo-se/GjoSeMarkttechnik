@@ -38,7 +38,8 @@ void t4HandleObjectsAction() {
 
             if(localT4LowestLowValue != 0) {
                t4LowestLowValue = localT4LowestLowValue;
-               t4LongEntryValue = t4LowestLowValue + InpT4StopLoss * Point();
+               double minRegressionPoints = (getT4P4HighLowValueByTrendDirection() / Point() - t4LowestLowValue / Point()) * InpT4MinRegressionPercent / 100;
+               t4LongEntryValue = t4LowestLowValue + minRegressionPoints * Point();
                createT4LowestLowTrendLine();
                createT4LongEntryTrendLine();
                if(buyT4PositionIsOpenState == false) createT4OrderGridTrendLines();
@@ -67,7 +68,8 @@ void t4HandleObjectsAction() {
 
             if(localT4HighestHighValue != 0) {
                t4HighestHighValue = localT4HighestHighValue;
-               t4ShortEntryValue = t4HighestHighValue - InpT4StopLoss * Point();
+               double minRegressionPoints = (t4HighestHighValue / Point() - getT4P4HighLowValueByTrendDirection() / Point()) * InpT4MinRegressionPercent / 100;
+               t4ShortEntryValue = t4HighestHighValue - minRegressionPoints * Point();
                createT4HighestHighTrendLine();
                createT4ShortEntryTrendLine();
                if(sellT4PositionIsOpenState == false) createT4OrderGridTrendLines();

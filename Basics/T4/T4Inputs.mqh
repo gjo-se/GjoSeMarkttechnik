@@ -11,6 +11,7 @@ input int               InpT4MinFiboRetracmentLevel = 0; // T4 Min FiboRetracmen
 input int               InpT4MaxFiboRetracmentLevel = 0; // T4 Max FiboRetracment
 input int               InpT4MinProfitFiboRetracmentLevel = 0; // T4 Min Profit FiboRetracment Level
 input int               InpT4StopLoss = 0; // T4 StopLoss
+input int               InpT4MinRegressionPercent = 20; // T4 % minRegression for EntryLevel
 input double            InpT4StopLossLineMulti = 1.2; // T4 StopLossLine Multi
 input double            InpT4StopLossMarketMulti = 1.3; // T4 StopLossMarket Multi
 
