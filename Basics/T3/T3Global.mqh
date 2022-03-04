@@ -111,5 +111,4 @@ datetime    outSideBarDateTime;
 double      t3StopLossLineLevel;
 double      t3TrailingStopLevel;
 
-long  positionTickets[];
 //+------------------------------------------------------------------+

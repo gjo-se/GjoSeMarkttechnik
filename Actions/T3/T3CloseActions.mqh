@@ -19,8 +19,10 @@ void closeOnT3StopLossLine() {
    long     positionTicket = 0;
 
    if(t3StopLossLineLevel != 0) {
-      for(int positionTicketsId = 0; positionTicketsId < ArraySize(positionTickets); positionTicketsId++) {
-         positionTicket = positionTickets[positionTicketsId];
+      long positionTicketsLocal[];
+      Positions.GetTickets(InpT3MagicNumber, positionTicketsLocal);
+      for(int positionTicketsId = 0; positionTicketsId < ArraySize(positionTicketsLocal); positionTicketsId++) {
+         positionTicket = positionTicketsLocal[positionTicketsId];
          if(
             PositionSymbol(positionTicket) == Symbol()
             && PositionMagicNumber(positionTicket) == InpT3MagicNumber
@@ -42,8 +44,10 @@ void closeOnT3TrailingStopMA() {
    long     positionTicket = 0;
 
    if(InpT3trailingStopMATimeframe == Period() && t3ProfitLevelGreaterMinProfitFiboRetracmentLevel == true && t3TrailingStopMABuffer[0] != 0) {
-      for(int positionTicketsId = 0; positionTicketsId < ArraySize(positionTickets); positionTicketsId++) {
-         positionTicket = positionTickets[positionTicketsId];
+      long positionTicketsLocal[];
+      Positions.GetTickets(InpT3MagicNumber, positionTicketsLocal);
+      for(int positionTicketsId = 0; positionTicketsId < ArraySize(positionTicketsLocal); positionTicketsId++) {
+         positionTicket = positionTicketsLocal[positionTicketsId];
          if(
             PositionSymbol(positionTicket) == Symbol()
             && PositionMagicNumber(positionTicket) == InpT3MagicNumber
@@ -65,8 +69,10 @@ void closeOnT3MarketTrailingStop() {
    long positionTicket = 0;
 
    if(t3ProfitLevelGreaterMinProfitFiboRetracmentLevel == true) {
-       for(int positionTicketId = 0; positionTicketId < ArraySize(positionTickets); positionTicketId++) {
-          positionTicket = positionTickets[positionTicketId];
+      long positionTicketsLocal[];
+      Positions.GetTickets(InpT4MagicNumber, positionTicketsLocal);
+      for(int positionTicketId = 0; positionTicketId < ArraySize(positionTicketsLocal); positionTicketId++) {
+         positionTicket = positionTicketsLocal[positionTicketId];
          if(
             PositionSymbol(positionTicket) == Symbol()
             && PositionMagicNumber(positionTicket) == InpT3MagicNumber
@@ -78,6 +84,7 @@ void closeOnT3MarketTrailingStop() {
                Trail.TrailingStop(positionTicket, (int)trailingStop);
             }
          }
-       }
+      }
    }
 }
+//+------------------------------------------------------------------+

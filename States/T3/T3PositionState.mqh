@@ -30,8 +30,10 @@ void setT3AllBuyPositionsAreClosedState() {
 
 
    if(buyT3PositionIsOpenState == true) {
-      for(int positionTicketsId = 0; positionTicketsId < ArraySize(positionTickets); positionTicketsId++) {
-         positionTicket = positionTickets[positionTicketsId];
+      long positionTicketsLocal[];
+      Positions.GetTickets(InpT3MagicNumber, positionTicketsLocal);
+      for(int positionTicketsId = 0; positionTicketsId < ArraySize(positionTicketsLocal); positionTicketsId++) {
+         positionTicket = positionTicketsLocal[positionTicketsId];
          if(
             positionTicket > 0
             && PositionSymbol(positionTicket) == Symbol()
@@ -55,8 +57,10 @@ void setT3BuyPositionIsOpen() {
    long positionTicket = 0;
 
    if(t3trendDirection == TREND_DIRECTION_LONG && buyT3PositionIsOpenState == false) {
-      for(int positionTicketsId = 0; positionTicketsId < ArraySize(positionTickets); positionTicketsId++) {
-         positionTicket = positionTickets[positionTicketsId];
+      long positionTicketsLocal[];
+      Positions.GetTickets(InpT3MagicNumber, positionTicketsLocal);
+      for(int positionTicketsId = 0; positionTicketsId < ArraySize(positionTicketsLocal); positionTicketsId++) {
+         positionTicket = positionTicketsLocal[positionTicketsId];
          if(
             positionTicket > 0
             && PositionSymbol(positionTicket) == Symbol()
@@ -76,8 +80,10 @@ void setT3MaxBuyPositionsAreOpen() {
    int      openPositionCount = 0;
 
    if(t3trendDirection == TREND_DIRECTION_LONG) {
-      for(int positionTicketsId = 0; positionTicketsId < ArraySize(positionTickets); positionTicketsId++) {
-         positionTicket = positionTickets[positionTicketsId];
+      long positionTicketsLocal[];
+      Positions.GetTickets(InpT3MagicNumber, positionTicketsLocal);
+      for(int positionTicketsId = 0; positionTicketsId < ArraySize(positionTicketsLocal); positionTicketsId++) {
+         positionTicket = positionTicketsLocal[positionTicketsId];
          if(
             positionTicket > 0
             && PositionSymbol(positionTicket) == Symbol()
@@ -102,8 +108,10 @@ void setT3MaxSellPositionsAreOpen() {
    int      openPositionCount = 0;
 
    if(t3trendDirection == TREND_DIRECTION_SHORT) {
-      for(int positionTicketsId = 0; positionTicketsId < ArraySize(positionTickets); positionTicketsId++) {
-         positionTicket = positionTickets[positionTicketsId];
+      long positionTicketsLocal[];
+      Positions.GetTickets(InpT3MagicNumber, positionTicketsLocal);
+      for(int positionTicketsId = 0; positionTicketsId < ArraySize(positionTicketsLocal); positionTicketsId++) {
+         positionTicket = positionTicketsLocal[positionTicketsId];
          if(
             positionTicket > 0
             && PositionSymbol(positionTicket) == Symbol()
@@ -127,8 +135,10 @@ void setT3SellPositionIsOpen() {
    long positionTicket = 0;
 
    if(t3trendDirection == TREND_DIRECTION_SHORT && sellT3PositionIsOpenState == false) {
-      for(int positionTicketsId = 0; positionTicketsId < ArraySize(positionTickets); positionTicketsId++) {
-         positionTicket = positionTickets[positionTicketsId];
+      long positionTicketsLocal[];
+      Positions.GetTickets(InpT3MagicNumber, positionTicketsLocal);
+      for(int positionTicketsId = 0; positionTicketsId < ArraySize(positionTicketsLocal); positionTicketsId++) {
+         positionTicket = positionTicketsLocal[positionTicketsId];
          if(
             positionTicket > 0
             && PositionSymbol(positionTicket) == Symbol()
@@ -147,8 +157,10 @@ void setT3AllSellPositionsAreClosedState() {
    bool minOneSellPositionIsOpen = false;
 
    if(sellT3PositionIsOpenState == true) {
-      for(int positionTicketsId = 0; positionTicketsId < ArraySize(positionTickets); positionTicketsId++) {
-         positionTicket = positionTickets[positionTicketsId];
+      long positionTicketsLocal[];
+      Positions.GetTickets(InpT3MagicNumber, positionTicketsLocal);
+      for(int positionTicketsId = 0; positionTicketsId < ArraySize(positionTicketsLocal); positionTicketsId++) {
+         positionTicket = positionTicketsLocal[positionTicketsId];
          if(
             positionTicket > 0
             && PositionSymbol(positionTicket) == Symbol()

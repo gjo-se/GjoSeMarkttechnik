@@ -103,8 +103,6 @@ void initializeT3GlobalsAction() {
 }
 
 void initializeT3ArraysAction() {
-
-   initializeArray(positionTickets);
    convertInpT3StringsToArray();
 }
 

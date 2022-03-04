@@ -93,8 +93,6 @@ void initializeT4GlobalsAction() {
 }
 
 void initializeT4ArraysAction() {
-
-   initializeArray(positionTickets);
    convertInpT4StringsToArray();
 }
 

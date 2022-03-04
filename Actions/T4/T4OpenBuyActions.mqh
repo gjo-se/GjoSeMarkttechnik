@@ -9,7 +9,6 @@ void openT4BuyOrderAction() {
    Trade.FillType(SYMBOL_FILLING_FOK);
    Trade.Buy(Symbol(), VerifyVolume(Symbol(), getT4BuyVolume()), getT4BuyStopLoss(), getT4BuyTakeProfit(), InpT4Comment);
 
-   cleanPositionTicketsArrayAction(positionTickets, InpT4MagicNumber);
    t4UseReEntryArea = true;
 }
 
