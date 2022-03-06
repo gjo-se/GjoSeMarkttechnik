@@ -74,7 +74,7 @@ void t4CommentAction(string pVersion) {
          comment += "LowestLowVLineDateTime: " + TimeToString(t4LowestLowVLineDateTime) + "\n";
          comment += "LowestLow: " + TimeToString(t4LowestLowDateTime) + " - " + DoubleToString(t4LowestLowValue, Digits()) + "\n";
          comment += "LongEntry: " + TimeToString(t4LowestLowDateTime) + " - " + DoubleToString(t4LongEntryValue, Digits()) + "\n";
-         comment += "t4CurrentTrailingStopMAPeriod: " + t4TrailingStopMAActive + " CurrentOffset: " + DoubleToString(Bid() / Point() - t4TrailingStopMALevel / Point(), 0) + "\n";;
+         comment += "t4CurrentTrailingStopMAPeriod: " + IntegerToString(t4TrailingStopMAActive) + " CurrentOffset: " + DoubleToString(Bid() / Point() - t4TrailingStopMALevel / Point(), 0) + "\n";;
       }
       if(getT4TrendDirectionString() == "SHORT") {
          comment += "SHORT: " + "\n";
@@ -82,7 +82,7 @@ void t4CommentAction(string pVersion) {
          comment += "HihgestHighVLineDateTime: " + TimeToString(t4HighestHighVLineDateTime) + "\n";
          comment += "HihgestHigh: " + TimeToString(t4HighestHighDateTime) + " - " + DoubleToString(iHigh(Symbol(), PERIOD_CURRENT, iBarShift(Symbol(), PERIOD_CURRENT, t4HighestHighDateTime)), Digits()) + "\n";
          comment += "ShortEntry: " + TimeToString(t4HighestHighDateTime) + " - " + DoubleToString(t4ShortEntryValue, Digits()) + "\n";
-         comment += "t4CurrentTrailingStopMAPeriod: " + t4TrailingStopMAActive + " CurrentOffset: " + DoubleToString(t4TrailingStopMALevel / Point() - Bid() / Point(), 0) + "\n";;
+         comment += "t4CurrentTrailingStopMAPeriod: " + IntegerToString(t4TrailingStopMAActive) + " CurrentOffset: " + DoubleToString(t4TrailingStopMALevel / Point() - Bid() / Point(), 0) + "\n";;
       }
       comment += "\n";
       comment += "StopLossLineLevel: " + DoubleToString(t4StopLossLineLevel, Digits()) + "\n";

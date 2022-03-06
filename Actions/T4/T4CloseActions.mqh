@@ -52,10 +52,10 @@ void closeOnT4TrailingStopMA() {
             && PositionMagicNumber(positionTicket) == InpT4MagicNumber
          ) {
             if(t4trendDirection == TREND_DIRECTION_LONG && PositionType(positionTicket) == ORDER_TYPE_BUY && Bid() < t4TrailingStopMALevel) {
-               Trade.Close(positionTicket, PositionVolume(positionTicket), "Close on " + t4TrailingStopMAActive + " t4TrailingStopMA");
+               Trade.Close(positionTicket, PositionVolume(positionTicket), "Close on " + IntegerToString(t4TrailingStopMAActive) + " t4TrailingStopMA");
             }
             if(t4trendDirection == TREND_DIRECTION_SHORT && PositionType(positionTicket) == ORDER_TYPE_SELL && Bid() > t4TrailingStopMALevel) {
-               Trade.Close(positionTicket, PositionVolume(positionTicket), "Close on " + t4TrailingStopMAActive + " t4TrailingStopMA");
+               Trade.Close(positionTicket, PositionVolume(positionTicket), "Close on " + IntegerToString(t4TrailingStopMAActive) + " t4TrailingStopMA");
             }
          }
       }

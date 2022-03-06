@@ -109,7 +109,7 @@ void initializeT4IndicatorsAction() {
    if(InpT4trailingStopMATimeframe == Period()) {
 
       for(int t4trailingStopMAPeriodsId = 0; t4trailingStopMAPeriodsId < ArraySize(t4trailingStopMAPeriodsArray); t4trailingStopMAPeriodsId++) {
-         t4trailingStopMAPeriod = t4trailingStopMAPeriodsArray[t4trailingStopMAPeriodsId];
+         t4trailingStopMAPeriod = (int)t4trailingStopMAPeriodsArray[t4trailingStopMAPeriodsId];
 
          switch(t4trailingStopMAPeriodsId) {
          case 0:
