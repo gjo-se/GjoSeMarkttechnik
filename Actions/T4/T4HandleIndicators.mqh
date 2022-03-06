@@ -6,8 +6,6 @@
 
 void handleT4Indictaors() {
 
-   int subWindow = 0;
-
    if(InpT4trailingStopMATimeframe == Period()
          && t4ProfitLevelGreaterMinProfitFiboRetracmentLevel == true
      ){

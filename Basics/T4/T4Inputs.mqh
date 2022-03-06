@@ -51,11 +51,11 @@ input int               InpT4StopLossOnRegressionChannelLevel = 120;
 input double            InpT4TrendOKOnMulti = 1.5;
 input group             "---------- Trailing ---------"
 input bool              InpT4UseTrailingStopMarket = true;
-input double            InpT4TrailingStopMarketMaxOffset = 10000;
+input int               InpT4TrailingStopMarketMaxOffset = 10000;
 input color             InpT4TailingStopLineColor = clrRed;
 input ENUM_TIMEFRAMES   InpT4trailingStopMATimeframe = PERIOD_M1;
 input string            InpT4trailingStopMAPeriods = "200, 150, 100, 50, 10";
-input double            InpT4TrailingStopMAMaxOffset = 15000;
+input int               InpT4TrailingStopMAMaxOffset = 15000;
 input group             "---------- StrategyTester ---------" // (Objects in Strategy Tester nicht vorhanden)
 input datetime          InpT4p1DateTime = D'2022.01.01 00:00';
 input datetime          InpT4p2DateTime = D'2022.01.01 00:00';
