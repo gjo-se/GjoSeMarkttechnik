@@ -4,6 +4,9 @@
 //|                                             https://www.mql5.com |
 //+------------------------------------------------------------------+
 
+//+------------------------------------------------------------------+
+//|                                                                  |
+//+------------------------------------------------------------------+
 void initializeEAAction() {
    Trade.Deviation(InpMaxSlippage);
 }
@@ -43,7 +46,7 @@ void initializeT3GlobalsAction() {
    t3trendDirection = TREND_DIRECTION_ROTATION;
 
    t3ObjectHasChanged = false;
-   t4ObjectHasChanged = false;
+   t3ObjectHasChanged = false;
 
    t3AlertRegressionChannelLevel = 0;
    t3AlertFiboRetracementLevel = 0;
@@ -102,23 +105,53 @@ void initializeT3GlobalsAction() {
    t3TrailingStopLevel = 0;
 }
 
+//+------------------------------------------------------------------+
+//|                                                                  |
+//+------------------------------------------------------------------+
 void initializeT3ArraysAction() {
    convertInpT3StringsToArray();
 }
 
 void initializeT3IndicatorsAction() {
 
-   initializeArray(t3TrailingStopMABuffer);
-   t3TrailingStopMAHandle = 0;
+   t3TrailingStopMALevel = 0;
+   int shift = 0;
+   int t3trailingStopMAPeriod = 0;
 
-   int sglSLowMAShift = 0;
-   int subWindow = 0;
 
-   if(InpT3ObjectsShow == true && InpT4ObjectsShow == false && InpT3trailingStopMATimeframe != Period()) {
-      Alert(Symbol() + " (" + getPeriodNameByPeriod(Period()) + ") - Timeframe passt nicht zu InpT3trailingStopMATimeframe (" + getPeriodNameByPeriod(InpT3trailingStopMATimeframe) + ")");
+   if(InpT3trailingStopMATimeframe == Period()) {
+
+      for(int t3trailingStopMAPeriodsId = 0; t3trailingStopMAPeriodsId < ArraySize(t3trailingStopMAPeriodsArray); t3trailingStopMAPeriodsId++) {
+         t3trailingStopMAPeriod = (int)t3trailingStopMAPeriodsArray[t3trailingStopMAPeriodsId];
+
+         switch(t3trailingStopMAPeriodsId) {
+         case 0:
+            t3TrailingStopMAHandle00 = iMA(Symbol(), InpT3trailingStopMATimeframe, t3trailingStopMAPeriod, shift, MODE_SMA, PRICE_CLOSE);
+            t3TrailingStopMAPeriod00 = t3trailingStopMAPeriod;
+            t3TrailingStopMAActive = t3TrailingStopMAPeriod00;
+            break;
+         case 1:
+            t3TrailingStopMAHandle01 = iMA(Symbol(), InpT3trailingStopMATimeframe, t3trailingStopMAPeriod, shift, MODE_SMA, PRICE_CLOSE);
+            t3TrailingStopMAPeriod01 = t3trailingStopMAPeriod;
+            break;
+         case 2:
+            t3TrailingStopMAHandle02 = iMA(Symbol(), InpT3trailingStopMATimeframe, t3trailingStopMAPeriod, shift, MODE_SMA, PRICE_CLOSE);
+            t3TrailingStopMAPeriod02 = t3trailingStopMAPeriod;
+            break;
+         case 3:
+            t3TrailingStopMAHandle03 = iMA(Symbol(), InpT3trailingStopMATimeframe, t3trailingStopMAPeriod, shift, MODE_SMA, PRICE_CLOSE);
+            t3TrailingStopMAPeriod03 = t3trailingStopMAPeriod;
+            break;
+         case 4:
+            t3TrailingStopMAHandle04 = iMA(Symbol(), InpT3trailingStopMATimeframe, t3trailingStopMAPeriod, shift, MODE_SMA, PRICE_CLOSE);
+            t3TrailingStopMAPeriod04 = t3trailingStopMAPeriod;
+            break;
+         case 5:
+            t3TrailingStopMAHandle05 = iMA(Symbol(), InpT3trailingStopMATimeframe, t3trailingStopMAPeriod, shift, MODE_SMA, PRICE_CLOSE);
+            t3TrailingStopMAPeriod05 = t3trailingStopMAPeriod;
+         }
+      }
    }
-   t3TrailingStopMAHandle = iMA(Symbol(), InpT3trailingStopMATimeframe, InpT3trailingStopMAPeriod, sglSLowMAShift, MODE_SMA, PRICE_CLOSE);
-   ChartIndicatorAdd(ChartID(), subWindow, t3TrailingStopMAHandle);
 }
 
 //+------------------------------------------------------------------+
@@ -171,5 +204,7 @@ void convertInpT3StringsToArray() {
       ArrayResize(t3FiboLevelsArray, ArraySize(t3FiboLevelsArray) + 1);
       t3FiboLevelsArray[ArraySize(t3FiboLevelsArray) - 1] = (string)InpT3MinProfitFiboRetracmentLevel;
    }
+
+   StringSplit(InpT3trailingStopMAPeriods, StringGetCharacter(",", 0), t3trailingStopMAPeriodsArray);
 }
 //+------------------------------------------------------------------+

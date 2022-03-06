@@ -10,7 +10,7 @@
 void  closeT3Actions() {
    closeOnT3StopLossLine();
    closeOnT3TrailingStopMA();
-   if(InpT3UseMarketTrailingStop == true) closeOnT3MarketTrailingStop();
+   if(InpT3UseTrailingStopMarket == true) closeOnT3TrailingStopMarket();
 }
 
 void closeOnT3StopLossLine() {
@@ -43,7 +43,7 @@ void closeOnT3TrailingStopMA() {
 
    long     positionTicket = 0;
 
-   if(InpT3trailingStopMATimeframe == Period() && t3ProfitLevelGreaterMinProfitFiboRetracmentLevel == true && t3TrailingStopMABuffer[0] != 0) {
+   if(InpT3trailingStopMATimeframe == Period() && t3ProfitLevelGreaterMinProfitFiboRetracmentLevel == true && t3TrailingStopMALevel != 0) {
       long positionTicketsLocal[];
       Positions.GetTickets(InpT3MagicNumber, positionTicketsLocal);
       for(int positionTicketsId = 0; positionTicketsId < ArraySize(positionTicketsLocal); positionTicketsId++) {
@@ -52,20 +52,19 @@ void closeOnT3TrailingStopMA() {
             PositionSymbol(positionTicket) == Symbol()
             && PositionMagicNumber(positionTicket) == InpT3MagicNumber
          ) {
-            if(t3trendDirection == TREND_DIRECTION_LONG && PositionType(positionTicket) == ORDER_TYPE_BUY && Bid() < t3TrailingStopMABuffer[0]) {
-               Trade.Close(positionTicket, PositionVolume(positionTicket), "Close on trailingStopMA");
+            if(t3trendDirection == TREND_DIRECTION_LONG && PositionType(positionTicket) == ORDER_TYPE_BUY && Bid() < t3TrailingStopMALevel) {
+               Trade.Close(positionTicket, PositionVolume(positionTicket), "Close on " + IntegerToString(t4TrailingStopMAActive) + " t4TrailingStopMA");
             }
-            if(t3trendDirection == TREND_DIRECTION_SHORT && PositionType(positionTicket) == ORDER_TYPE_SELL && Bid() > t3TrailingStopMABuffer[0]) {
-               Trade.Close(positionTicket, PositionVolume(positionTicket), "Close on trailingStopMA");
+            if(t3trendDirection == TREND_DIRECTION_SHORT && PositionType(positionTicket) == ORDER_TYPE_SELL && Bid() > t3TrailingStopMALevel) {
+               Trade.Close(positionTicket, PositionVolume(positionTicket), "Close on " + IntegerToString(t4TrailingStopMAActive) + " t4TrailingStopMA");
             }
          }
       }
    }
 }
 
-void closeOnT3MarketTrailingStop() {
+void closeOnT3TrailingStopMarket() {
 
-   double trailingStop = InpT3StopLoss * InpT3MarketTrailingStopMulti;
    long positionTicket = 0;
 
    if(t3ProfitLevelGreaterMinProfitFiboRetracmentLevel == true) {
@@ -78,10 +77,10 @@ void closeOnT3MarketTrailingStop() {
             && PositionMagicNumber(positionTicket) == InpT3MagicNumber
          ) {
             if(t3trendDirection == TREND_DIRECTION_LONG && PositionType(positionTicket) == ORDER_TYPE_BUY) {
-               Trail.TrailingStop(positionTicket, (int)trailingStop);
+               Trail.TrailingStop(positionTicket, InpT3TrailingStopMarketMaxOffset);
             }
             if(t3trendDirection == TREND_DIRECTION_SHORT && PositionType(positionTicket) == ORDER_TYPE_SELL) {
-               Trail.TrailingStop(positionTicket, (int)trailingStop);
+               Trail.TrailingStop(positionTicket, InpT3TrailingStopMarketMaxOffset);
             }
          }
       }

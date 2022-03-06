@@ -11,8 +11,27 @@ CTimer      Timer;
 CNewBar     NewBar;
 
 // Indicators
-double      t3TrailingStopMABuffer[];
-int         t3TrailingStopMAHandle;
+int         t3TrailingStopMAActive;
+double      t3TrailingStopMALevel;
+string      t3trailingStopMAPeriodsArray[];
+double      t3TrailingStopMABuffer00[];
+int         t3TrailingStopMAHandle00;
+int         t3TrailingStopMAPeriod00;
+double      t3TrailingStopMABuffer01[];
+int         t3TrailingStopMAHandle01;
+int         t3TrailingStopMAPeriod01;
+double      t3TrailingStopMABuffer02[];
+int         t3TrailingStopMAHandle02;
+int         t3TrailingStopMAPeriod02;
+double      t3TrailingStopMABuffer03[];
+int         t3TrailingStopMAHandle03;
+int         t3TrailingStopMAPeriod03;
+double      t3TrailingStopMABuffer04[];
+int         t3TrailingStopMAHandle04;
+int         t3TrailingStopMAPeriod04;
+double      t3TrailingStopMABuffer05[];
+int         t3TrailingStopMAHandle05;
+int         t3TrailingStopMAPeriod05;
 
 bool isNewCurrentBar;
 string comment;
