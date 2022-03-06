@@ -23,7 +23,6 @@ void createT4HighestHighTrendLine() {
 //|                                                                  |
 //+------------------------------------------------------------------+
 void createT4ShortEntryTrendLine() {
-   t4ShortEntryValue = t4HighestHighValue - InpT4StopLoss * Point();
    createTrendLine(T4_SHORT_ENTRY_TLINE, iTime(Symbol(), Period(), iBarShift(Symbol(), Period(), t4HighestHighDateTime) + 3), t4ShortEntryValue, iTime(Symbol(), Period(), 0), t4ShortEntryValue, InpT4TrendLineColor, 3, STYLE_SOLID, T4_SHORT_ENTRY_TLINE);
 }
 

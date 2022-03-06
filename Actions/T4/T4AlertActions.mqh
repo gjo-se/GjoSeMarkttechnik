@@ -60,6 +60,7 @@ void t4AlertOnBidStopLossLineOffset() {
 void t4CommentAction(string pVersion) {
 
    if(t4p1DateTime) {
+      if(InpT3ShowCommentDashboard == false) comment = "";
       comment += "\n\n";
       comment += "\n\n";
       comment += "T4: " + "\n";
