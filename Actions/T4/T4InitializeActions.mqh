@@ -92,23 +92,53 @@ void initializeT4GlobalsAction() {
    t4RegressionChannelStopLossLineLevel = 0;
 }
 
+//+------------------------------------------------------------------+
+//|                                                                  |
+//+------------------------------------------------------------------+
 void initializeT4ArraysAction() {
    convertInpT4StringsToArray();
 }
 
 void initializeT4IndicatorsAction() {
 
-   initializeArray(t4TrailingStopMABuffer);
-   t4TrailingStopMAHandle = 0;
+   t4TrailingStopMALevel = 0;
+   int shift = 0;
+   int t4trailingStopMAPeriod = 0;
 
-   int sglSLowMAShift = 0;
-   int subWindow = 0;
 
-   if(InpT4ObjectsShow == true && InpT4trailingStopMATimeframe != Period()) {
-      Alert(Symbol() + " (" + getPeriodNameByPeriod(Period()) + ") - Timeframe passt nicht zu InpT4trailingStopMATimeframe (" + getPeriodNameByPeriod(InpT4trailingStopMATimeframe) + ")");
+   if(InpT4trailingStopMATimeframe == Period()) {
+
+      for(int t4trailingStopMAPeriodsId = 0; t4trailingStopMAPeriodsId < ArraySize(t4trailingStopMAPeriodsArray); t4trailingStopMAPeriodsId++) {
+         t4trailingStopMAPeriod = t4trailingStopMAPeriodsArray[t4trailingStopMAPeriodsId];
+
+         switch(t4trailingStopMAPeriodsId) {
+         case 0:
+            t4TrailingStopMAHandle00 = iMA(Symbol(), InpT4trailingStopMATimeframe, t4trailingStopMAPeriod, shift, MODE_SMA, PRICE_CLOSE);
+            t4TrailingStopMAPeriod00 = t4trailingStopMAPeriod;
+            t4TrailingStopMAActive = t4TrailingStopMAPeriod00;
+            break;
+         case 1:
+            t4TrailingStopMAHandle01 = iMA(Symbol(), InpT4trailingStopMATimeframe, t4trailingStopMAPeriod, shift, MODE_SMA, PRICE_CLOSE);
+            t4TrailingStopMAPeriod01 = t4trailingStopMAPeriod;
+            break;
+         case 2:
+            t4TrailingStopMAHandle02 = iMA(Symbol(), InpT4trailingStopMATimeframe, t4trailingStopMAPeriod, shift, MODE_SMA, PRICE_CLOSE);
+            t4TrailingStopMAPeriod02 = t4trailingStopMAPeriod;
+            break;
+         case 3:
+            t4TrailingStopMAHandle03 = iMA(Symbol(), InpT4trailingStopMATimeframe, t4trailingStopMAPeriod, shift, MODE_SMA, PRICE_CLOSE);
+            t4TrailingStopMAPeriod03 = t4trailingStopMAPeriod;
+            break;
+         case 4:
+            t4TrailingStopMAHandle04 = iMA(Symbol(), InpT4trailingStopMATimeframe, t4trailingStopMAPeriod, shift, MODE_SMA, PRICE_CLOSE);
+            t4TrailingStopMAPeriod04 = t4trailingStopMAPeriod;
+            break;
+         case 5:
+            t4TrailingStopMAHandle05 = iMA(Symbol(), InpT4trailingStopMATimeframe, t4trailingStopMAPeriod, shift, MODE_SMA, PRICE_CLOSE);
+            t4TrailingStopMAPeriod05 = t4trailingStopMAPeriod;
+         }
+      }
    }
-   t4TrailingStopMAHandle = iMA(Symbol(), InpT4trailingStopMATimeframe, InpT4trailingStopMAPeriod, sglSLowMAShift, MODE_SMA, PRICE_CLOSE);
-   ChartIndicatorAdd(ChartID(), subWindow, t4TrailingStopMAHandle);
 }
 
 //+------------------------------------------------------------------+
@@ -161,5 +191,7 @@ void convertInpT4StringsToArray() {
       ArrayResize(t4FiboLevelsArray, ArraySize(t4FiboLevelsArray) + 1);
       t4FiboLevelsArray[ArraySize(t4FiboLevelsArray) - 1] = (string)InpT4MinProfitFiboRetracmentLevel;
    }
+
+   StringSplit(InpT4trailingStopMAPeriods, StringGetCharacter(",", 0), t4trailingStopMAPeriodsArray);
 }
 //+------------------------------------------------------------------+

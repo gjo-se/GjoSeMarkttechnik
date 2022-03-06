@@ -10,7 +10,6 @@ input int               InpT4MaxRegressionChannelLevel = 0; // T4 Max Regression
 input int               InpT4MinFiboRetracmentLevel = 0; // T4 Min FiboRetracment
 input int               InpT4MaxFiboRetracmentLevel = 0; // T4 Max FiboRetracment
 input int               InpT4MinProfitFiboRetracmentLevel = 0; // T4 Min Profit FiboRetracment Level
-input int               InpT4StopLoss = 0; // T4 StopLoss
 input int               InpT4MinRegressionPercent = 20; // T4 % minRegression for EntryLevel
 input double            InpT4StopLossLineMulti = 1.2; // T4 StopLossLine Multi
 input double            InpT4StopLossMarketMulti = 1.3; // T4 StopLossMarket Multi
@@ -51,11 +50,12 @@ input int               InpT4RegressionChannelEndShift = 20;
 input int               InpT4StopLossOnRegressionChannelLevel = 120;
 input double            InpT4TrendOKOnMulti = 1.5;
 input group             "---------- Trailing ---------"
-input bool              InpT4UseMarketTrailingStop = true;
-input double            InpT4MarketTrailingStopMulti = 1.5;
+input bool              InpT4UseTrailingStopMarket = true;
+input double            InpT4TrailingStopMarketMaxOffset = 10000;
 input color             InpT4TailingStopLineColor = clrRed;
 input ENUM_TIMEFRAMES   InpT4trailingStopMATimeframe = PERIOD_M1;
-input int               InpT4trailingStopMAPeriod = 50;
+input string            InpT4trailingStopMAPeriods = "200, 150, 100, 50, 10";
+input double            InpT4TrailingStopMAMaxOffset = 15000;
 input group             "---------- StrategyTester ---------" // (Objects in Strategy Tester nicht vorhanden)
 input datetime          InpT4p1DateTime = D'2022.01.01 00:00';
 input datetime          InpT4p2DateTime = D'2022.01.01 00:00';

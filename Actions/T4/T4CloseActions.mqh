@@ -10,7 +10,7 @@
 void  closeT4Actions() {
    closeOnT4StopLossLine();
    closeOnT4TrailingStopMA();
-   closeOnT4MarketTrailingStop();
+   if(InpT4UseTrailingStopMarket == true) closeOnT4TrailingStopMarket();
 }
 
 void closeOnT4StopLossLine() {
@@ -42,7 +42,7 @@ void closeOnT4TrailingStopMA() {
 
    long     positionTicket = 0;
 
-   if(InpT4trailingStopMATimeframe == Period() && t4ProfitLevelGreaterMinProfitFiboRetracmentLevel == true && t4TrailingStopMABuffer[0] != 0) {
+   if(InpT4trailingStopMATimeframe == Period() && t4ProfitLevelGreaterMinProfitFiboRetracmentLevel == true && t4TrailingStopMALevel != 0) {
       long positionTicketsLocal[];
       Positions.GetTickets(InpT4MagicNumber, positionTicketsLocal);
       for(int positionTicketsId = 0; positionTicketsId < ArraySize(positionTicketsLocal); positionTicketsId++) {
@@ -51,20 +51,19 @@ void closeOnT4TrailingStopMA() {
             PositionSymbol(positionTicket) == Symbol()
             && PositionMagicNumber(positionTicket) == InpT4MagicNumber
          ) {
-            if(t4trendDirection == TREND_DIRECTION_LONG && PositionType(positionTicket) == ORDER_TYPE_BUY && Bid() < t4TrailingStopMABuffer[0]) {
-               Trade.Close(positionTicket, PositionVolume(positionTicket), "Close on t4TrailingStopMA");
+            if(t4trendDirection == TREND_DIRECTION_LONG && PositionType(positionTicket) == ORDER_TYPE_BUY && Bid() < t4TrailingStopMALevel) {
+               Trade.Close(positionTicket, PositionVolume(positionTicket), "Close on " + t4TrailingStopMAActive + " t4TrailingStopMA");
             }
-            if(t4trendDirection == TREND_DIRECTION_SHORT && PositionType(positionTicket) == ORDER_TYPE_SELL && Bid() > t4TrailingStopMABuffer[0]) {
-               Trade.Close(positionTicket, PositionVolume(positionTicket), "Close on t4TrailingStopMA");
+            if(t4trendDirection == TREND_DIRECTION_SHORT && PositionType(positionTicket) == ORDER_TYPE_SELL && Bid() > t4TrailingStopMALevel) {
+               Trade.Close(positionTicket, PositionVolume(positionTicket), "Close on " + t4TrailingStopMAActive + " t4TrailingStopMA");
             }
          }
       }
    }
 }
 //+------------------------------------------------------------------+
-void closeOnT4MarketTrailingStop() {
+void closeOnT4TrailingStopMarket() {
 
-   double trailingStop = InpT4StopLoss * InpT4MarketTrailingStopMulti;
    long positionTicket = 0;
 
    if(t4ProfitLevelGreaterMinProfitFiboRetracmentLevel == true) {
@@ -77,10 +76,10 @@ void closeOnT4MarketTrailingStop() {
             && PositionMagicNumber(positionTicket) == InpT4MagicNumber
          ) {
             if(t4trendDirection == TREND_DIRECTION_LONG && PositionType(positionTicket) == ORDER_TYPE_BUY) {
-               Trail.TrailingStop(positionTicket, (int)trailingStop);
+               Trail.TrailingStop(positionTicket, InpT4TrailingStopMarketMaxOffset);
             }
             if(t4trendDirection == TREND_DIRECTION_SHORT && PositionType(positionTicket) == ORDER_TYPE_SELL) {
-               Trail.TrailingStop(positionTicket, (int)trailingStop);
+               Trail.TrailingStop(positionTicket, InpT4TrailingStopMarketMaxOffset);
             }
          }
       }
