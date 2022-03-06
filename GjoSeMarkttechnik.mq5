@@ -24,6 +24,7 @@
    2.1   changed stopLossLineValue incl OffsetMulti
    2.2   added closeOnT3TrailingStopMA
    2.3   added MarketTrailingStop
+   3.0   added MADynamikTrailing, changed T4
 
    ===============
 
@@ -41,7 +42,7 @@
 #property copyright   "2022, GjoSe"
 #property link        "http://www.gjo-se.com"
 #property description "GjoSe Markttechnik"
-#define   VERSION "2.3"
+#define   VERSION "3.0"
 #property version VERSION
 #property strict
 
