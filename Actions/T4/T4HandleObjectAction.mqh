@@ -38,7 +38,8 @@ void t4HandleObjectsAction() {
 
             if(localT4LowestLowValue != 0) {
                t4LowestLowValue = localT4LowestLowValue;
-               t4LongEntryValue = t4LowestLowValue + InpT4StopLoss * Point();
+               double minRegressionPoints = (getT4P4HighLowValueByTrendDirection() / Point() - t4LowestLowValue / Point()) * InpT4MinRegressionPercent / 100;
+               t4LongEntryValue = t4LowestLowValue + minRegressionPoints * Point();
                createT4LowestLowTrendLine();
                createT4LongEntryTrendLine();
                if(buyT4PositionIsOpenState == false) createT4OrderGridTrendLines();
@@ -51,15 +52,6 @@ void t4HandleObjectsAction() {
             deleteTrendLineLike(T4_ORDER_GRID_LIMIT_TLINE);
             deleteTrendLineLike(T4_ORDER_GRID_STOP_TLINE);
          }
-
-//         if(InpT4RegressionChannelShow == true) {
-//            if(buyPositionIsOpenState == true && t4StartDateTime == 0) createT4StartVLine();
-//            if(t4StartDateTime != 0) {
-//               createT4RegressionChannel();
-//               createT4RegressionChannelLevels();
-//               if(Bid() > (t4LongEntryValue + InpT4StopLoss * Point() * InpT4TrendOKOnMulti) && t4OKDateTime == 0) createT4OKVLine();
-//            }
-//         }
       }
 
       if(t4trendDirection == TREND_DIRECTION_SHORT) {
@@ -76,7 +68,8 @@ void t4HandleObjectsAction() {
 
             if(localT4HighestHighValue != 0) {
                t4HighestHighValue = localT4HighestHighValue;
-               t4ShortEntryValue = t4HighestHighValue - InpT4StopLoss * Point();
+               double minRegressionPoints = (t4HighestHighValue / Point() - getT4P4HighLowValueByTrendDirection() / Point()) * InpT4MinRegressionPercent / 100;
+               t4ShortEntryValue = t4HighestHighValue - minRegressionPoints * Point();
                createT4HighestHighTrendLine();
                createT4ShortEntryTrendLine();
                if(sellT4PositionIsOpenState == false) createT4OrderGridTrendLines();
@@ -89,18 +82,9 @@ void t4HandleObjectsAction() {
             deleteTrendLineLike(T4_ORDER_GRID_LIMIT_TLINE);
             deleteTrendLineLike(T4_ORDER_GRID_STOP_TLINE);
          }
-
-//         if(InpT4RegressionChannelShow == true) {
-//            if(sellPositionIsOpenState == true && t4StartDateTime == 0) createT4StartVLine();
-//            if(t4StartDateTime != 0) {
-//               createT4RegressionChannel();
-//               createT4RegressionChannelLevels();
-//               if(Bid() < (t4ShortEntryValue - InpT4StopLoss * Point() * InpT4TrendOKOnMulti) && t4OKDateTime == 0) createT4OKVLine();
-//            }
-//         }
       }
 
-      if(isNewCurrentBar == true || objectHasChanged == true) {
+      if(isNewCurrentBar == true || t4ObjectHasChanged == true) {
          if(Period() <= InpT4MaxTimeframe) {
             createT4TrendLines();
             createT4RegressionChannel();
@@ -118,17 +102,18 @@ void t4HandleObjectsAction() {
             deleteChannelObject(T4_RE_ENTRY_AREA);
          }
 
-         objectHasChanged = false;
+         t4ObjectHasChanged = false;
       }
 
       double t4StopLossLineLevelLocal = ObjectGetValueByTime(0, T4_STOP_LOSS_TLINE, iTime(Symbol(), Period(), 0));
-      if(t4StopLossLineLevelLocal != 0) t4StopLossLineLevel = t4StopLossLineLevelLocal;      
+      if(t4StopLossLineLevelLocal != 0) t4StopLossLineLevel = t4StopLossLineLevelLocal;
 
       handleInsideBars();
 
    } else {
       deleteTrendLineLike(T4_TRENDLINE);
       deleteRegressionChannelObject(T4_REGRESSION_CHANNEL);
+      deleteFiboLevelsObject(T4_FIBO_LEVELS);
       deleteChannelObject(T4_IN_SIGNAL_FIBO_LEVEL_AREA);
       deleteChannelObject(T4_IN_SIGNAL_REGRESSION_CHANNEL_AREA);
       deleteChannelObject(T4_RE_ENTRY_AREA);
@@ -137,6 +122,18 @@ void t4HandleObjectsAction() {
    if(allT4BuyPositionsAreClosedState || allT4SellPositionsAreClosedState) {
       if(InpT4SetIsTradabelButtonStateAfterClose == true) setT4IsTradeableButtonFalse();
       deleteTrendLine(T4_STOP_LOSS_TLINE);
+   }
+
+// T4 LONG
+   if(t3HighestHighVLineDateTime != 0 && t4LowestLowVLineDateTime == 0) {
+      datetime highestHighDateTimeLocal = iTime(Symbol(), Period(), iHighest(Symbol(), Period(), MODE_HIGH,  iBarShift(Symbol(), Period(), t3HighestHighVLineDateTime) + 1));
+      if(t4p4DateTime != highestHighDateTimeLocal) createT4P4VLine();
+   }
+
+// T4 SHORT
+   if(t3LowestLowVLineDateTime != 0 && t4HighestHighVLineDateTime == 0) {
+      datetime lowestLowDateTimeLocal = iTime(Symbol(), Period(), iLowest(Symbol(), Period(), MODE_LOW,  iBarShift(Symbol(), Period(), t3LowestLowVLineDateTime) + 1));
+      if(t4p4DateTime != lowestLowDateTimeLocal) createT4P4VLine();
    }
 
 }

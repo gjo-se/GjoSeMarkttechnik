@@ -25,7 +25,6 @@
 #include "..\\..\\Actions\\T3\\T3InitializeActions.mqh"
 #include "..\\..\\Actions\\T3\\T3OpenBuyActions.mqh"
 #include "..\\..\\Actions\\T3\\T3OpenSellActions.mqh"
-#include "..\\..\\Actions\\T3\\T3TrailingActions.mqh"
 #include "..\\..\\Actions\\T3\\T3ScreenshotActions.mqh"
 #include "..\\..\\Actions\\T3\\T3HandleStatesActions.mqh"
 

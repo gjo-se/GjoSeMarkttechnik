@@ -38,7 +38,6 @@ void t3HandleObjectsAction() {
 
             if(localT3LowestLowValue != 0) {
                t3LowestLowValue = localT3LowestLowValue;
-               t3LongEntryValue = t3LowestLowValue + InpT3StopLoss * Point();
                createT3LowestLowTrendLine();
                createT3LongEntryTrendLine();
                if(buyT3PositionIsOpenState == false) createT3OrderGridTrendLines();
@@ -51,15 +50,6 @@ void t3HandleObjectsAction() {
             deleteTrendLineLike(T3_ORDER_GRID_LIMIT_TLINE);
             deleteTrendLineLike(T3_ORDER_GRID_STOP_TLINE);
          }
-
-//         if(InpT4RegressionChannelShow == true) {
-//            if(buyPositionIsOpenState == true && t4StartDateTime == 0) createT4StartVLine();
-//            if(t4StartDateTime != 0) {
-//               createT4RegressionChannel();
-//               createT4RegressionChannelLevels();
-//               if(Bid() > (t3LongEntryValue + InpT3StopLoss * Point() * InpT4TrendOKOnMulti) && t4OKDateTime == 0) createT4OKVLine();
-//            }
-//         }
       }
 
       if(t3trendDirection == TREND_DIRECTION_SHORT) {
@@ -76,7 +66,6 @@ void t3HandleObjectsAction() {
 
             if(localT3HighestHighValue != 0) {
                t3HighestHighValue = localT3HighestHighValue;
-               t3ShortEntryValue = t3HighestHighValue - InpT3StopLoss * Point();
                createT3HighestHighTrendLine();
                createT3ShortEntryTrendLine();
                if(sellT3PositionIsOpenState == false) createT3OrderGridTrendLines();
@@ -89,18 +78,9 @@ void t3HandleObjectsAction() {
             deleteTrendLineLike(T3_ORDER_GRID_LIMIT_TLINE);
             deleteTrendLineLike(T3_ORDER_GRID_STOP_TLINE);
          }
-
-//         if(InpT4RegressionChannelShow == true) {
-//            if(sellPositionIsOpenState == true && t4StartDateTime == 0) createT4StartVLine();
-//            if(t4StartDateTime != 0) {
-//               createT4RegressionChannel();
-//               createT4RegressionChannelLevels();
-//               if(Bid() < (t3ShortEntryValue - InpT3StopLoss * Point() * InpT4TrendOKOnMulti) && t4OKDateTime == 0) createT4OKVLine();
-//            }
-//         }
       }
 
-      if(isNewCurrentBar == true || objectHasChanged == true) {
+      if(isNewCurrentBar == true || t3ObjectHasChanged == true) {
          if(Period() <= InpT3MaxTimeframe) {
             createT3TrendLines();
             createT3RegressionChannel();
@@ -118,7 +98,7 @@ void t3HandleObjectsAction() {
             deleteChannelObject(T3_RE_ENTRY_AREA);
          }
 
-         objectHasChanged = false;
+         t3ObjectHasChanged = false;
       }
 
       double t3StopLossLineLevelLocal = ObjectGetValueByTime(0, T3_STOP_LOSS_TLINE, iTime(Symbol(), Period(), 0));
@@ -129,6 +109,7 @@ void t3HandleObjectsAction() {
    } else {
       deleteTrendLineLike(T3_TRENDLINE);
       deleteRegressionChannelObject(T3_REGRESSION_CHANNEL);
+      deleteFiboLevelsObject(T3_FIBO_LEVELS);
       deleteChannelObject(T3_IN_SIGNAL_FIBO_LEVEL_AREA);
       deleteChannelObject(T3_IN_SIGNAL_REGRESSION_CHANNEL_AREA);
       deleteChannelObject(T3_RE_ENTRY_AREA);

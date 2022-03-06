@@ -24,6 +24,7 @@
    2.1   changed stopLossLineValue incl OffsetMulti
    2.2   added closeOnT3TrailingStopMA
    2.3   added MarketTrailingStop
+   3.0   added MADynamikTrailing, changed T4
 
    ===============
 
@@ -41,7 +42,7 @@
 #property copyright   "2022, GjoSe"
 #property link        "http://www.gjo-se.com"
 #property description "GjoSe Markttechnik"
-#define   VERSION "2.3"
+#define   VERSION "3.0"
 #property version VERSION
 #property strict
 
@@ -56,6 +57,7 @@ int OnInit() {
    initializeT3ArraysAction();
    initializeT4ArraysAction();
    initializeT3IndicatorsAction();
+   initializeT4IndicatorsAction();
 
    setT3LineValues();
    setT4LineValues();
@@ -65,7 +67,7 @@ int OnInit() {
    t3HandleObjectsAction();
    t4HandleObjectsAction();
    if(InpT3ShowCommentDashboard) t3CommentAction(VERSION);
-   if(InpT3ShowCommentDashboard) t4CommentAction(VERSION);
+   if(InpT4ShowCommentDashboard) t4CommentAction(VERSION);
 
    if(MQLInfoInteger(MQL_TESTER) == 1) {
 
@@ -94,9 +96,11 @@ void OnTick() {
    if(MQLInfoInteger(MQL_VISUAL_MODE) == 1) {
       setT3LineValues();
       setT4LineValues();
+      getT4TrendDirection();
    }
 
    handleT3Indictaors();
+   handleT4Indictaors();
    handleT3StatesAction();
    handleT4StatesAction();
    setT3PositionStates();
@@ -111,7 +115,7 @@ void OnTick() {
    t3HandleObjectsAction();
    t4HandleObjectsAction();
    if(InpT3ShowCommentDashboard) t3CommentAction(VERSION);
-   if(InpT3ShowCommentDashboard) t4CommentAction(VERSION);
+   if(InpT4ShowCommentDashboard) t4CommentAction(VERSION);
 
    if(getT3BuyAlertRegressionSignal() == true) t3AlertBuyRegressionAction();
    if(getT4BuyAlertRegressionSignal() == true) t4AlertBuyRegressionAction();
@@ -122,9 +126,6 @@ void OnTick() {
    if(getT4BuyInSignal() == true) openT4BuyOrderAction();
    if(getT3SellInSignal() == true) openT3SellOrderAction();
    if(getT4SellInSignal() == true) openT4SellOrderAction();
-
-//if(InpUseBreakEven == true) setBreakevenAction();
-//if(InpUseTrailing == true) setTrailingStopAction();
 
 }
 
@@ -148,7 +149,8 @@ void OnChartEvent(const int id,
       setT4LineValues();
       getT3TrendDirection();
       getT4TrendDirection();
-      objectHasChanged = true;
+      t3ObjectHasChanged = true;
+      t4ObjectHasChanged = true;
 
       if(sparam == T3_STOP_LOSS_TLINE) {
          t3IsBidStopLossLineOffsetAlertSendable = true;

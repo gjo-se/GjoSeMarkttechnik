@@ -10,7 +10,6 @@ input int               InpT3MaxRegressionChannelLevel = 0; // T3 Max Regression
 input int               InpT3MinFiboRetracmentLevel = 0; // T3 Min FiboRetracment
 input int               InpT3MaxFiboRetracmentLevel = 0; // T3 Max FiboRetracment
 input int               InpT3MinProfitFiboRetracmentLevel = 0; // T3 Min Profit FiboRetracment Level
-input int               InpT3StopLoss = 0; // T3 StopLoss
 input double            InpT3StopLossLineMulti = 1.2; // T3 StopLossLine Multi
 input double            InpT3StopLossMarketMulti = 1.3; // T3 StopLossMarket Multi
 
@@ -26,7 +25,7 @@ input int               InpT3OrderGridCount = 5; // T3 Anzahl Grid Orders
 input bool              InpT3SetIsTradabelButtonStateAfterClose = false; // nach Close Button OFF
 
 input group             "------------------------------ T3 PRIO C ---------------------------"
-input long              InpMagicNumber = 1619769100; // T3 & T4 MagicNumber
+input long              InpT3MagicNumber = 1619769103; // T3 MagicNumber
 input string            InpT3Comment = "T3 MarktTechnik"; // T3 Comment
 input long              InpMaxSlippage = 3; // T3 & T4 max Slippage
 input bool              InpT3ShowCommentDashboard = true;
@@ -60,11 +59,12 @@ input ENUM_TIMEFRAMES   InpInsideBarTimeframe = PERIOD_CURRENT;
 input color             InpInsideBarLineColor = clrBlue;
 input double            InpInsideBarMaxStopLossMulti = 0.5;
 input group             "---------- Trailing ---------"
-input bool              InpT3UseMarketTrailingStop = true;
-input double            InpT3MarketTrailingStopMulti = 1.5;
+input bool              InpT3UseTrailingStopMarket = true;
+input int               InpT3TrailingStopMarketMaxOffset = 10000;
 input color             InpT3TailingStopLineColor = clrRed;
 input ENUM_TIMEFRAMES   InpT3trailingStopMATimeframe = PERIOD_M10;
-input int               InpT3trailingStopMAPeriod = 50;
+input string            InpT3trailingStopMAPeriods = "200, 150, 100, 50, 10";
+input int               InpT3TrailingStopMAMaxOffset = 15000;
 input group             "---------- StrategyTester ---------" // (Objects in Strategy Tester nicht vorhanden)
 input datetime          InpT3p1DateTime = D'2022.01.01 00:00';
 input datetime          InpT3p2DateTime = D'2022.01.01 00:00';

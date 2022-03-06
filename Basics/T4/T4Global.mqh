@@ -4,6 +4,29 @@
 //|                                             https://www.mql5.com |
 //+------------------------------------------------------------------+
 
+// Indicators
+int         t4TrailingStopMAActive;
+double      t4TrailingStopMALevel;
+string      t4trailingStopMAPeriodsArray[];
+double      t4TrailingStopMABuffer00[];
+int         t4TrailingStopMAHandle00;
+int         t4TrailingStopMAPeriod00;
+double      t4TrailingStopMABuffer01[];
+int         t4TrailingStopMAHandle01;
+int         t4TrailingStopMAPeriod01;
+double      t4TrailingStopMABuffer02[];
+int         t4TrailingStopMAHandle02;
+int         t4TrailingStopMAPeriod02;
+double      t4TrailingStopMABuffer03[];
+int         t4TrailingStopMAHandle03;
+int         t4TrailingStopMAPeriod03;
+double      t4TrailingStopMABuffer04[];
+int         t4TrailingStopMAHandle04;
+int         t4TrailingStopMAPeriod04;
+double      t4TrailingStopMABuffer05[];
+int         t4TrailingStopMAHandle05;
+int         t4TrailingStopMAPeriod05;
+
 bool  t4IsTradabelButtonState;
 
 bool  buyT4PositionIsOpenState;
@@ -67,6 +90,10 @@ bool   t4IsBidHigherInSignalAreaMinEndValue;
 bool   t4IsBidHigherInSignalAreaMaxEndValue;
 bool   t4HighestHighIsInSignalArea;
 bool   t4LowestLowIsInSignalArea;
+
+// OUTSIgnal
+double t4MinProfitFiboRetracmentLevel;
+bool   t4ProfitLevelGreaterMinProfitFiboRetracmentLevel;
 
 double t4ReEntryAreaMinStartValue;
 double t4ReEntryAreaMinEndValue;

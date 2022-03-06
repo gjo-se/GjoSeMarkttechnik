@@ -77,6 +77,7 @@ void t3CommentAction(string pVersion) {
          comment += "LowestLowVLineDateTime: " + TimeToString(t3LowestLowVLineDateTime) + "\n";
          comment += "LowestLow: " + " - " + DoubleToString(t3LowestLowValue, Digits()) + "\n";
          comment += "LongEntry: " + " - " + DoubleToString(t3LongEntryValue, Digits()) + "\n";
+         comment += "t3CurrentTrailingStopMAPeriod: " + IntegerToString(t3TrailingStopMAActive) + " CurrentOffset: " + DoubleToString(Bid() / Point() - t3TrailingStopMALevel / Point(), 0) + "\n";;
       }
       if(getT3TrendDirectionString() == "SHORT") {
          comment += "SHORT: " + "\n";
@@ -84,6 +85,7 @@ void t3CommentAction(string pVersion) {
          comment += "HihgestHighVLineDateTime: " + TimeToString(t3HighestHighVLineDateTime) + "\n";
          comment += "HihgestHigh: " + " - " + DoubleToString(iHigh(Symbol(), PERIOD_CURRENT, iBarShift(Symbol(), PERIOD_CURRENT, t3HighestHighDateTime)), Digits()) + "\n";
          comment += "ShortEntry: " + " - " + DoubleToString(t3ShortEntryValue, Digits()) + "\n";
+         comment += "t3CurrentTrailingStopMAPeriod: " + IntegerToString(t3TrailingStopMAActive) + " CurrentOffset: " + DoubleToString(t3TrailingStopMALevel / Point() - Bid() / Point(), 0) + "\n";;
       }
       comment += "\n";
       comment += "StopLossLineLevel: " + DoubleToString(t3StopLossLineLevel, Digits()) + "\n";

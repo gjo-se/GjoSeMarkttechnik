@@ -8,10 +8,10 @@
 //+------------------------------------------------------------------+
 void openT4SellOrderAction() {
 
+   Trade.MagicNumber(InpT4MagicNumber);
    Trade.FillType(SYMBOL_FILLING_FOK);
    Trade.Sell(Symbol(), VerifyVolume(Symbol(), getT4SellVolume()), getT4SellStopLoss(), getT4SellTakeProfit(), InpT4Comment);
 
-   cleanPositionTicketsArrayAction(positionTickets, InpMagicNumber);
    t4UseReEntryArea = true;
 }
 
@@ -29,8 +29,9 @@ double getT4SellStopLoss() {
 // Varainten in Settings setzen:
 // Fix: in Punkten (InpT4StopLoss) // von Points in Level umrechnen:
 
-   double stopLossLineValue = t4ShortEntryValue + InpT4StopLoss * InpT4StopLossLineMulti * Point() ;
-   double stopLossMarketValue = t4ShortEntryValue + InpT4StopLoss * InpT4StopLossMarketMulti * Point() ;
+   double minRegressionPoints = (t4HighestHighValue / Point() - getT4P4HighLowValueByTrendDirection() / Point()) * InpT4MinRegressionPercent / 100;
+   double stopLossLineValue = t4ShortEntryValue + minRegressionPoints * InpT4StopLossLineMulti * Point() ;
+   double stopLossMarketValue = t4ShortEntryValue + minRegressionPoints * InpT4StopLossMarketMulti * Point() ;
 
    if(stopLossLineValue > 0) AdjustBelowStopLevel(Symbol(), stopLossLineValue);
    if(stopLossMarketValue > 0) AdjustBelowStopLevel(Symbol(), stopLossMarketValue);
@@ -55,7 +56,8 @@ double getT4SellVolume(double pLevel = 0) {
 
 // % Risk per Balance
    maxPositionRiskValue = AccountInfoDouble(ACCOUNT_BALANCE) * InpMaxPositionRiskPercent / 100 / InpT4OrderGridCount;
-   double stopLossLineValue = t4ShortEntryValue + InpT4StopLoss * InpT4StopLossLineMulti * Point() ;
+   double minRegressionPoints = (t4HighestHighValue / Point() - getT4P4HighLowValueByTrendDirection() / Point()) * InpT4MinRegressionPercent / 100;
+   double stopLossLineValue = t4ShortEntryValue + minRegressionPoints * InpT4StopLossLineMulti * Point() ;
    positionPointRisk = (stopLossLineValue - pLevel) / Point() * getPointValueBySymbol(Symbol());
    volume = maxPositionRiskValue / positionPointRisk;
 
