@@ -4,69 +4,64 @@
 //|                                             https://www.mql5.com |
 //+------------------------------------------------------------------+
 
-input group             "------------------------------ T3 PRIO A ---------------------------"
-input int               InpT3MinRegressionChannelLevel = 0; // T3 Min RegressionChannel
-input int               InpT3MaxRegressionChannelLevel = 0; // T3 Max RegressionChannel
-input int               InpT3MinFiboRetracmentLevel = 0; // T3 Min FiboRetracment
-input int               InpT3MaxFiboRetracmentLevel = 0; // T3 Max FiboRetracment
-input int               InpT3MinProfitFiboRetracmentLevel = 0; // T3 Min Profit FiboRetracment Level
-input double            InpT3StopLossLineMulti = 1.2; // T3 StopLossLine Multi
-input double            InpT3StopLossMarketMulti = 1.3; // T3 StopLossMarket Multi
+input group             "---------------------------------------------------------------"
+input group             "------------------------------ T3 -----------------------------"
+input group             "---------------------------------------------------------------"
 
-input group             "------------------------------ T3 Alerts ---------------------------"
-input int               InpT3AlertOnRegressionChannelLevel = 0;
-input int               InpT3AlertOnFiboRetracmentLevel = 0;
-input int               InpT3AlertOnBidStopLossLineOffset = 0;
+input group             "------------------------------ T3 LEVELS ----------------------"
+input int               InpT3AlertOnFiboRetracmentLevel = 50; // T3 Alert on Fibo Level
+input int               InpT3MinFiboRetracmentLevel = 62; // T3 Min Fibo
+input int               InpT3MaxFiboRetracmentLevel = 110; // T3 Max Fibo
 
-input group             "------------------------------ T3 PRIO B ---------------------------"
-input int               InpT3ChannelEndShift = 10; // T3 Anzahl Candles Offset RegressionChannel
+input group             "------------------------------ T3 TRAILING --------------------"
+input int               InpT3MinProfitFiboRetracmentLevel = 20; // T3 Min Profit Fibo Level
+input int               InpT3TrailingStopMarketMaxOffset = 0; // T3 Market Trailing Offset
+input ENUM_TIMEFRAMES   InpT3trailingStopMATimeframe = PERIOD_M10; // T3 MA Trailing Timeframe
+input string            InpT3trailingStopMAPeriods = "200, 150, 100, 50, 10"; // T3 MA Trailing Periods
+input int               InpT3TrailingStopMAMaxOffset = 0; // T3 MA Trailing Offset
+
+input group             "------------------------------ T3 MONEY -----------------------"
 input double            InpMaxPositionRiskPercent = 1; // T3 & T4 max Position Risk %
 input int               InpT3OrderGridCount = 5; // T3 Anzahl Grid Orders
-input bool              InpT3SetIsTradabelButtonStateAfterClose = false; // nach Close Button OFF
 
-input group             "------------------------------ T3 PRIO C ---------------------------"
-input long              InpT3MagicNumber = 1619769103; // T3 MagicNumber
-input string            InpT3Comment = "T3 MarktTechnik"; // T3 Comment
-input long              InpMaxSlippage = 3; // T3 & T4 max Slippage
-input bool              InpT3ShowCommentDashboard = true;
-input bool              InpT3ObjectsShow = true;
-input ENUM_TIMEFRAMES   InpT3MaxTimeframe = PERIOD_H1;
-input string            InpT3FiboLevels = "10, 20, 30, 40, 50, 60, 70, 80, 90, 110";
-input color             InpT3RegressionChannelColor = clrBeige;
-input color             InpT3InSignalAreaColor = clrWheat;
-input color             InpT3TrendLineColor = clrDarkKhaki;
 
-input group             "------------------------------ T3 PRIO D - nicht in Gebrauch ---------------------------"
-input group             "---------- SL & TP ---------"
-input int               InpT3TakeProfit = 0; // T3 TakeProfit
-input group             "---------------------- T3 - ReEntry ---------------------------"
-input int               InpT3MinReEntryRegressionChannelLevel = 0;
-input int               InpT3MinReEntryFiboRetracmentLevel = 0;
-input color             InpT3ReEntryMinRegressionColor = clrDarkKhaki;
-input color             InpT3ReEntryAreaColor = clrBeige;
-input group             "---------- MoneyManagement ---------"
-input bool              InpUseMoneyManagement = true; // T3 & T4 Use Money Management
-input double            InpLotsPerEquity = 0; // T3 & T4 Lots per 1000 Equity
-input double            InpFixedVolume = 0; // T3 & T4 Fixe Lotgröße
-input int               InpMaxSpread = 10; // T3 & T4 max Spread
-input group             "---------- Break Even ---------"
-input bool              InpUseBreakEven = false;
-input int               InpBreakEvenProfit = 0;
-input int               InpLockProfit = 0;
-input group             "---------- InsideBar ---------"
-input double            InpInsideBarMinRange = 0;
-input ENUM_TIMEFRAMES   InpInsideBarTimeframe = PERIOD_CURRENT;
-input color             InpInsideBarLineColor = clrBlue;
-input double            InpInsideBarMaxStopLossMulti = 0.5;
-input group             "---------- Trailing ---------"
-input bool              InpT3UseTrailingStopMarket = true;
-input int               InpT3TrailingStopMarketMaxOffset = 10000;
-input color             InpT3TailingStopLineColor = clrRed;
-input ENUM_TIMEFRAMES   InpT3trailingStopMATimeframe = PERIOD_M10;
-input string            InpT3trailingStopMAPeriods = "200, 150, 100, 50, 10";
-input int               InpT3TrailingStopMAMaxOffset = 15000;
-input group             "---------- StrategyTester ---------" // (Objects in Strategy Tester nicht vorhanden)
-input datetime          InpT3p1DateTime = D'2022.01.01 00:00';
-input datetime          InpT3p2DateTime = D'2022.01.01 00:00';
-input datetime          InpT3p3DateTime = D'2022.01.01 00:00';
-input datetime          InpT3p4DateTime = D'2022.01.01 00:00';
+// ****************  INTERN **************** //
+
+//input group             "------------------------------ T3 Alerts ---------------------------"
+int               InpMaxSpread = 10; // T3 & T4 max Spread
+int               InpT3AlertOnRegressionChannelLevel = 0;
+int               InpT3MinRegressionChannelLevel = 0; // T3 Min RegressionChannel
+int               InpT3MaxRegressionChannelLevel = 0; // T3 Max RegressionChannel
+double            InpT3StopLossLineOffsetMulti = 1.1; // T3 StopLossLine Multi
+double            InpT3StopLossMarketOffsetMulti = 1.2; // T3 StopLossMarket Multi
+int               InpT3ChannelEndShift = 10; // T3 Anzahl Candles Offset RegressionChannel
+bool              InpT3SetIsTradabelButtonStateAfterClose = false; // nach Close Button OFF
+long              InpT3MagicNumber = 1619769103; // T3 MagicNumber
+string            InpT3Comment = "T3 MarktTechnik"; // T3 Comment
+long              InpMaxSlippage = 3; // T3 & T4 max Slippage
+bool              InpT3ShowCommentDashboard = true;
+bool              InpT3ObjectsShow = true;
+ENUM_TIMEFRAMES   InpT3MaxTimeframe = PERIOD_H1;
+string            InpT3FiboLevels = "10, 20, 30, 40, 50, 60, 70, 80, 90, 110";
+color             InpT3RegressionChannelColor = clrBeige;
+color             InpT3InSignalAreaColor = clrWheat;
+color             InpT3TrendLineColor = clrDarkKhaki;
+//input group             "---------- InsideBar ---------"
+double            InpInsideBarMinRange = 0;
+ENUM_TIMEFRAMES   InpInsideBarTimeframe = PERIOD_CURRENT;
+color             InpInsideBarLineColor = clrBlue;
+color             InpT3TailingStopLineColor = clrRed;
+bool              InpT3UseTrailingStopMarket = true;
+
+//input group             "---------- StrategyTester ---------" // (Objects in Strategy Tester nicht vorhanden)
+datetime          InpT3p1DateTime = D'2022.01.01 00:00';
+datetime          InpT3p2DateTime = D'2022.01.01 00:00';
+datetime          InpT3p3DateTime = D'2022.01.01 00:00';
+datetime          InpT3p4DateTime = D'2022.01.01 00:00';
+
+// ****************  RAUS **************** //
+int               InpT3AlertOnBidStopLossLineOffset = 0;
+int               InpT3MinReEntryRegressionChannelLevel = 0;
+int               InpT3MinReEntryFiboRetracmentLevel = 0;
+color             InpT3ReEntryMinRegressionColor = clrDarkKhaki;
+color             InpT3ReEntryAreaColor = clrBeige;

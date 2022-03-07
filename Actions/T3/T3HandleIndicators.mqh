@@ -8,6 +8,7 @@ void handleT3Indictaors() {
 
    if(InpT3trailingStopMATimeframe == Period()
          && t3ProfitLevelGreaterMinProfitFiboRetracmentLevel == true
+         && InpT3TrailingStopMAMaxOffset != 0
      ) {
       int bufferNumber = 0;
       int start = 0;

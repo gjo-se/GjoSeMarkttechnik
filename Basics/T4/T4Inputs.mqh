@@ -4,61 +4,71 @@
 //|                                             https://www.mql5.com |
 //+------------------------------------------------------------------+
 
-input group             "------------------------------ T4 PRIO A ---------------------------"
-input int               InpT4MinRegressionChannelLevel = 0; // T4 Min RegressionChannel
-input int               InpT4MaxRegressionChannelLevel = 0; // T4 Max RegressionChannel
-input int               InpT4MinFiboRetracmentLevel = 0; // T4 Min FiboRetracment
-input int               InpT4MaxFiboRetracmentLevel = 0; // T4 Max FiboRetracment
-input int               InpT4MinProfitFiboRetracmentLevel = 0; // T4 Min Profit FiboRetracment Level
-input int               InpT4MinRegressionPercent = 20; // T4 % minRegression for EntryLevel
-input double            InpT4StopLossLineMulti = 1.2; // T4 StopLossLine Multi
-input double            InpT4StopLossMarketMulti = 1.3; // T4 StopLossMarket Multi
+input group             "---------------------------------------------------------------"
+input group             "------------------------------ T4 -----------------------------"
+input group             "---------------------------------------------------------------"
 
-input group             "------------------------------ T4 Alerts ---------------------------"
-input int               InpT4AlertOnRegressionChannelLevel = 0;
-input int               InpT4AlertOnFiboRetracmentLevel = 0;
-input int               InpT4AlertOnBidStopLossLineOffset = 0;
+input group             "------------------------------ T4 LEVELS ----------------------"
+input bool              InpT4ObjectsShow = true; // Show T4 Objects
+input int               InpT4MinFiboRetracmentLevel = 62; // T4 Min Fibo
+input int               InpT4MaxFiboRetracmentLevel = 110; // T4 Max Fibo
+input int               InpT4MinRegressionPercent = 20; // T4 % MIN Regression for EntryLevel
 
-input group             "------------------------------ T4 PRIO B ---------------------------"
-input int               InpT4ChannelEndShift = 10;
+input group             "------------------------------ T4 TRAILING --------------------"
+input int               InpT4MinProfitFiboRetracmentLevel = 20; // T4 Min Profit Fibo Level
+input int               InpT4TrailingStopMarketMaxOffset = 0; // T4 Market Trailing Offset
+input ENUM_TIMEFRAMES   InpT4trailingStopMATimeframe = PERIOD_M1; // T4 MA Trailing Timeframe
+input string            InpT4trailingStopMAPeriods = "200, 150, 100, 50, 10"; // T4 MA Trailing Periods
+input int               InpT4TrailingStopMAMaxOffset = 0; // T4 MA Trailing Offset
+
+input group             "------------------------------ T4 MONEY -----------------------"
 input int               InpT4OrderGridCount = 5; // Anzahl T4 Grid Orders
-input bool              InpT4SetIsTradabelButtonStateAfterClose = false; // nach Close Button OFF
 
-input group             "------------------------------ T4 PRIO C ----------------"
-input string            InpT4Comment = "T4 MarktTechnik"; // T4 Comment
-input long              InpT4MagicNumber = 1619769104; // T4 MagicNumber
-input bool              InpT4ShowCommentDashboard = false;
-input bool              InpT4ObjectsShow = true;
-input ENUM_TIMEFRAMES   InpT4MaxTimeframe = PERIOD_H1;
-input string            InpT4FiboLevels = "10, 20, 30, 40, 50, 60, 70, 80, 90, 110";
-input color             InpT4RegressionChannelColor = clrSilver;
-input color             InpT4InSignalAreaColor = clrDarkGray;
-input color             InpT4TrendLineColor = clrBlack;
 
-input group             "------------------------------ T4 PRIO D - nicht in Gebrauch ---------------------------"
-input group             "---------- SL & TP ---------"
-input int               InpT4TakeProfit = 0; // T4 TakeProfit
-input group             "---------------------- T4 - ReEntry ---------------------------"
-input int               InpT4MinReEntryRegressionChannelLevel = 0;
-input int               InpT4MinReEntryFiboRetracmentLevel = 0;
-input color             InpT4ReEntryMinRegressionColor = clrDarkKhaki;
-input color             InpT4ReEntryAreaColor = clrBeige;
-input group             "------------------------------ T4 Regression TS ---------------------------"
-input bool              InpT4RegressionChannelShow = false;
-input ENUM_TIMEFRAMES   InpT4RegressionChannelTimeframe = PERIOD_M10;
-input int               InpT4RegressionChannelEndShift = 20;
-input int               InpT4StopLossOnRegressionChannelLevel = 120;
-input double            InpT4TrendOKOnMulti = 1.5;
-input group             "---------- Trailing ---------"
-input bool              InpT4UseTrailingStopMarket = true;
-input int               InpT4TrailingStopMarketMaxOffset = 10000;
-input color             InpT4TailingStopLineColor = clrRed;
-input ENUM_TIMEFRAMES   InpT4trailingStopMATimeframe = PERIOD_M1;
-input string            InpT4trailingStopMAPeriods = "200, 150, 100, 50, 10";
-input int               InpT4TrailingStopMAMaxOffset = 15000;
-input group             "---------- StrategyTester ---------" // (Objects in Strategy Tester nicht vorhanden)
-input datetime          InpT4p1DateTime = D'2022.01.01 00:00';
-input datetime          InpT4p2DateTime = D'2022.01.01 00:00';
-input datetime          InpT4p3DateTime = D'2022.01.01 00:00';
-input datetime          InpT4p4DateTime = D'2022.01.01 00:00';
 //+------------------------------------------------------------------+
+
+// ****************  INTERN **************** //
+int               InpT4AlertOnFiboRetracmentLevel = 0;
+int               InpT4MinRegressionChannelLevel = 0; // T4 Min RegressionChannel
+int               InpT4MaxRegressionChannelLevel = 0; // T4 Max RegressionChannel
+bool              InpT4UseTrailingStopMarket = true;
+color             InpT4TailingStopLineColor = clrRed;
+ENUM_TIMEFRAMES   InpT4MaxTimeframe = PERIOD_H1;
+string            InpT4FiboLevels = "10, 20, 30, 40, 50, 60, 70, 80, 90, 110";
+color             InpT4RegressionChannelColor = clrSilver;
+color             InpT4InSignalAreaColor = clrDarkGray;
+color             InpT4TrendLineColor = clrBlack;
+//group             "------------------------------ T4 PRIO C ----------------"
+string            InpT4Comment = "T4 MarktTechnik"; // T4 Comment
+long              InpT4MagicNumber = 1619769104; // T4 MagicNumber
+bool              InpT4ShowCommentDashboard = true;
+//group             "------------------------------ T4 PRIO B ---------------------------"
+int               InpT4ChannelEndShift = 10;
+bool              InpT4SetIsTradabelButtonStateAfterClose = false; // nach Close Button OFF
+//group             "------------------------------ T4 Alerts ---------------------------"
+int               InpT4AlertOnRegressionChannelLevel = 0;
+double            InpT4StopLossLineOffsetMulti = 1.2; // T4 StopLossLine Multi
+double            InpT4StopLossMarketOffsetMulti = 1.3; // T4 StopLossMarket Multi
+
+// group             "---------- StrategyTester ---------" // (Objects in Strategy Tester nicht vorhanden)
+datetime          InpT4p1DateTime = D'2022.01.01 00:00';
+datetime          InpT4p2DateTime = D'2022.01.01 00:00';
+datetime          InpT4p3DateTime = D'2022.01.01 00:00';
+datetime          InpT4p4DateTime = D'2022.01.01 00:00';
+
+// ****************  RAUS **************** //
+
+int               InpT4AlertOnBidStopLossLineOffset = 0;
+
+// group             "------------------------------ T4 Regression TS ---------------------------"
+bool              InpT4RegressionChannelShow = false;
+ENUM_TIMEFRAMES   InpT4RegressionChannelTimeframe = PERIOD_M10;
+int               InpT4RegressionChannelEndShift = 20;
+int               InpT4StopLossOnRegressionChannelLevel = 120;
+double            InpT4TrendOKOnMulti = 1.5;
+
+// group             "---------------------- T4 - ReEntry ---------------------------"
+int               InpT4MinReEntryRegressionChannelLevel = 0;
+int               InpT4MinReEntryFiboRetracmentLevel = 0;
+color             InpT4ReEntryMinRegressionColor = clrDarkKhaki;
+color             InpT4ReEntryAreaColor = clrBeige;

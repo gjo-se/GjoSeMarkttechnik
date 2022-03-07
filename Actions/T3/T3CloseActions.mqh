@@ -67,7 +67,7 @@ void closeOnT3TrailingStopMarket() {
 
    long positionTicket = 0;
 
-   if(t3ProfitLevelGreaterMinProfitFiboRetracmentLevel == true) {
+   if(t3ProfitLevelGreaterMinProfitFiboRetracmentLevel == true && InpT3TrailingStopMarketMaxOffset != 0) {
       long positionTicketsLocal[];
       Positions.GetTickets(InpT4MagicNumber, positionTicketsLocal);
       for(int positionTicketId = 0; positionTicketId < ArraySize(positionTicketsLocal); positionTicketId++) {
