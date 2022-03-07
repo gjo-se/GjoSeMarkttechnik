@@ -133,7 +133,7 @@ void t4HandleObjectsAction() {
 // T4 SHORT
    if(t3LowestLowVLineDateTime != 0 && t4HighestHighVLineDateTime == 0) {
       datetime lowestLowDateTimeLocal = iTime(Symbol(), Period(), iLowest(Symbol(), Period(), MODE_LOW,  iBarShift(Symbol(), Period(), t3LowestLowVLineDateTime) + 1));
-      if(t4p4DateTime != lowestLowDateTimeLocal) createT4P4VLine(t3LowestLowVLineDateTime);
+      if(t4p4DateTime != lowestLowDateTimeLocal) createT4P4VLine(lowestLowDateTimeLocal);
    }
 
 }
