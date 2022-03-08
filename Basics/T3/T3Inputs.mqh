@@ -46,6 +46,7 @@ string            InpT3FiboLevels = "10, 20, 30, 40, 50, 60, 70, 80, 90, 110";
 color             InpT3RegressionChannelColor = clrBeige;
 color             InpT3InSignalAreaColor = clrWheat;
 color             InpT3TrendLineColor = clrDarkKhaki;
+bool              InpPrintScreenshot = false;
 //input group             "---------- InsideBar ---------"
 double            InpInsideBarMinRange = 0;
 ENUM_TIMEFRAMES   InpInsideBarTimeframe = PERIOD_CURRENT;

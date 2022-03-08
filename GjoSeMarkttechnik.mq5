@@ -107,7 +107,7 @@ void OnTick() {
    handleT4StatesAction();
    setT3PositionStates();
    setT4PositionStates();
-   handleScreenshotAction();
+   if(InpPrintScreenshot == true) handleScreenshotAction();
 
    closeT3Actions();
    closeT4Actions();
