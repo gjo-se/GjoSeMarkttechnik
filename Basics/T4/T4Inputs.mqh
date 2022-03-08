@@ -43,7 +43,7 @@ long              InpT4MagicNumber = 1619769104; // T4 MagicNumber
 bool              InpT4ShowCommentDashboard = true;
 //group             "------------------------------ T4 PRIO B ---------------------------"
 int               InpT4ChannelEndShift = 10;
-bool              InpT4SetIsTradabelButtonStateAfterClose = false; // nach Close Button OFF
+bool              InpT4DisableTradabelButtonStateAfterClose = true; // nach Close Button OFF
 //group             "------------------------------ T4 Alerts ---------------------------"
 int               InpT4AlertOnRegressionChannelLevel = 0;
 double            InpT4StopLossLineOffsetMulti = 1.2; // T4 StopLossLine Multi

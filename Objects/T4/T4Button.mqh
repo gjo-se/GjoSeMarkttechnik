@@ -36,7 +36,7 @@ void handleT4IsTradeableButton() {
    }
 }
 
-void setT4IsTradeableButtonFalse() {
+void t4DisableTradeableButton() {
 
    bool buttonState = false;
 

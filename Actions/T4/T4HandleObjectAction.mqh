@@ -139,7 +139,7 @@ void t4HandleObjectsAction() {
    }
 
    if(allT4BuyPositionsAreClosedState || allT4SellPositionsAreClosedState) {
-      if(InpT4SetIsTradabelButtonStateAfterClose == true) setT4IsTradeableButtonFalse();
+      if(InpT4DisableTradabelButtonStateAfterClose == true) t4DisableTradeableButton();
       deleteTrendLine(T4_STOP_LOSS_TLINE);
    }
 
@@ -214,7 +214,7 @@ double getT4P4HighLowValueByTrendDirection() {
 
 void setT4HighestHighDateTime() {
 
-   if((int)t4p4DateTime < (int) TimeCurrent() && t4IsBidHigherInSignalAreaMinEndValue == true && t4IsTradabelButtonState == true) {
+   if((int)t4p4DateTime < (int) TimeCurrent() && t4IsBidHigherInSignalAreaMinEndValue == true) {
       int startCandleShift = iBarShift(Symbol(), Period(), t4p4DateTime);
       if(t4HighestHighVLineDateTime == 0) createT4HighestHighVLine();
       if(t4HighestHighVLineDateTime != 0) startCandleShift = iBarShift(Symbol(), Period(), t4HighestHighVLineDateTime);
@@ -228,13 +228,13 @@ void setT4HighestHighDateTime() {
 
    if(t4IsBidHigherInSignalAreaMaxEndValue == true) {
       t4HighestHighDateTime = 0;
-      setT4IsTradeableButtonFalse();
+      t4DisableTradeableButton();
    }
 }
 
 void setT4LowestLowDateTime() {
 
-   if((int)t4p4DateTime < (int) TimeCurrent() && t4IsBidLowerInSignalAreaMaxEndValue == true && t4IsTradabelButtonState == true) {
+   if((int)t4p4DateTime < (int) TimeCurrent() && t4IsBidLowerInSignalAreaMaxEndValue == true) {
       int startCandleShift = iBarShift(Symbol(), Period(), t4p4DateTime);
       if(t4LowestLowVLineDateTime == 0) createT4LowestLowVLine();
       if(t4LowestLowVLineDateTime != 0) startCandleShift = iBarShift(Symbol(), Period(), t4LowestLowVLineDateTime);
@@ -248,7 +248,7 @@ void setT4LowestLowDateTime() {
 
    if(t4IsBidLowerInSignalAreaMinEndValue == true) {
       t4LowestLowDateTime = 0;
-      setT4IsTradeableButtonFalse();
+      t4DisableTradeableButton();
    }
 
 }
