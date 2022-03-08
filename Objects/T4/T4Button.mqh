@@ -42,5 +42,6 @@ void setT4IsTradeableButtonFalse() {
 
    ObjectSetInteger(0, T4_IS_TRADEABLE_BUTTON, OBJPROP_STATE, buttonState);
    t4IsTradabelButtonState = buttonState;
+   handleT4IsTradeableButton();
 }
 //+------------------------------------------------------------------+
