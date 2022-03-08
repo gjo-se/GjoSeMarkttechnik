@@ -116,8 +116,8 @@ void OnTick() {
 
    t3HandleObjectsAction();
    t4HandleObjectsAction();
-   if(InpT3ShowCommentDashboard) t3CommentAction(VERSION);
-   if(InpT4ShowCommentDashboard && InpT4ObjectsShow) t4CommentAction(VERSION);
+   if(InpT3ShowCommentDashboard && isNewCurrentBar) t3CommentAction(VERSION);
+   if(InpT4ShowCommentDashboard && InpT4ObjectsShow && isNewCurrentBar) t4CommentAction(VERSION);
 
    if(getT3BuyAlertRegressionSignal() == true) t3AlertBuyRegressionAction();
    if(getT4BuyAlertRegressionSignal() == true) t4AlertBuyRegressionAction();
