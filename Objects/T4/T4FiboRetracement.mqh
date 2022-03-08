@@ -30,7 +30,7 @@ void createT4FiboRetracement() {
          if(level == InpT4MinFiboRetracmentLevel) {
 
             lineWidth = 2;
-            levelColor = InpT4TrendLineColor;
+            levelColor = clrBlack;
             
             if(t4trendDirection == TREND_DIRECTION_LONG) {
                t4InSignalFiboLevelAreaMaxStartValue = t4FiboLevelValue;
@@ -46,7 +46,7 @@ void createT4FiboRetracement() {
          if(level == InpT4MaxFiboRetracmentLevel) {
 
             lineWidth = 2;
-            levelColor = InpT4TrendLineColor;
+            levelColor = clrBlack;
 
             if(t4trendDirection == TREND_DIRECTION_LONG) {
                t4InSignalFiboLevelAreaMinStartValue = t4FiboLevelValue;

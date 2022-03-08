@@ -30,7 +30,7 @@ void createT3FiboRetracement() {
          if(level == InpT3MinFiboRetracmentLevel) {
 
             lineWidth = 2;
-            levelColor = InpT3TrendLineColor;
+            levelColor = clrMaroon;
             
             if(t3trendDirection == TREND_DIRECTION_LONG) {
                t3InSignalFiboLevelAreaMaxStartValue = t3FiboLevelValue;
@@ -44,7 +44,7 @@ void createT3FiboRetracement() {
          if(level == InpT3MaxFiboRetracmentLevel) {
 
             lineWidth = 2;
-            levelColor = InpT3TrendLineColor;
+            levelColor = clrMaroon;
 
             if(t3trendDirection == TREND_DIRECTION_LONG) {
                t3InSignalFiboLevelAreaMinStartValue = t3FiboLevelValue;
