@@ -168,9 +168,11 @@ void OnChartEvent(const int id,
    if(id == CHARTEVENT_OBJECT_CLICK) {
       if(sparam == T3_IS_TRADEABLE_BUTTON) {
          handleT3IsTradeableButton();
+         if(InpT3ShowCommentDashboard) t3CommentAction(VERSION);
       }
       if(sparam == T4_IS_TRADEABLE_BUTTON) {
          handleT4IsTradeableButton();
+         if(InpT4ShowCommentDashboard && InpT4ObjectsShow) t4CommentAction(VERSION);
       }
    }
 }
