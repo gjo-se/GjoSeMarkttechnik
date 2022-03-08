@@ -67,7 +67,7 @@ void closeOnT3TrailingStopMarket() {
 
    long positionTicket = 0;
 
-   if(t3ProfitLevelGreaterMinProfitFiboRetracmentLevel == true && InpT3TrailingStopMarketMaxOffset != 0) {
+   if(t3ProfitLevelGreaterMinProfitFiboRetracmentLevel == true && InpT3TrailingStopOffset != 0) {
       long positionTicketsLocal[];
       Positions.GetTickets(InpT4MagicNumber, positionTicketsLocal);
       for(int positionTicketId = 0; positionTicketId < ArraySize(positionTicketsLocal); positionTicketId++) {
@@ -77,10 +77,10 @@ void closeOnT3TrailingStopMarket() {
             && PositionMagicNumber(positionTicket) == InpT3MagicNumber
          ) {
             if(t3trendDirection == TREND_DIRECTION_LONG && PositionType(positionTicket) == ORDER_TYPE_BUY) {
-               Trail.TrailingStop(positionTicket, InpT3TrailingStopMarketMaxOffset);
+               Trail.TrailingStop(positionTicket, InpT3TrailingStopOffset);
             }
             if(t3trendDirection == TREND_DIRECTION_SHORT && PositionType(positionTicket) == ORDER_TYPE_SELL) {
-               Trail.TrailingStop(positionTicket, InpT3TrailingStopMarketMaxOffset);
+               Trail.TrailingStop(positionTicket, InpT3TrailingStopOffset);
             }
          }
       }

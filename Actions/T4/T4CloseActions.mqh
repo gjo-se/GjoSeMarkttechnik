@@ -76,10 +76,10 @@ void closeOnT4TrailingStopMarket() {
             && PositionMagicNumber(positionTicket) == InpT4MagicNumber
          ) {
             if(t4trendDirection == TREND_DIRECTION_LONG && PositionType(positionTicket) == ORDER_TYPE_BUY) {
-               Trail.TrailingStop(positionTicket, InpT4TrailingStopMarketMaxOffset);
+               Trail.TrailingStop(positionTicket, InpT4TrailingStopOffset);
             }
             if(t4trendDirection == TREND_DIRECTION_SHORT && PositionType(positionTicket) == ORDER_TYPE_SELL) {
-               Trail.TrailingStop(positionTicket, InpT4TrailingStopMarketMaxOffset);
+               Trail.TrailingStop(positionTicket, InpT4TrailingStopOffset);
             }
          }
       }

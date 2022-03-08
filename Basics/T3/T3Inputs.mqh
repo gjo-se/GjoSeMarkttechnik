@@ -15,10 +15,9 @@ input int               InpT3MaxFiboRetracmentLevel = 110; // T3 Max Fibo
 
 input group             "------------------------------ T3 TRAILING --------------------"
 input int               InpT3MinProfitFiboRetracmentLevel = 20; // T3 Min Profit Fibo Level
-input int               InpT3TrailingStopMarketMaxOffset = 0; // T3 Market Trailing Offset
-input ENUM_TIMEFRAMES   InpT3trailingStopMATimeframe = PERIOD_M10; // T3 MA Trailing Timeframe
-input string            InpT3trailingStopMAPeriods = "200, 150, 100, 50, 10"; // T3 MA Trailing Periods
-input int               InpT3TrailingStopMAMaxOffset = 0; // T3 MA Trailing Offset
+input int               InpT3TrailingStopOffset = 0; // T3 TrailingStop Offset
+input ENUM_TIMEFRAMES   InpT3trailingStopMATimeframe = PERIOD_M10; // T3 MA TrailingStop Timeframe
+input string            InpT3trailingStopMAPeriods = "200, 150, 100, 50, 10"; // T3 MA TrailingStop Periods
 
 input group             "------------------------------ T3 MONEY -----------------------"
 input double            InpMaxPositionRiskPercent = 1; // T3 & T4 max Position Risk %
