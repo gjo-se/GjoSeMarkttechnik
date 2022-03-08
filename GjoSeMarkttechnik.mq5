@@ -27,6 +27,7 @@
    3.0   added MADynamikTrailing, changed T4
    3.0.1 fixed createT4
    3.0.2 fixed createT4 SHORT
+   3.0.3 fixed diverse
 
    ===============
 
@@ -44,7 +45,7 @@
 #property copyright   "2022, GjoSe"
 #property link        "http://www.gjo-se.com"
 #property description "GjoSe Markttechnik"
-#define   VERSION "3.0.2"
+#define   VERSION "3.0.3"
 #property version VERSION
 #property strict
 
