@@ -30,8 +30,8 @@ double getT4SellStopLoss() {
 // Fix: in Punkten (InpT4StopLoss) // von Points in Level umrechnen:
 
    double minRegressionPoints = (t4HighestHighValue / Point() - getT4P4HighLowValueByTrendDirection() / Point()) * InpT4MinRegressionPercent / 100;
-   double stopLossLineValue = t4ShortEntryValue + minRegressionPoints * InpT4StopLossLineMulti * Point() ;
-   double stopLossMarketValue = t4ShortEntryValue + minRegressionPoints * InpT4StopLossMarketMulti * Point() ;
+   double stopLossLineValue = t4ShortEntryValue + minRegressionPoints * InpT4StopLossLineOffsetMulti * Point() ;
+   double stopLossMarketValue = t4ShortEntryValue + minRegressionPoints * InpT4StopLossMarketOffsetMulti * Point() ;
 
    if(stopLossLineValue > 0) AdjustBelowStopLevel(Symbol(), stopLossLineValue);
    if(stopLossMarketValue > 0) AdjustBelowStopLevel(Symbol(), stopLossMarketValue);
@@ -57,7 +57,7 @@ double getT4SellVolume(double pLevel = 0) {
 // % Risk per Balance
    maxPositionRiskValue = AccountInfoDouble(ACCOUNT_BALANCE) * InpMaxPositionRiskPercent / 100 / InpT4OrderGridCount;
    double minRegressionPoints = (t4HighestHighValue / Point() - getT4P4HighLowValueByTrendDirection() / Point()) * InpT4MinRegressionPercent / 100;
-   double stopLossLineValue = t4ShortEntryValue + minRegressionPoints * InpT4StopLossLineMulti * Point() ;
+   double stopLossLineValue = t4ShortEntryValue + minRegressionPoints * InpT4StopLossLineOffsetMulti * Point() ;
    positionPointRisk = (stopLossLineValue - pLevel) / Point() * getPointValueBySymbol(Symbol());
    volume = maxPositionRiskValue / positionPointRisk;
 

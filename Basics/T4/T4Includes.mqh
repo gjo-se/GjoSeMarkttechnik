@@ -20,7 +20,6 @@
 #include "..\\..\\Actions\\T4\\T4OpenBuyActions.mqh"
 #include "..\\..\\Actions\\T4\\T4OpenSellActions.mqh"
 //#include "..\\Actions\\T4TrailingActions.mqh"
-//#include "..\\Actions\\T4ScreenshotActions.mqh"
 
 #include "..\\..\\States\\T4\\T4PositionState.mqh"
 #include "..\\..\\States\\T4\\T4BuyAlertState.mqh"

@@ -3,6 +3,25 @@
 //|                                  Copyright 2022, MetaQuotes Ltd. |
 //|                                             https://www.mql5.com |
 //+------------------------------------------------------------------+
+void t4HandleObjectsInitAction() {
+
+   deleteTrendLineLike(T4_TRENDLINE);
+   deleteRegressionChannelObject(T4_REGRESSION_CHANNEL);
+   deleteFiboLevelsObject(T4_FIBO_LEVELS);
+   deleteChannelObject(T4_IN_SIGNAL_FIBO_LEVEL_AREA);
+   deleteChannelObject(T4_IN_SIGNAL_REGRESSION_CHANNEL_AREA);
+   deleteChannelObject(T4_RE_ENTRY_AREA);
+
+   createT4TrendLines();
+   createT4RegressionChannel();
+   createT4RegressionChannelLevels();
+   createT4FiboRetracement();
+   createT4InSignalFiboLevelArea();
+   createt4InSignalRegressionChannelArea();
+
+   t4HandleObjectsAction();
+}
+
 void t4HandleObjectsAction() {
 
    if(ObjectFind(ChartID(), T4_IS_TRADEABLE_BUTTON) < 0) {
@@ -127,13 +146,19 @@ void t4HandleObjectsAction() {
 // T4 LONG
    if(t3HighestHighVLineDateTime != 0 && t4LowestLowVLineDateTime == 0) {
       datetime highestHighDateTimeLocal = iTime(Symbol(), Period(), iHighest(Symbol(), Period(), MODE_HIGH,  iBarShift(Symbol(), Period(), t3HighestHighVLineDateTime) + 1));
-      if(t4p4DateTime != highestHighDateTimeLocal) createT4P4VLine(highestHighDateTimeLocal);
+      if(t4p4DateTime != highestHighDateTimeLocal) {
+         t4p4DateTime = highestHighDateTimeLocal;
+         createT4P4VLine(highestHighDateTimeLocal);
+      }
    }
 
 // T4 SHORT
    if(t3LowestLowVLineDateTime != 0 && t4HighestHighVLineDateTime == 0) {
       datetime lowestLowDateTimeLocal = iTime(Symbol(), Period(), iLowest(Symbol(), Period(), MODE_LOW,  iBarShift(Symbol(), Period(), t3LowestLowVLineDateTime) + 1));
-      if(t4p4DateTime != lowestLowDateTimeLocal) createT4P4VLine(lowestLowDateTimeLocal);
+      if(t4p4DateTime != lowestLowDateTimeLocal) {
+         t4p4DateTime = lowestLowDateTimeLocal;
+         createT4P4VLine(lowestLowDateTimeLocal);
+      }
    }
 
 }

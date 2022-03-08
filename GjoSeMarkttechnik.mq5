@@ -27,6 +27,7 @@
    3.0   added MADynamikTrailing, changed T4
    3.0.1 fixed createT4
    3.0.2 fixed createT4 SHORT
+   3.0.3 fixed diverse
 
    ===============
 
@@ -44,7 +45,7 @@
 #property copyright   "2022, GjoSe"
 #property link        "http://www.gjo-se.com"
 #property description "GjoSe Markttechnik"
-#define   VERSION "3.0.2"
+#define   VERSION "3.0.3"
 #property version VERSION
 #property strict
 
@@ -66,10 +67,10 @@ int OnInit() {
    getT3TrendDirection();
    getT4TrendDirection();
 
-   t3HandleObjectsAction();
-   t4HandleObjectsAction();
+   t3HandleObjectsInitAction();
+   t4HandleObjectsInitAction();
    if(InpT3ShowCommentDashboard) t3CommentAction(VERSION);
-   if(InpT4ShowCommentDashboard) t4CommentAction(VERSION);
+   if(InpT4ShowCommentDashboard && InpT4ObjectsShow) t4CommentAction(VERSION);
 
    if(MQLInfoInteger(MQL_TESTER) == 1) {
 
@@ -107,7 +108,7 @@ void OnTick() {
    handleT4StatesAction();
    setT3PositionStates();
    setT4PositionStates();
-   handleScreenshotAction();
+   if(InpPrintScreenshot == true) handleScreenshotAction();
 
    closeT3Actions();
    closeT4Actions();
@@ -116,8 +117,8 @@ void OnTick() {
 
    t3HandleObjectsAction();
    t4HandleObjectsAction();
-   if(InpT3ShowCommentDashboard) t3CommentAction(VERSION);
-   if(InpT4ShowCommentDashboard) t4CommentAction(VERSION);
+   if(InpT3ShowCommentDashboard && isNewCurrentBar) t3CommentAction(VERSION);
+   if(InpT4ShowCommentDashboard && InpT4ObjectsShow && isNewCurrentBar) t4CommentAction(VERSION);
 
    if(getT3BuyAlertRegressionSignal() == true) t3AlertBuyRegressionAction();
    if(getT4BuyAlertRegressionSignal() == true) t4AlertBuyRegressionAction();
