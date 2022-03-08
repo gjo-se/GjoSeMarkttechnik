@@ -15,7 +15,7 @@ input int               InpT4MaxFiboRetracmentLevel = 110; // T4 Max Fibo
 input int               InpT4MinRegressionPercent = 20; // T4 % MIN Regression for EntryLevel
 
 input group             "------------------------------ T4 TRAILING --------------------"
-input int               InpT4MinProfitFiboRetracmentLevel = 20; // T4 Min Profit Fibo Level
+input int               InpT4MinProfitFiboRetracmentLevel = -10; // T4 TrailingStop Start Level
 input int               InpT4TrailingStopOffset = 0; // T4 TrailingStop Offset
 input ENUM_TIMEFRAMES   InpT4trailingStopMATimeframe = PERIOD_M1; // T4 MA TrailingStop Timeframe
 input string            InpT4trailingStopMAPeriods = "200, 150, 100, 50, 10"; // T4 MA TrailingStop Periods
