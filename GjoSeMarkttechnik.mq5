@@ -66,8 +66,8 @@ int OnInit() {
    getT3TrendDirection();
    getT4TrendDirection();
 
-   t3HandleObjectsAction();
-   t4HandleObjectsAction();
+   t3HandleObjectsInitAction();
+   t4HandleObjectsInitAction();
    if(InpT3ShowCommentDashboard) t3CommentAction(VERSION);
    if(InpT4ShowCommentDashboard && InpT4ObjectsShow) t4CommentAction(VERSION);
 

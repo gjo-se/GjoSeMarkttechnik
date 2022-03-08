@@ -3,6 +3,25 @@
 //|                                  Copyright 2022, MetaQuotes Ltd. |
 //|                                             https://www.mql5.com |
 //+------------------------------------------------------------------+
+void t4HandleObjectsInitAction() {
+
+   deleteTrendLineLike(T4_TRENDLINE);
+   deleteRegressionChannelObject(T4_REGRESSION_CHANNEL);
+   deleteFiboLevelsObject(T4_FIBO_LEVELS);
+   deleteChannelObject(T4_IN_SIGNAL_FIBO_LEVEL_AREA);
+   deleteChannelObject(T4_IN_SIGNAL_REGRESSION_CHANNEL_AREA);
+   deleteChannelObject(T4_RE_ENTRY_AREA);
+
+   createT4TrendLines();
+   createT4RegressionChannel();
+   createT4RegressionChannelLevels();
+   createT4FiboRetracement();
+   createT4InSignalFiboLevelArea();
+   createt4InSignalRegressionChannelArea();
+
+   t4HandleObjectsAction();
+}
+
 void t4HandleObjectsAction() {
 
    if(ObjectFind(ChartID(), T4_IS_TRADEABLE_BUTTON) < 0) {
