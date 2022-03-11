@@ -6,12 +6,10 @@
 void createT3InSignalFiboLevelChannelArea() {
 
    if(
-      t3InSignalFiboLevelAreaMinStartValue != 0
-      && t3InSignalFiboLevelAreaMinEndValue != 0
-      && t3InSignalFiboLevelAreaMaxStartValue != 0
-      && t3InSignalFiboLevelAreaMaxEndValue != 0
+      InpT3MinHighVolumeAreaLevel != 0
+      && InpT3MaxHighVolumeAreaLevel != 0
    ) {
-      createChannel(T3_IN_SIGNAL_FIBO_LEVEL_AREA, t3p4DateTime, t3InSignalFiboLevelAreaMaxStartValue, iTime(Symbol(), PERIOD_CURRENT, 0), t3InSignalFiboLevelAreaMaxEndValue, t3p4DateTime, t3InSignalFiboLevelAreaMinStartValue, InpT3InSignalAreaColor);
+      createChannel(T3_IN_SIGNAL_FIBO_LEVEL_AREA, t3p4DateTime, InpT3MinHighVolumeAreaLevel, iTime(Symbol(), PERIOD_CURRENT, 0), InpT3MinHighVolumeAreaLevel, t3p4DateTime, InpT3MaxHighVolumeAreaLevel, InpT3InSignalAreaColor);
    }
 }
 

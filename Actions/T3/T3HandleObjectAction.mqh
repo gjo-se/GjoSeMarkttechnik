@@ -18,6 +18,7 @@ void t3HandleObjectsInitAction() {
    createT3FiboRetracement();
    createT3InSignalFiboLevelChannelArea();
    createt3InSignalRegressionChannelArea();
+   createT3OrderGridTrendLines();
 
    t3HandleObjectsAction();
 }
