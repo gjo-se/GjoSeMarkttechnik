@@ -18,6 +18,9 @@ void t3HandleObjectsInitAction() {
    createT3FiboRetracement();
    createT3InSignalFiboLevelChannelArea();
    createt3InSignalRegressionChannelArea();
+
+   deleteTrendLineLike(T3_ORDER_GRID_LIMIT_TLINE);
+   deleteTrendLineLike(T3_ORDER_GRID_STOP_TLINE);
    createT3OrderGridTrendLines();
 
    t3HandleObjectsAction();

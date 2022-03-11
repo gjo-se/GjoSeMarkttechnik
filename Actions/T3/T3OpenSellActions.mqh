@@ -55,7 +55,7 @@ double getT3SellVolume(double pLevel = 0) {
 
 // % Risk per Balance
    maxPositionRiskValue = AccountInfoDouble(ACCOUNT_BALANCE) * InpMaxPositionRiskPercent / 100 / InpT3OrderGridCount;
-   double gridSize = InpT3MinHighVolumeAreaLevel / Point() - InpT3MaxHighVolumeAreaLevel / Point();
+   double gridSize = InpT3MaxHighVolumeAreaLevel / Point() - InpT3MinHighVolumeAreaLevel / Point();
    double stopLossLineValue = InpT3MinHighVolumeAreaLevel + gridSize * InpT3StopLossLineOffsetMulti * Point() ;
    positionPointRisk = (stopLossLineValue - pLevel) / Point() * getPointValueBySymbol(Symbol());
    volume = maxPositionRiskValue / positionPointRisk;
