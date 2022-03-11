@@ -34,7 +34,7 @@ int         t3TrailingStopMAHandle05;
 int         t3TrailingStopMAPeriod05;
 
 bool isNewCurrentBar;
-string comment;
+string t3comment;
 
 bool  t3IsTradabelButtonState;
 

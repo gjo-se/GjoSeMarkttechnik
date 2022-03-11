@@ -14,7 +14,7 @@ void initializeEAAction() {
 void initializeT3GlobalsAction() {
 
    isNewCurrentBar = false;
-   comment = "";
+   t3comment = "";
 
    t3IsTradabelButtonState = ObjectGetInteger(0, T3_IS_TRADEABLE_BUTTON, OBJPROP_STATE);
 

@@ -28,6 +28,7 @@
    3.0.1 fixed createT4
    3.0.2 fixed createT4 SHORT
    3.0.3 fixed diverse
+   3.1.0 added VolumeProfilArea
 
    ===============
 
@@ -45,7 +46,7 @@
 #property copyright   "2022, GjoSe"
 #property link        "http://www.gjo-se.com"
 #property description "GjoSe Markttechnik"
-#define   VERSION "3.0.3"
+#define   VERSION "3.1.0"
 #property version VERSION
 #property strict
 
@@ -69,8 +70,7 @@ int OnInit() {
 
    t3HandleObjectsInitAction();
    t4HandleObjectsInitAction();
-   if(InpT3ShowCommentDashboard) t3CommentAction(VERSION);
-   if(InpT4ShowCommentDashboard && InpT4ObjectsShow) t4CommentAction(VERSION);
+   handleCommentAction(VERSION);
 
    if(MQLInfoInteger(MQL_TESTER) == 1) {
 
@@ -117,8 +117,9 @@ void OnTick() {
 
    t3HandleObjectsAction();
    t4HandleObjectsAction();
-   if(InpT3ShowCommentDashboard && isNewCurrentBar) t3CommentAction(VERSION);
-   if(InpT4ShowCommentDashboard && InpT4ObjectsShow && isNewCurrentBar) t4CommentAction(VERSION);
+   if(isNewCurrentBar) {
+      handleCommentAction(VERSION);
+   }
 
    if(getT3BuyAlertRegressionSignal() == true) t3AlertBuyRegressionAction();
    if(getT4BuyAlertRegressionSignal() == true) t4AlertBuyRegressionAction();
@@ -168,9 +169,11 @@ void OnChartEvent(const int id,
    if(id == CHARTEVENT_OBJECT_CLICK) {
       if(sparam == T3_IS_TRADEABLE_BUTTON) {
          handleT3IsTradeableButton();
+         handleCommentAction(VERSION);
       }
       if(sparam == T4_IS_TRADEABLE_BUTTON) {
          handleT4IsTradeableButton();
+         handleCommentAction(VERSION);
       }
    }
 }

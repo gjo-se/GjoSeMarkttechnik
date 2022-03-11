@@ -27,20 +27,21 @@ void handleT4IsTradeableButton() {
    t4IsTradabelButtonState = ObjectGetInteger(0, T4_IS_TRADEABLE_BUTTON, OBJPROP_STATE);
    if(t4IsTradabelButtonState == true) {
       ObjectSetString(0, T4_IS_TRADEABLE_BUTTON, OBJPROP_TEXT, "T4 ON");
-      if(t4trendDirection == TREND_DIRECTION_LONG) ObjectSetInteger(0, T4_IS_TRADEABLE_BUTTON, OBJPROP_COLOR, clrGreen);
-      if(t4trendDirection == TREND_DIRECTION_SHORT) ObjectSetInteger(0, T4_IS_TRADEABLE_BUTTON, OBJPROP_COLOR, clrRed);
-      if(t4trendDirection == TREND_DIRECTION_ROTATION) ObjectSetInteger(0, T4_IS_TRADEABLE_BUTTON, OBJPROP_COLOR, clrBlack);
+      if(t4trendDirection == TREND_DIRECTION_LONG) ObjectSetInteger(0, T4_IS_TRADEABLE_BUTTON, OBJPROP_BGCOLOR, clrGreen);
+      if(t4trendDirection == TREND_DIRECTION_SHORT) ObjectSetInteger(0, T4_IS_TRADEABLE_BUTTON, OBJPROP_BGCOLOR, clrRed);
+      if(t4trendDirection == TREND_DIRECTION_ROTATION) ObjectSetInteger(0, T4_IS_TRADEABLE_BUTTON, OBJPROP_BGCOLOR, clrGray);
    } else {
       ObjectSetString(0, T4_IS_TRADEABLE_BUTTON, OBJPROP_TEXT, "T4 OFF");
-      ObjectSetInteger(0, T4_IS_TRADEABLE_BUTTON, OBJPROP_COLOR, clrBlack);
+      ObjectSetInteger(0, T4_IS_TRADEABLE_BUTTON, OBJPROP_BGCOLOR, clrGray);
    }
 }
 
-void setT4IsTradeableButtonFalse() {
+void t4DisableTradeableButton() {
 
    bool buttonState = false;
 
    ObjectSetInteger(0, T4_IS_TRADEABLE_BUTTON, OBJPROP_STATE, buttonState);
    t4IsTradabelButtonState = buttonState;
+   handleT4IsTradeableButton();
 }
 //+------------------------------------------------------------------+

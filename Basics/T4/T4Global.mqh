@@ -27,6 +27,8 @@ double      t4TrailingStopMABuffer05[];
 int         t4TrailingStopMAHandle05;
 int         t4TrailingStopMAPeriod05;
 
+string t4comment;
+
 bool  t4IsTradabelButtonState;
 
 bool  buyT4PositionIsOpenState;

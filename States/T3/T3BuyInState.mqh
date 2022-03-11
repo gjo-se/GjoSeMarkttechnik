@@ -13,8 +13,9 @@ bool getT3BuyInSignal() {
 
    bool signal = false;
 
-   if(getT3BidGreaterLongEntryLevelSignal() == true) signal = true;
-   if(getT3LowestLowIsInSignalAreaState() == false) signal = false;
+   if(getT3BidLowerLongEntryLevelSignal() == true) signal = true;
+//   if(getT3BidGreaterLongEntryLevelSignal() == true) signal = true;
+//   if(getT3LowestLowIsInSignalAreaState() == false) signal = false;
 
    if(getT3BidTriggerLongGridLimitOrderSignal() == true) signal = true;
    if(getT3BidTriggerLongGridStopOrderSignal() == true) signal = true;
@@ -33,6 +34,18 @@ bool getT3BuyInSignal() {
 
 }
 
+bool getT3BidLowerLongEntryLevelSignal() {
+
+   bool signal = false;
+
+   if(buyT3PositionIsOpenState == false && Bid() < t3LongEntryValue){
+      signal = true;
+   }
+
+   return signal;
+}
+
+// TODO: Rückbau
 bool getT3LowestLowIsInSignalAreaState() {
 
    bool state = false;
@@ -48,6 +61,7 @@ bool getT3LowestLowIsInSignalAreaState() {
    return state;
 }
 
+// TODO: Rückbau
 bool getT3BidGreaterLongEntryLevelSignal() {
 
    bool signal = false;

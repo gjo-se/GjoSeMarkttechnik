@@ -60,36 +60,32 @@ void t4AlertOnBidStopLossLineOffset() {
 void t4CommentAction(string pVersion) {
 
    if(t4p1DateTime) {
-      if(InpT3ShowCommentDashboard == false) comment = "";
-      comment += "\n\n";
-      comment += "\n\n";
-      comment += "T4: " + "\n";
-      comment += "Tradabel Button State: " + IntegerToString(t4IsTradabelButtonState) + "\n";
-      if(t4AlertRegressionChannelLevel != 0) comment += "Alert RegressionChannel: " + DoubleToString(t4AlertRegressionChannelLevel, 2) + "\n";
-      if(t4AlertFiboRetracementLevel != 0) comment += "Alert FiboRetracement: " + DoubleToString(t4AlertFiboRetracementLevel, 2) + "\n";
-      comment += "\n";
+      t4comment = "";
+      t4comment += "\n\n";
+      t4comment += "\n\n";
+      t4comment += "T4: " + "\n";
+      t4comment += "Tradabel Button State: " + IntegerToString(t4IsTradabelButtonState) + "\n";
+      if(t4AlertRegressionChannelLevel != 0) t4comment += "Alert RegressionChannel: " + DoubleToString(t4AlertRegressionChannelLevel, 2) + "\n";
+      if(t4AlertFiboRetracementLevel != 0) t4comment += "Alert FiboRetracement: " + DoubleToString(t4AlertFiboRetracementLevel, 2) + "\n";
+      t4comment += "\n";
       if(getT4TrendDirectionString() == "LONG") {
-         comment += "LONG: " + "\n";
-         comment += "t4LongIsTradable: " + IntegerToString(t4LongIsTradable) + "\n";
-         comment += "LowestLowVLineDateTime: " + TimeToString(t4LowestLowVLineDateTime) + "\n";
-         comment += "LowestLow: " + TimeToString(t4LowestLowDateTime) + " - " + DoubleToString(t4LowestLowValue, Digits()) + "\n";
-         comment += "LongEntry: " + TimeToString(t4LowestLowDateTime) + " - " + DoubleToString(t4LongEntryValue, Digits()) + "\n";
-         comment += "t4CurrentTrailingStopMAPeriod: " + IntegerToString(t4TrailingStopMAActive) + " CurrentOffset: " + DoubleToString(Bid() / Point() - t4TrailingStopMALevel / Point(), 0) + "\n";;
+         t4comment += "LONG: " + "\n";
+         t4comment += "t4LongIsTradable: " + IntegerToString(t4LongIsTradable) + "\n";
+         t4comment += "LowestLowVLineDateTime: " + TimeToString(t4LowestLowVLineDateTime) + "\n";
+         t4comment += "LowestLow: " + TimeToString(t4LowestLowDateTime) + " - " + DoubleToString(t4LowestLowValue, Digits()) + "\n";
+         t4comment += "LongEntry: " + TimeToString(t4LowestLowDateTime) + " - " + DoubleToString(t4LongEntryValue, Digits()) + "\n";
+         t4comment += "t4CurrentTrailingStopMAPeriod: " + IntegerToString(t4TrailingStopMAActive) + " CurrentOffset: " + DoubleToString(Bid() / Point() - t4TrailingStopMALevel / Point(), 0) + "\n";;
       }
       if(getT4TrendDirectionString() == "SHORT") {
-         comment += "SHORT: " + "\n";
-         comment += "t4ShortIsTradable: " + IntegerToString(t4ShortIsTradable) + "\n";
-         comment += "HihgestHighVLineDateTime: " + TimeToString(t4HighestHighVLineDateTime) + "\n";
-         comment += "HihgestHigh: " + TimeToString(t4HighestHighDateTime) + " - " + DoubleToString(iHigh(Symbol(), PERIOD_CURRENT, iBarShift(Symbol(), PERIOD_CURRENT, t4HighestHighDateTime)), Digits()) + "\n";
-         comment += "ShortEntry: " + TimeToString(t4HighestHighDateTime) + " - " + DoubleToString(t4ShortEntryValue, Digits()) + "\n";
-         comment += "t4CurrentTrailingStopMAPeriod: " + IntegerToString(t4TrailingStopMAActive) + " CurrentOffset: " + DoubleToString(t4TrailingStopMALevel / Point() - Bid() / Point(), 0) + "\n";;
+         t4comment += "SHORT: " + "\n";
+         t4comment += "t4ShortIsTradable: " + IntegerToString(t4ShortIsTradable) + "\n";
+         t4comment += "HihgestHighVLineDateTime: " + TimeToString(t4HighestHighVLineDateTime) + "\n";
+         t4comment += "HihgestHigh: " + TimeToString(t4HighestHighDateTime) + " - " + DoubleToString(iHigh(Symbol(), PERIOD_CURRENT, iBarShift(Symbol(), PERIOD_CURRENT, t4HighestHighDateTime)), Digits()) + "\n";
+         t4comment += "ShortEntry: " + TimeToString(t4HighestHighDateTime) + " - " + DoubleToString(t4ShortEntryValue, Digits()) + "\n";
+         t4comment += "t4CurrentTrailingStopMAPeriod: " + IntegerToString(t4TrailingStopMAActive) + " CurrentOffset: " + DoubleToString(t4TrailingStopMALevel / Point() - Bid() / Point(), 0) + "\n";;
       }
-      comment += "\n";
-      comment += "StopLossLineLevel: " + DoubleToString(t4StopLossLineLevel, Digits()) + "\n";
-      if(outSideBarDateTime != 0) comment += "OutSideBar: " + TimeToString(outSideBarDateTime) + "\n";
+      t4comment += "\n";
+      t4comment += "StopLossLineLevel: " + DoubleToString(t4StopLossLineLevel, Digits()) + "\n";
+      if(outSideBarDateTime != 0) t4comment += "OutSideBar: " + TimeToString(outSideBarDateTime) + "\n";
    }
-
-   Comment(comment);
 }
-
-//+------------------------------------------------------------------+

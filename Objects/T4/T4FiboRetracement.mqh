@@ -39,7 +39,6 @@ void createT4FiboRetracement() {
             } else {
                t4InSignalFiboLevelAreaMinStartValue = t4FiboLevelValue;
                t4InSignalFiboLevelAreaMinEndValue = t4FiboLevelValue;
-               t3LongEntryValue = t4FiboLevelValue;
             }
          }
 

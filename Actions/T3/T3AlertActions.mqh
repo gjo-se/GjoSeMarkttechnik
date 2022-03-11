@@ -57,40 +57,46 @@ void t3AlertOnBidStopLossLineOffset() {
    }
 }
 
-void t3CommentAction(string pVersion) {
-
-   comment = "\n\n";
-   comment += "EA Version: " + pVersion + "\n";
-   if(!TerminalInfoInteger(TERMINAL_TRADE_ALLOWED)) comment += "TERMINAL_TRADE_ALLOWED: OFF" + "\n";
-   if(!MQLInfoInteger(MQL_TRADE_ALLOWED)) comment += "MQL_TRADE_ALLOWED: OFF" + "\n";
-   comment += "\n";
-   if(t3p1DateTime) {
-      comment += "T3: " + "\n";
-      comment += "Tradabel Button State: " + IntegerToString(t3IsTradabelButtonState) + "\n";
-      if(t3AlertRegressionChannelLevel != 0) comment += "Alert RegressionChannel: " + DoubleToString(t3AlertRegressionChannelLevel, 2) + "\n";
-      if(t3AlertFiboRetracementLevel != 0) comment += "Alert FiboRetracement: " + DoubleToString(t3AlertFiboRetracementLevel, 2) + "\n";
-      comment += "\n";
-
-      if(getT3TrendDirectionString() == "LONG") {
-         comment += "LONG: " + "\n";
-         comment += "t3LongIsTradable: " + IntegerToString(t3LongIsTradable) + "\n";
-         comment += "LowestLowVLineDateTime: " + TimeToString(t3LowestLowVLineDateTime) + "\n";
-         comment += "LowestLow: " + " - " + DoubleToString(t3LowestLowValue, Digits()) + "\n";
-         comment += "LongEntry: " + " - " + DoubleToString(t3LongEntryValue, Digits()) + "\n";
-         comment += "t3CurrentTrailingStopMAPeriod: " + IntegerToString(t3TrailingStopMAActive) + " CurrentOffset: " + DoubleToString(Bid() / Point() - t3TrailingStopMALevel / Point(), 0) + "\n";;
-      }
-      if(getT3TrendDirectionString() == "SHORT") {
-         comment += "SHORT: " + "\n";
-         comment += "t3ShortIsTradable: " + IntegerToString(t3ShortIsTradable) + "\n";
-         comment += "HihgestHighVLineDateTime: " + TimeToString(t3HighestHighVLineDateTime) + "\n";
-         comment += "HihgestHigh: " + " - " + DoubleToString(iHigh(Symbol(), PERIOD_CURRENT, iBarShift(Symbol(), PERIOD_CURRENT, t3HighestHighDateTime)), Digits()) + "\n";
-         comment += "ShortEntry: " + " - " + DoubleToString(t3ShortEntryValue, Digits()) + "\n";
-         comment += "t3CurrentTrailingStopMAPeriod: " + IntegerToString(t3TrailingStopMAActive) + " CurrentOffset: " + DoubleToString(t3TrailingStopMALevel / Point() - Bid() / Point(), 0) + "\n";;
-      }
-      comment += "\n";
-      comment += "StopLossLineLevel: " + DoubleToString(t3StopLossLineLevel, Digits()) + "\n";
-      if(outSideBarDateTime != 0) comment += "OutSideBar: " + TimeToString(outSideBarDateTime) + "\n";
-   }
+void handleCommentAction(string pVersion){
+   t3CommentAction(pVersion);
+   t4CommentAction(pVersion);
+   if(InpT3ShowCommentDashboard && InpT4ShowCommentDashboard) Comment(t3comment + t4comment);
+   if(InpT3ShowCommentDashboard && !InpT4ShowCommentDashboard) Comment(t3comment);
+   if(!InpT3ShowCommentDashboard && InpT4ShowCommentDashboard) Comment(t4comment);
 }
 
-//+------------------------------------------------------------------+
+void t3CommentAction(string pVersion) {
+
+   t3comment = "\n\n";
+   t3comment += "EA Version: " + pVersion + "\n";
+   if(!TerminalInfoInteger(TERMINAL_TRADE_ALLOWED)) t3comment += "TERMINAL_TRADE_ALLOWED: OFF" + "\n";
+   if(!MQLInfoInteger(MQL_TRADE_ALLOWED)) t3comment += "MQL_TRADE_ALLOWED: OFF" + "\n";
+   t3comment += "\n";
+   if(t3p1DateTime) {
+      t3comment += "T3: " + "\n";
+      t3comment += "Tradabel Button State: " + IntegerToString(t3IsTradabelButtonState) + "\n";
+      if(t3AlertRegressionChannelLevel != 0) t3comment += "Alert RegressionChannel: " + DoubleToString(t3AlertRegressionChannelLevel, 2) + "\n";
+      if(t3AlertFiboRetracementLevel != 0) t3comment += "Alert FiboRetracement: " + DoubleToString(t3AlertFiboRetracementLevel, 2) + "\n";
+      t3comment += "\n";
+
+      if(getT3TrendDirectionString() == "LONG") {
+         t3comment += "LONG: " + "\n";
+         t3comment += "t3LongIsTradable: " + IntegerToString(t3LongIsTradable) + "\n";
+         t3comment += "LowestLowVLineDateTime: " + TimeToString(t3LowestLowVLineDateTime) + "\n";
+         t3comment += "LowestLow: " + DoubleToString(t3LowestLowValue, Digits()) + "\n";
+         t3comment += "LongEntry: " + DoubleToString(t3LongEntryValue, Digits()) + "\n";
+         t3comment += "t3CurrentTrailingStopMAPeriod: " + IntegerToString(t3TrailingStopMAActive) + " CurrentOffset: " + DoubleToString(Bid() / Point() - t3TrailingStopMALevel / Point(), 0) + "\n";;
+      }
+      if(getT3TrendDirectionString() == "SHORT") {
+         t3comment += "SHORT: " + "\n";
+         t3comment += "t3ShortIsTradable: " + IntegerToString(t3ShortIsTradable) + "\n";
+         t3comment += "HihgestHighVLineDateTime: " + TimeToString(t3HighestHighVLineDateTime) + "\n";
+         t3comment += "HihgestHigh: " + DoubleToString(iHigh(Symbol(), PERIOD_CURRENT, iBarShift(Symbol(), PERIOD_CURRENT, t3HighestHighDateTime)), Digits()) + "\n";
+         t3comment += "ShortEntry: " + DoubleToString(t3ShortEntryValue, Digits()) + "\n";
+         t3comment += "t3CurrentTrailingStopMAPeriod: " + IntegerToString(t3TrailingStopMAActive) + " CurrentOffset: " + DoubleToString(t3TrailingStopMALevel / Point() - Bid() / Point(), 0) + "\n";;
+      }
+      t3comment += "\n";
+      t3comment += "StopLossLineLevel: " + DoubleToString(t3StopLossLineLevel, Digits()) + "\n";
+      if(outSideBarDateTime != 0) t3comment += "OutSideBar: " + TimeToString(outSideBarDateTime) + "\n";
+   }
+}

@@ -12,6 +12,9 @@ input group             "------------------------------ T3 LEVELS --------------
 input int               InpT3AlertOnFiboRetracmentLevel = 50; // T3 Alert on Fibo Level
 input int               InpT3MinFiboRetracmentLevel = 62; // T3 Min Fibo
 input int               InpT3MaxFiboRetracmentLevel = 110; // T3 Max Fibo
+input double            InpT3MaxHighVolumeAreaLevel = 0; // T3 Max HighVolume Area Level
+input double            InpT3POCLevel = 0; // T3 POC Level
+input double            InpT3MinHighVolumeAreaLevel = 0; // T3 Min HighVolume Area Level
 
 input group             "------------------------------ T3 TRAILING --------------------"
 input int               InpT3MinProfitFiboRetracmentLevel = -10; // T3 TrailingStop Start Level
@@ -34,7 +37,7 @@ int               InpT3MaxRegressionChannelLevel = 0; // T3 Max RegressionChanne
 double            InpT3StopLossLineOffsetMulti = 1.1; // T3 StopLossLine Multi
 double            InpT3StopLossMarketOffsetMulti = 1.2; // T3 StopLossMarket Multi
 int               InpT3ChannelEndShift = 10; // T3 Anzahl Candles Offset RegressionChannel
-bool              InpT3SetIsTradabelButtonStateAfterClose = false; // nach Close Button OFF
+bool              InpT3DisableTradabelButtonStateAfterClose = true; // nach Close Button OFF
 long              InpT3MagicNumber = 1619769103; // T3 MagicNumber
 string            InpT3Comment = "T3 MarktTechnik"; // T3 Comment
 long              InpMaxSlippage = 3; // T3 & T4 max Slippage
