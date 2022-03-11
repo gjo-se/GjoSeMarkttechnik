@@ -29,6 +29,7 @@
    3.0.2 fixed createT4 SHORT
    3.0.3 fixed diverse
    3.1.0 added VolumeProfilArea
+   3.1.1 fixed GridLevels
 
    ===============
 
@@ -46,7 +47,7 @@
 #property copyright   "2022, GjoSe"
 #property link        "http://www.gjo-se.com"
 #property description "GjoSe Markttechnik"
-#define   VERSION "3.1.0"
+#define   VERSION "3.1.1"
 #property version VERSION
 #property strict
 
