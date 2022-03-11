@@ -19,9 +19,17 @@ void t3HandleObjectsInitAction() {
    createT3InSignalFiboLevelChannelArea();
    createt3InSignalRegressionChannelArea();
 
-   deleteTrendLineLike(T3_ORDER_GRID_LIMIT_TLINE);
-   deleteTrendLineLike(T3_ORDER_GRID_STOP_TLINE);
-   createT3OrderGridTrendLines();
+   if(t3trendDirection == TREND_DIRECTION_LONG && buyT3PositionIsOpenState == false) {
+        deleteTrendLineLike(T3_ORDER_GRID_LIMIT_TLINE);
+        deleteTrendLineLike(T3_ORDER_GRID_STOP_TLINE);
+        createT3OrderGridTrendLines();
+   }
+   if(t3trendDirection == TREND_DIRECTION_SHORT && sellT3PositionIsOpenState == false) {
+        deleteTrendLineLike(T3_ORDER_GRID_LIMIT_TLINE);
+        deleteTrendLineLike(T3_ORDER_GRID_STOP_TLINE);
+        createT3OrderGridTrendLines();
+   }
+
 
    t3HandleObjectsAction();
 }

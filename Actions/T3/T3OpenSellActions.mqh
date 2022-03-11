@@ -28,7 +28,7 @@ double getT3SellStopLoss() {
 
 // Varainten in Settings setzen:
 // Fix: in Punkten (InpT3StopLoss) // von Points in Level umrechnen:
-   double gridSize = InpT3MinHighVolumeAreaLevel / Point() - InpT3MaxHighVolumeAreaLevel / Point();
+   double gridSize = InpT3MaxHighVolumeAreaLevel / Point() - InpT3MinHighVolumeAreaLevel / Point();
    double stopLossLineValue = InpT3MinHighVolumeAreaLevel + gridSize * InpT3StopLossLineOffsetMulti * Point() ;
    double stopLossMarketValue = InpT3MinHighVolumeAreaLevel + gridSize * InpT3StopLossMarketOffsetMulti * Point() ;
 
