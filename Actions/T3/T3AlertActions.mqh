@@ -83,16 +83,16 @@ void t3CommentAction(string pVersion) {
          t3comment += "LONG: " + "\n";
          t3comment += "t3LongIsTradable: " + IntegerToString(t3LongIsTradable) + "\n";
          t3comment += "LowestLowVLineDateTime: " + TimeToString(t3LowestLowVLineDateTime) + "\n";
-         t3comment += "LowestLow: " + " - " + DoubleToString(t3LowestLowValue, Digits()) + "\n";
-         t3comment += "LongEntry: " + " - " + DoubleToString(t3LongEntryValue, Digits()) + "\n";
+         t3comment += "LowestLow: " + DoubleToString(t3LowestLowValue, Digits()) + "\n";
+         t3comment += "LongEntry: " + DoubleToString(t3LongEntryValue, Digits()) + "\n";
          t3comment += "t3CurrentTrailingStopMAPeriod: " + IntegerToString(t3TrailingStopMAActive) + " CurrentOffset: " + DoubleToString(Bid() / Point() - t3TrailingStopMALevel / Point(), 0) + "\n";;
       }
       if(getT3TrendDirectionString() == "SHORT") {
          t3comment += "SHORT: " + "\n";
          t3comment += "t3ShortIsTradable: " + IntegerToString(t3ShortIsTradable) + "\n";
          t3comment += "HihgestHighVLineDateTime: " + TimeToString(t3HighestHighVLineDateTime) + "\n";
-         t3comment += "HihgestHigh: " + " - " + DoubleToString(iHigh(Symbol(), PERIOD_CURRENT, iBarShift(Symbol(), PERIOD_CURRENT, t3HighestHighDateTime)), Digits()) + "\n";
-         t3comment += "ShortEntry: " + " - " + DoubleToString(t3ShortEntryValue, Digits()) + "\n";
+         t3comment += "HihgestHigh: " + DoubleToString(iHigh(Symbol(), PERIOD_CURRENT, iBarShift(Symbol(), PERIOD_CURRENT, t3HighestHighDateTime)), Digits()) + "\n";
+         t3comment += "ShortEntry: " + DoubleToString(t3ShortEntryValue, Digits()) + "\n";
          t3comment += "t3CurrentTrailingStopMAPeriod: " + IntegerToString(t3TrailingStopMAActive) + " CurrentOffset: " + DoubleToString(t3TrailingStopMALevel / Point() - Bid() / Point(), 0) + "\n";;
       }
       t3comment += "\n";
