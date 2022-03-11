@@ -16,7 +16,7 @@ void t3HandleObjectsInitAction() {
    createT3RegressionChannel();
    createT3RegressionChannelLevels();
    createT3FiboRetracement();
-   createT3InSignalFiboLevelArea();
+   createT3InSignalFiboLevelChannelArea();
    createt3InSignalRegressionChannelArea();
 
    t3HandleObjectsAction();
@@ -106,7 +106,7 @@ void t3HandleObjectsAction() {
             createT3RegressionChannel();
             createT3RegressionChannelLevels();
             createT3FiboRetracement();
-            createT3InSignalFiboLevelArea();
+            createT3InSignalFiboLevelChannelArea();
             createt3InSignalRegressionChannelArea();
             createT3ReEntryArea();
          } else {

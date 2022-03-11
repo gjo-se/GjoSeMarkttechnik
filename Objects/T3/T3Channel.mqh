@@ -3,7 +3,7 @@
 //|                                       Copyright 2022, Gregory Jo |
 //+------------------------------------------------------------------+
 
-void createT3InSignalFiboLevelArea() {
+void createT3InSignalFiboLevelChannelArea() {
 
    if(
       t3InSignalFiboLevelAreaMinStartValue != 0
