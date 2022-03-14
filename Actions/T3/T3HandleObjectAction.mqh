@@ -43,19 +43,6 @@ void t3HandleObjectsAction() {
 
    if(InpT3ObjectsShow == true) {
 
-      if(t3InSignalFiboLevelAreaMinStartValue != 0 && t3InSignalRegressionChannelAreaMinStartValue != 0) t3InSignalAreaMinStartValue = MathMax(t3InSignalFiboLevelAreaMinStartValue, t3InSignalRegressionChannelAreaMinStartValue);
-      if(t3InSignalFiboLevelAreaMinStartValue == 0 && t3InSignalRegressionChannelAreaMinStartValue != 0) t3InSignalAreaMinStartValue = t3InSignalRegressionChannelAreaMinStartValue;
-      if(t3InSignalFiboLevelAreaMinStartValue != 0 && t3InSignalRegressionChannelAreaMinStartValue == 0) t3InSignalAreaMinStartValue = t3InSignalFiboLevelAreaMinStartValue;
-      if(t3InSignalFiboLevelAreaMaxStartValue != 0 && t3InSignalRegressionChannelAreaMaxStartValue != 0) t3InSignalAreaMaxStartValue = MathMin(t3InSignalFiboLevelAreaMaxStartValue, t3InSignalRegressionChannelAreaMaxStartValue);
-      if(t3InSignalFiboLevelAreaMaxStartValue == 0 && t3InSignalRegressionChannelAreaMaxStartValue != 0) t3InSignalAreaMaxStartValue = t3InSignalRegressionChannelAreaMaxStartValue;
-      if(t3InSignalFiboLevelAreaMaxStartValue != 0 && t3InSignalRegressionChannelAreaMaxStartValue == 0) t3InSignalAreaMaxStartValue = t3InSignalFiboLevelAreaMaxStartValue;
-      if(t3InSignalFiboLevelAreaMinEndValue != 0 && t3InSignalRegressionChannelAreaMinEndValue != 0) t3InSignalAreaMinEndValue = MathMax(t3InSignalFiboLevelAreaMinEndValue, t3InSignalRegressionChannelAreaMinEndValue);
-      if(t3InSignalFiboLevelAreaMinEndValue == 0 && t3InSignalRegressionChannelAreaMinEndValue != 0) t3InSignalAreaMinEndValue = t3InSignalRegressionChannelAreaMinEndValue;
-      if(t3InSignalFiboLevelAreaMinEndValue != 0 && t3InSignalRegressionChannelAreaMinEndValue == 0) t3InSignalAreaMinEndValue = t3InSignalFiboLevelAreaMinEndValue;
-      if(t3InSignalFiboLevelAreaMaxEndValue != 0 && t3InSignalRegressionChannelAreaMaxEndValue != 0) t3InSignalAreaMaxEndValue = MathMin(t3InSignalFiboLevelAreaMaxEndValue, t3InSignalRegressionChannelAreaMaxEndValue);
-      if(t3InSignalFiboLevelAreaMaxEndValue == 0 && t3InSignalRegressionChannelAreaMaxEndValue != 0) t3InSignalAreaMaxEndValue = t3InSignalRegressionChannelAreaMaxEndValue;
-      if(t3InSignalFiboLevelAreaMaxEndValue != 0 && t3InSignalRegressionChannelAreaMaxEndValue == 0) t3InSignalAreaMaxEndValue = t3InSignalFiboLevelAreaMaxEndValue;
-
       if(t3trendDirection == TREND_DIRECTION_LONG) {
 
          setT3LowestLowDateTime();
@@ -238,7 +225,7 @@ void handleInsideBars() {
 
 void setT3HighestHighDateTime() {
 
-   if((int)t3p4DateTime < (int) TimeCurrent() && t3IsBidHigherInSignalAreaMinEndValue == true) {
+   if((int)t3p4DateTime < (int) TimeCurrent() && t3HighestHighIsInSignalArea == true) {
       int startCandleShift = iBarShift(Symbol(), Period(), t3p4DateTime);
       if(t3HighestHighVLineDateTime == 0) createT3HighestHighVLine();
       if(t3HighestHighVLineDateTime != 0) startCandleShift = iBarShift(Symbol(), Period(), t3HighestHighVLineDateTime);
@@ -249,16 +236,11 @@ void setT3HighestHighDateTime() {
          t3HighestHighDateTime = iTime(Symbol(), PERIOD_CURRENT, 0);
       }
    }
-
-   if(t3IsBidHigherInSignalAreaMaxEndValue == true) {
-      t3HighestHighDateTime = 0;
-      t3DisableTradeableButton();
-   }
 }
 
 void setT3LowestLowDateTime() {
 
-   if((int)t3p4DateTime < (int) TimeCurrent() && t3IsBidLowerInSignalAreaMaxEndValue == true) {
+   if((int)t3p4DateTime < (int) TimeCurrent() && Bid() <= InpT3MaxHighVolumeAreaLevel) {
       int startCandleShift = iBarShift(Symbol(), Period(), t3p4DateTime);
       if(t3LowestLowVLineDateTime == 0) createT3LowestLowVLine();
       if(t3LowestLowVLineDateTime != 0) startCandleShift = iBarShift(Symbol(), Period(), t3LowestLowVLineDateTime);
@@ -269,11 +251,5 @@ void setT3LowestLowDateTime() {
          t3LowestLowDateTime = iTime(Symbol(), PERIOD_CURRENT, 0);
       }
    }
-
-   if(t3IsBidLowerInSignalAreaMinEndValue == true) {
-      t3LowestLowDateTime = 0;
-      t3DisableTradeableButton();
-   }
-
 }
 //+------------------------------------------------------------------+

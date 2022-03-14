@@ -81,6 +81,9 @@ void t3CommentAction(string pVersion) {
 
       if(getT3TrendDirectionString() == "LONG") {
          t3comment += "LONG: " + "\n";
+         t3comment += "getT3LowestLowIsInSignalAreaState(): " + IntegerToString(getT3LowestLowIsInSignalAreaState()) + "\n";
+         t3comment += "getT3BidGreaterLongEntryLevelSignal(): " + IntegerToString(getT3BidGreaterLongEntryLevelSignal()) + "\n";
+         t3comment += "maxT3BuyPositionsAreOpenState: " + IntegerToString(maxT3BuyPositionsAreOpenState) + "\n";
          t3comment += "t3LongIsTradable: " + IntegerToString(t3LongIsTradable) + "\n";
          t3comment += "LowestLowVLineDateTime: " + TimeToString(t3LowestLowVLineDateTime) + "\n";
          t3comment += "LowestLow: " + DoubleToString(t3LowestLowValue, Digits()) + "\n";
@@ -89,6 +92,9 @@ void t3CommentAction(string pVersion) {
       }
       if(getT3TrendDirectionString() == "SHORT") {
          t3comment += "SHORT: " + "\n";
+         t3comment += "getT3HighestHighIsInSignalAreaState(): " + IntegerToString(getT3HighestHighIsInSignalAreaState()) + "\n";
+         t3comment += "getT3BidLowerShortEntryLevelSignal(): " + IntegerToString(getT3BidLowerShortEntryLevelSignal()) + "\n";
+         t3comment += "maxT3SellPositionsAreOpenState: " + IntegerToString(maxT3SellPositionsAreOpenState) + "\n";
          t3comment += "t3ShortIsTradable: " + IntegerToString(t3ShortIsTradable) + "\n";
          t3comment += "HihgestHighVLineDateTime: " + TimeToString(t3HighestHighVLineDateTime) + "\n";
          t3comment += "HihgestHigh: " + DoubleToString(iHigh(Symbol(), PERIOD_CURRENT, iBarShift(Symbol(), PERIOD_CURRENT, t3HighestHighDateTime)), Digits()) + "\n";

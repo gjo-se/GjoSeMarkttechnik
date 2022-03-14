@@ -66,14 +66,6 @@ void initializeT3GlobalsAction() {
    t3InSignalRegressionChannelAreaMaxStartValue = 0;
    t3InSignalRegressionChannelAreaMaxEndValue = 0;
 
-   t3InSignalAreaMinStartValue = 0;
-   t3InSignalAreaMinEndValue = 0;
-   t3InSignalAreaMaxStartValue = 0;
-   t3InSignalAreaMaxEndValue = 0;
-   t3IsBidLowerInSignalAreaMinEndValue = false;
-   t3IsBidLowerInSignalAreaMaxEndValue = false;
-   t3IsBidHigherInSignalAreaMinEndValue = false;
-   t3IsBidHigherInSignalAreaMaxEndValue = false;
    t3HighestHighIsInSignalArea = false;
    t3LowestLowIsInSignalArea = false;
 
