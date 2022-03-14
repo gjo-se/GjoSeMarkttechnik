@@ -33,7 +33,7 @@ void setT3Action() {
          t3LowestLowIsInSignalArea = false;
       }
 
-      if(t3LowestLowValue < InpT3MinHighVolumeAreaLevel) {
+      if(t3LowestLowValue != 0 && InpT3MinHighVolumeAreaLevel !=0 && t3LowestLowValue < InpT3MinHighVolumeAreaLevel) {
          t3LowestLowDateTime = 0;
          t3DisableTradeableButton();
       }
@@ -53,7 +53,7 @@ void setT3Action() {
          t3HighestHighIsInSignalArea = false;
       }
 
-      if(t3HighestHighValue > InpT3MaxHighVolumeAreaLevel) {
+      if(t3HighestHighValue != 0 && InpT3MaxHighVolumeAreaLevel != 0 && t3HighestHighValue > InpT3MaxHighVolumeAreaLevel) {
          t3HighestHighDateTime = 0;
          t3DisableTradeableButton();
       }
