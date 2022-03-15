@@ -110,6 +110,7 @@ void initializeT3IndicatorsAction() {
    int shift = 0;
    int t3trailingStopMAPeriod = 0;
 
+   TesterHideIndicators(InpT3TesterHideIndicators);
 
    if(InpT3trailingStopMATimeframe == Period()) {
 

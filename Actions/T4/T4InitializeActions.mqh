@@ -107,8 +107,9 @@ void initializeT4IndicatorsAction() {
    int shift = 0;
    int t4trailingStopMAPeriod = 0;
 
+   TesterHideIndicators(InpT4TesterHideIndicators);
 
-   if(InpT4trailingStopMATimeframe == Period()) {
+  if(InpT4trailingStopMATimeframe == Period()) {
 
       for(int t4trailingStopMAPeriodsId = 0; t4trailingStopMAPeriodsId < ArraySize(t4trailingStopMAPeriodsArray); t4trailingStopMAPeriodsId++) {
          t4trailingStopMAPeriod = (int)t4trailingStopMAPeriodsArray[t4trailingStopMAPeriodsId];

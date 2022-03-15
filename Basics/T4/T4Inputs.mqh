@@ -54,6 +54,7 @@ datetime          InpT4p1DateTime = D'2022.01.01 00:00';
 datetime          InpT4p2DateTime = D'2022.01.01 00:00';
 datetime          InpT4p3DateTime = D'2022.01.01 00:00';
 datetime          InpT4p4DateTime = D'2022.01.01 00:00';
+bool              InpT4TesterHideIndicators = true;
 
 // ****************  RAUS **************** //
 
