@@ -31,6 +31,7 @@
    3.1.0 added VolumeProfilArea
    3.1.1 fixed GridLevels
    3.1.2 fixed SL in SHORT & createGrid only if no Position Open
+   3.2.0 rebuild InSignal Strategy: After Regression
 
    ===============
 
@@ -48,7 +49,7 @@
 #property copyright   "2022, GjoSe"
 #property link        "http://www.gjo-se.com"
 #property description "GjoSe Markttechnik"
-#define   VERSION "3.1.2"
+#define   VERSION "3.2.0"
 #property version VERSION
 #property strict
 
