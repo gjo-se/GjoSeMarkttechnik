@@ -89,15 +89,6 @@ double t3InSignalRegressionChannelAreaMinEndValue;
 double t3InSignalRegressionChannelAreaMaxStartValue;
 double t3InSignalRegressionChannelAreaMaxEndValue;
 
-double t3InSignalAreaMinStartValue;
-double t3InSignalAreaMinEndValue;
-double t3InSignalAreaMaxStartValue;
-double t3InSignalAreaMaxEndValue;
-
-bool   t3IsBidLowerInSignalAreaMinEndValue;
-bool   t3IsBidLowerInSignalAreaMaxEndValue;
-bool   t3IsBidHigherInSignalAreaMinEndValue;
-bool   t3IsBidHigherInSignalAreaMaxEndValue;
 bool   t3HighestHighIsInSignalArea;
 bool   t3LowestLowIsInSignalArea;
 

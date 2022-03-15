@@ -4,24 +4,24 @@
 //|                                             https://www.mql5.com |
 //+------------------------------------------------------------------+
 
-//input group             "---------------------------------------------------------------"
-//input group             "------------------------------ T4 -----------------------------"
-//input group             "---------------------------------------------------------------"
-//
-//input group             "------------------------------ T4 LEVELS ----------------------"
-bool              InpT4ObjectsShow = false; // Show T4 Objects
-int               InpT4MinFiboRetracmentLevel = 0; // T4 Min Fibo
-int               InpT4MaxFiboRetracmentLevel = 0; // T4 Max Fibo
-int               InpT4MinRegressionPercent = 0; // T4 % MIN Regression for EntryLevel
+input group             "---------------------------------------------------------------"
+input group             "------------------------------ T4 -----------------------------"
+input group             "---------------------------------------------------------------"
 
-//input group             "------------------------------ T4 TRAILING --------------------"
-int               InpT4MinProfitFiboRetracmentLevel = 0; // T4 TrailingStop Start Level
-int               InpT4TrailingStopOffset = 0; // T4 TrailingStop Offset
-ENUM_TIMEFRAMES   InpT4trailingStopMATimeframe = PERIOD_M1; // T4 MA TrailingStop Timeframe
-string            InpT4trailingStopMAPeriods = "0"; // T4 MA TrailingStop Periods
+input group             "------------------------------ T4 LEVELS ----------------------"
+input bool              InpT4ObjectsShow = true; // Show T4 Objects
+input int               InpT4MinFiboRetracmentLevel = 62; // T4 Min Fibo
+input int               InpT4MaxFiboRetracmentLevel = 110; // T4 Max Fibo
+input int               InpT4MinRegressionPercent = 50; // T4 % MIN Regression for EntryLevel
 
-//input group             "------------------------------ T4 MONEY -----------------------"
-int               InpT4OrderGridCount = 0; // Anzahl T4 Grid Orders
+input group             "------------------------------ T4 TRAILING --------------------"
+input int               InpT4MinProfitFiboRetracmentLevel = 1; // T4 TrailingStop Start Level
+input int               InpT4TrailingStopOffset = 0; // T4 TrailingStop Offset
+input ENUM_TIMEFRAMES   InpT4trailingStopMATimeframe = PERIOD_M1; // T4 MA TrailingStop Timeframe
+input string            InpT4trailingStopMAPeriods = "200, 150, 100, 50, 10"; // T4 MA TrailingStop Periods
+
+input group             "------------------------------ T4 MONEY -----------------------"
+input int               InpT4OrderGridCount = 5; // Anzahl T4 Grid Orders
 
 
 //+------------------------------------------------------------------+
@@ -33,7 +33,7 @@ int               InpT4MaxRegressionChannelLevel = 0; // T4 Max RegressionChanne
 bool              InpT4UseTrailingStopMarket = true;
 color             InpT4TailingStopLineColor = clrRed;
 ENUM_TIMEFRAMES   InpT4MaxTimeframe = PERIOD_H1;
-string            InpT4FiboLevels = "10, 20, 30, 40, 50, 60, 70, 80, 90, 110";
+string            InpT4FiboLevels = "50";
 color             InpT4RegressionChannelColor = clrSilver;
 color             InpT4InSignalAreaColor = clrDarkGray;
 color             InpT4TrendLineColor = clrBlack;
@@ -54,6 +54,7 @@ datetime          InpT4p1DateTime = D'2022.01.01 00:00';
 datetime          InpT4p2DateTime = D'2022.01.01 00:00';
 datetime          InpT4p3DateTime = D'2022.01.01 00:00';
 datetime          InpT4p4DateTime = D'2022.01.01 00:00';
+bool              InpT4TesterHideIndicators = true;
 
 // ****************  RAUS **************** //
 

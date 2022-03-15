@@ -10,8 +10,8 @@ void createT3FiboRetracement() {
       datetime t3EndDatetime = 0;
       if(t3EndDateTime == 0) t3EndDatetime = iTime(Symbol(), PERIOD_CURRENT, InpT3ChannelEndShift);
 
-      createTrendLine(T3_FIBO_LEVELS + "100", t3p3DateTime, getT3P3HighLowValueByTrendDirection(), iTime(Symbol(), PERIOD_CURRENT, 0), getT3P3HighLowValueByTrendDirection(), InpT3TrendLineColor, 1, STYLE_SOLID, " 100%");
-      createTrendLine(T3_FIBO_LEVELS + "0", t3p3DateTime, getT3P4HighLowValueByTrendDirection(), iTime(Symbol(), PERIOD_CURRENT, 0), getT3P4HighLowValueByTrendDirection(), InpT3TrendLineColor, 1, STYLE_SOLID, " 0%");
+      createTrendLine(T3_FIBO_LEVELS + "100", t3p3DateTime, getT3P3HighLowValueByTrendDirection(), iTime(Symbol(), PERIOD_CURRENT, 0), getT3P3HighLowValueByTrendDirection(), InpT3TrendLineColor, 2, STYLE_SOLID, " 100%");
+      createTrendLine(T3_FIBO_LEVELS + "0", t3p3DateTime, getT3P4HighLowValueByTrendDirection(), iTime(Symbol(), PERIOD_CURRENT, 0), getT3P4HighLowValueByTrendDirection(), InpT3TrendLineColor, 2, STYLE_SOLID, " 0%");
 
       for( int t3FiboLevelsId = 0; t3FiboLevelsId < ArraySize(t3FiboLevelsArray); t3FiboLevelsId++) {
          double level = (double)t3FiboLevelsArray[t3FiboLevelsId];
@@ -88,17 +88,11 @@ void createT3FiboRetracement() {
           color levelColor = clrMaroon;
           ENUM_LINE_STYLE style = STYLE_SOLID;
 
-          if(t3trendDirection == TREND_DIRECTION_LONG) {
-             t3LongEntryValue = InpT3MaxHighVolumeAreaLevel;
-          }
-          if(t3trendDirection == TREND_DIRECTION_SHORT) {
-             t3ShortEntryValue = InpT3MinHighVolumeAreaLevel;
-          }
-
           createTrendLine(T3_FIBO_LEVELS + DoubleToString(InpT3MinHighVolumeAreaLevel, Digits()), t3p3DateTime, InpT3MinHighVolumeAreaLevel, iTime(Symbol(), PERIOD_CURRENT, 0), InpT3MinHighVolumeAreaLevel, levelColor, lineWidth, style, " " + "MINHighVolumeArea: " + DoubleToString(InpT3MinHighVolumeAreaLevel, Digits()));
           createTrendLine(T3_FIBO_LEVELS + DoubleToString(InpT3MaxHighVolumeAreaLevel, Digits()), t3p3DateTime, InpT3MaxHighVolumeAreaLevel, iTime(Symbol(), PERIOD_CURRENT, 0), InpT3MaxHighVolumeAreaLevel, levelColor, lineWidth, style, " " + "MAXHighVolumeArea: " + DoubleToString(InpT3MaxHighVolumeAreaLevel, Digits()));
        }
-       if(InpT3POCLevel) {
+
+       if(InpT3POCLevel != 0) {
 
           int lineWidth = 2;
           color levelColor = clrRed;

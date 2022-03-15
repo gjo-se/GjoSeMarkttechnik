@@ -13,7 +13,7 @@ void createT4RegressionChannel() {
    datetime endDateTime;
    (t4EndDateTime != 0) ? endDateTime = t4EndDateTime : (endDateTime = iTime(Symbol(), PERIOD_CURRENT, InpT4ChannelEndShift));
 
-   createRegressionChannel(T4_REGRESSION_CHANNEL, t4StartDateTime, endDateTime, InpT4RegressionChannelColor, true);
+   createRegressionChannel(T4_REGRESSION_CHANNEL, t4StartDateTime, endDateTime, InpT4RegressionChannelColor, false);
 }
 
 void createT4RegressionChannelLevels() {
@@ -27,14 +27,14 @@ void createT4RegressionChannelLevels() {
    double   t4RegressionChannel0EndValue = ObjectGetValueByTime(ChartID(), T4_REGRESSION_CHANNEL, endDateTime, (t4trendDirection == TREND_DIRECTION_LONG) ? 1 : 2);
    int      t4RegressionChannel0EndCandle = iBarShift(Symbol(), Period(), endDateTime);
    double   t4RegressionChannel0EndTrendlineLevel = t4RegressionChannel0StartValue + ((t4RegressionChannel0EndValue - t4RegressionChannel0StartValue) / (t4RegressionChannel0StartCandle - t4RegressionChannel0EndCandle) * (t4RegressionChannel0StartCandle));
-   createTrendLine(T4_REGRESSION_CHANNEL + "0", t4StartDateTime, t4RegressionChannel0StartValue, iTime(Symbol(), PERIOD_CURRENT, 0), t4RegressionChannel0EndTrendlineLevel, InpT4TrendLineColor, 1, STYLE_SOLID, " 0%");
+   createTrendLine(T4_REGRESSION_CHANNEL + "0", t4StartDateTime, t4RegressionChannel0StartValue, iTime(Symbol(), PERIOD_CURRENT, 0), t4RegressionChannel0EndTrendlineLevel, InpT4TrendLineColor, 2, STYLE_SOLID, " 0%");
 
    double   t4RegressionChannel100StartValue   = ObjectGetValueByTime(ChartID(), T4_REGRESSION_CHANNEL, t4StartDateTime, (t4trendDirection == TREND_DIRECTION_LONG) ? 2 : 1);
    int      t4RegressionChannel100StartCandle = iBarShift(Symbol(), Period(), t4StartDateTime);
    double   t4RegressionChannel100EndValue = ObjectGetValueByTime(ChartID(), T4_REGRESSION_CHANNEL, endDateTime, (t4trendDirection == TREND_DIRECTION_LONG) ? 2 : 1);
    int      t4RegressionChannel100EndCandle = iBarShift(Symbol(), Period(), endDateTime);
    double   t4RegressionChannel100EndTrendlineLevel = t4RegressionChannel100StartValue + ((t4RegressionChannel100EndValue - t4RegressionChannel100StartValue) / (t4RegressionChannel100StartCandle - t4RegressionChannel100EndCandle) * (t4RegressionChannel100StartCandle));
-   createTrendLine(T4_REGRESSION_CHANNEL + "100", t4StartDateTime, t4RegressionChannel100StartValue, iTime(Symbol(), PERIOD_CURRENT, 0), t4RegressionChannel100EndTrendlineLevel, InpT4TrendLineColor, 1, STYLE_SOLID, " 100%");
+   createTrendLine(T4_REGRESSION_CHANNEL + "100", t4StartDateTime, t4RegressionChannel100StartValue, iTime(Symbol(), PERIOD_CURRENT, 0), t4RegressionChannel100EndTrendlineLevel, InpT4TrendLineColor, 2, STYLE_SOLID, " 100%");
 
    for( int t4FiboLevelsId = 0; t4FiboLevelsId < ArraySize(t4FiboLevelsArray); t4FiboLevelsId++) {
       double level = (double)t4FiboLevelsArray[t4FiboLevelsId];

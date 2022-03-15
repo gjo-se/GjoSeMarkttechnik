@@ -90,7 +90,8 @@ void createT3OrderGridTrendLines() {
 
       // orderGridStopOrder
       for(int orderGridId = 1; orderGridId < InpT3OrderGridCount; orderGridId++)  {
-         orderGridStopOrderValue = InpT3MaxHighVolumeAreaLevel + (gridSize / InpT3OrderGridCount * orderGridId * Point());
+         double minRegressionPoints = t3LongEntryValue / Point() - t3LowestLowValue / Point();
+         orderGridStopOrderValue = t3LongEntryValue + (minRegressionPoints / InpT3OrderGridCount * orderGridId * Point());
          string realVolume = DoubleToString(getT3BuyVolume(orderGridStopOrderValue), 2);
          string verifiedVolume = DoubleToString(VerifyVolume(Symbol(), getT3BuyVolume(orderGridStopOrderValue)), 2);
          createTrendLine(T3_ORDER_GRID_STOP_TLINE + "_" + IntegerToString(orderGridId), t3p4DateTime, orderGridStopOrderValue, iTime(Symbol(), Period(), 0), orderGridStopOrderValue, gridLineColor, 1, STYLE_DOT, T3_ORDER_GRID_STOP_TLINE + "_" + IntegerToString(orderGridId) + " V: " + realVolume + " (" + verifiedVolume + "): " +  DoubleToString(orderGridStopOrderValue, Digits()));
@@ -100,7 +101,8 @@ void createT3OrderGridTrendLines() {
 
       // orderGridLimitOrder
       for(int orderGridId = 1; orderGridId < InpT3OrderGridCount; orderGridId++) {
-         orderGridLimitOrderValue = InpT3MaxHighVolumeAreaLevel - (gridSize / InpT3OrderGridCount * orderGridId * Point());
+         double minRegressionPoints = t3LongEntryValue / Point() - t3LowestLowValue / Point();
+         orderGridLimitOrderValue = t3LongEntryValue - (minRegressionPoints / InpT3OrderGridCount * orderGridId * Point());
          string realVolume = DoubleToString(getT3BuyVolume(orderGridLimitOrderValue), 2);
          string verifiedVolume = DoubleToString(VerifyVolume(Symbol(), getT3BuyVolume(orderGridLimitOrderValue)), 2);
          createTrendLine(T3_ORDER_GRID_LIMIT_TLINE + "_" + IntegerToString(orderGridId), t3p4DateTime, orderGridLimitOrderValue, iTime(Symbol(), Period(), 0), orderGridLimitOrderValue, gridLineColor, 1, STYLE_DOT, T3_ORDER_GRID_LIMIT_TLINE + "_" + IntegerToString(orderGridId) + " V: " + realVolume + " (" + verifiedVolume + "): " + DoubleToString(orderGridLimitOrderValue, Digits()));
@@ -115,7 +117,8 @@ void createT3OrderGridTrendLines() {
 
       // orderGridStopOrder
       for(int orderGridId = 1; orderGridId < InpT3OrderGridCount; orderGridId++)  {
-         orderGridStopOrderValue = InpT3MinHighVolumeAreaLevel - (gridSize / InpT3OrderGridCount * orderGridId * Point());
+         double minRegressionPoints = t3HighestHighValue / Point() - t3ShortEntryValue / Point();
+         orderGridStopOrderValue = t3ShortEntryValue - (minRegressionPoints / InpT3OrderGridCount * orderGridId * Point());
          string realVolume = DoubleToString(getT3SellVolume(orderGridStopOrderValue), 2);
          string verifiedVolume = DoubleToString(VerifyVolume(Symbol(), getT3SellVolume(orderGridStopOrderValue)), 2);
          createTrendLine(T3_ORDER_GRID_STOP_TLINE + "_" + IntegerToString(orderGridId), t3p4DateTime, orderGridStopOrderValue, iTime(Symbol(), Period(), 0), orderGridStopOrderValue, gridLineColor, 1, STYLE_DOT, T3_ORDER_GRID_STOP_TLINE + "_" + IntegerToString(orderGridId) + " V: " + realVolume + " (" + verifiedVolume + "): " +  DoubleToString(orderGridStopOrderValue, Digits()));
@@ -125,7 +128,8 @@ void createT3OrderGridTrendLines() {
 
       // orderGridLimitOrder
       for(int orderGridId = 1; orderGridId < InpT3OrderGridCount; orderGridId++) {
-         orderGridLimitOrderValue = InpT3MinHighVolumeAreaLevel + (gridSize / InpT3OrderGridCount * orderGridId * Point());
+         double minRegressionPoints = t3HighestHighValue / Point() - t3ShortEntryValue / Point();
+         orderGridLimitOrderValue = t3ShortEntryValue + (minRegressionPoints / InpT3OrderGridCount * orderGridId * Point());
          string realVolume = DoubleToString(getT3SellVolume(orderGridLimitOrderValue), 2);
          string verifiedVolume = DoubleToString(VerifyVolume(Symbol(), getT3SellVolume(orderGridLimitOrderValue)), 2);
          createTrendLine(T3_ORDER_GRID_LIMIT_TLINE + "_" + IntegerToString(orderGridId), t3p4DateTime, orderGridLimitOrderValue, iTime(Symbol(), Period(), 0), orderGridLimitOrderValue, gridLineColor, 1, STYLE_DOT, T3_ORDER_GRID_LIMIT_TLINE + "_" + IntegerToString(orderGridId) + " V: " + realVolume + " (" + verifiedVolume + "): " +  DoubleToString(orderGridLimitOrderValue, Digits()));

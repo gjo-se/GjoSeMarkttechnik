@@ -70,21 +70,33 @@ void t4CommentAction(string pVersion) {
       t4comment += "\n";
       if(getT4TrendDirectionString() == "LONG") {
          t4comment += "LONG: " + "\n";
-         t4comment += "t4LongIsTradable: " + IntegerToString(t4LongIsTradable) + "\n";
+         t4comment += "getT4LowestLowIsInSignalAreaState(): " + IntegerToString(getT4LowestLowIsInSignalAreaState()) + "\n";
          t4comment += "LowestLowVLineDateTime: " + TimeToString(t4LowestLowVLineDateTime) + "\n";
-         t4comment += "LowestLow: " + TimeToString(t4LowestLowDateTime) + " - " + DoubleToString(t4LowestLowValue, Digits()) + "\n";
-         t4comment += "LongEntry: " + TimeToString(t4LowestLowDateTime) + " - " + DoubleToString(t4LongEntryValue, Digits()) + "\n";
-         t4comment += "t4CurrentTrailingStopMAPeriod: " + IntegerToString(t4TrailingStopMAActive) + " CurrentOffset: " + DoubleToString(Bid() / Point() - t4TrailingStopMALevel / Point(), 0) + "\n";;
+         t4comment += "LowestLowValue: " + TimeToString(t4LowestLowDateTime) + " - " + DoubleToString(t4LowestLowValue, Digits()) + "\n";
+         t4comment += "LongEntryValue: " + TimeToString(t4LowestLowDateTime) + " - " + DoubleToString(t4LongEntryValue, Digits()) + "\n";
+         t4comment += "t4LongIsTradable: " + IntegerToString(t4LongIsTradable) + "\n";
+         t4comment += "\n";
+         t4comment += "buyT4PositionIsOpenState: " + IntegerToString(buyT4PositionIsOpenState) + "\n";
+         t4comment += "Bid() >= t4LongEntryValue: " + IntegerToString(Bid() >= t4LongEntryValue) + "\n";
+         t4comment += "maxT4BuyPositionsAreOpenState: " + IntegerToString(maxT4BuyPositionsAreOpenState) + "\n";
       }
       if(getT4TrendDirectionString() == "SHORT") {
          t4comment += "SHORT: " + "\n";
-         t4comment += "t4ShortIsTradable: " + IntegerToString(t4ShortIsTradable) + "\n";
+         t4comment += "getT4HighestHighIsInSignalAreaState(): " + IntegerToString(getT4HighestHighIsInSignalAreaState()) + "\n";
          t4comment += "HihgestHighVLineDateTime: " + TimeToString(t4HighestHighVLineDateTime) + "\n";
-         t4comment += "HihgestHigh: " + TimeToString(t4HighestHighDateTime) + " - " + DoubleToString(iHigh(Symbol(), PERIOD_CURRENT, iBarShift(Symbol(), PERIOD_CURRENT, t4HighestHighDateTime)), Digits()) + "\n";
-         t4comment += "ShortEntry: " + TimeToString(t4HighestHighDateTime) + " - " + DoubleToString(t4ShortEntryValue, Digits()) + "\n";
-         t4comment += "t4CurrentTrailingStopMAPeriod: " + IntegerToString(t4TrailingStopMAActive) + " CurrentOffset: " + DoubleToString(t4TrailingStopMALevel / Point() - Bid() / Point(), 0) + "\n";;
+         t4comment += "HihgestHighValue: " + TimeToString(t4HighestHighDateTime) + " - " + DoubleToString(iHigh(Symbol(), PERIOD_CURRENT, iBarShift(Symbol(), PERIOD_CURRENT, t4HighestHighDateTime)), Digits()) + "\n";
+         t4comment += "ShortEntryValue: " + TimeToString(t4HighestHighDateTime) + " - " + DoubleToString(t4ShortEntryValue, Digits()) + "\n";
+         t4comment += "t4ShortIsTradable: " + IntegerToString(t4ShortIsTradable) + "\n";
+         t4comment += "\n";
+         t4comment += "sellT4PositionIsOpenState: " + IntegerToString(sellT4PositionIsOpenState) + "\n";
+         t4comment += "Bid() <= t4ShortEntryValue: " + IntegerToString(Bid() <= t4ShortEntryValue) + "\n";
+         t4comment += "maxT4SellPositionsAreOpenState: " + IntegerToString(maxT4SellPositionsAreOpenState) + "\n";
       }
       t4comment += "\n";
+      string t4CurrentBidMAOffset = "";
+      if(t4trendDirection == TREND_DIRECTION_LONG) t4CurrentBidMAOffset = DoubleToString(Bid() / Point() - t4TrailingStopMALevel / Point(), 0);
+      if(t4trendDirection == TREND_DIRECTION_SHORT) t4CurrentBidMAOffset = DoubleToString(t4TrailingStopMALevel / Point() - Bid() / Point(), 0);
+      t4comment += "t4CurrentTrailingStopMAPeriod: " + IntegerToString(t4TrailingStopMAActive) + " CurrentOffset: " + t4CurrentBidMAOffset + "\n";;
       t4comment += "StopLossLineLevel: " + DoubleToString(t4StopLossLineLevel, Digits()) + "\n";
       if(outSideBarDateTime != 0) t4comment += "OutSideBar: " + TimeToString(outSideBarDateTime) + "\n";
    }
