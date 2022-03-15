@@ -12,7 +12,7 @@ input group             "------------------------------ T4 LEVELS --------------
 input bool              InpT4ObjectsShow = true; // Show T4 Objects
 input int               InpT4MinFiboRetracmentLevel = 62; // T4 Min Fibo
 input int               InpT4MaxFiboRetracmentLevel = 110; // T4 Max Fibo
-input int               InpT4MinRegressionPercent = 20; // T4 % MIN Regression for EntryLevel
+input int               InpT4MinRegressionPercent = 50; // T4 % MIN Regression for EntryLevel
 
 input group             "------------------------------ T4 TRAILING --------------------"
 input int               InpT4MinProfitFiboRetracmentLevel = 1; // T4 TrailingStop Start Level
