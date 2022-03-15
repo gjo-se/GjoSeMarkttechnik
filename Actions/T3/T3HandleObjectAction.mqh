@@ -225,7 +225,7 @@ void handleInsideBars() {
 
 void setT3HighestHighDateTime() {
 
-   if((int)t3p4DateTime < (int) TimeCurrent() && t3HighestHighIsInSignalArea == true) {
+   if((int)t3p4DateTime < (int) TimeCurrent() && Bid() >= InpT3MinHighVolumeAreaLevel) {
       int startCandleShift = iBarShift(Symbol(), Period(), t3p4DateTime);
       if(t3HighestHighVLineDateTime == 0) createT3HighestHighVLine();
       if(t3HighestHighVLineDateTime != 0) startCandleShift = iBarShift(Symbol(), Period(), t3HighestHighVLineDateTime);
