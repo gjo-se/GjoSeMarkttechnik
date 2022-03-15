@@ -10,8 +10,8 @@ void createT4FiboRetracement() {
       datetime t4EndDatetime = 0;
       if(t4EndDateTime == 0) t4EndDatetime = iTime(Symbol(), PERIOD_CURRENT, InpT4ChannelEndShift);
 
-      createTrendLine(T4_FIBO_LEVELS + "100", t4p3DateTime, getT4P3HighLowValueByTrendDirection(), iTime(Symbol(), PERIOD_CURRENT, 0), getT4P3HighLowValueByTrendDirection(), InpT4TrendLineColor, 1, STYLE_SOLID, " 100%");
-      createTrendLine(T4_FIBO_LEVELS + "0", t4p3DateTime, getT4P4HighLowValueByTrendDirection(), iTime(Symbol(), PERIOD_CURRENT, 0), getT4P4HighLowValueByTrendDirection(), InpT4TrendLineColor, 1, STYLE_SOLID, " 0%");
+      createTrendLine(T4_FIBO_LEVELS + "100", t4p3DateTime, getT4P3HighLowValueByTrendDirection(), iTime(Symbol(), PERIOD_CURRENT, 0), getT4P3HighLowValueByTrendDirection(), InpT4TrendLineColor, 2, STYLE_SOLID, " 100%");
+      createTrendLine(T4_FIBO_LEVELS + "0", t4p3DateTime, getT4P4HighLowValueByTrendDirection(), iTime(Symbol(), PERIOD_CURRENT, 0), getT4P4HighLowValueByTrendDirection(), InpT4TrendLineColor, 2, STYLE_SOLID, " 0%");
 
       for( int t4FiboLevelsId = 0; t4FiboLevelsId < ArraySize(t4FiboLevelsArray); t4FiboLevelsId++) {
          double level = (double)t4FiboLevelsArray[t4FiboLevelsId];
