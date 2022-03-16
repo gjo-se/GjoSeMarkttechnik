@@ -35,7 +35,8 @@ void setT3Action() {
 
       if(t3LowestLowValue != 0 && InpT3MinHighVolumeAreaLevel !=0 && t3LowestLowValue < InpT3MinHighVolumeAreaLevel) {
          t3LowestLowDateTime = 0;
-         t3DisableTradeableButton();
+         string t3DisableTradeableButtonReason = "t3LowestLowValue < InpT3MinHighVolumeAreaLevel";
+         t3DisableTradeableButton(t3DisableTradeableButtonReason);
       }
 
       if(t3LowestLowVLineDateTime != 0) {
@@ -55,7 +56,8 @@ void setT3Action() {
 
       if(t3HighestHighValue != 0 && InpT3MaxHighVolumeAreaLevel != 0 && t3HighestHighValue > InpT3MaxHighVolumeAreaLevel) {
          t3HighestHighDateTime = 0;
-         t3DisableTradeableButton();
+         string t3DisableTradeableButtonReason = "t3HighestHighValue > InpT3MaxHighVolumeAreaLevel";
+         t3DisableTradeableButton(t3DisableTradeableButtonReason);
       }
 
       if(t3HighestHighVLineDateTime != 0) {

@@ -139,7 +139,8 @@ void t4HandleObjectsAction() {
    }
 
    if(allT4BuyPositionsAreClosedState || allT4SellPositionsAreClosedState) {
-      if(InpT4DisableTradabelButtonStateAfterClose == true) t4DisableTradeableButton();
+      string t4DisableTradeableButtonReason = "allT4PositionsAreClosedState";
+      if(InpT4DisableTradabelButtonStateAfterClose == true) t4DisableTradeableButton(t4DisableTradeableButtonReason);
       deleteTrendLine(T4_STOP_LOSS_TLINE);
    }
 
@@ -228,7 +229,8 @@ void setT4HighestHighDateTime() {
 
    if(t4IsBidHigherInSignalAreaMaxEndValue == true) {
       t4HighestHighDateTime = 0;
-      t4DisableTradeableButton();
+      string t4DisableTradeableButtonReason = "t4IsBidHigherInSignalAreaMaxEndValue";
+      t4DisableTradeableButton(t4DisableTradeableButtonReason);
    }
 }
 
@@ -248,7 +250,8 @@ void setT4LowestLowDateTime() {
 
    if(t4IsBidLowerInSignalAreaMinEndValue == true) {
       t4LowestLowDateTime = 0;
-      t4DisableTradeableButton();
+      string t4DisableTradeableButtonReason = "t4IsBidLowerInSignalAreaMinEndValue";
+      t4DisableTradeableButton(t4DisableTradeableButtonReason);
    }
 
 }

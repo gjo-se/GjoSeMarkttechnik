@@ -27,6 +27,15 @@ void t3AlertSellRegressionAction() {
 //+------------------------------------------------------------------+
 //|                                                                  |
 //+------------------------------------------------------------------+
+void t3AlertDisableTradeableButtonAction(string pReason) {
+   string message = Symbol() + ": " + pReason;
+   Alert(message);
+   if(!SendNotification(message)) Alert("Cannot sendRegressionAlert Push", GetLastError());
+}
+
+//+------------------------------------------------------------------+
+//|                                                                  |
+//+------------------------------------------------------------------+
 void t3AlertOnBidStopLossLineOffset() {
 
    if(t3StopLossLineLevel != 0 && InpT3AlertOnBidStopLossLineOffset != 0) {
@@ -57,7 +66,10 @@ void t3AlertOnBidStopLossLineOffset() {
    }
 }
 
-void handleCommentAction(string pVersion){
+//+------------------------------------------------------------------+
+//|                                                                  |
+//+------------------------------------------------------------------+
+void handleCommentAction(string pVersion) {
    t3CommentAction(pVersion);
    t4CommentAction(pVersion);
    if(InpT3ShowCommentDashboard && InpT4ShowCommentDashboard) Comment(t3comment + t4comment);
@@ -112,3 +124,4 @@ void t3CommentAction(string pVersion) {
       if(outSideBarDateTime != 0) t3comment += "OutSideBar: " + TimeToString(outSideBarDateTime) + "\n";
    }
 }
+//+------------------------------------------------------------------+
