@@ -16,7 +16,7 @@ void t4HandleObjectsInitAction() {
    createT4RegressionChannel();
    createT4RegressionChannelLevels();
    createT4FiboRetracement();
-   createT4InSignalFiboLevelArea();
+   createT4InSignalFiboLevelChannelArea();
    createt4InSignalRegressionChannelArea();
 
    t4HandleObjectsAction();
@@ -29,19 +29,6 @@ void t4HandleObjectsAction() {
    }
 
    if(InpT4ObjectsShow == true) {
-
-      if(t4InSignalFiboLevelAreaMinStartValue != 0 && t4InSignalRegressionChannelAreaMinStartValue != 0) t4InSignalAreaMinStartValue = MathMax(t4InSignalFiboLevelAreaMinStartValue, t4InSignalRegressionChannelAreaMinStartValue);
-      if(t4InSignalFiboLevelAreaMinStartValue == 0 && t4InSignalRegressionChannelAreaMinStartValue != 0) t4InSignalAreaMinStartValue = t4InSignalRegressionChannelAreaMinStartValue;
-      if(t4InSignalFiboLevelAreaMinStartValue != 0 && t4InSignalRegressionChannelAreaMinStartValue == 0) t4InSignalAreaMinStartValue = t4InSignalFiboLevelAreaMinStartValue;
-      if(t4InSignalFiboLevelAreaMaxStartValue != 0 && t4InSignalRegressionChannelAreaMaxStartValue != 0) t4InSignalAreaMaxStartValue = MathMin(t4InSignalFiboLevelAreaMaxStartValue, t4InSignalRegressionChannelAreaMaxStartValue);
-      if(t4InSignalFiboLevelAreaMaxStartValue == 0 && t4InSignalRegressionChannelAreaMaxStartValue != 0) t4InSignalAreaMaxStartValue = t4InSignalRegressionChannelAreaMaxStartValue;
-      if(t4InSignalFiboLevelAreaMaxStartValue != 0 && t4InSignalRegressionChannelAreaMaxStartValue == 0) t4InSignalAreaMaxStartValue = t4InSignalFiboLevelAreaMaxStartValue;
-      if(t4InSignalFiboLevelAreaMinEndValue != 0 && t4InSignalRegressionChannelAreaMinEndValue != 0) t4InSignalAreaMinEndValue = MathMax(t4InSignalFiboLevelAreaMinEndValue, t4InSignalRegressionChannelAreaMinEndValue);
-      if(t4InSignalFiboLevelAreaMinEndValue == 0 && t4InSignalRegressionChannelAreaMinEndValue != 0) t4InSignalAreaMinEndValue = t4InSignalRegressionChannelAreaMinEndValue;
-      if(t4InSignalFiboLevelAreaMinEndValue != 0 && t4InSignalRegressionChannelAreaMinEndValue == 0) t4InSignalAreaMinEndValue = t4InSignalFiboLevelAreaMinEndValue;
-      if(t4InSignalFiboLevelAreaMaxEndValue != 0 && t4InSignalRegressionChannelAreaMaxEndValue != 0) t4InSignalAreaMaxEndValue = MathMin(t4InSignalFiboLevelAreaMaxEndValue, t4InSignalRegressionChannelAreaMaxEndValue);
-      if(t4InSignalFiboLevelAreaMaxEndValue == 0 && t4InSignalRegressionChannelAreaMaxEndValue != 0) t4InSignalAreaMaxEndValue = t4InSignalRegressionChannelAreaMaxEndValue;
-      if(t4InSignalFiboLevelAreaMaxEndValue != 0 && t4InSignalRegressionChannelAreaMaxEndValue == 0) t4InSignalAreaMaxEndValue = t4InSignalFiboLevelAreaMaxEndValue;
 
       if(t4trendDirection == TREND_DIRECTION_LONG) {
 
@@ -109,7 +96,7 @@ void t4HandleObjectsAction() {
             createT4RegressionChannel();
             createT4RegressionChannelLevels();
             createT4FiboRetracement();
-            createT4InSignalFiboLevelArea();
+            createT4InSignalFiboLevelChannelArea();
             createt4InSignalRegressionChannelArea();
             createT4ReEntryArea();
          } else {
@@ -215,7 +202,7 @@ double getT4P4HighLowValueByTrendDirection() {
 
 void setT4HighestHighDateTime() {
 
-   if((int)t4p4DateTime < (int) TimeCurrent() && t4IsBidHigherInSignalAreaMinEndValue == true) {
+   if((int)t4p4DateTime < (int) TimeCurrent() && Bid() >= t4MinHighVolumeAreaLevel) {
       int startCandleShift = iBarShift(Symbol(), Period(), t4p4DateTime);
       if(t4HighestHighVLineDateTime == 0) createT4HighestHighVLine();
       if(t4HighestHighVLineDateTime != 0) startCandleShift = iBarShift(Symbol(), Period(), t4HighestHighVLineDateTime);
@@ -226,17 +213,11 @@ void setT4HighestHighDateTime() {
          t4HighestHighDateTime = iTime(Symbol(), PERIOD_CURRENT, 0);
       }
    }
-
-   if(t4IsBidHigherInSignalAreaMaxEndValue == true) {
-      t4HighestHighDateTime = 0;
-      string t4DisableTradeableButtonReason = "t4IsBidHigherInSignalAreaMaxEndValue";
-      t4DisableTradeableButton(t4DisableTradeableButtonReason);
-   }
 }
 
 void setT4LowestLowDateTime() {
 
-   if((int)t4p4DateTime < (int) TimeCurrent() && t4IsBidLowerInSignalAreaMaxEndValue == true) {
+   if((int)t4p4DateTime < (int) TimeCurrent() && Bid() <= t4MaxHighVolumeAreaLevel) {
       int startCandleShift = iBarShift(Symbol(), Period(), t4p4DateTime);
       if(t4LowestLowVLineDateTime == 0) createT4LowestLowVLine();
       if(t4LowestLowVLineDateTime != 0) startCandleShift = iBarShift(Symbol(), Period(), t4LowestLowVLineDateTime);
@@ -247,12 +228,5 @@ void setT4LowestLowDateTime() {
          t4LowestLowDateTime = iTime(Symbol(), PERIOD_CURRENT, 0);
       }
    }
-
-   if(t4IsBidLowerInSignalAreaMinEndValue == true) {
-      t4LowestLowDateTime = 0;
-      string t4DisableTradeableButtonReason = "t4IsBidLowerInSignalAreaMinEndValue";
-      t4DisableTradeableButton(t4DisableTradeableButtonReason);
-   }
-
 }
 //+------------------------------------------------------------------+
