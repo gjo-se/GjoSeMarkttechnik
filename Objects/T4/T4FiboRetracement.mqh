@@ -27,31 +27,31 @@ void createT4FiboRetracement() {
             t4AlertFiboRetracementLevel = t4FiboLevelValue;
          }
 
-         if(level == InpT4MinFiboRetracmentLevel) {
-
-            lineWidth = 2;
-            levelColor = clrBlack;
-            
-            if(t4trendDirection == TREND_DIRECTION_LONG) {
+         if(t4trendDirection == TREND_DIRECTION_LONG) {
+            if(level == InpT4MinFiboRetracmentLevel) {
                t4MaxHighVolumeAreaLevel = t4FiboLevelValue;
+               lineWidth = 2;
+               levelColor = clrBlue;
                t3ShortEntryValue = t4FiboLevelValue;
-            } else {
+            }
+            if(level == InpT4MaxFiboRetracmentLevel) {
+               lineWidth = 2;
+               levelColor = clrBlack;
                t4MinHighVolumeAreaLevel = t4FiboLevelValue;
-               t3LongEntryValue = t4FiboLevelValue;
             }
          }
+         if(t4trendDirection == TREND_DIRECTION_SHORT) {
+            if(level == InpT4MinFiboRetracmentLevel) {
+               lineWidth = 2;
+               levelColor = clrBlack;
+               t4MinHighVolumeAreaLevel = t4FiboLevelValue;
+               t3LongEntryValue = t4FiboLevelValue;
 
-         if(level == InpT4MaxFiboRetracmentLevel) {
-
-            lineWidth = 2;
-            levelColor = clrBlack;
-
-            if(t4trendDirection == TREND_DIRECTION_LONG) {
-               t4InSignalFiboLevelAreaMinStartValue = t4FiboLevelValue;
-               t4InSignalFiboLevelAreaMinEndValue = t4FiboLevelValue;
-            } else {
-               t4InSignalFiboLevelAreaMaxStartValue = t4FiboLevelValue;
-               t4InSignalFiboLevelAreaMaxEndValue = t4FiboLevelValue;
+            }
+            if(level == InpT4MaxFiboRetracmentLevel) {
+               lineWidth = 2;
+               levelColor = clrBlack;
+               t4MaxHighVolumeAreaLevel = t4FiboLevelValue;
             }
          }
 
@@ -72,13 +72,13 @@ void createT4FiboRetracement() {
                t4ReEntryAreaMaxEndValue = t4InSignalFiboLevelAreaMaxEndValue;
             }
          }
-         
-       if(level == InpT4MinProfitFiboRetracmentLevel) {
-          lineWidth = 2;
-          levelColor = clrRed;
-          t4MinProfitFiboRetracmentLevel = t4FiboLevelValue;
-       }
-       
+
+         if(level == InpT4MinProfitFiboRetracmentLevel) {
+            lineWidth = 2;
+            levelColor = clrRed;
+            t4MinProfitFiboRetracmentLevel = t4FiboLevelValue;
+         }
+
          createTrendLine(T4_FIBO_LEVELS + DoubleToString(level, 1), t4p3DateTime, t4FiboLevelValue, iTime(Symbol(), PERIOD_CURRENT, 0), t4FiboLevelValue, levelColor, lineWidth, style, " " + DoubleToString(level, 1) + "%");
       }
    }

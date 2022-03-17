@@ -59,11 +59,8 @@ void createT4HighestHighVLine() {
    bool isSelectable = true;
 
    int barShift = 0;
-   if((int)t4p4DateTime < (int) TimeCurrent()) {
-      createVLine(T4_HH_VLINE, iTime(Symbol(), Period(), barShift), InpT4TrendLineColor, 2, STYLE_SOLID, T4_HH_VLINE, zOrder, isBackground, isSelected, isSelectable);
-      t4HighestHighVLineDateTime = iTime(Symbol(), Period(), barShift);
-
-   }
+   createVLine(T4_HH_VLINE, iTime(Symbol(), Period(), barShift), InpT4TrendLineColor, 2, STYLE_SOLID, T4_HH_VLINE, zOrder, isBackground, isSelected, isSelectable);
+   t4HighestHighVLineDateTime = iTime(Symbol(), Period(), barShift);
 }
 
 void createT4LowestLowVLine() {
@@ -75,7 +72,6 @@ void createT4LowestLowVLine() {
 
    int barShift = 0;
    createVLine(T4_LL_VLINE, iTime(Symbol(), Period(), barShift), InpT4TrendLineColor, 2, STYLE_SOLID, T4_LL_VLINE, zOrder, isBackground, isSelected, isSelectable);
-
    t4LowestLowVLineDateTime = iTime(Symbol(), Period(), barShift);
 }
 
