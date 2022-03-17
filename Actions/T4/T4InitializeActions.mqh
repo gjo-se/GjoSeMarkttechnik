@@ -57,14 +57,8 @@ void initializeT4GlobalsAction() {
    t4InSignalRegressionChannelAreaMaxStartValue = 0;
    t4InSignalRegressionChannelAreaMaxEndValue = 0;
 
-   t4InSignalAreaMinStartValue = 0;
-   t4InSignalAreaMinEndValue = 0;
-   t4InSignalAreaMaxStartValue = 0;
-   t4InSignalAreaMaxEndValue = 0;
-   t4IsBidLowerInSignalAreaMinEndValue = false;
-   t4IsBidLowerInSignalAreaMaxEndValue = false;
-   t4IsBidHigherInSignalAreaMinEndValue = false;
-   t4IsBidHigherInSignalAreaMaxEndValue = false;
+   t4MinHighVolumeAreaLevel = 0;
+   t4MaxHighVolumeAreaLevel = 0;
    t4HighestHighIsInSignalArea = false;
    t4LowestLowIsInSignalArea = false;
 

@@ -135,7 +135,8 @@ void t3HandleObjectsAction() {
    }
 
    if(allT3BuyPositionsAreClosedState || allT3SellPositionsAreClosedState) {
-      if(InpT3DisableTradabelButtonStateAfterClose == true) t3DisableTradeableButton();
+      string t3DisableTradeableButtonReason = "allT3PositionsAreClosedState";
+      if(InpT3DisableTradabelButtonStateAfterClose == true) t3DisableTradeableButton(t3DisableTradeableButtonReason);
       deleteTrendLine(T3_STOP_LOSS_TLINE);
    }
 

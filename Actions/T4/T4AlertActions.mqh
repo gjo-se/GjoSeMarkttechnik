@@ -27,6 +27,15 @@ void t4AlertSellRegressionAction() {
 //+------------------------------------------------------------------+
 //|                                                                  |
 //+------------------------------------------------------------------+
+void t4AlertDisableTradeableButtonAction(string pReason) {
+   string message = Symbol() + ": " + pReason;
+   Alert(message);
+   if(!SendNotification(message)) Alert("Cannot sendRegressionAlert Push", GetLastError());
+}
+
+//+------------------------------------------------------------------+
+//|                                                                  |
+//+------------------------------------------------------------------+
 void t4AlertOnBidStopLossLineOffset() {
 
    if(t4StopLossLineLevel != 0 && InpT4AlertOnBidStopLossLineOffset != 0) {

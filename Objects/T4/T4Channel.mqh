@@ -3,15 +3,13 @@
 //|                                       Copyright 2022, Gregory Jo |
 //+------------------------------------------------------------------+
 
-void createT4InSignalFiboLevelArea() {
+void createT4InSignalFiboLevelChannelArea() {
 
    if(
-      t4InSignalFiboLevelAreaMinStartValue != 0
-      && t4InSignalFiboLevelAreaMinEndValue != 0
-      && t4InSignalFiboLevelAreaMaxStartValue != 0
-      && t4InSignalFiboLevelAreaMaxEndValue != 0
+      t4MinHighVolumeAreaLevel != 0
+      && t4MaxHighVolumeAreaLevel != 0
    ) {
-      createChannel(T4_IN_SIGNAL_FIBO_LEVEL_AREA, t4p4DateTime, t4InSignalFiboLevelAreaMaxStartValue, iTime(Symbol(), PERIOD_CURRENT, 0), t4InSignalFiboLevelAreaMaxEndValue, t4p4DateTime, t4InSignalFiboLevelAreaMinStartValue, InpT4InSignalAreaColor);
+      createChannel(T4_IN_SIGNAL_FIBO_LEVEL_AREA, t4p4DateTime, t4MinHighVolumeAreaLevel, iTime(Symbol(), PERIOD_CURRENT, 0), t4MinHighVolumeAreaLevel, t4p4DateTime, t4MaxHighVolumeAreaLevel, InpT4InSignalAreaColor);
    }
 }
 
