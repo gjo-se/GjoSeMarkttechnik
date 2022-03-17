@@ -13,7 +13,7 @@ void createT4RegressionChannel() {
    datetime endDateTime;
    (t4EndDateTime != 0) ? endDateTime = t4EndDateTime : (endDateTime = iTime(Symbol(), PERIOD_CURRENT, InpT4ChannelEndShift));
 
-   createRegressionChannel(T4_REGRESSION_CHANNEL, t4StartDateTime, endDateTime, InpT4RegressionChannelColor, false);
+   if(t4p4DateTime != 0) createRegressionChannel(T4_REGRESSION_CHANNEL, t4StartDateTime, endDateTime, InpT4RegressionChannelColor, false);
 }
 
 void createT4RegressionChannelLevels() {
