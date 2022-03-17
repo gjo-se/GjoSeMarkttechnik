@@ -31,6 +31,7 @@ void t3AlertDisableTradeableButtonAction(string pReason) {
    string message = Symbol() + ": " + pReason;
    Alert(message);
    if(!SendNotification(message)) Alert("Cannot sendRegressionAlert Push", GetLastError());
+   t3AlertDisableTradeableButtonSended = true;
 }
 
 //+------------------------------------------------------------------+

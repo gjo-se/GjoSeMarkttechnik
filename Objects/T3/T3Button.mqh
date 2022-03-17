@@ -43,6 +43,6 @@ void t3DisableTradeableButton(string pReason) {
    ObjectSetInteger(0, T3_IS_TRADEABLE_BUTTON, OBJPROP_STATE, buttonState);
    t3IsTradabelButtonState = buttonState;
    handleT3IsTradeableButton();
-   t3AlertDisableTradeableButtonAction(pReason);
+   if(t3AlertDisableTradeableButtonSended == false) t3AlertDisableTradeableButtonAction(pReason);
 }
 //+------------------------------------------------------------------+

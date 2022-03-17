@@ -34,6 +34,7 @@
    3.2.0 rebuild InSignal Strategy: After Regression
    3.2.1 fixed missing t3HighestHighDateTime
    3.2.2 cleaned t4IsBidHigherInSignalAreaMinEndValue
+   3.2.3 fixed multiPush on t3AlertDisableTradeableButtonSended
 
 
    ===============
@@ -52,7 +53,7 @@
 #property copyright   "2022, GjoSe"
 #property link        "http://www.gjo-se.com"
 #property description "GjoSe Markttechnik"
-#define   VERSION "3.2.2"
+#define   VERSION "3.2.3"
 #property version VERSION
 #property strict
 
