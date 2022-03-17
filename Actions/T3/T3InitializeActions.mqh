@@ -56,6 +56,8 @@ void initializeT3GlobalsAction() {
    t3IsSellRegressionAlertSended = false;
    t3IsBidStopLossLineOffsetAlertSendable = false;
    t3IsBidStopLossLineOffsetAlertSended = false;
+   t3AlertDisableTradeableButtonSended = false;
+
 
    t3InSignalFiboLevelAreaMinStartValue = 0;
    t3InSignalFiboLevelAreaMinEndValue = 0;

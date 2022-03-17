@@ -55,6 +55,7 @@ void setT3Action() {
       }
 
       if(t3HighestHighValue != 0 && InpT3MaxHighVolumeAreaLevel != 0 && t3HighestHighValue > InpT3MaxHighVolumeAreaLevel) {
+         // TODO: das hier kann ich auch in Frage stellen
          t3HighestHighDateTime = 0;
          string t3DisableTradeableButtonReason = "t3HighestHighValue > InpT3MaxHighVolumeAreaLevel";
          t3DisableTradeableButton(t3DisableTradeableButtonReason);
