@@ -79,6 +79,7 @@ bool t3IsSellRegressionAlertSended;
 bool t3IsBidStopLossLineOffsetAlertSendable;
 bool t3IsBidStopLossLineOffsetAlertSended;
 bool t3AlertDisableTradeableButtonSended;
+bool t3alertBidIsInSignalAreaSended;
 
 // INSignal
 double t3InSignalFiboLevelAreaMinStartValue;

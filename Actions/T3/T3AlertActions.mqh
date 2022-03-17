@@ -30,8 +30,15 @@ void t3AlertSellRegressionAction() {
 void t3AlertDisableTradeableButtonAction(string pReason) {
    string message = Symbol() + ": " + pReason;
    Alert(message);
-   if(!SendNotification(message)) Alert("Cannot sendRegressionAlert Push", GetLastError());
+   if(!SendNotification(message)) Alert("Cannot t3AlertDisableTradeableButtonAction Push", GetLastError());
    t3AlertDisableTradeableButtonSended = true;
+}
+
+void t3AlertBidIsInSignalAreaAction() {
+   string message = Symbol() + ": " + "T3 Bid Is In SignalArea";
+   Alert(message);
+   if(!SendNotification(message)) Alert("Cannot Push " + message, GetLastError());
+   t3alertBidIsInSignalAreaSended = true;
 }
 
 //+------------------------------------------------------------------+

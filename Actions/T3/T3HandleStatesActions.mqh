@@ -29,6 +29,7 @@ void setT3Action() {
    if(t3trendDirection == TREND_DIRECTION_LONG) {
       if(t3LowestLowValue >= InpT3MinHighVolumeAreaLevel && t3LowestLowValue <= InpT3MaxHighVolumeAreaLevel) {
          t3LowestLowIsInSignalArea = true;
+         if(t3alertBidIsInSignalAreaSended == false) t3AlertBidIsInSignalAreaAction();
       } else {
          t3LowestLowIsInSignalArea = false;
       }
@@ -50,6 +51,7 @@ void setT3Action() {
    if(t3trendDirection == TREND_DIRECTION_SHORT) {
       if(t3HighestHighValue >= InpT3MinHighVolumeAreaLevel && t3HighestHighValue <= InpT3MaxHighVolumeAreaLevel) {
          t3HighestHighIsInSignalArea = true;
+         if(t3alertBidIsInSignalAreaSended == false) t3AlertBidIsInSignalAreaAction();
       } else {
          t3HighestHighIsInSignalArea = false;
       }
