@@ -36,6 +36,7 @@
    3.2.2 cleaned t4IsBidHigherInSignalAreaMinEndValue
    3.2.3 fixed multiPush on t3AlertDisableTradeableButtonSended
    3.2.4 fixed missing t3LongEntry
+   3.2.5 diverse little Fixings
 
 
    ===============
@@ -54,7 +55,7 @@
 #property copyright   "2022, GjoSe"
 #property link        "http://www.gjo-se.com"
 #property description "GjoSe Markttechnik"
-#define   VERSION "3.2.4"
+#define   VERSION "3.2.5"
 #property version VERSION
 #property strict
 

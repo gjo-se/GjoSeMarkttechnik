@@ -27,16 +27,19 @@ void setT3Action() {
    }
 
    if(t3trendDirection == TREND_DIRECTION_LONG) {
-      if(t3LowestLowValue >= InpT3MinHighVolumeAreaLevel && t3LowestLowValue <= InpT3MaxHighVolumeAreaLevel) {
-         t3LowestLowIsInSignalArea = true;
-      } else {
-         t3LowestLowIsInSignalArea = false;
-      }
+      if(t3LowestLowValue != 0 && InpT3MinHighVolumeAreaLevel != 0 && InpT3MaxHighVolumeAreaLevel != 0) {
+         if(t3LowestLowValue >= InpT3MinHighVolumeAreaLevel && t3LowestLowValue <= InpT3MaxHighVolumeAreaLevel) {
+            t3LowestLowIsInSignalArea = true;
+            if(t3alertBidIsInSignalAreaSended == false) t3AlertBidIsInSignalAreaAction();
+         } else {
+            t3LowestLowIsInSignalArea = false;
+         }
 
-      if(t3LowestLowValue != 0 && InpT3MinHighVolumeAreaLevel !=0 && t3LowestLowValue < InpT3MinHighVolumeAreaLevel) {
-         t3LowestLowDateTime = 0;
-         string t3DisableTradeableButtonReason = "t3LowestLowValue < InpT3MinHighVolumeAreaLevel";
-         t3DisableTradeableButton(t3DisableTradeableButtonReason);
+         if(t3LowestLowValue < InpT3MinHighVolumeAreaLevel) {
+            t3LowestLowDateTime = 0;
+            string t3DisableTradeableButtonReason = "t3LowestLowValue < InpT3MinHighVolumeAreaLevel";
+            t3DisableTradeableButton(t3DisableTradeableButtonReason);
+         }
       }
 
       if(t3LowestLowVLineDateTime != 0) {
@@ -48,18 +51,24 @@ void setT3Action() {
    }
 
    if(t3trendDirection == TREND_DIRECTION_SHORT) {
-      if(t3HighestHighValue >= InpT3MinHighVolumeAreaLevel && t3HighestHighValue <= InpT3MaxHighVolumeAreaLevel) {
-         t3HighestHighIsInSignalArea = true;
-      } else {
-         t3HighestHighIsInSignalArea = false;
+      if(t3LowestLowValue != 0 && InpT3MinHighVolumeAreaLevel != 0 && InpT3MaxHighVolumeAreaLevel != 0) {
+         if(t3HighestHighValue >= InpT3MinHighVolumeAreaLevel && t3HighestHighValue <= InpT3MaxHighVolumeAreaLevel) {
+            t3HighestHighIsInSignalArea = true;
+            if(t3alertBidIsInSignalAreaSended == false) t3AlertBidIsInSignalAreaAction();
+         } else {
+            t3HighestHighIsInSignalArea = false;
+         }
+
+         if(t3HighestHighValue > InpT3MaxHighVolumeAreaLevel) {
+            // TODO: das hier kann ich auch in Frage stellen
+            t3HighestHighDateTime = 0;
+            string t3DisableTradeableButtonReason = "t3HighestHighValue > InpT3MaxHighVolumeAreaLevel";
+            t3DisableTradeableButton(t3DisableTradeableButtonReason);
+         }
+
       }
 
-      if(t3HighestHighValue != 0 && InpT3MaxHighVolumeAreaLevel != 0 && t3HighestHighValue > InpT3MaxHighVolumeAreaLevel) {
-         // TODO: das hier kann ich auch in Frage stellen
-         t3HighestHighDateTime = 0;
-         string t3DisableTradeableButtonReason = "t3HighestHighValue > InpT3MaxHighVolumeAreaLevel";
-         t3DisableTradeableButton(t3DisableTradeableButtonReason);
-      }
+
 
       if(t3HighestHighVLineDateTime != 0) {
          double t3MaxProfitLevel = iLow(Symbol(), Period(), iLowest( Symbol(), Period(), MODE_LOW,  iBarShift(Symbol(), Period(), t3HighestHighVLineDateTime) + 1));
