@@ -202,7 +202,7 @@ double getT4P4HighLowValueByTrendDirection() {
 
 void setT4HighestHighDateTime() {
 
-   if((int)t4p4DateTime < (int) TimeCurrent() && Bid() >= t4MinHighVolumeAreaLevel) {
+   if((int)t4p4DateTime < (int) TimeCurrent() && t4MinHighVolumeAreaLevel != 0 && Bid() >= t4MinHighVolumeAreaLevel) {
       int startCandleShift = iBarShift(Symbol(), Period(), t4p4DateTime);
       if(t4HighestHighVLineDateTime == 0) createT4HighestHighVLine();
       if(t4HighestHighVLineDateTime != 0) startCandleShift = iBarShift(Symbol(), Period(), t4HighestHighVLineDateTime);
@@ -217,7 +217,7 @@ void setT4HighestHighDateTime() {
 
 void setT4LowestLowDateTime() {
 
-   if((int)t4p4DateTime < (int) TimeCurrent() && Bid() <= t4MaxHighVolumeAreaLevel) {
+   if((int)t4p4DateTime < (int) TimeCurrent() && t4MaxHighVolumeAreaLevel != 0 && Bid() <= t4MaxHighVolumeAreaLevel) {
       int startCandleShift = iBarShift(Symbol(), Period(), t4p4DateTime);
       if(t4LowestLowVLineDateTime == 0) createT4LowestLowVLine();
       if(t4LowestLowVLineDateTime != 0) startCandleShift = iBarShift(Symbol(), Period(), t4LowestLowVLineDateTime);
