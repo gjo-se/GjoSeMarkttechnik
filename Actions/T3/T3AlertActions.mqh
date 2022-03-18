@@ -4,9 +4,11 @@
 //|                                             https://www.mql5.com |
 //+------------------------------------------------------------------+
 
+//+------------------------------------------------------------------+
+//|                                                                  |
+//+------------------------------------------------------------------+
 void t3AlertBuyRegressionAction() {
-
-   if((InpT3AlertOnRegressionChannelLevel != 0 || InpT3AlertOnFiboRetracmentLevel != 0 ) && t3IsBuyRegressionAlertSendable == true && t3IsBuyRegressionAlertSended == false) {
+   if(InpSendPush == true && (InpT3AlertOnRegressionChannelLevel != 0 || InpT3AlertOnFiboRetracmentLevel != 0 ) && t3IsBuyRegressionAlertSendable == true && t3IsBuyRegressionAlertSended == false) {
       string message = Symbol() + ": LONG-Regression ";
       Alert(message);
       if(!SendNotification(message)) Alert("Cannot sendRegressionAlert Push", GetLastError());
@@ -14,9 +16,11 @@ void t3AlertBuyRegressionAction() {
    }
 }
 
+//+------------------------------------------------------------------+
+//|                                                                  |
+//+------------------------------------------------------------------+
 void t3AlertSellRegressionAction() {
-
-   if((InpT3AlertOnRegressionChannelLevel != 0 || InpT3AlertOnFiboRetracmentLevel != 0 ) && t3IsSellRegressionAlertSendable == true && t3IsSellRegressionAlertSended == false) {
+   if(InpSendPush == true && (InpT3AlertOnRegressionChannelLevel != 0 || InpT3AlertOnFiboRetracmentLevel != 0 ) && t3IsSellRegressionAlertSendable == true && t3IsSellRegressionAlertSended == false) {
       string message = Symbol() + ": SHORT-Regression ";
       Alert(message);
       if(!SendNotification(message)) Alert("Cannot sendRegressionAlert Push", GetLastError());
@@ -28,17 +32,24 @@ void t3AlertSellRegressionAction() {
 //|                                                                  |
 //+------------------------------------------------------------------+
 void t3AlertDisableTradeableButtonAction(string pReason) {
-   string message = Symbol() + ": " + pReason;
-   Alert(message);
-   if(!SendNotification(message)) Alert("Cannot t3AlertDisableTradeableButtonAction Push", GetLastError());
-   t3AlertDisableTradeableButtonSended = true;
+   if(InpSendPush == true) {
+      string message = Symbol() + ": " + pReason;
+      Alert(message);
+      if(!SendNotification(message)) Alert("Cannot t3AlertDisableTradeableButtonAction Push", GetLastError());
+      t3AlertDisableTradeableButtonSended = true;
+   }
 }
 
+//+------------------------------------------------------------------+
+//|                                                                  |
+//+------------------------------------------------------------------+
 void t3AlertBidIsInSignalAreaAction() {
-   string message = Symbol() + ": " + "T3 Bid Is In SignalArea";
-   Alert(message);
-   if(!SendNotification(message)) Alert("Cannot Push " + message, GetLastError());
-   t3alertBidIsInSignalAreaSended = true;
+   if(InpSendPush == true) {
+      string message = Symbol() + ": " + "T3 Bid Is In SignalArea";
+      Alert(message);
+      if(!SendNotification(message)) Alert("Cannot Push " + message, GetLastError());
+      t3alertBidIsInSignalAreaSended = true;
+   }
 }
 
 //+------------------------------------------------------------------+
@@ -91,6 +102,7 @@ void t3CommentAction(string pVersion) {
    t3comment += "EA Version: " + pVersion + "\n";
    if(!TerminalInfoInteger(TERMINAL_TRADE_ALLOWED)) t3comment += "TERMINAL_TRADE_ALLOWED: OFF" + "\n";
    if(!MQLInfoInteger(MQL_TRADE_ALLOWED)) t3comment += "MQL_TRADE_ALLOWED: OFF" + "\n";
+   if(!InpSendPush) t3comment += "SEND PUSH: OFF" + "\n";
    t3comment += "\n";
    if(t3p1DateTime) {
       t3comment += "T3: " + "\n";
