@@ -15,7 +15,7 @@ input double            InpT3MinHighVolumeAreaLevel = 0; // T3 Min HighVolume Ar
 input int               InpT3AlertOnFiboRetracmentLevel = 0; // T3 Alert on Fibo Level
 
 input group             "------------------------------ T3 TRAILING --------------------"
-input int               InpT3MinProfitFiboRetracmentLevel = 1; // T3 TrailingStop Start Level
+input int               InpT3MinProfitFiboRetracmentLevel = -5; // T3 TrailingStop Start Level
 input int               InpT3TrailingStopOffset = 0; // T3 TrailingStop Offset
 input ENUM_TIMEFRAMES   InpT3trailingStopMATimeframe = PERIOD_M10; // T3 MA TrailingStop Timeframe
 input string            InpT3trailingStopMAPeriods = "200, 150, 100, 50, 10"; // T3 MA TrailingStop Periods
