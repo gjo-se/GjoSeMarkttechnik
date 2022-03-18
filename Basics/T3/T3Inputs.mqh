@@ -10,7 +10,6 @@ input group             "-------------------------------------------------------
 
 input group             "------------------------------ T3 LEVELS ----------------------"
 input double            InpT3MaxHighVolumeAreaLevel = 0; // T3 Max HighVolume Area Level
-input double            InpT3POCLevel = 0; // T3 POC Level
 input double            InpT3MinHighVolumeAreaLevel = 0; // T3 Min HighVolume Area Level
 input int               InpT3AlertOnFiboRetracmentLevel = 0; // T3 Alert on Fibo Level
 
