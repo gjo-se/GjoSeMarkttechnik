@@ -148,8 +148,15 @@ void OnTick() {
 //+------------------------------------------------------------------+
 void OnDeinit(const int reason) {
 
-   Comment("");
+   int subWindow = 0;
+   int t3trailingStopMAPeriod = 0;
+   for(int t3trailingStopMAPeriodsId = 0; t3trailingStopMAPeriodsId < ArraySize(t3trailingStopMAPeriodsArray); t3trailingStopMAPeriodsId++) {
+      t3trailingStopMAPeriod = t3trailingStopMAPeriodsArray[t3trailingStopMAPeriodsId];
+      string indictaorShortName = "MA(" + IntegerToString(t3trailingStopMAPeriod) + ")";
+      if(ChartIndicatorGet(ChartID(), subWindow, indictaorShortName) != INVALID_HANDLE) ChartIndicatorDelete(ChartID(), subWindow, indictaorShortName);
+   }
 
+   Comment("");
    Print(__FUNCTION__, " UninitializeReason() = ", getUninitReasonText(UninitializeReason()));
 }
 //+------------------------------------------------------------------+
