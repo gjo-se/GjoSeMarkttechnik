@@ -13,7 +13,7 @@ CNewBar     NewBar;
 // Indicators
 int         t3TrailingStopMAActive;
 double      t3TrailingStopMALevel;
-string      t3trailingStopMAPeriodsArray[];
+int         t3trailingStopMAPeriodsArray[];
 double      t3TrailingStopMABuffer00[];
 int         t3TrailingStopMAHandle00;
 int         t3TrailingStopMAPeriod00;
