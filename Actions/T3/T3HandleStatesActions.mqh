@@ -51,7 +51,7 @@ void setT3Action() {
    }
 
    if(t3trendDirection == TREND_DIRECTION_SHORT) {
-      if(t3LowestLowValue != 0 && InpT3MinHighVolumeAreaLevel != 0 && InpT3MaxHighVolumeAreaLevel != 0) {
+      if(t3HighestHighValue != 0 && InpT3MinHighVolumeAreaLevel != 0 && InpT3MaxHighVolumeAreaLevel != 0) {
          if(t3HighestHighValue >= InpT3MinHighVolumeAreaLevel && t3HighestHighValue <= InpT3MaxHighVolumeAreaLevel) {
             t3HighestHighIsInSignalArea = true;
             if(t3alertBidIsInSignalAreaSended == false) t3AlertBidIsInSignalAreaAction();
@@ -67,8 +67,6 @@ void setT3Action() {
          }
 
       }
-
-
 
       if(t3HighestHighVLineDateTime != 0) {
          double t3MaxProfitLevel = iLow(Symbol(), Period(), iLowest( Symbol(), Period(), MODE_LOW,  iBarShift(Symbol(), Period(), t3HighestHighVLineDateTime) + 1));
