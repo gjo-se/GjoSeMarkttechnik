@@ -43,6 +43,6 @@ void t4DisableTradeableButton(string pReason) {
    ObjectSetInteger(0, T4_IS_TRADEABLE_BUTTON, OBJPROP_STATE, buttonState);
    t4IsTradabelButtonState = buttonState;
    handleT4IsTradeableButton();
-   t4AlertDisableTradeableButtonAction(pReason);
+   if(t4AlertDisableTradeableButtonSended == false) t4AlertDisableTradeableButtonAction(pReason);
 }
 //+------------------------------------------------------------------+

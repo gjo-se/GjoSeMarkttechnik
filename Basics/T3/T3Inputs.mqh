@@ -10,12 +10,11 @@ input group             "-------------------------------------------------------
 
 input group             "------------------------------ T3 LEVELS ----------------------"
 input double            InpT3MaxHighVolumeAreaLevel = 0; // T3 Max HighVolume Area Level
-input double            InpT3POCLevel = 0; // T3 POC Level
 input double            InpT3MinHighVolumeAreaLevel = 0; // T3 Min HighVolume Area Level
 input int               InpT3AlertOnFiboRetracmentLevel = 0; // T3 Alert on Fibo Level
 
 input group             "------------------------------ T3 TRAILING --------------------"
-input int               InpT3MinProfitFiboRetracmentLevel = 1; // T3 TrailingStop Start Level
+input int               InpT3MinProfitFiboRetracmentLevel = -5; // T3 TrailingStop Start Level
 input int               InpT3TrailingStopOffset = 0; // T3 TrailingStop Offset
 input ENUM_TIMEFRAMES   InpT3trailingStopMATimeframe = PERIOD_M10; // T3 MA TrailingStop Timeframe
 input string            InpT3trailingStopMAPeriods = "200, 150, 100, 50, 10"; // T3 MA TrailingStop Periods
@@ -61,7 +60,8 @@ datetime          InpT3p1DateTime = D'2022.01.01 00:00';
 datetime          InpT3p2DateTime = D'2022.01.01 00:00';
 datetime          InpT3p3DateTime = D'2022.01.01 00:00';
 datetime          InpT3p4DateTime = D'2022.01.01 00:00';
-bool              InpT3TesterHideIndicators = true;
+bool              InpT3TesterHideIndicators = false;
+bool              InpSendPushOnTester = true;
 
 // ****************  RAUS **************** //
 int               InpT3AlertOnBidStopLossLineOffset = 0;

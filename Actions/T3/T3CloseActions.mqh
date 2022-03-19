@@ -50,13 +50,12 @@ void closeOnT3TrailingStopMA() {
          positionTicket = positionTicketsLocal[positionTicketsId];
          if(
             PositionSymbol(positionTicket) == Symbol()
-            && PositionMagicNumber(positionTicket) == InpT3MagicNumber
          ) {
             if(t3trendDirection == TREND_DIRECTION_LONG && PositionType(positionTicket) == ORDER_TYPE_BUY && Bid() < t3TrailingStopMALevel) {
-               Trade.Close(positionTicket, PositionVolume(positionTicket), "Close on " + IntegerToString(t4TrailingStopMAActive) + " t4TrailingStopMA");
+               Trade.Close(positionTicket, PositionVolume(positionTicket), "Close on " + IntegerToString(t3TrailingStopMAActive) + " t3TrailingStopMA");
             }
             if(t3trendDirection == TREND_DIRECTION_SHORT && PositionType(positionTicket) == ORDER_TYPE_SELL && Bid() > t3TrailingStopMALevel) {
-               Trade.Close(positionTicket, PositionVolume(positionTicket), "Close on " + IntegerToString(t4TrailingStopMAActive) + " t4TrailingStopMA");
+               Trade.Close(positionTicket, PositionVolume(positionTicket), "Close on " + IntegerToString(t3TrailingStopMAActive) + " t3TrailingStopMA");
             }
          }
       }

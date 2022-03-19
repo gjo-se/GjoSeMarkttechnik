@@ -70,6 +70,8 @@ bool t4IsSellRegressionAlertSendable;
 bool t4IsSellRegressionAlertSended;
 bool t4IsBidStopLossLineOffsetAlertSendable;
 bool t4IsBidStopLossLineOffsetAlertSended;
+bool t4AlertDisableTradeableButtonSended;
+bool t4alertMAChangedSended;
 
 // INSignal
 double t4InSignalFiboLevelAreaMinStartValue;
@@ -89,6 +91,7 @@ bool   t4LowestLowIsInSignalArea;
 // OUTSIgnal
 double t4MinProfitFiboRetracmentLevel;
 bool   t4ProfitLevelGreaterMinProfitFiboRetracmentLevel;
+double t4CurrentBidMAOffset;
 
 double t4ReEntryAreaMinStartValue;
 double t4ReEntryAreaMinEndValue;

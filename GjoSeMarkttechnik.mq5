@@ -38,6 +38,7 @@
    3.2.4 fixed missing t3LongEntry
    3.2.5 diverse little Fixings
    3.2.6 fixed missing t3HighestHighIsInSignalArea
+   3.3.0 fixed trailingStopMA
 
 
    ===============
@@ -56,7 +57,7 @@
 #property copyright   "2022, GjoSe"
 #property link        "http://www.gjo-se.com"
 #property description "GjoSe Markttechnik"
-#define   VERSION "3.2.6"
+#define   VERSION "3.3.0"
 #property version VERSION
 #property strict
 
@@ -129,6 +130,8 @@ void OnTick() {
    t4HandleObjectsAction();
    if(isNewCurrentBar) {
       handleCommentAction(VERSION);
+      if((buyT3PositionIsOpenState == true || sellT3PositionIsOpenState == true) && buyT4PositionIsOpenState == false && sellT4PositionIsOpenState == false) ChartSetSymbolPeriod(ChartID(), Symbol(), InpT3trailingStopMATimeframe);
+      if(buyT4PositionIsOpenState == true || sellT4PositionIsOpenState == true) ChartSetSymbolPeriod(ChartID(), Symbol(), InpT4trailingStopMATimeframe);
    }
 
    if(getT3BuyAlertRegressionSignal() == true) t3AlertBuyRegressionAction();
@@ -148,8 +151,15 @@ void OnTick() {
 //+------------------------------------------------------------------+
 void OnDeinit(const int reason) {
 
-   Comment("");
+   int subWindow = 0;
+   int t3trailingStopMAPeriod = 0;
+   for(int t3trailingStopMAPeriodsId = 0; t3trailingStopMAPeriodsId < ArraySize(t3trailingStopMAPeriodsArray); t3trailingStopMAPeriodsId++) {
+      t3trailingStopMAPeriod = t3trailingStopMAPeriodsArray[t3trailingStopMAPeriodsId];
+      string indictaorShortName = "MA(" + IntegerToString(t3trailingStopMAPeriod) + ")";
+      if(ChartIndicatorGet(ChartID(), subWindow, indictaorShortName) != INVALID_HANDLE) ChartIndicatorDelete(ChartID(), subWindow, indictaorShortName);
+   }
 
+   Comment("");
    Print(__FUNCTION__, " UninitializeReason() = ", getUninitReasonText(UninitializeReason()));
 }
 //+------------------------------------------------------------------+

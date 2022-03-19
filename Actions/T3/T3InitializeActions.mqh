@@ -48,6 +48,11 @@ void initializeT3GlobalsAction() {
    t3ObjectHasChanged = false;
    t3ObjectHasChanged = false;
 
+   if(MQLInfoInteger(MQL_VISUAL_MODE) == 1 && InpSendPushOnTester == false) {
+      sendAlerts = false;
+   } else {
+      sendAlerts = true;
+   }
    t3AlertRegressionChannelLevel = 0;
    t3AlertFiboRetracementLevel = 0;
    t3IsBuyRegressionAlertSendable = false;
@@ -58,6 +63,7 @@ void initializeT3GlobalsAction() {
    t3IsBidStopLossLineOffsetAlertSended = false;
    t3AlertDisableTradeableButtonSended = false;
    t3alertBidIsInSignalAreaSended = false;
+   t3alertMAChangedSended = false;
 
 
 
@@ -76,6 +82,7 @@ void initializeT3GlobalsAction() {
 // OUTSIgnal
    t3MinProfitFiboRetracmentLevel = 0;
    t3ProfitLevelGreaterMinProfitFiboRetracmentLevel = false;
+   t3CurrentBidMAOffset = 0;
 
    t3ReEntryAreaMinStartValue = 0;
    t3ReEntryAreaMinEndValue = 0;
@@ -119,13 +126,12 @@ void initializeT3IndicatorsAction() {
    if(InpT3trailingStopMATimeframe == Period()) {
 
       for(int t3trailingStopMAPeriodsId = 0; t3trailingStopMAPeriodsId < ArraySize(t3trailingStopMAPeriodsArray); t3trailingStopMAPeriodsId++) {
-         t3trailingStopMAPeriod = (int)t3trailingStopMAPeriodsArray[t3trailingStopMAPeriodsId];
+         t3trailingStopMAPeriod = t3trailingStopMAPeriodsArray[t3trailingStopMAPeriodsId];
 
          switch(t3trailingStopMAPeriodsId) {
          case 0:
             t3TrailingStopMAHandle00 = iMA(Symbol(), InpT3trailingStopMATimeframe, t3trailingStopMAPeriod, shift, MODE_SMA, PRICE_CLOSE);
             t3TrailingStopMAPeriod00 = t3trailingStopMAPeriod;
-            t3TrailingStopMAActive = t3TrailingStopMAPeriod00;
             break;
          case 1:
             t3TrailingStopMAHandle01 = iMA(Symbol(), InpT3trailingStopMATimeframe, t3trailingStopMAPeriod, shift, MODE_SMA, PRICE_CLOSE);
@@ -148,6 +154,8 @@ void initializeT3IndicatorsAction() {
             t3TrailingStopMAPeriod05 = t3trailingStopMAPeriod;
          }
       }
+
+      t3TrailingStopMAActive = t3TrailingStopMAPeriod00;
    }
 }
 
@@ -202,6 +210,11 @@ void convertInpT3StringsToArray() {
       t3FiboLevelsArray[ArraySize(t3FiboLevelsArray) - 1] = (string)InpT3MinProfitFiboRetracmentLevel;
    }
 
-   StringSplit(InpT3trailingStopMAPeriods, StringGetCharacter(",", 0), t3trailingStopMAPeriodsArray);
+   string t3trailingStopMAPeriodsArrayStrings[];
+   StringSplit(InpT3trailingStopMAPeriods, StringGetCharacter(",", 0), t3trailingStopMAPeriodsArrayStrings);
+   for(int t3trailingStopMAPeriodsId = 0; t3trailingStopMAPeriodsId < ArraySize(t3trailingStopMAPeriodsArrayStrings); t3trailingStopMAPeriodsId++) {
+      ArrayResize(t3trailingStopMAPeriodsArray, ArraySize(t3trailingStopMAPeriodsArray) + 1);
+      t3trailingStopMAPeriodsArray[t3trailingStopMAPeriodsId] = (int)t3trailingStopMAPeriodsArrayStrings[t3trailingStopMAPeriodsId];
+   }
 }
 //+------------------------------------------------------------------+

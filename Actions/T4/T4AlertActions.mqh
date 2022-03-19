@@ -6,7 +6,7 @@
 
 void t4AlertBuyRegressionAction() {
 
-   if((InpT4AlertOnRegressionChannelLevel != 0 || InpT4AlertOnFiboRetracmentLevel != 0 ) && t4IsBuyRegressionAlertSendable == true && t4IsBuyRegressionAlertSended == false) {
+   if(sendAlerts == true && (InpT4AlertOnRegressionChannelLevel != 0 || InpT4AlertOnFiboRetracmentLevel != 0 ) && t4IsBuyRegressionAlertSendable == true && t4IsBuyRegressionAlertSended == false) {
       string message = Symbol() + ": LONG-Regression ";
       Alert(message);
       if(!SendNotification(message)) Alert("Cannot sendRegressionAlert Push", GetLastError());
@@ -16,7 +16,7 @@ void t4AlertBuyRegressionAction() {
 
 void t4AlertSellRegressionAction() {
 
-   if((InpT4AlertOnRegressionChannelLevel != 0 || InpT4AlertOnFiboRetracmentLevel != 0 ) && t4IsSellRegressionAlertSendable == true && t4IsSellRegressionAlertSended == false) {
+   if(sendAlerts == true && (InpT4AlertOnRegressionChannelLevel != 0 || InpT4AlertOnFiboRetracmentLevel != 0 ) && t4IsSellRegressionAlertSendable == true && t4IsSellRegressionAlertSended == false) {
       string message = Symbol() + ": SHORT-Regression ";
       Alert(message);
       if(!SendNotification(message)) Alert("Cannot sendRegressionAlert Push", GetLastError());
@@ -28,9 +28,24 @@ void t4AlertSellRegressionAction() {
 //|                                                                  |
 //+------------------------------------------------------------------+
 void t4AlertDisableTradeableButtonAction(string pReason) {
-   string message = Symbol() + ": " + pReason;
-   Alert(message);
-   if(!SendNotification(message)) Alert("Cannot sendRegressionAlert Push", GetLastError());
+   if(sendAlerts == true) {
+      string message = Symbol() + ": " + pReason;
+      Alert(message);
+      if(!SendNotification(message)) Alert("Cannot t4AlertDisableTradeableButtonAction Push", GetLastError());
+      t4AlertDisableTradeableButtonSended = true;
+   }
+}
+
+//+------------------------------------------------------------------+
+//|                                                                  |
+//+------------------------------------------------------------------+
+void t4AlertMAChangedAction() {
+   if(sendAlerts == true) {
+      string message = Symbol() + ": " + "T4 MA TrailingStop Changed to " + IntegerToString(t4TrailingStopMAActive);
+      Alert(message);
+      if(!SendNotification(message)) Alert("Cannot Push " + message + " Error: ", GetLastError());
+      t4alertMAChangedSended = true;
+   }
 }
 
 //+------------------------------------------------------------------+
@@ -38,7 +53,7 @@ void t4AlertDisableTradeableButtonAction(string pReason) {
 //+------------------------------------------------------------------+
 void t4AlertOnBidStopLossLineOffset() {
 
-   if(t4StopLossLineLevel != 0 && InpT4AlertOnBidStopLossLineOffset != 0) {
+   if(sendAlerts == true && t4StopLossLineLevel != 0 && InpT4AlertOnBidStopLossLineOffset != 0) {
       if(t4trendDirection == TREND_DIRECTION_LONG) {
          if(Bid() > t4StopLossLineLevel + InpT4AlertOnBidStopLossLineOffset * Point()) {
             if(t4IsBidStopLossLineOffsetAlertSendable == true && t4IsBidStopLossLineOffsetAlertSended == false) {
@@ -102,11 +117,12 @@ void t4CommentAction(string pVersion) {
          t4comment += "maxT4SellPositionsAreOpenState: " + IntegerToString(maxT4SellPositionsAreOpenState) + "\n";
       }
       t4comment += "\n";
-      string t4CurrentBidMAOffset = "";
-      if(t4trendDirection == TREND_DIRECTION_LONG) t4CurrentBidMAOffset = DoubleToString(Bid() / Point() - t4TrailingStopMALevel / Point(), 0);
-      if(t4trendDirection == TREND_DIRECTION_SHORT) t4CurrentBidMAOffset = DoubleToString(t4TrailingStopMALevel / Point() - Bid() / Point(), 0);
-      t4comment += "t4CurrentTrailingStopMAPeriod: " + IntegerToString(t4TrailingStopMAActive) + " CurrentOffset: " + t4CurrentBidMAOffset + "\n";;
+      t4comment += "t4 Trailing isActive: " + IntegerToString(t4ProfitLevelGreaterMinProfitFiboRetracmentLevel) + "\n";
+      t4comment += "t4CurrentTrailingStopMAPeriod: " + IntegerToString(t4TrailingStopMAActive) + "\n";
+      if(t4CurrentBidMAOffset > 0) t4comment += " CurrentOffset: " + DoubleToString(t4CurrentBidMAOffset, 0) + "\n";
+      t4comment += "\n";
       t4comment += "StopLossLineLevel: " + DoubleToString(t4StopLossLineLevel, Digits()) + "\n";
       if(outSideBarDateTime != 0) t4comment += "OutSideBar: " + TimeToString(outSideBarDateTime) + "\n";
    }
 }
+//+------------------------------------------------------------------+
