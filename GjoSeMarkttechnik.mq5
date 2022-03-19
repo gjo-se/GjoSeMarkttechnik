@@ -38,6 +38,7 @@
    3.2.4 fixed missing t3LongEntry
    3.2.5 diverse little Fixings
    3.2.6 fixed missing t3HighestHighIsInSignalArea
+   3.3.0 fixed trailingStopMA
 
 
    ===============
@@ -56,7 +57,7 @@
 #property copyright   "2022, GjoSe"
 #property link        "http://www.gjo-se.com"
 #property description "GjoSe Markttechnik"
-#define   VERSION "3.2.6"
+#define   VERSION "3.3.0"
 #property version VERSION
 #property strict
 
