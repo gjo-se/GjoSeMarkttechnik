@@ -49,7 +49,6 @@ void closeOnT4TrailingStopMA() {
          positionTicket = positionTicketsLocal[positionTicketsId];
          if(
             PositionSymbol(positionTicket) == Symbol()
-            && PositionMagicNumber(positionTicket) == InpT4MagicNumber
          ) {
             if(t4trendDirection == TREND_DIRECTION_LONG && PositionType(positionTicket) == ORDER_TYPE_BUY && Bid() < t4TrailingStopMALevel) {
                Trade.Close(positionTicket, PositionVolume(positionTicket), "Close on " + IntegerToString(t4TrailingStopMAActive) + " t4TrailingStopMA");

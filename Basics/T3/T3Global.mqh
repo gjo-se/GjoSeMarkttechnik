@@ -70,6 +70,7 @@ bool t3ObjectHasChanged;
 bool t4ObjectHasChanged;
 
 // Alerts
+bool sendAlerts;
 double t3AlertRegressionChannelLevel;
 double t3AlertFiboRetracementLevel;
 bool t3IsBuyRegressionAlertSendable;
@@ -80,6 +81,7 @@ bool t3IsBidStopLossLineOffsetAlertSendable;
 bool t3IsBidStopLossLineOffsetAlertSended;
 bool t3AlertDisableTradeableButtonSended;
 bool t3alertBidIsInSignalAreaSended;
+bool t3alertMAChangedSended;
 
 // INSignal
 double t3InSignalFiboLevelAreaMinStartValue;
@@ -97,6 +99,8 @@ bool   t3LowestLowIsInSignalArea;
 // OUTSIgnal
 double t3MinProfitFiboRetracmentLevel;
 bool   t3ProfitLevelGreaterMinProfitFiboRetracmentLevel;
+double t3CurrentBidMAOffset;
+
 
 double t3ReEntryAreaMinStartValue;
 double t3ReEntryAreaMinEndValue;

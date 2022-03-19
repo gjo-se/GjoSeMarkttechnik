@@ -8,7 +8,7 @@
 //|                                                                  |
 //+------------------------------------------------------------------+
 void t3AlertBuyRegressionAction() {
-   if(InpSendPush == true && (InpT3AlertOnRegressionChannelLevel != 0 || InpT3AlertOnFiboRetracmentLevel != 0 ) && t3IsBuyRegressionAlertSendable == true && t3IsBuyRegressionAlertSended == false) {
+   if(sendAlerts == true && (InpT3AlertOnRegressionChannelLevel != 0 || InpT3AlertOnFiboRetracmentLevel != 0 ) && t3IsBuyRegressionAlertSendable == true && t3IsBuyRegressionAlertSended == false) {
       string message = Symbol() + ": LONG-Regression ";
       Alert(message);
       if(!SendNotification(message)) Alert("Cannot sendRegressionAlert Push", GetLastError());
@@ -20,7 +20,7 @@ void t3AlertBuyRegressionAction() {
 //|                                                                  |
 //+------------------------------------------------------------------+
 void t3AlertSellRegressionAction() {
-   if(InpSendPush == true && (InpT3AlertOnRegressionChannelLevel != 0 || InpT3AlertOnFiboRetracmentLevel != 0 ) && t3IsSellRegressionAlertSendable == true && t3IsSellRegressionAlertSended == false) {
+   if(sendAlerts == true && (InpT3AlertOnRegressionChannelLevel != 0 || InpT3AlertOnFiboRetracmentLevel != 0 ) && t3IsSellRegressionAlertSendable == true && t3IsSellRegressionAlertSended == false) {
       string message = Symbol() + ": SHORT-Regression ";
       Alert(message);
       if(!SendNotification(message)) Alert("Cannot sendRegressionAlert Push", GetLastError());
@@ -32,7 +32,7 @@ void t3AlertSellRegressionAction() {
 //|                                                                  |
 //+------------------------------------------------------------------+
 void t3AlertDisableTradeableButtonAction(string pReason) {
-   if(InpSendPush == true) {
+   if(sendAlerts == true) {
       string message = Symbol() + ": " + pReason;
       Alert(message);
       if(!SendNotification(message)) Alert("Cannot t3AlertDisableTradeableButtonAction Push", GetLastError());
@@ -44,11 +44,23 @@ void t3AlertDisableTradeableButtonAction(string pReason) {
 //|                                                                  |
 //+------------------------------------------------------------------+
 void t3AlertBidIsInSignalAreaAction() {
-   if(InpSendPush == true) {
+   if(sendAlerts == true) {
       string message = Symbol() + ": " + "T3 Bid Is In SignalArea";
       Alert(message);
       if(!SendNotification(message)) Alert("Cannot Push " + message, GetLastError());
       t3alertBidIsInSignalAreaSended = true;
+   }
+}
+
+//+------------------------------------------------------------------+
+//|                                                                  |
+//+------------------------------------------------------------------+
+void t3AlertMAChangedAction() {
+   if(sendAlerts == true) {
+      string message = Symbol() + ": " + "T3 MA TrailingStop Changed to " + IntegerToString(t3TrailingStopMAActive);
+      Alert(message);
+      if(!SendNotification(message)) Alert("Cannot Push " + message + " Error: ", GetLastError());
+      t3alertMAChangedSended = true;
    }
 }
 
@@ -102,7 +114,7 @@ void t3CommentAction(string pVersion) {
    t3comment += "EA Version: " + pVersion + "\n";
    if(!TerminalInfoInteger(TERMINAL_TRADE_ALLOWED)) t3comment += "TERMINAL_TRADE_ALLOWED: OFF" + "\n";
    if(!MQLInfoInteger(MQL_TRADE_ALLOWED)) t3comment += "MQL_TRADE_ALLOWED: OFF" + "\n";
-   if(!InpSendPush) t3comment += "SEND PUSH: OFF" + "\n";
+   if(sendAlerts == false) t3comment += "SEND PUSH: OFF" + "\n";
    t3comment += "\n";
    if(t3p1DateTime) {
       t3comment += "T3: " + "\n";
@@ -136,10 +148,10 @@ void t3CommentAction(string pVersion) {
          t3comment += "maxT3SellPositionsAreOpenState: " + IntegerToString(maxT3SellPositionsAreOpenState) + "\n";
       }
       t3comment += "\n";
-      string t3CurrentBidMAOffset = "";
-      if(t3trendDirection == TREND_DIRECTION_LONG) t3CurrentBidMAOffset = DoubleToString(Bid() / Point() - t3TrailingStopMALevel / Point(), 0);
-      if(t3trendDirection == TREND_DIRECTION_SHORT) t3CurrentBidMAOffset = DoubleToString(t3TrailingStopMALevel / Point() - Bid() / Point(), 0);
-      t3comment += "t3CurrentTrailingStopMAPeriod: " + IntegerToString(t3TrailingStopMAActive) + " CurrentOffset: " + t3CurrentBidMAOffset + "\n";;
+      t3comment += "t3 Trailing isActive: " + IntegerToString(t3ProfitLevelGreaterMinProfitFiboRetracmentLevel) + "\n";
+      t3comment += "t3CurrentTrailingStopMAPeriod: " + IntegerToString(t3TrailingStopMAActive) + "\n";
+      if(t3CurrentBidMAOffset > 0) t3comment += " CurrentOffset: " + DoubleToString(t3CurrentBidMAOffset, 0) + "\n";
+      t3comment += "\n";
       t3comment += "StopLossLineLevel: " + DoubleToString(t3StopLossLineLevel, Digits()) + "\n";
       if(outSideBarDateTime != 0) t3comment += "OutSideBar: " + TimeToString(outSideBarDateTime) + "\n";
    }

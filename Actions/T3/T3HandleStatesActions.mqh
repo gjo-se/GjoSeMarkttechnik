@@ -42,7 +42,7 @@ void setT3Action() {
          }
       }
 
-      if(t3LowestLowVLineDateTime != 0) {
+      if(t3LowestLowVLineDateTime != 0 && t3LowestLowVLineDateTime < (int)TimeCurrent()) {
          double t3MaxProfitLevel = iHigh(Symbol(), Period(), iHighest( Symbol(), Period(), MODE_HIGH,  iBarShift(Symbol(), Period(), t3LowestLowVLineDateTime) + 1));
          if(t3MinProfitFiboRetracmentLevel != 0 && t3MaxProfitLevel >= t3MinProfitFiboRetracmentLevel) t3ProfitLevelGreaterMinProfitFiboRetracmentLevel = true;
       } else {
@@ -68,7 +68,7 @@ void setT3Action() {
 
       }
 
-      if(t3HighestHighVLineDateTime != 0) {
+      if(t3HighestHighVLineDateTime != 0 && t3HighestHighVLineDateTime < (int)TimeCurrent()) {
          double t3MaxProfitLevel = iLow(Symbol(), Period(), iLowest( Symbol(), Period(), MODE_LOW,  iBarShift(Symbol(), Period(), t3HighestHighVLineDateTime) + 1));
          if(t3MinProfitFiboRetracmentLevel != 0 && t3MaxProfitLevel <= t3MinProfitFiboRetracmentLevel) t3ProfitLevelGreaterMinProfitFiboRetracmentLevel = true;
       } else {

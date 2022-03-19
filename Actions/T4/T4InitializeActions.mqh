@@ -48,6 +48,8 @@ void initializeT4GlobalsAction() {
    t4IsBidStopLossLineOffsetAlertSendable = false;
    t4IsBidStopLossLineOffsetAlertSended = false;
    t4AlertDisableTradeableButtonSended = false;
+   t4alertMAChangedSended = false;
+
 
 
    t4InSignalFiboLevelAreaMinStartValue = 0;
@@ -63,6 +65,11 @@ void initializeT4GlobalsAction() {
    t4MaxHighVolumeAreaLevel = 0;
    t4HighestHighIsInSignalArea = false;
    t4LowestLowIsInSignalArea = false;
+
+// OUTSIgnal
+   t4MinProfitFiboRetracmentLevel = 0;
+   t4ProfitLevelGreaterMinProfitFiboRetracmentLevel = false;
+   t4CurrentBidMAOffset = 0;
 
    t4ReEntryAreaMinStartValue = 0;
    t4ReEntryAreaMinEndValue = 0;
@@ -114,7 +121,6 @@ void initializeT4IndicatorsAction() {
          case 0:
             t4TrailingStopMAHandle00 = iMA(Symbol(), InpT4trailingStopMATimeframe, t4trailingStopMAPeriod, shift, MODE_SMA, PRICE_CLOSE);
             t4TrailingStopMAPeriod00 = t4trailingStopMAPeriod;
-            t4TrailingStopMAActive = t4TrailingStopMAPeriod00;
             break;
          case 1:
             t4TrailingStopMAHandle01 = iMA(Symbol(), InpT4trailingStopMATimeframe, t4trailingStopMAPeriod, shift, MODE_SMA, PRICE_CLOSE);
@@ -137,6 +143,8 @@ void initializeT4IndicatorsAction() {
             t4TrailingStopMAPeriod05 = t4trailingStopMAPeriod;
          }
       }
+
+      t4TrailingStopMAActive = t4TrailingStopMAPeriod00;
    }
 }
 

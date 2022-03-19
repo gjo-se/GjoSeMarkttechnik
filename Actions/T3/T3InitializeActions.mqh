@@ -48,6 +48,11 @@ void initializeT3GlobalsAction() {
    t3ObjectHasChanged = false;
    t3ObjectHasChanged = false;
 
+   if(MQLInfoInteger(MQL_VISUAL_MODE) == 1 && InpSendPushOnTester == false) {
+      sendAlerts = false;
+   } else {
+      sendAlerts = true;
+   }
    t3AlertRegressionChannelLevel = 0;
    t3AlertFiboRetracementLevel = 0;
    t3IsBuyRegressionAlertSendable = false;
@@ -58,6 +63,7 @@ void initializeT3GlobalsAction() {
    t3IsBidStopLossLineOffsetAlertSended = false;
    t3AlertDisableTradeableButtonSended = false;
    t3alertBidIsInSignalAreaSended = false;
+   t3alertMAChangedSended = false;
 
 
 
@@ -76,6 +82,7 @@ void initializeT3GlobalsAction() {
 // OUTSIgnal
    t3MinProfitFiboRetracmentLevel = 0;
    t3ProfitLevelGreaterMinProfitFiboRetracmentLevel = false;
+   t3CurrentBidMAOffset = 0;
 
    t3ReEntryAreaMinStartValue = 0;
    t3ReEntryAreaMinEndValue = 0;
@@ -125,7 +132,6 @@ void initializeT3IndicatorsAction() {
          case 0:
             t3TrailingStopMAHandle00 = iMA(Symbol(), InpT3trailingStopMATimeframe, t3trailingStopMAPeriod, shift, MODE_SMA, PRICE_CLOSE);
             t3TrailingStopMAPeriod00 = t3trailingStopMAPeriod;
-            t3TrailingStopMAActive = t3TrailingStopMAPeriod00;
             break;
          case 1:
             t3TrailingStopMAHandle01 = iMA(Symbol(), InpT3trailingStopMATimeframe, t3trailingStopMAPeriod, shift, MODE_SMA, PRICE_CLOSE);
@@ -148,6 +154,8 @@ void initializeT3IndicatorsAction() {
             t3TrailingStopMAPeriod05 = t3trailingStopMAPeriod;
          }
       }
+
+      t3TrailingStopMAActive = t3TrailingStopMAPeriod00;
    }
 }
 

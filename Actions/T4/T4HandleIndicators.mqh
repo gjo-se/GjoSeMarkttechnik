@@ -6,53 +6,77 @@
 
 void handleT4Indictaors() {
 
-   if(InpT4trailingStopMATimeframe == Period()
-         && t4ProfitLevelGreaterMinProfitFiboRetracmentLevel == true
-     ){
-            int bufferNumber = 0;
-            int start = 0;
-            int toCopy = 1;
-            
-            if(t4TrailingStopMAHandle00 != 0 && t4TrailingStopMAActive >= t4TrailingStopMAPeriod00){
-                CopyBuffer(t4TrailingStopMAHandle00, bufferNumber, start, toCopy, t4TrailingStopMABuffer00);
-                if(t4TrailingStopMAActive == t4TrailingStopMAPeriod00) t4TrailingStopMALevel = t4TrailingStopMABuffer00[0];
-            }
+   if(InpT4trailingStopMATimeframe == Period() && InpT4TrailingStopOffset != 0) {
+      int bufferNumber = 0;
+      int start = 0;
+      int toCopy = 1;
+      int subWindow = 0;
 
-            if(t4TrailingStopMAHandle01 != 0 && t4TrailingStopMAActive >= t4TrailingStopMAPeriod01){
-                CopyBuffer(t4TrailingStopMAHandle01, bufferNumber, start, toCopy, t4TrailingStopMABuffer01);
-                if(t4trendDirection == TREND_DIRECTION_LONG && t4TrailingStopMABuffer01[0] != 0 && Bid() - (InpT4TrailingStopOffset * Point()) > t4TrailingStopMABuffer01[0]) t4TrailingStopMAActive = t4TrailingStopMAPeriod01;
-                if(t4trendDirection == TREND_DIRECTION_SHORT && t4TrailingStopMABuffer01[0] != 0 && Bid() + (InpT4TrailingStopOffset * Point()) < t4TrailingStopMABuffer01[0]) t4TrailingStopMAActive = t4TrailingStopMAPeriod01;
-                if(t4TrailingStopMAActive == t4TrailingStopMAPeriod01) t4TrailingStopMALevel = t4TrailingStopMABuffer01[0];
-            }
+      if(t4TrailingStopMAHandle00 != 0 && t4TrailingStopMAActive == t4TrailingStopMAPeriod00) {
+         CopyBuffer(t4TrailingStopMAHandle00, bufferNumber, start, toCopy, t4TrailingStopMABuffer00);
+         t4TrailingStopMALevel = t4TrailingStopMABuffer00[0];
+         if(t4trendDirection == TREND_DIRECTION_LONG) t4CurrentBidMAOffset = Bid() / Point() - t4TrailingStopMALevel / Point();
+         if(t4trendDirection == TREND_DIRECTION_SHORT) t4CurrentBidMAOffset = t4TrailingStopMALevel / Point() - Bid() / Point();
+         ChartIndicatorAdd(ChartID(), subWindow, t4TrailingStopMAHandle00);
+      }
 
-            if(t4TrailingStopMAHandle02 != 0 && t4TrailingStopMAActive >= t4TrailingStopMAPeriod02){
-                CopyBuffer(t4TrailingStopMAHandle02, bufferNumber, start, toCopy, t4TrailingStopMABuffer02);
-                if(t4trendDirection == TREND_DIRECTION_LONG && t4TrailingStopMABuffer02[0] != 0 && Bid() - (InpT4TrailingStopOffset * Point()) > t4TrailingStopMABuffer02[0]) t4TrailingStopMAActive = t4TrailingStopMAPeriod02;
-                if(t4trendDirection == TREND_DIRECTION_SHORT && t4TrailingStopMABuffer02[0] != 0 && Bid() + (InpT4TrailingStopOffset * Point()) < t4TrailingStopMABuffer02[0]) t4TrailingStopMAActive = t4TrailingStopMAPeriod02;
-                if(t4TrailingStopMAActive == t4TrailingStopMAPeriod02) t4TrailingStopMALevel = t4TrailingStopMABuffer02[0];
-            }
+      if(t4ProfitLevelGreaterMinProfitFiboRetracmentLevel == true){
 
-            if(t4TrailingStopMAHandle03 != 0 && t4TrailingStopMAActive >= t4TrailingStopMAPeriod03){
-                CopyBuffer(t4TrailingStopMAHandle03, bufferNumber, start, toCopy, t4TrailingStopMABuffer03);
-                if(t4trendDirection == TREND_DIRECTION_LONG && t4TrailingStopMABuffer03[0] != 0 && Bid() - (InpT4TrailingStopOffset * Point()) > t4TrailingStopMABuffer03[0]) t4TrailingStopMAActive = t4TrailingStopMAPeriod03;
-                if(t4trendDirection == TREND_DIRECTION_SHORT && t4TrailingStopMABuffer03[0] != 0 && Bid() + (InpT4TrailingStopOffset * Point()) < t4TrailingStopMABuffer03[0]) t4TrailingStopMAActive = t4TrailingStopMAPeriod03;
-                if(t4TrailingStopMAActive == t4TrailingStopMAPeriod03) t4TrailingStopMALevel = t4TrailingStopMABuffer03[0];
-            }
+          if(t4TrailingStopMAActive == t4TrailingStopMAPeriod00 && t4CurrentBidMAOffset > InpT4TrailingStopOffset){
+            t4TrailingStopMAActive = t4TrailingStopMAPeriod01;
+            if(t4alertMAChangedSended == false) t4AlertMAChangedAction();
+          }
 
-            if(t4TrailingStopMAHandle04 != 0 && t4TrailingStopMAActive >= t4TrailingStopMAPeriod04){
-                CopyBuffer(t4TrailingStopMAHandle04, bufferNumber, start, toCopy, t4TrailingStopMABuffer04);
-                if(t4trendDirection == TREND_DIRECTION_LONG && t4TrailingStopMABuffer04[0] != 0 && Bid() - (InpT4TrailingStopOffset * Point()) > t4TrailingStopMABuffer04[0]) t4TrailingStopMAActive = t4TrailingStopMAPeriod04;
-                if(t4trendDirection == TREND_DIRECTION_SHORT && t4TrailingStopMABuffer04[0] != 0 && Bid() + (InpT4TrailingStopOffset * Point()) < t4TrailingStopMABuffer04[0]) t4TrailingStopMAActive = t4TrailingStopMAPeriod04;
-                if(t4TrailingStopMAActive == t4TrailingStopMAPeriod04) t4TrailingStopMALevel = t4TrailingStopMABuffer04[0];
-            }
+          if(t4TrailingStopMAHandle01 != 0 && t4TrailingStopMAActive == t4TrailingStopMAPeriod01) {
+             CopyBuffer(t4TrailingStopMAHandle01, bufferNumber, start, toCopy, t4TrailingStopMABuffer01);
+             t4TrailingStopMALevel = t4TrailingStopMABuffer01[0];
+             if(t4trendDirection == TREND_DIRECTION_LONG) t4CurrentBidMAOffset = Bid() / Point() - t4TrailingStopMALevel / Point();
+             if(t4trendDirection == TREND_DIRECTION_SHORT) t4CurrentBidMAOffset = t4TrailingStopMALevel / Point() - Bid() / Point();
+             ChartIndicatorAdd(ChartID(), subWindow, t4TrailingStopMAHandle01);
+             if(t4CurrentBidMAOffset > InpT4TrailingStopOffset){
+                t4TrailingStopMAActive = t4TrailingStopMAPeriod02;
+                t4AlertMAChangedAction();
+             }
+          }
 
-            if(t4TrailingStopMAHandle05 != 0 && t4TrailingStopMAActive >= t4TrailingStopMAPeriod05){
-                CopyBuffer(t4TrailingStopMAHandle05, bufferNumber, start, toCopy, t4TrailingStopMABuffer05);
-                if(t4trendDirection == TREND_DIRECTION_LONG && t4TrailingStopMABuffer05[0] != 0 && Bid() - (InpT4TrailingStopOffset * Point()) > t4TrailingStopMABuffer05[0]) t4TrailingStopMAActive = t4TrailingStopMAPeriod05;
-                if(t4trendDirection == TREND_DIRECTION_SHORT && t4TrailingStopMABuffer05[0] != 0 && Bid() + (InpT4TrailingStopOffset * Point()) < t4TrailingStopMABuffer05[0]) t4TrailingStopMAActive = t4TrailingStopMAPeriod05;
-                if(t4TrailingStopMAActive == t4TrailingStopMAPeriod05) t4TrailingStopMALevel = t4TrailingStopMABuffer05[0];
-            }
-     }
+          if(t4TrailingStopMAHandle02 != 0 && t4TrailingStopMAActive == t4TrailingStopMAPeriod02) {
+             CopyBuffer(t4TrailingStopMAHandle02, bufferNumber, start, toCopy, t4TrailingStopMABuffer02);
+             t4TrailingStopMALevel = t4TrailingStopMABuffer02[0];
+             if(t4trendDirection == TREND_DIRECTION_LONG) t4CurrentBidMAOffset = Bid() / Point() - t4TrailingStopMALevel / Point();
+             if(t4trendDirection == TREND_DIRECTION_SHORT) t4CurrentBidMAOffset = t4TrailingStopMALevel / Point() - Bid() / Point();
+             ChartIndicatorAdd(ChartID(), subWindow, t4TrailingStopMAHandle02);
+             if(t4CurrentBidMAOffset > InpT4TrailingStopOffset){
+                t4TrailingStopMAActive = t4TrailingStopMAPeriod03;
+                t4AlertMAChangedAction();
+             }
+          }
 
+          if(t4TrailingStopMAHandle03 != 0 && t4TrailingStopMAActive == t4TrailingStopMAPeriod03) {
+             CopyBuffer(t4TrailingStopMAHandle03, bufferNumber, start, toCopy, t4TrailingStopMABuffer03);
+             t4TrailingStopMALevel = t4TrailingStopMABuffer03[0];
+             if(t4trendDirection == TREND_DIRECTION_LONG) t4CurrentBidMAOffset = Bid() / Point() - t4TrailingStopMALevel / Point();
+             if(t4trendDirection == TREND_DIRECTION_SHORT) t4CurrentBidMAOffset = t4TrailingStopMALevel / Point() - Bid() / Point();
+             ChartIndicatorAdd(ChartID(), subWindow, t4TrailingStopMAHandle03);
+             if(t4CurrentBidMAOffset > InpT4TrailingStopOffset) t4TrailingStopMAActive = t4TrailingStopMAPeriod04;
+          }
+
+          if(t4TrailingStopMAHandle04 != 0 && t4TrailingStopMAActive == t4TrailingStopMAPeriod04) {
+             CopyBuffer(t4TrailingStopMAHandle04, bufferNumber, start, toCopy, t4TrailingStopMABuffer04);
+             t4TrailingStopMALevel = t4TrailingStopMABuffer04[0];
+             if(t4trendDirection == TREND_DIRECTION_LONG) t4CurrentBidMAOffset = Bid() / Point() - t4TrailingStopMALevel / Point();
+             if(t4trendDirection == TREND_DIRECTION_SHORT) t4CurrentBidMAOffset = t4TrailingStopMALevel / Point() - Bid() / Point();
+             ChartIndicatorAdd(ChartID(), subWindow, t4TrailingStopMAHandle04);
+             if(t4CurrentBidMAOffset > InpT4TrailingStopOffset) t4TrailingStopMAActive = t4TrailingStopMAPeriod05;
+          }
+
+          if(t4TrailingStopMAHandle05 != 0 && t4TrailingStopMAActive == t4TrailingStopMAPeriod05) {
+             CopyBuffer(t4TrailingStopMAHandle05, bufferNumber, start, toCopy, t4TrailingStopMABuffer05);
+             t4TrailingStopMALevel = t4TrailingStopMABuffer05[0];
+             if(t4trendDirection == TREND_DIRECTION_LONG) t4CurrentBidMAOffset = Bid() / Point() - t4TrailingStopMALevel / Point();
+             if(t4trendDirection == TREND_DIRECTION_SHORT) t4CurrentBidMAOffset = t4TrailingStopMALevel / Point() - Bid() / Point();
+             ChartIndicatorAdd(ChartID(), subWindow, t4TrailingStopMAHandle05);
+          }
+      }
+   }
 }
 //+------------------------------------------------------------------+

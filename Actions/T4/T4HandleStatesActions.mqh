@@ -41,7 +41,7 @@ void setT4Action() {
          }
       }
 
-      if(t4LowestLowVLineDateTime != 0) {
+      if(t4LowestLowVLineDateTime != 0 && t4LowestLowVLineDateTime < (int)TimeCurrent()) {
          double t4MaxProfitLevel = iHigh(Symbol(), Period(), iHighest( Symbol(), Period(), MODE_HIGH,  iBarShift(Symbol(), Period(), t4LowestLowVLineDateTime) + 1));
          if(t4MinProfitFiboRetracmentLevel != 0 && t4MaxProfitLevel >= t4MinProfitFiboRetracmentLevel) t4ProfitLevelGreaterMinProfitFiboRetracmentLevel = true;
       } else {
@@ -63,7 +63,7 @@ void setT4Action() {
             t4DisableTradeableButton(t4DisableTradeableButtonReason);
          }
       }
-      if(t4HighestHighVLineDateTime != 0) {
+      if(t4HighestHighVLineDateTime != 0 && t4HighestHighVLineDateTime < (int)TimeCurrent()) {
          double t4MaxProfitLevel = iLow(Symbol(), Period(), iLowest( Symbol(), Period(), MODE_LOW,  iBarShift(Symbol(), Period(), t4HighestHighVLineDateTime) + 1));
          if(t4MinProfitFiboRetracmentLevel != 0 && t4MaxProfitLevel <= t4MinProfitFiboRetracmentLevel) t4ProfitLevelGreaterMinProfitFiboRetracmentLevel = true;
       } else {
