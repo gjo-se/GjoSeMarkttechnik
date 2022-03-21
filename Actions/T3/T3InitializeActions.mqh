@@ -120,6 +120,12 @@ void initializeT3IndicatorsAction() {
    t3TrailingStopMALevel = 0;
    int shift = 0;
    int t3trailingStopMAPeriod = 0;
+   t3TrailingStopMAPeriod00 = 0;
+   t3TrailingStopMAPeriod01 = 0;
+   t3TrailingStopMAPeriod02 = 0;
+   t3TrailingStopMAPeriod03 = 0;
+   t3TrailingStopMAPeriod04 = 0;
+   t3TrailingStopMAPeriod05 = 0;
 
    TesterHideIndicators(InpT3TesterHideIndicators);
 
