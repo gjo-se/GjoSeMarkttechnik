@@ -103,13 +103,11 @@ bool   t4UseReEntryArea;
 double      t4HighestHighValue;
 datetime    t4HighestHighDateTime;
 double      t4ShortEntryValue;
-bool        t4ShortIsTradable;
 
 // LONG
 double      t4LowestLowValue;
 datetime    t4LowestLowDateTime;
 double      t4LongEntryValue;
-bool        t4LongIsTradable;
 
 double      t4OrderGridLimitOrderValuesArray[];
 double      t4OrderGridStopOrderValuesArray[];

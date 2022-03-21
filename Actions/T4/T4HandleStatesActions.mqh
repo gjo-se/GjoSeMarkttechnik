@@ -18,12 +18,10 @@ void handleT4StatesAction() {
 void setT4Action() {
    if(maxT4BuyPositionsAreOpenState == true) {
       ArrayResize(t4OrderGridStopOrderValuesArray, 0);
-      t4LongIsTradable = false;
    }
 
    if(maxT4SellPositionsAreOpenState == true) {
       ArrayResize(t4OrderGridStopOrderValuesArray, 0);
-      t4ShortIsTradable = false;
    }
 
    if(t4trendDirection == TREND_DIRECTION_LONG) {

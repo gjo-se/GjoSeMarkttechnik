@@ -95,13 +95,11 @@ void initializeT3GlobalsAction() {
    t3HighestHighValue = 0;
    t3HighestHighDateTime = 0;
    t3ShortEntryValue = 0;
-   t3ShortIsTradable = false;
 
 // LONG
    t3LowestLowValue = 0;
    t3LowestLowDateTime = 0;
    t3LongEntryValue = 0;
-   t3LongIsTradable = false;
 
    outSideBarDateTime = 0;
    t3StopLossLineLevel = 0;

@@ -52,11 +52,8 @@ bool getT3BidGreaterLongEntryLevelSignal() {
 
    bool signal = false;
 
-   if(Bid() < t3LongEntryValue) t3LongIsTradable = true;
-
-   if(buyT3PositionIsOpenState == false && t3LongIsTradable == true && Bid() >= t3LongEntryValue) {
+   if(buyT3PositionIsOpenState == false && t3LongEntryValue != 0 && Bid() >= t3LongEntryValue) {
       signal = true;
-      t3LongIsTradable = false;
    }
 
    return signal;
@@ -102,7 +99,6 @@ bool getT3BidGreaterLongReEntryAreaFilter() {
 
    if(Bid() > t3ReEntryAreaMaxEndValue) {
       filter = true;
-      t3LongIsTradable = false;
    }
 
    return filter;

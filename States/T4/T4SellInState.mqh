@@ -51,11 +51,12 @@ bool getT4BidLowerShortEntryLevelSignal() {
 
    bool signal = false;
 
-   if(Bid() > t4ShortEntryValue) t4ShortIsTradable = true;
+//   if(Bid() > t4ShortEntryValue) t4ShortIsTradable = true;
 
-   if(sellT4PositionIsOpenState == false && t4ShortIsTradable == true && Bid() <= t4ShortEntryValue) {
+//   if(sellT4PositionIsOpenState == false && t4ShortIsTradable == true && Bid() <= t4ShortEntryValue) {
+   if(sellT4PositionIsOpenState == false && t4ShortEntryValue != 0 && Bid() <= t4ShortEntryValue) {
       signal = true;
-      t4ShortIsTradable = false;
+//      t4ShortIsTradable = false;
    }
 
    return signal;
@@ -101,7 +102,7 @@ bool getT4BidLowerShortReEntryAreaFilter() {
 
    if(Bid() < t4ReEntryAreaMinEndValue) {
       filter = true;
-      t4ShortIsTradable = false;
+//      t4ShortIsTradable = false;
    }
 
    return filter;

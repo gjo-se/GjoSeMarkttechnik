@@ -82,14 +82,11 @@ void initializeT4GlobalsAction() {
    t4HighestHighValue = 0;
    t4HighestHighDateTime = 0;
    t4ShortEntryValue = 0;
-   t4ShortIsTradable = false;
 
 // LONG
    t4LowestLowValue = 0;
    t4LowestLowDateTime = 0;
    t4LongEntryValue = 0;
-   t4LongIsTradable = false;
-
 
    outSideBarDateTime = 0;
    t4StopLossLineLevel = 0;

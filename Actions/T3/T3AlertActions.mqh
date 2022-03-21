@@ -129,7 +129,6 @@ void t3CommentAction(string pVersion) {
          t3comment += "LowestLowVLineDateTime: " + TimeToString(t3LowestLowVLineDateTime) + "\n";
          t3comment += "LowestLowValue: " + DoubleToString(t3LowestLowValue, Digits()) + "\n";
          t3comment += "LongEntryValue: " + DoubleToString(t3LongEntryValue, Digits()) + "\n";
-         t3comment += "t3LongIsTradable: " + IntegerToString(t3LongIsTradable) + "\n";
          t3comment += "\n";
          t3comment += "buyT3PositionIsOpenState: " + IntegerToString(buyT3PositionIsOpenState) + "\n";
          t3comment += "Bid() >= t3LongEntryValue: " + IntegerToString(Bid() >= t3LongEntryValue) + "\n";
@@ -141,7 +140,6 @@ void t3CommentAction(string pVersion) {
          t3comment += "HihgestHighVLineDateTime: " + TimeToString(t3HighestHighVLineDateTime) + "\n";
          t3comment += "HihgestHighValue: " + DoubleToString(iHigh(Symbol(), PERIOD_CURRENT, iBarShift(Symbol(), PERIOD_CURRENT, t3HighestHighDateTime)), Digits()) + "\n";
          t3comment += "ShortEntryValue: " + DoubleToString(t3ShortEntryValue, Digits()) + "\n";
-         t3comment += "t3ShortIsTradable: " + IntegerToString(t3ShortIsTradable) + "\n";
          t3comment += "\n";
          t3comment += "sellT3PositionIsOpenState: " + IntegerToString(sellT3PositionIsOpenState) + "\n";
          t3comment += "Bid() <= t3ShortEntryValue: " + IntegerToString(Bid() <= t3ShortEntryValue) + "\n";

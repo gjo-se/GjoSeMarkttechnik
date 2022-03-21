@@ -18,12 +18,10 @@ void handleT3StatesAction() {
 void setT3Action() {
    if(maxT3BuyPositionsAreOpenState == true) {
       ArrayResize(t3OrderGridStopOrderValuesArray, 0);
-      t3LongIsTradable = false;
    }
 
    if(maxT3SellPositionsAreOpenState == true) {
       ArrayResize(t3OrderGridStopOrderValuesArray, 0);
-      t3ShortIsTradable = false;
    }
 
    if(t3trendDirection == TREND_DIRECTION_LONG) {
