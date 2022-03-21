@@ -112,13 +112,11 @@ bool   t3UseReEntryArea;
 double      t3HighestHighValue;
 datetime    t3HighestHighDateTime;
 double      t3ShortEntryValue;
-bool        t3ShortIsTradable;
 
 // LONG
 double      t3LowestLowValue;
 datetime    t3LowestLowDateTime;
 double      t3LongEntryValue;
-bool        t3LongIsTradable;
 
 double      t3OrderGridLimitOrderValuesArray[];
 double      t3OrderGridStopOrderValuesArray[];

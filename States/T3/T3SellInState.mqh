@@ -51,11 +51,8 @@ bool getT3BidLowerShortEntryLevelSignal() {
 
    bool signal = false;
 
-   if(Bid() > t3ShortEntryValue) t3ShortIsTradable = true;
-
-   if(sellT3PositionIsOpenState == false && t3ShortIsTradable == true && Bid() <= t3ShortEntryValue) {
+   if(sellT3PositionIsOpenState == false && t3ShortEntryValue != 0 && Bid() <= t3ShortEntryValue) {
       signal = true;
-      t3ShortIsTradable = false;
    }
 
    return signal;
@@ -101,7 +98,6 @@ bool getT3BidLowerShortReEntryAreaFilter() {
 
    if(Bid() < t3ReEntryAreaMinEndValue) {
       filter = true;
-      t3ShortIsTradable = false;
    }
 
    return filter;

@@ -136,6 +136,8 @@ void t4HandleObjectsAction() {
       datetime highestHighDateTimeLocal = iTime(Symbol(), Period(), iHighest(Symbol(), Period(), MODE_HIGH,  iBarShift(Symbol(), Period(), t3HighestHighVLineDateTime) + 1));
       if(t4p4DateTime != highestHighDateTimeLocal) {
          t4p4DateTime = highestHighDateTimeLocal;
+         t4p4ValueHigh = iHigh(Symbol(), PERIOD_CURRENT, iBarShift(Symbol(), PERIOD_CURRENT, t4p4DateTime));
+         t4p4ValueLow = iLow(Symbol(), PERIOD_CURRENT, iBarShift(Symbol(), PERIOD_CURRENT, t4p4DateTime));
          createT4P4VLine(highestHighDateTimeLocal);
       }
    }
@@ -145,6 +147,8 @@ void t4HandleObjectsAction() {
       datetime lowestLowDateTimeLocal = iTime(Symbol(), Period(), iLowest(Symbol(), Period(), MODE_LOW,  iBarShift(Symbol(), Period(), t3LowestLowVLineDateTime) + 1));
       if(t4p4DateTime != lowestLowDateTimeLocal) {
          t4p4DateTime = lowestLowDateTimeLocal;
+         t4p4ValueHigh = iHigh(Symbol(), PERIOD_CURRENT, iBarShift(Symbol(), PERIOD_CURRENT, t4p4DateTime));
+         t4p4ValueLow = iLow(Symbol(), PERIOD_CURRENT, iBarShift(Symbol(), PERIOD_CURRENT, t4p4DateTime));
          createT4P4VLine(lowestLowDateTimeLocal);
       }
    }

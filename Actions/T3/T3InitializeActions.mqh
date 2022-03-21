@@ -95,13 +95,11 @@ void initializeT3GlobalsAction() {
    t3HighestHighValue = 0;
    t3HighestHighDateTime = 0;
    t3ShortEntryValue = 0;
-   t3ShortIsTradable = false;
 
 // LONG
    t3LowestLowValue = 0;
    t3LowestLowDateTime = 0;
    t3LongEntryValue = 0;
-   t3LongIsTradable = false;
 
    outSideBarDateTime = 0;
    t3StopLossLineLevel = 0;
@@ -120,6 +118,12 @@ void initializeT3IndicatorsAction() {
    t3TrailingStopMALevel = 0;
    int shift = 0;
    int t3trailingStopMAPeriod = 0;
+   t3TrailingStopMAPeriod00 = 0;
+   t3TrailingStopMAPeriod01 = 0;
+   t3TrailingStopMAPeriod02 = 0;
+   t3TrailingStopMAPeriod03 = 0;
+   t3TrailingStopMAPeriod04 = 0;
+   t3TrailingStopMAPeriod05 = 0;
 
    TesterHideIndicators(InpT3TesterHideIndicators);
 

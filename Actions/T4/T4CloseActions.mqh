@@ -25,7 +25,6 @@ void closeOnT4StopLossLine() {
          positionTicket = positionTicketsLocal[positionTicketsId];
          if(
             PositionSymbol(positionTicket) == Symbol()
-            && PositionMagicNumber(positionTicket) == InpT4MagicNumber
          ) {
             if(t4trendDirection == TREND_DIRECTION_LONG && PositionType(positionTicket) == ORDER_TYPE_BUY && Bid() < t4StopLossLineLevel) {
                Trade.Close(positionTicket, PositionVolume(positionTicket), T4_STOP_LOSS_TLINE);

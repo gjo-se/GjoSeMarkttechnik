@@ -52,11 +52,8 @@ bool getT4BidGreaterLongEntryLevelSignal() {
 
    bool signal = false;
 
-   if(Bid() < t4LongEntryValue) t4LongIsTradable = true;
-
-   if(buyT4PositionIsOpenState == false && t4LongIsTradable == true && Bid() >= t4LongEntryValue) {
+   if(buyT4PositionIsOpenState == false && t4LongEntryValue != 0 && Bid() >= t4LongEntryValue) {
       signal = true;
-      t4LongIsTradable = false;
    }
 
    return signal;
@@ -102,7 +99,6 @@ bool getT4BidGreaterLongReEntryAreaFilter() {
 
    if(Bid() > t4ReEntryAreaMaxEndValue) {
       filter = true;
-      t4LongIsTradable = false;
    }
 
    return filter;
