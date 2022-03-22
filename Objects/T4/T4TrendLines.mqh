@@ -28,7 +28,6 @@ void createT4ShortEntryTrendLine() {
 
 // LONG
 void createT4LowestLowTrendLine() {
-   t4LowestLowValue = iLow(Symbol(), PERIOD_CURRENT, iBarShift(Symbol(), PERIOD_CURRENT, t4LowestLowDateTime));
    createTrendLine(T4_LOWEST_LOW_TLINE, iTime(Symbol(), Period(), iBarShift(Symbol(), Period(), t4LowestLowDateTime) + 3), t4LowestLowValue, iTime(Symbol(), Period(), 0), t4LowestLowValue, InpT4TrendLineColor, 3, STYLE_SOLID, T4_LOWEST_LOW_TLINE);
 }
 
