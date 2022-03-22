@@ -67,22 +67,26 @@
 //+------------------------------------------------------------------+
 int OnInit() {
 
-   initializeEAAction();
-   initializeT3GlobalsAction();
-   initializeT4GlobalsAction();
-   initializeT3ArraysAction();
-   initializeT4ArraysAction();
-   initializeT3IndicatorsAction();
-   initializeT4IndicatorsAction();
+   if(UninitializeReason() != REASON_CHARTCHANGE) {
+      initializeEAAction();
+      initializeT3GlobalsAction();
+      initializeT4GlobalsAction();
+      initializeT3ArraysAction();
+      initializeT4ArraysAction();
+      initializeT3IndicatorsAction();
+      initializeT4IndicatorsAction();
 
-   setT3LineValues();
-   setT4LineValues();
-   getT3TrendDirection();
-   getT4TrendDirection();
+      setT3LineValues();
+      setT4LineValues();
+      getT3TrendDirection();
+      getT4TrendDirection();
 
-   t3HandleObjectsInitAction();
-   t4HandleObjectsInitAction();
-   handleCommentAction(VERSION);
+      t3HandleObjectsInitAction();
+      t4HandleObjectsInitAction();
+      handleCommentAction(VERSION);
+   }
+
+
 
    if(MQLInfoInteger(MQL_TESTER) == 1) {
 
