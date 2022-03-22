@@ -47,7 +47,7 @@ bool              InpT4DisableTradabelButtonStateAfterClose = true; // nach Clos
 //group             "------------------------------ T4 Alerts ---------------------------"
 int               InpT4AlertOnRegressionChannelLevel = 0;
 double            InpT4StopLossLineOffsetMulti = 1.2; // T4 StopLossLine Multi
-double            InpT4StopLossMarketOffsetMulti = 1.3; // T4 StopLossMarket Multi
+double            InpT4StopLossMarketOffsetMulti = 2.0; // T4 StopLossMarket Multi
 
 // group             "---------- StrategyTester ---------" // (Objects in Strategy Tester nicht vorhanden)
 datetime          InpT4p1DateTime = D'2022.01.01 00:00';
