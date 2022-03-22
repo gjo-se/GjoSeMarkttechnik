@@ -134,3 +134,10 @@ void createT4OrderGridTrendLines() {
       }
    }
 }
+
+void setT4TrendLineValues() {
+    t4HighestHighValue = getTrendlineLevelByText(T4_HIGHEST_HIGH_TLINE, PERIOD_CURRENT, Symbol(), ChartID());
+    t4ShortEntryValue = getTrendlineLevelByText(T4_SHORT_ENTRY_TLINE, PERIOD_CURRENT, Symbol(), ChartID());
+    t4LowestLowValue = getTrendlineLevelByText(T4_LOWEST_LOW_TLINE, PERIOD_CURRENT, Symbol(), ChartID());
+    t4LongEntryValue = getTrendlineLevelByText(T4_LONG_ENTRY_TLINE, PERIOD_CURRENT, Symbol(), ChartID());
+}

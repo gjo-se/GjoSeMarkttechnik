@@ -138,6 +138,13 @@ void createT3OrderGridTrendLines() {
    }
 }
 
+void setT3TrendLineValues() {
+    t3HighestHighValue = getTrendlineLevelByText(T3_HIGHEST_HIGH_TLINE, PERIOD_CURRENT, Symbol(), ChartID());
+    t3ShortEntryValue = getTrendlineLevelByText(T3_SHORT_ENTRY_TLINE, PERIOD_CURRENT, Symbol(), ChartID());
+    t3LowestLowValue = getTrendlineLevelByText(T3_LOWEST_LOW_TLINE, PERIOD_CURRENT, Symbol(), ChartID());
+    t3LongEntryValue = getTrendlineLevelByText(T3_LONG_ENTRY_TLINE, PERIOD_CURRENT, Symbol(), ChartID());
+}
+
 void deleteTrendLineLike(const string pObjectNamePart) {
 
    long chartId = ChartID();

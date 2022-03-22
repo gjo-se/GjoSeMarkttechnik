@@ -80,6 +80,8 @@ int OnInit() {
       setT4LineValues();
       getT3TrendDirection();
       getT4TrendDirection();
+      setT3TrendLineValues();
+      setT4TrendLineValues();
 
       t3HandleObjectsInitAction();
       t4HandleObjectsInitAction();
