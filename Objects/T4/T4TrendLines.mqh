@@ -14,6 +14,32 @@ void createT4TrendLines() {
    if(t4p3DateTime != 0 && t4p4DateTime != 0) createTrendLine(T4_TRENDLINE + "P3-P4", t4p3DateTime, getT4P3HighLowValueByTrendDirection(), t4p4DateTime, getT4P4HighLowValueByTrendDirection(), InpT4TrendLineColor, 3);
 }
 
+//+------------------------------------------------------------------+
+//|                                                                  |
+//+------------------------------------------------------------------+
+void createT4HighVolumeAreaTrendLines() {
+   int lineWidth = 2;
+   color levelColor = clrBlack;
+   ENUM_LINE_STYLE style = STYLE_SOLID;
+   bool rayLeft = false;
+   bool rayRight = true;
+   long zOrder = 0;
+   bool isBackground = true;
+   bool isSelected = false;
+   bool isSelectable = true;
+
+   t4MinHighVolumeAreaLevel = (getTrendlineLevelByText(T4_MIN_HIGH_VOL_AREA, PERIOD_CURRENT, Symbol(), ChartID(), true));
+   if(t4MinHighVolumeAreaLevel == 0) t4MinHighVolumeAreaLevel = InpT4MinHighVolumeAreaLevel;
+
+   t4MaxHighVolumeAreaLevel = (getTrendlineLevelByText(T4_MAX_HIGH_VOL_AREA, PERIOD_CURRENT, Symbol(), ChartID(), true));
+   if(t4MaxHighVolumeAreaLevel == 0) t4MaxHighVolumeAreaLevel = InpT4MaxHighVolumeAreaLevel;
+
+   if(t4MinHighVolumeAreaLevel != 0 && t4MaxHighVolumeAreaLevel != 0) {
+      if(ObjectFind(ChartID(), T4_MIN_HIGH_VOL_AREA) < 0) createTrendLine(T4_MIN_HIGH_VOL_AREA, t4p3DateTime, t4MinHighVolumeAreaLevel, iTime(Symbol(), PERIOD_CURRENT, 0), t4MinHighVolumeAreaLevel, levelColor, lineWidth, style, " " + T4_MIN_HIGH_VOL_AREA + ": " + DoubleToString(t4MinHighVolumeAreaLevel, Digits()), rayLeft, rayRight, zOrder, isBackground, isSelected, isSelectable);
+      if(ObjectFind(ChartID(), T4_MAX_HIGH_VOL_AREA) < 0) createTrendLine(T4_MAX_HIGH_VOL_AREA, t4p3DateTime, t4MaxHighVolumeAreaLevel, iTime(Symbol(), PERIOD_CURRENT, 0), t4MaxHighVolumeAreaLevel, levelColor, lineWidth, style, " " + T4_MAX_HIGH_VOL_AREA + ": " + DoubleToString(t4MaxHighVolumeAreaLevel, Digits()), rayLeft, rayRight, zOrder, isBackground, isSelected, isSelectable);
+   }
+}
+
 // SHORT
 void createT4HighestHighTrendLine() {
    createTrendLine(T4_HIGHEST_HIGH_TLINE, iTime(Symbol(), Period(), iBarShift(Symbol(), Period(), t4HighestHighDateTime) + 3), t4HighestHighValue, iTime(Symbol(), Period(), 0), t4HighestHighValue, InpT4TrendLineColor, 3, STYLE_SOLID, T4_HIGHEST_HIGH_TLINE);
@@ -135,9 +161,13 @@ void createT4OrderGridTrendLines() {
    }
 }
 
+//+------------------------------------------------------------------+
+//|                                                                  |
+//+------------------------------------------------------------------+
 void setT4TrendLineValues() {
-    t4HighestHighValue = getTrendlineLevelByText(T4_HIGHEST_HIGH_TLINE, PERIOD_CURRENT, Symbol(), ChartID());
-    t4ShortEntryValue = getTrendlineLevelByText(T4_SHORT_ENTRY_TLINE, PERIOD_CURRENT, Symbol(), ChartID());
-    t4LowestLowValue = getTrendlineLevelByText(T4_LOWEST_LOW_TLINE, PERIOD_CURRENT, Symbol(), ChartID());
-    t4LongEntryValue = getTrendlineLevelByText(T4_LONG_ENTRY_TLINE, PERIOD_CURRENT, Symbol(), ChartID());
+   t4HighestHighValue = getTrendlineLevelByText(T4_HIGHEST_HIGH_TLINE, PERIOD_CURRENT, Symbol(), ChartID());
+   t4ShortEntryValue = getTrendlineLevelByText(T4_SHORT_ENTRY_TLINE, PERIOD_CURRENT, Symbol(), ChartID());
+   t4LowestLowValue = getTrendlineLevelByText(T4_LOWEST_LOW_TLINE, PERIOD_CURRENT, Symbol(), ChartID());
+   t4LongEntryValue = getTrendlineLevelByText(T4_LONG_ENTRY_TLINE, PERIOD_CURRENT, Symbol(), ChartID());
 }
+//+------------------------------------------------------------------+

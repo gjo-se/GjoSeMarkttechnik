@@ -81,16 +81,6 @@ void createT3FiboRetracement() {
 
          createTrendLine(T3_FIBO_LEVELS + DoubleToString(level, 1), t3p3DateTime, t3FiboLevelValue, iTime(Symbol(), PERIOD_CURRENT, 0), t3FiboLevelValue, levelColor, lineWidth, style, " " + DoubleToString(level, 1) + "%");
       }
-
-       if(InpT3MinHighVolumeAreaLevel != 0 && InpT3MaxHighVolumeAreaLevel != 0) {
-
-          int lineWidth = 2;
-          color levelColor = clrMaroon;
-          ENUM_LINE_STYLE style = STYLE_SOLID;
-
-          createTrendLine(T3_FIBO_LEVELS + DoubleToString(InpT3MinHighVolumeAreaLevel, Digits()), t3p3DateTime, InpT3MinHighVolumeAreaLevel, iTime(Symbol(), PERIOD_CURRENT, 0), InpT3MinHighVolumeAreaLevel, levelColor, lineWidth, style, " " + "MINHighVolumeArea: " + DoubleToString(InpT3MinHighVolumeAreaLevel, Digits()));
-          createTrendLine(T3_FIBO_LEVELS + DoubleToString(InpT3MaxHighVolumeAreaLevel, Digits()), t3p3DateTime, InpT3MaxHighVolumeAreaLevel, iTime(Symbol(), PERIOD_CURRENT, 0), InpT3MaxHighVolumeAreaLevel, levelColor, lineWidth, style, " " + "MAXHighVolumeArea: " + DoubleToString(InpT3MaxHighVolumeAreaLevel, Digits()));
-       }
    }
 }
 

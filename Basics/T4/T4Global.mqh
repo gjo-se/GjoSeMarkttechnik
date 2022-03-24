@@ -83,6 +83,7 @@ double t4InSignalRegressionChannelAreaMinEndValue;
 double t4InSignalRegressionChannelAreaMaxStartValue;
 double t4InSignalRegressionChannelAreaMaxEndValue;
 
+// HighVolumeArea
 double t4MinHighVolumeAreaLevel;
 double t4MaxHighVolumeAreaLevel;
 bool   t4HighestHighIsInSignalArea;

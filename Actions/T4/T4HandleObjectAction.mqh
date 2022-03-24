@@ -16,6 +16,7 @@ void t4HandleObjectsInitAction() {
    createT4RegressionChannel();
    createT4RegressionChannelLevels();
    createT4FiboRetracement();
+   createT4HighVolumeAreaTrendLines();
    createT4InSignalFiboLevelChannelArea();
    createt4InSignalRegressionChannelArea();
 

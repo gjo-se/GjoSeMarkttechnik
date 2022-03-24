@@ -93,6 +93,9 @@ double t3InSignalRegressionChannelAreaMinEndValue;
 double t3InSignalRegressionChannelAreaMaxStartValue;
 double t3InSignalRegressionChannelAreaMaxEndValue;
 
+// HighVolumeArea
+double t3MinHighVolumeAreaLevel;
+double t3MaxHighVolumeAreaLevel;
 bool   t3HighestHighIsInSignalArea;
 bool   t3LowestLowIsInSignalArea;
 

@@ -25,17 +25,17 @@ void setT3Action() {
    }
 
    if(t3trendDirection == TREND_DIRECTION_LONG) {
-      if(t3LowestLowValue != 0 && InpT3MinHighVolumeAreaLevel != 0 && InpT3MaxHighVolumeAreaLevel != 0) {
-         if(t3LowestLowValue >= InpT3MinHighVolumeAreaLevel && t3LowestLowValue <= InpT3MaxHighVolumeAreaLevel) {
+      if(t3LowestLowValue != 0 && t3MinHighVolumeAreaLevel != 0 && t3MaxHighVolumeAreaLevel != 0) {
+         if(t3LowestLowValue >= t3MinHighVolumeAreaLevel && t3LowestLowValue <= t3MaxHighVolumeAreaLevel) {
             t3LowestLowIsInSignalArea = true;
             if(t3alertBidIsInSignalAreaSended == false) t3AlertBidIsInSignalAreaAction();
          } else {
             t3LowestLowIsInSignalArea = false;
          }
 
-         if(t3LowestLowValue < InpT3MinHighVolumeAreaLevel) {
+         if(t3LowestLowValue < t3MinHighVolumeAreaLevel) {
             t3LowestLowDateTime = 0;
-            string t3DisableTradeableButtonReason = "t3LowestLowValue < InpT3MinHighVolumeAreaLevel";
+            string t3DisableTradeableButtonReason = "t3LowestLowValue < t3MinHighVolumeAreaLevel";
             t3DisableTradeableButton(t3DisableTradeableButtonReason);
          }
       }
@@ -49,18 +49,18 @@ void setT3Action() {
    }
 
    if(t3trendDirection == TREND_DIRECTION_SHORT) {
-      if(t3HighestHighValue != 0 && InpT3MinHighVolumeAreaLevel != 0 && InpT3MaxHighVolumeAreaLevel != 0) {
-         if(t3HighestHighValue >= InpT3MinHighVolumeAreaLevel && t3HighestHighValue <= InpT3MaxHighVolumeAreaLevel) {
+      if(t3HighestHighValue != 0 && t3MinHighVolumeAreaLevel != 0 && t3MaxHighVolumeAreaLevel != 0) {
+         if(t3HighestHighValue >= t3MinHighVolumeAreaLevel && t3HighestHighValue <= t3MaxHighVolumeAreaLevel) {
             t3HighestHighIsInSignalArea = true;
             if(t3alertBidIsInSignalAreaSended == false) t3AlertBidIsInSignalAreaAction();
          } else {
             t3HighestHighIsInSignalArea = false;
          }
 
-         if(t3HighestHighValue > InpT3MaxHighVolumeAreaLevel) {
+         if(t3HighestHighValue > t3MaxHighVolumeAreaLevel) {
             // TODO: das hier kann ich auch in Frage stellen
             t3HighestHighDateTime = 0;
-            string t3DisableTradeableButtonReason = "t3HighestHighValue > InpT3MaxHighVolumeAreaLevel";
+            string t3DisableTradeableButtonReason = "t3HighestHighValue > t3MaxHighVolumeAreaLevel";
             t3DisableTradeableButton(t3DisableTradeableButtonReason);
          }
 
