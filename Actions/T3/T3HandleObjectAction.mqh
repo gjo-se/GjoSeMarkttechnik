@@ -21,14 +21,14 @@ void t3HandleObjectsInitAction() {
    createt3InSignalRegressionChannelArea();
 
    if(t3trendDirection == TREND_DIRECTION_LONG && buyT3PositionIsOpenState == false) {
-        deleteTrendLineLike(T3_ORDER_GRID_LIMIT_TLINE);
-        deleteTrendLineLike(T3_ORDER_GRID_STOP_TLINE);
-        createT3OrderGridTrendLines();
+      deleteTrendLineLike(T3_ORDER_GRID_LIMIT_TLINE);
+      deleteTrendLineLike(T3_ORDER_GRID_STOP_TLINE);
+      createT3OrderGridTrendLines();
    }
    if(t3trendDirection == TREND_DIRECTION_SHORT && sellT3PositionIsOpenState == false) {
-        deleteTrendLineLike(T3_ORDER_GRID_LIMIT_TLINE);
-        deleteTrendLineLike(T3_ORDER_GRID_STOP_TLINE);
-        createT3OrderGridTrendLines();
+      deleteTrendLineLike(T3_ORDER_GRID_LIMIT_TLINE);
+      deleteTrendLineLike(T3_ORDER_GRID_STOP_TLINE);
+      createT3OrderGridTrendLines();
    }
 
 
@@ -229,7 +229,12 @@ void setT3HighestHighDateTime() {
 
    if((int)t3p4DateTime < (int) TimeCurrent() && t3MinHighVolumeAreaLevel != 0 && t3MaxHighVolumeAreaLevel != 0 && Bid() >= t3MinHighVolumeAreaLevel) {
       int startCandleShift = iBarShift(Symbol(), Period(), t3p4DateTime);
-      if(t3HighestHighVLineDateTime == 0) createT3HighestHighVLine();
+      if(t3HighestHighVLineDateTime == 0) {
+         createT3HighestHighVLine();
+         if(ObjectFind(ChartID(), T4_P1_VLINE) < 0) createT4P1VLine();
+         if(ObjectFind(ChartID(), T4_P2_VLINE) < 0) createT4P2VLine();
+         if(ObjectFind(ChartID(), T4_P3_VLINE) < 0) createT4P3VLine();
+      }
       if(t3HighestHighVLineDateTime != 0) startCandleShift = iBarShift(Symbol(), Period(), t3HighestHighVLineDateTime);
 
       if(startCandleShift != 0) {
@@ -244,7 +249,12 @@ void setT3LowestLowDateTime() {
 
    if((int)t3p4DateTime < (int) TimeCurrent() && t3MinHighVolumeAreaLevel != 0 && t3MaxHighVolumeAreaLevel != 0 && Bid() <= t3MaxHighVolumeAreaLevel) {
       int startCandleShift = iBarShift(Symbol(), Period(), t3p4DateTime);
-      if(t3LowestLowVLineDateTime == 0) createT3LowestLowVLine();
+      if(t3LowestLowVLineDateTime == 0) {
+         createT3LowestLowVLine();
+         if(ObjectFind(ChartID(), T4_P1_VLINE) < 0) createT4P1VLine();
+         if(ObjectFind(ChartID(), T4_P2_VLINE) < 0) createT4P2VLine();
+         if(ObjectFind(ChartID(), T4_P3_VLINE) < 0) createT4P3VLine();
+      }
       if(t3LowestLowVLineDateTime != 0) startCandleShift = iBarShift(Symbol(), Period(), t3LowestLowVLineDateTime);
 
       if(startCandleShift != 0) {

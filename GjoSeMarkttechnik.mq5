@@ -116,6 +116,7 @@ void OnTick() {
 
    if(MQLInfoInteger(MQL_VISUAL_MODE) == 1) {
       setT3LineValues();
+      createT3HighVolumeAreaTrendLines();
       setT4LineValues();
       getT4TrendDirection();
    }

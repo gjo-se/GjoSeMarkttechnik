@@ -34,7 +34,7 @@ void createT3HighVolumeAreaTrendLines() {
    t3MaxHighVolumeAreaLevel = (getTrendlineLevelByText(T3_MAX_HIGH_VOL_AREA, PERIOD_CURRENT, Symbol(), ChartID(), true));
    if(t3MaxHighVolumeAreaLevel == 0) t3MaxHighVolumeAreaLevel = InpT3MaxHighVolumeAreaLevel;
 
-   if(t3MinHighVolumeAreaLevel != 0 && t3MaxHighVolumeAreaLevel != 0) {
+   if(t3p4DateTime != 0 && t3p4DateTime < (int) TimeCurrent() && t3MinHighVolumeAreaLevel != 0 && t3MaxHighVolumeAreaLevel != 0) {
       if(ObjectFind(ChartID(), T3_MIN_HIGH_VOL_AREA) < 0) createTrendLine(T3_MIN_HIGH_VOL_AREA, t3p3DateTime, t3MinHighVolumeAreaLevel, iTime(Symbol(), PERIOD_CURRENT, 0), t3MinHighVolumeAreaLevel, levelColor, lineWidth, style, " " + T3_MIN_HIGH_VOL_AREA + ": " + DoubleToString(t3MinHighVolumeAreaLevel, Digits()), rayLeft, rayRight, zOrder, isBackground, isSelected, isSelectable);
       if(ObjectFind(ChartID(), T3_MAX_HIGH_VOL_AREA) < 0) createTrendLine(T3_MAX_HIGH_VOL_AREA, t3p3DateTime, t3MaxHighVolumeAreaLevel, iTime(Symbol(), PERIOD_CURRENT, 0), t3MaxHighVolumeAreaLevel, levelColor, lineWidth, style, " " + T3_MAX_HIGH_VOL_AREA + ": " + DoubleToString(t3MaxHighVolumeAreaLevel, Digits()), rayLeft, rayRight, zOrder, isBackground, isSelected, isSelectable);
    }

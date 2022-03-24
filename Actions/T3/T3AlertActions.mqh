@@ -45,7 +45,7 @@ void t3AlertDisableTradeableButtonAction(string pReason) {
 //+------------------------------------------------------------------+
 void t3AlertBidIsInSignalAreaAction() {
    if(sendAlerts == true) {
-      string message = Symbol() + ": " + "T3 Bid Is In SignalArea";
+      string message = Symbol() + ": " + "T3 Bid Is In HighestHighArea";
       Alert(message);
       if(!SendNotification(message)) Alert("Cannot Push " + message, GetLastError());
       t3alertBidIsInSignalAreaSended = true;
