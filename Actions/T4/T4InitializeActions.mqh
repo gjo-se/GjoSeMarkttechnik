@@ -49,8 +49,7 @@ void initializeT4GlobalsAction() {
    t4IsBidStopLossLineOffsetAlertSended = false;
    t4AlertDisableTradeableButtonSended = false;
    t4alertMAChangedSended = false;
-
-
+   t4AlertBidCrossedT4P3ValueSended = false;
 
    t4InSignalFiboLevelAreaMinStartValue = 0;
    t4InSignalFiboLevelAreaMinEndValue = 0;

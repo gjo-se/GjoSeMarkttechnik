@@ -4,6 +4,16 @@
 //|                                             https://www.mql5.com |
 //+------------------------------------------------------------------+
 
+
+void t4AlertBidCrossedT4P3ValueAction() {
+   if(sendAlerts == true) {
+      string message = Symbol() + ": " + "T4 Bid Crossed T4P3 - T4 brocken";
+      Alert(message);
+      if(!SendNotification(message)) Alert("Cannot Push " + message, GetLastError());
+      t4AlertBidCrossedT4P3ValueSended = true;
+   }
+}
+
 void t4AlertBuyRegressionAction() {
 
    if(sendAlerts == true && (InpT4AlertOnRegressionChannelLevel != 0 || InpT4AlertOnFiboRetracmentLevel != 0 ) && t4IsBuyRegressionAlertSendable == true && t4IsBuyRegressionAlertSended == false) {

@@ -67,6 +67,9 @@ void setT4Action() {
       } else {
          t4ProfitLevelGreaterMinProfitFiboRetracmentLevel = false;
       }
+      if(t3trendDirection == TREND_DIRECTION_LONG) {
+         if(Bid() > getT4P3HighLowValueByTrendDirection() && t4AlertBidCrossedT4P3ValueSended == false) t4AlertBidCrossedT4P3ValueAction();
+      }
    }
 }
 
