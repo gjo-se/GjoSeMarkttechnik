@@ -73,6 +73,7 @@ bool t4IsBidStopLossLineOffsetAlertSended;
 bool t4AlertDisableTradeableButtonSended;
 bool t4alertMAChangedSended;
 bool t4AlertBidCrossedT4P3ValueSended;
+bool t4AlertBidCrossedT4P4ValueSended;
 
 // INSignal
 double t4InSignalFiboLevelAreaMinStartValue;
@@ -89,6 +90,9 @@ double t4MinHighVolumeAreaLevel;
 double t4MaxHighVolumeAreaLevel;
 bool   t4HighestHighIsInSignalArea;
 bool   t4LowestLowIsInSignalArea;
+
+double t4MinRegressionForTrendDetectionLevel;
+bool   t4MinRegressionForTrendDetectionState;
 
 // OUTSIgnal
 double t4MinProfitFiboRetracmentLevel;

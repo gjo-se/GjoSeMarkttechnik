@@ -14,6 +14,15 @@ void t4AlertBidCrossedT4P3ValueAction() {
    }
 }
 
+void t4AlertBidCrossedT4P4ValueAction() {
+   if(sendAlerts == true) {
+      string message = Symbol() + ": " + "T4 Bid Crossed T4P4 - T4 New Trend build";
+      Alert(message);
+      if(!SendNotification(message)) Alert("Cannot Push " + message, GetLastError());
+      t4AlertBidCrossedT4P4ValueSended = true;
+   }
+}
+
 void t4AlertBuyRegressionAction() {
 
    if(sendAlerts == true && (InpT4AlertOnRegressionChannelLevel != 0 || InpT4AlertOnFiboRetracmentLevel != 0 ) && t4IsBuyRegressionAlertSendable == true && t4IsBuyRegressionAlertSended == false) {
@@ -98,6 +107,7 @@ void t4CommentAction(string pVersion) {
       t4comment += "\n\n";
       t4comment += "\n\n";
       t4comment += "T4: " + "\n";
+      t4comment += "t4MinRegressionForTrendDetectionLevel: " + DoubleToString(t4MinRegressionForTrendDetectionLevel) + " State: " + IntegerToString(t4MinRegressionForTrendDetectionState) + "\n";
       t4comment += "Tradabel Button State: " + IntegerToString(t4IsTradabelButtonState) + "\n";
       if(t4AlertRegressionChannelLevel != 0) t4comment += "Alert RegressionChannel: " + DoubleToString(t4AlertRegressionChannelLevel, 2) + "\n";
       if(t4AlertFiboRetracementLevel != 0) t4comment += "Alert FiboRetracement: " + DoubleToString(t4AlertFiboRetracementLevel, 2) + "\n";

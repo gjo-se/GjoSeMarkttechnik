@@ -53,6 +53,20 @@ void t4HandleObjectsAction() {
             }
          }
 
+         if(t3trendDirection == TREND_DIRECTION_SHORT) {
+            datetime t4p4DateTimeLocal = t4p4DateTime;
+            if(t4MinRegressionForTrendDetectionState == true && Bid() > getT4P4HighLowValueByTrendDirection()){
+                t4p1DateTime = t4p3DateTime;
+                createT4P1VLine(t4p1DateTime);
+                t4p2DateTime = t4p4DateTimeLocal;
+                createT4P2VLine(t4p2DateTime);
+                t4p3DateTime = iTime(Symbol(), Period(), iLowest( Symbol(), Period(), MODE_LOW, iBarShift(Symbol(), Period(), t4p2DateTime)));
+                createT4P3VLine(t4p3DateTime);
+                if(t4AlertBidCrossedT4P4ValueSended == false) t4AlertBidCrossedT4P4ValueAction();
+                t4MinRegressionForTrendDetectionState = false;
+            }
+         }
+
          if(t4LowestLowDateTime == 0 || maxT4BuyPositionsAreOpenState == true) {
             deleteTrendLine(T4_LOWEST_LOW_TLINE);
             deleteTrendLine(T4_LONG_ENTRY_TLINE);
@@ -80,6 +94,20 @@ void t4HandleObjectsAction() {
                createT4HighestHighTrendLine();
                createT4ShortEntryTrendLine();
                if(sellT4PositionIsOpenState == false) createT4OrderGridTrendLines();
+            }
+         }
+
+         if(t3trendDirection == TREND_DIRECTION_LONG) {
+            datetime t4p4DateTimeLocal = t4p4DateTime;
+            if(t4MinRegressionForTrendDetectionState == true && Bid() < getT4P4HighLowValueByTrendDirection()){
+                t4p1DateTime = t4p3DateTime;
+                createT4P1VLine(t4p1DateTime);
+                t4p2DateTime = t4p4DateTimeLocal;
+                createT4P2VLine(t4p2DateTime);
+                t4p3DateTime = iTime(Symbol(), Period(), iHighest( Symbol(), Period(), MODE_HIGH, iBarShift(Symbol(), Period(), t4p2DateTime)));
+                createT4P3VLine(t4p3DateTime);
+                if(t4AlertBidCrossedT4P4ValueSended == false) t4AlertBidCrossedT4P4ValueAction();
+                t4MinRegressionForTrendDetectionState = false;
             }
          }
 

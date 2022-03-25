@@ -12,7 +12,7 @@ input group             "------------------------------ T4 LEVELS --------------
 input bool              InpT4ObjectsShow = true; // Show T4 Objects
 input double            InpT4MaxHighVolumeAreaLevel = 0; // T3 Max HighVolume Area Level
 input double            InpT4MinHighVolumeAreaLevel = 0; // T3 Min HighVolume Area Level
-input int               InpT4MinRegressionPercent = 50; // T4 % MIN Regression for EntryLevel
+input int               InpT4MinRegressionForTrendDetectionPercent = 50; // T4 % MIN Regression for Trend Detection Percent
 input int               InpT4AlertOnFiboRetracmentLevel = 0;
 
 input group             "------------------------------ T4 TRAILING --------------------"
@@ -28,6 +28,7 @@ input int               InpT4OrderGridCount = 5; // Anzahl T4 Grid Orders
 //+------------------------------------------------------------------+
 
 // ****************  INTERN **************** //
+int               InpT4MinRegressionPercent = 0; // T4 % MIN Regression for EntryLevel
 int               InpT4MinFiboRetracmentLevel = 0; // T4 Min Fibo
 int               InpT4MaxFiboRetracmentLevel = 0; // T4 Max Fibo
 int               InpT4MinRegressionChannelLevel = 0; // T4 Min RegressionChannel

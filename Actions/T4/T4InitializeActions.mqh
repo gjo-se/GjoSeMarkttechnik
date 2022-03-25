@@ -50,6 +50,7 @@ void initializeT4GlobalsAction() {
    t4AlertDisableTradeableButtonSended = false;
    t4alertMAChangedSended = false;
    t4AlertBidCrossedT4P3ValueSended = false;
+   t4AlertBidCrossedT4P4ValueSended = false;
 
    t4InSignalFiboLevelAreaMinStartValue = 0;
    t4InSignalFiboLevelAreaMinEndValue = 0;
@@ -65,6 +66,9 @@ void initializeT4GlobalsAction() {
    t4MaxHighVolumeAreaLevel = 0;
    t4HighestHighIsInSignalArea = false;
    t4LowestLowIsInSignalArea = false;
+
+   t4MinRegressionForTrendDetectionLevel = 0;
+   t4MinRegressionForTrendDetectionState = false;
 
 // OUTSIgnal
    t4MinProfitFiboRetracmentLevel = 0;
@@ -169,6 +173,11 @@ void convertInpT4StringsToArray() {
    if(InpT4MaxRegressionChannelLevel != 0) {
       ArrayResize(t4FiboLevelsArray, ArraySize(t4FiboLevelsArray) + 1);
       t4FiboLevelsArray[ArraySize(t4FiboLevelsArray) - 1] = (string)InpT4MaxRegressionChannelLevel;
+   }
+
+   if(InpT4MinRegressionForTrendDetectionPercent != 0) {
+      ArrayResize(t4FiboLevelsArray, ArraySize(t4FiboLevelsArray) + 1);
+      t4FiboLevelsArray[ArraySize(t4FiboLevelsArray) - 1] = (string)InpT4MinRegressionForTrendDetectionPercent;
    }
 
    if(InpT4MinFiboRetracmentLevel != 0) {

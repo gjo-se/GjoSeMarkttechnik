@@ -75,7 +75,7 @@ void createT4LowestLowVLine() {
    t4LowestLowVLineDateTime = iTime(Symbol(), Period(), barShift);
 }
 
-void createT4P1VLine() {
+void createT4P1VLine(datetime pDateTime = 0) {
 
    long zOrder = 0;
    bool isBackground = false;
@@ -83,21 +83,21 @@ void createT4P1VLine() {
    bool isSelectable = true;
 
    int barShift = 36;
-   createVLine(T4_P1_VLINE, iTime(Symbol(), Period(), barShift), clrGray, 2, STYLE_SOLID, T4_P1_VLINE, zOrder, isBackground, isSelected, isSelectable);
+   createVLine(T4_P1_VLINE, (pDateTime) ? pDateTime : iTime(Symbol(), Period(), barShift), clrGray, 2, STYLE_SOLID, T4_P1_VLINE, zOrder, isBackground, isSelected, isSelectable);
 }
 
-void createT4P2VLine() {
+void createT4P2VLine(datetime pDateTime = 0) {
 
    long zOrder = 0;
    bool isBackground = false;
    bool isSelected = true;
    bool isSelectable = true;
-
+   
    int barShift = 24;
-   createVLine(T4_P2_VLINE, iTime(Symbol(), Period(), barShift), clrGray, 2, STYLE_SOLID, T4_P2_VLINE, zOrder, isBackground, isSelected, isSelectable);
+   createVLine(T4_P2_VLINE, (pDateTime) ? pDateTime : iTime(Symbol(), Period(), barShift), clrGray, 2, STYLE_SOLID, T4_P2_VLINE, zOrder, isBackground, isSelected, isSelectable);
 }
 
-void createT4P3VLine() {
+void createT4P3VLine(datetime pDateTime = 0) {
 
    long zOrder = 0;
    bool isBackground = false;
@@ -105,16 +105,16 @@ void createT4P3VLine() {
    bool isSelectable = true;
 
    int barShift = 12;
-   createVLine(T4_P3_VLINE, iTime(Symbol(), Period(), barShift), clrGray, 2, STYLE_SOLID, T4_P3_VLINE, zOrder, isBackground, isSelected, isSelectable);
+   createVLine(T4_P3_VLINE, (pDateTime) ? pDateTime : iTime(Symbol(), Period(), barShift), clrGray, 2, STYLE_SOLID, T4_P3_VLINE, zOrder, isBackground, isSelected, isSelectable);
 }
 
-void createT4P4VLine(datetime pDateTimeLocal) {
+void createT4P4VLine(datetime pDateTime) {
 
    long zOrder = 0;
    bool isBackground = false;
    bool isSelected = false;
    bool isSelectable = true;
 
-   createVLine(T4_P4_VLINE, pDateTimeLocal, clrGray, 2, STYLE_SOLID, T4_P4_VLINE, zOrder, isBackground, isSelected, isSelectable);
+   createVLine(T4_P4_VLINE, pDateTime, clrGray, 2, STYLE_SOLID, T4_P4_VLINE, zOrder, isBackground, isSelected, isSelectable);
 }
 //+------------------------------------------------------------------+
