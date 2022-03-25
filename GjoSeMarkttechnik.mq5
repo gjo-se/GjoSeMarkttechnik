@@ -211,6 +211,8 @@ void OnChartEvent(const int id,
             ObjectSetDouble(ChartID(), T3_MAX_HIGH_VOL_AREA, OBJPROP_PRICE, 1, t3MaxHighVolumeAreaLevel);
          }
 
+         t3alertBidAgainInHighVolumeAreaSended = false;
+
          createT3InSignalFiboLevelChannelArea();
       }
 

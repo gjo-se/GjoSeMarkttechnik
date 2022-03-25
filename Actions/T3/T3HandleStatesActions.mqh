@@ -38,6 +38,9 @@ void setT3Action() {
             string t3DisableTradeableButtonReason = "t3LowestLowValue < t3MinHighVolumeAreaLevel";
             t3DisableTradeableButton(t3DisableTradeableButtonReason);
          }
+         if(t3LowestLowValue < t3MinHighVolumeAreaLevel && Bid() > t3MinHighVolumeAreaLevel) {
+            if(t3alertBidAgainInHighVolumeAreaSended == false) t3alertBidAgainInHighVolumeAreaAction();
+         }
       }
 
       if(t3LowestLowVLineDateTime != 0 && t3LowestLowVLineDateTime < (int)TimeCurrent()) {
@@ -63,7 +66,9 @@ void setT3Action() {
             string t3DisableTradeableButtonReason = "t3HighestHighValue > t3MaxHighVolumeAreaLevel";
             t3DisableTradeableButton(t3DisableTradeableButtonReason);
          }
-
+         if(t3HighestHighValue > t3MaxHighVolumeAreaLevel && Bid() < t3MaxHighVolumeAreaLevel) {
+            if(t3alertBidAgainInHighVolumeAreaSended == false) t3alertBidAgainInHighVolumeAreaAction();
+         }         
       }
 
       if(t3HighestHighVLineDateTime != 0 && t3HighestHighVLineDateTime < (int)TimeCurrent()) {

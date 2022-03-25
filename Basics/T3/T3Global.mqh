@@ -81,6 +81,7 @@ bool t3IsBidStopLossLineOffsetAlertSendable;
 bool t3IsBidStopLossLineOffsetAlertSended;
 bool t3AlertDisableTradeableButtonSended;
 bool t3alertBidIsInSignalAreaSended;
+bool t3alertBidAgainInHighVolumeAreaSended;
 bool t3alertMAChangedSended;
 
 // INSignal

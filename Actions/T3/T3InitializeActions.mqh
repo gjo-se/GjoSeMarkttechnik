@@ -63,6 +63,7 @@ void initializeT3GlobalsAction() {
    t3IsBidStopLossLineOffsetAlertSended = false;
    t3AlertDisableTradeableButtonSended = false;
    t3alertBidIsInSignalAreaSended = false;
+   t3alertBidAgainInHighVolumeAreaSended = false;
    t3alertMAChangedSended = false;
 
 
