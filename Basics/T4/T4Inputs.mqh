@@ -12,6 +12,7 @@ input group             "------------------------------ T4 LEVELS --------------
 input bool              InpT4ObjectsShow = true; // Show T4 Objects
 input double            InpT4MaxHighVolumeAreaLevel = 0; // T3 Max HighVolume Area Level
 input double            InpT4MinHighVolumeAreaLevel = 0; // T3 Min HighVolume Area Level
+input int               InpT4MinMovementLengthBasedOnT3MovementPercent = 20;
 input int               InpT4MinRegressionForTrendDetectionPercent = 50; // T4 % MIN Regression for Trend Detection Percent
 input int               InpT4AlertOnFiboRetracmentLevel = 0;
 
@@ -52,7 +53,6 @@ int               InpT4AlertOnRegressionChannelLevel = 0;
 double            InpT4StopLossLineOffsetMulti = 1.2; // T4 StopLossLine Multi
 double            InpT4StopLossMarketOffsetMulti = 2.0; // T4 StopLossMarket Multi
 //group             "------------------------------ T4 TrendSize ---------------------------"
-int               InpT4MinMovementLengthBasedOnT3MovementPercent = 20;
 int               InpT4MaxMovementLengthBasedOnT3MovementPercent = 45;
 
 // group             "---------- StrategyTester ---------" // (Objects in Strategy Tester nicht vorhanden)

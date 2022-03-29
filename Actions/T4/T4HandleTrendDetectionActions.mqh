@@ -55,11 +55,19 @@ void handleT4P2() {
          && t4p1DateTime < (int)TimeCurrent()
          && t4p3DateTime == 0
      ) {
+
+      if(t4SemiTrendDirection == TREND_DIRECTION_LONG) {
+         t4p2DateTimeTmp = iTime(Symbol(), Period(), iHighest(Symbol(), Period(), MODE_HIGH,  iBarShift(Symbol(), Period(), t4p1DateTime) + 1));
+         t4p2ValueTmp = iHigh(Symbol(), Period(), iBarShift(Symbol(), Period(), t4p2DateTimeTmp));
+         t4P1P2MovementPoints = t4p2ValueTmp / Point() - t4p1ValueLow / Point();
+      }
+
       if(t4SemiTrendDirection == TREND_DIRECTION_SHORT) {
          t4p2DateTimeTmp = iTime(Symbol(), Period(), iLowest(Symbol(), Period(), MODE_LOW,  iBarShift(Symbol(), Period(), t4p1DateTime) + 1));
          t4p2ValueTmp = iLow(Symbol(), Period(), iBarShift(Symbol(), Period(), t4p2DateTimeTmp));
          t4P1P2MovementPoints = t4p1ValueHigh / Point() - t4p2ValueTmp / Point();
       }
+
       if(t4P1P2MovementPoints > (t3MovementLengthPoints * InpT4MinMovementLengthBasedOnT3MovementPercent / 100)) createT4P2VLine(t4p2DateTimeTmp);
    }
 }
@@ -75,6 +83,14 @@ void handleT4P3() {
          && t4p2DateTime < (int)TimeCurrent()
          && t4p4DateTime == 0
      ) {
+
+      if(t4SemiTrendDirection == TREND_DIRECTION_LONG) {
+         t4p3DateTimeTmp = iTime(Symbol(), Period(), iLowest(Symbol(), Period(), MODE_LOW,  iBarShift(Symbol(), Period(), t4p2DateTime) + 1));
+         t4p3ValueTmp = iLow(Symbol(), Period(), iBarShift(Symbol(), Period(), t4p3DateTimeTmp));
+         t4P1P2MovementPoints = t4p2ValueHigh / Point() - t4p1ValueLow / Point();
+         t4P2P3RegressionPoints = t4p2ValueHigh / Point() - t4p3ValueTmp / Point();
+      }
+
       if(t4SemiTrendDirection == TREND_DIRECTION_SHORT) {
          t4p3DateTimeTmp = iTime(Symbol(), Period(), iHighest(Symbol(), Period(), MODE_HIGH,  iBarShift(Symbol(), Period(), t4p2DateTime) + 1));
          t4p3ValueTmp = iHigh(Symbol(), Period(), iBarShift(Symbol(), Period(), t4p3DateTimeTmp));
@@ -96,16 +112,31 @@ void handleT4P4() {
          && t4p3DateTime < (int)TimeCurrent()
          && t4p5DateTime == 0
      ) {
+
+      if(t4SemiTrendDirection == TREND_DIRECTION_LONG || t4trendDirection == TREND_DIRECTION_LONG) {
+         t4p4DateTimeTmp = iTime(Symbol(), Period(), iHighest(Symbol(), Period(), MODE_HIGH,  iBarShift(Symbol(), Period(), t4p3DateTime) + 1));
+         t4p4ValueTmp = iHigh(Symbol(), Period(), iBarShift(Symbol(), Period(), t4p4DateTimeTmp));
+         t4P2P4MovementPoints = t4p4ValueTmp / Point() - t4p3ValueLow / Point();
+
+         if(t4P2P4MovementPoints > (t3MovementLengthPoints * InpT4MinMovementLengthBasedOnT3MovementPercent / 100)
+               && t4p2ValueHigh != 0
+               && t4p4ValueTmp > t4p2ValueHigh
+           ) createT4P4VLine(t4p4DateTimeTmp);
+
+      }
+
       if(t4SemiTrendDirection == TREND_DIRECTION_SHORT || t4trendDirection == TREND_DIRECTION_SHORT) {
          t4p4DateTimeTmp = iTime(Symbol(), Period(), iLowest(Symbol(), Period(), MODE_LOW,  iBarShift(Symbol(), Period(), t4p3DateTime) + 1));
          t4p4ValueTmp = iLow(Symbol(), Period(), iBarShift(Symbol(), Period(), t4p4DateTimeTmp));
          t4P2P4MovementPoints = t4p3ValueHigh / Point() - t4p4ValueTmp / Point();
+
+         if(t4P2P4MovementPoints > (t3MovementLengthPoints * InpT4MinMovementLengthBasedOnT3MovementPercent / 100)
+               && t4p2ValueLow != 0
+               && t4p4ValueTmp < t4p2ValueLow
+           ) createT4P4VLine(t4p4DateTimeTmp);
+
       }
 
-      if(t4P2P4MovementPoints > (t3MovementLengthPoints * InpT4MinMovementLengthBasedOnT3MovementPercent / 100)
-            && t4p2ValueLow != 0
-            && t4p4ValueTmp < t4p2ValueLow
-        ) createT4P4VLine(t4p4DateTimeTmp);
    }
 }
 
@@ -119,6 +150,14 @@ void handleT4P5() {
    if(t4p4ValueLow != 0
          && t4p4DateTime < (int)TimeCurrent()
      ) {
+
+      if(t4trendDirection == TREND_DIRECTION_LONG) {
+         t4p5DateTimeTmp = iTime(Symbol(), Period(), iLowest(Symbol(), Period(), MODE_LOW,  iBarShift(Symbol(), Period(), t4p4DateTime) + 1));
+         t4p5ValueTmp = iLow(Symbol(), Period(), iBarShift(Symbol(), Period(), t4p5DateTimeTmp));
+         t4P3P4MovementPoints = t4p4ValueHigh / Point() - t4p3ValueLow / Point();
+         t4P4P5RegressionPoints = t4p4ValueHigh / Point() - t4p5ValueTmp / Point();
+      }
+
       if(t4trendDirection == TREND_DIRECTION_SHORT) {
          t4p5DateTimeTmp = iTime(Symbol(), Period(), iHighest(Symbol(), Period(), MODE_HIGH,  iBarShift(Symbol(), Period(), t4p4DateTime) + 1));
          t4p5ValueTmp = iHigh(Symbol(), Period(), iBarShift(Symbol(), Period(), t4p5DateTimeTmp));
@@ -140,25 +179,48 @@ void handleT4BuildNewTrend() {
    if(t4p5ValueHigh != 0
          && t4p5DateTime < (int)TimeCurrent()
      ) {
+
+      if(t4SemiTrendDirection == TREND_DIRECTION_LONG || t4trendDirection == TREND_DIRECTION_LONG) {
+         t4P5P6MovementPoints = Bid() / Point() - t4p5ValueLow / Point();
+
+         if(t4P5P6MovementPoints > (t3MovementLengthPoints * InpT4MinMovementLengthBasedOnT3MovementPercent / 100)
+               && t4p4ValueHigh != 0
+               && Bid() > t4p4ValueHigh
+           ) {
+            t4p3DateTimeTmp = t4p3DateTime;
+            t4p4DateTimeTmp = t4p4DateTime;
+            t4p5DateTimeTmp = t4p5DateTime;
+            resetT4Trend();
+
+            createT4P1VLine(t4p3DateTimeTmp);
+            createT4P2VLine(t4p4DateTimeTmp);
+            createT4P3VLine(t4p5DateTimeTmp);
+
+            if(t4AlertT4BuildNewTrendSended == false) t4AlertT4BuildNewTrendAction();
+         }
+      }
+
       if(t4SemiTrendDirection == TREND_DIRECTION_SHORT || t4trendDirection == TREND_DIRECTION_SHORT) {
          t4P5P6MovementPoints = t4p5ValueHigh / Point() - Bid() / Point();
+
+         if(t4P5P6MovementPoints > (t3MovementLengthPoints * InpT4MinMovementLengthBasedOnT3MovementPercent / 100)
+               && t4p4ValueLow != 0
+               && Bid() < t4p4ValueLow
+           ) {
+            t4p3DateTimeTmp = t4p3DateTime;
+            t4p4DateTimeTmp = t4p4DateTime;
+            t4p5DateTimeTmp = t4p5DateTime;
+            resetT4Trend();
+
+            createT4P1VLine(t4p3DateTimeTmp);
+            createT4P2VLine(t4p4DateTimeTmp);
+            createT4P3VLine(t4p5DateTimeTmp);
+
+            if(t4AlertT4BuildNewTrendSended == false) t4AlertT4BuildNewTrendAction();
+         }
       }
 
-      if(t4P5P6MovementPoints > (t3MovementLengthPoints * InpT4MinMovementLengthBasedOnT3MovementPercent / 100)
-            && t4p4ValueLow != 0
-            && Bid() < t4p4ValueLow
-        ) {
-         t4p3DateTimeTmp = t4p3DateTime;
-         t4p4DateTimeTmp = t4p4DateTime;
-         t4p5DateTimeTmp = t4p5DateTime;
-         resetT4Trend();
 
-         createT4P1VLine(t4p3DateTimeTmp);
-         createT4P2VLine(t4p4DateTimeTmp);
-         createT4P3VLine(t4p5DateTimeTmp);
-
-         if(t4AlertT4BuildNewTrendSended == false) t4AlertT4BuildNewTrendAction();
-      }
    }
 }
 //+------------------------------------------------------------------+
@@ -178,6 +240,17 @@ void handleT4TrendBrokenOnP1() {
          && t4p2DateTime <= (int)TimeCurrent()
          && t4p3DateTime <= (int)TimeCurrent()
      ) {
+
+      if(t4SemiTrendDirection == TREND_DIRECTION_LONG || t4trendDirection == TREND_DIRECTION_LONG) {
+         if(Bid() < t4p1ValueLow) {
+            t4p2DateTimeTmp = t4p2DateTime;
+            t4p3DateTimeTmp = t4p3DateTime;
+            resetT4Trend();
+            createT4P1VLine(t4p2DateTimeTmp);
+            createT4P2VLine(t4p3DateTimeTmp);
+            if(t4AlertT4TrendBrokenSended == false) t4AlertT4TrendBrokenAction();
+         }
+      }
 
       if(t4SemiTrendDirection == TREND_DIRECTION_SHORT || t4trendDirection == TREND_DIRECTION_SHORT) {
          if(Bid() > t4p1ValueHigh) {
@@ -204,6 +277,17 @@ void handleT4TrendBrokenOnP3() {
          && t4p4DateTime < (int)TimeCurrent()
          && t4p5DateTime < (int)TimeCurrent()
      ) {
+
+      if(t4SemiTrendDirection == TREND_DIRECTION_LONG || t4trendDirection == TREND_DIRECTION_LONG) {
+         if(Bid() < t4p3ValueLow) {
+            t4p4DateTimeTmp = t4p4DateTime;
+            t4p5DateTimeTmp = t4p5DateTime;
+            resetT4Trend();
+            createT4P1VLine(t4p4DateTimeTmp);
+            createT4P2VLine(t4p5DateTimeTmp);
+            if(t4AlertT4TrendBrokenSended == false) t4AlertT4TrendBrokenAction();
+         }
+      }
 
       if(t4SemiTrendDirection == TREND_DIRECTION_SHORT || t4trendDirection == TREND_DIRECTION_SHORT) {
          if(Bid() > t4p3ValueHigh) {
