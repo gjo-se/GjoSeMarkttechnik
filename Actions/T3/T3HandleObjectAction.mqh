@@ -13,6 +13,7 @@ void t3HandleObjectsInitAction() {
    deleteChannelObject(T3_RE_ENTRY_AREA);
 
    createT3TrendLines();
+   setT3MovementLength();
    createT3HighVolumeAreaTrendLines();
    createT3RegressionChannel();
    createT3RegressionChannelLevels();
@@ -103,6 +104,7 @@ void t3HandleObjectsAction() {
       if(isNewCurrentBar == true || t3ObjectHasChanged == true) {
          if(Period() <= InpT3MaxTimeframe) {
             createT3TrendLines();
+            setT3MovementLength();
             createT3RegressionChannel();
             createT3RegressionChannelLevels();
             createT3FiboRetracement();
@@ -141,26 +143,6 @@ void t3HandleObjectsAction() {
       deleteTrendLine(T3_STOP_LOSS_TLINE);
    }
 
-}
-
-//+------------------------------------------------------------------+
-//|                                                                  |
-//+------------------------------------------------------------------+
-void getT3TrendDirection() {
-   if(t3p1ValueHigh != 0 && t3p2ValueHigh != 0) {
-      if(t3p1ValueHigh < t3p2ValueHigh) t3trendDirection = TREND_DIRECTION_LONG;
-      if(t3p1ValueHigh > t3p2ValueHigh) t3trendDirection = TREND_DIRECTION_SHORT;
-   }
-}
-
-string getT3TrendDirectionString() {
-
-   string trendDirectionString = "ROTATION";
-
-   if(t3trendDirection == TREND_DIRECTION_LONG) trendDirectionString = "LONG";
-   if(t3trendDirection == TREND_DIRECTION_SHORT) trendDirectionString = "SHORT";
-
-   return trendDirectionString;
 }
 
 //+------------------------------------------------------------------+
@@ -231,9 +213,6 @@ void setT3HighestHighDateTime() {
       int startCandleShift = iBarShift(Symbol(), Period(), t3p4DateTime);
       if(t3HighestHighVLineDateTime == 0) {
          createT3HighestHighVLine();
-         if(ObjectFind(ChartID(), T4_P1_VLINE) < 0) createT4P1VLine();
-         if(ObjectFind(ChartID(), T4_P2_VLINE) < 0) createT4P2VLine();
-         if(ObjectFind(ChartID(), T4_P3_VLINE) < 0) createT4P3VLine();
       }
       if(t3HighestHighVLineDateTime != 0) startCandleShift = iBarShift(Symbol(), Period(), t3HighestHighVLineDateTime);
 
@@ -251,9 +230,6 @@ void setT3LowestLowDateTime() {
       int startCandleShift = iBarShift(Symbol(), Period(), t3p4DateTime);
       if(t3LowestLowVLineDateTime == 0) {
          createT3LowestLowVLine();
-         if(ObjectFind(ChartID(), T4_P1_VLINE) < 0) createT4P1VLine();
-         if(ObjectFind(ChartID(), T4_P2_VLINE) < 0) createT4P2VLine();
-         if(ObjectFind(ChartID(), T4_P3_VLINE) < 0) createT4P3VLine();
       }
       if(t3LowestLowVLineDateTime != 0) startCandleShift = iBarShift(Symbol(), Period(), t3LowestLowVLineDateTime);
 

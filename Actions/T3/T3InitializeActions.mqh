@@ -43,7 +43,9 @@ void initializeT3GlobalsAction() {
    t3LowestLowVLineDateTime = 0;
    t3EndDateTime = 0;
 
+   t3SemiTrendDirection = TREND_DIRECTION_ROTATION;
    t3trendDirection = TREND_DIRECTION_ROTATION;
+   t3MovementLengthPoints = 0;
 
    t3ObjectHasChanged = false;
    t3ObjectHasChanged = false;

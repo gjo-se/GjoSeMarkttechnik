@@ -52,10 +52,14 @@ double t4p3ValueLow;
 datetime t4p4DateTime;
 double t4p4ValueHigh;
 double t4p4ValueLow;
+datetime t4p5DateTime;
+double t4p5ValueHigh;
+double t4p5ValueLow;
 datetime t4HighestHighVLineDateTime;
 datetime t4LowestLowVLineDateTime;
 datetime t4EndDateTime;
 
+int t4SemiTrendDirection;
 int t4trendDirection;
 string t4FiboLevelsArray[];
 
@@ -72,8 +76,9 @@ bool t4IsBidStopLossLineOffsetAlertSendable;
 bool t4IsBidStopLossLineOffsetAlertSended;
 bool t4AlertDisableTradeableButtonSended;
 bool t4alertMAChangedSended;
-bool t4AlertBidCrossedT4P3ValueSended;
-bool t4AlertBidCrossedT4P4ValueSended;
+bool t4AlertT4TrendBrokenSended;
+bool t4AlertT4BuildNewTrendSended;
+bool t4AlertT4P5CreatedSended;
 
 // INSignal
 double t4InSignalFiboLevelAreaMinStartValue;

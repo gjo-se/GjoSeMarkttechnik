@@ -45,16 +45,6 @@ void setT4Action() {
       } else {
          t4ProfitLevelGreaterMinProfitFiboRetracmentLevel = false;
       }
-      if(t3trendDirection == TREND_DIRECTION_SHORT) {
-         if(t4MinRegressionForTrendDetectionLevel != 0 && Bid() < t4MinRegressionForTrendDetectionLevel) t4MinRegressionForTrendDetectionState = true;
-         if(t4MinRegressionForTrendDetectionState == true && t4p4DateTime != 0 && t4p4DateTime < (int)TimeCurrent()) {
-            double t4p5ValueLowLocal = iLow(Symbol(), Period(), iLowest( Symbol(), Period(), MODE_LOW,  iBarShift(Symbol(), Period(), t4p4DateTime) + 1));
-            if(t4p5ValueLowLocal != 0 && getT4P3HighLowValueByTrendDirection() != 0 && t4p5ValueLowLocal < getT4P3HighLowValueByTrendDirection()) {
-               if(t4AlertBidCrossedT4P3ValueSended == false) t4AlertBidCrossedT4P3ValueAction();
-               t4MinRegressionForTrendDetectionState = false;
-            }
-         }
-      }
    }
 
    if(t4trendDirection == TREND_DIRECTION_SHORT) {
@@ -76,16 +66,6 @@ void setT4Action() {
          if(t4MinProfitFiboRetracmentLevel != 0 && t4MaxProfitLevel <= t4MinProfitFiboRetracmentLevel) t4ProfitLevelGreaterMinProfitFiboRetracmentLevel = true;
       } else {
          t4ProfitLevelGreaterMinProfitFiboRetracmentLevel = false;
-      }
-      if(t3trendDirection == TREND_DIRECTION_LONG) {
-         if(t4MinRegressionForTrendDetectionLevel != 0 && Bid() > t4MinRegressionForTrendDetectionLevel) t4MinRegressionForTrendDetectionState = true;
-         if(t4MinRegressionForTrendDetectionState == true && t4p4DateTime != 0 && t4p4DateTime < (int)TimeCurrent()) {
-            double t4p5ValueHighLocal = iHigh(Symbol(), Period(), iHighest( Symbol(), Period(), MODE_HIGH,  iBarShift(Symbol(), Period(), t4p4DateTime) + 1));
-            if(t4p5ValueHighLocal != 0 && getT4P3HighLowValueByTrendDirection() != 0 && t4p5ValueHighLocal > getT4P3HighLowValueByTrendDirection()) {
-               if(t4AlertBidCrossedT4P3ValueSended == false) t4AlertBidCrossedT4P3ValueAction();
-               t4MinRegressionForTrendDetectionState = false;
-            }
-         }
       }
    }
 }

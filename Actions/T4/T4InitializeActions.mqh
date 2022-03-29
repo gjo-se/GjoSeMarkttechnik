@@ -23,10 +23,14 @@ void initializeT4GlobalsAction() {
    t4p4DateTime = 0;
    t4p4ValueHigh = 0;
    t4p4ValueLow = 0;
+   t4p5DateTime = 0;
+   t4p5ValueHigh = 0;
+   t4p5ValueLow = 0;
    t4HighestHighVLineDateTime = 0;
    t4LowestLowVLineDateTime = 0;
    t4EndDateTime = 0;
 
+   t4SemiTrendDirection = TREND_DIRECTION_ROTATION;
    t4trendDirection = TREND_DIRECTION_ROTATION;
 
    buyT4PositionIsOpenState = false;
@@ -49,8 +53,9 @@ void initializeT4GlobalsAction() {
    t4IsBidStopLossLineOffsetAlertSended = false;
    t4AlertDisableTradeableButtonSended = false;
    t4alertMAChangedSended = false;
-   t4AlertBidCrossedT4P3ValueSended = false;
-   t4AlertBidCrossedT4P4ValueSended = false;
+   t4AlertT4TrendBrokenSended = false;
+   t4AlertT4BuildNewTrendSended = false;
+   t4AlertT4P5CreatedSended = false;
 
    t4InSignalFiboLevelAreaMinStartValue = 0;
    t4InSignalFiboLevelAreaMinEndValue = 0;

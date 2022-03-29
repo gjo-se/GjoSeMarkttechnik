@@ -63,8 +63,10 @@ datetime t3HighestHighVLineDateTime;
 datetime t3LowestLowVLineDateTime;
 datetime t3EndDateTime;
 
+int t3SemiTrendDirection;
 int t3trendDirection;
 string t3FiboLevelsArray[];
+int t3MovementLengthPoints;
 
 bool t3ObjectHasChanged;
 bool t4ObjectHasChanged;

@@ -116,6 +116,7 @@ void OnTick() {
 
    if(MQLInfoInteger(MQL_VISUAL_MODE) == 1) {
       setT3LineValues();
+      getT3TrendDirection();
       createT3HighVolumeAreaTrendLines();
       setT4LineValues();
       getT4TrendDirection();
@@ -125,6 +126,7 @@ void OnTick() {
    handleT4Indictaors();
    handleT3StatesAction();
    handleT4StatesAction();
+   handleT4TrendDetectionAction();
    setT3PositionStates();
    setT4PositionStates();
    if(InpPrintScreenshot == true) handleScreenshotAction();

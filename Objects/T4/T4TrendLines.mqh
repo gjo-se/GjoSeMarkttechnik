@@ -9,9 +9,17 @@
 //|                                                                  |
 //+------------------------------------------------------------------+
 void createT4TrendLines() {
-   if(t4p1DateTime != 0 && t4p2DateTime != 0) createTrendLine(T4_TRENDLINE + "P1-P2", t4p1DateTime, getT4P1HighLowValueByTrendDirection(), t4p2DateTime, getT4P2HighLowValueByTrendDirection(), InpT4TrendLineColor, 3);
-   if(t4p2DateTime != 0 && t4p3DateTime != 0) createTrendLine(T4_TRENDLINE + "P2-P3", t4p2DateTime, getT4P2HighLowValueByTrendDirection(), t4p3DateTime, getT4P3HighLowValueByTrendDirection(), InpT4TrendLineColor, 3);
-   if(t4p3DateTime != 0 && t4p4DateTime != 0) createTrendLine(T4_TRENDLINE + "P3-P4", t4p3DateTime, getT4P3HighLowValueByTrendDirection(), t4p4DateTime, getT4P4HighLowValueByTrendDirection(), InpT4TrendLineColor, 3);
+
+   color lineColor = InpT4TrendLineColor;
+   if(t4SemiTrendDirection == TREND_DIRECTION_LONG) lineColor = clrLightGreen;
+   if(t4SemiTrendDirection == TREND_DIRECTION_SHORT) lineColor = clrLightPink;
+   if(t4trendDirection == TREND_DIRECTION_LONG) lineColor = clrGreen;
+   if(t4trendDirection == TREND_DIRECTION_SHORT) lineColor = clrRed;
+
+   if(t4p1DateTime != 0 && t4p2DateTime != 0) createTrendLine(T4_TRENDLINE + "P1-P2", t4p1DateTime, getT4P1HighLowValueByTrendDirection(), t4p2DateTime, getT4P2HighLowValueByTrendDirection(), lineColor, 3);
+   if(t4p2DateTime != 0 && t4p3DateTime != 0) createTrendLine(T4_TRENDLINE + "P2-P3", t4p2DateTime, getT4P2HighLowValueByTrendDirection(), t4p3DateTime, getT4P3HighLowValueByTrendDirection(), lineColor, 3);
+   if(t4p3DateTime != 0 && t4p4DateTime != 0) createTrendLine(T4_TRENDLINE + "P3-P4", t4p3DateTime, getT4P3HighLowValueByTrendDirection(), t4p4DateTime, getT4P4HighLowValueByTrendDirection(), lineColor, 3);
+   if(t4p4DateTime != 0 && t4p5DateTime != 0) createTrendLine(T4_TRENDLINE + "P4-P5", t4p4DateTime, getT4P4HighLowValueByTrendDirection(), t4p5DateTime, getT4P5HighLowValueByTrendDirection(), lineColor, 3);
 }
 
 //+------------------------------------------------------------------+

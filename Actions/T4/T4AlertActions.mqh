@@ -5,21 +5,30 @@
 //+------------------------------------------------------------------+
 
 
-void t4AlertBidCrossedT4P3ValueAction() {
+void t4AlertT4TrendBrokenAction() {
    if(sendAlerts == true) {
       string message = Symbol() + ": " + "T4 Bid Crossed T4P3 - T4 brocken";
       Alert(message);
       if(!SendNotification(message)) Alert("Cannot Push " + message, GetLastError());
-      t4AlertBidCrossedT4P3ValueSended = true;
+      t4AlertT4TrendBrokenSended = true;
    }
 }
 
-void t4AlertBidCrossedT4P4ValueAction() {
+void t4AlertT4BuildNewTrendAction() {
    if(sendAlerts == true) {
-      string message = Symbol() + ": " + "T4 Bid Crossed T4P4 - T4 New Trend build";
+      string message = Symbol() + ": " + "T4 Bid Crossed T4P4 - T4 Build New Trend";
       Alert(message);
       if(!SendNotification(message)) Alert("Cannot Push " + message, GetLastError());
-      t4AlertBidCrossedT4P4ValueSended = true;
+      t4AlertT4BuildNewTrendSended = true;
+   }
+}
+
+void t4AlertT4P5CreatedAction() {
+   if(sendAlerts == true) {
+      string message = Symbol() + ": " + "T4 T4P5 Created";
+      Alert(message);
+      if(!SendNotification(message)) Alert("Cannot Push " + message, GetLastError());
+      t4AlertT4P5CreatedSended = true;
    }
 }
 
