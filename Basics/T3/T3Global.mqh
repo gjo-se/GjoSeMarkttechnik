@@ -63,8 +63,10 @@ datetime t3HighestHighVLineDateTime;
 datetime t3LowestLowVLineDateTime;
 datetime t3EndDateTime;
 
+int t3SemiTrendDirection;
 int t3trendDirection;
 string t3FiboLevelsArray[];
+int t3MovementLengthPoints;
 
 bool t3ObjectHasChanged;
 bool t4ObjectHasChanged;
@@ -81,6 +83,7 @@ bool t3IsBidStopLossLineOffsetAlertSendable;
 bool t3IsBidStopLossLineOffsetAlertSended;
 bool t3AlertDisableTradeableButtonSended;
 bool t3alertBidIsInSignalAreaSended;
+bool t3alertBidAgainInHighVolumeAreaSended;
 bool t3alertMAChangedSended;
 
 // INSignal
@@ -93,6 +96,9 @@ double t3InSignalRegressionChannelAreaMinEndValue;
 double t3InSignalRegressionChannelAreaMaxStartValue;
 double t3InSignalRegressionChannelAreaMaxEndValue;
 
+// HighVolumeArea
+double t3MinHighVolumeAreaLevel;
+double t3MaxHighVolumeAreaLevel;
 bool   t3HighestHighIsInSignalArea;
 bool   t3LowestLowIsInSignalArea;
 

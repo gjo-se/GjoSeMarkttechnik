@@ -13,6 +13,8 @@ void t3HandleObjectsInitAction() {
    deleteChannelObject(T3_RE_ENTRY_AREA);
 
    createT3TrendLines();
+   setT3MovementLength();
+   createT3HighVolumeAreaTrendLines();
    createT3RegressionChannel();
    createT3RegressionChannelLevels();
    createT3FiboRetracement();
@@ -20,14 +22,14 @@ void t3HandleObjectsInitAction() {
    createt3InSignalRegressionChannelArea();
 
    if(t3trendDirection == TREND_DIRECTION_LONG && buyT3PositionIsOpenState == false) {
-        deleteTrendLineLike(T3_ORDER_GRID_LIMIT_TLINE);
-        deleteTrendLineLike(T3_ORDER_GRID_STOP_TLINE);
-        createT3OrderGridTrendLines();
+      deleteTrendLineLike(T3_ORDER_GRID_LIMIT_TLINE);
+      deleteTrendLineLike(T3_ORDER_GRID_STOP_TLINE);
+      createT3OrderGridTrendLines();
    }
    if(t3trendDirection == TREND_DIRECTION_SHORT && sellT3PositionIsOpenState == false) {
-        deleteTrendLineLike(T3_ORDER_GRID_LIMIT_TLINE);
-        deleteTrendLineLike(T3_ORDER_GRID_STOP_TLINE);
-        createT3OrderGridTrendLines();
+      deleteTrendLineLike(T3_ORDER_GRID_LIMIT_TLINE);
+      deleteTrendLineLike(T3_ORDER_GRID_STOP_TLINE);
+      createT3OrderGridTrendLines();
    }
 
 
@@ -102,6 +104,7 @@ void t3HandleObjectsAction() {
       if(isNewCurrentBar == true || t3ObjectHasChanged == true) {
          if(Period() <= InpT3MaxTimeframe) {
             createT3TrendLines();
+            setT3MovementLength();
             createT3RegressionChannel();
             createT3RegressionChannelLevels();
             createT3FiboRetracement();
@@ -140,26 +143,6 @@ void t3HandleObjectsAction() {
       deleteTrendLine(T3_STOP_LOSS_TLINE);
    }
 
-}
-
-//+------------------------------------------------------------------+
-//|                                                                  |
-//+------------------------------------------------------------------+
-void getT3TrendDirection() {
-   if(t3p1ValueHigh != 0 && t3p2ValueHigh != 0) {
-      if(t3p1ValueHigh < t3p2ValueHigh) t3trendDirection = TREND_DIRECTION_LONG;
-      if(t3p1ValueHigh > t3p2ValueHigh) t3trendDirection = TREND_DIRECTION_SHORT;
-   }
-}
-
-string getT3TrendDirectionString() {
-
-   string trendDirectionString = "ROTATION";
-
-   if(t3trendDirection == TREND_DIRECTION_LONG) trendDirectionString = "LONG";
-   if(t3trendDirection == TREND_DIRECTION_SHORT) trendDirectionString = "SHORT";
-
-   return trendDirectionString;
 }
 
 //+------------------------------------------------------------------+
@@ -226,9 +209,11 @@ void handleInsideBars() {
 
 void setT3HighestHighDateTime() {
 
-   if((int)t3p4DateTime < (int) TimeCurrent() && InpT3MinHighVolumeAreaLevel != 0 && InpT3MaxHighVolumeAreaLevel != 0 && Bid() >= InpT3MinHighVolumeAreaLevel) {
+   if((int)t3p4DateTime < (int) TimeCurrent() && t3MinHighVolumeAreaLevel != 0 && t3MaxHighVolumeAreaLevel != 0 && Bid() >= t3MinHighVolumeAreaLevel) {
       int startCandleShift = iBarShift(Symbol(), Period(), t3p4DateTime);
-      if(t3HighestHighVLineDateTime == 0) createT3HighestHighVLine();
+      if(t3HighestHighVLineDateTime == 0) {
+         createT3HighestHighVLine();
+      }
       if(t3HighestHighVLineDateTime != 0) startCandleShift = iBarShift(Symbol(), Period(), t3HighestHighVLineDateTime);
 
       if(startCandleShift != 0) {
@@ -241,9 +226,11 @@ void setT3HighestHighDateTime() {
 
 void setT3LowestLowDateTime() {
 
-   if((int)t3p4DateTime < (int) TimeCurrent() && InpT3MinHighVolumeAreaLevel != 0 && InpT3MaxHighVolumeAreaLevel != 0 && Bid() <= InpT3MaxHighVolumeAreaLevel) {
+   if((int)t3p4DateTime < (int) TimeCurrent() && t3MinHighVolumeAreaLevel != 0 && t3MaxHighVolumeAreaLevel != 0 && Bid() <= t3MaxHighVolumeAreaLevel) {
       int startCandleShift = iBarShift(Symbol(), Period(), t3p4DateTime);
-      if(t3LowestLowVLineDateTime == 0) createT3LowestLowVLine();
+      if(t3LowestLowVLineDateTime == 0) {
+         createT3LowestLowVLine();
+      }
       if(t3LowestLowVLineDateTime != 0) startCandleShift = iBarShift(Symbol(), Period(), t3LowestLowVLineDateTime);
 
       if(startCandleShift != 0) {

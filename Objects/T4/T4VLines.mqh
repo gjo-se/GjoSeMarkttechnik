@@ -27,6 +27,7 @@ void setT4VLineDateTimes() {
    t4p2DateTime = getVlineDatetimeByText(T4_P2_VLINE);
    t4p3DateTime = getVlineDatetimeByText(T4_P3_VLINE);
    t4p4DateTime = getVlineDatetimeByText(T4_P4_VLINE);
+   t4p5DateTime = getVlineDatetimeByText(T4_P5_VLINE);
    t4HighestHighVLineDateTime = getVlineDatetimeByText(T4_HH_VLINE);
    t4LowestLowVLineDateTime = getVlineDatetimeByText(T4_LL_VLINE);
 }
@@ -48,6 +49,10 @@ void setT4VLineValues() {
    if((int)t4p4DateTime < (int) TimeCurrent()) {
       t4p4ValueHigh = iHigh(Symbol(), PERIOD_CURRENT, iBarShift(Symbol(), PERIOD_CURRENT, t4p4DateTime));
       t4p4ValueLow = iLow(Symbol(), PERIOD_CURRENT, iBarShift(Symbol(), PERIOD_CURRENT, t4p4DateTime));
+   }
+   if((int)t4p5DateTime < (int) TimeCurrent()) {
+      t4p5ValueHigh = iHigh(Symbol(), PERIOD_CURRENT, iBarShift(Symbol(), PERIOD_CURRENT, t4p5DateTime));
+      t4p5ValueLow = iLow(Symbol(), PERIOD_CURRENT, iBarShift(Symbol(), PERIOD_CURRENT, t4p5DateTime));
    }
 }
 
@@ -75,14 +80,74 @@ void createT4LowestLowVLine() {
    t4LowestLowVLineDateTime = iTime(Symbol(), Period(), barShift);
 }
 
-void createT4P4VLine(datetime pDateTimeLocal) {
+void createT4P1VLine(datetime pDateTime) {
+
+   long zOrder = 0;
+   bool isBackground = false;
+   bool isSelected = true;
+   bool isSelectable = true;
+
+   t4p1DateTime = pDateTime;
+   t4p1ValueHigh = iHigh(Symbol(), PERIOD_CURRENT, iBarShift(Symbol(), PERIOD_CURRENT, t4p1DateTime));
+   t4p1ValueLow = iLow(Symbol(), PERIOD_CURRENT, iBarShift(Symbol(), PERIOD_CURRENT, t4p1DateTime));
+
+   createVLine(T4_P1_VLINE, t4p1DateTime, clrGray, 2, STYLE_SOLID, T4_P1_VLINE, zOrder, isBackground, isSelected, isSelectable);
+}
+
+void createT4P2VLine(datetime pDateTime) {
+
+   long zOrder = 0;
+   bool isBackground = false;
+   bool isSelected = true;
+   bool isSelectable = true;
+
+   t4p2DateTime = pDateTime;
+   t4p2ValueHigh = iHigh(Symbol(), PERIOD_CURRENT, iBarShift(Symbol(), PERIOD_CURRENT, t4p2DateTime));
+   t4p2ValueLow = iLow(Symbol(), PERIOD_CURRENT, iBarShift(Symbol(), PERIOD_CURRENT, t4p2DateTime));
+
+   createVLine(T4_P2_VLINE, t4p2DateTime, clrGray, 2, STYLE_SOLID, T4_P2_VLINE, zOrder, isBackground, isSelected, isSelectable);
+}
+
+void createT4P3VLine(datetime pDateTime) {
+
+   long zOrder = 0;
+   bool isBackground = false;
+   bool isSelected = true;
+   bool isSelectable = true;
+
+   t4p3DateTime = pDateTime;
+   t4p3ValueHigh = iHigh(Symbol(), PERIOD_CURRENT, iBarShift(Symbol(), PERIOD_CURRENT, t4p3DateTime));
+   t4p3ValueLow = iLow(Symbol(), PERIOD_CURRENT, iBarShift(Symbol(), PERIOD_CURRENT, t4p3DateTime));
+
+   createVLine(T4_P3_VLINE, t4p3DateTime, clrGray, 2, STYLE_SOLID, T4_P3_VLINE, zOrder, isBackground, isSelected, isSelectable);
+}
+
+void createT4P4VLine(datetime pDateTime) {
 
    long zOrder = 0;
    bool isBackground = false;
    bool isSelected = false;
    bool isSelectable = true;
 
-   int barShift = 0;
-   createVLine(T4_P4_VLINE, pDateTimeLocal, clrGray, 2, STYLE_SOLID, T4_P4_VLINE, zOrder, isBackground, isSelected, isSelectable);
+   t4p4DateTime = pDateTime;
+   t4p4ValueHigh = iHigh(Symbol(), PERIOD_CURRENT, iBarShift(Symbol(), PERIOD_CURRENT, t4p4DateTime));
+   t4p4ValueLow = iLow(Symbol(), PERIOD_CURRENT, iBarShift(Symbol(), PERIOD_CURRENT, t4p4DateTime));
+
+   createVLine(T4_P4_VLINE, t4p4DateTime, clrGray, 2, STYLE_SOLID, T4_P4_VLINE, zOrder, isBackground, isSelected, isSelectable);
+}
+//+------------------------------------------------------------------+
+
+void createT4P5VLine(datetime pDateTime) {
+
+   long zOrder = 0;
+   bool isBackground = false;
+   bool isSelected = false;
+   bool isSelectable = true;
+
+   t4p5DateTime = pDateTime;
+   t4p5ValueHigh = iHigh(Symbol(), PERIOD_CURRENT, iBarShift(Symbol(), PERIOD_CURRENT, t4p5DateTime));
+   t4p5ValueLow = iLow(Symbol(), PERIOD_CURRENT, iBarShift(Symbol(), PERIOD_CURRENT, t4p5DateTime));
+
+   createVLine(T4_P5_VLINE, t4p5DateTime, clrGray, 2, STYLE_SOLID, T4_P5_VLINE, zOrder, isBackground, isSelected, isSelectable);
 }
 //+------------------------------------------------------------------+

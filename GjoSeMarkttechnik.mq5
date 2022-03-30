@@ -40,6 +40,7 @@
    3.2.6 fixed missing t3HighestHighIsInSignalArea
    3.3.0 fixed trailingStopMA
    3.3.1 fixed diverse
+   3.4.0 added T4 Trend Logic on Markttechnik
 
 
    ===============
@@ -58,7 +59,7 @@
 #property copyright   "2022, GjoSe"
 #property link        "http://www.gjo-se.com"
 #property description "GjoSe Markttechnik"
-#define   VERSION "3.3.1"
+#define   VERSION "3.4.0"
 #property version VERSION
 #property strict
 
@@ -67,22 +68,28 @@
 //+------------------------------------------------------------------+
 int OnInit() {
 
-   initializeEAAction();
-   initializeT3GlobalsAction();
-   initializeT4GlobalsAction();
-   initializeT3ArraysAction();
-   initializeT4ArraysAction();
-   initializeT3IndicatorsAction();
-   initializeT4IndicatorsAction();
+   if(UninitializeReason() != REASON_CHARTCHANGE) {
+      initializeEAAction();
+      initializeT3GlobalsAction();
+      initializeT4GlobalsAction();
+      initializeT3ArraysAction();
+      initializeT4ArraysAction();
+      initializeT3IndicatorsAction();
+      initializeT4IndicatorsAction();
 
-   setT3LineValues();
-   setT4LineValues();
-   getT3TrendDirection();
-   getT4TrendDirection();
+      setT3LineValues();
+      setT4LineValues();
+      getT3TrendDirection();
+      getT4TrendDirection();
+      setT3TrendLineValues();
+      setT4TrendLineValues();
 
-   t3HandleObjectsInitAction();
-   t4HandleObjectsInitAction();
-   handleCommentAction(VERSION);
+      t3HandleObjectsInitAction();
+      t4HandleObjectsInitAction();
+      handleCommentAction(VERSION);
+   }
+
+
 
    if(MQLInfoInteger(MQL_TESTER) == 1) {
 
@@ -110,6 +117,8 @@ void OnTick() {
 
    if(MQLInfoInteger(MQL_VISUAL_MODE) == 1) {
       setT3LineValues();
+      getT3TrendDirection();
+      createT3HighVolumeAreaTrendLines();
       setT4LineValues();
       getT4TrendDirection();
    }
@@ -118,6 +127,7 @@ void OnTick() {
    handleT4Indictaors();
    handleT3StatesAction();
    handleT4StatesAction();
+   handleT4TrendDetectionAction();
    setT3PositionStates();
    setT4PositionStates();
    if(InpPrintScreenshot == true) handleScreenshotAction();
@@ -131,8 +141,8 @@ void OnTick() {
    t4HandleObjectsAction();
    if(isNewCurrentBar) {
       handleCommentAction(VERSION);
-      if((buyT3PositionIsOpenState == true || sellT3PositionIsOpenState == true) && buyT4PositionIsOpenState == false && sellT4PositionIsOpenState == false) ChartSetSymbolPeriod(ChartID(), Symbol(), InpT3trailingStopMATimeframe);
-      if(buyT4PositionIsOpenState == true || sellT4PositionIsOpenState == true) ChartSetSymbolPeriod(ChartID(), Symbol(), InpT4trailingStopMATimeframe);
+//      if((buyT3PositionIsOpenState == true || sellT3PositionIsOpenState == true) && buyT4PositionIsOpenState == false && sellT4PositionIsOpenState == false) ChartSetSymbolPeriod(ChartID(), Symbol(), InpT3trailingStopMATimeframe);
+//      if(buyT4PositionIsOpenState == true || sellT4PositionIsOpenState == true) ChartSetSymbolPeriod(ChartID(), Symbol(), InpT4trailingStopMATimeframe);
    }
 
    if(getT3BuyAlertRegressionSignal() == true) t3AlertBuyRegressionAction();
@@ -184,6 +194,50 @@ void OnChartEvent(const int id,
       if(sparam == T4_STOP_LOSS_TLINE) {
          t4IsBidStopLossLineOffsetAlertSendable = true;
          t4IsBidStopLossLineOffsetAlertSended = false;
+      }
+
+      if(sparam == T3_MIN_HIGH_VOL_AREA || sparam == T3_MAX_HIGH_VOL_AREA) {
+
+         t3MinHighVolumeAreaLevel = getTrendlineLevelByText(T3_MIN_HIGH_VOL_AREA, PERIOD_CURRENT, Symbol(), ChartID(), true);
+         if(ObjectFind(ChartID(), T3_MIN_HIGH_VOL_AREA) >= 0) {
+            ObjectSetString(ChartID(), T3_MIN_HIGH_VOL_AREA, OBJPROP_TEXT, T3_MIN_HIGH_VOL_AREA + ": " + DoubleToString(t3MinHighVolumeAreaLevel, Digits()));
+            ObjectSetInteger(ChartID(), T3_MIN_HIGH_VOL_AREA, OBJPROP_TIME, 0, t3p3DateTime);
+            ObjectSetDouble(ChartID(), T3_MIN_HIGH_VOL_AREA, OBJPROP_PRICE, 0, t3MinHighVolumeAreaLevel);
+            ObjectSetDouble(ChartID(), T3_MIN_HIGH_VOL_AREA, OBJPROP_PRICE, 1, t3MinHighVolumeAreaLevel);
+         }
+
+         t3MaxHighVolumeAreaLevel = getTrendlineLevelByText(T3_MAX_HIGH_VOL_AREA, PERIOD_CURRENT, Symbol(), ChartID(), true);
+         if(ObjectFind(ChartID(), T3_MAX_HIGH_VOL_AREA) >= 0) {
+            ObjectSetString(ChartID(), T3_MAX_HIGH_VOL_AREA, OBJPROP_TEXT, T3_MAX_HIGH_VOL_AREA + ": " + DoubleToString(t3MaxHighVolumeAreaLevel, Digits()));
+            ObjectSetInteger(ChartID(), T3_MAX_HIGH_VOL_AREA, OBJPROP_TIME, 0, t3p3DateTime);
+            ObjectSetDouble(ChartID(), T3_MAX_HIGH_VOL_AREA, OBJPROP_PRICE, 0, t3MaxHighVolumeAreaLevel);
+            ObjectSetDouble(ChartID(), T3_MAX_HIGH_VOL_AREA, OBJPROP_PRICE, 1, t3MaxHighVolumeAreaLevel);
+         }
+
+         t3alertBidAgainInHighVolumeAreaSended = false;
+
+         createT3InSignalFiboLevelChannelArea();
+      }
+
+      if(sparam == T4_MIN_HIGH_VOL_AREA || sparam == T4_MAX_HIGH_VOL_AREA) {
+
+         t4MinHighVolumeAreaLevel = getTrendlineLevelByText(T4_MIN_HIGH_VOL_AREA, PERIOD_CURRENT, Symbol(), ChartID(), true);
+         if(ObjectFind(ChartID(), T4_MIN_HIGH_VOL_AREA) >= 0) {
+            ObjectSetString(ChartID(), T4_MIN_HIGH_VOL_AREA, OBJPROP_TEXT, T4_MIN_HIGH_VOL_AREA + ": " + DoubleToString(t4MinHighVolumeAreaLevel, Digits()));
+            ObjectSetInteger(ChartID(), T4_MIN_HIGH_VOL_AREA, OBJPROP_TIME, 0, t4p3DateTime);
+            ObjectSetDouble(ChartID(), T4_MIN_HIGH_VOL_AREA, OBJPROP_PRICE, 0, t4MinHighVolumeAreaLevel);
+            ObjectSetDouble(ChartID(), T4_MIN_HIGH_VOL_AREA, OBJPROP_PRICE, 1, t4MinHighVolumeAreaLevel);
+         }
+
+         t4MaxHighVolumeAreaLevel = getTrendlineLevelByText(T4_MAX_HIGH_VOL_AREA, PERIOD_CURRENT, Symbol(), ChartID(), true);
+         if(ObjectFind(ChartID(), T4_MAX_HIGH_VOL_AREA) >= 0) {
+            ObjectSetString(ChartID(), T4_MAX_HIGH_VOL_AREA, OBJPROP_TEXT, T4_MAX_HIGH_VOL_AREA + ": " + DoubleToString(t4MaxHighVolumeAreaLevel, Digits()));
+            ObjectSetInteger(ChartID(), T4_MAX_HIGH_VOL_AREA, OBJPROP_TIME, 0, t4p3DateTime);
+            ObjectSetDouble(ChartID(), T4_MAX_HIGH_VOL_AREA, OBJPROP_PRICE, 0, t4MaxHighVolumeAreaLevel);
+            ObjectSetDouble(ChartID(), T4_MAX_HIGH_VOL_AREA, OBJPROP_PRICE, 1, t4MaxHighVolumeAreaLevel);
+         }
+
+         createT4InSignalFiboLevelChannelArea();
       }
    }
 

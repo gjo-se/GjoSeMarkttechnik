@@ -6,10 +6,11 @@
 void createT3InSignalFiboLevelChannelArea() {
 
    if(
-      InpT3MinHighVolumeAreaLevel != 0
-      && InpT3MaxHighVolumeAreaLevel != 0
+      t3MinHighVolumeAreaLevel != 0
+      && t3MaxHighVolumeAreaLevel != 0
+      && t3p4DateTime != 0 && t3p4DateTime < (int) TimeCurrent()
    ) {
-      createChannel(T3_IN_SIGNAL_FIBO_LEVEL_AREA, t3p4DateTime, InpT3MinHighVolumeAreaLevel, iTime(Symbol(), PERIOD_CURRENT, 0), InpT3MinHighVolumeAreaLevel, t3p4DateTime, InpT3MaxHighVolumeAreaLevel, InpT3InSignalAreaColor);
+      createChannel(T3_IN_SIGNAL_FIBO_LEVEL_AREA, t3p3DateTime, t3MinHighVolumeAreaLevel, iTime(Symbol(), PERIOD_CURRENT, 0), t3MinHighVolumeAreaLevel, t3p3DateTime, t3MaxHighVolumeAreaLevel, InpT3InSignalAreaColor);
    }
 }
 

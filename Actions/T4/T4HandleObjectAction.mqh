@@ -16,6 +16,7 @@ void t4HandleObjectsInitAction() {
    createT4RegressionChannel();
    createT4RegressionChannelLevels();
    createT4FiboRetracement();
+   createT4HighVolumeAreaTrendLines();
    createT4InSignalFiboLevelChannelArea();
    createt4InSignalRegressionChannelArea();
 
@@ -130,77 +131,58 @@ void t4HandleObjectsAction() {
       if(InpT4DisableTradabelButtonStateAfterClose == true) t4DisableTradeableButton(t4DisableTradeableButtonReason);
       deleteTrendLine(T4_STOP_LOSS_TLINE);
    }
-
-// T4 LONG
-   if(t3HighestHighVLineDateTime != 0 && t4LowestLowVLineDateTime == 0) {
-      datetime highestHighDateTimeLocal = iTime(Symbol(), Period(), iHighest(Symbol(), Period(), MODE_HIGH,  iBarShift(Symbol(), Period(), t3HighestHighVLineDateTime) + 1));
-      if(t4p4DateTime != highestHighDateTimeLocal) {
-         t4p4DateTime = highestHighDateTimeLocal;
-         t4p4ValueHigh = iHigh(Symbol(), PERIOD_CURRENT, iBarShift(Symbol(), PERIOD_CURRENT, t4p4DateTime));
-         t4p4ValueLow = iLow(Symbol(), PERIOD_CURRENT, iBarShift(Symbol(), PERIOD_CURRENT, t4p4DateTime));
-         createT4P4VLine(highestHighDateTimeLocal);
-      }
-   }
-
-// T4 SHORT
-   if(t3LowestLowVLineDateTime != 0 && t4HighestHighVLineDateTime == 0) {
-      datetime lowestLowDateTimeLocal = iTime(Symbol(), Period(), iLowest(Symbol(), Period(), MODE_LOW,  iBarShift(Symbol(), Period(), t3LowestLowVLineDateTime) + 1));
-      if(t4p4DateTime != lowestLowDateTimeLocal) {
-         t4p4DateTime = lowestLowDateTimeLocal;
-         t4p4ValueHigh = iHigh(Symbol(), PERIOD_CURRENT, iBarShift(Symbol(), PERIOD_CURRENT, t4p4DateTime));
-         t4p4ValueLow = iLow(Symbol(), PERIOD_CURRENT, iBarShift(Symbol(), PERIOD_CURRENT, t4p4DateTime));
-         createT4P4VLine(lowestLowDateTimeLocal);
-      }
-   }
-
-}
-
-//+------------------------------------------------------------------+
-//|                                                                  |
-//+------------------------------------------------------------------+
-void getT4TrendDirection() {
-   if(t4p1ValueHigh != 0 && t4p2ValueHigh != 0) {
-      if(t4p1ValueHigh < t4p2ValueHigh) t4trendDirection = TREND_DIRECTION_LONG;
-      if(t4p1ValueHigh > t4p2ValueHigh) t4trendDirection = TREND_DIRECTION_SHORT;
-   }
-}
-
-string getT4TrendDirectionString() {
-
-   string trendDirectionString = "ROTATION";
-
-   if(t4trendDirection == TREND_DIRECTION_LONG) trendDirectionString = "LONG";
-   if(t4trendDirection == TREND_DIRECTION_SHORT) trendDirectionString = "SHORT";
-
-   return trendDirectionString;
 }
 
 //+------------------------------------------------------------------+
 //|                                                                  |
 //+------------------------------------------------------------------+
 double getT4P1HighLowValueByTrendDirection() {
-   return (t4trendDirection == TREND_DIRECTION_LONG) ? t4p1ValueLow : t4p1ValueHigh;
+   double returnValue = 0;
+   if(t4p1ValueLow != 0 && t4p2ValueLow != 0) {
+      returnValue = (t4p1ValueLow < t4p2ValueLow) ? t4p1ValueLow : t4p1ValueHigh;
+   }
+   return returnValue;
 }
 
 //+------------------------------------------------------------------+
 //|                                                                  |
 //+------------------------------------------------------------------+
 double getT4P2HighLowValueByTrendDirection() {
-   return (t4trendDirection == TREND_DIRECTION_LONG) ? t4p2ValueHigh : t4p2ValueLow;
+   double returnValue = 0;
+   if(t4p1ValueLow != 0 && t4p2ValueLow != 0) {
+      returnValue = (t4p1ValueLow > t4p2ValueLow) ? t4p2ValueLow : t4p2ValueHigh;
+   }
+   return returnValue;
 }
 
 //+------------------------------------------------------------------+
 //|                                                                  |
 //+------------------------------------------------------------------+
 double getT4P3HighLowValueByTrendDirection() {
-   return (t4trendDirection == TREND_DIRECTION_LONG) ? t4p3ValueLow : t4p3ValueHigh;
+   double returnValue = 0;
+   if(t4p1ValueLow != 0 && t4p2ValueLow != 0) {
+      returnValue = (t4p1ValueLow < t4p2ValueLow) ? t4p3ValueLow : t4p3ValueHigh;
+   }
+   return returnValue;
 }
 
 //+------------------------------------------------------------------+
 //|                                                                  |
 //+------------------------------------------------------------------+
 double getT4P4HighLowValueByTrendDirection() {
-   return (t4trendDirection == TREND_DIRECTION_LONG) ? t4p4ValueHigh : t4p4ValueLow;
+   double returnValue = 0;
+   if(t4p1ValueLow != 0 && t4p2ValueLow != 0) {
+      returnValue = (t4p1ValueLow > t4p2ValueLow) ? t4p4ValueLow : t4p4ValueHigh;
+   }
+   return returnValue;
+}
+
+double getT4P5HighLowValueByTrendDirection() {
+   double returnValue = 0;
+   if(t4p1ValueLow != 0 && t4p2ValueLow != 0) {
+      returnValue = (t4p1ValueLow < t4p2ValueLow) ? t4p5ValueLow : t4p5ValueHigh;
+   }
+   return returnValue;
 }
 //+------------------------------------------------------------------+
 

@@ -34,7 +34,7 @@ int               InpT3AlertOnRegressionChannelLevel = 0;
 int               InpT3MinRegressionChannelLevel = 0; // T3 Min RegressionChannel
 int               InpT3MaxRegressionChannelLevel = 0; // T3 Max RegressionChannel
 double            InpT3StopLossLineOffsetMulti = 1.1; // T3 StopLossLine Multi
-double            InpT3StopLossMarketOffsetMulti = 1.2; // T3 StopLossMarket Multi
+double            InpT3StopLossMarketOffsetMulti = 2.0; // T3 StopLossMarket Multi
 int               InpT3ChannelEndShift = 10; // T3 Anzahl Candles Offset RegressionChannel
 bool              InpT3DisableTradabelButtonStateAfterClose = true; // nach Close Button OFF
 long              InpT3MagicNumber = 1619769103; // T3 MagicNumber
@@ -61,6 +61,7 @@ datetime          InpT3p2DateTime = D'2022.01.01 00:00';
 datetime          InpT3p3DateTime = D'2022.01.01 00:00';
 datetime          InpT3p4DateTime = D'2022.01.01 00:00';
 bool              InpT3TesterHideIndicators = false;
+bool              InpDevMode = false;
 bool              InpSendPushOnTester = true;
 
 // ****************  RAUS **************** //

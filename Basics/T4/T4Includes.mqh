@@ -16,6 +16,7 @@
 #include "..\\..\\Actions\\T4\\T4HandleIndicators.mqh"
 #include "..\\..\\Actions\\T4\\T4HandleObjectAction.mqh"
 #include "..\\..\\Actions\\T4\\T4HandleStatesActions.mqh"
+#include "..\\..\\Actions\\T4\\T4HandleTrendDetectionActions.mqh"
 #include "..\\..\\Actions\\T4\\T4InitializeActions.mqh"
 #include "..\\..\\Actions\\T4\\T4OpenBuyActions.mqh"
 #include "..\\..\\Actions\\T4\\T4OpenSellActions.mqh"

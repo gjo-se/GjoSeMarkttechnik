@@ -43,12 +43,14 @@ void initializeT3GlobalsAction() {
    t3LowestLowVLineDateTime = 0;
    t3EndDateTime = 0;
 
+   t3SemiTrendDirection = TREND_DIRECTION_ROTATION;
    t3trendDirection = TREND_DIRECTION_ROTATION;
+   t3MovementLengthPoints = 0;
 
    t3ObjectHasChanged = false;
    t3ObjectHasChanged = false;
 
-   if(MQLInfoInteger(MQL_VISUAL_MODE) == 1 && InpSendPushOnTester == false) {
+   if((MQLInfoInteger(MQL_VISUAL_MODE) == 1 && InpSendPushOnTester == false) || InpDevMode == true) {
       sendAlerts = false;
    } else {
       sendAlerts = true;
@@ -63,6 +65,7 @@ void initializeT3GlobalsAction() {
    t3IsBidStopLossLineOffsetAlertSended = false;
    t3AlertDisableTradeableButtonSended = false;
    t3alertBidIsInSignalAreaSended = false;
+   t3alertBidAgainInHighVolumeAreaSended = false;
    t3alertMAChangedSended = false;
 
 
@@ -76,6 +79,9 @@ void initializeT3GlobalsAction() {
    t3InSignalRegressionChannelAreaMaxStartValue = 0;
    t3InSignalRegressionChannelAreaMaxEndValue = 0;
 
+// HighVolumeArea
+   t3MinHighVolumeAreaLevel = 0;
+   t3MaxHighVolumeAreaLevel = 0;
    t3HighestHighIsInSignalArea = false;
    t3LowestLowIsInSignalArea = false;
 

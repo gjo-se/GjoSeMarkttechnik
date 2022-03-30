@@ -55,6 +55,12 @@ void createT4FiboRetracement() {
             }
          }
 
+        if(level == InpT4MinRegressionForTrendDetectionPercent) {
+           lineWidth = 2;
+           levelColor = clrGreen;
+           t4MinRegressionForTrendDetectionLevel = t4FiboLevelValue;
+        }
+
          if(InpT4MinReEntryFiboRetracmentLevel != 0 && level == InpT4MinReEntryFiboRetracmentLevel) {
 
             lineWidth = 2;
