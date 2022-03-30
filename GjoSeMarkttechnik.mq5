@@ -40,6 +40,7 @@
    3.2.6 fixed missing t3HighestHighIsInSignalArea
    3.3.0 fixed trailingStopMA
    3.3.1 fixed diverse
+   3.4.0 added T4 Trend Logic on Markttechnik
 
 
    ===============
@@ -58,7 +59,7 @@
 #property copyright   "2022, GjoSe"
 #property link        "http://www.gjo-se.com"
 #property description "GjoSe Markttechnik"
-#define   VERSION "3.3.1"
+#define   VERSION "3.4.0"
 #property version VERSION
 #property strict
 

@@ -61,7 +61,7 @@ datetime          InpT3p2DateTime = D'2022.01.01 00:00';
 datetime          InpT3p3DateTime = D'2022.01.01 00:00';
 datetime          InpT3p4DateTime = D'2022.01.01 00:00';
 bool              InpT3TesterHideIndicators = false;
-bool              InpDevMode = true;
+bool              InpDevMode = false;
 bool              InpSendPushOnTester = true;
 
 // ****************  RAUS **************** //
