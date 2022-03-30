@@ -77,6 +77,7 @@ int OnInit() {
       initializeT3IndicatorsAction();
       initializeT4IndicatorsAction();
 
+      rewriteVLineNamesWithText();
       setT3LineValues();
       setT4LineValues();
       getT3TrendDirection();
