@@ -47,23 +47,26 @@ void handleT4TrendDetectionAction() {
 
 void handleT4P2() {
 
+   datetime t4p1DateTimeTmp = 0;
    datetime t4p2DateTimeTmp = 0;
    double   t4p2ValueTmp = 0;
    double t4P1P2MovementPoints = 0;
 
-   if(t4p1DateTime != 0
-         && t4p1DateTime < (int)TimeCurrent()
+   (t4p1DateTime != 0) ? t4p1DateTimeTmp = t4p1DateTime : t4p1DateTimeTmp = t3p4DateTime;
+
+   if(t4p1DateTimeTmp != 0
+         && t4p1DateTimeTmp < (int)TimeCurrent()
          && t4p3DateTime == 0
      ) {
 
       if(t4SemiTrendDirection == TREND_DIRECTION_LONG) {
-         t4p2DateTimeTmp = iTime(Symbol(), Period(), iHighest(Symbol(), Period(), MODE_HIGH,  iBarShift(Symbol(), Period(), t4p1DateTime) + 1));
+         t4p2DateTimeTmp = iTime(Symbol(), Period(), iHighest(Symbol(), Period(), MODE_HIGH,  iBarShift(Symbol(), Period(), t4p1DateTimeTmp) + 1));
          t4p2ValueTmp = iHigh(Symbol(), Period(), iBarShift(Symbol(), Period(), t4p2DateTimeTmp));
          t4P1P2MovementPoints = t4p2ValueTmp / Point() - t4p1ValueLow / Point();
       }
 
       if(t4SemiTrendDirection == TREND_DIRECTION_SHORT) {
-         t4p2DateTimeTmp = iTime(Symbol(), Period(), iLowest(Symbol(), Period(), MODE_LOW,  iBarShift(Symbol(), Period(), t4p1DateTime) + 1));
+         t4p2DateTimeTmp = iTime(Symbol(), Period(), iLowest(Symbol(), Period(), MODE_LOW,  iBarShift(Symbol(), Period(), t4p1DateTimeTmp) + 1));
          t4p2ValueTmp = iLow(Symbol(), Period(), iBarShift(Symbol(), Period(), t4p2DateTimeTmp));
          t4P1P2MovementPoints = t4p1ValueHigh / Point() - t4p2ValueTmp / Point();
       }
