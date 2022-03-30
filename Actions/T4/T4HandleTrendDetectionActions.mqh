@@ -168,7 +168,10 @@ void handleT4P5() {
          t4P4P5RegressionPoints = t4p5ValueTmp / Point() - t4p4ValueLow / Point();
       }
 
-      if(t4P4P5RegressionPoints > (t4P3P4MovementPoints * InpT4MinRegressionForTrendDetectionPercent / 100)) createT4P5VLine(t4p5DateTimeTmp);
+      if(t4P4P5RegressionPoints > (t4P3P4MovementPoints * InpT4MinRegressionForTrendDetectionPercent / 100)){
+        createT4P5VLine(t4p5DateTimeTmp);
+        if(t3trendDirection == t4trendDirection && t4AlertT4P5CreatedSended == false) t4AlertT4P5CreatedAction();
+      }
    }
 }
 
