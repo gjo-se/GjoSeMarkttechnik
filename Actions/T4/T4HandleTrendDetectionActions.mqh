@@ -236,13 +236,13 @@ void handleT4BuildNewTrend() {
             t4p3DateTimeTmp = t4p3DateTime;
             t4p4DateTimeTmp = t4p4DateTime;
             t4p5DateTimeTmp = t4p5DateTime;
-            resetT4Trend();
 
             createT4P1VLine(t4p3DateTimeTmp);
             createT4P2VLine(t4p4DateTimeTmp);
             createT4P3VLine(t4p5DateTimeTmp);
 
             if(t4AlertT4BuildNewTrendSended == false) t4AlertT4BuildNewTrendAction();
+            resetT4Trend();
          }
       }
 
@@ -256,13 +256,13 @@ void handleT4BuildNewTrend() {
             t4p3DateTimeTmp = t4p3DateTime;
             t4p4DateTimeTmp = t4p4DateTime;
             t4p5DateTimeTmp = t4p5DateTime;
-            resetT4Trend();
 
             createT4P1VLine(t4p3DateTimeTmp);
             createT4P2VLine(t4p4DateTimeTmp);
             createT4P3VLine(t4p5DateTimeTmp);
 
             if(t4AlertT4BuildNewTrendSended == false) t4AlertT4BuildNewTrendAction();
+            resetT4Trend();
          }
       }
 
@@ -291,10 +291,10 @@ void handleT4TrendBrokenOnP1() {
          if(Bid() < t4p1ValueLow) {
             t4p2DateTimeTmp = t4p2DateTime;
             t4p3DateTimeTmp = t4p3DateTime;
-            resetT4Trend();
             createT4P1VLine(t4p2DateTimeTmp);
             createT4P2VLine(t4p3DateTimeTmp);
             if(t4AlertT4TrendBrokenSended == false) t4AlertT4TrendBrokenAction();
+            resetT4Trend();
          }
       }
 
@@ -302,10 +302,10 @@ void handleT4TrendBrokenOnP1() {
          if(Bid() > t4p1ValueHigh) {
             t4p2DateTimeTmp = t4p2DateTime;
             t4p3DateTimeTmp = t4p3DateTime;
-            resetT4Trend();
             createT4P1VLine(t4p2DateTimeTmp);
             createT4P2VLine(t4p3DateTimeTmp);
             if(t4AlertT4TrendBrokenSended == false) t4AlertT4TrendBrokenAction();
+            resetT4Trend();
          }
       }
    }
@@ -328,10 +328,10 @@ void handleT4TrendBrokenOnP3() {
          if(Bid() < t4p3ValueLow) {
             t4p4DateTimeTmp = t4p4DateTime;
             t4p5DateTimeTmp = t4p5DateTime;
-            resetT4Trend();
             createT4P1VLine(t4p4DateTimeTmp);
             createT4P2VLine(t4p5DateTimeTmp);
             if(t4AlertT4TrendBrokenSended == false) t4AlertT4TrendBrokenAction();
+            resetT4Trend();
          }
       }
 
@@ -339,10 +339,10 @@ void handleT4TrendBrokenOnP3() {
          if(Bid() > t4p3ValueHigh) {
             t4p4DateTimeTmp = t4p4DateTime;
             t4p5DateTimeTmp = t4p5DateTime;
-            resetT4Trend();
             createT4P1VLine(t4p4DateTimeTmp);
             createT4P2VLine(t4p5DateTimeTmp);
             if(t4AlertT4TrendBrokenSended == false) t4AlertT4TrendBrokenAction();
+            resetT4Trend();
          }
       }
    }
@@ -362,6 +362,13 @@ void resetT4Trend() {
    deleteTrendLine(T4_TRENDLINE + "P2-P3");
    deleteTrendLine(T4_TRENDLINE + "P3-P4");
    deleteTrendLine(T4_TRENDLINE + "P4-P5");
+
+   t4AlertT4P2CreatedSended = false;
+   t4AlertT4P3CreatedSended = false;
+   t4AlertT4P4CreatedSended = false;
+   t4AlertT4P5CreatedSended = false;
+   t4AlertT4TrendBrokenSended = false;
+   t4AlertT4BuildNewTrendSended = false;
 }
 
 //+------------------------------------------------------------------+
