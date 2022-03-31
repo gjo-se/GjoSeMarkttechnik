@@ -153,6 +153,7 @@ void handleT4P4() {
                && t4p4ValueTmp > t4p2ValueHigh
            ) {
             createT4P4VLine(t4p4DateTimeTmp);
+            getT4TrendDirection();
             if(t4AlertT4P4CreatedSended == false) t4AlertT4P4CreatedAction();
          }
       }
@@ -168,6 +169,7 @@ void handleT4P4() {
                && t4p4ValueTmp < t4p2ValueLow
            ) {
             createT4P4VLine(t4p4DateTimeTmp);
+            getT4TrendDirection();
             if(t4AlertT4P4CreatedSended == false) t4AlertT4P4CreatedAction();
          }
       }
@@ -357,6 +359,7 @@ void resetT4Trend() {
    deleteVLine(T4_P4_VLINE);
    deleteVLine(T4_P5_VLINE);
    setT4LineValues();
+   getT4TrendDirection();
 
    deleteTrendLine(T4_TRENDLINE + "P1-P2");
    deleteTrendLine(T4_TRENDLINE + "P2-P3");
