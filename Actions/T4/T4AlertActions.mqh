@@ -23,6 +23,33 @@ void t4AlertT4BuildNewTrendAction() {
    }
 }
 
+void t4AlertT4P2CreatedAction() {
+   if(sendAlerts == true) {
+      string message = Symbol() + ": " + "T4 T4P2 Created";
+      Alert(message);
+      if(!SendNotification(message)) Alert("Cannot Push " + message, GetLastError());
+      t4AlertT4P2CreatedSended = true;
+   }
+}
+
+void t4AlertT4P3CreatedAction() {
+   if(sendAlerts == true) {
+      string message = Symbol() + ": " + "T4 T4P3 Created";
+      Alert(message);
+      if(!SendNotification(message)) Alert("Cannot Push " + message, GetLastError());
+      t4AlertT4P3CreatedSended = true;
+   }
+}
+
+void t4AlertT4P4CreatedAction() {
+   if(sendAlerts == true) {
+      string message = Symbol() + ": " + "T4 T4P4 Created";
+      Alert(message);
+      if(!SendNotification(message)) Alert("Cannot Push " + message, GetLastError());
+      t4AlertT4P4CreatedSended = true;
+   }
+}
+
 void t4AlertT4P5CreatedAction() {
    if(sendAlerts == true) {
       string message = Symbol() + ": " + "T4 T4P5 Created";
@@ -150,6 +177,12 @@ void t4CommentAction(string pVersion) {
       t4comment += "\n";
       t4comment += "StopLossLineLevel: " + DoubleToString(t4StopLossLineLevel, Digits()) + "\n";
       if(outSideBarDateTime != 0) t4comment += "OutSideBar: " + TimeToString(outSideBarDateTime) + "\n";
+      t4comment += "\n";
+      t4comment += "T4-P1: " + TimeToString(t4p1DateTime) + " HIGH: " + DoubleToString(t4p1ValueHigh, Digits()) +  " LOW: " + DoubleToString(t4p1ValueLow, Digits()) + "\n";
+      t4comment += "T4-P2: " + TimeToString(t4p2DateTime) + " HIGH: " + DoubleToString(t4p2ValueHigh, Digits()) +  " LOW: " + DoubleToString(t4p2ValueLow, Digits()) + "\n";
+      t4comment += "T4-P3: " + TimeToString(t4p3DateTime) + " HIGH: " + DoubleToString(t4p3ValueHigh, Digits()) +  " LOW: " + DoubleToString(t4p3ValueLow, Digits()) + "\n";
+      t4comment += "T4-P4: " + TimeToString(t4p4DateTime) + " HIGH: " + DoubleToString(t4p4ValueHigh, Digits()) +  " LOW: " + DoubleToString(t4p4ValueLow, Digits()) + "\n";
+      t4comment += "T4-P5: " + TimeToString(t4p5DateTime) + " HIGH: " + DoubleToString(t4p5ValueHigh, Digits()) +  " LOW: " + DoubleToString(t4p5ValueLow, Digits()) + "\n";
    }
 }
 //+------------------------------------------------------------------+

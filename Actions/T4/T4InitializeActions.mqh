@@ -55,6 +55,9 @@ void initializeT4GlobalsAction() {
    t4alertMAChangedSended = false;
    t4AlertT4TrendBrokenSended = false;
    t4AlertT4BuildNewTrendSended = false;
+   t4AlertT4P2CreatedSended = false;
+   t4AlertT4P3CreatedSended = false;
+   t4AlertT4P4CreatedSended = false;
    t4AlertT4P5CreatedSended = false;
 
    t4InSignalFiboLevelAreaMinStartValue = 0;
