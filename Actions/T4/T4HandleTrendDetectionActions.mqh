@@ -311,20 +311,33 @@ void handleT4TrendBrokenOnP3() {
 //+------------------------------------------------------------------+
 void resetT4Trend() {
 
+   deleteVLine(T4_P1_VLINE);
+   t4p1DateTime = 0;
+   t4p1ValueHigh = 0;
+   t4p1ValueLow = 0;
+
    deleteVLine(T4_P2_VLINE);
    t4p2DateTime = 0;
+   t4p2ValueHigh = 0;
+   t4p2ValueLow = 0;
    deleteTrendLine(T4_TRENDLINE + "P1-P2");
 
    deleteVLine(T4_P3_VLINE);
    t4p3DateTime = 0;
+   t4p3ValueHigh = 0;
+   t4p3ValueLow = 0;
    deleteTrendLine(T4_TRENDLINE + "P2-P3");
 
    deleteVLine(T4_P4_VLINE);
    t4p4DateTime = 0;
+   t4p4ValueHigh = 0;
+   t4p4ValueLow = 0;
    deleteTrendLine(T4_TRENDLINE + "P3-P4");
 
    deleteVLine(T4_P5_VLINE);
    t4p5DateTime = 0;
+   t4p5ValueHigh = 0;
+   t4p5ValueLow = 0;
    deleteTrendLine(T4_TRENDLINE + "P4-P5");
 }
 
