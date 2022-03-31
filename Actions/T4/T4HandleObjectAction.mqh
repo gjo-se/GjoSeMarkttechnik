@@ -46,16 +46,13 @@ void t4HandleObjectsAction() {
             if(localT4LowestLowValue != 0) {
                t4LowestLowValue = localT4LowestLowValue;
                double minRegressionPoints = (getT4P4HighLowValueByTrendDirection() / Point() - t4LowestLowValue / Point()) * InpT4MinRegressionPercent / 100;
-               t4LongEntryValue = t4LowestLowValue + minRegressionPoints * Point();
                createT4LowestLowTrendLine();
-               createT4LongEntryTrendLine();
                if(buyT4PositionIsOpenState == false) createT4OrderGridTrendLines();
             }
          }
 
          if(t4LowestLowDateTime == 0 || maxT4BuyPositionsAreOpenState == true) {
             deleteTrendLine(T4_LOWEST_LOW_TLINE);
-            deleteTrendLine(T4_LONG_ENTRY_TLINE);
             deleteTrendLineLike(T4_ORDER_GRID_LIMIT_TLINE);
             deleteTrendLineLike(T4_ORDER_GRID_STOP_TLINE);
          }
@@ -76,16 +73,13 @@ void t4HandleObjectsAction() {
             if(localT4HighestHighValue != 0) {
                t4HighestHighValue = localT4HighestHighValue;
                double minRegressionPoints = (t4HighestHighValue / Point() - getT4P4HighLowValueByTrendDirection() / Point()) * InpT4MinRegressionPercent / 100;
-               t4ShortEntryValue = t4HighestHighValue - minRegressionPoints * Point();
                createT4HighestHighTrendLine();
-               createT4ShortEntryTrendLine();
                if(sellT4PositionIsOpenState == false) createT4OrderGridTrendLines();
             }
          }
 
          if(t4HighestHighDateTime == 0 || maxT4SellPositionsAreOpenState == true) {
             deleteTrendLine(T4_HIGHEST_HIGH_TLINE);
-            deleteTrendLine(T4_SHORT_ENTRY_TLINE);
             deleteTrendLineLike(T4_ORDER_GRID_LIMIT_TLINE);
             deleteTrendLineLike(T4_ORDER_GRID_STOP_TLINE);
          }
@@ -177,6 +171,9 @@ double getT4P4HighLowValueByTrendDirection() {
    return returnValue;
 }
 
+//+------------------------------------------------------------------+
+//|                                                                  |
+//+------------------------------------------------------------------+
 double getT4P5HighLowValueByTrendDirection() {
    double returnValue = 0;
    if(t4p1ValueLow != 0 && t4p2ValueLow != 0) {

@@ -241,6 +241,23 @@ void OnChartEvent(const int id,
 
          createT4InSignalFiboLevelChannelArea();
       }
+
+      if(sparam == T4_LONG_ENTRY_TLINE || sparam == T4_SHORT_ENTRY_TLINE) {
+         if(ObjectFind(ChartID(), T4_LONG_ENTRY_TLINE) >= 0) {
+            t4LongEntryValue = getTrendlineLevelByText(T4_LONG_ENTRY_TLINE, PERIOD_CURRENT, Symbol(), ChartID());
+            ObjectSetString(ChartID(), T4_LONG_ENTRY_TLINE, OBJPROP_TEXT, T4_LONG_ENTRY_TLINE + ": " + DoubleToString(t4LongEntryValue, Digits()));
+            ObjectSetInteger(ChartID(), T4_LONG_ENTRY_TLINE, OBJPROP_TIME, 0, t4p3DateTime);
+            ObjectSetDouble(ChartID(), T4_LONG_ENTRY_TLINE, OBJPROP_PRICE, 0, t4LongEntryValue);
+            ObjectSetDouble(ChartID(), T4_LONG_ENTRY_TLINE, OBJPROP_PRICE, 1, t4LongEntryValue);
+         }
+         if(ObjectFind(ChartID(), T4_SHORT_ENTRY_TLINE) >= 0) {
+            t4ShortEntryValue = getTrendlineLevelByText(T4_SHORT_ENTRY_TLINE, PERIOD_CURRENT, Symbol(), ChartID());
+            ObjectSetString(ChartID(), T4_SHORT_ENTRY_TLINE, OBJPROP_TEXT, T4_SHORT_ENTRY_TLINE + ": " + DoubleToString(t4ShortEntryValue, Digits()));
+            ObjectSetInteger(ChartID(), T4_SHORT_ENTRY_TLINE, OBJPROP_TIME, 0, t4p3DateTime);
+            ObjectSetDouble(ChartID(), T4_SHORT_ENTRY_TLINE, OBJPROP_PRICE, 0, t4ShortEntryValue);
+            ObjectSetDouble(ChartID(), T4_SHORT_ENTRY_TLINE, OBJPROP_PRICE, 1, t4ShortEntryValue);
+         }
+      }
    }
 
    if(id == CHARTEVENT_OBJECT_CLICK) {

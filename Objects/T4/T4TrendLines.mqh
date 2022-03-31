@@ -56,8 +56,15 @@ void createT4HighestHighTrendLine() {
 //+------------------------------------------------------------------+
 //|                                                                  |
 //+------------------------------------------------------------------+
-void createT4ShortEntryTrendLine() {
-   createTrendLine(T4_SHORT_ENTRY_TLINE, iTime(Symbol(), Period(), iBarShift(Symbol(), Period(), t4HighestHighDateTime) + 3), t4ShortEntryValue, iTime(Symbol(), Period(), 0), t4ShortEntryValue, InpT4TrendLineColor, 3, STYLE_SOLID, T4_SHORT_ENTRY_TLINE);
+void createT4ShortEntryTrendLine(double pT4ShortEntryLevel) {
+   bool rayLeft = false;
+   bool rayRight = true;
+   long zOrder = 0;
+   bool isBackground = true;
+   bool isSelected = false;
+   bool isSelectable = true;
+
+   createTrendLine(T4_SHORT_ENTRY_TLINE, iTime(Symbol(), Period(), iBarShift(Symbol(), Period(), t3p3DateTime)), pT4ShortEntryLevel, iTime(Symbol(), Period(), 0), pT4ShortEntryLevel, InpT4TrendLineColor, 2, STYLE_SOLID, T4_SHORT_ENTRY_TLINE + ": " + DoubleToString(pT4ShortEntryLevel, Digits()), rayLeft, rayRight, zOrder, isBackground, isSelected, isSelectable);
 }
 
 // LONG
@@ -68,8 +75,15 @@ void createT4LowestLowTrendLine() {
 //+------------------------------------------------------------------+
 //|                                                                  |
 //+------------------------------------------------------------------+
-void createT4LongEntryTrendLine() {
-   createTrendLine(T4_LONG_ENTRY_TLINE, iTime(Symbol(), Period(), iBarShift(Symbol(), Period(), t4LowestLowDateTime) + 3), t4LongEntryValue, iTime(Symbol(), Period(), 0), t4LongEntryValue, InpT4TrendLineColor, 3, STYLE_SOLID, T4_LONG_ENTRY_TLINE);
+void createT4LongEntryTrendLine(double pT4LongEntryLevel) {
+   bool rayLeft = false;
+   bool rayRight = true;
+   long zOrder = 0;
+   bool isBackground = true;
+   bool isSelected = false;
+   bool isSelectable = true;
+
+   createTrendLine(T4_LONG_ENTRY_TLINE, iTime(Symbol(), Period(), iBarShift(Symbol(), Period(), t3p3DateTime)), pT4LongEntryLevel, iTime(Symbol(), Period(), 0), pT4LongEntryLevel, InpT4TrendLineColor, 2, STYLE_SOLID, T4_LONG_ENTRY_TLINE + ": " + DoubleToString(pT4LongEntryLevel, Digits()), rayLeft, rayRight, zOrder, isBackground, isSelected, isSelectable);
 }
 
 //+------------------------------------------------------------------+
