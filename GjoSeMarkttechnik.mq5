@@ -181,6 +181,7 @@ void OnChartEvent(const int id,
                   const string &sparam) {
 
    if(id == CHARTEVENT_OBJECT_DRAG) {
+      rewriteVLineNamesWithText();
       setT3LineValues();
       setT4LineValues();
       getT3TrendDirection();

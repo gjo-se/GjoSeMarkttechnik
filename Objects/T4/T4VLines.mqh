@@ -19,40 +19,85 @@ void setT4LineValues() {
 //|                                                                  |
 //+------------------------------------------------------------------+
 void setT4VLineDateTimes() {
-   t4StartDateTime = getVlineDatetimeByText(T3_P4_VLINE);
+   if(ObjectFind(ChartID(), T4_P1_VLINE) >= 0){
+     t4p1DateTime = (datetime)ObjectGetInteger(ChartID(), T4_P1_VLINE, OBJPROP_TIME);
+   }else{
+     t4p1DateTime = 0;
+   }
+   if(ObjectFind(ChartID(), T4_P2_VLINE) >= 0){
+     t4p2DateTime = (datetime)ObjectGetInteger(ChartID(), T4_P2_VLINE, OBJPROP_TIME);
+   }else{
+     t4p2DateTime = 0;
+   }
+   if(ObjectFind(ChartID(), T4_P3_VLINE) >= 0){
+     t4p3DateTime = (datetime)ObjectGetInteger(ChartID(), T4_P3_VLINE, OBJPROP_TIME);
+   }else{
+     t4p3DateTime = 0;
+   }
+   if(ObjectFind(ChartID(), T4_P4_VLINE) >= 0){
+     t4p4DateTime = (datetime)ObjectGetInteger(ChartID(), T4_P4_VLINE, OBJPROP_TIME);
+   }else{
+     t4p4DateTime = 0;
+   }
+   if(ObjectFind(ChartID(), T4_P5_VLINE) >= 0){
+     t4p5DateTime = (datetime)ObjectGetInteger(ChartID(), T4_P5_VLINE, OBJPROP_TIME);
+   }else{
+     t4p5DateTime = 0;
+   }
+   if(ObjectFind(ChartID(), T4_HH_VLINE) >= 0){
+     t4HighestHighVLineDateTime = (datetime)ObjectGetInteger(ChartID(), T4_HH_VLINE, OBJPROP_TIME);
+   }else{
+     t4HighestHighVLineDateTime = 0;
+   }
+   if(ObjectFind(ChartID(), T4_LL_VLINE) >= 0){
+     t4LowestLowVLineDateTime = (datetime)ObjectGetInteger(ChartID(), T4_LL_VLINE, OBJPROP_TIME);
+   }else{
+     t4LowestLowVLineDateTime = 0;
+   }
 
-   datetime t4p1DateTimeLocal = getVlineDatetimeByText(T4_P1_VLINE);
-   (t4p1DateTimeLocal != 0) ? t4p1DateTime = t4p1DateTimeLocal : t4p1DateTime = t4StartDateTime;
 
-   t4p2DateTime = getVlineDatetimeByText(T4_P2_VLINE);
-   t4p3DateTime = getVlineDatetimeByText(T4_P3_VLINE);
-   t4p4DateTime = getVlineDatetimeByText(T4_P4_VLINE);
-   t4p5DateTime = getVlineDatetimeByText(T4_P5_VLINE);
-   t4HighestHighVLineDateTime = getVlineDatetimeByText(T4_HH_VLINE);
-   t4LowestLowVLineDateTime = getVlineDatetimeByText(T4_LL_VLINE);
 }
 
 void setT4VLineValues() {
 
-   if((int)t4p1DateTime < (int) TimeCurrent()) {
+   if(t4p1DateTime != 0 && (int)t4p1DateTime < (int) TimeCurrent()) {
       t4p1ValueHigh = iHigh(Symbol(), PERIOD_CURRENT, iBarShift(Symbol(), PERIOD_CURRENT, t4p1DateTime));
       t4p1ValueLow = iLow(Symbol(), PERIOD_CURRENT, iBarShift(Symbol(), PERIOD_CURRENT, t4p1DateTime));
+   }else{
+      t4p1ValueHigh = 0;
+      t4p1ValueLow = 0;
    }
-   if((int)t4p2DateTime < (int) TimeCurrent()) {
+
+   if(t4p2DateTime != 0 && (int)t4p2DateTime < (int) TimeCurrent()) {
       t4p2ValueHigh = iHigh(Symbol(), PERIOD_CURRENT, iBarShift(Symbol(), PERIOD_CURRENT, t4p2DateTime));
       t4p2ValueLow = iLow(Symbol(), PERIOD_CURRENT, iBarShift(Symbol(), PERIOD_CURRENT, t4p2DateTime));
+   }else{
+      t4p2ValueHigh = 0;
+      t4p2ValueLow = 0;
    }
-   if((int)t4p3DateTime < (int) TimeCurrent()) {
+
+   if(t4p3DateTime != 0 && (int)t4p3DateTime < (int) TimeCurrent()) {
       t4p3ValueHigh = iHigh(Symbol(), PERIOD_CURRENT, iBarShift(Symbol(), PERIOD_CURRENT, t4p3DateTime));
       t4p3ValueLow = iLow(Symbol(), PERIOD_CURRENT, iBarShift(Symbol(), PERIOD_CURRENT, t4p3DateTime));
+   }else{
+      t4p3ValueHigh = 0;
+      t4p3ValueLow = 0;
    }
-   if((int)t4p4DateTime < (int) TimeCurrent()) {
+
+   if(t4p4DateTime != 0 && (int)t4p4DateTime < (int) TimeCurrent()) {
       t4p4ValueHigh = iHigh(Symbol(), PERIOD_CURRENT, iBarShift(Symbol(), PERIOD_CURRENT, t4p4DateTime));
       t4p4ValueLow = iLow(Symbol(), PERIOD_CURRENT, iBarShift(Symbol(), PERIOD_CURRENT, t4p4DateTime));
+   }else{
+      t4p4ValueHigh = 0;
+      t4p4ValueLow = 0;
    }
-   if((int)t4p5DateTime < (int) TimeCurrent()) {
+
+   if(t4p5DateTime != 0 && (int)t4p5DateTime < (int) TimeCurrent()) {
       t4p5ValueHigh = iHigh(Symbol(), PERIOD_CURRENT, iBarShift(Symbol(), PERIOD_CURRENT, t4p5DateTime));
       t4p5ValueLow = iLow(Symbol(), PERIOD_CURRENT, iBarShift(Symbol(), PERIOD_CURRENT, t4p5DateTime));
+   }else{
+      t4p5ValueHigh = 0;
+      t4p5ValueLow = 0;
    }
 }
 
