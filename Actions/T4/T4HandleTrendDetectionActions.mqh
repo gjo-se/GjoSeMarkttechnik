@@ -68,6 +68,7 @@ void handleT4P2() {
                && t4P1P2MovementPoints > (t3MovementLengthPoints * InpT4MinMovementLengthBasedOnT3MovementPercent / 100)
            ) {
             createT4P2VLine(t4p2DateTimeTmp);
+            getT4TrendDirection();
             if(t4AlertT4P2CreatedSended == false) t4AlertT4P2CreatedAction();
          }
       }
@@ -81,6 +82,7 @@ void handleT4P2() {
                && t4P1P2MovementPoints > (t3MovementLengthPoints * InpT4MinMovementLengthBasedOnT3MovementPercent / 100)
            ) {
             createT4P2VLine(t4p2DateTimeTmp);
+            getT4TrendDirection();
             if(t4AlertT4P2CreatedSended == false) t4AlertT4P2CreatedAction();
          }
       }
@@ -242,6 +244,7 @@ void handleT4BuildNewTrend() {
             createT4P1VLine(t4p3DateTimeTmp);
             createT4P2VLine(t4p4DateTimeTmp);
             createT4P3VLine(t4p5DateTimeTmp);
+            getT4TrendDirection();
             if(t4AlertT4BuildNewTrendSended == false) t4AlertT4BuildNewTrendAction();
          }
       }
@@ -260,6 +263,7 @@ void handleT4BuildNewTrend() {
             createT4P1VLine(t4p3DateTimeTmp);
             createT4P2VLine(t4p4DateTimeTmp);
             createT4P3VLine(t4p5DateTimeTmp);
+            getT4TrendDirection();
             if(t4AlertT4BuildNewTrendSended == false) t4AlertT4BuildNewTrendAction();
          }
       }
@@ -290,6 +294,7 @@ void handleT4TrendBrokenOnP1() {
             resetT4Trend();
             createT4P1VLine(t4p2DateTimeTmp);
             createT4P2VLine(t4p3DateTimeTmp);
+            getT4TrendDirection();
             if(t4AlertT4TrendBrokenSended == false) t4AlertT4TrendBrokenAction();
          }
       }
@@ -301,6 +306,7 @@ void handleT4TrendBrokenOnP1() {
             resetT4Trend();
             createT4P1VLine(t4p2DateTimeTmp);
             createT4P2VLine(t4p3DateTimeTmp);
+            getT4TrendDirection();
             if(t4AlertT4TrendBrokenSended == false) t4AlertT4TrendBrokenAction();
          }
       }
@@ -327,6 +333,7 @@ void handleT4TrendBrokenOnP3() {
             resetT4Trend();
             createT4P1VLine(t4p4DateTimeTmp);
             createT4P2VLine(t4p5DateTimeTmp);
+            getT4TrendDirection();
             if(t4AlertT4TrendBrokenSended == false) t4AlertT4TrendBrokenAction();
          }
       }
@@ -338,6 +345,7 @@ void handleT4TrendBrokenOnP3() {
             resetT4Trend();
             createT4P1VLine(t4p4DateTimeTmp);
             createT4P2VLine(t4p5DateTimeTmp);
+            getT4TrendDirection();
             if(t4AlertT4TrendBrokenSended == false) t4AlertT4TrendBrokenAction();
          }
       }
