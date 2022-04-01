@@ -67,7 +67,11 @@ void createT4ShortEntryTrendLine(double pT4ShortEntryLevel) {
    bool isSelected = false;
    bool isSelectable = true;
 
-   createTrendLine(T4_SHORT_ENTRY_TLINE, iTime(Symbol(), Period(), iBarShift(Symbol(), Period(), t3p3DateTime)), pT4ShortEntryLevel, iTime(Symbol(), Period(), 0), pT4ShortEntryLevel, lineColor, lineWidth, lineStyle, T4_SHORT_ENTRY_TLINE + ": " + DoubleToString(pT4ShortEntryLevel, Digits()), rayLeft, rayRight, zOrder, isBackground, isSelected, isSelectable);
+   string realVolume = DoubleToString(getT4SellVolume(), 2);
+   string verifiedVolume = DoubleToString(VerifyVolume(Symbol(), getT4SellVolume()), 2);
+   string lineText = T4_SHORT_ENTRY_TLINE + ": " + DoubleToString(pT4ShortEntryLevel, Digits()) + " Vol: " + realVolume + " (" + verifiedVolume + ")";
+
+   createTrendLine(T4_SHORT_ENTRY_TLINE, iTime(Symbol(), Period(), iBarShift(Symbol(), Period(), t3p3DateTime)), pT4ShortEntryLevel, iTime(Symbol(), Period(), 0), pT4ShortEntryLevel, lineColor, lineWidth, lineStyle, lineText, rayLeft, rayRight, zOrder, isBackground, isSelected, isSelectable);
 }
 
 // LONG
@@ -89,7 +93,11 @@ void createT4LongEntryTrendLine(double pT4LongEntryLevel) {
    bool isSelected = false;
    bool isSelectable = true;
 
-   createTrendLine(T4_LONG_ENTRY_TLINE, iTime(Symbol(), Period(), iBarShift(Symbol(), Period(), t3p3DateTime)), pT4LongEntryLevel, iTime(Symbol(), Period(), 0), pT4LongEntryLevel, lineColor, lineWidth, lineStyle, T4_LONG_ENTRY_TLINE + ": " + DoubleToString(pT4LongEntryLevel, Digits()), rayLeft, rayRight, zOrder, isBackground, isSelected, isSelectable);
+   string realVolume = DoubleToString(getT4BuyVolume(), 2);
+   string verifiedVolume = DoubleToString(VerifyVolume(Symbol(), getT4BuyVolume()), 2);
+   string lineText = T4_LONG_ENTRY_TLINE + ": " + DoubleToString(pT4LongEntryLevel, Digits()) + " Vol: " + realVolume + " (" + verifiedVolume + ")";
+
+   createTrendLine(T4_LONG_ENTRY_TLINE, iTime(Symbol(), Period(), iBarShift(Symbol(), Period(), t3p3DateTime)), pT4LongEntryLevel, iTime(Symbol(), Period(), 0), pT4LongEntryLevel, lineColor, lineWidth, lineStyle, lineText, rayLeft, rayRight, zOrder, isBackground, isSelected, isSelectable);
 }
 
 //+------------------------------------------------------------------+

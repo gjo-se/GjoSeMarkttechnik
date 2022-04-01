@@ -29,7 +29,7 @@ double getT4SellVolume() {
    double maxPositionRiskValue = 0;
    double positionPointRisk = 0;
 
-   if(t4LongEntryValue != 0 && t4StopLossValue != 0) {
+   if(t4ShortEntryValue != 0 && t4StopLossValue != 0) {
       maxPositionRiskValue = AccountInfoDouble(ACCOUNT_BALANCE) * InpMaxPositionRiskPercent / 100 / InpT4OrderGridCount;
       positionPointRisk = (t4StopLossValue - t4ShortEntryValue) / Point() * getPointValueBySymbol(Symbol());
       t4LotSize = maxPositionRiskValue / positionPointRisk;

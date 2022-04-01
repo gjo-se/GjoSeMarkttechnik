@@ -245,7 +245,10 @@ void OnChartEvent(const int id,
       if(sparam == T4_LONG_ENTRY_TLINE) {
          t4LongEntryValue = ObjectGetDouble(ChartID(), T4_LONG_ENTRY_TLINE, OBJPROP_PRICE, 1);
          if(t4LongEntryValue != 0) {
-            ObjectSetString(ChartID(), T4_LONG_ENTRY_TLINE, OBJPROP_TEXT, T4_LONG_ENTRY_TLINE + ": " + DoubleToString(t4LongEntryValue, Digits()));
+            string realVolume = DoubleToString(getT4BuyVolume(), 2);
+            string verifiedVolume = DoubleToString(VerifyVolume(Symbol(), getT4BuyVolume()), 2);
+            string lineText = T4_LONG_ENTRY_TLINE + ": " + DoubleToString(t4LongEntryValue, Digits()) + " Vol: " + realVolume + " (" + verifiedVolume + ")";
+            ObjectSetString(ChartID(), T4_LONG_ENTRY_TLINE, OBJPROP_TEXT, lineText);
             ObjectSetInteger(ChartID(), T4_LONG_ENTRY_TLINE, OBJPROP_TIME, 0, t3p3DateTime);
             ObjectSetDouble(ChartID(), T4_LONG_ENTRY_TLINE, OBJPROP_PRICE, 0, t4LongEntryValue);
             ObjectSetDouble(ChartID(), T4_LONG_ENTRY_TLINE, OBJPROP_PRICE, 1, t4LongEntryValue);
@@ -254,7 +257,10 @@ void OnChartEvent(const int id,
       if(sparam == T4_SHORT_ENTRY_TLINE) {
          t4ShortEntryValue = ObjectGetDouble(ChartID(), T4_SHORT_ENTRY_TLINE, OBJPROP_PRICE, 1);
          if(t4ShortEntryValue != 0) {
-            ObjectSetString(ChartID(), T4_SHORT_ENTRY_TLINE, OBJPROP_TEXT, T4_SHORT_ENTRY_TLINE + ": " + DoubleToString(t4ShortEntryValue, Digits()));
+            string realVolume = DoubleToString(getT4SellVolume(), 2);
+            string verifiedVolume = DoubleToString(VerifyVolume(Symbol(), getT4SellVolume()), 2);
+            string lineText = T4_SHORT_ENTRY_TLINE + ": " + DoubleToString(t4ShortEntryValue, Digits()) + " Vol: " + realVolume + " (" + verifiedVolume + ")";
+            ObjectSetString(ChartID(), T4_SHORT_ENTRY_TLINE, OBJPROP_TEXT, lineText);
             ObjectSetInteger(ChartID(), T4_SHORT_ENTRY_TLINE, OBJPROP_TIME, 0, t3p3DateTime);
             ObjectSetDouble(ChartID(), T4_SHORT_ENTRY_TLINE, OBJPROP_PRICE, 0, t4ShortEntryValue);
             ObjectSetDouble(ChartID(), T4_SHORT_ENTRY_TLINE, OBJPROP_PRICE, 1, t4ShortEntryValue);
@@ -263,7 +269,19 @@ void OnChartEvent(const int id,
       if(sparam == T4_STOP_LOSS_TLINE) {
          t4StopLossValue = ObjectGetDouble(ChartID(), T4_STOP_LOSS_TLINE, OBJPROP_PRICE, 1);
          if(t4StopLossValue != 0) {
-            ObjectSetString(ChartID(), T4_STOP_LOSS_TLINE, OBJPROP_TEXT, T4_SHORT_ENTRY_TLINE + ": " + DoubleToString(t4StopLossValue, Digits()));
+            if(t4LongEntryValue != 0) {
+               string realVolume = DoubleToString(getT4BuyVolume(), 2);
+               string verifiedVolume = DoubleToString(VerifyVolume(Symbol(), getT4BuyVolume()), 2);
+               string lineText = T4_LONG_ENTRY_TLINE + ": " + DoubleToString(t4LongEntryValue, Digits()) + " Vol: " + realVolume + " (" + verifiedVolume + ")";
+               ObjectSetString(ChartID(), T4_LONG_ENTRY_TLINE, OBJPROP_TEXT, lineText);
+            }
+            if(t4ShortEntryValue != 0) {
+               string realVolume = DoubleToString(getT4SellVolume(), 2);
+               string verifiedVolume = DoubleToString(VerifyVolume(Symbol(), getT4SellVolume()), 2);
+               string lineText = T4_SHORT_ENTRY_TLINE + ": " + DoubleToString(t4ShortEntryValue, Digits()) + " Vol: " + realVolume + " (" + verifiedVolume + ")";
+               ObjectSetString(ChartID(), T4_SHORT_ENTRY_TLINE, OBJPROP_TEXT, lineText);
+            }
+            ObjectSetString(ChartID(), T4_STOP_LOSS_TLINE, OBJPROP_TEXT, T4_STOP_LOSS_TLINE + ": " + DoubleToString(t4StopLossValue, Digits()));
             ObjectSetInteger(ChartID(), T4_STOP_LOSS_TLINE, OBJPROP_TIME, 0, t3p3DateTime);
             ObjectSetDouble(ChartID(), T4_STOP_LOSS_TLINE, OBJPROP_PRICE, 0, t4StopLossValue);
             ObjectSetDouble(ChartID(), T4_STOP_LOSS_TLINE, OBJPROP_PRICE, 1, t4StopLossValue);

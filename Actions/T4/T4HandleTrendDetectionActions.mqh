@@ -201,12 +201,16 @@ void handleT4P5() {
             createT4P5VLine(t4p5DateTimeTmp);
             if(t3trendDirection == t4trendDirection) {
                if(t4AlertT4P5CreatedSended == false) t4AlertT4P5CreatedAction();
+               t4StopLossValue = t4p5ValueTmp;
+               createT4StopLossTrendline(t4StopLossValue);
                if(ObjectFind(ChartID(), T4_LONG_ENTRY_TLINE) < 0) {
                   t4LongEntryValue = t4p4ValueHigh;
                   createT4LongEntryTrendLine(t4LongEntryValue);
                }
-               t4StopLossValue = t4p5ValueTmp;
-               createT4StopLossTrendline(t4StopLossValue);
+               string realVolume = DoubleToString(getT4BuyVolume(), 2);
+               string verifiedVolume = DoubleToString(VerifyVolume(Symbol(), getT4BuyVolume()), 2);
+               string lineText = T4_LONG_ENTRY_TLINE + ": " + DoubleToString(t4LongEntryValue, Digits()) + " Vol: " + realVolume + " (" + verifiedVolume + ")";
+               ObjectSetString(ChartID(), T4_LONG_ENTRY_TLINE, OBJPROP_TEXT, lineText);
             }
          }
       }
@@ -222,12 +226,16 @@ void handleT4P5() {
             createT4P5VLine(t4p5DateTimeTmp);
             if(t3trendDirection == t4trendDirection) {
                if(t4AlertT4P5CreatedSended == false) t4AlertT4P5CreatedAction();
+               t4StopLossValue = t4p5ValueTmp;
+               createT4StopLossTrendline(t4StopLossValue);
                if(ObjectFind(ChartID(), T4_SHORT_ENTRY_TLINE) < 0) {
                   t4ShortEntryValue = t4p4ValueLow;
                   createT4ShortEntryTrendLine(t4ShortEntryValue);
                }
-               t4StopLossValue = t4p5ValueTmp;
-               createT4StopLossTrendline(t4StopLossValue);
+               string realVolume = DoubleToString(getT4SellVolume(), 2);
+               string verifiedVolume = DoubleToString(VerifyVolume(Symbol(), getT4SellVolume()), 2);
+               string lineText = T4_SHORT_ENTRY_TLINE + ": " + DoubleToString(t4ShortEntryValue, Digits()) + " Vol: " + realVolume + " (" + verifiedVolume + ")";
+               ObjectSetString(ChartID(), T4_SHORT_ENTRY_TLINE, OBJPROP_TEXT, lineText);
             }
          }
       }
