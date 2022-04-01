@@ -199,13 +199,15 @@ void handleT4P5() {
          if(Bid() <= t4p5ValueTmp
                && t4P4P5RegressionPoints > (t4P3P4MovementPoints * InpT4MinRegressionForTrendDetectionPercent / 100)) {
             createT4P5VLine(t4p5DateTimeTmp);
-//            if(t3trendDirection == t4trendDirection){
-            if(t4AlertT4P5CreatedSended == false) t4AlertT4P5CreatedAction();
-            if(ObjectFind(ChartID(), T4_LONG_ENTRY_TLINE) < 0) {
-               t4LongEntryValue = t4p4ValueHigh;
-               createT4LongEntryTrendLine(t4LongEntryValue);
+            if(t3trendDirection == t4trendDirection) {
+               if(t4AlertT4P5CreatedSended == false) t4AlertT4P5CreatedAction();
+               if(ObjectFind(ChartID(), T4_LONG_ENTRY_TLINE) < 0) {
+                  t4LongEntryValue = t4p4ValueHigh;
+                  createT4LongEntryTrendLine(t4LongEntryValue);
+               }
+               t4StopLossValue = t4p5ValueTmp;
+               createT4StopLossTrendline(t4StopLossValue);
             }
-//            }
          }
       }
 
@@ -218,16 +220,16 @@ void handleT4P5() {
          if(Bid() >= t4p5ValueTmp
                && t4P4P5RegressionPoints > (t4P3P4MovementPoints * InpT4MinRegressionForTrendDetectionPercent / 100)) {
             createT4P5VLine(t4p5DateTimeTmp);
-//            if(t3trendDirection == t4trendDirection){
-            if(t4AlertT4P5CreatedSended == false) t4AlertT4P5CreatedAction();
-            if(ObjectFind(ChartID(), T4_SHORT_ENTRY_TLINE) < 0) {
-               t4ShortEntryValue = t4p4ValueLow;
-               createT4ShortEntryTrendLine(t4ShortEntryValue);
+            if(t3trendDirection == t4trendDirection) {
+               if(t4AlertT4P5CreatedSended == false) t4AlertT4P5CreatedAction();
+               if(ObjectFind(ChartID(), T4_SHORT_ENTRY_TLINE) < 0) {
+                  t4ShortEntryValue = t4p4ValueLow;
+                  createT4ShortEntryTrendLine(t4ShortEntryValue);
+               }
+               t4StopLossValue = t4p5ValueTmp;
+               createT4StopLossTrendline(t4StopLossValue);
             }
-
-//            }
          }
-
       }
    }
 }

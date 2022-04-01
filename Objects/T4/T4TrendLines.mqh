@@ -93,6 +93,9 @@ void createT4LongEntryTrendLine(double pT4LongEntryLevel) {
 //|                                                                  |
 //+------------------------------------------------------------------+
 void createT4StopLossTrendline(double pStopLossLevel) {
+   int lineWidth = 1;
+   color lineColor = clrIndianRed;
+   ENUM_LINE_STYLE lineStyle = STYLE_DASHDOT;
    int barShift = 10;
    bool rayLeft = false;
    bool rayRight = true;
@@ -101,7 +104,7 @@ void createT4StopLossTrendline(double pStopLossLevel) {
    bool isSelected = false;
    bool isSelectable = true;
 
-   createTrendLine(T4_STOP_LOSS_TLINE, iTime(Symbol(), Period(), barShift), pStopLossLevel, iTime(Symbol(), Period(), 0), pStopLossLevel, InpT4TrendLineColor, 2, STYLE_SOLID, T4_STOP_LOSS_TLINE, rayLeft, rayRight, zOrder, isBackground, isSelected, isSelectable);
+   createTrendLine(T4_STOP_LOSS_TLINE, iTime(Symbol(), Period(), iBarShift(Symbol(), Period(), t3p3DateTime)), pStopLossLevel, iTime(Symbol(), Period(), 0), pStopLossLevel, lineColor, lineWidth, lineStyle, T4_STOP_LOSS_TLINE + ": " + DoubleToString(pStopLossLevel, Digits()), rayLeft, rayRight, zOrder, isBackground, isSelected, isSelectable);
 }
 
 //+------------------------------------------------------------------+

@@ -5,6 +5,9 @@
 //+------------------------------------------------------------------+
 
 
+//+------------------------------------------------------------------+
+//|                                                                  |
+//+------------------------------------------------------------------+
 void t4AlertT4TrendBrokenAction() {
    if(sendAlerts == true) {
       string message = Symbol() + ": " + "T4 Bid Crossed T4P3 - T4 brocken";
@@ -14,6 +17,9 @@ void t4AlertT4TrendBrokenAction() {
    }
 }
 
+//+------------------------------------------------------------------+
+//|                                                                  |
+//+------------------------------------------------------------------+
 void t4AlertT4BuildNewTrendAction() {
    if(sendAlerts == true) {
       string message = Symbol() + ": " + "T4 Bid Crossed T4P4 - T4 Build New Trend";
@@ -23,6 +29,9 @@ void t4AlertT4BuildNewTrendAction() {
    }
 }
 
+//+------------------------------------------------------------------+
+//|                                                                  |
+//+------------------------------------------------------------------+
 void t4AlertT4P2CreatedAction() {
    if(sendAlerts == true) {
       string message = Symbol() + ": " + "T4 T4P2 Created";
@@ -32,6 +41,9 @@ void t4AlertT4P2CreatedAction() {
    }
 }
 
+//+------------------------------------------------------------------+
+//|                                                                  |
+//+------------------------------------------------------------------+
 void t4AlertT4P3CreatedAction() {
    if(sendAlerts == true) {
       string message = Symbol() + ": " + "T4 T4P3 Created";
@@ -41,6 +53,9 @@ void t4AlertT4P3CreatedAction() {
    }
 }
 
+//+------------------------------------------------------------------+
+//|                                                                  |
+//+------------------------------------------------------------------+
 void t4AlertT4P4CreatedAction() {
    if(sendAlerts == true) {
       string message = Symbol() + ": " + "T4 T4P4 Created";
@@ -50,6 +65,9 @@ void t4AlertT4P4CreatedAction() {
    }
 }
 
+//+------------------------------------------------------------------+
+//|                                                                  |
+//+------------------------------------------------------------------+
 void t4AlertT4P5CreatedAction() {
    if(sendAlerts == true) {
       string message = Symbol() + ": " + "T4 T4P5 Created";
@@ -108,9 +126,9 @@ void t4AlertMAChangedAction() {
 //+------------------------------------------------------------------+
 void t4AlertOnBidStopLossLineOffset() {
 
-   if(sendAlerts == true && t4StopLossLineLevel != 0 && InpT4AlertOnBidStopLossLineOffset != 0) {
+   if(sendAlerts == true && t4StopLossValue != 0 && InpT4AlertOnBidStopLossLineOffset != 0) {
       if(t4trendDirection == TREND_DIRECTION_LONG) {
-         if(Bid() > t4StopLossLineLevel + InpT4AlertOnBidStopLossLineOffset * Point()) {
+         if(Bid() > t4StopLossValue + InpT4AlertOnBidStopLossLineOffset * Point()) {
             if(t4IsBidStopLossLineOffsetAlertSendable == true && t4IsBidStopLossLineOffsetAlertSended == false) {
                string message = Symbol() + ": LONG-BidStopLossLineOffset ";
                Alert(message);
@@ -122,7 +140,7 @@ void t4AlertOnBidStopLossLineOffset() {
          }
       }
       if(t4trendDirection == TREND_DIRECTION_SHORT) {
-         if(Bid() < t4StopLossLineLevel - InpT4AlertOnBidStopLossLineOffset * Point()) {
+         if(Bid() < t4StopLossValue - InpT4AlertOnBidStopLossLineOffset * Point()) {
             if(t4IsBidStopLossLineOffsetAlertSendable == true && t4IsBidStopLossLineOffsetAlertSended == false) {
                string message = Symbol() + ": SHORT-BidStopLossLineOffset ";
                Alert(message);
@@ -175,7 +193,7 @@ void t4CommentAction(string pVersion) {
       t4comment += "t4CurrentTrailingStopMAPeriod: " + IntegerToString(t4TrailingStopMAActive) + "\n";
       if(t4CurrentBidMAOffset > 0) t4comment += " CurrentOffset: " + DoubleToString(t4CurrentBidMAOffset, 0) + "\n";
       t4comment += "\n";
-      t4comment += "StopLossLineLevel: " + DoubleToString(t4StopLossLineLevel, Digits()) + "\n";
+      t4comment += "t4StopLossValue: " + DoubleToString(t4StopLossValue, Digits()) + "\n";
       if(outSideBarDateTime != 0) t4comment += "OutSideBar: " + TimeToString(outSideBarDateTime) + "\n";
       t4comment += "\n";
       t4comment += "T4-P1: " + TimeToString(t4p1DateTime) + " HIGH: " + DoubleToString(t4p1ValueHigh, Digits()) +  " LOW: " + DoubleToString(t4p1ValueLow, Digits()) + "\n";

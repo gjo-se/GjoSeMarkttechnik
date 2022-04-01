@@ -126,7 +126,7 @@ double      t4LongEntryValue;
 double      t4OrderGridLimitOrderValuesArray[];
 double      t4OrderGridStopOrderValuesArray[];
 
-double      t4StopLossLineLevel;
+double      t4StopLossValue;
 double      t4TrailingStopLevel;
 
 double      t4RegressionChannelStopLossLineLevel;
