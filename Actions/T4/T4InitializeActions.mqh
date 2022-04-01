@@ -105,6 +105,21 @@ void initializeT4GlobalsAction() {
    t4LotSize = 0;
    t4TrailingStopLevel = 0;
    t4RegressionChannelStopLossLineLevel = 0;
+   
+   t4ScreenshotT4P2CreatedBefore = false;
+   t4ScreenshotT4P2CreatedAfter = false;
+   t4ScreenshotT4P3CreatedBefore = false;
+   t4ScreenshotT4P3CreatedAfter = false;
+   t4ScreenshotT4P4CreatedBefore = false;
+   t4ScreenshotT4P4CreatedAfter = false;
+   t4ScreenshotT4P5CreatedBefore = false;
+   t4ScreenshotT4P5CreatedAfter = false;
+   t4ScreenshotT4BuildNewTrendBefore = false;
+   t4ScreenshotT4BuildNewTrendAfter = false;
+   t4ScreenshotT4TrendBrokenOnP1Before = false;
+   t4ScreenshotT4TrendBrokenOnP1After = false;
+   t4ScreenshotT4TrendBrokenOnP3Before = false;
+   t4ScreenshotT4TrendBrokenOnP3After = false;      
 }
 
 //+------------------------------------------------------------------+

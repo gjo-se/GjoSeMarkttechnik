@@ -132,4 +132,20 @@ double      t4TrailingStopLevel;
 
 double      t4RegressionChannelStopLossLineLevel;
 
+bool        t4ScreenshotT4P2CreatedBefore;
+bool        t4ScreenshotT4P2CreatedAfter;
+bool        t4ScreenshotT4P3CreatedBefore;
+bool        t4ScreenshotT4P3CreatedAfter;
+bool        t4ScreenshotT4P4CreatedBefore;
+bool        t4ScreenshotT4P4CreatedAfter;
+bool        t4ScreenshotT4P5CreatedBefore;
+bool        t4ScreenshotT4P5CreatedAfter;
+bool        t4ScreenshotT4BuildNewTrendBefore;
+bool        t4ScreenshotT4BuildNewTrendAfter;
+bool        t4ScreenshotT4TrendBrokenOnP1Before;
+bool        t4ScreenshotT4TrendBrokenOnP1After;
+bool        t4ScreenshotT4TrendBrokenOnP3Before;
+bool        t4ScreenshotT4TrendBrokenOnP3After;
+
+
 //+------------------------------------------------------------------+
