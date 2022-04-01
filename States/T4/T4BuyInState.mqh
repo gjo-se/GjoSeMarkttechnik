@@ -14,10 +14,10 @@ bool getT4BuyInSignal() {
    bool signal = false;
 
    if(getT4BidGreaterLongEntryLevelSignal() == true) signal = true;
-   if(getT4LowestLowIsInSignalAreaState() == false) signal = false;
+//   if(getT4LowestLowIsInSignalAreaState() == false) signal = false;
 
-   if(getT4BidTriggerLongGridLimitOrderSignal() == true) signal = true;
-   if(getT4BidTriggerLongGridStopOrderSignal() == true) signal = true;
+//   if(getT4BidTriggerLongGridLimitOrderSignal() == true) signal = true;
+//   if(getT4BidTriggerLongGridStopOrderSignal() == true) signal = true;
 
    if(!TerminalInfoInteger(TERMINAL_TRADE_ALLOWED) || !MQLInfoInteger(MQL_TRADE_ALLOWED)) signal = false;
    if(t4trendDirection != TREND_DIRECTION_LONG) signal = false;

@@ -102,6 +102,7 @@ void initializeT4GlobalsAction() {
 
    outSideBarDateTime = 0;
    t4StopLossValue = 0;
+   t4LotSize = 0;
    t4TrailingStopLevel = 0;
    t4RegressionChannelStopLossLineLevel = 0;
 }

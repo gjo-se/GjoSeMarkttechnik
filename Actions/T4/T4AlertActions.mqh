@@ -194,6 +194,7 @@ void t4CommentAction(string pVersion) {
       if(t4CurrentBidMAOffset > 0) t4comment += " CurrentOffset: " + DoubleToString(t4CurrentBidMAOffset, 0) + "\n";
       t4comment += "\n";
       t4comment += "t4StopLossValue: " + DoubleToString(t4StopLossValue, Digits()) + "\n";
+      t4comment += "t4LotSize: " + DoubleToString(t4LotSize, 2) + "\n";
       if(outSideBarDateTime != 0) t4comment += "OutSideBar: " + TimeToString(outSideBarDateTime) + "\n";
       t4comment += "\n";
       t4comment += "T4-P1: " + TimeToString(t4p1DateTime) + " HIGH: " + DoubleToString(t4p1ValueHigh, Digits()) +  " LOW: " + DoubleToString(t4p1ValueLow, Digits()) + "\n";
