@@ -76,6 +76,9 @@ void createT4LowestLowTrendLine() {
 //|                                                                  |
 //+------------------------------------------------------------------+
 void createT4LongEntryTrendLine(double pT4LongEntryLevel) {
+   int lineWidth = 1;
+   color lineColor = clrCrimson;
+   ENUM_LINE_STYLE lineStyle = STYLE_DASHDOT;
    bool rayLeft = false;
    bool rayRight = true;
    long zOrder = 0;
@@ -83,7 +86,7 @@ void createT4LongEntryTrendLine(double pT4LongEntryLevel) {
    bool isSelected = false;
    bool isSelectable = true;
 
-   createTrendLine(T4_LONG_ENTRY_TLINE, iTime(Symbol(), Period(), iBarShift(Symbol(), Period(), t3p3DateTime)), pT4LongEntryLevel, iTime(Symbol(), Period(), 0), pT4LongEntryLevel, InpT4TrendLineColor, 2, STYLE_SOLID, T4_LONG_ENTRY_TLINE + ": " + DoubleToString(pT4LongEntryLevel, Digits()), rayLeft, rayRight, zOrder, isBackground, isSelected, isSelectable);
+   createTrendLine(T4_LONG_ENTRY_TLINE, iTime(Symbol(), Period(), iBarShift(Symbol(), Period(), t3p3DateTime)), pT4LongEntryLevel, iTime(Symbol(), Period(), 0), pT4LongEntryLevel, lineColor, lineWidth, lineStyle, T4_LONG_ENTRY_TLINE + ": " + DoubleToString(pT4LongEntryLevel, Digits()), rayLeft, rayRight, zOrder, isBackground, isSelected, isSelectable);
 }
 
 //+------------------------------------------------------------------+
@@ -187,9 +190,10 @@ void createT4OrderGridTrendLines() {
 //|                                                                  |
 //+------------------------------------------------------------------+
 void setT4TrendLineValues() {
+   t4LongEntryValue = ObjectGetDouble(ChartID(), T4_LONG_ENTRY_TLINE, OBJPROP_PRICE, 1);
+   t4ShortEntryValue = ObjectGetDouble(ChartID(), T4_SHORT_ENTRY_TLINE, OBJPROP_PRICE, 1);
+
    t4HighestHighValue = getTrendlineLevelByText(T4_HIGHEST_HIGH_TLINE, PERIOD_CURRENT, Symbol(), ChartID());
-   t4ShortEntryValue = getTrendlineLevelByText(T4_SHORT_ENTRY_TLINE, PERIOD_CURRENT, Symbol(), ChartID());
    t4LowestLowValue = getTrendlineLevelByText(T4_LOWEST_LOW_TLINE, PERIOD_CURRENT, Symbol(), ChartID());
-   t4LongEntryValue = getTrendlineLevelByText(T4_LONG_ENTRY_TLINE, PERIOD_CURRENT, Symbol(), ChartID());
 }
 //+------------------------------------------------------------------+
