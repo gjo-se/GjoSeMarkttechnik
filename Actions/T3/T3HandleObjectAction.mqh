@@ -32,7 +32,6 @@ void t3HandleObjectsInitAction() {
       createT3OrderGridTrendLines();
    }
 
-
    t3HandleObjectsAction();
 }
 
@@ -60,8 +59,8 @@ void t3HandleObjectsAction() {
             if(localT3LowestLowValue != 0) {
                t3LowestLowValue = localT3LowestLowValue;
                createT3LowestLowTrendLine();
-               createT3LongEntryTrendLine();
-               if(buyT3PositionIsOpenState == false) createT3OrderGridTrendLines();
+//               createT3LongEntryTrendLine();
+//               if(buyT3PositionIsOpenState == false) createT3OrderGridTrendLines();
             }
          }
 
@@ -88,8 +87,8 @@ void t3HandleObjectsAction() {
             if(localT3HighestHighValue != 0) {
                t3HighestHighValue = localT3HighestHighValue;
                createT3HighestHighTrendLine();
-               createT3ShortEntryTrendLine();
-               if(sellT3PositionIsOpenState == false) createT3OrderGridTrendLines();
+//               createT3ShortEntryTrendLine();
+//               if(sellT3PositionIsOpenState == false) createT3OrderGridTrendLines();
             }
          }
 
@@ -123,8 +122,8 @@ void t3HandleObjectsAction() {
          t3ObjectHasChanged = false;
       }
 
-      double t3StopLossLineLevelLocal = ObjectGetValueByTime(0, T3_STOP_LOSS_TLINE, iTime(Symbol(), Period(), 0));
-      if(t3StopLossLineLevelLocal != 0) t3StopLossLineLevel = t3StopLossLineLevelLocal;
+      double t3StopLossValueLocal = ObjectGetValueByTime(0, T3_STOP_LOSS_TLINE, iTime(Symbol(), Period(), 0));
+      if(t3StopLossValueLocal != 0) t3StopLossValue = t3StopLossValueLocal;
 
       handleInsideBars();
 
@@ -149,28 +148,55 @@ void t3HandleObjectsAction() {
 //|                                                                  |
 //+------------------------------------------------------------------+
 double getT3P1HighLowValueByTrendDirection() {
-   return (t3trendDirection == TREND_DIRECTION_LONG) ? t3p1ValueLow : t3p1ValueHigh;
+   double returnValue = 0;
+   if(t3p1ValueLow != 0 && t3p2ValueLow != 0) {
+      returnValue = (t3p1ValueLow < t3p2ValueLow) ? t3p1ValueLow : t3p1ValueHigh;
+   }
+   return returnValue;
 }
 
 //+------------------------------------------------------------------+
 //|                                                                  |
 //+------------------------------------------------------------------+
 double getT3P2HighLowValueByTrendDirection() {
-   return (t3trendDirection == TREND_DIRECTION_LONG) ? t3p2ValueHigh : t3p2ValueLow;
+   double returnValue = 0;
+   if(t3p1ValueLow != 0 && t3p2ValueLow != 0) {
+      returnValue = (t3p1ValueLow > t3p2ValueLow) ? t3p2ValueLow : t3p2ValueHigh;
+   }
+   return returnValue;
 }
 
 //+------------------------------------------------------------------+
 //|                                                                  |
 //+------------------------------------------------------------------+
 double getT3P3HighLowValueByTrendDirection() {
-   return (t3trendDirection == TREND_DIRECTION_LONG) ? t3p3ValueLow : t3p3ValueHigh;
+   double returnValue = 0;
+   if(t3p1ValueLow != 0 && t3p2ValueLow != 0) {
+      returnValue = (t3p1ValueLow < t3p2ValueLow) ? t3p3ValueLow : t3p3ValueHigh;
+   }
+   return returnValue;
 }
 
 //+------------------------------------------------------------------+
 //|                                                                  |
 //+------------------------------------------------------------------+
 double getT3P4HighLowValueByTrendDirection() {
-   return (t3trendDirection == TREND_DIRECTION_LONG) ? t3p4ValueHigh : t3p4ValueLow;
+   double returnValue = 0;
+   if(t3p1ValueLow != 0 && t3p2ValueLow != 0) {
+      returnValue = (t3p1ValueLow > t3p2ValueLow) ? t3p4ValueLow : t3p4ValueHigh;
+   }
+   return returnValue;
+}
+
+//+------------------------------------------------------------------+
+//|                                                                  |
+//+------------------------------------------------------------------+
+double getT3P5HighLowValueByTrendDirection() {
+   double returnValue = 0;
+   if(t3p1ValueLow != 0 && t3p2ValueLow != 0) {
+      returnValue = (t3p1ValueLow < t3p2ValueLow) ? t3p5ValueLow : t3p5ValueHigh;
+   }
+   return returnValue;
 }
 //+------------------------------------------------------------------+
 

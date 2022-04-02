@@ -10,6 +10,7 @@ const string   T3_P1_VLINE =              "T3-P1";
 const string   T3_P2_VLINE =              "T3-P2";
 const string   T3_P3_VLINE =              "T3-P3";
 const string   T3_P4_VLINE =              "T3-P4";
+const string   T3_P5_VLINE =              "T3-P5";
 const string   T3_HH_VLINE =              "T3-HH-Start";
 const string   T3_LL_VLINE =              "T3-LL-Start";
 const string   T3_END_VLINE =             "T3-End";

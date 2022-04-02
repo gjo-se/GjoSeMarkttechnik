@@ -166,7 +166,7 @@ void t4CommentAction(string pVersion) {
       if(t4AlertRegressionChannelLevel != 0) t4comment += "Alert RegressionChannel: " + DoubleToString(t4AlertRegressionChannelLevel, 2) + "\n";
       if(t4AlertFiboRetracementLevel != 0) t4comment += "Alert FiboRetracement: " + DoubleToString(t4AlertFiboRetracementLevel, 2) + "\n";
       t4comment += "\n";
-      if(getT4TrendDirectionString() == "LONG") {
+      if(t4trendDirection == TREND_DIRECTION_LONG || t4SemiTrendDirection == TREND_DIRECTION_LONG) {
          t4comment += "LONG: " + "\n";
          t4comment += "getT4LowestLowIsInSignalAreaState(): " + IntegerToString(getT4LowestLowIsInSignalAreaState()) + "\n";
          t4comment += "LowestLowVLineDateTime: " + TimeToString(t4LowestLowVLineDateTime) + "\n";
@@ -177,7 +177,7 @@ void t4CommentAction(string pVersion) {
          t4comment += "Bid() >= t4LongEntryValue: " + IntegerToString(Bid() >= t4LongEntryValue) + "\n";
          t4comment += "maxT4BuyPositionsAreOpenState: " + IntegerToString(maxT4BuyPositionsAreOpenState) + "\n";
       }
-      if(getT4TrendDirectionString() == "SHORT") {
+      if(t4trendDirection == TREND_DIRECTION_SHORT || t4SemiTrendDirection == TREND_DIRECTION_SHORT) {
          t4comment += "SHORT: " + "\n";
          t4comment += "getT4HighestHighIsInSignalAreaState(): " + IntegerToString(getT4HighestHighIsInSignalAreaState()) + "\n";
          t4comment += "HihgestHighVLineDateTime: " + TimeToString(t4HighestHighVLineDateTime) + "\n";

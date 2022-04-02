@@ -67,8 +67,12 @@ void initializeT3GlobalsAction() {
    t3alertBidIsInSignalAreaSended = false;
    t3alertBidAgainInHighVolumeAreaSended = false;
    t3alertMAChangedSended = false;
-
-
+   t3AlertT3TrendBrokenSended = false;
+   t3AlertT3BuildNewTrendSended = false;
+   t3AlertT3P2CreatedSended = false;
+   t3AlertT3P3CreatedSended = false;
+   t3AlertT3P4CreatedSended = false;
+   t3AlertT3P5CreatedSended = false;
 
    t3InSignalFiboLevelAreaMinStartValue = 0;
    t3InSignalFiboLevelAreaMinEndValue = 0;
@@ -108,8 +112,23 @@ void initializeT3GlobalsAction() {
    t3LongEntryValue = 0;
 
    outSideBarDateTime = 0;
-   t3StopLossLineLevel = 0;
+   t3StopLossValue = 0;
    t3TrailingStopLevel = 0;
+   
+   t3ScreenshotT3P2CreatedBefore = false;
+   t3ScreenshotT3P2CreatedAfter = false;
+   t3ScreenshotT3P3CreatedBefore = false;
+   t3ScreenshotT3P3CreatedAfter = false;
+   t3ScreenshotT3P4CreatedBefore = false;
+   t3ScreenshotT3P4CreatedAfter = false;
+   t3ScreenshotT3P5CreatedBefore = false;
+   t3ScreenshotT3P5CreatedAfter = false;
+   t3ScreenshotT3BuildNewTrendBefore = false;
+   t3ScreenshotT3BuildNewTrendAfter = false;
+   t3ScreenshotT3TrendBrokenOnP1Before = false;
+   t3ScreenshotT3TrendBrokenOnP1After = false;
+   t3ScreenshotT3TrendBrokenOnP3Before = false;
+   t3ScreenshotT3TrendBrokenOnP3After = false;       
 }
 
 //+------------------------------------------------------------------+

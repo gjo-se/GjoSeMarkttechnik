@@ -24,16 +24,6 @@ void getT4TrendDirection() {
    }
 }
 
-string getT4TrendDirectionString() {
-
-   string trendDirectionString = "ROTATION";
-
-   if(t4trendDirection == TREND_DIRECTION_LONG) trendDirectionString = "LONG";
-   if(t4trendDirection == TREND_DIRECTION_SHORT) trendDirectionString = "SHORT";
-
-   return trendDirectionString;
-}
-
 void handleT4TrendDetectionAction() {
 
    handleT4P2();

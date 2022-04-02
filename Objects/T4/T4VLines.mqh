@@ -54,8 +54,6 @@ void setT4VLineDateTimes() {
    } else {
       t4LowestLowVLineDateTime = 0;
    }
-
-
 }
 
 void setT4VLineValues() {

@@ -118,16 +118,17 @@ void OnTick() {
 
    if(MQLInfoInteger(MQL_VISUAL_MODE) == 1) {
       setT3LineValues();
-      getT3TrendDirection();
-      createT3HighVolumeAreaTrendLines();
       setT4LineValues();
+      getT3TrendDirection();
       getT4TrendDirection();
+      createT3HighVolumeAreaTrendLines();
    }
 
    handleT3Indictaors();
    handleT4Indictaors();
    handleT3StatesAction();
    handleT4StatesAction();
+   handleT3TrendDetectionAction();
    handleT4TrendDetectionAction();
    setT3PositionStates();
    setT4PositionStates();
