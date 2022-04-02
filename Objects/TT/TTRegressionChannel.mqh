@@ -25,6 +25,6 @@ void createTT4RegressionChannel() {
      int width = 2;
 
     if(tt4p1DateTime != 0 && tt4p6DateTime != 0 ){
-        createRegressionChannel(TT4_REGRESSION_CHANNEL, tt4p1DateTime, tt4p6DateTime, InpT3RegressionChannelColor, filled, style, width);
+        createRegressionChannel(TT4_REGRESSION_CHANNEL, tt4p1DateTime, tt4p6DateTime, InpT4RegressionChannelColor, filled, style, width);
     }
 }

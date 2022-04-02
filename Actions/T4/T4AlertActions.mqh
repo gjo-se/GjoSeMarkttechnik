@@ -162,9 +162,9 @@ void t4CommentAction(string pVersion) {
       t4comment += "\n\n";
       t4comment += "T4: " + "\n\n";
       if(tt4movementLengthRegressionLengthRatio != 0) {
-         t3comment += "tt4movementLength: " + DoubleToString(tt4movementLength, 0) + " (" + DoubleToString(tt4movementLengthP1P2, 0) + " / " +  DoubleToString(tt4movementLengthP3P4, 0) + " / " + DoubleToString(tt4movementLengthP5P6, 0) + ") Points" + "\n";
-         t3comment += "tt4regressionLength: " + DoubleToString(tt4regressionLength, 0) + " (" + DoubleToString(tt4regressionLengthP2P3, 0) + " / " +  DoubleToString(tt4regressionLengthP4P5, 0) + ") Points" + "\n";
-         t3comment += "tt4movementRegressionLengthRation: " + DoubleToString(tt4movementLengthRegressionLengthRatio, 0) + " %" + "\n";
+         t4comment += "tt4movementLength: " + DoubleToString(tt4movementLength, 0) + " (" + DoubleToString(tt4movementLengthP1P2, 0) + " / " +  DoubleToString(tt4movementLengthP3P4, 0) + " / " + DoubleToString(tt4movementLengthP5P6, 0) + ") Points" + "\n";
+         t4comment += "tt4regressionLength: " + DoubleToString(tt4regressionLength, 0) + " (" + DoubleToString(tt4regressionLengthP2P3, 0) + " / " +  DoubleToString(tt4regressionLengthP4P5, 0) + ") Points" + "\n";
+         t4comment += "tt4movementRegressionLengthRation: " + DoubleToString(tt4movementLengthRegressionLengthRatio, 0) + " %" + "\n";
       }
       t4comment += "Tradabel Button State: " + IntegerToString(t4IsTradabelButtonState) + "\n";
       if(t4AlertRegressionChannelLevel != 0) t4comment += "Alert RegressionChannel: " + DoubleToString(t4AlertRegressionChannelLevel, 2) + "\n";
