@@ -200,13 +200,18 @@ void t3CommentAction(string pVersion) {
    if(!MQLInfoInteger(MQL_TRADE_ALLOWED)) t3comment += "MQL_TRADE_ALLOWED: OFF" + "\n";
    if(sendAlerts == false) t3comment += "SEND PUSH: OFF" + "\n";
    t3comment += "\n";
+   t3comment += "T3: " + "\n\n";
+   if(tt3movementLengthRegressionLengthRatio != 0) {
+      t3comment += "tt3movementLength: " + DoubleToString(tt3movementLength, 0) + " (" + DoubleToString(tt3movementLengthP1P2, 0) + " / " +  DoubleToString(tt3movementLengthP3P4, 0) + " / " + DoubleToString(tt3movementLengthP5P6, 0) + ") Points" + "\n";
+      t3comment += "tt3regressionLength: " + DoubleToString(tt3regressionLength, 0) + " (" + DoubleToString(tt3regressionLengthP2P3, 0) + " / " +  DoubleToString(tt3regressionLengthP4P5, 0) + ") Points" + "\n";
+      t3comment += "tt3movementRegressionLengthRation: " + DoubleToString(tt3movementLengthRegressionLengthRatio, 0) + " %" + "\n";
+   }
+   t3comment += "\n";
    if(t3p1DateTime) {
-      t3comment += "T3: " + "\n";
       t3comment += "Tradabel Button State: " + IntegerToString(t3IsTradabelButtonState) + "\n";
       if(t3AlertRegressionChannelLevel != 0) t3comment += "Alert RegressionChannel: " + DoubleToString(t3AlertRegressionChannelLevel, 2) + "\n";
       if(t3AlertFiboRetracementLevel != 0) t3comment += "Alert FiboRetracement: " + DoubleToString(t3AlertFiboRetracementLevel, 2) + "\n";
       t3comment += "\n";
-
       if(t3trendDirection == TREND_DIRECTION_LONG || t3SemiTrendDirection == TREND_DIRECTION_LONG) {
          t3comment += "LONG: " + "\n";
          t3comment += "getT3LowestLowIsInSignalAreaState(): " + IntegerToString(getT3LowestLowIsInSignalAreaState()) + "\n";

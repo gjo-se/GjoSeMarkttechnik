@@ -52,6 +52,7 @@
 //+------------------------------------------------------------------+
 #include "Basics\\T3\\T3Includes.mqh"
 #include "Basics\\T4\\T4Includes.mqh"
+#include "Basics\\TT\\TTIncludes.mqh"
 
 //+------------------------------------------------------------------+
 //| Headers                                                          |
@@ -72,21 +73,32 @@ int OnInit() {
       initializeEAAction();
       initializeT3GlobalsAction();
       initializeT4GlobalsAction();
+      initializeTTGlobalsAction();
       initializeT3ArraysAction();
       initializeT4ArraysAction();
       initializeT3IndicatorsAction();
       initializeT4IndicatorsAction();
 
       rewriteVLineNamesWithText();
+
+      setTT3LineValues();
       setT3LineValues();
+      setTT4LineValues();
       setT4LineValues();
+
+      getTT3TrendDirection();
       getT3TrendDirection();
+      getTT4TrendDirection();
       getT4TrendDirection();
+
       setT3TrendLineValues();
       setT4TrendLineValues();
 
-      t3HandleObjectsInitAction();
-      t4HandleObjectsInitAction();
+      handleTT3ObjectsInitAction();
+      handleT3ObjectsInitAction();
+      handleTT4ObjectsInitAction();
+      handleT4ObjectsInitAction();
+
       handleCommentAction(VERSION);
    }
 
@@ -183,9 +195,13 @@ void OnChartEvent(const int id,
 
    if(id == CHARTEVENT_OBJECT_DRAG) {
       rewriteVLineNamesWithText();
+      setTT3LineValues();
       setT3LineValues();
+      setTT4LineValues();
       setT4LineValues();
+      getTT3TrendDirection();
       getT3TrendDirection();
+      getTT4TrendDirection();
       getT4TrendDirection();
       t3ObjectHasChanged = true;
       t4ObjectHasChanged = true;
