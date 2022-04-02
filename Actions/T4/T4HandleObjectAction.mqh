@@ -3,10 +3,10 @@
 //|                                  Copyright 2022, MetaQuotes Ltd. |
 //|                                             https://www.mql5.com |
 //+------------------------------------------------------------------+
-void t4HandleObjectsInitAction() {
+void handleT4ObjectsInitAction() {
 
    deleteTrendLineLike(T4_TRENDLINE);
-   deleteRegressionChannelObject(T4_REGRESSION_CHANNEL);
+   deleteRegressionChannel(T4_REGRESSION_CHANNEL);
    deleteFiboLevelsObject(T4_FIBO_LEVELS);
    deleteChannelObject(T4_IN_SIGNAL_FIBO_LEVEL_AREA);
    deleteChannelObject(T4_IN_SIGNAL_REGRESSION_CHANNEL_AREA);
@@ -96,7 +96,7 @@ void t4HandleObjectsAction() {
             createT4ReEntryArea();
          } else {
             deleteTrendLineLike(T4_TRENDLINE);
-            deleteRegressionChannelObject(T4_REGRESSION_CHANNEL);
+            deleteRegressionChannel(T4_REGRESSION_CHANNEL);
             deleteFiboLevelsObject(T4_FIBO_LEVELS);
             deleteChannelObject(T4_IN_SIGNAL_FIBO_LEVEL_AREA);
             deleteChannelObject(T4_IN_SIGNAL_REGRESSION_CHANNEL_AREA);
@@ -110,7 +110,7 @@ void t4HandleObjectsAction() {
 
    } else {
       deleteTrendLineLike(T4_TRENDLINE);
-      deleteRegressionChannelObject(T4_REGRESSION_CHANNEL);
+      deleteRegressionChannel(T4_REGRESSION_CHANNEL);
       deleteFiboLevelsObject(T4_FIBO_LEVELS);
       deleteChannelObject(T4_IN_SIGNAL_FIBO_LEVEL_AREA);
       deleteChannelObject(T4_IN_SIGNAL_REGRESSION_CHANNEL_AREA);

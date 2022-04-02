@@ -40,19 +40,3 @@ void createT3RegressionChannelLevels() {
    double t3RegressionChannel50EndValue   = t3RegressionChannel0EndTrendlineLevel + (t3RegressionChannel100EndTrendlineLevel - t3RegressionChannel0EndTrendlineLevel) / 2;
    createTrendLine(T3_REGRESSION_CHANNEL + "50", t3StartDateTime, t3RegressionChannel50StartValue, iTime(Symbol(), PERIOD_CURRENT, 0), t3RegressionChannel50EndValue, InpT3TrendLineColor, 1, STYLE_SOLID, " 50%");
 }
-
-void deleteRegressionChannelObject(const string pDimension) {
-
-   long chartId = ChartID();
-   int objectsTotal = ObjectsTotal(chartId, 0, -1);
-
-   string objectName;
-   for(int i = objectsTotal; i >= 0; i--) {
-      objectName = ObjectName(chartId, i);
-      if ( StringFind(objectName, pDimension) != -1 ) {
-         ObjectDelete(chartId, objectName);
-      }
-   }
-}
-//+------------------------------------------------------------------+
-//+------------------------------------------------------------------+
