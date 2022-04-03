@@ -239,7 +239,7 @@ void handleT3P5() {
 
          if(Bid() <= t3p5ValueTmp
                && t3P4P5RegressionPoints > (tt3regressionLength * InpT3MinRegressionLengthBasedOnTT3RegressionPercent / 100)
-               ) {
+           ) {
             createT3P5VLine(t3p5DateTimeTmp);
             if(t3trendDirection == t4trendDirection) {
                if(t3ScreenshotT3P5CreatedBefore == false) {
@@ -273,7 +273,7 @@ void handleT3P5() {
 
          if(Bid() >= t3p5ValueTmp
                && t3P4P5RegressionPoints > (tt3regressionLength * InpT3MinRegressionLengthBasedOnTT3RegressionPercent / 100)
-               ) {
+           ) {
             createT3P5VLine(t3p5DateTimeTmp);
             if(t3trendDirection == t4trendDirection) {
                if(t3ScreenshotT3P5CreatedBefore == false) {

@@ -242,7 +242,7 @@ void handleT4P5() {
 
          if(Bid() <= t4p5ValueTmp
                && t4P4P5RegressionPoints > (tt4regressionLength * InpT4MinRegressionLengthBasedOnTT4RegressionPercent / 100)
-               ) {
+           ) {
             createT4P5VLine(t4p5DateTimeTmp);
             if(t3trendDirection == t4trendDirection) {
                if(t4ScreenshotT4P5CreatedBefore == false) {
@@ -276,7 +276,7 @@ void handleT4P5() {
 
          if(Bid() >= t4p5ValueTmp
                && t4P4P5RegressionPoints > (tt4regressionLength * InpT4MinRegressionLengthBasedOnTT4RegressionPercent / 100)
-               ) {
+           ) {
             createT4P5VLine(t4p5DateTimeTmp);
             if(t3trendDirection == t4trendDirection) {
                if(t4ScreenshotT4P5CreatedBefore == false) {
