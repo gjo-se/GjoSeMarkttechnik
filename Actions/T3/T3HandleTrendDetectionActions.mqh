@@ -59,8 +59,7 @@ void handleT3P2() {
          }
 
          if(Bid() >= t3p2ValueTmp
-               // TODO: T3 auflösen
-               && t3P1P2MovementPoints > (t3MovementLengthPoints * InpT4MinMovementLengthBasedOnT3MovementPercent / 100)
+               && t3P1P2MovementPoints > (tt3movementLength * InpT3MinMovementLengthBasedOnTT3MovementPercent / 100)
            ) {
             if(t3ScreenshotT3P2CreatedBefore == false) {
                createScreenshot("T3P2-Before");
@@ -83,8 +82,7 @@ void handleT3P2() {
          }
 
          if(Bid() <= t3p2ValueTmp
-               // TODO: T3 auflösen
-               && t3P1P2MovementPoints > (t3MovementLengthPoints * InpT4MinMovementLengthBasedOnT3MovementPercent / 100)
+               && t3P1P2MovementPoints > (tt3movementLength * InpT3MinMovementLengthBasedOnTT3MovementPercent / 100)
            ) {
             if(t3ScreenshotT3P2CreatedBefore == false) {
                createScreenshot("T3P2-Before");
@@ -103,7 +101,6 @@ void handleT3P3() {
 
    datetime t3p3DateTimeTmp = 0;
    double   t3p3ValueTmp = 0;
-   double   t3P1P2MovementPoints = 0;
    double   t3P2P3RegressionPoints = 0;
 
    if(t3p2ValueLow != 0
@@ -114,7 +111,6 @@ void handleT3P3() {
       if(t3SemiTrendDirection == TREND_DIRECTION_LONG) {
          t3p3DateTimeTmp = iTime(Symbol(), Period(), iLowest(Symbol(), Period(), MODE_LOW,  iBarShift(Symbol(), Period(), t3p2DateTime) + 1));
          t3p3ValueTmp = iLow(Symbol(), Period(), iBarShift(Symbol(), Period(), t3p3DateTimeTmp));
-         t3P1P2MovementPoints = t3p2ValueHigh / Point() - t3p1ValueLow / Point();
          t3P2P3RegressionPoints = t3p2ValueHigh / Point() - t3p3ValueTmp / Point();
 
          if(isNewCurrentBar == true && t3ScreenshotT3P3CreatedBefore == true && t3ScreenshotT3P3CreatedAfter == false) {
@@ -123,7 +119,7 @@ void handleT3P3() {
          }
 
          if(Bid() <= t3p3ValueTmp
-               && t3P2P3RegressionPoints > (t3P1P2MovementPoints * InpT4MinRegressionForTrendDetectionPercent / 100)
+               && t3P2P3RegressionPoints > (tt3regressionLength * InpT3MinRegressionLengthBasedOnTT3RegressionPercent / 100)
            ) {
             if(t3ScreenshotT3P3CreatedBefore == false) {
                createScreenshot("T3P3-Before");
@@ -137,7 +133,6 @@ void handleT3P3() {
       if(t3SemiTrendDirection == TREND_DIRECTION_SHORT) {
          t3p3DateTimeTmp = iTime(Symbol(), Period(), iHighest(Symbol(), Period(), MODE_HIGH,  iBarShift(Symbol(), Period(), t3p2DateTime) + 1));
          t3p3ValueTmp = iHigh(Symbol(), Period(), iBarShift(Symbol(), Period(), t3p3DateTimeTmp));
-         t3P1P2MovementPoints = t3p1ValueHigh / Point() - t3p2ValueLow / Point();
          t3P2P3RegressionPoints = t3p3ValueTmp / Point() - t3p2ValueLow / Point();
 
          if(isNewCurrentBar == true && t3ScreenshotT3P3CreatedBefore == true && t3ScreenshotT3P3CreatedAfter == false) {
@@ -146,7 +141,7 @@ void handleT3P3() {
          }
 
          if(Bid() >= t3p3ValueTmp
-               && t3P2P3RegressionPoints > (t3P1P2MovementPoints * InpT4MinRegressionForTrendDetectionPercent / 100)
+               && t3P2P3RegressionPoints > (tt3regressionLength * InpT3MinRegressionLengthBasedOnTT3RegressionPercent / 100)
            ) {
             if(t3ScreenshotT3P3CreatedBefore == false) {
                createScreenshot("T3P3-Before");
@@ -181,8 +176,7 @@ void handleT3P4() {
          }
 
          if(Bid() >= t3p4ValueTmp
-               // TODO: T3 auflösen
-               && t3P2P4MovementPoints > (t3MovementLengthPoints * InpT4MinMovementLengthBasedOnT3MovementPercent / 100)
+               && t3P2P4MovementPoints > (tt3movementLength * InpT3MinMovementLengthBasedOnTT3MovementPercent / 100)
                && t3p2ValueHigh != 0
                && t3p4ValueTmp > t3p2ValueHigh
            ) {
@@ -207,8 +201,7 @@ void handleT3P4() {
          }
 
          if(Bid() <= t3p4ValueTmp
-               // TODO: T3 auflösen
-               && t3P2P4MovementPoints > (t3MovementLengthPoints * InpT4MinMovementLengthBasedOnT3MovementPercent / 100)
+               && t3P2P4MovementPoints > (tt3movementLength * InpT3MinMovementLengthBasedOnTT3MovementPercent / 100)
                && t3p2ValueLow != 0
                && t3p4ValueTmp < t3p2ValueLow
            ) {
@@ -228,7 +221,6 @@ void handleT3P5() {
 
    datetime t3p5DateTimeTmp = 0;
    double   t3p5ValueTmp = 0;
-   double   t3P3P4MovementPoints = 0;
    double   t3P4P5RegressionPoints = 0;
 
    if(t3p4ValueLow != 0
@@ -238,7 +230,6 @@ void handleT3P5() {
       if(t3trendDirection == TREND_DIRECTION_LONG) {
          t3p5DateTimeTmp = iTime(Symbol(), Period(), iLowest(Symbol(), Period(), MODE_LOW,  iBarShift(Symbol(), Period(), t3p4DateTime) + 1));
          t3p5ValueTmp = iLow(Symbol(), Period(), iBarShift(Symbol(), Period(), t3p5DateTimeTmp));
-         t3P3P4MovementPoints = t3p4ValueHigh / Point() - t3p3ValueLow / Point();
          t3P4P5RegressionPoints = t3p4ValueHigh / Point() - t3p5ValueTmp / Point();
 
          if(isNewCurrentBar == true && t3ScreenshotT3P5CreatedBefore == true && t3ScreenshotT3P5CreatedAfter == false) {
@@ -247,9 +238,9 @@ void handleT3P5() {
          }
 
          if(Bid() <= t3p5ValueTmp
-               && t3P4P5RegressionPoints > (t3P3P4MovementPoints * InpT4MinRegressionForTrendDetectionPercent / 100)) {
+               && t3P4P5RegressionPoints > (tt3regressionLength * InpT3MinRegressionLengthBasedOnTT3RegressionPercent / 100)
+               ) {
             createT3P5VLine(t3p5DateTimeTmp);
-            // TODO: T3 auflösen
             if(t3trendDirection == t4trendDirection) {
                if(t3ScreenshotT3P5CreatedBefore == false) {
                   createScreenshot("T3P5-Before");
@@ -273,7 +264,6 @@ void handleT3P5() {
       if(t3trendDirection == TREND_DIRECTION_SHORT) {
          t3p5DateTimeTmp = iTime(Symbol(), Period(), iHighest(Symbol(), Period(), MODE_HIGH,  iBarShift(Symbol(), Period(), t3p4DateTime) + 1));
          t3p5ValueTmp = iHigh(Symbol(), Period(), iBarShift(Symbol(), Period(), t3p5DateTimeTmp));
-         t3P3P4MovementPoints = t3p3ValueHigh / Point() - t3p4ValueLow / Point();
          t3P4P5RegressionPoints = t3p5ValueTmp / Point() - t3p4ValueLow / Point();
 
          if(isNewCurrentBar == true && t3ScreenshotT3P5CreatedBefore == true && t3ScreenshotT3P5CreatedAfter == false) {
@@ -282,9 +272,9 @@ void handleT3P5() {
          }
 
          if(Bid() >= t3p5ValueTmp
-               && t3P4P5RegressionPoints > (t3P3P4MovementPoints * InpT4MinRegressionForTrendDetectionPercent / 100)) {
+               && t3P4P5RegressionPoints > (tt3regressionLength * InpT3MinRegressionLengthBasedOnTT3RegressionPercent / 100)
+               ) {
             createT3P5VLine(t3p5DateTimeTmp);
-            // TODO: T3 auflösen
             if(t3trendDirection == t4trendDirection) {
                if(t3ScreenshotT3P5CreatedBefore == false) {
                   createScreenshot("T3P5-Before");
@@ -325,8 +315,8 @@ void handleT3BuildNewTrend() {
             createScreenshot("T3BuildNewTrend-After");
             t3ScreenshotT3BuildNewTrendAfter = true;
          }
-         // TODO: T3 auflösen
-         if(t3P5P6MovementPoints > (t3MovementLengthPoints * InpT4MinMovementLengthBasedOnT3MovementPercent / 100)
+
+         if(t3P5P6MovementPoints > (tt3movementLength * InpT3MinMovementLengthBasedOnTT3MovementPercent / 100)
                && t3p4ValueHigh != 0
                && Bid() > t3p4ValueHigh
            ) {
@@ -354,8 +344,7 @@ void handleT3BuildNewTrend() {
             t3ScreenshotT3BuildNewTrendAfter = true;
          }
 
-         // TODO: T3 auflösen
-         if(t3P5P6MovementPoints > (t3MovementLengthPoints * InpT4MinMovementLengthBasedOnT3MovementPercent / 100)
+         if(t3P5P6MovementPoints > (tt3movementLength * InpT3MinMovementLengthBasedOnTT3MovementPercent / 100)
                && t3p4ValueLow != 0
                && Bid() < t3p4ValueLow
            ) {

@@ -199,11 +199,6 @@ void convertInpT4StringsToArray() {
       t4FiboLevelsArray[ArraySize(t4FiboLevelsArray) - 1] = (string)InpT4MaxRegressionChannelLevel;
    }
 
-   if(InpT4MinRegressionForTrendDetectionPercent != 0) {
-      ArrayResize(t4FiboLevelsArray, ArraySize(t4FiboLevelsArray) + 1);
-      t4FiboLevelsArray[ArraySize(t4FiboLevelsArray) - 1] = (string)InpT4MinRegressionForTrendDetectionPercent;
-   }
-
    if(InpT4MinFiboRetracmentLevel != 0) {
       ArrayResize(t4FiboLevelsArray, ArraySize(t4FiboLevelsArray) + 1);
       t4FiboLevelsArray[ArraySize(t4FiboLevelsArray) - 1] = (string)InpT4MinFiboRetracmentLevel;

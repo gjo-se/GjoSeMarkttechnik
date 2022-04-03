@@ -60,7 +60,7 @@ void handleT4P2() {
          }
 
          if(Bid() >= t4p2ValueTmp
-               && t4P1P2MovementPoints > (t3MovementLengthPoints * InpT4MinMovementLengthBasedOnT3MovementPercent / 100)
+               && t4P1P2MovementPoints > (tt4movementLength * InpT4MinMovementLengthBasedOnTT4MovementPercent / 100)
            ) {
             if(t4ScreenshotT4P2CreatedBefore == false) {
                createScreenshot("T4P2-Before");
@@ -83,7 +83,7 @@ void handleT4P2() {
          }
 
          if(Bid() <= t4p2ValueTmp
-               && t4P1P2MovementPoints > (t3MovementLengthPoints * InpT4MinMovementLengthBasedOnT3MovementPercent / 100)
+               && t4P1P2MovementPoints > (tt4movementLength * InpT4MinMovementLengthBasedOnTT4MovementPercent / 100)
            ) {
             if(t4ScreenshotT4P2CreatedBefore == false) {
                createScreenshot("T4P2-Before");
@@ -102,7 +102,6 @@ void handleT4P3() {
 
    datetime t4p3DateTimeTmp = 0;
    double   t4p3ValueTmp = 0;
-   double   t4P1P2MovementPoints = 0;
    double   t4P2P3RegressionPoints = 0;
 
    if(t4p2ValueLow != 0
@@ -113,7 +112,6 @@ void handleT4P3() {
       if(t4SemiTrendDirection == TREND_DIRECTION_LONG) {
          t4p3DateTimeTmp = iTime(Symbol(), Period(), iLowest(Symbol(), Period(), MODE_LOW,  iBarShift(Symbol(), Period(), t4p2DateTime) + 1));
          t4p3ValueTmp = iLow(Symbol(), Period(), iBarShift(Symbol(), Period(), t4p3DateTimeTmp));
-         t4P1P2MovementPoints = t4p2ValueHigh / Point() - t4p1ValueLow / Point();
          t4P2P3RegressionPoints = t4p2ValueHigh / Point() - t4p3ValueTmp / Point();
 
          if(isNewCurrentBar == true && t4ScreenshotT4P3CreatedBefore == true && t4ScreenshotT4P3CreatedAfter == false) {
@@ -122,7 +120,7 @@ void handleT4P3() {
          }
 
          if(Bid() <= t4p3ValueTmp
-               && t4P2P3RegressionPoints > (t4P1P2MovementPoints * InpT4MinRegressionForTrendDetectionPercent / 100)
+               && t4P2P3RegressionPoints > (tt4regressionLength * InpT4MinRegressionLengthBasedOnTT4RegressionPercent / 100)
            ) {
             if(t4ScreenshotT4P3CreatedBefore == false) {
                createScreenshot("T4P3-Before");
@@ -136,7 +134,6 @@ void handleT4P3() {
       if(t4SemiTrendDirection == TREND_DIRECTION_SHORT) {
          t4p3DateTimeTmp = iTime(Symbol(), Period(), iHighest(Symbol(), Period(), MODE_HIGH,  iBarShift(Symbol(), Period(), t4p2DateTime) + 1));
          t4p3ValueTmp = iHigh(Symbol(), Period(), iBarShift(Symbol(), Period(), t4p3DateTimeTmp));
-         t4P1P2MovementPoints = t4p1ValueHigh / Point() - t4p2ValueLow / Point();
          t4P2P3RegressionPoints = t4p3ValueTmp / Point() - t4p2ValueLow / Point();
 
          if(isNewCurrentBar == true && t4ScreenshotT4P3CreatedBefore == true && t4ScreenshotT4P3CreatedAfter == false) {
@@ -145,7 +142,7 @@ void handleT4P3() {
          }
 
          if(Bid() >= t4p3ValueTmp
-               && t4P2P3RegressionPoints > (t4P1P2MovementPoints * InpT4MinRegressionForTrendDetectionPercent / 100)
+               && t4P2P3RegressionPoints > (tt4regressionLength * InpT4MinRegressionLengthBasedOnTT4RegressionPercent / 100)
            ) {
             if(t4ScreenshotT4P3CreatedBefore == false) {
                createScreenshot("T4P3-Before");
@@ -163,7 +160,7 @@ void handleT4P4() {
 
    datetime t4p4DateTimeTmp = 0;
    double   t4p4ValueTmp = 0;
-   double   t4P2P4MovementPoints = 0;
+   double   t4P3P4MovementPoints = 0;
 
    if(t4p3ValueHigh != 0
          && t4p3DateTime < (int)TimeCurrent()
@@ -173,7 +170,7 @@ void handleT4P4() {
       if(t4SemiTrendDirection == TREND_DIRECTION_LONG || t4trendDirection == TREND_DIRECTION_LONG) {
          t4p4DateTimeTmp = iTime(Symbol(), Period(), iHighest(Symbol(), Period(), MODE_HIGH,  iBarShift(Symbol(), Period(), t4p3DateTime) + 1));
          t4p4ValueTmp = iHigh(Symbol(), Period(), iBarShift(Symbol(), Period(), t4p4DateTimeTmp));
-         t4P2P4MovementPoints = t4p4ValueTmp / Point() - t4p3ValueLow / Point();
+         t4P3P4MovementPoints = t4p4ValueTmp / Point() - t4p3ValueLow / Point();
 
          if(isNewCurrentBar == true && t4ScreenshotT4P4CreatedBefore == true && t4ScreenshotT4P4CreatedAfter == false) {
             createScreenshot("T4P4-After");
@@ -181,7 +178,7 @@ void handleT4P4() {
          }
 
          if(Bid() >= t4p4ValueTmp
-               && t4P2P4MovementPoints > (t3MovementLengthPoints * InpT4MinMovementLengthBasedOnT3MovementPercent / 100)
+               && t4P3P4MovementPoints > (tt4movementLength * InpT4MinMovementLengthBasedOnTT4MovementPercent / 100)
                && t4p2ValueHigh != 0
                && t4p4ValueTmp > t4p2ValueHigh
            ) {
@@ -198,7 +195,7 @@ void handleT4P4() {
       if(t4SemiTrendDirection == TREND_DIRECTION_SHORT || t4trendDirection == TREND_DIRECTION_SHORT) {
          t4p4DateTimeTmp = iTime(Symbol(), Period(), iLowest(Symbol(), Period(), MODE_LOW,  iBarShift(Symbol(), Period(), t4p3DateTime) + 1));
          t4p4ValueTmp = iLow(Symbol(), Period(), iBarShift(Symbol(), Period(), t4p4DateTimeTmp));
-         t4P2P4MovementPoints = t4p3ValueHigh / Point() - t4p4ValueTmp / Point();
+         t4P3P4MovementPoints = t4p3ValueHigh / Point() - t4p4ValueTmp / Point();
 
          if(isNewCurrentBar == true && t4ScreenshotT4P4CreatedBefore == true && t4ScreenshotT4P4CreatedAfter == false) {
             createScreenshot("T4P4-After");
@@ -206,7 +203,7 @@ void handleT4P4() {
          }
 
          if(Bid() <= t4p4ValueTmp
-               && t4P2P4MovementPoints > (t3MovementLengthPoints * InpT4MinMovementLengthBasedOnT3MovementPercent / 100)
+               && t4P3P4MovementPoints > (tt4movementLength * InpT4MinMovementLengthBasedOnTT4MovementPercent / 100)
                && t4p2ValueLow != 0
                && t4p4ValueTmp < t4p2ValueLow
            ) {
@@ -227,7 +224,6 @@ void handleT4P5() {
 
    datetime t4p5DateTimeTmp = 0;
    double   t4p5ValueTmp = 0;
-   double   t4P3P4MovementPoints = 0;
    double   t4P4P5RegressionPoints = 0;
 
    if(t4p4ValueLow != 0
@@ -237,7 +233,6 @@ void handleT4P5() {
       if(t4trendDirection == TREND_DIRECTION_LONG) {
          t4p5DateTimeTmp = iTime(Symbol(), Period(), iLowest(Symbol(), Period(), MODE_LOW,  iBarShift(Symbol(), Period(), t4p4DateTime) + 1));
          t4p5ValueTmp = iLow(Symbol(), Period(), iBarShift(Symbol(), Period(), t4p5DateTimeTmp));
-         t4P3P4MovementPoints = t4p4ValueHigh / Point() - t4p3ValueLow / Point();
          t4P4P5RegressionPoints = t4p4ValueHigh / Point() - t4p5ValueTmp / Point();
 
          if(isNewCurrentBar == true && t4ScreenshotT4P5CreatedBefore == true && t4ScreenshotT4P5CreatedAfter == false) {
@@ -246,7 +241,8 @@ void handleT4P5() {
          }
 
          if(Bid() <= t4p5ValueTmp
-               && t4P4P5RegressionPoints > (t4P3P4MovementPoints * InpT4MinRegressionForTrendDetectionPercent / 100)) {
+               && t4P4P5RegressionPoints > (tt4regressionLength * InpT4MinRegressionLengthBasedOnTT4RegressionPercent / 100)
+               ) {
             createT4P5VLine(t4p5DateTimeTmp);
             if(t3trendDirection == t4trendDirection) {
                if(t4ScreenshotT4P5CreatedBefore == false) {
@@ -271,7 +267,6 @@ void handleT4P5() {
       if(t4trendDirection == TREND_DIRECTION_SHORT) {
          t4p5DateTimeTmp = iTime(Symbol(), Period(), iHighest(Symbol(), Period(), MODE_HIGH,  iBarShift(Symbol(), Period(), t4p4DateTime) + 1));
          t4p5ValueTmp = iHigh(Symbol(), Period(), iBarShift(Symbol(), Period(), t4p5DateTimeTmp));
-         t4P3P4MovementPoints = t4p3ValueHigh / Point() - t4p4ValueLow / Point();
          t4P4P5RegressionPoints = t4p5ValueTmp / Point() - t4p4ValueLow / Point();
 
          if(isNewCurrentBar == true && t4ScreenshotT4P5CreatedBefore == true && t4ScreenshotT4P5CreatedAfter == false) {
@@ -280,7 +275,8 @@ void handleT4P5() {
          }
 
          if(Bid() >= t4p5ValueTmp
-               && t4P4P5RegressionPoints > (t4P3P4MovementPoints * InpT4MinRegressionForTrendDetectionPercent / 100)) {
+               && t4P4P5RegressionPoints > (tt4regressionLength * InpT4MinRegressionLengthBasedOnTT4RegressionPercent / 100)
+               ) {
             createT4P5VLine(t4p5DateTimeTmp);
             if(t3trendDirection == t4trendDirection) {
                if(t4ScreenshotT4P5CreatedBefore == false) {
@@ -323,7 +319,7 @@ void handleT4BuildNewTrend() {
             t4ScreenshotT4BuildNewTrendAfter = true;
          }
 
-         if(t4P5P6MovementPoints > (t3MovementLengthPoints * InpT4MinMovementLengthBasedOnT3MovementPercent / 100)
+         if(t4P5P6MovementPoints > (tt4movementLength * InpT4MinMovementLengthBasedOnTT4MovementPercent / 100)
                && t4p4ValueHigh != 0
                && Bid() > t4p4ValueHigh
            ) {
@@ -351,7 +347,7 @@ void handleT4BuildNewTrend() {
             t4ScreenshotT4BuildNewTrendAfter = true;
          }
 
-         if(t4P5P6MovementPoints > (t3MovementLengthPoints * InpT4MinMovementLengthBasedOnT3MovementPercent / 100)
+         if(t4P5P6MovementPoints > (tt4movementLength * InpT4MinMovementLengthBasedOnTT4MovementPercent / 100)
                && t4p4ValueLow != 0
                && Bid() < t4p4ValueLow
            ) {
