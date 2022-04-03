@@ -13,8 +13,8 @@ void handleScreenshotAction() {
 //+------------------------------------------------------------------+
 //|                                                                  |
 //+------------------------------------------------------------------+
-void createScreenshot() {
-   string screenShotName = "Screenshots/" + Symbol() + "-" + (string)(int)TimeCurrent() + ".png";
+void createScreenshot(string pScreenShotText = "") {
+   string screenShotName = "Screenshots/" + Symbol() + "-" + pScreenShotText + "-" + (string)(int)TimeCurrent() + ".png";
    int    width = 1000;
    int    heigth = 800;
    if(!ChartScreenShot(ChartID(), screenShotName, width, heigth)) {

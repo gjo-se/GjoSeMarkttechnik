@@ -9,6 +9,8 @@ input group             "------------------------------ T3 ---------------------
 input group             "---------------------------------------------------------------"
 
 input group             "------------------------------ T3 LEVELS ----------------------"
+input int               InpT3MinMovementLengthBasedOnTT3MovementPercent = 66; // T3 MIN Movement % on Template
+input int               InpT3MinRegressionLengthBasedOnTT3RegressionPercent = 66; // T3 MIN Regression % on Template
 input double            InpT3MaxHighVolumeAreaLevel = 0; // T3 Max HighVolume Area Level
 input double            InpT3MinHighVolumeAreaLevel = 0; // T3 Min HighVolume Area Level
 input int               InpT3AlertOnFiboRetracmentLevel = 0; // T3 Alert on Fibo Level
@@ -44,7 +46,7 @@ bool              InpT3ShowCommentDashboard = true;
 bool              InpT3ObjectsShow = true;
 ENUM_TIMEFRAMES   InpT3MaxTimeframe = PERIOD_H1;
 string            InpT3FiboLevels = "50";
-color             InpT3RegressionChannelColor = clrBeige;
+color             InpT3RegressionChannelColor = clrDarkKhaki;
 color             InpT3InSignalAreaColor = clrWheat;
 color             InpT3TrendLineColor = clrDarkKhaki;
 bool              InpPrintScreenshot = false;

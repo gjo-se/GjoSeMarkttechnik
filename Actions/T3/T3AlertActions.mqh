@@ -7,6 +7,78 @@
 //+------------------------------------------------------------------+
 //|                                                                  |
 //+------------------------------------------------------------------+
+void t3AlertT3TrendBrokenAction() {
+   if(sendAlerts == true) {
+      string message = Symbol() + ": " + "T3 Bid Crossed T3P3 - T3 brocken";
+      Alert(message);
+      if(!SendNotification(message)) Alert("Cannot Push " + message, GetLastError());
+      t3AlertT3TrendBrokenSended = true;
+   }
+}
+
+//+------------------------------------------------------------------+
+//|                                                                  |
+//+------------------------------------------------------------------+
+void t3AlertT3BuildNewTrendAction() {
+   if(sendAlerts == true) {
+      string message = Symbol() + ": " + "T3 Bid Crossed T3P4 - T3 Build New Trend";
+      Alert(message);
+      if(!SendNotification(message)) Alert("Cannot Push " + message, GetLastError());
+      t3AlertT3BuildNewTrendSended = true;
+   }
+}
+
+//+------------------------------------------------------------------+
+//|                                                                  |
+//+------------------------------------------------------------------+
+void t3AlertT3P2CreatedAction() {
+   if(sendAlerts == true) {
+      string message = Symbol() + ": " + "T3 T3P2 Created";
+      Alert(message);
+      if(!SendNotification(message)) Alert("Cannot Push " + message, GetLastError());
+      t3AlertT3P2CreatedSended = true;
+   }
+}
+
+//+------------------------------------------------------------------+
+//|                                                                  |
+//+------------------------------------------------------------------+
+void t3AlertT3P3CreatedAction() {
+   if(sendAlerts == true) {
+      string message = Symbol() + ": " + "T3 T3P3 Created";
+      Alert(message);
+      if(!SendNotification(message)) Alert("Cannot Push " + message, GetLastError());
+      t3AlertT3P3CreatedSended = true;
+   }
+}
+
+//+------------------------------------------------------------------+
+//|                                                                  |
+//+------------------------------------------------------------------+
+void t3AlertT3P4CreatedAction() {
+   if(sendAlerts == true) {
+      string message = Symbol() + ": " + "T3 T3P4 Created";
+      Alert(message);
+      if(!SendNotification(message)) Alert("Cannot Push " + message, GetLastError());
+      t3AlertT3P4CreatedSended = true;
+   }
+}
+
+//+------------------------------------------------------------------+
+//|                                                                  |
+//+------------------------------------------------------------------+
+void t3AlertT3P5CreatedAction() {
+   if(sendAlerts == true) {
+      string message = Symbol() + ": " + "T3 T3P5 Created";
+      Alert(message);
+      if(!SendNotification(message)) Alert("Cannot Push " + message, GetLastError());
+      t3AlertT3P5CreatedSended = true;
+   }
+}
+
+//+------------------------------------------------------------------+
+//|                                                                  |
+//+------------------------------------------------------------------+
 void t3AlertBuyRegressionAction() {
    if(sendAlerts == true && (InpT3AlertOnRegressionChannelLevel != 0 || InpT3AlertOnFiboRetracmentLevel != 0 ) && t3IsBuyRegressionAlertSendable == true && t3IsBuyRegressionAlertSended == false) {
       string message = Symbol() + ": LONG-Regression ";
@@ -52,6 +124,9 @@ void t3AlertBidIsInSignalAreaAction() {
    }
 }
 
+//+------------------------------------------------------------------+
+//|                                                                  |
+//+------------------------------------------------------------------+
 void t3alertBidAgainInHighVolumeAreaAction() {
    if(sendAlerts == true) {
       string message = Symbol() + ": " + "T3 Bid Is AGAIN in HighVolumeArea";
@@ -78,9 +153,9 @@ void t3AlertMAChangedAction() {
 //+------------------------------------------------------------------+
 void t3AlertOnBidStopLossLineOffset() {
 
-   if(t3StopLossLineLevel != 0 && InpT3AlertOnBidStopLossLineOffset != 0) {
+   if(t3StopLossValue != 0 && InpT3AlertOnBidStopLossLineOffset != 0) {
       if(t3trendDirection == TREND_DIRECTION_LONG) {
-         if(Bid() > t3StopLossLineLevel + InpT3AlertOnBidStopLossLineOffset * Point()) {
+         if(Bid() > t3StopLossValue + InpT3AlertOnBidStopLossLineOffset * Point()) {
             if(t3IsBidStopLossLineOffsetAlertSendable == true && t3IsBidStopLossLineOffsetAlertSended == false) {
                string message = Symbol() + ": LONG-BidStopLossLineOffset ";
                Alert(message);
@@ -92,7 +167,7 @@ void t3AlertOnBidStopLossLineOffset() {
          }
       }
       if(t3trendDirection == TREND_DIRECTION_SHORT) {
-         if(Bid() < t3StopLossLineLevel - InpT3AlertOnBidStopLossLineOffset * Point()) {
+         if(Bid() < t3StopLossValue - InpT3AlertOnBidStopLossLineOffset * Point()) {
             if(t3IsBidStopLossLineOffsetAlertSendable == true && t3IsBidStopLossLineOffsetAlertSended == false) {
                string message = Symbol() + ": SHORT-BidStopLossLineOffset ";
                Alert(message);
@@ -125,14 +200,19 @@ void t3CommentAction(string pVersion) {
    if(!MQLInfoInteger(MQL_TRADE_ALLOWED)) t3comment += "MQL_TRADE_ALLOWED: OFF" + "\n";
    if(sendAlerts == false) t3comment += "SEND PUSH: OFF" + "\n";
    t3comment += "\n";
+   t3comment += "T3: " + "\n\n";
+   if(tt3movementLengthRegressionLengthRatio != 0) {
+      t3comment += "tt3movementLength: " + DoubleToString(tt3movementLength, 0) + " (" + DoubleToString(tt3movementLengthP1P2, 0) + " / " +  DoubleToString(tt3movementLengthP3P4, 0) + " / " + DoubleToString(tt3movementLengthP5P6, 0) + ") Points" + "\n";
+      t3comment += "tt3regressionLength: " + DoubleToString(tt3regressionLength, 0) + " (" + DoubleToString(tt3regressionLengthP2P3, 0) + " / " +  DoubleToString(tt3regressionLengthP4P5, 0) + ") Points" + "\n";
+      t3comment += "tt3movementRegressionLengthRation: " + DoubleToString(tt3movementLengthRegressionLengthRatio, 0) + " %" + "\n";
+   }
+   t3comment += "\n";
    if(t3p1DateTime) {
-      t3comment += "T3: " + "\n";
       t3comment += "Tradabel Button State: " + IntegerToString(t3IsTradabelButtonState) + "\n";
       if(t3AlertRegressionChannelLevel != 0) t3comment += "Alert RegressionChannel: " + DoubleToString(t3AlertRegressionChannelLevel, 2) + "\n";
       if(t3AlertFiboRetracementLevel != 0) t3comment += "Alert FiboRetracement: " + DoubleToString(t3AlertFiboRetracementLevel, 2) + "\n";
       t3comment += "\n";
-
-      if(getT3TrendDirectionString() == "LONG") {
+      if(t3trendDirection == TREND_DIRECTION_LONG || t3SemiTrendDirection == TREND_DIRECTION_LONG) {
          t3comment += "LONG: " + "\n";
          t3comment += "getT3LowestLowIsInSignalAreaState(): " + IntegerToString(getT3LowestLowIsInSignalAreaState()) + "\n";
          t3comment += "LowestLowVLineDateTime: " + TimeToString(t3LowestLowVLineDateTime) + "\n";
@@ -143,7 +223,7 @@ void t3CommentAction(string pVersion) {
          t3comment += "Bid() >= t3LongEntryValue: " + IntegerToString(Bid() >= t3LongEntryValue) + "\n";
          t3comment += "maxT3BuyPositionsAreOpenState: " + IntegerToString(maxT3BuyPositionsAreOpenState) + "\n";
       }
-      if(getT3TrendDirectionString() == "SHORT") {
+      if(t3trendDirection == TREND_DIRECTION_SHORT || t3SemiTrendDirection == TREND_DIRECTION_SHORT) {
          t3comment += "SHORT: " + "\n";
          t3comment += "getT3HighestHighIsInSignalAreaState(): " + IntegerToString(getT3HighestHighIsInSignalAreaState()) + "\n";
          t3comment += "HihgestHighVLineDateTime: " + TimeToString(t3HighestHighVLineDateTime) + "\n";
@@ -159,7 +239,7 @@ void t3CommentAction(string pVersion) {
       t3comment += "t3CurrentTrailingStopMAPeriod: " + IntegerToString(t3TrailingStopMAActive) + "\n";
       if(t3CurrentBidMAOffset > 0) t3comment += " CurrentOffset: " + DoubleToString(t3CurrentBidMAOffset, 0) + "\n";
       t3comment += "\n";
-      t3comment += "StopLossLineLevel: " + DoubleToString(t3StopLossLineLevel, Digits()) + "\n";
+      t3comment += "t3StopLossValue: " + DoubleToString(t3StopLossValue, Digits()) + "\n";
       if(outSideBarDateTime != 0) t3comment += "OutSideBar: " + TimeToString(outSideBarDateTime) + "\n";
    }
 }

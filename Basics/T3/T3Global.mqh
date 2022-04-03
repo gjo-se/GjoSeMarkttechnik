@@ -59,6 +59,9 @@ double t3p3ValueLow;
 datetime t3p4DateTime;
 double t3p4ValueHigh;
 double t3p4ValueLow;
+datetime t3p5DateTime;
+double t3p5ValueHigh;
+double t3p5ValueLow;
 datetime t3HighestHighVLineDateTime;
 datetime t3LowestLowVLineDateTime;
 datetime t3EndDateTime;
@@ -85,6 +88,12 @@ bool t3AlertDisableTradeableButtonSended;
 bool t3alertBidIsInSignalAreaSended;
 bool t3alertBidAgainInHighVolumeAreaSended;
 bool t3alertMAChangedSended;
+bool t3AlertT3TrendBrokenSended;
+bool t3AlertT3BuildNewTrendSended;
+bool t3AlertT3P2CreatedSended;
+bool t3AlertT3P3CreatedSended;
+bool t3AlertT3P4CreatedSended;
+bool t3AlertT3P5CreatedSended;
 
 // INSignal
 double t3InSignalFiboLevelAreaMinStartValue;
@@ -128,7 +137,22 @@ double      t3OrderGridLimitOrderValuesArray[];
 double      t3OrderGridStopOrderValuesArray[];
 
 datetime    outSideBarDateTime;
-double      t3StopLossLineLevel;
+double      t3StopLossValue;
 double      t3TrailingStopLevel;
+
+bool        t3ScreenshotT3P2CreatedBefore;
+bool        t3ScreenshotT3P2CreatedAfter;
+bool        t3ScreenshotT3P3CreatedBefore;
+bool        t3ScreenshotT3P3CreatedAfter;
+bool        t3ScreenshotT3P4CreatedBefore;
+bool        t3ScreenshotT3P4CreatedAfter;
+bool        t3ScreenshotT3P5CreatedBefore;
+bool        t3ScreenshotT3P5CreatedAfter;
+bool        t3ScreenshotT3BuildNewTrendBefore;
+bool        t3ScreenshotT3BuildNewTrendAfter;
+bool        t3ScreenshotT3TrendBrokenOnP1Before;
+bool        t3ScreenshotT3TrendBrokenOnP1After;
+bool        t3ScreenshotT3TrendBrokenOnP3Before;
+bool        t3ScreenshotT3TrendBrokenOnP3After;
 
 //+------------------------------------------------------------------+

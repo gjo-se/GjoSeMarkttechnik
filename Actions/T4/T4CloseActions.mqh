@@ -18,7 +18,7 @@ void closeOnT4StopLossLine() {
    int      chartId = 0;
    long     positionTicket = 0;
 
-   if(t4StopLossLineLevel != 0) {
+   if(t4StopLossValue != 0) {
       long positionTicketsLocal[];
       Positions.GetTickets(InpT4MagicNumber, positionTicketsLocal);
       for(int positionTicketsId = 0; positionTicketsId < ArraySize(positionTicketsLocal); positionTicketsId++) {
@@ -26,10 +26,10 @@ void closeOnT4StopLossLine() {
          if(
             PositionSymbol(positionTicket) == Symbol()
          ) {
-            if(t4trendDirection == TREND_DIRECTION_LONG && PositionType(positionTicket) == ORDER_TYPE_BUY && Bid() < t4StopLossLineLevel) {
+            if(t4trendDirection == TREND_DIRECTION_LONG && PositionType(positionTicket) == ORDER_TYPE_BUY && Bid() < t4StopLossValue) {
                Trade.Close(positionTicket, PositionVolume(positionTicket), T4_STOP_LOSS_TLINE);
             }
-            if(t4trendDirection == TREND_DIRECTION_SHORT && PositionType(positionTicket) == ORDER_TYPE_SELL && Bid() > t4StopLossLineLevel) {
+            if(t4trendDirection == TREND_DIRECTION_SHORT && PositionType(positionTicket) == ORDER_TYPE_SELL && Bid() > t4StopLossValue) {
                Trade.Close(positionTicket, PositionVolume(positionTicket), T4_STOP_LOSS_TLINE);
             }
          }

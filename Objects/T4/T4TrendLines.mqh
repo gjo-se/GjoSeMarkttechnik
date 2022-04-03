@@ -56,8 +56,22 @@ void createT4HighestHighTrendLine() {
 //+------------------------------------------------------------------+
 //|                                                                  |
 //+------------------------------------------------------------------+
-void createT4ShortEntryTrendLine() {
-   createTrendLine(T4_SHORT_ENTRY_TLINE, iTime(Symbol(), Period(), iBarShift(Symbol(), Period(), t4HighestHighDateTime) + 3), t4ShortEntryValue, iTime(Symbol(), Period(), 0), t4ShortEntryValue, InpT4TrendLineColor, 3, STYLE_SOLID, T4_SHORT_ENTRY_TLINE);
+void createT4ShortEntryTrendLine(double pT4ShortEntryLevel) {
+   int lineWidth = 1;
+   color lineColor = clrCrimson;
+   ENUM_LINE_STYLE lineStyle = STYLE_DASHDOT;
+   bool rayLeft = false;
+   bool rayRight = true;
+   long zOrder = 0;
+   bool isBackground = true;
+   bool isSelected = false;
+   bool isSelectable = true;
+
+   string realVolume = DoubleToString(getT4SellVolume(), 2);
+   string verifiedVolume = DoubleToString(VerifyVolume(Symbol(), getT4SellVolume()), 2);
+   string lineText = T4_SHORT_ENTRY_TLINE + ": " + DoubleToString(pT4ShortEntryLevel, Digits()) + " Vol: " + realVolume + " (" + verifiedVolume + ")";
+
+   createTrendLine(T4_SHORT_ENTRY_TLINE, iTime(Symbol(), Period(), iBarShift(Symbol(), Period(), t3p3DateTime)), pT4ShortEntryLevel, iTime(Symbol(), Period(), 0), pT4ShortEntryLevel, lineColor, lineWidth, lineStyle, lineText, rayLeft, rayRight, zOrder, isBackground, isSelected, isSelectable);
 }
 
 // LONG
@@ -68,14 +82,31 @@ void createT4LowestLowTrendLine() {
 //+------------------------------------------------------------------+
 //|                                                                  |
 //+------------------------------------------------------------------+
-void createT4LongEntryTrendLine() {
-   createTrendLine(T4_LONG_ENTRY_TLINE, iTime(Symbol(), Period(), iBarShift(Symbol(), Period(), t4LowestLowDateTime) + 3), t4LongEntryValue, iTime(Symbol(), Period(), 0), t4LongEntryValue, InpT4TrendLineColor, 3, STYLE_SOLID, T4_LONG_ENTRY_TLINE);
+void createT4LongEntryTrendLine(double pT4LongEntryLevel) {
+   int lineWidth = 1;
+   color lineColor = clrCrimson;
+   ENUM_LINE_STYLE lineStyle = STYLE_DASHDOT;
+   bool rayLeft = false;
+   bool rayRight = true;
+   long zOrder = 0;
+   bool isBackground = true;
+   bool isSelected = false;
+   bool isSelectable = true;
+
+   string realVolume = DoubleToString(getT4BuyVolume(), 2);
+   string verifiedVolume = DoubleToString(VerifyVolume(Symbol(), getT4BuyVolume()), 2);
+   string lineText = T4_LONG_ENTRY_TLINE + ": " + DoubleToString(pT4LongEntryLevel, Digits()) + " Vol: " + realVolume + " (" + verifiedVolume + ")";
+
+   createTrendLine(T4_LONG_ENTRY_TLINE, iTime(Symbol(), Period(), iBarShift(Symbol(), Period(), t3p3DateTime)), pT4LongEntryLevel, iTime(Symbol(), Period(), 0), pT4LongEntryLevel, lineColor, lineWidth, lineStyle, lineText, rayLeft, rayRight, zOrder, isBackground, isSelected, isSelectable);
 }
 
 //+------------------------------------------------------------------+
 //|                                                                  |
 //+------------------------------------------------------------------+
 void createT4StopLossTrendline(double pStopLossLevel) {
+   int lineWidth = 1;
+   color lineColor = clrIndianRed;
+   ENUM_LINE_STYLE lineStyle = STYLE_DASHDOT;
    int barShift = 10;
    bool rayLeft = false;
    bool rayRight = true;
@@ -84,7 +115,7 @@ void createT4StopLossTrendline(double pStopLossLevel) {
    bool isSelected = false;
    bool isSelectable = true;
 
-   createTrendLine(T4_STOP_LOSS_TLINE, iTime(Symbol(), Period(), barShift), pStopLossLevel, iTime(Symbol(), Period(), 0), pStopLossLevel, InpT4TrendLineColor, 2, STYLE_SOLID, T4_STOP_LOSS_TLINE, rayLeft, rayRight, zOrder, isBackground, isSelected, isSelectable);
+   createTrendLine(T4_STOP_LOSS_TLINE, iTime(Symbol(), Period(), iBarShift(Symbol(), Period(), t3p3DateTime)), pStopLossLevel, iTime(Symbol(), Period(), 0), pStopLossLevel, lineColor, lineWidth, lineStyle, T4_STOP_LOSS_TLINE + ": " + DoubleToString(pStopLossLevel, Digits()), rayLeft, rayRight, zOrder, isBackground, isSelected, isSelectable);
 }
 
 //+------------------------------------------------------------------+
@@ -116,66 +147,67 @@ void createT4OrderGridTrendLines() {
    ArrayResize(t4OrderGridLimitOrderValuesArray, 0);
    ArrayResize(t4OrderGridStopOrderValuesArray, 0);
 
-   if(t4trendDirection == TREND_DIRECTION_LONG) {
+//   if(t4trendDirection == TREND_DIRECTION_LONG) {
 
       // orderGridStopOrder
-      for(int orderGridId = 1; orderGridId < InpT4OrderGridCount; orderGridId++)  {
-         double minRegressionPoints = (getT4P4HighLowValueByTrendDirection() / Point() - t4LowestLowValue / Point()) * InpT4MinRegressionPercent / 100;
-         orderGridStopOrderValue = t4LongEntryValue + (minRegressionPoints / InpT4OrderGridCount * orderGridId * Point());
-         string realVolume = DoubleToString(getT4BuyVolume(orderGridStopOrderValue), 2);
-         string verifiedVolume = DoubleToString(VerifyVolume(Symbol(), getT4BuyVolume(orderGridStopOrderValue)), 2);
-         createTrendLine(T4_ORDER_GRID_STOP_TLINE + "_" + IntegerToString(orderGridId), iTime(Symbol(), Period(), iBarShift(Symbol(), Period(), t4LowestLowDateTime) + barShift), orderGridStopOrderValue, iTime(Symbol(), Period(), 0), orderGridStopOrderValue, InpT4TrendLineColor, 1, STYLE_SOLID, T4_ORDER_GRID_STOP_TLINE + "_" + IntegerToString(orderGridId) + " V: " + realVolume + " (" + verifiedVolume + ")");
-         ArrayResize(t4OrderGridStopOrderValuesArray, ArraySize(t4OrderGridStopOrderValuesArray) + 1);
-         t4OrderGridStopOrderValuesArray[ArraySize(t4OrderGridStopOrderValuesArray) - 1] = orderGridStopOrderValue;
-      }
+//      for(int orderGridId = 1; orderGridId < InpT4OrderGridCount; orderGridId++)  {
+//         double minRegressionPoints = (getT4P4HighLowValueByTrendDirection() / Point() - t4LowestLowValue / Point()) * InpT4MinRegressionPercent / 100;
+//         orderGridStopOrderValue = t4LongEntryValue + (minRegressionPoints / InpT4OrderGridCount * orderGridId * Point());
+//         string realVolume = DoubleToString(getT4BuyVolume(orderGridStopOrderValue), 2);
+//         string verifiedVolume = DoubleToString(VerifyVolume(Symbol(), getT4BuyVolume(orderGridStopOrderValue)), 2);
+//         createTrendLine(T4_ORDER_GRID_STOP_TLINE + "_" + IntegerToString(orderGridId), iTime(Symbol(), Period(), iBarShift(Symbol(), Period(), t4LowestLowDateTime) + barShift), orderGridStopOrderValue, iTime(Symbol(), Period(), 0), orderGridStopOrderValue, InpT4TrendLineColor, 1, STYLE_SOLID, T4_ORDER_GRID_STOP_TLINE + "_" + IntegerToString(orderGridId) + " V: " + realVolume + " (" + verifiedVolume + ")");
+//         ArrayResize(t4OrderGridStopOrderValuesArray, ArraySize(t4OrderGridStopOrderValuesArray) + 1);
+//         t4OrderGridStopOrderValuesArray[ArraySize(t4OrderGridStopOrderValuesArray) - 1] = orderGridStopOrderValue;
+//      }
+//
+//      // orderGridLimitOrder
+//      for(int orderGridId = 1; orderGridId < InpT4OrderGridCount; orderGridId++) {
+//         double minRegressionPoints = (getT4P4HighLowValueByTrendDirection() / Point() - t4LowestLowValue / Point()) * InpT4MinRegressionPercent / 100;
+//         orderGridLimitOrderValue = t4LongEntryValue - (minRegressionPoints / InpT4OrderGridCount * orderGridId * Point());
+//         string realVolume = DoubleToString(getT4BuyVolume(orderGridLimitOrderValue), 2);
+//         string verifiedVolume = DoubleToString(VerifyVolume(Symbol(), getT4BuyVolume(orderGridLimitOrderValue)), 2);
+//         createTrendLine(T4_ORDER_GRID_LIMIT_TLINE + "_" + IntegerToString(orderGridId), iTime(Symbol(), Period(), iBarShift(Symbol(), Period(), t4LowestLowDateTime) + barShift), orderGridLimitOrderValue, iTime(Symbol(), Period(), 0), orderGridLimitOrderValue, InpT4TrendLineColor, 1, STYLE_SOLID, T4_ORDER_GRID_LIMIT_TLINE + "_" + IntegerToString(orderGridId) + " V: " + realVolume + " (" + verifiedVolume + ")");
+//
+//         ArrayResize(t4OrderGridLimitOrderValuesArray, ArraySize(t4OrderGridLimitOrderValuesArray) + 1);
+//         t4OrderGridLimitOrderValuesArray[ArraySize(t4OrderGridLimitOrderValuesArray) - 1] = orderGridLimitOrderValue;
+//      }
+//   }
 
-      // orderGridLimitOrder
-      for(int orderGridId = 1; orderGridId < InpT4OrderGridCount; orderGridId++) {
-         double minRegressionPoints = (getT4P4HighLowValueByTrendDirection() / Point() - t4LowestLowValue / Point()) * InpT4MinRegressionPercent / 100;
-         orderGridLimitOrderValue = t4LongEntryValue - (minRegressionPoints / InpT4OrderGridCount * orderGridId * Point());
-         string realVolume = DoubleToString(getT4BuyVolume(orderGridLimitOrderValue), 2);
-         string verifiedVolume = DoubleToString(VerifyVolume(Symbol(), getT4BuyVolume(orderGridLimitOrderValue)), 2);
-         createTrendLine(T4_ORDER_GRID_LIMIT_TLINE + "_" + IntegerToString(orderGridId), iTime(Symbol(), Period(), iBarShift(Symbol(), Period(), t4LowestLowDateTime) + barShift), orderGridLimitOrderValue, iTime(Symbol(), Period(), 0), orderGridLimitOrderValue, InpT4TrendLineColor, 1, STYLE_SOLID, T4_ORDER_GRID_LIMIT_TLINE + "_" + IntegerToString(orderGridId) + " V: " + realVolume + " (" + verifiedVolume + ")");
-
-         ArrayResize(t4OrderGridLimitOrderValuesArray, ArraySize(t4OrderGridLimitOrderValuesArray) + 1);
-         t4OrderGridLimitOrderValuesArray[ArraySize(t4OrderGridLimitOrderValuesArray) - 1] = orderGridLimitOrderValue;
-      }
-   }
-
-   if(t4trendDirection == TREND_DIRECTION_SHORT) {
-
-      // orderGridStopOrder
-      for(int orderGridId = 1; orderGridId < InpT4OrderGridCount; orderGridId++)  {
-         double minRegressionPoints = (t4HighestHighValue / Point() - getT4P4HighLowValueByTrendDirection() / Point()) * InpT4MinRegressionPercent / 100;
-         orderGridStopOrderValue = t4ShortEntryValue - (minRegressionPoints / InpT4OrderGridCount * orderGridId * Point());
-         string realVolume = DoubleToString(getT4SellVolume(orderGridStopOrderValue), 2);
-         string verifiedVolume = DoubleToString(VerifyVolume(Symbol(), getT4SellVolume(orderGridStopOrderValue)), 2);
-         createTrendLine(T4_ORDER_GRID_STOP_TLINE + "_" + IntegerToString(orderGridId), iTime(Symbol(), Period(), iBarShift(Symbol(), Period(), t4HighestHighDateTime) + barShift), orderGridStopOrderValue, iTime(Symbol(), Period(), 0), orderGridStopOrderValue, InpT4TrendLineColor, 1, STYLE_SOLID, T4_ORDER_GRID_STOP_TLINE + "_" + IntegerToString(orderGridId) + " V: " + realVolume + " (" + verifiedVolume + ")");
-         ArrayResize(t4OrderGridStopOrderValuesArray, ArraySize(t4OrderGridStopOrderValuesArray) + 1);
-         t4OrderGridStopOrderValuesArray[ArraySize(t4OrderGridStopOrderValuesArray) - 1] = orderGridStopOrderValue;
-      }
-
-      // orderGridLimitOrder
-      for(int orderGridId = 1; orderGridId < InpT4OrderGridCount; orderGridId++) {
-         double minRegressionPoints = (t4HighestHighValue / Point() - getT4P4HighLowValueByTrendDirection() / Point()) * InpT4MinRegressionPercent / 100;
-         orderGridLimitOrderValue = t4ShortEntryValue + (minRegressionPoints / InpT4OrderGridCount * orderGridId * Point());
-         string realVolume = DoubleToString(getT4SellVolume(orderGridLimitOrderValue), 2);
-         string verifiedVolume = DoubleToString(VerifyVolume(Symbol(), getT4SellVolume(orderGridLimitOrderValue)), 2);
-         createTrendLine(T4_ORDER_GRID_LIMIT_TLINE + "_" + IntegerToString(orderGridId), iTime(Symbol(), Period(), iBarShift(Symbol(), Period(), t4HighestHighDateTime) + barShift), orderGridLimitOrderValue, iTime(Symbol(), Period(), 0), orderGridLimitOrderValue, InpT4TrendLineColor, 1, STYLE_SOLID, T4_ORDER_GRID_LIMIT_TLINE + "_" + IntegerToString(orderGridId) + " V: " + realVolume + " (" + verifiedVolume + ")");
-
-         ArrayResize(t4OrderGridLimitOrderValuesArray, ArraySize(t4OrderGridLimitOrderValuesArray) + 1);
-         t4OrderGridLimitOrderValuesArray[ArraySize(t4OrderGridLimitOrderValuesArray) - 1] = orderGridLimitOrderValue;
-      }
-   }
+//   if(t4trendDirection == TREND_DIRECTION_SHORT) {
+//
+//      // orderGridStopOrder
+//      for(int orderGridId = 1; orderGridId < InpT4OrderGridCount; orderGridId++)  {
+//         double minRegressionPoints = (t4HighestHighValue / Point() - getT4P4HighLowValueByTrendDirection() / Point()) * InpT4MinRegressionPercent / 100;
+//         orderGridStopOrderValue = t4ShortEntryValue - (minRegressionPoints / InpT4OrderGridCount * orderGridId * Point());
+//         string realVolume = DoubleToString(getT4SellVolume(orderGridStopOrderValue), 2);
+//         string verifiedVolume = DoubleToString(VerifyVolume(Symbol(), getT4SellVolume(orderGridStopOrderValue)), 2);
+//         createTrendLine(T4_ORDER_GRID_STOP_TLINE + "_" + IntegerToString(orderGridId), iTime(Symbol(), Period(), iBarShift(Symbol(), Period(), t4HighestHighDateTime) + barShift), orderGridStopOrderValue, iTime(Symbol(), Period(), 0), orderGridStopOrderValue, InpT4TrendLineColor, 1, STYLE_SOLID, T4_ORDER_GRID_STOP_TLINE + "_" + IntegerToString(orderGridId) + " V: " + realVolume + " (" + verifiedVolume + ")");
+//         ArrayResize(t4OrderGridStopOrderValuesArray, ArraySize(t4OrderGridStopOrderValuesArray) + 1);
+//         t4OrderGridStopOrderValuesArray[ArraySize(t4OrderGridStopOrderValuesArray) - 1] = orderGridStopOrderValue;
+//      }
+//
+//      // orderGridLimitOrder
+//      for(int orderGridId = 1; orderGridId < InpT4OrderGridCount; orderGridId++) {
+//         double minRegressionPoints = (t4HighestHighValue / Point() - getT4P4HighLowValueByTrendDirection() / Point()) * InpT4MinRegressionPercent / 100;
+//         orderGridLimitOrderValue = t4ShortEntryValue + (minRegressionPoints / InpT4OrderGridCount * orderGridId * Point());
+//         string realVolume = DoubleToString(getT4SellVolume(orderGridLimitOrderValue), 2);
+//         string verifiedVolume = DoubleToString(VerifyVolume(Symbol(), getT4SellVolume(orderGridLimitOrderValue)), 2);
+//         createTrendLine(T4_ORDER_GRID_LIMIT_TLINE + "_" + IntegerToString(orderGridId), iTime(Symbol(), Period(), iBarShift(Symbol(), Period(), t4HighestHighDateTime) + barShift), orderGridLimitOrderValue, iTime(Symbol(), Period(), 0), orderGridLimitOrderValue, InpT4TrendLineColor, 1, STYLE_SOLID, T4_ORDER_GRID_LIMIT_TLINE + "_" + IntegerToString(orderGridId) + " V: " + realVolume + " (" + verifiedVolume + ")");
+//
+//         ArrayResize(t4OrderGridLimitOrderValuesArray, ArraySize(t4OrderGridLimitOrderValuesArray) + 1);
+//         t4OrderGridLimitOrderValuesArray[ArraySize(t4OrderGridLimitOrderValuesArray) - 1] = orderGridLimitOrderValue;
+//      }
+//   }
 }
 
 //+------------------------------------------------------------------+
 //|                                                                  |
 //+------------------------------------------------------------------+
 void setT4TrendLineValues() {
+   t4LongEntryValue = ObjectGetDouble(ChartID(), T4_LONG_ENTRY_TLINE, OBJPROP_PRICE, 1);
+   t4ShortEntryValue = ObjectGetDouble(ChartID(), T4_SHORT_ENTRY_TLINE, OBJPROP_PRICE, 1);
+
    t4HighestHighValue = getTrendlineLevelByText(T4_HIGHEST_HIGH_TLINE, PERIOD_CURRENT, Symbol(), ChartID());
-   t4ShortEntryValue = getTrendlineLevelByText(T4_SHORT_ENTRY_TLINE, PERIOD_CURRENT, Symbol(), ChartID());
    t4LowestLowValue = getTrendlineLevelByText(T4_LOWEST_LOW_TLINE, PERIOD_CURRENT, Symbol(), ChartID());
-   t4LongEntryValue = getTrendlineLevelByText(T4_LONG_ENTRY_TLINE, PERIOD_CURRENT, Symbol(), ChartID());
 }
 //+------------------------------------------------------------------+

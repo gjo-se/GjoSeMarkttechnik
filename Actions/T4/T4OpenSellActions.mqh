@@ -10,7 +10,7 @@ void openT4SellOrderAction() {
 
    Trade.MagicNumber(InpT4MagicNumber);
    Trade.FillType(SYMBOL_FILLING_FOK);
-   Trade.Sell(Symbol(), VerifyVolume(Symbol(), getT4SellVolume()), getT4SellStopLoss(), getT4SellTakeProfit(), InpT4Comment);
+   Trade.Sell(Symbol(), VerifyVolume(Symbol(), getT4SellVolume()), t4StopLossValue, getT4SellTakeProfit(), InpT4Comment);
 
    t4UseReEntryArea = true;
 }
@@ -24,43 +24,19 @@ double getT4SellTakeProfit() {
    return takeProfit;
 }
 
-double getT4SellStopLoss() {
+double getT4SellVolume() {
 
-// Varainten in Settings setzen:
-// Fix: in Punkten (InpT4StopLoss) // von Points in Level umrechnen:
-
-   double minRegressionPoints = (t4HighestHighValue / Point() - getT4P4HighLowValueByTrendDirection() / Point()) * InpT4MinRegressionPercent / 100;
-   double stopLossLineValue = t4ShortEntryValue + minRegressionPoints * InpT4StopLossLineOffsetMulti * Point() ;
-   double stopLossMarketValue = t4ShortEntryValue + minRegressionPoints * InpT4StopLossMarketOffsetMulti * Point() ;
-
-   if(stopLossLineValue > 0) AdjustBelowStopLevel(Symbol(), stopLossLineValue);
-   if(stopLossMarketValue > 0) AdjustBelowStopLevel(Symbol(), stopLossMarketValue);
-
-   createT4StopLossTrendline(stopLossLineValue);
-
-   return stopLossMarketValue;
-}
-
-double getT4SellVolume(double pLevel = 0) {
-
-// TODO: Varianten laut Settings bauen
-//  Fix:
-// Risk % Balance
-// getTradeSize(InpUseMoneyManagement, InpLotsPerEquity, InpFixedVolume);
-
-   double volume = 0;
    double maxPositionRiskValue = 0;
    double positionPointRisk = 0;
 
-   if(pLevel == 0) pLevel = Bid();
+   if(t4ShortEntryValue != 0 && t4StopLossValue != 0) {
+      maxPositionRiskValue = AccountInfoDouble(ACCOUNT_BALANCE) * InpMaxPositionRiskPercent / 100 / InpT4OrderGridCount;
+      positionPointRisk = (t4StopLossValue - t4ShortEntryValue) / Point() * getPointValueBySymbol(Symbol());
+      t4LotSize = maxPositionRiskValue / positionPointRisk;
+   } else {
+      t4LotSize = 0;
+   }
 
-// % Risk per Balance
-   maxPositionRiskValue = AccountInfoDouble(ACCOUNT_BALANCE) * InpMaxPositionRiskPercent / 100 / InpT4OrderGridCount;
-   double minRegressionPoints = (t4HighestHighValue / Point() - getT4P4HighLowValueByTrendDirection() / Point()) * InpT4MinRegressionPercent / 100;
-   double stopLossLineValue = t4ShortEntryValue + minRegressionPoints * InpT4StopLossLineOffsetMulti * Point() ;
-   positionPointRisk = (stopLossLineValue - pLevel) / Point() * getPointValueBySymbol(Symbol());
-   volume = maxPositionRiskValue / positionPointRisk;
-
-   return volume;
+   return t4LotSize;
 }
 //+------------------------------------------------------------------+

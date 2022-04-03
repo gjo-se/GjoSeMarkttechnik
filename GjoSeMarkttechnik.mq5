@@ -41,6 +41,7 @@
    3.3.0 fixed trailingStopMA
    3.3.1 fixed diverse
    3.4.0 added T4 Trend Logic on Markttechnik
+   3.5.0 added T3&T4 Template
 
 
    ===============
@@ -52,6 +53,7 @@
 //+------------------------------------------------------------------+
 #include "Basics\\T3\\T3Includes.mqh"
 #include "Basics\\T4\\T4Includes.mqh"
+#include "Basics\\TT\\TTIncludes.mqh"
 
 //+------------------------------------------------------------------+
 //| Headers                                                          |
@@ -59,7 +61,7 @@
 #property copyright   "2022, GjoSe"
 #property link        "http://www.gjo-se.com"
 #property description "GjoSe Markttechnik"
-#define   VERSION "3.4.0"
+#define   VERSION "3.5.0"
 #property version VERSION
 #property strict
 
@@ -72,20 +74,32 @@ int OnInit() {
       initializeEAAction();
       initializeT3GlobalsAction();
       initializeT4GlobalsAction();
+      initializeTTGlobalsAction();
       initializeT3ArraysAction();
       initializeT4ArraysAction();
       initializeT3IndicatorsAction();
       initializeT4IndicatorsAction();
 
+      rewriteVLineNamesWithText();
+
+      setTT3LineValues();
       setT3LineValues();
+      setTT4LineValues();
       setT4LineValues();
+
+      getTT3TrendDirection();
       getT3TrendDirection();
+      getTT4TrendDirection();
       getT4TrendDirection();
+
       setT3TrendLineValues();
       setT4TrendLineValues();
 
-      t3HandleObjectsInitAction();
-      t4HandleObjectsInitAction();
+      handleTT3ObjectsInitAction();
+      handleT3ObjectsInitAction();
+      handleTT4ObjectsInitAction();
+      handleT4ObjectsInitAction();
+
       handleCommentAction(VERSION);
    }
 
@@ -117,16 +131,17 @@ void OnTick() {
 
    if(MQLInfoInteger(MQL_VISUAL_MODE) == 1) {
       setT3LineValues();
-      getT3TrendDirection();
-      createT3HighVolumeAreaTrendLines();
       setT4LineValues();
+      getT3TrendDirection();
       getT4TrendDirection();
+      createT3HighVolumeAreaTrendLines();
    }
 
    handleT3Indictaors();
    handleT4Indictaors();
    handleT3StatesAction();
    handleT4StatesAction();
+   handleT3TrendDetectionAction();
    handleT4TrendDetectionAction();
    setT3PositionStates();
    setT4PositionStates();
@@ -180,9 +195,14 @@ void OnChartEvent(const int id,
                   const string &sparam) {
 
    if(id == CHARTEVENT_OBJECT_DRAG) {
+      rewriteVLineNamesWithText();
+      setTT3LineValues();
       setT3LineValues();
+      setTT4LineValues();
       setT4LineValues();
+      getTT3TrendDirection();
       getT3TrendDirection();
+      getTT4TrendDirection();
       getT4TrendDirection();
       t3ObjectHasChanged = true;
       t4ObjectHasChanged = true;
@@ -238,6 +258,52 @@ void OnChartEvent(const int id,
          }
 
          createT4InSignalFiboLevelChannelArea();
+      }
+
+      if(sparam == T4_LONG_ENTRY_TLINE) {
+         t4LongEntryValue = ObjectGetDouble(ChartID(), T4_LONG_ENTRY_TLINE, OBJPROP_PRICE, 1);
+         if(t4LongEntryValue != 0) {
+            string realVolume = DoubleToString(getT4BuyVolume(), 2);
+            string verifiedVolume = DoubleToString(VerifyVolume(Symbol(), getT4BuyVolume()), 2);
+            string lineText = T4_LONG_ENTRY_TLINE + ": " + DoubleToString(t4LongEntryValue, Digits()) + " Vol: " + realVolume + " (" + verifiedVolume + ")";
+            ObjectSetString(ChartID(), T4_LONG_ENTRY_TLINE, OBJPROP_TEXT, lineText);
+            ObjectSetInteger(ChartID(), T4_LONG_ENTRY_TLINE, OBJPROP_TIME, 0, t3p3DateTime);
+            ObjectSetDouble(ChartID(), T4_LONG_ENTRY_TLINE, OBJPROP_PRICE, 0, t4LongEntryValue);
+            ObjectSetDouble(ChartID(), T4_LONG_ENTRY_TLINE, OBJPROP_PRICE, 1, t4LongEntryValue);
+         }
+      }
+      if(sparam == T4_SHORT_ENTRY_TLINE) {
+         t4ShortEntryValue = ObjectGetDouble(ChartID(), T4_SHORT_ENTRY_TLINE, OBJPROP_PRICE, 1);
+         if(t4ShortEntryValue != 0) {
+            string realVolume = DoubleToString(getT4SellVolume(), 2);
+            string verifiedVolume = DoubleToString(VerifyVolume(Symbol(), getT4SellVolume()), 2);
+            string lineText = T4_SHORT_ENTRY_TLINE + ": " + DoubleToString(t4ShortEntryValue, Digits()) + " Vol: " + realVolume + " (" + verifiedVolume + ")";
+            ObjectSetString(ChartID(), T4_SHORT_ENTRY_TLINE, OBJPROP_TEXT, lineText);
+            ObjectSetInteger(ChartID(), T4_SHORT_ENTRY_TLINE, OBJPROP_TIME, 0, t3p3DateTime);
+            ObjectSetDouble(ChartID(), T4_SHORT_ENTRY_TLINE, OBJPROP_PRICE, 0, t4ShortEntryValue);
+            ObjectSetDouble(ChartID(), T4_SHORT_ENTRY_TLINE, OBJPROP_PRICE, 1, t4ShortEntryValue);
+         }
+      }
+      if(sparam == T4_STOP_LOSS_TLINE) {
+         t4StopLossValue = ObjectGetDouble(ChartID(), T4_STOP_LOSS_TLINE, OBJPROP_PRICE, 1);
+         if(t4StopLossValue != 0) {
+            if(t4LongEntryValue != 0) {
+               string realVolume = DoubleToString(getT4BuyVolume(), 2);
+               string verifiedVolume = DoubleToString(VerifyVolume(Symbol(), getT4BuyVolume()), 2);
+               string lineText = T4_LONG_ENTRY_TLINE + ": " + DoubleToString(t4LongEntryValue, Digits()) + " Vol: " + realVolume + " (" + verifiedVolume + ")";
+               ObjectSetString(ChartID(), T4_LONG_ENTRY_TLINE, OBJPROP_TEXT, lineText);
+            }
+            if(t4ShortEntryValue != 0) {
+               string realVolume = DoubleToString(getT4SellVolume(), 2);
+               string verifiedVolume = DoubleToString(VerifyVolume(Symbol(), getT4SellVolume()), 2);
+               string lineText = T4_SHORT_ENTRY_TLINE + ": " + DoubleToString(t4ShortEntryValue, Digits()) + " Vol: " + realVolume + " (" + verifiedVolume + ")";
+               ObjectSetString(ChartID(), T4_SHORT_ENTRY_TLINE, OBJPROP_TEXT, lineText);
+            }
+            ObjectSetString(ChartID(), T4_STOP_LOSS_TLINE, OBJPROP_TEXT, T4_STOP_LOSS_TLINE + ": " + DoubleToString(t4StopLossValue, Digits()));
+            ObjectSetInteger(ChartID(), T4_STOP_LOSS_TLINE, OBJPROP_TIME, 0, t3p3DateTime);
+            ObjectSetDouble(ChartID(), T4_STOP_LOSS_TLINE, OBJPROP_PRICE, 0, t4StopLossValue);
+            ObjectSetDouble(ChartID(), T4_STOP_LOSS_TLINE, OBJPROP_PRICE, 1, t4StopLossValue);
+         }
       }
    }
 

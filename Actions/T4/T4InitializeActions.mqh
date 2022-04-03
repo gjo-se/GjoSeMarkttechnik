@@ -55,6 +55,9 @@ void initializeT4GlobalsAction() {
    t4alertMAChangedSended = false;
    t4AlertT4TrendBrokenSended = false;
    t4AlertT4BuildNewTrendSended = false;
+   t4AlertT4P2CreatedSended = false;
+   t4AlertT4P3CreatedSended = false;
+   t4AlertT4P4CreatedSended = false;
    t4AlertT4P5CreatedSended = false;
 
    t4InSignalFiboLevelAreaMinStartValue = 0;
@@ -98,9 +101,25 @@ void initializeT4GlobalsAction() {
    t4LongEntryValue = 0;
 
    outSideBarDateTime = 0;
-   t4StopLossLineLevel = 0;
+   t4StopLossValue = 0;
+   t4LotSize = 0;
    t4TrailingStopLevel = 0;
    t4RegressionChannelStopLossLineLevel = 0;
+   
+   t4ScreenshotT4P2CreatedBefore = false;
+   t4ScreenshotT4P2CreatedAfter = false;
+   t4ScreenshotT4P3CreatedBefore = false;
+   t4ScreenshotT4P3CreatedAfter = false;
+   t4ScreenshotT4P4CreatedBefore = false;
+   t4ScreenshotT4P4CreatedAfter = false;
+   t4ScreenshotT4P5CreatedBefore = false;
+   t4ScreenshotT4P5CreatedAfter = false;
+   t4ScreenshotT4BuildNewTrendBefore = false;
+   t4ScreenshotT4BuildNewTrendAfter = false;
+   t4ScreenshotT4TrendBrokenOnP1Before = false;
+   t4ScreenshotT4TrendBrokenOnP1After = false;
+   t4ScreenshotT4TrendBrokenOnP3Before = false;
+   t4ScreenshotT4TrendBrokenOnP3After = false;      
 }
 
 //+------------------------------------------------------------------+
@@ -178,11 +197,6 @@ void convertInpT4StringsToArray() {
    if(InpT4MaxRegressionChannelLevel != 0) {
       ArrayResize(t4FiboLevelsArray, ArraySize(t4FiboLevelsArray) + 1);
       t4FiboLevelsArray[ArraySize(t4FiboLevelsArray) - 1] = (string)InpT4MaxRegressionChannelLevel;
-   }
-
-   if(InpT4MinRegressionForTrendDetectionPercent != 0) {
-      ArrayResize(t4FiboLevelsArray, ArraySize(t4FiboLevelsArray) + 1);
-      t4FiboLevelsArray[ArraySize(t4FiboLevelsArray) - 1] = (string)InpT4MinRegressionForTrendDetectionPercent;
    }
 
    if(InpT4MinFiboRetracmentLevel != 0) {

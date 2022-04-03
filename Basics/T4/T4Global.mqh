@@ -78,6 +78,9 @@ bool t4AlertDisableTradeableButtonSended;
 bool t4alertMAChangedSended;
 bool t4AlertT4TrendBrokenSended;
 bool t4AlertT4BuildNewTrendSended;
+bool t4AlertT4P2CreatedSended;
+bool t4AlertT4P3CreatedSended;
+bool t4AlertT4P4CreatedSended;
 bool t4AlertT4P5CreatedSended;
 
 // INSignal
@@ -123,9 +126,26 @@ double      t4LongEntryValue;
 double      t4OrderGridLimitOrderValuesArray[];
 double      t4OrderGridStopOrderValuesArray[];
 
-double      t4StopLossLineLevel;
+double      t4StopLossValue;
+double      t4LotSize;
 double      t4TrailingStopLevel;
 
 double      t4RegressionChannelStopLossLineLevel;
+
+bool        t4ScreenshotT4P2CreatedBefore;
+bool        t4ScreenshotT4P2CreatedAfter;
+bool        t4ScreenshotT4P3CreatedBefore;
+bool        t4ScreenshotT4P3CreatedAfter;
+bool        t4ScreenshotT4P4CreatedBefore;
+bool        t4ScreenshotT4P4CreatedAfter;
+bool        t4ScreenshotT4P5CreatedBefore;
+bool        t4ScreenshotT4P5CreatedAfter;
+bool        t4ScreenshotT4BuildNewTrendBefore;
+bool        t4ScreenshotT4BuildNewTrendAfter;
+bool        t4ScreenshotT4TrendBrokenOnP1Before;
+bool        t4ScreenshotT4TrendBrokenOnP1After;
+bool        t4ScreenshotT4TrendBrokenOnP3Before;
+bool        t4ScreenshotT4TrendBrokenOnP3After;
+
 
 //+------------------------------------------------------------------+

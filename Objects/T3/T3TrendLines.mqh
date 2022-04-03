@@ -9,9 +9,17 @@
 //|                                                                  |
 //+------------------------------------------------------------------+
 void createT3TrendLines() {
-   if(t3p1DateTime != 0 && t3p2DateTime != 0) createTrendLine(T3_TRENDLINE + "P1-P2", t3p1DateTime, getT3P1HighLowValueByTrendDirection(), t3p2DateTime, getT3P2HighLowValueByTrendDirection(), InpT3TrendLineColor, 3);
-   if(t3p2DateTime != 0 && t3p3DateTime != 0) createTrendLine(T3_TRENDLINE + "P2-P3", t3p2DateTime, getT3P2HighLowValueByTrendDirection(), t3p3DateTime, getT3P3HighLowValueByTrendDirection(), InpT3TrendLineColor, 3);
-   if(t3p3DateTime != 0 && t3p4DateTime != 0) createTrendLine(T3_TRENDLINE + "P3-P4", t3p3DateTime, getT3P3HighLowValueByTrendDirection(), t3p4DateTime, getT3P4HighLowValueByTrendDirection(), InpT3TrendLineColor, 3);
+
+   color lineColor = InpT3TrendLineColor;
+   if(t3SemiTrendDirection == TREND_DIRECTION_LONG) lineColor = clrLightGreen;
+   if(t3SemiTrendDirection == TREND_DIRECTION_SHORT) lineColor = clrLightPink;
+   if(t3trendDirection == TREND_DIRECTION_LONG) lineColor = clrGreen;
+   if(t3trendDirection == TREND_DIRECTION_SHORT) lineColor = clrRed;
+
+   if(t3p1DateTime != 0 && t3p2DateTime != 0) createTrendLine(T3_TRENDLINE + "P1-P2", t3p1DateTime, getT3P1HighLowValueByTrendDirection(), t3p2DateTime, getT3P2HighLowValueByTrendDirection(), lineColor, 3);
+   if(t3p2DateTime != 0 && t3p3DateTime != 0) createTrendLine(T3_TRENDLINE + "P2-P3", t3p2DateTime, getT3P2HighLowValueByTrendDirection(), t3p3DateTime, getT3P3HighLowValueByTrendDirection(), lineColor, 3);
+   if(t3p3DateTime != 0 && t3p4DateTime != 0) createTrendLine(T3_TRENDLINE + "P3-P4", t3p3DateTime, getT3P3HighLowValueByTrendDirection(), t3p4DateTime, getT3P4HighLowValueByTrendDirection(), lineColor, 3);
+   if(t3p4DateTime != 0 && t3p5DateTime != 0) createTrendLine(T3_TRENDLINE + "P4-P5", t3p4DateTime, getT3P4HighLowValueByTrendDirection(), t3p5DateTime, getT3P5HighLowValueByTrendDirection(), lineColor, 3);
 }
 
 //+------------------------------------------------------------------+
@@ -167,23 +175,10 @@ void createT3OrderGridTrendLines() {
 //|                                                                  |
 //+------------------------------------------------------------------+
 void setT3TrendLineValues() {
+   t3LongEntryValue = ObjectGetDouble(ChartID(), T3_LONG_ENTRY_TLINE, OBJPROP_PRICE, 1);
+   t3ShortEntryValue = ObjectGetDouble(ChartID(), T3_SHORT_ENTRY_TLINE, OBJPROP_PRICE, 1);
+
    t3HighestHighValue = getTrendlineLevelByText(T3_HIGHEST_HIGH_TLINE, PERIOD_CURRENT, Symbol(), ChartID());
-   t3ShortEntryValue = getTrendlineLevelByText(T3_SHORT_ENTRY_TLINE, PERIOD_CURRENT, Symbol(), ChartID());
    t3LowestLowValue = getTrendlineLevelByText(T3_LOWEST_LOW_TLINE, PERIOD_CURRENT, Symbol(), ChartID());
-   t3LongEntryValue = getTrendlineLevelByText(T3_LONG_ENTRY_TLINE, PERIOD_CURRENT, Symbol(), ChartID());
-}
-
-void deleteTrendLineLike(const string pObjectNamePart) {
-
-   long chartId = ChartID();
-   int objectsTotal = ObjectsTotal(chartId, 0, -1);
-
-   string objectName;
-   for(int i = objectsTotal; i >= 0; i--) {
-      objectName = ObjectName(chartId, i);
-      if ( StringFind(objectName, pObjectNamePart) != -1 ) {
-         ObjectDelete(chartId, objectName);
-      }
-   }
 }
 //+------------------------------------------------------------------+

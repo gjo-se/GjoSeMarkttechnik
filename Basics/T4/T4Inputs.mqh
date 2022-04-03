@@ -10,10 +10,10 @@ input group             "-------------------------------------------------------
 
 input group             "------------------------------ T4 LEVELS ----------------------"
 input bool              InpT4ObjectsShow = true; // Show T4 Objects
+input int               InpT4MinMovementLengthBasedOnTT4MovementPercent = 66; // T4 MIN Movement % on Template
+input int               InpT4MinRegressionLengthBasedOnTT4RegressionPercent = 66; // T4 MIN Regression % on Template
 input double            InpT4MaxHighVolumeAreaLevel = 0; // T3 Max HighVolume Area Level
 input double            InpT4MinHighVolumeAreaLevel = 0; // T3 Min HighVolume Area Level
-input int               InpT4MinMovementLengthBasedOnT3MovementPercent = 20;
-input int               InpT4MinRegressionForTrendDetectionPercent = 50; // T4 % MIN Regression for Trend Detection Percent
 input int               InpT4AlertOnFiboRetracmentLevel = 0;
 
 input group             "------------------------------ T4 TRAILING --------------------"
