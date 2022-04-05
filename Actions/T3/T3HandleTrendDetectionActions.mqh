@@ -241,23 +241,11 @@ void handleT3P5() {
                && t3P4P5RegressionPoints > (tt3regressionLength * InpT3MinRegressionLengthBasedOnTT3RegressionPercent / 100)
            ) {
             createT3P5VLine(t3p5DateTimeTmp);
-            if(t3trendDirection == t4trendDirection) {
-               if(t3ScreenshotT3P5CreatedBefore == false) {
-                  createScreenshot("T3P5-Before");
-                  t3ScreenshotT3P5CreatedBefore = true;
-               }
-               if(t3AlertT3P5CreatedSended == false) t3AlertT3P5CreatedAction();
-               //t3StopLossValue = t3p5ValueTmp;
-               //createT3StopLossTrendline(t3StopLossValue);
-               //if(ObjectFind(ChartID(), T3_LONG_ENTRY_TLINE) < 0) {
-               //   t3LongEntryValue = t3p4ValueHigh;
-               //   createT3LongEntryTrendLine(t3LongEntryValue);
-               //}
-               //string realVolume = DoubleToString(getT3BuyVolume(), 2);
-               //string verifiedVolume = DoubleToString(VerifyVolume(Symbol(), getT3BuyVolume()), 2);
-               //string lineText = T3_LONG_ENTRY_TLINE + ": " + DoubleToString(t3LongEntryValue, Digits()) + " Vol: " + realVolume + " (" + verifiedVolume + ")";
-               //ObjectSetString(ChartID(), T3_LONG_ENTRY_TLINE, OBJPROP_TEXT, lineText);
+            if(t3ScreenshotT3P5CreatedBefore == false) {
+               createScreenshot("T3P5-Before");
+               t3ScreenshotT3P5CreatedBefore = true;
             }
+            if(t3AlertT3P5CreatedSended == false) t3AlertT3P5CreatedAction();
          }
       }
 
@@ -275,23 +263,11 @@ void handleT3P5() {
                && t3P4P5RegressionPoints > (tt3regressionLength * InpT3MinRegressionLengthBasedOnTT3RegressionPercent / 100)
            ) {
             createT3P5VLine(t3p5DateTimeTmp);
-            if(t3trendDirection == t4trendDirection) {
-               if(t3ScreenshotT3P5CreatedBefore == false) {
-                  createScreenshot("T3P5-Before");
-                  t3ScreenshotT3P5CreatedBefore = true;
-               }
-               if(t3AlertT3P5CreatedSended == false) t3AlertT3P5CreatedAction();
-               //t3StopLossValue = t3p5ValueTmp;
-               //createT3StopLossTrendline(t3StopLossValue);
-               //if(ObjectFind(ChartID(), T3_SHORT_ENTRY_TLINE) < 0) {
-               //   t3ShortEntryValue = t3p4ValueLow;
-               //   createT3ShortEntryTrendLine(t3ShortEntryValue);
-               //}
-               //string realVolume = DoubleToString(getT3SellVolume(), 2);
-               //string verifiedVolume = DoubleToString(VerifyVolume(Symbol(), getT3SellVolume()), 2);
-               //string lineText = T3_SHORT_ENTRY_TLINE + ": " + DoubleToString(t3ShortEntryValue, Digits()) + " Vol: " + realVolume + " (" + verifiedVolume + ")";
-               //ObjectSetString(ChartID(), T3_SHORT_ENTRY_TLINE, OBJPROP_TEXT, lineText);
+            if(t3ScreenshotT3P5CreatedBefore == false) {
+               createScreenshot("T3P5-Before");
+               t3ScreenshotT3P5CreatedBefore = true;
             }
+            if(t3AlertT3P5CreatedSended == false) t3AlertT3P5CreatedAction();
          }
       }
    }
