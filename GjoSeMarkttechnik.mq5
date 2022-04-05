@@ -204,6 +204,7 @@ void OnChartEvent(const int id,
       getT3TrendDirection();
       getTT4TrendDirection();
       getT4TrendDirection();
+      createT3TrendLines();
       t3ObjectHasChanged = true;
       t4ObjectHasChanged = true;
 
