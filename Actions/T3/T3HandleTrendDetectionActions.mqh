@@ -357,11 +357,6 @@ void handleT3TrendBrokenOnP1() {
 
       if(t3SemiTrendDirection == TREND_DIRECTION_LONG || t3trendDirection == TREND_DIRECTION_LONG) {
 
-         if(isNewCurrentBar == true && t3ScreenshotT3TrendBrokenOnP1Before == true && t3ScreenshotT3TrendBrokenOnP1After == false) {
-            createScreenshot("T3TrendBrokenOnP1-After");
-            t3ScreenshotT3TrendBrokenOnP1After = true;
-         }
-
          if(Bid() < t3p1ValueLow) {
             if(t3ScreenshotT3TrendBrokenOnP1Before == false) {
                createScreenshot("T3TrendBrokenOnP1-Before");
@@ -379,11 +374,6 @@ void handleT3TrendBrokenOnP1() {
 
       if(t3SemiTrendDirection == TREND_DIRECTION_SHORT || t3trendDirection == TREND_DIRECTION_SHORT) {
 
-         if(isNewCurrentBar == true && t3ScreenshotT3TrendBrokenOnP1Before == true && t3ScreenshotT3TrendBrokenOnP1After == false) {
-            createScreenshot("T3TrendBrokenOnP1-After");
-            t3ScreenshotT3TrendBrokenOnP1After = true;
-         }
-
          if(Bid() > t3p1ValueHigh) {
             if(t3ScreenshotT3TrendBrokenOnP1Before == false) {
                createScreenshot("T3TrendBrokenOnP1-Before");
@@ -399,6 +389,12 @@ void handleT3TrendBrokenOnP1() {
          }
       }
    }
+
+   if(isNewCurrentBar == true && t3ScreenshotT3TrendBrokenOnP1Before == true && t3ScreenshotT3TrendBrokenOnP1After == false) {
+      createScreenshot("T3TrendBrokenOnP1-After");
+      t3ScreenshotT3TrendBrokenOnP1After = true;
+   }
+
 }
 
 void handleT3TrendBrokenOnP3() {
@@ -415,11 +411,6 @@ void handleT3TrendBrokenOnP3() {
      ) {
 
       if(t3SemiTrendDirection == TREND_DIRECTION_LONG || t3trendDirection == TREND_DIRECTION_LONG) {
-
-         if(isNewCurrentBar == true && t3ScreenshotT3TrendBrokenOnP3Before == true && t3ScreenshotT3TrendBrokenOnP3After == false) {
-            createScreenshot("T3TrendBrokenOnP3-After");
-            t3ScreenshotT3TrendBrokenOnP3After = true;
-         }
 
          if(Bid() < t3p3ValueLow) {
             if(t3ScreenshotT3TrendBrokenOnP3Before == false) {
@@ -438,11 +429,6 @@ void handleT3TrendBrokenOnP3() {
 
       if(t3SemiTrendDirection == TREND_DIRECTION_SHORT || t3trendDirection == TREND_DIRECTION_SHORT) {
 
-         if(isNewCurrentBar == true && t3ScreenshotT3TrendBrokenOnP3Before == true && t3ScreenshotT3TrendBrokenOnP3After == false) {
-            createScreenshot("T3TrendBrokenOnP3-After");
-            t3ScreenshotT3TrendBrokenOnP3After = true;
-         }
-
          if(Bid() > t3p3ValueHigh) {
             if(t3ScreenshotT3TrendBrokenOnP3Before == false) {
                createScreenshot("T3TrendBrokenOnP3-Before");
@@ -457,6 +443,11 @@ void handleT3TrendBrokenOnP3() {
             if(t3AlertT3TrendBrokenSended == false) t3AlertT3TrendBrokenAction();
          }
       }
+   }
+
+   if(isNewCurrentBar == true && t3ScreenshotT3TrendBrokenOnP3Before == true && t3ScreenshotT3TrendBrokenOnP3After == false) {
+      createScreenshot("T3TrendBrokenOnP3-After");
+      t3ScreenshotT3TrendBrokenOnP3After = true;
    }
 }
 
