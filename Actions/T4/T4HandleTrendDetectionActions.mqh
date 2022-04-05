@@ -398,6 +398,9 @@ void handleT4TrendBrokenOnP1() {
             resetT4Trend();
             createT4P1VLine(t4p2DateTimeTmp);
             createT4P2VLine(t4p3DateTimeTmp);
+
+            Print("t4p2DateTimeTmp: " + t4p2DateTimeTmp + " t4p3DateTimeTmp: " + t4p3DateTimeTmp);
+
             getT4TrendDirection();
             if(t4AlertT4TrendBrokenSended == false) t4AlertT4TrendBrokenAction();
          }
@@ -415,6 +418,9 @@ void handleT4TrendBrokenOnP1() {
             resetT4Trend();
             createT4P1VLine(t4p2DateTimeTmp);
             createT4P2VLine(t4p3DateTimeTmp);
+
+            Print("t4p2DateTimeTmp: " + t4p2DateTimeTmp + " t4p3DateTimeTmp: " + t4p3DateTimeTmp);
+
             getT4TrendDirection();
             if(t4AlertT4TrendBrokenSended == false) t4AlertT4TrendBrokenAction();
          }
@@ -457,6 +463,9 @@ void handleT4TrendBrokenOnP3() {
 
             createT4P1VLine(t4p4DateTimeTmp);
             createT4P2VLine(t4p5DateTimeTmp);
+
+            Print("t4p4DateTimeTmp: " + t4p4DateTimeTmp + " t4p5DateTimeTmp: " + t4p5DateTimeTmp);
+
             getT4TrendDirection();
             if(t4AlertT4TrendBrokenSended == false) t4AlertT4TrendBrokenAction();
          }
@@ -478,6 +487,9 @@ void handleT4TrendBrokenOnP3() {
 
             createT4P1VLine(t4p4DateTimeTmp);
             createT4P2VLine(t4p5DateTimeTmp);
+
+            Print("t4p4DateTimeTmp: " + t4p4DateTimeTmp + " t4p5DateTimeTmp: " + t4p5DateTimeTmp);
+
             getT4TrendDirection();
             if(t4AlertT4TrendBrokenSended == false) t4AlertT4TrendBrokenAction();
          }
