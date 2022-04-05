@@ -46,9 +46,7 @@ bool              InpT3ShowCommentDashboard = true;
 bool              InpT3ObjectsShow = true;
 ENUM_TIMEFRAMES   InpT3MaxTimeframe = PERIOD_H1;
 string            InpT3FiboLevels = "50";
-color             InpT3RegressionChannelColor = clrDarkKhaki;
 color             InpT3InSignalAreaColor = clrWheat;
-color             InpT3TrendLineColor = clrDarkKhaki;
 bool              InpPrintScreenshot = false;
 //input group             "---------- InsideBar ---------"
 double            InpInsideBarMinRange = 0;
@@ -56,6 +54,12 @@ ENUM_TIMEFRAMES   InpInsideBarTimeframe = PERIOD_CURRENT;
 color             InpInsideBarLineColor = clrBlue;
 color             InpT3TailingStopLineColor = clrRed;
 bool              InpT3UseTrailingStopMarket = true;
+
+//input group             "---------- T3 Style ---------"
+color             InpT3TrendLineColor = clrDarkKhaki;
+color             InpT3VLineColor = clrFireBrick;
+color             InpT3RegressionChannelColor = clrDarkKhaki;
+
 
 //input group             "---------- StrategyTester ---------" // (Objects in Strategy Tester nicht vorhanden)
 datetime          InpT3p1DateTime = D'2022.01.01 00:00';
