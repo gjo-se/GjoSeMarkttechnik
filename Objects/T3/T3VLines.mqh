@@ -21,11 +21,25 @@ void setT3LineValues() {
 void setT3VLineDateTimes() {
    if(ObjectFind(ChartID(), T3_P1_VLINE) >= 0) {
       t3p1DateTime = (datetime)ObjectGetInteger(ChartID(), T3_P1_VLINE, OBJPROP_TIME);
+      string errorText = "t3p1DateTime == 0";
+      if(t3p1DateTime == 0){
+            if(t3AlertT3VLineOn0Sended == false) t3AlertT3VLineOn0Action();
+            createErrorLabel(errorText);
+      }else{
+            deleteLabel(ERROR_LABEL + errorText);
+      }
    } else {
       t3p1DateTime = 0;
    }
    if(ObjectFind(ChartID(), T3_P2_VLINE) >= 0) {
       t3p2DateTime = (datetime)ObjectGetInteger(ChartID(), T3_P2_VLINE, OBJPROP_TIME);
+      string errorText = "t3p2DateTime == 0";
+      if(t3p2DateTime == 0){
+            if(t3AlertT3VLineOn0Sended == false) t3AlertT3VLineOn0Action();
+            createErrorLabel(errorText);
+      }else{
+            deleteLabel(ERROR_LABEL + errorText);
+      }
    } else {
       t3p2DateTime = 0;
    }
@@ -54,6 +68,8 @@ void setT3VLineDateTimes() {
    } else {
       t3LowestLowVLineDateTime = 0;
    }
+   
+   if(t3p1DateTime != 0 && t3p2DateTime != 0) t3AlertT3VLineOn0Sended = false;
 }
 
 void setT3VLineValues() {
@@ -97,6 +113,8 @@ void setT3VLineValues() {
       t3p5ValueHigh = 0;
       t3p5ValueLow = 0;
    }
+
+   if(t3p1DateTime != 0 && t3p2DateTime != 0) t3AlertT3VLineOn0Sended = false;
 }
 //+------------------------------------------------------------------+
 

@@ -36,4 +36,8 @@ const string   T3_ORDER_GRID_STOP_TLINE = "T3OrderGridStop";
 const int      TREND_DIRECTION_ROTATION = 0;
 const int      TREND_DIRECTION_LONG =     1;
 const int      TREND_DIRECTION_SHORT =    2;
+
+const string   ERROR_LABEL = "ErrorLabel";
+
+
 //+------------------------------------------------------------------+

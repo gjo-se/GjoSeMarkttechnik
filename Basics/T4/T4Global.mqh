@@ -82,6 +82,7 @@ bool t4AlertT4P2CreatedSended;
 bool t4AlertT4P3CreatedSended;
 bool t4AlertT4P4CreatedSended;
 bool t4AlertT4P5CreatedSended;
+bool t4AlertT4VLineOn0Sended;
 
 // INSignal
 double t4InSignalFiboLevelAreaMinStartValue;

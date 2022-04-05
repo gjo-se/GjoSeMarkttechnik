@@ -77,6 +77,15 @@ void t4AlertT4P5CreatedAction() {
    }
 }
 
+void t4AlertT4VLineOn0Action() {
+   if(sendAlerts == true) {
+      string message = Symbol() + ": " + "T4 VLINE on 0 ";
+      Alert(message);
+      if(!SendNotification(message)) Alert("Cannot Push " + message, GetLastError());
+      t4AlertT4VLineOn0Sended = true;
+   }
+}
+
 void t4AlertBuyRegressionAction() {
 
    if(sendAlerts == true && (InpT4AlertOnRegressionChannelLevel != 0 || InpT4AlertOnFiboRetracmentLevel != 0 ) && t4IsBuyRegressionAlertSendable == true && t4IsBuyRegressionAlertSended == false) {

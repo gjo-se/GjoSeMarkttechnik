@@ -21,11 +21,25 @@ void setT4LineValues() {
 void setT4VLineDateTimes() {
    if(ObjectFind(ChartID(), T4_P1_VLINE) >= 0) {
       t4p1DateTime = (datetime)ObjectGetInteger(ChartID(), T4_P1_VLINE, OBJPROP_TIME);
+      string errorText = "t4p1DateTime == 0";
+      if(t4p1DateTime == 0){
+            if(t4AlertT4VLineOn0Sended == false) t4AlertT4VLineOn0Action();
+            createErrorLabel(errorText);
+      }else{
+            deleteLabel(ERROR_LABEL + errorText);
+      }
    } else {
       t4p1DateTime = 0;
    }
    if(ObjectFind(ChartID(), T4_P2_VLINE) >= 0) {
       t4p2DateTime = (datetime)ObjectGetInteger(ChartID(), T4_P2_VLINE, OBJPROP_TIME);
+      string errorText = "t4p2DateTime == 0";
+      if(t4p2DateTime == 0){
+            if(t4AlertT4VLineOn0Sended == false) t4AlertT4VLineOn0Action();
+            createErrorLabel(errorText);
+      }else{
+            deleteLabel(ERROR_LABEL + errorText);
+      }
    } else {
       t4p2DateTime = 0;
    }
@@ -97,6 +111,8 @@ void setT4VLineValues() {
       t4p5ValueHigh = 0;
       t4p5ValueLow = 0;
    }
+
+   if(t4p1DateTime != 0 && t4p2DateTime != 0) t4AlertT4VLineOn0Sended = false;
 }
 
 void createT4HighestHighVLine() {
