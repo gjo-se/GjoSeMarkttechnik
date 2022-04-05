@@ -459,7 +459,11 @@ void handleT4TrendBrokenOnP3() {
             }
             t4p4DateTimeTmp = t4p4DateTime;
             t4p5DateTimeTmp = t4p5DateTime;
+
             resetT4Trend();
+            deleteVLine(T4_STOP_LOSS_TLINE);
+            deleteVLine(T4_LONG_ENTRY_TLINE);
+
             createT4P1VLine(t4p4DateTimeTmp);
             createT4P2VLine(t4p5DateTimeTmp);
             getT4TrendDirection();
@@ -481,7 +485,11 @@ void handleT4TrendBrokenOnP3() {
             }
             t4p4DateTimeTmp = t4p4DateTime;
             t4p5DateTimeTmp = t4p5DateTime;
+
             resetT4Trend();
+            deleteVLine(T4_STOP_LOSS_TLINE);
+            deleteVLine(T4_SHORT_ENTRY_TLINE);
+
             createT4P1VLine(t4p4DateTimeTmp);
             createT4P2VLine(t4p5DateTimeTmp);
             getT4TrendDirection();
