@@ -59,6 +59,7 @@ void initializeT4GlobalsAction() {
    t4AlertT4P3CreatedSended = false;
    t4AlertT4P4CreatedSended = false;
    t4AlertT4P5CreatedSended = false;
+   t4AlertT4VLineOn0Sended = false;
 
    t4InSignalFiboLevelAreaMinStartValue = 0;
    t4InSignalFiboLevelAreaMinEndValue = 0;

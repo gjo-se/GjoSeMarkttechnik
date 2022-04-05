@@ -21,11 +21,25 @@ void setT3LineValues() {
 void setT3VLineDateTimes() {
    if(ObjectFind(ChartID(), T3_P1_VLINE) >= 0) {
       t3p1DateTime = (datetime)ObjectGetInteger(ChartID(), T3_P1_VLINE, OBJPROP_TIME);
+      string errorText = "t3p1DateTime == 0";
+      if(t3p1DateTime == 0){
+            if(t3AlertT3VLineOn0Sended == false) t3AlertT3VLineOn0Action();
+            createErrorLabel(errorText);
+      }else{
+            deleteLabel(ERROR_LABEL + errorText);
+      }
    } else {
       t3p1DateTime = 0;
    }
    if(ObjectFind(ChartID(), T3_P2_VLINE) >= 0) {
       t3p2DateTime = (datetime)ObjectGetInteger(ChartID(), T3_P2_VLINE, OBJPROP_TIME);
+      string errorText = "t3p2DateTime == 0";
+      if(t3p2DateTime == 0){
+            if(t3AlertT3VLineOn0Sended == false) t3AlertT3VLineOn0Action();
+            createErrorLabel(errorText);
+      }else{
+            deleteLabel(ERROR_LABEL + errorText);
+      }
    } else {
       t3p2DateTime = 0;
    }
@@ -54,6 +68,8 @@ void setT3VLineDateTimes() {
    } else {
       t3LowestLowVLineDateTime = 0;
    }
+   
+   if(t3p1DateTime != 0 && t3p2DateTime != 0) t3AlertT3VLineOn0Sended = false;
 }
 
 void setT3VLineValues() {
@@ -97,6 +113,8 @@ void setT3VLineValues() {
       t3p5ValueHigh = 0;
       t3p5ValueLow = 0;
    }
+
+   if(t3p1DateTime != 0 && t3p2DateTime != 0) t3AlertT3VLineOn0Sended = false;
 }
 //+------------------------------------------------------------------+
 
@@ -137,7 +155,7 @@ void createT3P1VLine(datetime pDateTime) {
    t3p1ValueHigh = iHigh(Symbol(), PERIOD_CURRENT, iBarShift(Symbol(), PERIOD_CURRENT, t3p1DateTime));
    t3p1ValueLow = iLow(Symbol(), PERIOD_CURRENT, iBarShift(Symbol(), PERIOD_CURRENT, t3p1DateTime));
 
-   createVLine(T3_P1_VLINE, t3p1DateTime, clrGray, 2, STYLE_SOLID, T3_P1_VLINE, zOrder, isBackground, isSelected, isSelectable);
+   createVLine(T3_P1_VLINE, t3p1DateTime, InpT3VLineColor, 2, STYLE_SOLID, T3_P1_VLINE, zOrder, isBackground, isSelected, isSelectable);
 }
 
 void createT3P2VLine(datetime pDateTime) {
@@ -151,7 +169,7 @@ void createT3P2VLine(datetime pDateTime) {
    t3p2ValueHigh = iHigh(Symbol(), PERIOD_CURRENT, iBarShift(Symbol(), PERIOD_CURRENT, t3p2DateTime));
    t3p2ValueLow = iLow(Symbol(), PERIOD_CURRENT, iBarShift(Symbol(), PERIOD_CURRENT, t3p2DateTime));
 
-   createVLine(T3_P2_VLINE, t3p2DateTime, clrGray, 2, STYLE_SOLID, T3_P2_VLINE, zOrder, isBackground, isSelected, isSelectable);
+   createVLine(T3_P2_VLINE, t3p2DateTime, InpT3VLineColor, 2, STYLE_SOLID, T3_P2_VLINE, zOrder, isBackground, isSelected, isSelectable);
 }
 
 void createT3P3VLine(datetime pDateTime) {
@@ -165,7 +183,7 @@ void createT3P3VLine(datetime pDateTime) {
    t3p3ValueHigh = iHigh(Symbol(), PERIOD_CURRENT, iBarShift(Symbol(), PERIOD_CURRENT, t3p3DateTime));
    t3p3ValueLow = iLow(Symbol(), PERIOD_CURRENT, iBarShift(Symbol(), PERIOD_CURRENT, t3p3DateTime));
 
-   createVLine(T3_P3_VLINE, t3p3DateTime, clrGray, 2, STYLE_SOLID, T3_P3_VLINE, zOrder, isBackground, isSelected, isSelectable);
+   createVLine(T3_P3_VLINE, t3p3DateTime, InpT3VLineColor, 2, STYLE_SOLID, T3_P3_VLINE, zOrder, isBackground, isSelected, isSelectable);
 }
 
 void createT3P4VLine(datetime pDateTime) {
@@ -179,7 +197,7 @@ void createT3P4VLine(datetime pDateTime) {
    t3p4ValueHigh = iHigh(Symbol(), PERIOD_CURRENT, iBarShift(Symbol(), PERIOD_CURRENT, t3p4DateTime));
    t3p4ValueLow = iLow(Symbol(), PERIOD_CURRENT, iBarShift(Symbol(), PERIOD_CURRENT, t3p4DateTime));
 
-   createVLine(T3_P4_VLINE, t3p4DateTime, clrGray, 2, STYLE_SOLID, T3_P4_VLINE, zOrder, isBackground, isSelected, isSelectable);
+   createVLine(T3_P4_VLINE, t3p4DateTime, InpT3VLineColor, 2, STYLE_SOLID, T3_P4_VLINE, zOrder, isBackground, isSelected, isSelectable);
 }
 //+------------------------------------------------------------------+
 
@@ -194,6 +212,6 @@ void createT3P5VLine(datetime pDateTime) {
    t3p5ValueHigh = iHigh(Symbol(), PERIOD_CURRENT, iBarShift(Symbol(), PERIOD_CURRENT, t3p5DateTime));
    t3p5ValueLow = iLow(Symbol(), PERIOD_CURRENT, iBarShift(Symbol(), PERIOD_CURRENT, t3p5DateTime));
 
-   createVLine(T3_P5_VLINE, t3p5DateTime, clrGray, 2, STYLE_SOLID, T3_P5_VLINE, zOrder, isBackground, isSelected, isSelectable);
+   createVLine(T3_P5_VLINE, t3p5DateTime, InpT3VLineColor, 2, STYLE_SOLID, T3_P5_VLINE, zOrder, isBackground, isSelected, isSelectable);
 }
 //+------------------------------------------------------------------+

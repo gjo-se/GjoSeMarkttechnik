@@ -42,6 +42,7 @@
 #include <GjoSe\\Objects\\InclRegressionChannel.mqh>
 #include <GjoSe\\Objects\\InclChannel.mqh>
 #include <GjoSe\\Objects\\InclButton.mqh>
+#include <GjoSe\\Objects\\InclLabel.mqh>
 
 #include "..\\..\\Objects\\T3\\T3RegressionChannel.mqh"
 #include "..\\..\\Objects\\T3\\T3FiboRetracement.mqh"
@@ -49,6 +50,7 @@
 #include "..\\..\\Objects\\T3\\T3TrendLines.mqh"
 #include "..\\..\\Objects\\T3\\T3Channel.mqh"
 #include "..\\..\\Objects\\T3\\T3Button.mqh"
+#include "..\\..\\Objects\\T3\\T3Labels.mqh"
 
 
 //+------------------------------------------------------------------+

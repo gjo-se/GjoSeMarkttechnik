@@ -76,6 +76,15 @@ void t3AlertT3P5CreatedAction() {
    }
 }
 
+void t3AlertT3VLineOn0Action() {
+   if(sendAlerts == true) {
+      string message = Symbol() + ": " + "T3 VLINE on 0 ";
+      Alert(message);
+      if(!SendNotification(message)) Alert("Cannot Push " + message, GetLastError());
+      t3AlertT3VLineOn0Sended = true;
+   }
+}
+
 //+------------------------------------------------------------------+
 //|                                                                  |
 //+------------------------------------------------------------------+

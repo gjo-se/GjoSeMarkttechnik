@@ -73,6 +73,7 @@ void initializeT3GlobalsAction() {
    t3AlertT3P3CreatedSended = false;
    t3AlertT3P4CreatedSended = false;
    t3AlertT3P5CreatedSended = false;
+   t3AlertT3VLineOn0Sended = false;
 
    t3InSignalFiboLevelAreaMinStartValue = 0;
    t3InSignalFiboLevelAreaMinEndValue = 0;
