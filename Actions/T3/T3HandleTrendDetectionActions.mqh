@@ -49,8 +49,8 @@ void handleT3P2() {
      ) {
 
       if(t3SemiTrendDirection == TREND_DIRECTION_LONG) {
-         t3p2DateTimeTmp = iTime(Symbol(), Period(), iHighest(Symbol(), Period(), MODE_HIGH,  iBarShift(Symbol(), Period(), t3p1DateTimeTmp) + 1));
-         t3p2ValueTmp = iHigh(Symbol(), Period(), iBarShift(Symbol(), Period(), t3p2DateTimeTmp));
+         t3p2DateTimeTmp = iTime(Symbol(), PERIOD_M1, iHighest(Symbol(), PERIOD_M1, MODE_HIGH,  iBarShift(Symbol(), PERIOD_M1, t3p1DateTimeTmp) + 1));
+         t3p2ValueTmp = iHigh(Symbol(), PERIOD_M1, iBarShift(Symbol(), PERIOD_M1, t3p2DateTimeTmp));
          t3P1P2MovementPoints = t3p2ValueTmp / Point() - t3p1ValueLow / Point();
 
          if(isNewCurrentBar == true && t3ScreenshotT3P2CreatedBefore == true && t3ScreenshotT3P2CreatedAfter == false) {
@@ -72,8 +72,8 @@ void handleT3P2() {
       }
 
       if(t3SemiTrendDirection == TREND_DIRECTION_SHORT) {
-         t3p2DateTimeTmp = iTime(Symbol(), Period(), iLowest(Symbol(), Period(), MODE_LOW,  iBarShift(Symbol(), Period(), t3p1DateTimeTmp) + 1));
-         t3p2ValueTmp = iLow(Symbol(), Period(), iBarShift(Symbol(), Period(), t3p2DateTimeTmp));
+         t3p2DateTimeTmp = iTime(Symbol(), PERIOD_M1, iLowest(Symbol(), PERIOD_M1, MODE_LOW,  iBarShift(Symbol(), PERIOD_M1, t3p1DateTimeTmp) + 1));
+         t3p2ValueTmp = iLow(Symbol(), PERIOD_M1, iBarShift(Symbol(), PERIOD_M1, t3p2DateTimeTmp));
          t3P1P2MovementPoints = t3p1ValueHigh / Point() - t3p2ValueTmp / Point();
 
          if(isNewCurrentBar == true && t3ScreenshotT3P2CreatedBefore == true && t3ScreenshotT3P2CreatedAfter == false) {
@@ -109,8 +109,8 @@ void handleT3P3() {
      ) {
 
       if(t3SemiTrendDirection == TREND_DIRECTION_LONG) {
-         t3p3DateTimeTmp = iTime(Symbol(), Period(), iLowest(Symbol(), Period(), MODE_LOW,  iBarShift(Symbol(), Period(), t3p2DateTime) + 1));
-         t3p3ValueTmp = iLow(Symbol(), Period(), iBarShift(Symbol(), Period(), t3p3DateTimeTmp));
+         t3p3DateTimeTmp = iTime(Symbol(), PERIOD_M1, iLowest(Symbol(), PERIOD_M1, MODE_LOW,  iBarShift(Symbol(), PERIOD_M1, t3p2DateTime) + 1));
+         t3p3ValueTmp = iLow(Symbol(), PERIOD_M1, iBarShift(Symbol(), PERIOD_M1, t3p3DateTimeTmp));
          t3P2P3RegressionPoints = t3p2ValueHigh / Point() - t3p3ValueTmp / Point();
 
          if(isNewCurrentBar == true && t3ScreenshotT3P3CreatedBefore == true && t3ScreenshotT3P3CreatedAfter == false) {
@@ -131,8 +131,8 @@ void handleT3P3() {
       }
 
       if(t3SemiTrendDirection == TREND_DIRECTION_SHORT) {
-         t3p3DateTimeTmp = iTime(Symbol(), Period(), iHighest(Symbol(), Period(), MODE_HIGH,  iBarShift(Symbol(), Period(), t3p2DateTime) + 1));
-         t3p3ValueTmp = iHigh(Symbol(), Period(), iBarShift(Symbol(), Period(), t3p3DateTimeTmp));
+         t3p3DateTimeTmp = iTime(Symbol(), PERIOD_M1, iHighest(Symbol(), PERIOD_M1, MODE_HIGH,  iBarShift(Symbol(), PERIOD_M1, t3p2DateTime) + 1));
+         t3p3ValueTmp = iHigh(Symbol(), PERIOD_M1, iBarShift(Symbol(), PERIOD_M1, t3p3DateTimeTmp));
          t3P2P3RegressionPoints = t3p3ValueTmp / Point() - t3p2ValueLow / Point();
 
          if(isNewCurrentBar == true && t3ScreenshotT3P3CreatedBefore == true && t3ScreenshotT3P3CreatedAfter == false) {
@@ -166,8 +166,8 @@ void handleT3P4() {
      ) {
 
       if(t3SemiTrendDirection == TREND_DIRECTION_LONG || t3trendDirection == TREND_DIRECTION_LONG) {
-         t3p4DateTimeTmp = iTime(Symbol(), Period(), iHighest(Symbol(), Period(), MODE_HIGH,  iBarShift(Symbol(), Period(), t3p3DateTime) + 1));
-         t3p4ValueTmp = iHigh(Symbol(), Period(), iBarShift(Symbol(), Period(), t3p4DateTimeTmp));
+         t3p4DateTimeTmp = iTime(Symbol(), PERIOD_M1, iHighest(Symbol(), PERIOD_M1, MODE_HIGH,  iBarShift(Symbol(), PERIOD_M1, t3p3DateTime) + 1));
+         t3p4ValueTmp = iHigh(Symbol(), PERIOD_M1, iBarShift(Symbol(), PERIOD_M1, t3p4DateTimeTmp));
          t3P2P4MovementPoints = t3p4ValueTmp / Point() - t3p3ValueLow / Point();
 
          if(isNewCurrentBar == true && t3ScreenshotT3P4CreatedBefore == true && t3ScreenshotT3P4CreatedAfter == false) {
@@ -191,8 +191,8 @@ void handleT3P4() {
       }
 
       if(t3SemiTrendDirection == TREND_DIRECTION_SHORT || t3trendDirection == TREND_DIRECTION_SHORT) {
-         t3p4DateTimeTmp = iTime(Symbol(), Period(), iLowest(Symbol(), Period(), MODE_LOW,  iBarShift(Symbol(), Period(), t3p3DateTime) + 1));
-         t3p4ValueTmp = iLow(Symbol(), Period(), iBarShift(Symbol(), Period(), t3p4DateTimeTmp));
+         t3p4DateTimeTmp = iTime(Symbol(), PERIOD_M1, iLowest(Symbol(), PERIOD_M1, MODE_LOW,  iBarShift(Symbol(), PERIOD_M1, t3p3DateTime) + 1));
+         t3p4ValueTmp = iLow(Symbol(), PERIOD_M1, iBarShift(Symbol(), PERIOD_M1, t3p4DateTimeTmp));
          t3P2P4MovementPoints = t3p3ValueHigh / Point() - t3p4ValueTmp / Point();
 
          if(isNewCurrentBar == true && t3ScreenshotT3P4CreatedBefore == true && t3ScreenshotT3P4CreatedAfter == false) {
@@ -228,8 +228,8 @@ void handleT3P5() {
      ) {
 
       if(t3trendDirection == TREND_DIRECTION_LONG) {
-         t3p5DateTimeTmp = iTime(Symbol(), Period(), iLowest(Symbol(), Period(), MODE_LOW,  iBarShift(Symbol(), Period(), t3p4DateTime) + 1));
-         t3p5ValueTmp = iLow(Symbol(), Period(), iBarShift(Symbol(), Period(), t3p5DateTimeTmp));
+         t3p5DateTimeTmp = iTime(Symbol(), PERIOD_M1, iLowest(Symbol(), PERIOD_M1, MODE_LOW,  iBarShift(Symbol(), PERIOD_M1, t3p4DateTime) + 1));
+         t3p5ValueTmp = iLow(Symbol(), PERIOD_M1, iBarShift(Symbol(), PERIOD_M1, t3p5DateTimeTmp));
          t3P4P5RegressionPoints = t3p4ValueHigh / Point() - t3p5ValueTmp / Point();
 
          if(isNewCurrentBar == true && t3ScreenshotT3P5CreatedBefore == true && t3ScreenshotT3P5CreatedAfter == false) {
@@ -250,8 +250,8 @@ void handleT3P5() {
       }
 
       if(t3trendDirection == TREND_DIRECTION_SHORT) {
-         t3p5DateTimeTmp = iTime(Symbol(), Period(), iHighest(Symbol(), Period(), MODE_HIGH,  iBarShift(Symbol(), Period(), t3p4DateTime) + 1));
-         t3p5ValueTmp = iHigh(Symbol(), Period(), iBarShift(Symbol(), Period(), t3p5DateTimeTmp));
+         t3p5DateTimeTmp = iTime(Symbol(), PERIOD_M1, iHighest(Symbol(), PERIOD_M1, MODE_HIGH,  iBarShift(Symbol(), PERIOD_M1, t3p4DateTime) + 1));
+         t3p5ValueTmp = iHigh(Symbol(), PERIOD_M1, iBarShift(Symbol(), PERIOD_M1, t3p5DateTimeTmp));
          t3P4P5RegressionPoints = t3p5ValueTmp / Point() - t3p4ValueLow / Point();
 
          if(isNewCurrentBar == true && t3ScreenshotT3P5CreatedBefore == true && t3ScreenshotT3P5CreatedAfter == false) {

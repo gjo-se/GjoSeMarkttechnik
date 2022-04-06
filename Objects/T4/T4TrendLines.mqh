@@ -71,7 +71,7 @@ void createT4ShortEntryTrendLine(double pT4ShortEntryLevel) {
    string verifiedVolume = DoubleToString(VerifyVolume(Symbol(), getT4SellVolume()), 2);
    string lineText = T4_SHORT_ENTRY_TLINE + ": " + DoubleToString(pT4ShortEntryLevel, Digits()) + " Vol: " + realVolume + " (" + verifiedVolume + ")";
 
-   createTrendLine(T4_SHORT_ENTRY_TLINE, iTime(Symbol(), Period(), iBarShift(Symbol(), Period(), t3p3DateTime)), pT4ShortEntryLevel, iTime(Symbol(), Period(), 0), pT4ShortEntryLevel, lineColor, lineWidth, lineStyle, lineText, rayLeft, rayRight, zOrder, isBackground, isSelected, isSelectable);
+   createTrendLine(T4_SHORT_ENTRY_TLINE, iTime(Symbol(), PERIOD_M1, iBarShift(Symbol(), PERIOD_M1, t3p3DateTime)), pT4ShortEntryLevel, iTime(Symbol(), PERIOD_M1, 0), pT4ShortEntryLevel, lineColor, lineWidth, lineStyle, lineText, rayLeft, rayRight, zOrder, isBackground, isSelected, isSelectable);
 }
 
 // LONG
@@ -97,7 +97,7 @@ void createT4LongEntryTrendLine(double pT4LongEntryLevel) {
    string verifiedVolume = DoubleToString(VerifyVolume(Symbol(), getT4BuyVolume()), 2);
    string lineText = T4_LONG_ENTRY_TLINE + ": " + DoubleToString(pT4LongEntryLevel, Digits()) + " Vol: " + realVolume + " (" + verifiedVolume + ")";
 
-   createTrendLine(T4_LONG_ENTRY_TLINE, iTime(Symbol(), Period(), iBarShift(Symbol(), Period(), t3p3DateTime)), pT4LongEntryLevel, iTime(Symbol(), Period(), 0), pT4LongEntryLevel, lineColor, lineWidth, lineStyle, lineText, rayLeft, rayRight, zOrder, isBackground, isSelected, isSelectable);
+   createTrendLine(T4_LONG_ENTRY_TLINE, iTime(Symbol(), PERIOD_M1, iBarShift(Symbol(), PERIOD_M1, t3p3DateTime)), pT4LongEntryLevel, iTime(Symbol(), PERIOD_M1, 0), pT4LongEntryLevel, lineColor, lineWidth, lineStyle, lineText, rayLeft, rayRight, zOrder, isBackground, isSelected, isSelectable);
 }
 
 //+------------------------------------------------------------------+
@@ -115,7 +115,7 @@ void createT4StopLossTrendline(double pStopLossLevel) {
    bool isSelected = false;
    bool isSelectable = true;
 
-   createTrendLine(T4_STOP_LOSS_TLINE, iTime(Symbol(), Period(), iBarShift(Symbol(), Period(), t3p3DateTime)), pStopLossLevel, iTime(Symbol(), Period(), 0), pStopLossLevel, lineColor, lineWidth, lineStyle, T4_STOP_LOSS_TLINE + ": " + DoubleToString(pStopLossLevel, Digits()), rayLeft, rayRight, zOrder, isBackground, isSelected, isSelectable);
+   createTrendLine(T4_STOP_LOSS_TLINE, iTime(Symbol(), PERIOD_M1, iBarShift(Symbol(), PERIOD_M1, t3p3DateTime)), pStopLossLevel, iTime(Symbol(), PERIOD_M1, 0), pStopLossLevel, lineColor, lineWidth, lineStyle, T4_STOP_LOSS_TLINE + ": " + DoubleToString(pStopLossLevel, Digits()), rayLeft, rayRight, zOrder, isBackground, isSelected, isSelectable);
 }
 
 //+------------------------------------------------------------------+

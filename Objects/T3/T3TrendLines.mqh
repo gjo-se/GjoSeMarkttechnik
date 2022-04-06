@@ -57,7 +57,7 @@ void createT3HighestHighTrendLine() {
 //|                                                                  |
 //+------------------------------------------------------------------+
 void createT3ShortEntryTrendLine() {
-   createTrendLine(T3_SHORT_ENTRY_TLINE, iTime(Symbol(), Period(), iBarShift(Symbol(), Period(), t3HighestHighDateTime) + 3), t3ShortEntryValue, iTime(Symbol(), Period(), 0), t3ShortEntryValue, InpT3TrendLineColor, 3, STYLE_SOLID, T3_SHORT_ENTRY_TLINE);
+   createTrendLine(T3_SHORT_ENTRY_TLINE, iTime(Symbol(), PERIOD_M1, iBarShift(Symbol(), PERIOD_M1, t3HighestHighDateTime) + 3), t3ShortEntryValue, iTime(Symbol(), PERIOD_M1, 0), t3ShortEntryValue, InpT3TrendLineColor, 3, STYLE_SOLID, T3_SHORT_ENTRY_TLINE);
 }
 
 // LONG
@@ -69,7 +69,7 @@ void createT3LowestLowTrendLine() {
 //|                                                                  |
 //+------------------------------------------------------------------+
 void createT3LongEntryTrendLine() {
-   createTrendLine(T3_LONG_ENTRY_TLINE, iTime(Symbol(), Period(), iBarShift(Symbol(), Period(), t3LowestLowDateTime) + 3), t3LongEntryValue, iTime(Symbol(), Period(), 0), t3LongEntryValue, InpT3TrendLineColor, 3, STYLE_SOLID, T3_LONG_ENTRY_TLINE);
+   createTrendLine(T3_LONG_ENTRY_TLINE, iTime(Symbol(), PERIOD_M1, iBarShift(Symbol(), PERIOD_M1, t3LowestLowDateTime) + 3), t3LongEntryValue, iTime(Symbol(), PERIOD_M1, 0), t3LongEntryValue, InpT3TrendLineColor, 3, STYLE_SOLID, T3_LONG_ENTRY_TLINE);
 }
 
 //+------------------------------------------------------------------+
@@ -84,7 +84,7 @@ void createT3StopLossTrendline(double pStopLossLevel) {
    bool isSelected = false;
    bool isSelectable = true;
 
-   createTrendLine(T3_STOP_LOSS_TLINE, iTime(Symbol(), Period(), barShift), pStopLossLevel, iTime(Symbol(), Period(), 0), pStopLossLevel, InpT3TrendLineColor, 2, STYLE_SOLID, T3_STOP_LOSS_TLINE, rayLeft, rayRight, zOrder, isBackground, isSelected, isSelectable);
+   createTrendLine(T3_STOP_LOSS_TLINE, iTime(Symbol(), PERIOD_M1, barShift), pStopLossLevel, iTime(Symbol(), PERIOD_M1, 0), pStopLossLevel, InpT3TrendLineColor, 2, STYLE_SOLID, T3_STOP_LOSS_TLINE, rayLeft, rayRight, zOrder, isBackground, isSelected, isSelectable);
 }
 
 //+------------------------------------------------------------------+
@@ -92,7 +92,7 @@ void createT3StopLossTrendline(double pStopLossLevel) {
 //+------------------------------------------------------------------+
 void createT3TrailingStopTrendLine() {
    int barShift = 3;
-   createTrendLine(T3_TRAILING_STOP_TLINE, iTime(Symbol(), Period(), barShift), t3TrailingStopLevel, iTime(Symbol(), Period(), 0), t3TrailingStopLevel, InpT3TailingStopLineColor, 3, STYLE_SOLID, T3_TRAILING_STOP_TLINE);
+   createTrendLine(T3_TRAILING_STOP_TLINE, iTime(Symbol(), PERIOD_M1, barShift), t3TrailingStopLevel, iTime(Symbol(), PERIOD_M1, 0), t3TrailingStopLevel, InpT3TailingStopLineColor, 3, STYLE_SOLID, T3_TRAILING_STOP_TLINE);
 }
 
 //+------------------------------------------------------------------+
