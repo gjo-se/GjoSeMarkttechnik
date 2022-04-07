@@ -18,6 +18,17 @@ void t3AlertT3TrendBrokenAction() {
    }
 }
 
+void t3AlertT3P5CreatedTT4MissingAction() {
+   if(sendAlerts == true) {
+      string prio = "ERROR";
+      string text = "T3 P5 + TT4 Missing";
+      string message = prio + ": " + text + " - " + Symbol();
+      Alert(message);
+      if(!SendNotification(message)) Alert("Cannot Push " + message + " Error: ", GetLastError());
+      t3AlertT3P5CreatedTT4MissingSended = true;
+   }
+}
+
 void t3AlertT3VLineOn0Action() {
    if(sendAlerts == true) {
       string message = Symbol() + ": " + "T3 VLINE on 0 ";

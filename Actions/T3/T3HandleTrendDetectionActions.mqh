@@ -239,6 +239,7 @@ void handleT3P5() {
                createScreenshot("T3P5-Before");
                t3ScreenshotT3P5CreatedBefore = true;
             }
+            if(tt4p1DateTime == 0 && t3AlertT3P5CreatedTT4MissingSended == false) t3AlertT3P5CreatedTT4MissingAction();
          }
       }
 
@@ -260,6 +261,7 @@ void handleT3P5() {
                createScreenshot("T3P5-Before");
                t3ScreenshotT3P5CreatedBefore = true;
             }
+            if(tt4p1DateTime == 0 && t3AlertT3P5CreatedTT4MissingSended == false) t3AlertT3P5CreatedTT4MissingAction();
          }
       }
    }
@@ -468,6 +470,7 @@ void resetT3Trend() {
    deleteTrendLine(T3_TRENDLINE + "P3-P4");
    deleteTrendLine(T3_TRENDLINE + "P4-P5");
 
+   t3AlertT3P5CreatedTT4MissingSended = false;
    t3AlertT3TrendBrokenSended = false;
 
    t3ScreenshotT3P2CreatedBefore = false;
