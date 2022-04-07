@@ -44,6 +44,7 @@
    3.5.0 added T3&T4 Template
    3.5.1 fixed diverse
    3.5.2 changed Push-Logic
+   3.5.3 fixed diverse
 
 
    ===============
@@ -63,7 +64,7 @@
 #property copyright   "2022, GjoSe"
 #property link        "http://www.gjo-se.com"
 #property description "GjoSe Markttechnik"
-#define   VERSION "3.5.2"
+#define   VERSION "3.5.3"
 #property version VERSION
 #property strict
 
