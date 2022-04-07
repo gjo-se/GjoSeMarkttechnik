@@ -240,12 +240,12 @@ void handleT4P5() {
                && t4P4P5RegressionPoints > (tt4regressionLength * InpT4MinRegressionLengthBasedOnTT4RegressionPercent / 100)
            ) {
             createT4P5VLine(t4p5DateTimeTmp);
-            if(t3trendDirection == t4trendDirection) {
+            if(t3trendDirection == t4trendDirection && buyT4PositionIsOpenState == false) {
                if(t4ScreenshotT4P5CreatedBefore == false) {
                   createScreenshot("T4P5-Before");
                   t4ScreenshotT4P5CreatedBefore = true;
                }
-               if((buyT4PositionIsOpenState == true || sellT4PositionIsOpenState == true) && t4AlertT4P5CreatedSended == false) t4AlertT4P5CreatedAction();
+               if(t4AlertT4P5CreatedSended == false) t4AlertT4P5CreatedAction();
                t4StopLossValue = t4p5ValueTmp;
                createT4StopLossTrendline(t4StopLossValue);
                if(ObjectFind(ChartID(), T4_LONG_ENTRY_TLINE) < 0) {
@@ -274,12 +274,12 @@ void handleT4P5() {
                && t4P4P5RegressionPoints > (tt4regressionLength * InpT4MinRegressionLengthBasedOnTT4RegressionPercent / 100)
            ) {
             createT4P5VLine(t4p5DateTimeTmp);
-            if(t3trendDirection == t4trendDirection) {
+            if(t3trendDirection == t4trendDirection && sellT4PositionIsOpenState == false) {
                if(t4ScreenshotT4P5CreatedBefore == false) {
                   createScreenshot("T4P5-Before");
                   t4ScreenshotT4P5CreatedBefore = true;
                }
-               if((buyT4PositionIsOpenState == true || sellT4PositionIsOpenState == true) && t4AlertT4P5CreatedSended == false) t4AlertT4P5CreatedAction();
+               if(t4AlertT4P5CreatedSended == false) t4AlertT4P5CreatedAction();
                t4StopLossValue = t4p5ValueTmp;
                createT4StopLossTrendline(t4StopLossValue);
                if(ObjectFind(ChartID(), T4_SHORT_ENTRY_TLINE) < 0) {
