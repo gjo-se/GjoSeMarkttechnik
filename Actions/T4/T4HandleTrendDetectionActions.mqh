@@ -184,6 +184,7 @@ void handleT4P4() {
             }
             createT4P4VLine(t4p4DateTimeTmp);
             getT4TrendDirection();
+            if(t3trendDirection == TREND_DIRECTION_SHORT && sellT4PositionIsOpenState == true && t4AlertT4P4CreatedSended == false) t4AlertT4P4CreatedAction();
          }
       }
 
@@ -208,6 +209,7 @@ void handleT4P4() {
             }
             createT4P4VLine(t4p4DateTimeTmp);
             getT4TrendDirection();
+            if(t3trendDirection == TREND_DIRECTION_LONG && buyT4PositionIsOpenState == true && t4AlertT4P4CreatedSended == false) t4AlertT4P4CreatedAction();
          }
       }
 
@@ -507,6 +509,7 @@ void resetT4Trend() {
    deleteTrendLine(T4_TRENDLINE + "P3-P4");
    deleteTrendLine(T4_TRENDLINE + "P4-P5");
 
+   t4AlertT4P4CreatedSended = false;
    t4AlertT4P5CreatedSended = false;
    t4AlertT4TrendBrokenSended = false;
 

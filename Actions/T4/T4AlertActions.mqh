@@ -10,13 +10,30 @@
 //+------------------------------------------------------------------+
 void t4AlertT4TrendBrokenAction() {
    if(sendAlerts == true) {
-      string message = Symbol() + ": " + "T4 Bid Crossed T4P3 - T4 brocken";
+      string prio;
+      if(buyT4PositionIsOpenState == true || sellT4PositionIsOpenState == true){
+         prio = "A";
+      }else{
+         prio = "C";
+      }
+      string text = "T4 Broken";
+      string message = prio + ": " + text + " - " + Symbol();
       Alert(message);
-      if(!SendNotification(message)) Alert("Cannot Push " + message, GetLastError());
+      if(!SendNotification(message)) Alert("Cannot Push " + message + " Error: ", GetLastError());
       t4AlertT4TrendBrokenSended = true;
    }
 }
 
+void t4AlertT4P4CreatedAction() {
+   if(sendAlerts == true) {
+      string prio = "A";
+      string text = "T3 != T4 P4";
+      string message = prio + ": " + text + " - " + Symbol();
+      Alert(message);
+      if(!SendNotification(message)) Alert("Cannot Push " + message + " Error: ", GetLastError());
+      t4AlertT4P4CreatedSended = true;
+   }
+}
 //+------------------------------------------------------------------+
 //|                                                                  |
 //+------------------------------------------------------------------+
