@@ -9,9 +9,11 @@
 //+------------------------------------------------------------------+
 void t3AlertT3TrendBrokenAction() {
    if(sendAlerts == true) {
-      string message = Symbol() + ": " + "T3 Bid Crossed T3P3 - T3 brocken";
+      string prio = "C";
+      string text = "T3 Broken";
+      string message = prio + ": " + text + " - " + Symbol();
       Alert(message);
-      if(!SendNotification(message)) Alert("Cannot Push " + message, GetLastError());
+      if(!SendNotification(message)) Alert("Cannot Push " + message + " Error: ", GetLastError());
       t3AlertT3TrendBrokenSended = true;
    }
 }
