@@ -50,8 +50,8 @@ void handleT4P2() {
      ) {
 
       if(t4SemiTrendDirection == TREND_DIRECTION_LONG) {
-         t4p2DateTimeTmp = iTime(Symbol(), Period(), iHighest(Symbol(), Period(), MODE_HIGH,  iBarShift(Symbol(), Period(), t4p1DateTimeTmp) + 1));
-         t4p2ValueTmp = iHigh(Symbol(), Period(), iBarShift(Symbol(), Period(), t4p2DateTimeTmp));
+         t4p2DateTimeTmp = iTime(Symbol(), PERIOD_M1, iHighest(Symbol(), PERIOD_M1, MODE_HIGH,  iBarShift(Symbol(), PERIOD_M1, t4p1DateTimeTmp) + 1));
+         t4p2ValueTmp = iHigh(Symbol(), PERIOD_M1, iBarShift(Symbol(), PERIOD_M1, t4p2DateTimeTmp));
          t4P1P2MovementPoints = t4p2ValueTmp / Point() - t4p1ValueLow / Point();
 
          if(isNewCurrentBar == true && t4ScreenshotT4P2CreatedBefore == true && t4ScreenshotT4P2CreatedAfter == false) {
@@ -68,13 +68,12 @@ void handleT4P2() {
             }
             createT4P2VLine(t4p2DateTimeTmp);
             getT4TrendDirection();
-            if(t4AlertT4P2CreatedSended == false) t4AlertT4P2CreatedAction();
          }
       }
 
       if(t4SemiTrendDirection == TREND_DIRECTION_SHORT) {
-         t4p2DateTimeTmp = iTime(Symbol(), Period(), iLowest(Symbol(), Period(), MODE_LOW,  iBarShift(Symbol(), Period(), t4p1DateTimeTmp) + 1));
-         t4p2ValueTmp = iLow(Symbol(), Period(), iBarShift(Symbol(), Period(), t4p2DateTimeTmp));
+         t4p2DateTimeTmp = iTime(Symbol(), PERIOD_M1, iLowest(Symbol(), PERIOD_M1, MODE_LOW,  iBarShift(Symbol(), PERIOD_M1, t4p1DateTimeTmp) + 1));
+         t4p2ValueTmp = iLow(Symbol(), PERIOD_M1, iBarShift(Symbol(), PERIOD_M1, t4p2DateTimeTmp));
          t4P1P2MovementPoints = t4p1ValueHigh / Point() - t4p2ValueTmp / Point();
 
          if(isNewCurrentBar == true && t4ScreenshotT4P2CreatedBefore == true && t4ScreenshotT4P2CreatedAfter == false) {
@@ -91,7 +90,6 @@ void handleT4P2() {
             }
             createT4P2VLine(t4p2DateTimeTmp);
             getT4TrendDirection();
-            if(t4AlertT4P2CreatedSended == false) t4AlertT4P2CreatedAction();
          }
       }
 
@@ -110,8 +108,8 @@ void handleT4P3() {
      ) {
 
       if(t4SemiTrendDirection == TREND_DIRECTION_LONG) {
-         t4p3DateTimeTmp = iTime(Symbol(), Period(), iLowest(Symbol(), Period(), MODE_LOW,  iBarShift(Symbol(), Period(), t4p2DateTime) + 1));
-         t4p3ValueTmp = iLow(Symbol(), Period(), iBarShift(Symbol(), Period(), t4p3DateTimeTmp));
+         t4p3DateTimeTmp = iTime(Symbol(), PERIOD_M1, iLowest(Symbol(), PERIOD_M1, MODE_LOW,  iBarShift(Symbol(), PERIOD_M1, t4p2DateTime) + 1));
+         t4p3ValueTmp = iLow(Symbol(), PERIOD_M1, iBarShift(Symbol(), PERIOD_M1, t4p3DateTimeTmp));
          t4P2P3RegressionPoints = t4p2ValueHigh / Point() - t4p3ValueTmp / Point();
 
          if(isNewCurrentBar == true && t4ScreenshotT4P3CreatedBefore == true && t4ScreenshotT4P3CreatedAfter == false) {
@@ -127,13 +125,12 @@ void handleT4P3() {
                t4ScreenshotT4P3CreatedBefore = true;
             }
             createT4P3VLine(t4p3DateTimeTmp);
-            if(t4AlertT4P3CreatedSended == false) t4AlertT4P3CreatedAction();
          }
       }
 
       if(t4SemiTrendDirection == TREND_DIRECTION_SHORT) {
-         t4p3DateTimeTmp = iTime(Symbol(), Period(), iHighest(Symbol(), Period(), MODE_HIGH,  iBarShift(Symbol(), Period(), t4p2DateTime) + 1));
-         t4p3ValueTmp = iHigh(Symbol(), Period(), iBarShift(Symbol(), Period(), t4p3DateTimeTmp));
+         t4p3DateTimeTmp = iTime(Symbol(), PERIOD_M1, iHighest(Symbol(), PERIOD_M1, MODE_HIGH,  iBarShift(Symbol(), PERIOD_M1, t4p2DateTime) + 1));
+         t4p3ValueTmp = iHigh(Symbol(), PERIOD_M1, iBarShift(Symbol(), PERIOD_M1, t4p3DateTimeTmp));
          t4P2P3RegressionPoints = t4p3ValueTmp / Point() - t4p2ValueLow / Point();
 
          if(isNewCurrentBar == true && t4ScreenshotT4P3CreatedBefore == true && t4ScreenshotT4P3CreatedAfter == false) {
@@ -149,7 +146,6 @@ void handleT4P3() {
                t4ScreenshotT4P3CreatedBefore = true;
             }
             createT4P3VLine(t4p3DateTimeTmp);
-            if(t4AlertT4P3CreatedSended == false) t4AlertT4P3CreatedAction();
          }
       }
 
@@ -168,8 +164,8 @@ void handleT4P4() {
      ) {
 
       if(t4SemiTrendDirection == TREND_DIRECTION_LONG || t4trendDirection == TREND_DIRECTION_LONG) {
-         t4p4DateTimeTmp = iTime(Symbol(), Period(), iHighest(Symbol(), Period(), MODE_HIGH,  iBarShift(Symbol(), Period(), t4p3DateTime) + 1));
-         t4p4ValueTmp = iHigh(Symbol(), Period(), iBarShift(Symbol(), Period(), t4p4DateTimeTmp));
+         t4p4DateTimeTmp = iTime(Symbol(), PERIOD_M1, iHighest(Symbol(), PERIOD_M1, MODE_HIGH,  iBarShift(Symbol(), PERIOD_M1, t4p3DateTime) + 1));
+         t4p4ValueTmp = iHigh(Symbol(), PERIOD_M1, iBarShift(Symbol(), PERIOD_M1, t4p4DateTimeTmp));
          t4P3P4MovementPoints = t4p4ValueTmp / Point() - t4p3ValueLow / Point();
 
          if(isNewCurrentBar == true && t4ScreenshotT4P4CreatedBefore == true && t4ScreenshotT4P4CreatedAfter == false) {
@@ -188,13 +184,13 @@ void handleT4P4() {
             }
             createT4P4VLine(t4p4DateTimeTmp);
             getT4TrendDirection();
-            if(t4AlertT4P4CreatedSended == false) t4AlertT4P4CreatedAction();
+            if(t3trendDirection == TREND_DIRECTION_SHORT && sellT4PositionIsOpenState == true && t4AlertT4P4CreatedSended == false) t4AlertT4P4CreatedAction();
          }
       }
 
       if(t4SemiTrendDirection == TREND_DIRECTION_SHORT || t4trendDirection == TREND_DIRECTION_SHORT) {
-         t4p4DateTimeTmp = iTime(Symbol(), Period(), iLowest(Symbol(), Period(), MODE_LOW,  iBarShift(Symbol(), Period(), t4p3DateTime) + 1));
-         t4p4ValueTmp = iLow(Symbol(), Period(), iBarShift(Symbol(), Period(), t4p4DateTimeTmp));
+         t4p4DateTimeTmp = iTime(Symbol(), PERIOD_M1, iLowest(Symbol(), PERIOD_M1, MODE_LOW,  iBarShift(Symbol(), PERIOD_M1, t4p3DateTime) + 1));
+         t4p4ValueTmp = iLow(Symbol(), PERIOD_M1, iBarShift(Symbol(), PERIOD_M1, t4p4DateTimeTmp));
          t4P3P4MovementPoints = t4p3ValueHigh / Point() - t4p4ValueTmp / Point();
 
          if(isNewCurrentBar == true && t4ScreenshotT4P4CreatedBefore == true && t4ScreenshotT4P4CreatedAfter == false) {
@@ -213,7 +209,7 @@ void handleT4P4() {
             }
             createT4P4VLine(t4p4DateTimeTmp);
             getT4TrendDirection();
-            if(t4AlertT4P4CreatedSended == false) t4AlertT4P4CreatedAction();
+            if(t3trendDirection == TREND_DIRECTION_LONG && buyT4PositionIsOpenState == true && t4AlertT4P4CreatedSended == false) t4AlertT4P4CreatedAction();
          }
       }
 
@@ -231,8 +227,8 @@ void handleT4P5() {
      ) {
 
       if(t4trendDirection == TREND_DIRECTION_LONG) {
-         t4p5DateTimeTmp = iTime(Symbol(), Period(), iLowest(Symbol(), Period(), MODE_LOW,  iBarShift(Symbol(), Period(), t4p4DateTime) + 1));
-         t4p5ValueTmp = iLow(Symbol(), Period(), iBarShift(Symbol(), Period(), t4p5DateTimeTmp));
+         t4p5DateTimeTmp = iTime(Symbol(), PERIOD_M1, iLowest(Symbol(), PERIOD_M1, MODE_LOW,  iBarShift(Symbol(), PERIOD_M1, t4p4DateTime) + 1));
+         t4p5ValueTmp = iLow(Symbol(), PERIOD_M1, iBarShift(Symbol(), PERIOD_M1, t4p5DateTimeTmp));
          t4P4P5RegressionPoints = t4p4ValueHigh / Point() - t4p5ValueTmp / Point();
 
          if(isNewCurrentBar == true && t4ScreenshotT4P5CreatedBefore == true && t4ScreenshotT4P5CreatedAfter == false) {
@@ -249,7 +245,7 @@ void handleT4P5() {
                   createScreenshot("T4P5-Before");
                   t4ScreenshotT4P5CreatedBefore = true;
                }
-               if(t4AlertT4P5CreatedSended == false) t4AlertT4P5CreatedAction();
+               if((buyT4PositionIsOpenState == true || sellT4PositionIsOpenState == true) && t4AlertT4P5CreatedSended == false) t4AlertT4P5CreatedAction();
                t4StopLossValue = t4p5ValueTmp;
                createT4StopLossTrendline(t4StopLossValue);
                if(ObjectFind(ChartID(), T4_LONG_ENTRY_TLINE) < 0) {
@@ -265,8 +261,8 @@ void handleT4P5() {
       }
 
       if(t4trendDirection == TREND_DIRECTION_SHORT) {
-         t4p5DateTimeTmp = iTime(Symbol(), Period(), iHighest(Symbol(), Period(), MODE_HIGH,  iBarShift(Symbol(), Period(), t4p4DateTime) + 1));
-         t4p5ValueTmp = iHigh(Symbol(), Period(), iBarShift(Symbol(), Period(), t4p5DateTimeTmp));
+         t4p5DateTimeTmp = iTime(Symbol(), PERIOD_M1, iHighest(Symbol(), PERIOD_M1, MODE_HIGH,  iBarShift(Symbol(), PERIOD_M1, t4p4DateTime) + 1));
+         t4p5ValueTmp = iHigh(Symbol(), PERIOD_M1, iBarShift(Symbol(), PERIOD_M1, t4p5DateTimeTmp));
          t4P4P5RegressionPoints = t4p5ValueTmp / Point() - t4p4ValueLow / Point();
 
          if(isNewCurrentBar == true && t4ScreenshotT4P5CreatedBefore == true && t4ScreenshotT4P5CreatedAfter == false) {
@@ -283,7 +279,7 @@ void handleT4P5() {
                   createScreenshot("T4P5-Before");
                   t4ScreenshotT4P5CreatedBefore = true;
                }
-               if(t4AlertT4P5CreatedSended == false) t4AlertT4P5CreatedAction();
+               if((buyT4PositionIsOpenState == true || sellT4PositionIsOpenState == true) && t4AlertT4P5CreatedSended == false) t4AlertT4P5CreatedAction();
                t4StopLossValue = t4p5ValueTmp;
                createT4StopLossTrendline(t4StopLossValue);
                if(ObjectFind(ChartID(), T4_SHORT_ENTRY_TLINE) < 0) {
@@ -327,15 +323,16 @@ void handleT4BuildNewTrend() {
                createScreenshot("T4BuildNewTrend-Before");
                t4ScreenshotT4BuildNewTrendBefore = true;
             }
-            t4p3DateTimeTmp = t4p3DateTime;
-            t4p4DateTimeTmp = t4p4DateTime;
-            t4p5DateTimeTmp = t4p5DateTime;
-            resetT4Trend();
-            createT4P1VLine(t4p3DateTimeTmp);
-            createT4P2VLine(t4p4DateTimeTmp);
-            createT4P3VLine(t4p5DateTimeTmp);
-            getT4TrendDirection();
-            if(t4AlertT4BuildNewTrendSended == false) t4AlertT4BuildNewTrendAction();
+            if(t4p3DateTime != 0 && t4p4DateTime != 0 && t4p5DateTime != 0) {
+               t4p3DateTimeTmp = t4p3DateTime;
+               t4p4DateTimeTmp = t4p4DateTime;
+               t4p5DateTimeTmp = t4p5DateTime;
+               resetT4Trend();
+               createT4P1VLine(t4p3DateTimeTmp);
+               createT4P2VLine(t4p4DateTimeTmp);
+               createT4P3VLine(t4p5DateTimeTmp);
+               getT4TrendDirection();
+            }
          }
       }
 
@@ -355,15 +352,16 @@ void handleT4BuildNewTrend() {
                createScreenshot("T4BuildNewTrend-Before");
                t4ScreenshotT4BuildNewTrendBefore = true;
             }
-            t4p3DateTimeTmp = t4p3DateTime;
-            t4p4DateTimeTmp = t4p4DateTime;
-            t4p5DateTimeTmp = t4p5DateTime;
-            resetT4Trend();
-            createT4P1VLine(t4p3DateTimeTmp);
-            createT4P2VLine(t4p4DateTimeTmp);
-            createT4P3VLine(t4p5DateTimeTmp);
-            getT4TrendDirection();
-            if(t4AlertT4BuildNewTrendSended == false) t4AlertT4BuildNewTrendAction();
+            if(t4p3DateTime != 0 && t4p4DateTime != 0 && t4p5DateTime != 0) {
+               t4p3DateTimeTmp = t4p3DateTime;
+               t4p4DateTimeTmp = t4p4DateTime;
+               t4p5DateTimeTmp = t4p5DateTime;
+               resetT4Trend();
+               createT4P1VLine(t4p3DateTimeTmp);
+               createT4P2VLine(t4p4DateTimeTmp);
+               createT4P3VLine(t4p5DateTimeTmp);
+               getT4TrendDirection();
+            }
          }
       }
    }
@@ -393,16 +391,15 @@ void handleT4TrendBrokenOnP1() {
                createScreenshot("T4TrendBrokenOnP1-Before");
                t4ScreenshotT4TrendBrokenOnP1Before = true;
             }
-            t4p2DateTimeTmp = t4p2DateTime;
-            t4p3DateTimeTmp = t4p3DateTime;
-            resetT4Trend();
-            createT4P1VLine(t4p2DateTimeTmp);
-            createT4P2VLine(t4p3DateTimeTmp);
-
-            Print("t4p2DateTimeTmp: " + t4p2DateTimeTmp + " t4p3DateTimeTmp: " + t4p3DateTimeTmp);
-
-            getT4TrendDirection();
-            if(t4AlertT4TrendBrokenSended == false) t4AlertT4TrendBrokenAction();
+            if(t4p2DateTime != 0 && t4p3DateTime != 0) {
+               t4p2DateTimeTmp = t4p2DateTime;
+               t4p3DateTimeTmp = t4p3DateTime;
+               resetT4Trend();
+               createT4P1VLine(t4p2DateTimeTmp);
+               createT4P2VLine(t4p3DateTimeTmp);
+               getT4TrendDirection();
+               if(t4AlertT4TrendBrokenSended == false) t4AlertT4TrendBrokenAction();
+            }
          }
       }
 
@@ -413,16 +410,15 @@ void handleT4TrendBrokenOnP1() {
                createScreenshot("T4TrendBrokenOnP1-Before");
                t4ScreenshotT4TrendBrokenOnP1Before = true;
             }
-            t4p2DateTimeTmp = t4p2DateTime;
-            t4p3DateTimeTmp = t4p3DateTime;
-            resetT4Trend();
-            createT4P1VLine(t4p2DateTimeTmp);
-            createT4P2VLine(t4p3DateTimeTmp);
-
-            Print("t4p2DateTimeTmp: " + t4p2DateTimeTmp + " t4p3DateTimeTmp: " + t4p3DateTimeTmp);
-
-            getT4TrendDirection();
-            if(t4AlertT4TrendBrokenSended == false) t4AlertT4TrendBrokenAction();
+            if(t4p2DateTime != 0 && t4p3DateTime != 0) {
+               t4p2DateTimeTmp = t4p2DateTime;
+               t4p3DateTimeTmp = t4p3DateTime;
+               resetT4Trend();
+               createT4P1VLine(t4p2DateTimeTmp);
+               createT4P2VLine(t4p3DateTimeTmp);
+               getT4TrendDirection();
+               if(t4AlertT4TrendBrokenSended == false) t4AlertT4TrendBrokenAction();
+            }
          }
       }
    }
@@ -454,20 +450,17 @@ void handleT4TrendBrokenOnP3() {
                createScreenshot("T4TrendBrokenOnP3-Before");
                t4ScreenshotT4TrendBrokenOnP3Before = true;
             }
-            t4p4DateTimeTmp = t4p4DateTime;
-            t4p5DateTimeTmp = t4p5DateTime;
-
-            resetT4Trend();
-            deleteVLine(T4_STOP_LOSS_TLINE);
-            deleteVLine(T4_LONG_ENTRY_TLINE);
-
-            createT4P1VLine(t4p4DateTimeTmp);
-            createT4P2VLine(t4p5DateTimeTmp);
-
-            Print("t4p4DateTimeTmp: " + t4p4DateTimeTmp + " t4p5DateTimeTmp: " + t4p5DateTimeTmp);
-
-            getT4TrendDirection();
-            if(t4AlertT4TrendBrokenSended == false) t4AlertT4TrendBrokenAction();
+            if(t4p4DateTime != 0 && t4p5DateTime != 0) {
+               t4p4DateTimeTmp = t4p4DateTime;
+               t4p5DateTimeTmp = t4p5DateTime;
+               resetT4Trend();
+               deleteVLine(T4_STOP_LOSS_TLINE);
+               deleteVLine(T4_LONG_ENTRY_TLINE);
+               createT4P1VLine(t4p4DateTimeTmp);
+               createT4P2VLine(t4p5DateTimeTmp);
+               getT4TrendDirection();
+               if(t4AlertT4TrendBrokenSended == false) t4AlertT4TrendBrokenAction();
+            }
          }
       }
 
@@ -478,20 +471,17 @@ void handleT4TrendBrokenOnP3() {
                createScreenshot("T4TrendBrokenOnP3-Before");
                t4ScreenshotT4TrendBrokenOnP3Before = true;
             }
-            t4p4DateTimeTmp = t4p4DateTime;
-            t4p5DateTimeTmp = t4p5DateTime;
-
-            resetT4Trend();
-            deleteVLine(T4_STOP_LOSS_TLINE);
-            deleteVLine(T4_SHORT_ENTRY_TLINE);
-
-            createT4P1VLine(t4p4DateTimeTmp);
-            createT4P2VLine(t4p5DateTimeTmp);
-
-            Print("t4p4DateTimeTmp: " + t4p4DateTimeTmp + " t4p5DateTimeTmp: " + t4p5DateTimeTmp);
-
-            getT4TrendDirection();
-            if(t4AlertT4TrendBrokenSended == false) t4AlertT4TrendBrokenAction();
+            if(t4p4DateTime != 0 && t4p5DateTime != 0) {
+               t4p4DateTimeTmp = t4p4DateTime;
+               t4p5DateTimeTmp = t4p5DateTime;
+               resetT4Trend();
+               deleteVLine(T4_STOP_LOSS_TLINE);
+               deleteVLine(T4_SHORT_ENTRY_TLINE);
+               createT4P1VLine(t4p4DateTimeTmp);
+               createT4P2VLine(t4p5DateTimeTmp);
+               getT4TrendDirection();
+               if(t4AlertT4TrendBrokenSended == false) t4AlertT4TrendBrokenAction();
+            }
          }
       }
    }
@@ -519,12 +509,9 @@ void resetT4Trend() {
    deleteTrendLine(T4_TRENDLINE + "P3-P4");
    deleteTrendLine(T4_TRENDLINE + "P4-P5");
 
-   t4AlertT4P2CreatedSended = false;
-   t4AlertT4P3CreatedSended = false;
    t4AlertT4P4CreatedSended = false;
    t4AlertT4P5CreatedSended = false;
    t4AlertT4TrendBrokenSended = false;
-   t4AlertT4BuildNewTrendSended = false;
 
    t4ScreenshotT4P2CreatedBefore = false;
    t4ScreenshotT4P2CreatedAfter = false;

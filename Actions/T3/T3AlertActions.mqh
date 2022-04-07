@@ -9,70 +9,23 @@
 //+------------------------------------------------------------------+
 void t3AlertT3TrendBrokenAction() {
    if(sendAlerts == true) {
-      string message = Symbol() + ": " + "T3 Bid Crossed T3P3 - T3 brocken";
+      string prio = "C";
+      string text = "T3 Broken";
+      string message = prio + ": " + text + " - " + Symbol();
       Alert(message);
-      if(!SendNotification(message)) Alert("Cannot Push " + message, GetLastError());
+      if(!SendNotification(message)) Alert("Cannot Push " + message + " Error: ", GetLastError());
       t3AlertT3TrendBrokenSended = true;
    }
 }
 
-//+------------------------------------------------------------------+
-//|                                                                  |
-//+------------------------------------------------------------------+
-void t3AlertT3BuildNewTrendAction() {
+void t3AlertT3P5CreatedTT4MissingAction() {
    if(sendAlerts == true) {
-      string message = Symbol() + ": " + "T3 Bid Crossed T3P4 - T3 Build New Trend";
+      string prio = "ERROR";
+      string text = "T3 P5 + TT4 Missing";
+      string message = prio + ": " + text + " - " + Symbol();
       Alert(message);
-      if(!SendNotification(message)) Alert("Cannot Push " + message, GetLastError());
-      t3AlertT3BuildNewTrendSended = true;
-   }
-}
-
-//+------------------------------------------------------------------+
-//|                                                                  |
-//+------------------------------------------------------------------+
-void t3AlertT3P2CreatedAction() {
-   if(sendAlerts == true) {
-      string message = Symbol() + ": " + "T3 T3P2 Created";
-      Alert(message);
-      if(!SendNotification(message)) Alert("Cannot Push " + message, GetLastError());
-      t3AlertT3P2CreatedSended = true;
-   }
-}
-
-//+------------------------------------------------------------------+
-//|                                                                  |
-//+------------------------------------------------------------------+
-void t3AlertT3P3CreatedAction() {
-   if(sendAlerts == true) {
-      string message = Symbol() + ": " + "T3 T3P3 Created";
-      Alert(message);
-      if(!SendNotification(message)) Alert("Cannot Push " + message, GetLastError());
-      t3AlertT3P3CreatedSended = true;
-   }
-}
-
-//+------------------------------------------------------------------+
-//|                                                                  |
-//+------------------------------------------------------------------+
-void t3AlertT3P4CreatedAction() {
-   if(sendAlerts == true) {
-      string message = Symbol() + ": " + "T3 T3P4 Created";
-      Alert(message);
-      if(!SendNotification(message)) Alert("Cannot Push " + message, GetLastError());
-      t3AlertT3P4CreatedSended = true;
-   }
-}
-
-//+------------------------------------------------------------------+
-//|                                                                  |
-//+------------------------------------------------------------------+
-void t3AlertT3P5CreatedAction() {
-   if(sendAlerts == true) {
-      string message = Symbol() + ": " + "T3 T3P5 Created";
-      Alert(message);
-      if(!SendNotification(message)) Alert("Cannot Push " + message, GetLastError());
-      t3AlertT3P5CreatedSended = true;
+      if(!SendNotification(message)) Alert("Cannot Push " + message + " Error: ", GetLastError());
+      t3AlertT3P5CreatedTT4MissingSended = true;
    }
 }
 

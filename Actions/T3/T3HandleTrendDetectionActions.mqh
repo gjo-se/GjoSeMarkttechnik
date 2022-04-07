@@ -49,8 +49,8 @@ void handleT3P2() {
      ) {
 
       if(t3SemiTrendDirection == TREND_DIRECTION_LONG) {
-         t3p2DateTimeTmp = iTime(Symbol(), Period(), iHighest(Symbol(), Period(), MODE_HIGH,  iBarShift(Symbol(), Period(), t3p1DateTimeTmp) + 1));
-         t3p2ValueTmp = iHigh(Symbol(), Period(), iBarShift(Symbol(), Period(), t3p2DateTimeTmp));
+         t3p2DateTimeTmp = iTime(Symbol(), PERIOD_M1, iHighest(Symbol(), PERIOD_M1, MODE_HIGH,  iBarShift(Symbol(), PERIOD_M1, t3p1DateTimeTmp) + 1));
+         t3p2ValueTmp = iHigh(Symbol(), PERIOD_M1, iBarShift(Symbol(), PERIOD_M1, t3p2DateTimeTmp));
          t3P1P2MovementPoints = t3p2ValueTmp / Point() - t3p1ValueLow / Point();
 
          if(isNewCurrentBar == true && t3ScreenshotT3P2CreatedBefore == true && t3ScreenshotT3P2CreatedAfter == false) {
@@ -67,13 +67,12 @@ void handleT3P2() {
             }
             createT3P2VLine(t3p2DateTimeTmp);
             getT3TrendDirection();
-            if(t3AlertT3P2CreatedSended == false) t3AlertT3P2CreatedAction();
          }
       }
 
       if(t3SemiTrendDirection == TREND_DIRECTION_SHORT) {
-         t3p2DateTimeTmp = iTime(Symbol(), Period(), iLowest(Symbol(), Period(), MODE_LOW,  iBarShift(Symbol(), Period(), t3p1DateTimeTmp) + 1));
-         t3p2ValueTmp = iLow(Symbol(), Period(), iBarShift(Symbol(), Period(), t3p2DateTimeTmp));
+         t3p2DateTimeTmp = iTime(Symbol(), PERIOD_M1, iLowest(Symbol(), PERIOD_M1, MODE_LOW,  iBarShift(Symbol(), PERIOD_M1, t3p1DateTimeTmp) + 1));
+         t3p2ValueTmp = iLow(Symbol(), PERIOD_M1, iBarShift(Symbol(), PERIOD_M1, t3p2DateTimeTmp));
          t3P1P2MovementPoints = t3p1ValueHigh / Point() - t3p2ValueTmp / Point();
 
          if(isNewCurrentBar == true && t3ScreenshotT3P2CreatedBefore == true && t3ScreenshotT3P2CreatedAfter == false) {
@@ -90,7 +89,6 @@ void handleT3P2() {
             }
             createT3P2VLine(t3p2DateTimeTmp);
             getT3TrendDirection();
-            if(t3AlertT3P2CreatedSended == false) t3AlertT3P2CreatedAction();
          }
       }
 
@@ -109,8 +107,8 @@ void handleT3P3() {
      ) {
 
       if(t3SemiTrendDirection == TREND_DIRECTION_LONG) {
-         t3p3DateTimeTmp = iTime(Symbol(), Period(), iLowest(Symbol(), Period(), MODE_LOW,  iBarShift(Symbol(), Period(), t3p2DateTime) + 1));
-         t3p3ValueTmp = iLow(Symbol(), Period(), iBarShift(Symbol(), Period(), t3p3DateTimeTmp));
+         t3p3DateTimeTmp = iTime(Symbol(), PERIOD_M1, iLowest(Symbol(), PERIOD_M1, MODE_LOW,  iBarShift(Symbol(), PERIOD_M1, t3p2DateTime) + 1));
+         t3p3ValueTmp = iLow(Symbol(), PERIOD_M1, iBarShift(Symbol(), PERIOD_M1, t3p3DateTimeTmp));
          t3P2P3RegressionPoints = t3p2ValueHigh / Point() - t3p3ValueTmp / Point();
 
          if(isNewCurrentBar == true && t3ScreenshotT3P3CreatedBefore == true && t3ScreenshotT3P3CreatedAfter == false) {
@@ -126,13 +124,12 @@ void handleT3P3() {
                t3ScreenshotT3P3CreatedBefore = true;
             }
             createT3P3VLine(t3p3DateTimeTmp);
-            if(t3AlertT3P3CreatedSended == false) t3AlertT3P3CreatedAction();
          }
       }
 
       if(t3SemiTrendDirection == TREND_DIRECTION_SHORT) {
-         t3p3DateTimeTmp = iTime(Symbol(), Period(), iHighest(Symbol(), Period(), MODE_HIGH,  iBarShift(Symbol(), Period(), t3p2DateTime) + 1));
-         t3p3ValueTmp = iHigh(Symbol(), Period(), iBarShift(Symbol(), Period(), t3p3DateTimeTmp));
+         t3p3DateTimeTmp = iTime(Symbol(), PERIOD_M1, iHighest(Symbol(), PERIOD_M1, MODE_HIGH,  iBarShift(Symbol(), PERIOD_M1, t3p2DateTime) + 1));
+         t3p3ValueTmp = iHigh(Symbol(), PERIOD_M1, iBarShift(Symbol(), PERIOD_M1, t3p3DateTimeTmp));
          t3P2P3RegressionPoints = t3p3ValueTmp / Point() - t3p2ValueLow / Point();
 
          if(isNewCurrentBar == true && t3ScreenshotT3P3CreatedBefore == true && t3ScreenshotT3P3CreatedAfter == false) {
@@ -148,7 +145,6 @@ void handleT3P3() {
                t3ScreenshotT3P3CreatedBefore = true;
             }
             createT3P3VLine(t3p3DateTimeTmp);
-            if(t3AlertT3P3CreatedSended == false) t3AlertT3P3CreatedAction();
          }
       }
    }
@@ -166,8 +162,8 @@ void handleT3P4() {
      ) {
 
       if(t3SemiTrendDirection == TREND_DIRECTION_LONG || t3trendDirection == TREND_DIRECTION_LONG) {
-         t3p4DateTimeTmp = iTime(Symbol(), Period(), iHighest(Symbol(), Period(), MODE_HIGH,  iBarShift(Symbol(), Period(), t3p3DateTime) + 1));
-         t3p4ValueTmp = iHigh(Symbol(), Period(), iBarShift(Symbol(), Period(), t3p4DateTimeTmp));
+         t3p4DateTimeTmp = iTime(Symbol(), PERIOD_M1, iHighest(Symbol(), PERIOD_M1, MODE_HIGH,  iBarShift(Symbol(), PERIOD_M1, t3p3DateTime) + 1));
+         t3p4ValueTmp = iHigh(Symbol(), PERIOD_M1, iBarShift(Symbol(), PERIOD_M1, t3p4DateTimeTmp));
          t3P2P4MovementPoints = t3p4ValueTmp / Point() - t3p3ValueLow / Point();
 
          if(isNewCurrentBar == true && t3ScreenshotT3P4CreatedBefore == true && t3ScreenshotT3P4CreatedAfter == false) {
@@ -186,13 +182,12 @@ void handleT3P4() {
             }
             createT3P4VLine(t3p4DateTimeTmp);
             getT3TrendDirection();
-            if(t3AlertT3P4CreatedSended == false) t3AlertT3P4CreatedAction();
          }
       }
 
       if(t3SemiTrendDirection == TREND_DIRECTION_SHORT || t3trendDirection == TREND_DIRECTION_SHORT) {
-         t3p4DateTimeTmp = iTime(Symbol(), Period(), iLowest(Symbol(), Period(), MODE_LOW,  iBarShift(Symbol(), Period(), t3p3DateTime) + 1));
-         t3p4ValueTmp = iLow(Symbol(), Period(), iBarShift(Symbol(), Period(), t3p4DateTimeTmp));
+         t3p4DateTimeTmp = iTime(Symbol(), PERIOD_M1, iLowest(Symbol(), PERIOD_M1, MODE_LOW,  iBarShift(Symbol(), PERIOD_M1, t3p3DateTime) + 1));
+         t3p4ValueTmp = iLow(Symbol(), PERIOD_M1, iBarShift(Symbol(), PERIOD_M1, t3p4DateTimeTmp));
          t3P2P4MovementPoints = t3p3ValueHigh / Point() - t3p4ValueTmp / Point();
 
          if(isNewCurrentBar == true && t3ScreenshotT3P4CreatedBefore == true && t3ScreenshotT3P4CreatedAfter == false) {
@@ -211,7 +206,6 @@ void handleT3P4() {
             }
             createT3P4VLine(t3p4DateTimeTmp);
             getT3TrendDirection();
-            if(t3AlertT3P4CreatedSended == false) t3AlertT3P4CreatedAction();
          }
       }
    }
@@ -228,8 +222,8 @@ void handleT3P5() {
      ) {
 
       if(t3trendDirection == TREND_DIRECTION_LONG) {
-         t3p5DateTimeTmp = iTime(Symbol(), Period(), iLowest(Symbol(), Period(), MODE_LOW,  iBarShift(Symbol(), Period(), t3p4DateTime) + 1));
-         t3p5ValueTmp = iLow(Symbol(), Period(), iBarShift(Symbol(), Period(), t3p5DateTimeTmp));
+         t3p5DateTimeTmp = iTime(Symbol(), PERIOD_M1, iLowest(Symbol(), PERIOD_M1, MODE_LOW,  iBarShift(Symbol(), PERIOD_M1, t3p4DateTime) + 1));
+         t3p5ValueTmp = iLow(Symbol(), PERIOD_M1, iBarShift(Symbol(), PERIOD_M1, t3p5DateTimeTmp));
          t3P4P5RegressionPoints = t3p4ValueHigh / Point() - t3p5ValueTmp / Point();
 
          if(isNewCurrentBar == true && t3ScreenshotT3P5CreatedBefore == true && t3ScreenshotT3P5CreatedAfter == false) {
@@ -245,13 +239,13 @@ void handleT3P5() {
                createScreenshot("T3P5-Before");
                t3ScreenshotT3P5CreatedBefore = true;
             }
-            if(t3AlertT3P5CreatedSended == false) t3AlertT3P5CreatedAction();
+            if(tt4p1DateTime == 0 && t3AlertT3P5CreatedTT4MissingSended == false) t3AlertT3P5CreatedTT4MissingAction();
          }
       }
 
       if(t3trendDirection == TREND_DIRECTION_SHORT) {
-         t3p5DateTimeTmp = iTime(Symbol(), Period(), iHighest(Symbol(), Period(), MODE_HIGH,  iBarShift(Symbol(), Period(), t3p4DateTime) + 1));
-         t3p5ValueTmp = iHigh(Symbol(), Period(), iBarShift(Symbol(), Period(), t3p5DateTimeTmp));
+         t3p5DateTimeTmp = iTime(Symbol(), PERIOD_M1, iHighest(Symbol(), PERIOD_M1, MODE_HIGH,  iBarShift(Symbol(), PERIOD_M1, t3p4DateTime) + 1));
+         t3p5ValueTmp = iHigh(Symbol(), PERIOD_M1, iBarShift(Symbol(), PERIOD_M1, t3p5DateTimeTmp));
          t3P4P5RegressionPoints = t3p5ValueTmp / Point() - t3p4ValueLow / Point();
 
          if(isNewCurrentBar == true && t3ScreenshotT3P5CreatedBefore == true && t3ScreenshotT3P5CreatedAfter == false) {
@@ -267,7 +261,7 @@ void handleT3P5() {
                createScreenshot("T3P5-Before");
                t3ScreenshotT3P5CreatedBefore = true;
             }
-            if(t3AlertT3P5CreatedSended == false) t3AlertT3P5CreatedAction();
+            if(tt4p1DateTime == 0 && t3AlertT3P5CreatedTT4MissingSended == false) t3AlertT3P5CreatedTT4MissingAction();
          }
       }
    }
@@ -300,15 +294,16 @@ void handleT3BuildNewTrend() {
                createScreenshot("T3BuildNewTrend-Before");
                t3ScreenshotT3BuildNewTrendBefore = true;
             }
-            t3p3DateTimeTmp = t3p3DateTime;
-            t3p4DateTimeTmp = t3p4DateTime;
-            t3p5DateTimeTmp = t3p5DateTime;
-            resetT3Trend();
-            createT3P1VLine(t3p3DateTimeTmp);
-            createT3P2VLine(t3p4DateTimeTmp);
-            createT3P3VLine(t3p5DateTimeTmp);
-            getT3TrendDirection();
-            if(t3AlertT3BuildNewTrendSended == false) t3AlertT3BuildNewTrendAction();
+            if(t3p3DateTime != 0 && t3p4DateTime != 0 && t3p5DateTime != 0) {
+               t3p3DateTimeTmp = t3p3DateTime;
+               t3p4DateTimeTmp = t3p4DateTime;
+               t3p5DateTimeTmp = t3p5DateTime;
+               resetT3Trend();
+               createT3P1VLine(t3p3DateTimeTmp);
+               createT3P2VLine(t3p4DateTimeTmp);
+               createT3P3VLine(t3p5DateTimeTmp);
+               getT3TrendDirection();
+            }
          }
       }
 
@@ -328,15 +323,16 @@ void handleT3BuildNewTrend() {
                createScreenshot("T3BuildNewTrend-Before");
                t3ScreenshotT3BuildNewTrendBefore = true;
             }
-            t3p3DateTimeTmp = t3p3DateTime;
-            t3p4DateTimeTmp = t3p4DateTime;
-            t3p5DateTimeTmp = t3p5DateTime;
-            resetT3Trend();
-            createT3P1VLine(t3p3DateTimeTmp);
-            createT3P2VLine(t3p4DateTimeTmp);
-            createT3P3VLine(t3p5DateTimeTmp);
-            getT3TrendDirection();
-            if(t3AlertT3BuildNewTrendSended == false) t3AlertT3BuildNewTrendAction();
+            if(t3p3DateTime != 0 && t3p4DateTime != 0 && t3p5DateTime != 0) {
+               t3p3DateTimeTmp = t3p3DateTime;
+               t3p4DateTimeTmp = t3p4DateTime;
+               t3p5DateTimeTmp = t3p5DateTime;
+               resetT3Trend();
+               createT3P1VLine(t3p3DateTimeTmp);
+               createT3P2VLine(t3p4DateTimeTmp);
+               createT3P3VLine(t3p5DateTimeTmp);
+               getT3TrendDirection();
+            }
          }
       }
    }
@@ -362,16 +358,15 @@ void handleT3TrendBrokenOnP1() {
                createScreenshot("T3TrendBrokenOnP1-Before");
                t3ScreenshotT3TrendBrokenOnP1Before = true;
             }
-            t3p2DateTimeTmp = t3p2DateTime;
-            t3p3DateTimeTmp = t3p3DateTime;
-            resetT3Trend();
-            createT3P1VLine(t3p2DateTimeTmp);
-            createT3P2VLine(t3p3DateTimeTmp);
-
-            Print("t3p2DateTimeTmp: " + t3p2DateTimeTmp + "t3p3DateTimeTmp: " + t3p3DateTimeTmp);
-
-            getT3TrendDirection();
-            if(t3AlertT3TrendBrokenSended == false) t3AlertT3TrendBrokenAction();
+            if(t3p2DateTime != 0 && t3p3DateTime != 0) {
+               t3p2DateTimeTmp = t3p2DateTime;
+               t3p3DateTimeTmp = t3p3DateTime;
+               resetT3Trend();
+               createT3P1VLine(t3p2DateTimeTmp);
+               createT3P2VLine(t3p3DateTimeTmp);
+               getT3TrendDirection();
+               if(t3AlertT3TrendBrokenSended == false) t3AlertT3TrendBrokenAction();
+            }
          }
       }
 
@@ -382,16 +377,15 @@ void handleT3TrendBrokenOnP1() {
                createScreenshot("T3TrendBrokenOnP1-Before");
                t3ScreenshotT3TrendBrokenOnP1Before = true;
             }
-            t3p2DateTimeTmp = t3p2DateTime;
-            t3p3DateTimeTmp = t3p3DateTime;
-            resetT3Trend();
-            createT3P1VLine(t3p2DateTimeTmp);
-            createT3P2VLine(t3p3DateTimeTmp);
-
-            Print("t3p2DateTimeTmp: " + t3p2DateTimeTmp + "t3p3DateTimeTmp: " + t3p3DateTimeTmp);
-
-            getT3TrendDirection();
-            if(t3AlertT3TrendBrokenSended == false) t3AlertT3TrendBrokenAction();
+            if(t3p2DateTime != 0 && t3p3DateTime != 0) {
+               t3p2DateTimeTmp = t3p2DateTime;
+               t3p3DateTimeTmp = t3p3DateTime;
+               resetT3Trend();
+               createT3P1VLine(t3p2DateTimeTmp);
+               createT3P2VLine(t3p3DateTimeTmp);
+               getT3TrendDirection();
+               if(t3AlertT3TrendBrokenSended == false) t3AlertT3TrendBrokenAction();
+            }
          }
       }
    }
@@ -413,7 +407,7 @@ void handleT3TrendBrokenOnP3() {
          && t3p5ValueHigh != 0
          && t3p3DateTime < TimeCurrent()
          && t3p4DateTime < TimeCurrent()
-//         && t3p5DateTime < (int)TimeCurrent()
+         && t3p5DateTime < (int)TimeCurrent()
      ) {
 
       if(t3SemiTrendDirection == TREND_DIRECTION_LONG || t3trendDirection == TREND_DIRECTION_LONG) {
@@ -423,16 +417,15 @@ void handleT3TrendBrokenOnP3() {
                createScreenshot("T3TrendBrokenOnP3-Before");
                t3ScreenshotT3TrendBrokenOnP3Before = true;
             }
-            t3p4DateTimeTmp = t3p4DateTime;
-            t3p5DateTimeTmp = t3p5DateTime;
-            resetT3Trend();
-            createT3P1VLine(t3p4DateTimeTmp);
-            createT3P2VLine(t3p5DateTimeTmp);
-
-            Print("t3p4DateTimeTmp: " + t3p4DateTimeTmp + "t3p5DateTimeTmp: " + t3p5DateTimeTmp);
-
-            getT3TrendDirection();
-            if(t3AlertT3TrendBrokenSended == false) t3AlertT3TrendBrokenAction();
+            if(t3p4DateTime != 0 && t3p5DateTime != 0) {
+               t3p4DateTimeTmp = t3p4DateTime;
+               t3p5DateTimeTmp = t3p5DateTime;
+               resetT3Trend();
+               createT3P1VLine(t3p4DateTimeTmp);
+               createT3P2VLine(t3p5DateTimeTmp);
+               getT3TrendDirection();
+               if(t3AlertT3TrendBrokenSended == false) t3AlertT3TrendBrokenAction();
+            }
          }
       }
 
@@ -443,16 +436,15 @@ void handleT3TrendBrokenOnP3() {
                createScreenshot("T3TrendBrokenOnP3-Before");
                t3ScreenshotT3TrendBrokenOnP3Before = true;
             }
-            t3p4DateTimeTmp = t3p4DateTime;
-            t3p5DateTimeTmp = t3p5DateTime;
-            resetT3Trend();
-            createT3P1VLine(t3p4DateTimeTmp);
-            createT3P2VLine(t3p5DateTimeTmp);
-
-            Print("t3p4DateTimeTmp: " + t3p4DateTimeTmp + "t3p5DateTimeTmp: " + t3p5DateTimeTmp);
-
-            getT3TrendDirection();
-            if(t3AlertT3TrendBrokenSended == false) t3AlertT3TrendBrokenAction();
+            if(t3p4DateTime != 0 && t3p5DateTime != 0) {
+               t3p4DateTimeTmp = t3p4DateTime;
+               t3p5DateTimeTmp = t3p5DateTime;
+               resetT3Trend();
+               createT3P1VLine(t3p4DateTimeTmp);
+               createT3P2VLine(t3p5DateTimeTmp);
+               getT3TrendDirection();
+               if(t3AlertT3TrendBrokenSended == false) t3AlertT3TrendBrokenAction();
+            }
          }
       }
    }
@@ -478,12 +470,8 @@ void resetT3Trend() {
    deleteTrendLine(T3_TRENDLINE + "P3-P4");
    deleteTrendLine(T3_TRENDLINE + "P4-P5");
 
-   t3AlertT3P2CreatedSended = false;
-   t3AlertT3P3CreatedSended = false;
-   t3AlertT3P4CreatedSended = false;
-   t3AlertT3P5CreatedSended = false;
+   t3AlertT3P5CreatedTT4MissingSended = false;
    t3AlertT3TrendBrokenSended = false;
-   t3AlertT3BuildNewTrendSended = false;
 
    t3ScreenshotT3P2CreatedBefore = false;
    t3ScreenshotT3P2CreatedAfter = false;

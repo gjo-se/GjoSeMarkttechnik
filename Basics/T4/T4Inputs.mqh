@@ -23,7 +23,7 @@ input ENUM_TIMEFRAMES   InpT4trailingStopMATimeframe = PERIOD_M1; // T4 MA Trail
 input string            InpT4trailingStopMAPeriods = "200, 150, 100, 50, 10"; // T4 MA TrailingStop Periods
 
 input group             "------------------------------ T4 MONEY -----------------------"
-input int               InpT4OrderGridCount = 5; // Anzahl T4 Grid Orders
+input int               InpT4OrderGridCount = 1; // Anzahl T4 Grid Orders
 
 
 //+------------------------------------------------------------------+

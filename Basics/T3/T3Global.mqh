@@ -89,11 +89,7 @@ bool t3alertBidIsInSignalAreaSended;
 bool t3alertBidAgainInHighVolumeAreaSended;
 bool t3alertMAChangedSended;
 bool t3AlertT3TrendBrokenSended;
-bool t3AlertT3BuildNewTrendSended;
-bool t3AlertT3P2CreatedSended;
-bool t3AlertT3P3CreatedSended;
-bool t3AlertT3P4CreatedSended;
-bool t3AlertT3P5CreatedSended;
+bool t3AlertT3P5CreatedTT4MissingSended;
 bool t3AlertT3VLineOn0Sended;
 
 // INSignal

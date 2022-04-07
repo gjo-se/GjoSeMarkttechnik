@@ -10,69 +10,40 @@
 //+------------------------------------------------------------------+
 void t4AlertT4TrendBrokenAction() {
    if(sendAlerts == true) {
-      string message = Symbol() + ": " + "T4 Bid Crossed T4P3 - T4 brocken";
+      string prio;
+      if(buyT4PositionIsOpenState == true || sellT4PositionIsOpenState == true){
+         prio = "A";
+      }else{
+         prio = "C";
+      }
+      string text = "T4 Broken";
+      string message = prio + ": " + text + " - " + Symbol();
       Alert(message);
-      if(!SendNotification(message)) Alert("Cannot Push " + message, GetLastError());
+      if(!SendNotification(message)) Alert("Cannot Push " + message + " Error: ", GetLastError());
       t4AlertT4TrendBrokenSended = true;
    }
 }
 
-//+------------------------------------------------------------------+
-//|                                                                  |
-//+------------------------------------------------------------------+
-void t4AlertT4BuildNewTrendAction() {
-   if(sendAlerts == true) {
-      string message = Symbol() + ": " + "T4 Bid Crossed T4P4 - T4 Build New Trend";
-      Alert(message);
-      if(!SendNotification(message)) Alert("Cannot Push " + message, GetLastError());
-      t4AlertT4BuildNewTrendSended = true;
-   }
-}
-
-//+------------------------------------------------------------------+
-//|                                                                  |
-//+------------------------------------------------------------------+
-void t4AlertT4P2CreatedAction() {
-   if(sendAlerts == true) {
-      string message = Symbol() + ": " + "T4 T4P2 Created";
-      Alert(message);
-      if(!SendNotification(message)) Alert("Cannot Push " + message, GetLastError());
-      t4AlertT4P2CreatedSended = true;
-   }
-}
-
-//+------------------------------------------------------------------+
-//|                                                                  |
-//+------------------------------------------------------------------+
-void t4AlertT4P3CreatedAction() {
-   if(sendAlerts == true) {
-      string message = Symbol() + ": " + "T4 T4P3 Created";
-      Alert(message);
-      if(!SendNotification(message)) Alert("Cannot Push " + message, GetLastError());
-      t4AlertT4P3CreatedSended = true;
-   }
-}
-
-//+------------------------------------------------------------------+
-//|                                                                  |
-//+------------------------------------------------------------------+
 void t4AlertT4P4CreatedAction() {
    if(sendAlerts == true) {
-      string message = Symbol() + ": " + "T4 T4P4 Created";
+      string prio = "A";
+      string text = "T3 != T4 P4";
+      string message = prio + ": " + text + " - " + Symbol();
       Alert(message);
-      if(!SendNotification(message)) Alert("Cannot Push " + message, GetLastError());
+      if(!SendNotification(message)) Alert("Cannot Push " + message + " Error: ", GetLastError());
       t4AlertT4P4CreatedSended = true;
    }
 }
-
 //+------------------------------------------------------------------+
 //|                                                                  |
 //+------------------------------------------------------------------+
 void t4AlertT4P5CreatedAction() {
    if(sendAlerts == true) {
-      string message = Symbol() + ": " + "T4 T4P5 Created";
+      string prio = "A";
+      string text = "T4 P5";
+      string message = prio + ": " + text + " - " + Symbol();
       Alert(message);
-      if(!SendNotification(message)) Alert("Cannot Push " + message, GetLastError());
+      if(!SendNotification(message)) Alert("Cannot Push " + message + " Error: ", GetLastError());
       t4AlertT4P5CreatedSended = true;
    }
 }
