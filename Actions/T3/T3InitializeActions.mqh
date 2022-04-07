@@ -68,10 +68,6 @@ void initializeT3GlobalsAction() {
    t3alertBidAgainInHighVolumeAreaSended = false;
    t3alertMAChangedSended = false;
    t3AlertT3TrendBrokenSended = false;
-   t3AlertT3BuildNewTrendSended = false;
-   t3AlertT3P2CreatedSended = false;
-   t3AlertT3P3CreatedSended = false;
-   t3AlertT3P4CreatedSended = false;
    t3AlertT3P5CreatedSended = false;
    t3AlertT3VLineOn0Sended = false;
 

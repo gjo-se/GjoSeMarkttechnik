@@ -16,57 +16,6 @@ void t3AlertT3TrendBrokenAction() {
    }
 }
 
-//+------------------------------------------------------------------+
-//|                                                                  |
-//+------------------------------------------------------------------+
-void t3AlertT3BuildNewTrendAction() {
-   if(sendAlerts == true) {
-      string message = Symbol() + ": " + "T3 Bid Crossed T3P4 - T3 Build New Trend";
-      Alert(message);
-      if(!SendNotification(message)) Alert("Cannot Push " + message, GetLastError());
-      t3AlertT3BuildNewTrendSended = true;
-   }
-}
-
-//+------------------------------------------------------------------+
-//|                                                                  |
-//+------------------------------------------------------------------+
-void t3AlertT3P2CreatedAction() {
-   if(sendAlerts == true) {
-      string message = Symbol() + ": " + "T3 T3P2 Created";
-      Alert(message);
-      if(!SendNotification(message)) Alert("Cannot Push " + message, GetLastError());
-      t3AlertT3P2CreatedSended = true;
-   }
-}
-
-//+------------------------------------------------------------------+
-//|                                                                  |
-//+------------------------------------------------------------------+
-void t3AlertT3P3CreatedAction() {
-   if(sendAlerts == true) {
-      string message = Symbol() + ": " + "T3 T3P3 Created";
-      Alert(message);
-      if(!SendNotification(message)) Alert("Cannot Push " + message, GetLastError());
-      t3AlertT3P3CreatedSended = true;
-   }
-}
-
-//+------------------------------------------------------------------+
-//|                                                                  |
-//+------------------------------------------------------------------+
-void t3AlertT3P4CreatedAction() {
-   if(sendAlerts == true) {
-      string message = Symbol() + ": " + "T3 T3P4 Created";
-      Alert(message);
-      if(!SendNotification(message)) Alert("Cannot Push " + message, GetLastError());
-      t3AlertT3P4CreatedSended = true;
-   }
-}
-
-//+------------------------------------------------------------------+
-//|                                                                  |
-//+------------------------------------------------------------------+
 void t3AlertT3P5CreatedAction() {
    if(sendAlerts == true) {
       string message = Symbol() + ": " + "T3 T3P5 Created";
