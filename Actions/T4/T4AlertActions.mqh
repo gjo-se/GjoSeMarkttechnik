@@ -22,9 +22,11 @@ void t4AlertT4TrendBrokenAction() {
 //+------------------------------------------------------------------+
 void t4AlertT4P5CreatedAction() {
    if(sendAlerts == true) {
-      string message = Symbol() + ": " + "T4 T4P5 Created";
+      string prio = "A";
+      string text = "T4 P5";
+      string message = prio + ": " + text + " - " + Symbol();
       Alert(message);
-      if(!SendNotification(message)) Alert("Cannot Push " + message, GetLastError());
+      if(!SendNotification(message)) Alert("Cannot Push " + message + " Error: ", GetLastError());
       t4AlertT4P5CreatedSended = true;
    }
 }

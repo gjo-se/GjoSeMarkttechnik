@@ -243,7 +243,7 @@ void handleT4P5() {
                   createScreenshot("T4P5-Before");
                   t4ScreenshotT4P5CreatedBefore = true;
                }
-               if(t4AlertT4P5CreatedSended == false) t4AlertT4P5CreatedAction();
+               if((buyT4PositionIsOpenState == true || sellT4PositionIsOpenState == true) && t4AlertT4P5CreatedSended == false) t4AlertT4P5CreatedAction();
                t4StopLossValue = t4p5ValueTmp;
                createT4StopLossTrendline(t4StopLossValue);
                if(ObjectFind(ChartID(), T4_LONG_ENTRY_TLINE) < 0) {
@@ -277,7 +277,7 @@ void handleT4P5() {
                   createScreenshot("T4P5-Before");
                   t4ScreenshotT4P5CreatedBefore = true;
                }
-               if(t4AlertT4P5CreatedSended == false) t4AlertT4P5CreatedAction();
+               if((buyT4PositionIsOpenState == true || sellT4PositionIsOpenState == true) && t4AlertT4P5CreatedSended == false) t4AlertT4P5CreatedAction();
                t4StopLossValue = t4p5ValueTmp;
                createT4StopLossTrendline(t4StopLossValue);
                if(ObjectFind(ChartID(), T4_SHORT_ENTRY_TLINE) < 0) {
