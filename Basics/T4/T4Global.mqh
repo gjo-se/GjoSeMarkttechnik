@@ -77,10 +77,6 @@ bool t4IsBidStopLossLineOffsetAlertSended;
 bool t4AlertDisableTradeableButtonSended;
 bool t4alertMAChangedSended;
 bool t4AlertT4TrendBrokenSended;
-bool t4AlertT4BuildNewTrendSended;
-bool t4AlertT4P2CreatedSended;
-bool t4AlertT4P3CreatedSended;
-bool t4AlertT4P4CreatedSended;
 bool t4AlertT4P5CreatedSended;
 bool t4AlertT4VLineOn0Sended;
 

@@ -68,7 +68,6 @@ void handleT4P2() {
             }
             createT4P2VLine(t4p2DateTimeTmp);
             getT4TrendDirection();
-            if(t4AlertT4P2CreatedSended == false) t4AlertT4P2CreatedAction();
          }
       }
 
@@ -91,7 +90,6 @@ void handleT4P2() {
             }
             createT4P2VLine(t4p2DateTimeTmp);
             getT4TrendDirection();
-            if(t4AlertT4P2CreatedSended == false) t4AlertT4P2CreatedAction();
          }
       }
 
@@ -127,7 +125,6 @@ void handleT4P3() {
                t4ScreenshotT4P3CreatedBefore = true;
             }
             createT4P3VLine(t4p3DateTimeTmp);
-            if(t4AlertT4P3CreatedSended == false) t4AlertT4P3CreatedAction();
          }
       }
 
@@ -149,7 +146,6 @@ void handleT4P3() {
                t4ScreenshotT4P3CreatedBefore = true;
             }
             createT4P3VLine(t4p3DateTimeTmp);
-            if(t4AlertT4P3CreatedSended == false) t4AlertT4P3CreatedAction();
          }
       }
 
@@ -188,7 +184,6 @@ void handleT4P4() {
             }
             createT4P4VLine(t4p4DateTimeTmp);
             getT4TrendDirection();
-            if(t4AlertT4P4CreatedSended == false) t4AlertT4P4CreatedAction();
          }
       }
 
@@ -213,7 +208,6 @@ void handleT4P4() {
             }
             createT4P4VLine(t4p4DateTimeTmp);
             getT4TrendDirection();
-            if(t4AlertT4P4CreatedSended == false) t4AlertT4P4CreatedAction();
          }
       }
 
@@ -336,7 +330,6 @@ void handleT4BuildNewTrend() {
                createT4P2VLine(t4p4DateTimeTmp);
                createT4P3VLine(t4p5DateTimeTmp);
                getT4TrendDirection();
-               if(t4AlertT4BuildNewTrendSended == false) t4AlertT4BuildNewTrendAction();
             }
          }
       }
@@ -366,7 +359,6 @@ void handleT4BuildNewTrend() {
                createT4P2VLine(t4p4DateTimeTmp);
                createT4P3VLine(t4p5DateTimeTmp);
                getT4TrendDirection();
-               if(t4AlertT4BuildNewTrendSended == false) t4AlertT4BuildNewTrendAction();
             }
          }
       }
@@ -515,12 +507,8 @@ void resetT4Trend() {
    deleteTrendLine(T4_TRENDLINE + "P3-P4");
    deleteTrendLine(T4_TRENDLINE + "P4-P5");
 
-   t4AlertT4P2CreatedSended = false;
-   t4AlertT4P3CreatedSended = false;
-   t4AlertT4P4CreatedSended = false;
    t4AlertT4P5CreatedSended = false;
    t4AlertT4TrendBrokenSended = false;
-   t4AlertT4BuildNewTrendSended = false;
 
    t4ScreenshotT4P2CreatedBefore = false;
    t4ScreenshotT4P2CreatedAfter = false;

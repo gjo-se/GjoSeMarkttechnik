@@ -20,54 +20,6 @@ void t4AlertT4TrendBrokenAction() {
 //+------------------------------------------------------------------+
 //|                                                                  |
 //+------------------------------------------------------------------+
-void t4AlertT4BuildNewTrendAction() {
-   if(sendAlerts == true) {
-      string message = Symbol() + ": " + "T4 Bid Crossed T4P4 - T4 Build New Trend";
-      Alert(message);
-      if(!SendNotification(message)) Alert("Cannot Push " + message, GetLastError());
-      t4AlertT4BuildNewTrendSended = true;
-   }
-}
-
-//+------------------------------------------------------------------+
-//|                                                                  |
-//+------------------------------------------------------------------+
-void t4AlertT4P2CreatedAction() {
-   if(sendAlerts == true) {
-      string message = Symbol() + ": " + "T4 T4P2 Created";
-      Alert(message);
-      if(!SendNotification(message)) Alert("Cannot Push " + message, GetLastError());
-      t4AlertT4P2CreatedSended = true;
-   }
-}
-
-//+------------------------------------------------------------------+
-//|                                                                  |
-//+------------------------------------------------------------------+
-void t4AlertT4P3CreatedAction() {
-   if(sendAlerts == true) {
-      string message = Symbol() + ": " + "T4 T4P3 Created";
-      Alert(message);
-      if(!SendNotification(message)) Alert("Cannot Push " + message, GetLastError());
-      t4AlertT4P3CreatedSended = true;
-   }
-}
-
-//+------------------------------------------------------------------+
-//|                                                                  |
-//+------------------------------------------------------------------+
-void t4AlertT4P4CreatedAction() {
-   if(sendAlerts == true) {
-      string message = Symbol() + ": " + "T4 T4P4 Created";
-      Alert(message);
-      if(!SendNotification(message)) Alert("Cannot Push " + message, GetLastError());
-      t4AlertT4P4CreatedSended = true;
-   }
-}
-
-//+------------------------------------------------------------------+
-//|                                                                  |
-//+------------------------------------------------------------------+
 void t4AlertT4P5CreatedAction() {
    if(sendAlerts == true) {
       string message = Symbol() + ": " + "T4 T4P5 Created";
