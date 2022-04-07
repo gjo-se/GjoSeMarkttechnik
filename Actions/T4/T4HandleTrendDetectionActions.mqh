@@ -12,7 +12,7 @@ void getT4TrendDirection() {
    t4SemiTrendDirection = TREND_DIRECTION_ROTATION;
    t4trendDirection = TREND_DIRECTION_ROTATION;
 
-   if(t4p1ValueHigh != 0) {
+   if(t4p1ValueHigh != 0 || t3p5ValueHigh != 0) {
       (t4p2ValueLow != 0) ? t4p2ValueTmp = t4p2ValueLow : t4p2ValueTmp = Bid();
       if(t4p1ValueHigh < t4p2ValueTmp) t4SemiTrendDirection = TREND_DIRECTION_LONG;
       if(t4p1ValueHigh > t4p2ValueTmp) t4SemiTrendDirection = TREND_DIRECTION_SHORT;
@@ -42,7 +42,7 @@ void handleT4P2() {
    double   t4p2ValueTmp = 0;
    double t4P1P2MovementPoints = 0;
 
-   (t4p1DateTime != 0) ? t4p1DateTimeTmp = t4p1DateTime : t4p1DateTimeTmp = t3p4DateTime;
+   (t4p1DateTime != 0) ? t4p1DateTimeTmp = t4p1DateTime : t4p1DateTimeTmp = t3p5DateTime;
 
    if(t4p1DateTimeTmp != 0
          && t4p1DateTimeTmp < (int)TimeCurrent()
