@@ -68,7 +68,6 @@ void initializeT3GlobalsAction() {
    t3alertBidAgainInHighVolumeAreaSended = false;
    t3alertMAChangedSended = false;
    t3AlertT3TrendBrokenSended = false;
-   t3AlertT3P5CreatedSended = false;
    t3AlertT3VLineOn0Sended = false;
 
    t3InSignalFiboLevelAreaMinStartValue = 0;
