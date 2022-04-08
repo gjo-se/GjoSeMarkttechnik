@@ -63,6 +63,10 @@ int               InpT4VisibleTimeframes = OBJ_PERIOD_M1;
 color             InpT4VLineTemplateColor = clrSilver;
 color             InpT4VLineTrendDetectionColor = clrSilver;
 
+color             InpT4TLineZigZagTemplateColor = clrSilver;
+color             InpT4TLineZigZagTrendLongColor = clrLightGreen;
+color             InpT4TLineZigZagTrendShortColor = clrLightSalmon;
+
 // group             "---------- StrategyTester ---------" // (Objects in Strategy Tester nicht vorhanden)
 datetime          InpT4p1DateTime = D'2022.01.01 00:00';
 datetime          InpT4p2DateTime = D'2022.01.01 00:00';

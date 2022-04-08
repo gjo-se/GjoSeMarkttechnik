@@ -12,7 +12,7 @@ void handleT4ObjectsInitAction() {
    deleteChannelObject(T4_IN_SIGNAL_REGRESSION_CHANNEL_AREA);
    deleteChannelObject(T4_RE_ENTRY_AREA);
 
-   createT4TrendLines();
+   createT4ZigZagTrendDetectionLines();
    createT4RegressionChannel();
    createT4RegressionChannelLevels();
    createT4FiboRetracement();
@@ -87,7 +87,7 @@ void t4HandleObjectsAction() {
 
       if(isNewCurrentBar == true || t4ObjectHasChanged == true) {
          if(Period() <= InpT4MaxTimeframe) {
-            createT4TrendLines();
+            createT4ZigZagTrendDetectionLines();
             createT4RegressionChannel();
             createT4RegressionChannelLevels();
             createT4FiboRetracement();

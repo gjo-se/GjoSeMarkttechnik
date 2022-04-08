@@ -8,7 +8,7 @@ void handleTT3ObjectsInitAction() {
    deleteTrendLineLike(TT3_TRENDLINE);
    deleteRegressionChannel(TT3_REGRESSION_CHANNEL);
 
-   createTT3TrendLines();
+   createTT3ZigZagTemplateLines();
    createTT3RegressionChannel();
 }
 
@@ -80,7 +80,7 @@ void handleTT4ObjectsInitAction() {
    deleteTrendLineLike(TT4_TRENDLINE);
    deleteRegressionChannel(TT4_REGRESSION_CHANNEL);
 
-   createTT4TrendLines();
+   createTT4ZigZagTemplateLines();
    createTT4RegressionChannel();
 }
 

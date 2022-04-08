@@ -207,7 +207,10 @@ void OnChartEvent(const int id,
       getT3TrendDirection();
       getTT4TrendDirection();
       getT4TrendDirection();
-      createT3TrendLines();
+      createTT3ZigZagTemplateLines();
+      createTT4ZigZagTemplateLines();
+      createT3ZigZagTrendDetectionLines();
+      createT4ZigZagTrendDetectionLines();
       t3ObjectHasChanged = true;
       t4ObjectHasChanged = true;
 

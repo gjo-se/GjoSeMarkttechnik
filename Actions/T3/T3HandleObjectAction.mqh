@@ -12,7 +12,7 @@ void handleT3ObjectsInitAction() {
    deleteChannelObject(T3_IN_SIGNAL_REGRESSION_CHANNEL_AREA);
    deleteChannelObject(T3_RE_ENTRY_AREA);
 
-   createT3TrendLines();
+   createT3ZigZagTrendDetectionLines();
    createT3HighVolumeAreaTrendLines();
    createT3RegressionChannel();
    createT3RegressionChannelLevels();
@@ -101,7 +101,7 @@ void t3HandleObjectsAction() {
 
       if(isNewCurrentBar == true || t3ObjectHasChanged == true) {
          if(Period() <= InpT3MaxTimeframe) {
-            createT3TrendLines();
+            createT3ZigZagTrendDetectionLines();
             createT3RegressionChannel();
             createT3RegressionChannelLevels();
             createT3FiboRetracement();
