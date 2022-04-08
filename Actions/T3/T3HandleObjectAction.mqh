@@ -5,7 +5,7 @@
 //+------------------------------------------------------------------+
 void handleT3ObjectsInitAction() {
 
-   deleteTrendLineLike(T3_TRENDLINE);
+   deleteTrendLineLike(T3_ZIGZAGLINE);
    deleteRegressionChannel(T3_REGRESSION_CHANNEL);
    deleteFiboLevelsObject(T3_FIBO_LEVELS);
    deleteChannelObject(T3_IN_SIGNAL_FIBO_LEVEL_AREA);
@@ -109,7 +109,7 @@ void t3HandleObjectsAction() {
             createt3InSignalRegressionChannelArea();
             createT3ReEntryArea();
          } else {
-            deleteTrendLineLike(T3_TRENDLINE);
+            deleteTrendLineLike(T3_ZIGZAGLINE);
             deleteRegressionChannel(T3_REGRESSION_CHANNEL);
             deleteFiboLevelsObject(T3_FIBO_LEVELS);
             deleteChannelObject(T3_IN_SIGNAL_FIBO_LEVEL_AREA);
@@ -126,7 +126,7 @@ void t3HandleObjectsAction() {
       handleInsideBars();
 
    } else {
-      deleteTrendLineLike(T3_TRENDLINE);
+      deleteTrendLineLike(T3_ZIGZAGLINE);
       deleteRegressionChannel(T3_REGRESSION_CHANNEL);
       deleteFiboLevelsObject(T3_FIBO_LEVELS);
       deleteChannelObject(T3_IN_SIGNAL_FIBO_LEVEL_AREA);

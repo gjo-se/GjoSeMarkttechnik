@@ -15,20 +15,20 @@ void createT3ZigZagTrendDetectionLines() {
    if(t3SemiTrendDirection == TREND_DIRECTION_SHORT) lineColor = InpT3TLineZigZagTrendShortColor;
 
    if(t3p1DateTime != 0 && t3p2DateTime != 0) {
-      createTrendLine(T3_TRENDLINE + "P1-P2", t3p1DateTime, getT3P1HighLowValueByTrendDirection(), t3p2DateTime, getT3P2HighLowValueByTrendDirection(), lineColor, InpT3LineWidth, InpT3LineStyle);
-      ObjectSetInteger(ChartID(), T3_TRENDLINE + "P1-P2", OBJPROP_TIMEFRAMES, InpT3VisibleTimeframes);
+      createTrendLine(T3_ZIGZAGLINE + "P1-P2", t3p1DateTime, getT3P1HighLowValueByTrendDirection(), t3p2DateTime, getT3P2HighLowValueByTrendDirection(), lineColor, InpT3LineWidth, InpT3LineStyle);
+      ObjectSetInteger(ChartID(), T3_ZIGZAGLINE + "P1-P2", OBJPROP_TIMEFRAMES, InpT3VisibleTimeframes);
    }
    if(t3p2DateTime != 0 && t3p3DateTime != 0) {
-      createTrendLine(T3_TRENDLINE + "P2-P3", t3p2DateTime, getT3P2HighLowValueByTrendDirection(), t3p3DateTime, getT3P3HighLowValueByTrendDirection(), lineColor, InpT3LineWidth, InpT3LineStyle);
-      ObjectSetInteger(ChartID(), T3_TRENDLINE + "P2-P3", OBJPROP_TIMEFRAMES, InpT3VisibleTimeframes);
+      createTrendLine(T3_ZIGZAGLINE + "P2-P3", t3p2DateTime, getT3P2HighLowValueByTrendDirection(), t3p3DateTime, getT3P3HighLowValueByTrendDirection(), lineColor, InpT3LineWidth, InpT3LineStyle);
+      ObjectSetInteger(ChartID(), T3_ZIGZAGLINE + "P2-P3", OBJPROP_TIMEFRAMES, InpT3VisibleTimeframes);
    }
    if(t3p3DateTime != 0 && t3p4DateTime != 0) {
-      createTrendLine(T3_TRENDLINE + "P3-P4", t3p3DateTime, getT3P3HighLowValueByTrendDirection(), t3p4DateTime, getT3P4HighLowValueByTrendDirection(), lineColor, InpT3LineWidth, InpT3LineStyle);
-      ObjectSetInteger(ChartID(), T3_TRENDLINE + "P3-P4", OBJPROP_TIMEFRAMES, InpT3VisibleTimeframes);
+      createTrendLine(T3_ZIGZAGLINE + "P3-P4", t3p3DateTime, getT3P3HighLowValueByTrendDirection(), t3p4DateTime, getT3P4HighLowValueByTrendDirection(), lineColor, InpT3LineWidth, InpT3LineStyle);
+      ObjectSetInteger(ChartID(), T3_ZIGZAGLINE + "P3-P4", OBJPROP_TIMEFRAMES, InpT3VisibleTimeframes);
    }
    if(t3p4DateTime != 0 && t3p5DateTime != 0) {
-      createTrendLine(T3_TRENDLINE + "P4-P5", t3p4DateTime, getT3P4HighLowValueByTrendDirection(), t3p5DateTime, getT3P5HighLowValueByTrendDirection(), lineColor, InpT3LineWidth, InpT3LineStyle);
-      ObjectSetInteger(ChartID(), T3_TRENDLINE + "P4-P5", OBJPROP_TIMEFRAMES, InpT3VisibleTimeframes);
+      createTrendLine(T3_ZIGZAGLINE + "P4-P5", t3p4DateTime, getT3P4HighLowValueByTrendDirection(), t3p5DateTime, getT3P5HighLowValueByTrendDirection(), lineColor, InpT3LineWidth, InpT3LineStyle);
+      ObjectSetInteger(ChartID(), T3_ZIGZAGLINE + "P4-P5", OBJPROP_TIMEFRAMES, InpT3VisibleTimeframes);
    }
 }
 

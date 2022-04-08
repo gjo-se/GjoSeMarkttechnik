@@ -465,10 +465,10 @@ void resetT3Trend() {
    setT3LineValues();
    getT3TrendDirection();
 
-   deleteTrendLine(T3_TRENDLINE + "P1-P2");
-   deleteTrendLine(T3_TRENDLINE + "P2-P3");
-   deleteTrendLine(T3_TRENDLINE + "P3-P4");
-   deleteTrendLine(T3_TRENDLINE + "P4-P5");
+   deleteTrendLine(T3_ZIGZAGLINE + "P1-P2");
+   deleteTrendLine(T3_ZIGZAGLINE + "P2-P3");
+   deleteTrendLine(T3_ZIGZAGLINE + "P3-P4");
+   deleteTrendLine(T3_ZIGZAGLINE + "P4-P5");
 
    t3AlertT3P5CreatedTT4MissingSended = false;
    t3AlertT3TrendBrokenSended = false;
