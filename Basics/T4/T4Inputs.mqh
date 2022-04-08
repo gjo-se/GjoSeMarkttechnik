@@ -55,6 +55,14 @@ double            InpT4StopLossMarketOffsetMulti = 2.0; // T4 StopLossMarket Mul
 //group             "------------------------------ T4 TrendSize ---------------------------"
 int               InpT4MaxMovementLengthBasedOnT3MovementPercent = 45;
 
+//input group             "---------- T4 Object-Styles ---------"
+int               InpT4LineWidth = 2;
+ENUM_LINE_STYLE   InpT4LineStyle = STYLE_SOLID;
+int               InpT4VisibleTimeframes = OBJ_PERIOD_M1;
+
+color             InpT4VLineTemplateColor = clrSilver;
+color             InpT4VLineTrendDetectionColor = clrSilver;
+
 // group             "---------- StrategyTester ---------" // (Objects in Strategy Tester nicht vorhanden)
 datetime          InpT4p1DateTime = D'2022.01.01 00:00';
 datetime          InpT4p2DateTime = D'2022.01.01 00:00';

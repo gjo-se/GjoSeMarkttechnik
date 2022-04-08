@@ -17,31 +17,37 @@ void setTT3LineValues() {
 void setTT3VLineDateTimes() {
    if(ObjectFind(ChartID(), TT3_P1_VLINE) >= 0) {
       tt3p1DateTime = (datetime)ObjectGetInteger(ChartID(), TT3_P1_VLINE, OBJPROP_TIME);
+      setTT3VLineStyles(TT3_P1_VLINE);
    } else {
       tt3p1DateTime = 0;
    }
    if(ObjectFind(ChartID(), TT3_P2_VLINE) >= 0) {
       tt3p2DateTime = (datetime)ObjectGetInteger(ChartID(), TT3_P2_VLINE, OBJPROP_TIME);
+      setTT3VLineStyles(TT3_P2_VLINE);
    } else {
       tt3p2DateTime = 0;
    }
    if(ObjectFind(ChartID(), TT3_P3_VLINE) >= 0) {
       tt3p3DateTime = (datetime)ObjectGetInteger(ChartID(), TT3_P3_VLINE, OBJPROP_TIME);
+      setTT3VLineStyles(TT3_P3_VLINE);
    } else {
       tt3p3DateTime = 0;
    }
    if(ObjectFind(ChartID(), TT3_P4_VLINE) >= 0) {
       tt3p4DateTime = (datetime)ObjectGetInteger(ChartID(), TT3_P4_VLINE, OBJPROP_TIME);
+      setTT3VLineStyles(TT3_P4_VLINE);
    } else {
       tt3p4DateTime = 0;
    }
    if(ObjectFind(ChartID(), TT3_P5_VLINE) >= 0) {
       tt3p5DateTime = (datetime)ObjectGetInteger(ChartID(), TT3_P5_VLINE, OBJPROP_TIME);
+      setTT3VLineStyles(TT3_P5_VLINE);
    } else {
       tt3p5DateTime = 0;
    }
    if(ObjectFind(ChartID(), TT3_P6_VLINE) >= 0) {
       tt3p6DateTime = (datetime)ObjectGetInteger(ChartID(), TT3_P6_VLINE, OBJPROP_TIME);
+      setTT3VLineStyles(TT3_P6_VLINE);
    } else {
       tt3p6DateTime = 0;
    }
@@ -98,6 +104,13 @@ void setTT3VLineValues() {
    }
 }
 
+void setTT3VLineStyles(const string pLineName) {
+      ObjectSetInteger(ChartID(), pLineName, OBJPROP_WIDTH, InpT3LineWidth);
+      ObjectSetInteger(ChartID(), pLineName, OBJPROP_STYLE, InpT3LineStyle);
+      ObjectSetInteger(ChartID(), pLineName, OBJPROP_COLOR, InpT3VLineTemplateColor);
+      ObjectSetInteger(ChartID(), pLineName, OBJPROP_TIMEFRAMES, InpT3VisibleTimeframes);
+}
+
 //+------------------------------------------------------------------+
 //|                                                                  |
 //+------------------------------------------------------------------+
@@ -112,31 +125,37 @@ void setTT4LineValues() {
 void setTT4VLineDateTimes() {
    if(ObjectFind(ChartID(), TT4_P1_VLINE) >= 0) {
       tt4p1DateTime = (datetime)ObjectGetInteger(ChartID(), TT4_P1_VLINE, OBJPROP_TIME);
+      setTT4VLineStyles(TT4_P1_VLINE);
    } else {
       tt4p1DateTime = 0;
    }
    if(ObjectFind(ChartID(), TT4_P2_VLINE) >= 0) {
       tt4p2DateTime = (datetime)ObjectGetInteger(ChartID(), TT4_P2_VLINE, OBJPROP_TIME);
+      setTT4VLineStyles(TT4_P2_VLINE);
    } else {
       tt4p2DateTime = 0;
    }
    if(ObjectFind(ChartID(), TT4_P3_VLINE) >= 0) {
       tt4p3DateTime = (datetime)ObjectGetInteger(ChartID(), TT4_P3_VLINE, OBJPROP_TIME);
+      setTT4VLineStyles(TT4_P3_VLINE);
    } else {
       tt4p3DateTime = 0;
    }
    if(ObjectFind(ChartID(), TT4_P4_VLINE) >= 0) {
       tt4p4DateTime = (datetime)ObjectGetInteger(ChartID(), TT4_P4_VLINE, OBJPROP_TIME);
+      setTT4VLineStyles(TT4_P4_VLINE);
    } else {
       tt4p4DateTime = 0;
    }
    if(ObjectFind(ChartID(), TT4_P5_VLINE) >= 0) {
       tt4p5DateTime = (datetime)ObjectGetInteger(ChartID(), TT4_P5_VLINE, OBJPROP_TIME);
+      setTT4VLineStyles(TT4_P5_VLINE);
    } else {
       tt4p5DateTime = 0;
    }
    if(ObjectFind(ChartID(), TT4_P6_VLINE) >= 0) {
       tt4p6DateTime = (datetime)ObjectGetInteger(ChartID(), TT4_P6_VLINE, OBJPROP_TIME);
+      setTT4VLineStyles(TT4_P6_VLINE);
    } else {
       tt4p6DateTime = 0;
    }
@@ -193,3 +212,10 @@ void setTT4VLineValues() {
    }
 }
 //+------------------------------------------------------------------+
+
+void setTT4VLineStyles(const string pLineName) {
+      ObjectSetInteger(ChartID(), pLineName, OBJPROP_WIDTH, InpT4LineWidth);
+      ObjectSetInteger(ChartID(), pLineName, OBJPROP_STYLE, InpT4LineStyle);
+      ObjectSetInteger(ChartID(), pLineName, OBJPROP_COLOR, InpT4VLineTemplateColor);
+      ObjectSetInteger(ChartID(), pLineName, OBJPROP_TIMEFRAMES, InpT4VisibleTimeframes);
+}

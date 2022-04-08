@@ -55,7 +55,14 @@ color             InpInsideBarLineColor = clrBlue;
 color             InpT3TailingStopLineColor = clrRed;
 bool              InpT3UseTrailingStopMarket = true;
 
-//input group             "---------- T3 Style ---------"
+//input group             "---------- T3 Object-Styles ---------"
+int               InpT3LineWidth = 3;
+ENUM_LINE_STYLE   InpT3LineStyle = STYLE_SOLID;
+int               InpT3VisibleTimeframes = OBJ_PERIOD_M10|OBJ_PERIOD_M1;
+
+color             InpT3VLineTemplateColor = clrOldLace;
+color             InpT3VLineZTrendDetectionColor = clrOldLace;
+
 color             InpT3TrendLineColor = clrDarkKhaki;
 color             InpT3VLineColor = clrFireBrick;
 color             InpT3RegressionChannelColor = clrDarkKhaki;
