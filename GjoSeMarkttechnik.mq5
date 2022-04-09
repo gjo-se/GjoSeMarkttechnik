@@ -217,8 +217,10 @@ void OnChartEvent(const int id,
 
       createT3RegressionChannel();
       createT3RegressionChannelLevels();
+      createTT3RegressionChannel();
       createT4RegressionChannel();
       createT4RegressionChannelLevels();
+      createTT4RegressionChannel();
 
       t3ObjectHasChanged = true;
       t4ObjectHasChanged = true;
