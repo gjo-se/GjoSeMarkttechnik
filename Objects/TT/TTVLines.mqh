@@ -108,6 +108,7 @@ void setTT3VLineStyles(const string pLineName) {
       ObjectSetInteger(ChartID(), pLineName, OBJPROP_WIDTH, InpT3LineWidth);
       ObjectSetInteger(ChartID(), pLineName, OBJPROP_STYLE, InpT3LineStyle);
       ObjectSetInteger(ChartID(), pLineName, OBJPROP_COLOR, InpT3VLineColor);
+      ObjectSetInteger(ChartID(), pLineName, OBJPROP_BACK, true);
       ObjectSetInteger(ChartID(), pLineName, OBJPROP_TIMEFRAMES, InpT3VisibleTimeframes);
 }
 
@@ -217,5 +218,6 @@ void setTT4VLineStyles(const string pLineName) {
       ObjectSetInteger(ChartID(), pLineName, OBJPROP_WIDTH, InpT4LineWidth);
       ObjectSetInteger(ChartID(), pLineName, OBJPROP_STYLE, InpT4LineStyle);
       ObjectSetInteger(ChartID(), pLineName, OBJPROP_COLOR, InpT4VLineColor);
+      ObjectSetInteger(ChartID(), pLineName, OBJPROP_BACK, true);
       ObjectSetInteger(ChartID(), pLineName, OBJPROP_TIMEFRAMES, InpT4VisibleTimeframes);
 }

@@ -145,7 +145,7 @@ void setT3VLineStyles(const string pLineName) {
 void createT3HighestHighVLine() {
 
    long zOrder = 0;
-   bool isBackground = false;
+   bool isBackground = true;
    bool isSelected = false;
    bool isSelectable = true;
 
@@ -157,7 +157,7 @@ void createT3HighestHighVLine() {
 void createT3LowestLowVLine() {
 
    long zOrder = 0;
-   bool isBackground = false;
+   bool isBackground = true;
    bool isSelected = false;
    bool isSelectable = true;
 
@@ -171,7 +171,7 @@ void createT3LowestLowVLine() {
 void createT3P1VLine(datetime pDateTime) {
 
    long zOrder = 0;
-   bool isBackground = false;
+   bool isBackground = true;
    bool isSelected = true;
    bool isSelectable = true;
 
@@ -186,7 +186,7 @@ void createT3P1VLine(datetime pDateTime) {
 void createT3P2VLine(datetime pDateTime) {
 
    long zOrder = 0;
-   bool isBackground = false;
+   bool isBackground = true;
    bool isSelected = true;
    bool isSelectable = true;
 
@@ -201,7 +201,7 @@ void createT3P2VLine(datetime pDateTime) {
 void createT3P3VLine(datetime pDateTime) {
 
    long zOrder = 0;
-   bool isBackground = false;
+   bool isBackground = true;
    bool isSelected = true;
    bool isSelectable = true;
 
@@ -216,7 +216,7 @@ void createT3P3VLine(datetime pDateTime) {
 void createT3P4VLine(datetime pDateTime) {
 
    long zOrder = 0;
-   bool isBackground = false;
+   bool isBackground = true;
    bool isSelected = false;
    bool isSelectable = true;
 
@@ -232,7 +232,7 @@ void createT3P4VLine(datetime pDateTime) {
 void createT3P5VLine(datetime pDateTime) {
 
    long zOrder = 0;
-   bool isBackground = false;
+   bool isBackground = true;
    bool isSelected = false;
    bool isSelectable = true;
 
