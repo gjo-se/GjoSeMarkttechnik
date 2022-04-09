@@ -15,10 +15,10 @@ void getTT3TrendDirection() {
       if(tt3p3ValueHigh > tt3p4ValueHigh) tt3trendDirection = TREND_DIRECTION_SHORT;
    }
 
-   setTT3MovementAndRegressionLegth();
+   setTT3MovementAndRegressionLength();
 }
 
-void setTT3MovementAndRegressionLegth() {
+void setTT3MovementAndRegressionLength() {
 
    if(tt3p1DateTime != 0 && tt3p6DateTime != 0) {
 
@@ -50,6 +50,11 @@ void setTT3MovementAndRegressionLegth() {
 
       if(tt3regressionLength != 0 && tt3movementLength != 0) {
          tt3movementLengthRegressionLengthRatio = tt3regressionLength / tt3movementLength * 100;
+      }
+
+      if(tt3movementLengthRegressionLengthRatio != 0) {
+         ArrayResize(t3FiboLevelsArray, ArraySize(t3FiboLevelsArray) + 1);
+         t3FiboLevelsArray[ArraySize(t3FiboLevelsArray) - 1] = (string)tt3movementLengthRegressionLengthRatio;
       }
    }
 }
@@ -98,6 +103,11 @@ void setTT4MovementAndRegressionLegth() {
 
       if(tt4regressionLength != 0 && tt4movementLength != 0) {
          tt4movementLengthRegressionLengthRatio = tt4regressionLength / tt4movementLength * 100;
+      }
+
+      if(tt4movementLengthRegressionLengthRatio != 0) {
+         ArrayResize(t4FiboLevelsArray, ArraySize(t4FiboLevelsArray) + 1);
+         t4FiboLevelsArray[ArraySize(t4FiboLevelsArray) - 1] = (string)tt4movementLengthRegressionLengthRatio;
       }
    }
 }

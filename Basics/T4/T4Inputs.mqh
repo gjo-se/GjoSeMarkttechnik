@@ -17,7 +17,7 @@ input double            InpT4MinHighVolumeAreaLevel = 0; // T3 Min HighVolume Ar
 input int               InpT4AlertOnFiboRetracmentLevel = 0;
 
 input group             "------------------------------ T4 TRAILING --------------------"
-input int               InpT4MinProfitFiboRetracmentLevel = -5; // T4 TrailingStop Start Level
+input int               InpT4MinProfitFiboRetracmentLevel = 0; // T4 TrailingStop Start Level
 input int               InpT4TrailingStopOffset = 0; // T4 TrailingStop Offset
 input ENUM_TIMEFRAMES   InpT4trailingStopMATimeframe = PERIOD_M1; // T4 MA TrailingStop Timeframe
 input string            InpT4trailingStopMAPeriods = "200, 150, 100, 50, 10"; // T4 MA TrailingStop Periods
@@ -37,7 +37,7 @@ int               InpT4MaxRegressionChannelLevel = 0; // T4 Max RegressionChanne
 bool              InpT4UseTrailingStopMarket = true;
 color             InpT4TailingStopLineColor = clrRed;
 ENUM_TIMEFRAMES   InpT4MaxTimeframe = PERIOD_H1;
-string            InpT4FiboLevels = "50";
+string            InpT4FiboLevels = "25,50,75";
 color             InpT4InSignalAreaColor = clrWheat;
 color             InpT4TrendLineColor = clrBlack;
 //group             "------------------------------ T4 PRIO C ----------------"

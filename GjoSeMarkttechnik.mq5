@@ -222,6 +222,9 @@ void OnChartEvent(const int id,
       createT4RegressionChannelLevels();
       createTT4RegressionChannel();
 
+      createT3FiboRetracement();
+      createT4FiboRetracement();
+
       t3ObjectHasChanged = true;
       t4ObjectHasChanged = true;
 

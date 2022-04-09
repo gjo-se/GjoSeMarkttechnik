@@ -45,7 +45,7 @@ long              InpMaxSlippage = 3; // T3 & T4 max Slippage
 bool              InpT3ShowCommentDashboard = true;
 bool              InpT3ObjectsShow = true;
 ENUM_TIMEFRAMES   InpT3MaxTimeframe = PERIOD_H1;
-string            InpT3FiboLevels = "50";
+string            InpT3FiboLevels = "25,50,75";
 color             InpT3InSignalAreaColor = clrWheat;
 bool              InpPrintScreenshot = false;
 //input group             "---------- InsideBar ---------"

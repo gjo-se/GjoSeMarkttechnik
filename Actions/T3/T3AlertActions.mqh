@@ -166,7 +166,7 @@ void t3CommentAction(string pVersion) {
    if(tt3movementLengthRegressionLengthRatio != 0) {
       t3comment += "tt3movementLength: " + DoubleToString(tt3movementLength, 0) + " (" + DoubleToString(tt3movementLengthP1P2, 0) + " / " +  DoubleToString(tt3movementLengthP3P4, 0) + " / " + DoubleToString(tt3movementLengthP5P6, 0) + ") Points" + "\n";
       t3comment += "tt3regressionLength: " + DoubleToString(tt3regressionLength, 0) + " (" + DoubleToString(tt3regressionLengthP2P3, 0) + " / " +  DoubleToString(tt3regressionLengthP4P5, 0) + ") Points" + "\n";
-      t3comment += "tt3movementRegressionLengthRation: " + DoubleToString(tt3movementLengthRegressionLengthRatio, 0) + " %" + "\n";
+      t3comment += "tt3movementRegressionLengthRatio: " + DoubleToString(tt3movementLengthRegressionLengthRatio, 0) + " %" + "\n";
    }
    t3comment += "\n";
    if(t3p1DateTime) {
