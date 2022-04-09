@@ -10,7 +10,7 @@
 //+------------------------------------------------------------------+
 void createT3ZigZagTrendDetectionLines() {
 
-   color lineColor = InpT3TLineZigZagTemplateColor;
+   color lineColor = InpT3DefaultColor;
    if(t3SemiTrendDirection == TREND_DIRECTION_LONG) lineColor = InpT3TLineZigZagTrendLongColor;
    if(t3SemiTrendDirection == TREND_DIRECTION_SHORT) lineColor = InpT3TLineZigZagTrendShortColor;
 

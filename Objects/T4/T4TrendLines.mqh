@@ -10,7 +10,7 @@
 //+------------------------------------------------------------------+
 void createT4ZigZagTrendDetectionLines() {
 
-   color lineColor = InpT4TLineZigZagTemplateColor;
+   color lineColor = InpT4DefaultColor;
    if(t4SemiTrendDirection == TREND_DIRECTION_LONG) lineColor = InpT4TLineZigZagTrendLongColor;
    if(t4SemiTrendDirection == TREND_DIRECTION_SHORT) lineColor = InpT4TLineZigZagTrendShortColor;
 

@@ -60,20 +60,16 @@ int               InpT3LineWidth = 3;
 ENUM_LINE_STYLE   InpT3LineStyle = STYLE_SOLID;
 int               InpT3VisibleTimeframes = OBJ_PERIOD_M10|OBJ_PERIOD_M1;
 
-color             InpT3VLineTemplateColor = clrOldLace;
-color             InpT3VLineTrendDetectionColor = clrOldLace;
-
-color             InpT3TLineZigZagTemplateColor = clrDarkKhaki;
+color             InpT3DefaultColor = clrDarkKhaki;
+color             InpT3InvisibleColor = clrWhite;
+color             InpT3VLineColor = clrOldLace;
 color             InpT3TLineZigZagTrendLongColor = clrGreen;
 color             InpT3TLineZigZagTrendShortColor = clrRed;
-
-color             InpT3RegressionChannelColor = clrWhite;
 
 
 
 
 color             InpT3TrendLineColor = clrDarkKhaki;
-color             InpT3VLineColor = clrFireBrick;
 
 
 //input group             "---------- StrategyTester ---------" // (Objects in Strategy Tester nicht vorhanden)

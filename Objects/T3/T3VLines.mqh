@@ -138,7 +138,7 @@ void setT3VLineValues() {
 void setT3VLineStyles(const string pLineName) {
       ObjectSetInteger(ChartID(), pLineName, OBJPROP_WIDTH, InpT3LineWidth);
       ObjectSetInteger(ChartID(), pLineName, OBJPROP_STYLE, InpT3LineStyle);
-      ObjectSetInteger(ChartID(), pLineName, OBJPROP_COLOR, InpT3VLineTrendDetectionColor);
+      ObjectSetInteger(ChartID(), pLineName, OBJPROP_COLOR, InpT3VLineColor);
       ObjectSetInteger(ChartID(), pLineName, OBJPROP_TIMEFRAMES, InpT3VisibleTimeframes);
 }
 
@@ -179,7 +179,7 @@ void createT3P1VLine(datetime pDateTime) {
    t3p1ValueHigh = iHigh(Symbol(), PERIOD_CURRENT, iBarShift(Symbol(), PERIOD_CURRENT, t3p1DateTime));
    t3p1ValueLow = iLow(Symbol(), PERIOD_CURRENT, iBarShift(Symbol(), PERIOD_CURRENT, t3p1DateTime));
 
-   createVLine(T3_P1_VLINE, t3p1DateTime, InpT3VLineTrendDetectionColor, InpT3LineWidth, InpT3LineStyle, T3_P1_VLINE, zOrder, isBackground, isSelected, isSelectable);
+   createVLine(T3_P1_VLINE, t3p1DateTime, InpT3VLineColor, InpT3LineWidth, InpT3LineStyle, T3_P1_VLINE, zOrder, isBackground, isSelected, isSelectable);
    ObjectSetInteger(ChartID(), T3_P1_VLINE, OBJPROP_TIMEFRAMES, InpT3VisibleTimeframes);
 }
 
@@ -194,7 +194,7 @@ void createT3P2VLine(datetime pDateTime) {
    t3p2ValueHigh = iHigh(Symbol(), PERIOD_CURRENT, iBarShift(Symbol(), PERIOD_CURRENT, t3p2DateTime));
    t3p2ValueLow = iLow(Symbol(), PERIOD_CURRENT, iBarShift(Symbol(), PERIOD_CURRENT, t3p2DateTime));
 
-   createVLine(T3_P2_VLINE, t3p2DateTime, InpT3VLineTrendDetectionColor, InpT3LineWidth, InpT3LineStyle, T3_P2_VLINE, zOrder, isBackground, isSelected, isSelectable);
+   createVLine(T3_P2_VLINE, t3p2DateTime, InpT3VLineColor, InpT3LineWidth, InpT3LineStyle, T3_P2_VLINE, zOrder, isBackground, isSelected, isSelectable);
    ObjectSetInteger(ChartID(), T3_P2_VLINE, OBJPROP_TIMEFRAMES, InpT3VisibleTimeframes);
 }
 
@@ -209,7 +209,7 @@ void createT3P3VLine(datetime pDateTime) {
    t3p3ValueHigh = iHigh(Symbol(), PERIOD_CURRENT, iBarShift(Symbol(), PERIOD_CURRENT, t3p3DateTime));
    t3p3ValueLow = iLow(Symbol(), PERIOD_CURRENT, iBarShift(Symbol(), PERIOD_CURRENT, t3p3DateTime));
 
-   createVLine(T3_P3_VLINE, t3p3DateTime, InpT3VLineTrendDetectionColor, InpT3LineWidth, InpT3LineStyle, T3_P3_VLINE, zOrder, isBackground, isSelected, isSelectable);
+   createVLine(T3_P3_VLINE, t3p3DateTime, InpT3VLineColor, InpT3LineWidth, InpT3LineStyle, T3_P3_VLINE, zOrder, isBackground, isSelected, isSelectable);
    ObjectSetInteger(ChartID(), T3_P3_VLINE, OBJPROP_TIMEFRAMES, InpT3VisibleTimeframes);
 }
 
@@ -224,7 +224,7 @@ void createT3P4VLine(datetime pDateTime) {
    t3p4ValueHigh = iHigh(Symbol(), PERIOD_CURRENT, iBarShift(Symbol(), PERIOD_CURRENT, t3p4DateTime));
    t3p4ValueLow = iLow(Symbol(), PERIOD_CURRENT, iBarShift(Symbol(), PERIOD_CURRENT, t3p4DateTime));
 
-   createVLine(T3_P4_VLINE, t3p4DateTime, InpT3VLineTrendDetectionColor, InpT3LineWidth, InpT3LineStyle, T3_P4_VLINE, zOrder, isBackground, isSelected, isSelectable);
+   createVLine(T3_P4_VLINE, t3p4DateTime, InpT3VLineColor, InpT3LineWidth, InpT3LineStyle, T3_P4_VLINE, zOrder, isBackground, isSelected, isSelectable);
    ObjectSetInteger(ChartID(), T3_P4_VLINE, OBJPROP_TIMEFRAMES, InpT3VisibleTimeframes);
 }
 //+------------------------------------------------------------------+
@@ -240,7 +240,7 @@ void createT3P5VLine(datetime pDateTime) {
    t3p5ValueHigh = iHigh(Symbol(), PERIOD_CURRENT, iBarShift(Symbol(), PERIOD_CURRENT, t3p5DateTime));
    t3p5ValueLow = iLow(Symbol(), PERIOD_CURRENT, iBarShift(Symbol(), PERIOD_CURRENT, t3p5DateTime));
 
-   createVLine(T3_P5_VLINE, t3p5DateTime, InpT3VLineTrendDetectionColor, InpT3LineWidth, InpT3LineStyle, T3_P5_VLINE, zOrder, isBackground, isSelected, isSelectable);
+   createVLine(T3_P5_VLINE, t3p5DateTime, InpT3VLineColor, InpT3LineWidth, InpT3LineStyle, T3_P5_VLINE, zOrder, isBackground, isSelected, isSelectable);
    ObjectSetInteger(ChartID(), T3_P5_VLINE, OBJPROP_TIMEFRAMES, InpT3VisibleTimeframes);
 }
 //+------------------------------------------------------------------+

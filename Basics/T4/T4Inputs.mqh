@@ -59,14 +59,11 @@ int               InpT4LineWidth = 2;
 ENUM_LINE_STYLE   InpT4LineStyle = STYLE_SOLID;
 int               InpT4VisibleTimeframes = OBJ_PERIOD_M1;
 
-color             InpT4VLineTemplateColor = clrSilver;
-color             InpT4VLineTrendDetectionColor = clrSilver;
-
-color             InpT4TLineZigZagTemplateColor = clrSilver;
+color             InpT4DefaultColor = clrSilver;
+color             InpT4InvisibleColor = clrWhite;
+color             InpT4VLineColor = clrSilver;
 color             InpT4TLineZigZagTrendLongColor = clrLightGreen;
 color             InpT4TLineZigZagTrendShortColor = clrLightSalmon;
-
-color             InpT4RegressionChannelColor = clrWhite;
 
 
 

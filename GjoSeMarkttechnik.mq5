@@ -216,7 +216,9 @@ void OnChartEvent(const int id,
       createT4ZigZagTrendDetectionLines();
 
       createT3RegressionChannel();
+      createT3RegressionChannelLevels();
       createT4RegressionChannel();
+      createT4RegressionChannelLevels();
 
       t3ObjectHasChanged = true;
       t4ObjectHasChanged = true;
