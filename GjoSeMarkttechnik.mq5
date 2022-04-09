@@ -45,7 +45,7 @@
    3.5.1 fixed diverse
    3.5.2 changed Push-Logic
    3.5.3 fixed diverse
-
+   3.6.0 optimized Objects (VLINES, TLINES, Regression, Fibo)
 
    ===============
 
@@ -64,7 +64,7 @@
 #property copyright   "2022, GjoSe"
 #property link        "http://www.gjo-se.com"
 #property description "GjoSe Markttechnik"
-#define   VERSION "3.5.3"
+#define   VERSION "3.6.0"
 #property version VERSION
 #property strict
 
@@ -198,16 +198,33 @@ void OnChartEvent(const int id,
                   const string &sparam) {
 
    if(id == CHARTEVENT_OBJECT_DRAG) {
+
       rewriteVLineNamesWithText();
       setTT3LineValues();
       setT3LineValues();
       setTT4LineValues();
       setT4LineValues();
+
       getTT3TrendDirection();
       getT3TrendDirection();
       getTT4TrendDirection();
       getT4TrendDirection();
-      createT3TrendLines();
+
+      createTT3ZigZagTemplateLines();
+      createT3ZigZagTrendDetectionLines();
+      createTT4ZigZagTemplateLines();
+      createT4ZigZagTrendDetectionLines();
+
+      createT3RegressionChannel();
+      createT3RegressionChannelLevels();
+      createTT3RegressionChannel();
+      createT4RegressionChannel();
+      createT4RegressionChannelLevels();
+      createTT4RegressionChannel();
+
+      createT3FiboRetracement();
+      createT4FiboRetracement();
+
       t3ObjectHasChanged = true;
       t4ObjectHasChanged = true;
 

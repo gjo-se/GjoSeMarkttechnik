@@ -45,7 +45,7 @@ long              InpMaxSlippage = 3; // T3 & T4 max Slippage
 bool              InpT3ShowCommentDashboard = true;
 bool              InpT3ObjectsShow = true;
 ENUM_TIMEFRAMES   InpT3MaxTimeframe = PERIOD_H1;
-string            InpT3FiboLevels = "50";
+string            InpT3FiboLevels = "25,50,75";
 color             InpT3InSignalAreaColor = clrWheat;
 bool              InpPrintScreenshot = false;
 //input group             "---------- InsideBar ---------"
@@ -55,10 +55,21 @@ color             InpInsideBarLineColor = clrBlue;
 color             InpT3TailingStopLineColor = clrRed;
 bool              InpT3UseTrailingStopMarket = true;
 
-//input group             "---------- T3 Style ---------"
+//input group             "---------- T3 Object-Styles ---------"
+int               InpT3LineWidth = 3;
+ENUM_LINE_STYLE   InpT3LineStyle = STYLE_SOLID;
+int               InpT3VisibleTimeframes = OBJ_PERIOD_M10|OBJ_PERIOD_M1;
+
+color             InpT3DefaultColor = clrDarkKhaki;
+color             InpT3InvisibleColor = clrWhite;
+color             InpT3VLineColor = clrOldLace;
+color             InpT3TLineZigZagTrendLongColor = clrGreen;
+color             InpT3TLineZigZagTrendShortColor = clrRed;
+
+
+
+
 color             InpT3TrendLineColor = clrDarkKhaki;
-color             InpT3VLineColor = clrFireBrick;
-color             InpT3RegressionChannelColor = clrDarkKhaki;
 
 
 //input group             "---------- StrategyTester ---------" // (Objects in Strategy Tester nicht vorhanden)

@@ -17,7 +17,7 @@ input double            InpT4MinHighVolumeAreaLevel = 0; // T3 Min HighVolume Ar
 input int               InpT4AlertOnFiboRetracmentLevel = 0;
 
 input group             "------------------------------ T4 TRAILING --------------------"
-input int               InpT4MinProfitFiboRetracmentLevel = -5; // T4 TrailingStop Start Level
+input int               InpT4MinProfitFiboRetracmentLevel = 0; // T4 TrailingStop Start Level
 input int               InpT4TrailingStopOffset = 0; // T4 TrailingStop Offset
 input ENUM_TIMEFRAMES   InpT4trailingStopMATimeframe = PERIOD_M1; // T4 MA TrailingStop Timeframe
 input string            InpT4trailingStopMAPeriods = "200, 150, 100, 50, 10"; // T4 MA TrailingStop Periods
@@ -37,8 +37,7 @@ int               InpT4MaxRegressionChannelLevel = 0; // T4 Max RegressionChanne
 bool              InpT4UseTrailingStopMarket = true;
 color             InpT4TailingStopLineColor = clrRed;
 ENUM_TIMEFRAMES   InpT4MaxTimeframe = PERIOD_H1;
-string            InpT4FiboLevels = "50";
-color             InpT4RegressionChannelColor = clrSilver;
+string            InpT4FiboLevels = "25,50,75";
 color             InpT4InSignalAreaColor = clrWheat;
 color             InpT4TrendLineColor = clrBlack;
 //group             "------------------------------ T4 PRIO C ----------------"
@@ -54,6 +53,21 @@ double            InpT4StopLossLineOffsetMulti = 1.2; // T4 StopLossLine Multi
 double            InpT4StopLossMarketOffsetMulti = 2.0; // T4 StopLossMarket Multi
 //group             "------------------------------ T4 TrendSize ---------------------------"
 int               InpT4MaxMovementLengthBasedOnT3MovementPercent = 45;
+
+//input group             "---------- T4 Object-Styles ---------"
+int               InpT4LineWidth = 2;
+ENUM_LINE_STYLE   InpT4LineStyle = STYLE_SOLID;
+int               InpT4VisibleTimeframes = OBJ_PERIOD_M1;
+
+color             InpT4DefaultColor = clrSilver;
+color             InpT4InvisibleColor = clrWhite;
+color             InpT4VLineColor = clrSilver;
+color             InpT4TLineZigZagTrendLongColor = clrLightGreen;
+color             InpT4TLineZigZagTrendShortColor = clrLightSalmon;
+
+
+
+
 
 // group             "---------- StrategyTester ---------" // (Objects in Strategy Tester nicht vorhanden)
 datetime          InpT4p1DateTime = D'2022.01.01 00:00';

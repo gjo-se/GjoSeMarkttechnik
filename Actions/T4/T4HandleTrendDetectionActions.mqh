@@ -504,10 +504,13 @@ void resetT4Trend() {
    setT4LineValues();
    getT4TrendDirection();
 
-   deleteTrendLine(T4_TRENDLINE + "P1-P2");
-   deleteTrendLine(T4_TRENDLINE + "P2-P3");
-   deleteTrendLine(T4_TRENDLINE + "P3-P4");
-   deleteTrendLine(T4_TRENDLINE + "P4-P5");
+   deleteTrendLine(T4_ZIGZAGLINE + "P1-P2");
+   deleteTrendLine(T4_ZIGZAGLINE + "P2-P3");
+   deleteTrendLine(T4_ZIGZAGLINE + "P3-P4");
+   deleteTrendLine(T4_ZIGZAGLINE + "P4-P5");
+
+   deleteRegressionChannel(T4_REGRESSION_CHANNEL);
+   deleteFiboLevelsObject(T4_FIBO_LEVELS);
 
    t4AlertT4P4CreatedSended = false;
    t4AlertT4P5CreatedSended = false;

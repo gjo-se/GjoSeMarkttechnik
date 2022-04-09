@@ -5,14 +5,14 @@
 //+------------------------------------------------------------------+
 void handleT4ObjectsInitAction() {
 
-   deleteTrendLineLike(T4_TRENDLINE);
+   deleteTrendLineLike(T4_ZIGZAGLINE);
    deleteRegressionChannel(T4_REGRESSION_CHANNEL);
    deleteFiboLevelsObject(T4_FIBO_LEVELS);
    deleteChannelObject(T4_IN_SIGNAL_FIBO_LEVEL_AREA);
    deleteChannelObject(T4_IN_SIGNAL_REGRESSION_CHANNEL_AREA);
    deleteChannelObject(T4_RE_ENTRY_AREA);
 
-   createT4TrendLines();
+   createT4ZigZagTrendDetectionLines();
    createT4RegressionChannel();
    createT4RegressionChannelLevels();
    createT4FiboRetracement();
@@ -87,7 +87,7 @@ void t4HandleObjectsAction() {
 
       if(isNewCurrentBar == true || t4ObjectHasChanged == true) {
          if(Period() <= InpT4MaxTimeframe) {
-            createT4TrendLines();
+            createT4ZigZagTrendDetectionLines();
             createT4RegressionChannel();
             createT4RegressionChannelLevels();
             createT4FiboRetracement();
@@ -95,7 +95,7 @@ void t4HandleObjectsAction() {
             createt4InSignalRegressionChannelArea();
             createT4ReEntryArea();
          } else {
-            deleteTrendLineLike(T4_TRENDLINE);
+            deleteTrendLineLike(T4_ZIGZAGLINE);
             deleteRegressionChannel(T4_REGRESSION_CHANNEL);
             deleteFiboLevelsObject(T4_FIBO_LEVELS);
             deleteChannelObject(T4_IN_SIGNAL_FIBO_LEVEL_AREA);
@@ -109,7 +109,7 @@ void t4HandleObjectsAction() {
       handleInsideBars();
 
    } else {
-      deleteTrendLineLike(T4_TRENDLINE);
+      deleteTrendLineLike(T4_ZIGZAGLINE);
       deleteRegressionChannel(T4_REGRESSION_CHANNEL);
       deleteFiboLevelsObject(T4_FIBO_LEVELS);
       deleteChannelObject(T4_IN_SIGNAL_FIBO_LEVEL_AREA);

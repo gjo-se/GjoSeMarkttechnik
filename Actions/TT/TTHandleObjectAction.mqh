@@ -5,10 +5,10 @@
 //+------------------------------------------------------------------+
 void handleTT3ObjectsInitAction() {
 
-   deleteTrendLineLike(TT3_TRENDLINE);
+   deleteTrendLineLike(TT3_ZIGZAGLINE);
    deleteRegressionChannel(TT3_REGRESSION_CHANNEL);
 
-   createTT3TrendLines();
+   createTT3ZigZagTemplateLines();
    createTT3RegressionChannel();
 }
 
@@ -77,10 +77,10 @@ double getTT3P6HighLowValueByTrendDirection() {
 
 void handleTT4ObjectsInitAction() {
 
-   deleteTrendLineLike(TT4_TRENDLINE);
+   deleteTrendLineLike(TT4_ZIGZAGLINE);
    deleteRegressionChannel(TT4_REGRESSION_CHANNEL);
 
-   createTT4TrendLines();
+   createTT4ZigZagTemplateLines();
    createTT4RegressionChannel();
 }
 

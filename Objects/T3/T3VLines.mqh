@@ -19,8 +19,15 @@ void setT3LineValues() {
 //|                                                                  |
 //+------------------------------------------------------------------+
 void setT3VLineDateTimes() {
+   if(ObjectFind(ChartID(), T3_START_VLINE) >= 0) {
+      t3StartDateTime = (datetime)ObjectGetInteger(ChartID(), T3_START_VLINE, OBJPROP_TIME);
+      setT3VLineStyles(T3_START_VLINE);
+   } else {
+      t3StartDateTime = 0;
+   }
    if(ObjectFind(ChartID(), T3_P1_VLINE) >= 0) {
       t3p1DateTime = (datetime)ObjectGetInteger(ChartID(), T3_P1_VLINE, OBJPROP_TIME);
+      setT3VLineStyles(T3_P1_VLINE);
       string errorText = "t3p1DateTime == 0";
       if(t3p1DateTime == 0){
             if(t3AlertT3VLineOn0Sended == false) t3AlertT3VLineOn0Action();
@@ -33,6 +40,7 @@ void setT3VLineDateTimes() {
    }
    if(ObjectFind(ChartID(), T3_P2_VLINE) >= 0) {
       t3p2DateTime = (datetime)ObjectGetInteger(ChartID(), T3_P2_VLINE, OBJPROP_TIME);
+      setT3VLineStyles(T3_P2_VLINE);
       string errorText = "t3p2DateTime == 0";
       if(t3p2DateTime == 0){
             if(t3AlertT3VLineOn0Sended == false) t3AlertT3VLineOn0Action();
@@ -45,18 +53,27 @@ void setT3VLineDateTimes() {
    }
    if(ObjectFind(ChartID(), T3_P3_VLINE) >= 0) {
       t3p3DateTime = (datetime)ObjectGetInteger(ChartID(), T3_P3_VLINE, OBJPROP_TIME);
+      setT3VLineStyles(T3_P3_VLINE);
    } else {
       t3p3DateTime = 0;
    }
    if(ObjectFind(ChartID(), T3_P4_VLINE) >= 0) {
       t3p4DateTime = (datetime)ObjectGetInteger(ChartID(), T3_P4_VLINE, OBJPROP_TIME);
+      setT3VLineStyles(T3_P4_VLINE);
    } else {
       t3p4DateTime = 0;
    }
    if(ObjectFind(ChartID(), T3_P5_VLINE) >= 0) {
       t3p5DateTime = (datetime)ObjectGetInteger(ChartID(), T3_P5_VLINE, OBJPROP_TIME);
+      setT3VLineStyles(T3_P5_VLINE);
    } else {
       t3p5DateTime = 0;
+   }
+   if(ObjectFind(ChartID(), T3_END_VLINE) >= 0) {
+      t3EndDateTime = (datetime)ObjectGetInteger(ChartID(), T3_END_VLINE, OBJPROP_TIME);
+      setT3VLineStyles(T3_END_VLINE);
+   } else {
+      t3EndDateTime = 0;
    }
    if(ObjectFind(ChartID(), T3_HH_VLINE) >= 0) {
       t3HighestHighVLineDateTime = (datetime)ObjectGetInteger(ChartID(), T3_HH_VLINE, OBJPROP_TIME);
@@ -118,10 +135,18 @@ void setT3VLineValues() {
 }
 //+------------------------------------------------------------------+
 
+void setT3VLineStyles(const string pLineName) {
+      ObjectSetInteger(ChartID(), pLineName, OBJPROP_WIDTH, InpT3LineWidth);
+      ObjectSetInteger(ChartID(), pLineName, OBJPROP_STYLE, InpT3LineStyle);
+      ObjectSetInteger(ChartID(), pLineName, OBJPROP_COLOR, InpT3VLineColor);
+      ObjectSetInteger(ChartID(), pLineName, OBJPROP_BACK, true);
+      ObjectSetInteger(ChartID(), pLineName, OBJPROP_TIMEFRAMES, InpT3VisibleTimeframes);
+}
+
 void createT3HighestHighVLine() {
 
    long zOrder = 0;
-   bool isBackground = false;
+   bool isBackground = true;
    bool isSelected = false;
    bool isSelectable = true;
 
@@ -133,7 +158,7 @@ void createT3HighestHighVLine() {
 void createT3LowestLowVLine() {
 
    long zOrder = 0;
-   bool isBackground = false;
+   bool isBackground = true;
    bool isSelected = false;
    bool isSelectable = true;
 
@@ -147,7 +172,7 @@ void createT3LowestLowVLine() {
 void createT3P1VLine(datetime pDateTime) {
 
    long zOrder = 0;
-   bool isBackground = false;
+   bool isBackground = true;
    bool isSelected = true;
    bool isSelectable = true;
 
@@ -155,13 +180,14 @@ void createT3P1VLine(datetime pDateTime) {
    t3p1ValueHigh = iHigh(Symbol(), PERIOD_CURRENT, iBarShift(Symbol(), PERIOD_CURRENT, t3p1DateTime));
    t3p1ValueLow = iLow(Symbol(), PERIOD_CURRENT, iBarShift(Symbol(), PERIOD_CURRENT, t3p1DateTime));
 
-   createVLine(T3_P1_VLINE, t3p1DateTime, InpT3VLineColor, 2, STYLE_SOLID, T3_P1_VLINE, zOrder, isBackground, isSelected, isSelectable);
+   createVLine(T3_P1_VLINE, t3p1DateTime, InpT3VLineColor, InpT3LineWidth, InpT3LineStyle, T3_P1_VLINE, zOrder, isBackground, isSelected, isSelectable);
+   ObjectSetInteger(ChartID(), T3_P1_VLINE, OBJPROP_TIMEFRAMES, InpT3VisibleTimeframes);
 }
 
 void createT3P2VLine(datetime pDateTime) {
 
    long zOrder = 0;
-   bool isBackground = false;
+   bool isBackground = true;
    bool isSelected = true;
    bool isSelectable = true;
 
@@ -169,13 +195,14 @@ void createT3P2VLine(datetime pDateTime) {
    t3p2ValueHigh = iHigh(Symbol(), PERIOD_CURRENT, iBarShift(Symbol(), PERIOD_CURRENT, t3p2DateTime));
    t3p2ValueLow = iLow(Symbol(), PERIOD_CURRENT, iBarShift(Symbol(), PERIOD_CURRENT, t3p2DateTime));
 
-   createVLine(T3_P2_VLINE, t3p2DateTime, InpT3VLineColor, 2, STYLE_SOLID, T3_P2_VLINE, zOrder, isBackground, isSelected, isSelectable);
+   createVLine(T3_P2_VLINE, t3p2DateTime, InpT3VLineColor, InpT3LineWidth, InpT3LineStyle, T3_P2_VLINE, zOrder, isBackground, isSelected, isSelectable);
+   ObjectSetInteger(ChartID(), T3_P2_VLINE, OBJPROP_TIMEFRAMES, InpT3VisibleTimeframes);
 }
 
 void createT3P3VLine(datetime pDateTime) {
 
    long zOrder = 0;
-   bool isBackground = false;
+   bool isBackground = true;
    bool isSelected = true;
    bool isSelectable = true;
 
@@ -183,13 +210,14 @@ void createT3P3VLine(datetime pDateTime) {
    t3p3ValueHigh = iHigh(Symbol(), PERIOD_CURRENT, iBarShift(Symbol(), PERIOD_CURRENT, t3p3DateTime));
    t3p3ValueLow = iLow(Symbol(), PERIOD_CURRENT, iBarShift(Symbol(), PERIOD_CURRENT, t3p3DateTime));
 
-   createVLine(T3_P3_VLINE, t3p3DateTime, InpT3VLineColor, 2, STYLE_SOLID, T3_P3_VLINE, zOrder, isBackground, isSelected, isSelectable);
+   createVLine(T3_P3_VLINE, t3p3DateTime, InpT3VLineColor, InpT3LineWidth, InpT3LineStyle, T3_P3_VLINE, zOrder, isBackground, isSelected, isSelectable);
+   ObjectSetInteger(ChartID(), T3_P3_VLINE, OBJPROP_TIMEFRAMES, InpT3VisibleTimeframes);
 }
 
 void createT3P4VLine(datetime pDateTime) {
 
    long zOrder = 0;
-   bool isBackground = false;
+   bool isBackground = true;
    bool isSelected = false;
    bool isSelectable = true;
 
@@ -197,14 +225,15 @@ void createT3P4VLine(datetime pDateTime) {
    t3p4ValueHigh = iHigh(Symbol(), PERIOD_CURRENT, iBarShift(Symbol(), PERIOD_CURRENT, t3p4DateTime));
    t3p4ValueLow = iLow(Symbol(), PERIOD_CURRENT, iBarShift(Symbol(), PERIOD_CURRENT, t3p4DateTime));
 
-   createVLine(T3_P4_VLINE, t3p4DateTime, InpT3VLineColor, 2, STYLE_SOLID, T3_P4_VLINE, zOrder, isBackground, isSelected, isSelectable);
+   createVLine(T3_P4_VLINE, t3p4DateTime, InpT3VLineColor, InpT3LineWidth, InpT3LineStyle, T3_P4_VLINE, zOrder, isBackground, isSelected, isSelectable);
+   ObjectSetInteger(ChartID(), T3_P4_VLINE, OBJPROP_TIMEFRAMES, InpT3VisibleTimeframes);
 }
 //+------------------------------------------------------------------+
 
 void createT3P5VLine(datetime pDateTime) {
 
    long zOrder = 0;
-   bool isBackground = false;
+   bool isBackground = true;
    bool isSelected = false;
    bool isSelectable = true;
 
@@ -212,6 +241,7 @@ void createT3P5VLine(datetime pDateTime) {
    t3p5ValueHigh = iHigh(Symbol(), PERIOD_CURRENT, iBarShift(Symbol(), PERIOD_CURRENT, t3p5DateTime));
    t3p5ValueLow = iLow(Symbol(), PERIOD_CURRENT, iBarShift(Symbol(), PERIOD_CURRENT, t3p5DateTime));
 
-   createVLine(T3_P5_VLINE, t3p5DateTime, InpT3VLineColor, 2, STYLE_SOLID, T3_P5_VLINE, zOrder, isBackground, isSelected, isSelectable);
+   createVLine(T3_P5_VLINE, t3p5DateTime, InpT3VLineColor, InpT3LineWidth, InpT3LineStyle, T3_P5_VLINE, zOrder, isBackground, isSelected, isSelectable);
+   ObjectSetInteger(ChartID(), T3_P5_VLINE, OBJPROP_TIMEFRAMES, InpT3VisibleTimeframes);
 }
 //+------------------------------------------------------------------+
