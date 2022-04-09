@@ -136,6 +136,7 @@ void setT4VLineStyles(const string pLineName) {
       ObjectSetInteger(ChartID(), pLineName, OBJPROP_WIDTH, InpT4LineWidth);
       ObjectSetInteger(ChartID(), pLineName, OBJPROP_STYLE, InpT4LineStyle);
       ObjectSetInteger(ChartID(), pLineName, OBJPROP_COLOR, InpT4VLineColor);
+      ObjectSetInteger(ChartID(), pLineName, OBJPROP_BACK, true);
       ObjectSetInteger(ChartID(), pLineName, OBJPROP_TIMEFRAMES, InpT4VisibleTimeframes);
 }
 
