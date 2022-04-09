@@ -67,9 +67,13 @@ color             InpT3TLineZigZagTemplateColor = clrDarkKhaki;
 color             InpT3TLineZigZagTrendLongColor = clrGreen;
 color             InpT3TLineZigZagTrendShortColor = clrRed;
 
+color             InpT3RegressionChannelColor = clrWhite;
+
+
+
+
 color             InpT3TrendLineColor = clrDarkKhaki;
 color             InpT3VLineColor = clrFireBrick;
-color             InpT3RegressionChannelColor = clrDarkKhaki;
 
 
 //input group             "---------- StrategyTester ---------" // (Objects in Strategy Tester nicht vorhanden)

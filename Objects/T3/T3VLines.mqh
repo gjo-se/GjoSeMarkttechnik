@@ -19,6 +19,12 @@ void setT3LineValues() {
 //|                                                                  |
 //+------------------------------------------------------------------+
 void setT3VLineDateTimes() {
+   if(ObjectFind(ChartID(), T3_START_VLINE) >= 0) {
+      t3StartDateTime = (datetime)ObjectGetInteger(ChartID(), T3_START_VLINE, OBJPROP_TIME);
+      setT3VLineStyles(T3_START_VLINE);
+   } else {
+      t3StartDateTime = 0;
+   }
    if(ObjectFind(ChartID(), T3_P1_VLINE) >= 0) {
       t3p1DateTime = (datetime)ObjectGetInteger(ChartID(), T3_P1_VLINE, OBJPROP_TIME);
       setT3VLineStyles(T3_P1_VLINE);
@@ -62,6 +68,12 @@ void setT3VLineDateTimes() {
       setT3VLineStyles(T3_P5_VLINE);
    } else {
       t3p5DateTime = 0;
+   }
+   if(ObjectFind(ChartID(), T3_END_VLINE) >= 0) {
+      t3EndDateTime = (datetime)ObjectGetInteger(ChartID(), T3_END_VLINE, OBJPROP_TIME);
+      setT3VLineStyles(T3_END_VLINE);
+   } else {
+      t3EndDateTime = 0;
    }
    if(ObjectFind(ChartID(), T3_HH_VLINE) >= 0) {
       t3HighestHighVLineDateTime = (datetime)ObjectGetInteger(ChartID(), T3_HH_VLINE, OBJPROP_TIME);

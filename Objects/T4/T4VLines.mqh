@@ -19,6 +19,12 @@ void setT4LineValues() {
 //|                                                                  |
 //+------------------------------------------------------------------+
 void setT4VLineDateTimes() {
+   if(ObjectFind(ChartID(), T4_START_VLINE) >= 0) {
+      t4StartDateTime = (datetime)ObjectGetInteger(ChartID(), T4_START_VLINE, OBJPROP_TIME);
+      setT4VLineStyles(T4_START_VLINE);
+   } else {
+      t4StartDateTime = 0;
+   }
    if(ObjectFind(ChartID(), T4_P1_VLINE) >= 0) {
       t4p1DateTime = (datetime)ObjectGetInteger(ChartID(), T4_P1_VLINE, OBJPROP_TIME);
       setT4VLineStyles(T4_P1_VLINE);
@@ -63,6 +69,12 @@ void setT4VLineDateTimes() {
    } else {
       t4p5DateTime = 0;
    }
+   if(ObjectFind(ChartID(), T4_END_VLINE) >= 0) {
+      t4EndDateTime = (datetime)ObjectGetInteger(ChartID(), T4_END_VLINE, OBJPROP_TIME);
+      setT4VLineStyles(T4_END_VLINE);
+   } else {
+      t4EndDateTime = 0;
+   }   
    if(ObjectFind(ChartID(), T4_HH_VLINE) >= 0) {
       t4HighestHighVLineDateTime = (datetime)ObjectGetInteger(ChartID(), T4_HH_VLINE, OBJPROP_TIME);
    } else {

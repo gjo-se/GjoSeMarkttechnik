@@ -198,19 +198,26 @@ void OnChartEvent(const int id,
                   const string &sparam) {
 
    if(id == CHARTEVENT_OBJECT_DRAG) {
+
       rewriteVLineNamesWithText();
       setTT3LineValues();
       setT3LineValues();
       setTT4LineValues();
       setT4LineValues();
+
       getTT3TrendDirection();
       getT3TrendDirection();
       getTT4TrendDirection();
       getT4TrendDirection();
+
       createTT3ZigZagTemplateLines();
-      createTT4ZigZagTemplateLines();
       createT3ZigZagTrendDetectionLines();
+      createTT4ZigZagTemplateLines();
       createT4ZigZagTrendDetectionLines();
+
+      createT3RegressionChannel();
+      createT4RegressionChannel();
+
       t3ObjectHasChanged = true;
       t4ObjectHasChanged = true;
 

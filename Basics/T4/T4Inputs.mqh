@@ -38,7 +38,6 @@ bool              InpT4UseTrailingStopMarket = true;
 color             InpT4TailingStopLineColor = clrRed;
 ENUM_TIMEFRAMES   InpT4MaxTimeframe = PERIOD_H1;
 string            InpT4FiboLevels = "50";
-color             InpT4RegressionChannelColor = clrSilver;
 color             InpT4InSignalAreaColor = clrWheat;
 color             InpT4TrendLineColor = clrBlack;
 //group             "------------------------------ T4 PRIO C ----------------"
@@ -66,6 +65,12 @@ color             InpT4VLineTrendDetectionColor = clrSilver;
 color             InpT4TLineZigZagTemplateColor = clrSilver;
 color             InpT4TLineZigZagTrendLongColor = clrLightGreen;
 color             InpT4TLineZigZagTrendShortColor = clrLightSalmon;
+
+color             InpT4RegressionChannelColor = clrWhite;
+
+
+
+
 
 // group             "---------- StrategyTester ---------" // (Objects in Strategy Tester nicht vorhanden)
 datetime          InpT4p1DateTime = D'2022.01.01 00:00';
