@@ -4,6 +4,37 @@
 //|                                             https://www.mql5.com |
 //+------------------------------------------------------------------+
 
+// TT2
+datetime tt2p1DateTime;
+double tt2p1ValueHigh;
+double tt2p1ValueLow;
+datetime tt2p2DateTime;
+double tt2p2ValueHigh;
+double tt2p2ValueLow;
+datetime tt2p3DateTime;
+double tt2p3ValueHigh;
+double tt2p3ValueLow;
+datetime tt2p4DateTime;
+double tt2p4ValueHigh;
+double tt2p4ValueLow;
+datetime tt2p5DateTime;
+double tt2p5ValueHigh;
+double tt2p5ValueLow;
+datetime tt2p6DateTime;
+double tt2p6ValueHigh;
+double tt2p6ValueLow;
+
+int tt2SemiTrendDirection;
+
+double tt2movementLength;
+double tt2movementLengthP1P2;
+double tt2movementLengthP3P4;
+double tt2movementLengthP5P6;
+double tt2regressionLength;
+double tt2regressionLengthP2P3;
+double tt2regressionLengthP4P5;
+double tt2movementLengthRegressionLengthRatio;
+
 // TT3
 datetime tt3p1DateTime;
 double tt3p1ValueHigh;

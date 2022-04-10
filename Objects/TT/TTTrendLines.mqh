@@ -4,10 +4,34 @@
 //+------------------------------------------------------------------+
 
 
+void createTT2ZigZagTemplateLines() {
 
-//+------------------------------------------------------------------+
-//|                                                                  |
-//+------------------------------------------------------------------+
+   color lineColor = InpT2DefaultColor;
+   if(tt2SemiTrendDirection == TREND_DIRECTION_LONG) lineColor = InpT2TLineZigZagTrendLongColor;
+   if(tt2SemiTrendDirection == TREND_DIRECTION_SHORT) lineColor = InpT2TLineZigZagTrendShortColor;
+
+   if(tt2p1DateTime != 0 && tt2p2DateTime != 0) {
+      createTrendLine(TT2_ZIGZAGLINE + "P1-P2", tt2p1DateTime, getTT2P1HighLowValueByTrendDirection(), tt2p2DateTime, getTT2P2HighLowValueByTrendDirection(), lineColor, InpT2LineWidth, InpT2LineStyle);
+      ObjectSetInteger(ChartID(), TT2_ZIGZAGLINE + "P1-P2", OBJPROP_TIMEFRAMES, InpT2VisibleTimeframes);
+   }
+   if(tt2p2DateTime != 0 && tt2p3DateTime != 0) {
+      createTrendLine(TT2_ZIGZAGLINE + "P2-P3", tt2p2DateTime, getTT2P2HighLowValueByTrendDirection(), tt2p3DateTime, getTT2P3HighLowValueByTrendDirection(), lineColor, InpT2LineWidth, InpT2LineStyle);
+      ObjectSetInteger(ChartID(), TT2_ZIGZAGLINE + "P2-P3", OBJPROP_TIMEFRAMES, InpT2VisibleTimeframes);
+   }
+   if(tt2p3DateTime != 0 && tt2p4DateTime != 0) {
+      createTrendLine(TT2_ZIGZAGLINE + "P3-P4", tt2p3DateTime, getTT2P3HighLowValueByTrendDirection(), tt2p4DateTime, getTT2P4HighLowValueByTrendDirection(), lineColor, InpT2LineWidth, InpT2LineStyle);
+      ObjectSetInteger(ChartID(), TT2_ZIGZAGLINE + "P3-P4", OBJPROP_TIMEFRAMES, InpT2VisibleTimeframes);
+   }
+   if(tt2p4DateTime != 0 && tt2p5DateTime != 0) {
+      createTrendLine(TT2_ZIGZAGLINE + "P4-P5", tt2p4DateTime, getTT2P4HighLowValueByTrendDirection(), tt2p5DateTime, getTT2P5HighLowValueByTrendDirection(), lineColor, InpT2LineWidth, InpT2LineStyle);
+      ObjectSetInteger(ChartID(), TT2_ZIGZAGLINE + "P4-P5", OBJPROP_TIMEFRAMES, InpT2VisibleTimeframes);
+   }
+   if(tt2p5DateTime != 0 && tt2p6DateTime != 0) {
+      createTrendLine(TT2_ZIGZAGLINE + "P5-P6", tt2p5DateTime, getTT2P5HighLowValueByTrendDirection(), tt2p6DateTime, getTT2P6HighLowValueByTrendDirection(), lineColor, InpT2LineWidth, InpT2LineStyle);
+      ObjectSetInteger(ChartID(), TT2_ZIGZAGLINE + "P5-P6", OBJPROP_TIMEFRAMES, InpT2VisibleTimeframes);
+   }
+}
+
 void createTT3ZigZagTemplateLines() {
 
    if(tt3p1DateTime != 0 && tt3p2DateTime != 0) {

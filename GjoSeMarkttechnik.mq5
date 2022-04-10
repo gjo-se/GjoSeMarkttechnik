@@ -54,6 +54,7 @@
 //+------------------------------------------------------------------+
 //| Includes                                                         |
 //+------------------------------------------------------------------+
+#include "Basics\\T2\\T2Includes.mqh"
 #include "Basics\\T3\\T3Includes.mqh"
 #include "Basics\\T4\\T4Includes.mqh"
 #include "Basics\\TT\\TTIncludes.mqh"
@@ -85,11 +86,13 @@ int OnInit() {
 
       rewriteVLineNamesWithText();
 
+      setTT2LineValues();
       setTT3LineValues();
       setT3LineValues();
       setTT4LineValues();
       setT4LineValues();
 
+      getTT2TrendDirection();
       getTT3TrendDirection();
       getT3TrendDirection();
       getTT4TrendDirection();
@@ -98,6 +101,7 @@ int OnInit() {
       setT3TrendLineValues();
       setT4TrendLineValues();
 
+      handleTT2ObjectsInitAction();
       handleTT3ObjectsInitAction();
       handleT3ObjectsInitAction();
       handleTT4ObjectsInitAction();
@@ -200,27 +204,31 @@ void OnChartEvent(const int id,
    if(id == CHARTEVENT_OBJECT_DRAG) {
 
       rewriteVLineNamesWithText();
+      setTT2LineValues();
       setTT3LineValues();
       setT3LineValues();
       setTT4LineValues();
       setT4LineValues();
 
+      getTT2TrendDirection();
       getTT3TrendDirection();
       getT3TrendDirection();
       getTT4TrendDirection();
       getT4TrendDirection();
 
+      createTT2ZigZagTemplateLines();
       createTT3ZigZagTemplateLines();
       createT3ZigZagTrendDetectionLines();
       createTT4ZigZagTemplateLines();
       createT4ZigZagTrendDetectionLines();
 
+      createTT2RegressionChannel();
+      createTT3RegressionChannel();
       createT3RegressionChannel();
       createT3RegressionChannelLevels();
-      createTT3RegressionChannel();
+      createTT4RegressionChannel();
       createT4RegressionChannel();
       createT4RegressionChannelLevels();
-      createTT4RegressionChannel();
 
       createT3FiboRetracement();
       createT4FiboRetracement();
