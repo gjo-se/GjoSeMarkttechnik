@@ -8,7 +8,6 @@ void handleT4ObjectsInitAction() {
    deleteTrendLineLike(T4_ZIGZAGLINE);
    deleteRegressionChannel(T4_REGRESSION_CHANNEL);
    deleteFiboLevelsObject(T4_FIBO_LEVELS);
-   deleteChannelObject(T4_IN_SIGNAL_FIBO_LEVEL_AREA);
    deleteChannelObject(T4_IN_SIGNAL_REGRESSION_CHANNEL_AREA);
    deleteChannelObject(T4_RE_ENTRY_AREA);
 
@@ -16,8 +15,6 @@ void handleT4ObjectsInitAction() {
    createT4RegressionChannel();
    createT4RegressionChannelLevels();
    createT4FiboRetracement();
-   createT4HighVolumeAreaTrendLines();
-   createT4InSignalFiboLevelChannelArea();
    createt4InSignalRegressionChannelArea();
 
    t4HandleObjectsAction();
@@ -32,8 +29,6 @@ void t4HandleObjectsAction() {
    if(InpT4ObjectsShow == true) {
 
       if(t4trendDirection == TREND_DIRECTION_LONG) {
-
-         setT4LowestLowDateTime();
 
          if(t4LowestLowDateTime != 0) {
             double localT4LowestLowValue = 0;
@@ -59,8 +54,6 @@ void t4HandleObjectsAction() {
       }
 
       if(t4trendDirection == TREND_DIRECTION_SHORT) {
-
-         setT4HighestHighDateTime();
 
          if(t4HighestHighDateTime != 0) {
             double localT4HighestHighValue = 0;
@@ -91,14 +84,12 @@ void t4HandleObjectsAction() {
             createT4RegressionChannel();
             createT4RegressionChannelLevels();
             createT4FiboRetracement();
-            createT4InSignalFiboLevelChannelArea();
             createt4InSignalRegressionChannelArea();
             createT4ReEntryArea();
          } else {
             deleteTrendLineLike(T4_ZIGZAGLINE);
             deleteRegressionChannel(T4_REGRESSION_CHANNEL);
             deleteFiboLevelsObject(T4_FIBO_LEVELS);
-            deleteChannelObject(T4_IN_SIGNAL_FIBO_LEVEL_AREA);
             deleteChannelObject(T4_IN_SIGNAL_REGRESSION_CHANNEL_AREA);
             deleteChannelObject(T4_RE_ENTRY_AREA);
          }
@@ -112,7 +103,6 @@ void t4HandleObjectsAction() {
       deleteTrendLineLike(T4_ZIGZAGLINE);
       deleteRegressionChannel(T4_REGRESSION_CHANNEL);
       deleteFiboLevelsObject(T4_FIBO_LEVELS);
-      deleteChannelObject(T4_IN_SIGNAL_FIBO_LEVEL_AREA);
       deleteChannelObject(T4_IN_SIGNAL_REGRESSION_CHANNEL_AREA);
       deleteChannelObject(T4_RE_ENTRY_AREA);
    }
@@ -177,36 +167,5 @@ double getT4P5HighLowValueByTrendDirection() {
       returnValue = (t4p1ValueLow < t4p2ValueLow) ? t4p5ValueLow : t4p5ValueHigh;
    }
    return returnValue;
-}
-//+------------------------------------------------------------------+
-
-void setT4HighestHighDateTime() {
-
-   if((int)t4p4DateTime < (int) TimeCurrent() && t4MinHighVolumeAreaLevel != 0 && Bid() >= t4MinHighVolumeAreaLevel) {
-      int startCandleShift = iBarShift(Symbol(), Period(), t4p4DateTime);
-      if(t4HighestHighVLineDateTime == 0) createT4HighestHighVLine();
-      if(t4HighestHighVLineDateTime != 0) startCandleShift = iBarShift(Symbol(), Period(), t4HighestHighVLineDateTime);
-
-      if(startCandleShift != 0) {
-         t4HighestHighDateTime = iTime(Symbol(), PERIOD_CURRENT, iHighest(Symbol(), PERIOD_CURRENT, MODE_HIGH, startCandleShift, 0));
-      } else {
-         t4HighestHighDateTime = iTime(Symbol(), PERIOD_CURRENT, 0);
-      }
-   }
-}
-
-void setT4LowestLowDateTime() {
-
-   if((int)t4p4DateTime < (int) TimeCurrent() && t4MaxHighVolumeAreaLevel != 0 && Bid() <= t4MaxHighVolumeAreaLevel) {
-      int startCandleShift = iBarShift(Symbol(), Period(), t4p4DateTime);
-      if(t4LowestLowVLineDateTime == 0) createT4LowestLowVLine();
-      if(t4LowestLowVLineDateTime != 0) startCandleShift = iBarShift(Symbol(), Period(), t4LowestLowVLineDateTime);
-
-      if(startCandleShift != 0) {
-         t4LowestLowDateTime = iTime(Symbol(), PERIOD_CURRENT, iLowest(Symbol(), PERIOD_CURRENT, MODE_LOW, startCandleShift, 0));
-      } else {
-         t4LowestLowDateTime = iTime(Symbol(), PERIOD_CURRENT, 0);
-      }
-   }
 }
 //+------------------------------------------------------------------+

@@ -68,8 +68,6 @@ void initializeT4GlobalsAction() {
    t4InSignalRegressionChannelAreaMaxEndValue = 0;
 
 // HighVolumeArea
-   t4MinHighVolumeAreaLevel = 0;
-   t4MaxHighVolumeAreaLevel = 0;
    t4HighestHighIsInSignalArea = false;
    t4LowestLowIsInSignalArea = false;
 

@@ -10,6 +10,40 @@
 
 void initializeTTGlobalsAction() {
 
+// TT2
+   tt2p1DateTime = 0;
+   tt2p1ValueHigh = 0;
+   tt2p1ValueLow = 0;
+   tt2p2DateTime = 0;
+   tt2p2ValueHigh = 0;
+   tt2p2ValueLow = 0;
+   tt2p3DateTime = 0;
+   tt2p3ValueHigh = 0;
+   tt2p3ValueLow = 0;
+   tt2p4DateTime = 0;
+   tt2p4ValueHigh = 0;
+   tt2p4ValueLow = 0;
+   tt2p5DateTime = 0;
+   tt2p5ValueHigh = 0;
+   tt2p5ValueLow = 0;
+   tt2p6DateTime = 0;
+   tt2p6ValueHigh = 0;
+   tt2p6ValueLow = 0;
+
+   tt2SemiTrendDirection = TREND_DIRECTION_ROTATION;
+
+   tt2movementLength = 0;
+   tt2movementLengthP1P2 = 0;
+   tt2movementLengthP3P4 = 0;
+   tt2movementLengthP5P6 = 0;
+   tt2regressionLength = 0;
+   tt2regressionLengthP2P3 = 0;
+   tt2regressionLengthP4P5 = 0;
+   tt2movementLengthRegressionLengthRatio = 0;
+
+   tt2MinHighVolumeAreaLevel = 0;
+   tt2MaxHighVolumeAreaLevel = 0;
+
 // TT3
    tt3p1DateTime = 0;
    tt3p1ValueHigh = 0;

@@ -6,6 +6,55 @@
 //+------------------------------------------------------------------+
 //|                                                                  |
 //+------------------------------------------------------------------+
+
+void getTT2TrendDirection() {
+
+   tt2SemiTrendDirection = TREND_DIRECTION_ROTATION;
+
+   if(tt2p1ValueHigh != 0 && tt2p2ValueHigh != 0) {
+      if(tt2p1ValueHigh < tt2p2ValueHigh) tt2SemiTrendDirection = TREND_DIRECTION_LONG;
+      if(tt2p1ValueHigh > tt2p2ValueHigh) tt2SemiTrendDirection = TREND_DIRECTION_SHORT;
+   }
+
+    setTT2MovementAndRegressionLength();
+}
+
+void setTT2MovementAndRegressionLength() {
+
+   if(tt2p1DateTime != 0 && tt2p3DateTime != 0) {
+
+      if(tt2SemiTrendDirection == TREND_DIRECTION_LONG) {
+         tt2movementLengthP1P2 = (tt2p2ValueHigh - tt2p1ValueLow) / Point();
+         tt2movementLengthP3P4 = (tt2p4ValueHigh - tt2p3ValueLow) / Point();
+         tt2movementLengthP5P6 = (tt2p6ValueHigh - tt2p5ValueLow) / Point();
+
+         tt2regressionLengthP2P3 = (tt2p2ValueHigh - tt2p3ValueLow) / Point();
+         tt2regressionLengthP4P5 = (tt2p4ValueHigh - tt2p5ValueLow) / Point();
+      }
+
+      if(tt2SemiTrendDirection == TREND_DIRECTION_SHORT) {
+         tt2movementLengthP1P2 = (tt2p1ValueHigh - tt2p2ValueLow) / Point();
+         tt2movementLengthP3P4 = (tt2p3ValueHigh - tt2p4ValueLow) / Point();
+         tt2movementLengthP5P6 = (tt2p5ValueHigh - tt2p6ValueLow) / Point();
+
+         tt2regressionLengthP2P3 = (tt2p3ValueHigh - tt2p2ValueLow) / Point();
+         tt2regressionLengthP4P5 = (tt2p5ValueHigh - tt2p4ValueLow) / Point();
+      }
+
+      if(tt2movementLengthP1P2 != 0 && tt2movementLengthP3P4 != 0 && tt2movementLengthP5P6 != 0) {
+         tt2movementLength = (tt2movementLengthP1P2 + tt2movementLengthP3P4 + tt2movementLengthP5P6) / 3;
+      }
+
+      if(tt2regressionLengthP2P3 != 0 && tt2regressionLengthP4P5 != 0) {
+         tt2regressionLength = (tt2regressionLengthP2P3 + tt2regressionLengthP4P5) / 2;
+      }
+
+      if(tt2regressionLength != 0 && tt2movementLength != 0) {
+         tt2movementLengthRegressionLengthRatio = tt2regressionLength / tt2movementLength * 100;
+      }
+   }
+}
+
 void getTT3TrendDirection() {
 
    tt3trendDirection = TREND_DIRECTION_ROTATION;

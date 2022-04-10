@@ -162,6 +162,13 @@ void t3CommentAction(string pVersion) {
    if(!MQLInfoInteger(MQL_TRADE_ALLOWED)) t3comment += "MQL_TRADE_ALLOWED: OFF" + "\n";
    if(sendAlerts == false) t3comment += "SEND PUSH: OFF" + "\n";
    t3comment += "\n";
+   t3comment += "T2: " + "\n\n";
+   if(tt2movementLengthRegressionLengthRatio != 0) {
+      t3comment += "tt2movementLength: " + DoubleToString(tt2movementLength, 0) + " (" + DoubleToString(tt2movementLengthP1P2, 0) + " / " +  DoubleToString(tt2movementLengthP3P4, 0) + " / " + DoubleToString(tt2movementLengthP5P6, 0) + ") Points" + "\n";
+      t3comment += "tt2regressionLength: " + DoubleToString(tt2regressionLength, 0) + " (" + DoubleToString(tt2regressionLengthP2P3, 0) + " / " +  DoubleToString(tt2regressionLengthP4P5, 0) + ") Points" + "\n";
+      t3comment += "tt2movementRegressionLengthRatio: " + DoubleToString(tt2movementLengthRegressionLengthRatio, 0) + " %" + "\n";
+   }
+   t3comment += "\n";
    t3comment += "T3: " + "\n\n";
    if(tt3movementLengthRegressionLengthRatio != 0) {
       t3comment += "tt3movementLength: " + DoubleToString(tt3movementLength, 0) + " (" + DoubleToString(tt3movementLengthP1P2, 0) + " / " +  DoubleToString(tt3movementLengthP3P4, 0) + " / " + DoubleToString(tt3movementLengthP5P6, 0) + ") Points" + "\n";

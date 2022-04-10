@@ -3,16 +3,6 @@
 //|                                       Copyright 2022, Gregory Jo |
 //+------------------------------------------------------------------+
 
-void createT4InSignalFiboLevelChannelArea() {
-
-   if(
-      t4MinHighVolumeAreaLevel != 0
-      && t4MaxHighVolumeAreaLevel != 0
-   ) {
-      createChannel(T4_IN_SIGNAL_FIBO_LEVEL_AREA, t4p3DateTime, t4MinHighVolumeAreaLevel, iTime(Symbol(), PERIOD_CURRENT, 0), t4MinHighVolumeAreaLevel, t4p3DateTime, t4MaxHighVolumeAreaLevel, InpT4InSignalAreaColor);
-   }
-}
-
 void createt4InSignalRegressionChannelArea() {
 
    if(

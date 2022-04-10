@@ -31,26 +31,6 @@ void createT4FiboRetracement() {
             t4AlertFiboRetracementLevel = t4FiboLevelValue;
          }
 
-         if(t4trendDirection == TREND_DIRECTION_LONG) {
-            if(level == InpT4MinFiboRetracmentLevel) {
-               t4MaxHighVolumeAreaLevel = t4FiboLevelValue;
-               t3ShortEntryValue = t4FiboLevelValue;
-            }
-            if(level == InpT4MaxFiboRetracmentLevel) {
-               t4MinHighVolumeAreaLevel = t4FiboLevelValue;
-            }
-         }
-         if(t4trendDirection == TREND_DIRECTION_SHORT) {
-            if(level == InpT4MinFiboRetracmentLevel) {
-               t4MinHighVolumeAreaLevel = t4FiboLevelValue;
-               t3LongEntryValue = t4FiboLevelValue;
-
-            }
-            if(level == InpT4MaxFiboRetracmentLevel) {
-               t4MaxHighVolumeAreaLevel = t4FiboLevelValue;
-            }
-         }
-
          if(InpT4MinReEntryFiboRetracmentLevel != 0 && level == InpT4MinReEntryFiboRetracmentLevel) {
             if(t4trendDirection == TREND_DIRECTION_LONG) {
                t4ReEntryAreaMinStartValue = t4InSignalFiboLevelAreaMinStartValue;

@@ -3,6 +3,83 @@
 //|                                  Copyright 2022, MetaQuotes Ltd. |
 //|                                             https://www.mql5.com |
 //+------------------------------------------------------------------+
+
+void handleTT2ObjectsInitAction() {
+
+   deleteTrendLineLike(TT2_ZIGZAGLINE);
+   deleteRegressionChannel(TT2_REGRESSION_CHANNEL);
+   deleteChannelObject(TT2_IN_SIGNAL_FIBO_LEVEL_AREA);
+
+   createTT2ZigZagTemplateLines();
+   createTT2RegressionChannel();
+   createTT2HighVolumeAreaTrendLines();
+   createTT2InSignalFiboLevelChannelArea();
+
+}
+
+//+------------------------------------------------------------------+
+//|                                                                  |
+//+------------------------------------------------------------------+
+double getTT2P1HighLowValueByTrendDirection() {
+   double returnValue = 0;
+   if(tt2p1ValueLow != 0 && tt2p2ValueLow != 0) {
+      returnValue = (tt2p1ValueLow < tt2p2ValueLow) ? tt2p1ValueLow : tt2p1ValueHigh;
+   }
+   return returnValue;
+}
+
+//+------------------------------------------------------------------+
+//|                                                                  |
+//+------------------------------------------------------------------+
+double getTT2P2HighLowValueByTrendDirection() {
+   double returnValue = 0;
+   if(tt2p1ValueLow != 0 && tt2p2ValueLow != 0) {
+      returnValue = (tt2p1ValueLow > tt2p2ValueLow) ? tt2p2ValueLow : tt2p2ValueHigh;
+   }
+   return returnValue;
+}
+
+//+------------------------------------------------------------------+
+//|                                                                  |
+//+------------------------------------------------------------------+
+double getTT2P3HighLowValueByTrendDirection() {
+   double returnValue = 0;
+   if(tt2p1ValueLow != 0 && tt2p2ValueLow != 0) {
+      returnValue = (tt2p1ValueLow < tt2p2ValueLow) ? tt2p3ValueLow : tt2p3ValueHigh;
+   }
+   return returnValue;
+}
+
+//+------------------------------------------------------------------+
+//|                                                                  |
+//+------------------------------------------------------------------+
+double getTT2P4HighLowValueByTrendDirection() {
+   double returnValue = 0;
+   if(tt2p1ValueLow != 0 && tt2p2ValueLow != 0) {
+      returnValue = (tt2p1ValueLow > tt2p2ValueLow) ? tt2p4ValueLow : tt2p4ValueHigh;
+   }
+   return returnValue;
+}
+
+//+------------------------------------------------------------------+
+//|                                                                  |
+//+------------------------------------------------------------------+
+double getTT2P5HighLowValueByTrendDirection() {
+   double returnValue = 0;
+   if(tt2p1ValueLow != 0 && tt2p2ValueLow != 0) {
+      returnValue = (tt2p1ValueLow < tt2p2ValueLow) ? tt2p5ValueLow : tt2p5ValueHigh;
+   }
+   return returnValue;
+}
+
+double getTT2P6HighLowValueByTrendDirection() {
+   double returnValue = 0;
+   if(tt2p1ValueLow != 0 && tt2p2ValueLow != 0) {
+      returnValue = (tt2p1ValueLow > tt2p2ValueLow) ? tt2p6ValueLow : tt2p6ValueHigh;
+   }
+   return returnValue;
+}
+
 void handleTT3ObjectsInitAction() {
 
    deleteTrendLineLike(TT3_ZIGZAGLINE);
