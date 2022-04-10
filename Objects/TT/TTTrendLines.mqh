@@ -32,6 +32,37 @@ void createTT2ZigZagTemplateLines() {
    }
 }
 
+//+------------------------------------------------------------------+
+//|                                                                  |
+//+------------------------------------------------------------------+
+void createTT2HighVolumeAreaTrendLines() {
+   int lineWidth = 2;
+   color levelColor = clrBlack;
+   ENUM_LINE_STYLE style = STYLE_SOLID;
+   bool rayLeft = false;
+   bool rayRight = true;
+   long zOrder = 0;
+   bool isBackground = true;
+   bool isSelected = false;
+   bool isSelectable = true;
+
+   datetime startDateTime = TimeCurrent();
+   if(tt2p1DateTime != 0) startDateTime = tt2p1DateTime;
+   if(tt2p3DateTime != 0) startDateTime = tt2p3DateTime;
+   if(tt2p5DateTime != 0) startDateTime = tt2p5DateTime;
+
+   tt2MinHighVolumeAreaLevel = (getTrendlineLevelByText(TT2_MIN_HIGH_VOL_AREA, PERIOD_CURRENT, Symbol(), ChartID(), true));
+   if(tt2MinHighVolumeAreaLevel == 0) tt2MinHighVolumeAreaLevel = InpTT2MinHighVolumeAreaLevel;
+
+   tt2MaxHighVolumeAreaLevel = (getTrendlineLevelByText(TT2_MAX_HIGH_VOL_AREA, PERIOD_CURRENT, Symbol(), ChartID(), true));
+   if(tt2MaxHighVolumeAreaLevel == 0) tt2MaxHighVolumeAreaLevel = InpTT2MaxHighVolumeAreaLevel;
+
+   if(tt2MinHighVolumeAreaLevel != 0 && tt2MaxHighVolumeAreaLevel != 0) {
+      if(ObjectFind(ChartID(), TT2_MIN_HIGH_VOL_AREA) < 0) createTrendLine(TT2_MIN_HIGH_VOL_AREA, startDateTime, tt2MinHighVolumeAreaLevel, iTime(Symbol(), PERIOD_CURRENT, 0), tt2MinHighVolumeAreaLevel, levelColor, lineWidth, style, " " + TT2_MIN_HIGH_VOL_AREA + ": " + DoubleToString(tt2MinHighVolumeAreaLevel, Digits()), rayLeft, rayRight, zOrder, isBackground, isSelected, isSelectable);
+      if(ObjectFind(ChartID(), TT2_MAX_HIGH_VOL_AREA) < 0) createTrendLine(TT2_MAX_HIGH_VOL_AREA, startDateTime, tt2MaxHighVolumeAreaLevel, iTime(Symbol(), PERIOD_CURRENT, 0), tt2MaxHighVolumeAreaLevel, levelColor, lineWidth, style, " " + TT2_MAX_HIGH_VOL_AREA + ": " + DoubleToString(tt2MaxHighVolumeAreaLevel, Digits()), rayLeft, rayRight, zOrder, isBackground, isSelected, isSelectable);
+   }
+}
+
 void createTT3ZigZagTemplateLines() {
 
    if(tt3p1DateTime != 0 && tt3p2DateTime != 0) {

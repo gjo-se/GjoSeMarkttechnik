@@ -3,8 +3,6 @@
 //|                                       Copyright 2022, Gregory Jo |
 //+------------------------------------------------------------------+
 
-
-
 //+------------------------------------------------------------------+
 //|                                                                  |
 //+------------------------------------------------------------------+
@@ -29,32 +27,6 @@ void createT4ZigZagTrendDetectionLines() {
    if(t4p4DateTime != 0 && t4p5DateTime != 0) {
       createTrendLine(T4_ZIGZAGLINE + "P4-P5", t4p4DateTime, getT4P4HighLowValueByTrendDirection(), t4p5DateTime, getT4P5HighLowValueByTrendDirection(), lineColor, InpT4LineWidth, InpT4LineStyle);
       ObjectSetInteger(ChartID(), T4_ZIGZAGLINE + "P4-P5", OBJPROP_TIMEFRAMES, InpT4VisibleTimeframes);
-   }
-}
-
-//+------------------------------------------------------------------+
-//|                                                                  |
-//+------------------------------------------------------------------+
-void createT4HighVolumeAreaTrendLines() {
-   int lineWidth = 2;
-   color levelColor = clrBlack;
-   ENUM_LINE_STYLE style = STYLE_SOLID;
-   bool rayLeft = false;
-   bool rayRight = true;
-   long zOrder = 0;
-   bool isBackground = true;
-   bool isSelected = false;
-   bool isSelectable = true;
-
-   t4MinHighVolumeAreaLevel = (getTrendlineLevelByText(T4_MIN_HIGH_VOL_AREA, PERIOD_CURRENT, Symbol(), ChartID(), true));
-   if(t4MinHighVolumeAreaLevel == 0) t4MinHighVolumeAreaLevel = InpT4MinHighVolumeAreaLevel;
-
-   t4MaxHighVolumeAreaLevel = (getTrendlineLevelByText(T4_MAX_HIGH_VOL_AREA, PERIOD_CURRENT, Symbol(), ChartID(), true));
-   if(t4MaxHighVolumeAreaLevel == 0) t4MaxHighVolumeAreaLevel = InpT4MaxHighVolumeAreaLevel;
-
-   if(t4MinHighVolumeAreaLevel != 0 && t4MaxHighVolumeAreaLevel != 0) {
-      if(ObjectFind(ChartID(), T4_MIN_HIGH_VOL_AREA) < 0) createTrendLine(T4_MIN_HIGH_VOL_AREA, t4p3DateTime, t4MinHighVolumeAreaLevel, iTime(Symbol(), PERIOD_CURRENT, 0), t4MinHighVolumeAreaLevel, levelColor, lineWidth, style, " " + T4_MIN_HIGH_VOL_AREA + ": " + DoubleToString(t4MinHighVolumeAreaLevel, Digits()), rayLeft, rayRight, zOrder, isBackground, isSelected, isSelectable);
-      if(ObjectFind(ChartID(), T4_MAX_HIGH_VOL_AREA) < 0) createTrendLine(T4_MAX_HIGH_VOL_AREA, t4p3DateTime, t4MaxHighVolumeAreaLevel, iTime(Symbol(), PERIOD_CURRENT, 0), t4MaxHighVolumeAreaLevel, levelColor, lineWidth, style, " " + T4_MAX_HIGH_VOL_AREA + ": " + DoubleToString(t4MaxHighVolumeAreaLevel, Digits()), rayLeft, rayRight, zOrder, isBackground, isSelected, isSelectable);
    }
 }
 

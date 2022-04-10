@@ -8,9 +8,13 @@ void handleTT2ObjectsInitAction() {
 
    deleteTrendLineLike(TT2_ZIGZAGLINE);
    deleteRegressionChannel(TT2_REGRESSION_CHANNEL);
+   deleteChannelObject(TT2_IN_SIGNAL_FIBO_LEVEL_AREA);
 
    createTT2ZigZagTemplateLines();
    createTT2RegressionChannel();
+   createTT2HighVolumeAreaTrendLines();
+   createTT2InSignalFiboLevelChannelArea();
+
 }
 
 //+------------------------------------------------------------------+

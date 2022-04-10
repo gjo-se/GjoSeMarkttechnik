@@ -12,6 +12,9 @@ const string   TT2_P5_VLINE =              "TT2-P5";
 const string   TT2_P6_VLINE =              "TT2-P6";
 const string   TT2_ZIGZAGLINE =             "TT2-ZigZagLine";
 const string   TT2_REGRESSION_CHANNEL =    "TT2RegressionChannel";
+const string   TT2_MIN_HIGH_VOL_AREA =     "TT2MINHighVolumeArea";
+const string   TT2_MAX_HIGH_VOL_AREA =     "TT2MAXHighVolumeArea";
+const string   TT2_IN_SIGNAL_FIBO_LEVEL_AREA = "TT2InSignalFiboLevelArea";
 
 const string   TT3_P1_VLINE =              "TT3-P1";
 const string   TT3_P2_VLINE =              "TT3-P2";
