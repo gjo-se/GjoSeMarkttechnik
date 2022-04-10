@@ -46,6 +46,7 @@
    3.5.2 changed Push-Logic
    3.5.3 fixed diverse
    3.6.0 optimized Objects (VLINES, TLINES, Regression, Fibo)
+   3.7.0 added TT2
 
    ===============
 
@@ -65,7 +66,7 @@
 #property copyright   "2022, GjoSe"
 #property link        "http://www.gjo-se.com"
 #property description "GjoSe Markttechnik"
-#define   VERSION "3.6.0"
+#define   VERSION "3.7.0"
 #property version VERSION
 #property strict
 
