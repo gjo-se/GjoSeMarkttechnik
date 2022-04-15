@@ -20,6 +20,17 @@ void handleTT2ObjectsInitAction() {
 //+------------------------------------------------------------------+
 //|                                                                  |
 //+------------------------------------------------------------------+
+double getTT2StartHighLowValueByTrendDirection() {
+   double returnValue = 0;
+   if(tt2p1ValueLow != 0 && tt2p2ValueLow != 0) {
+      returnValue = (tt2p1ValueLow < tt2p2ValueLow) ? tt2StartValueLow : tt2StartValueHigh;
+   }
+   return returnValue;
+}
+
+//+------------------------------------------------------------------+
+//|                                                                  |
+//+------------------------------------------------------------------+
 double getTT2P1HighLowValueByTrendDirection() {
    double returnValue = 0;
    if(tt2p1ValueLow != 0 && tt2p2ValueLow != 0) {
@@ -76,6 +87,14 @@ double getTT2P6HighLowValueByTrendDirection() {
    double returnValue = 0;
    if(tt2p1ValueLow != 0 && tt2p2ValueLow != 0) {
       returnValue = (tt2p1ValueLow > tt2p2ValueLow) ? tt2p6ValueLow : tt2p6ValueHigh;
+   }
+   return returnValue;
+}
+
+double getTT2EndHighLowValueByTrendDirection() {
+   double returnValue = 0;
+   if(tt2p1ValueLow != 0 && tt2p2ValueLow != 0) {
+      returnValue = (tt2p1ValueLow > tt2p2ValueLow) ? tt2EndValueLow : tt2EndValueHigh;
    }
    return returnValue;
 }

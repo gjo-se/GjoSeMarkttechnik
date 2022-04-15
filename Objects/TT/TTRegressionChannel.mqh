@@ -10,14 +10,18 @@ void createTT2RegressionChannel() {
 
    bool isFilled = false;
 
+   datetime startDateTime = tt2p1DateTime;
+   if(tt2StartDateTime != 0) startDateTime = tt2StartDateTime;
+
    datetime endDateTime = TimeCurrent();
    if(tt2p3DateTime != 0) endDateTime = tt2p3DateTime;
    if(tt2p4DateTime != 0) endDateTime = tt2p4DateTime;
    if(tt2p5DateTime != 0) endDateTime = tt2p5DateTime;
    if(tt2p6DateTime != 0) endDateTime = tt2p6DateTime;
+   if(tt2EndDateTime != 0) endDateTime = tt2EndDateTime;
 
    if(tt2p1DateTime != 0 && tt2p3DateTime != 0 ) {
-      createRegressionChannel(TT2_REGRESSION_CHANNEL, tt2p1DateTime, endDateTime, InpT2DefaultColor, isFilled, InpT2LineStyle, InpT2LineWidth);
+      createRegressionChannel(TT2_REGRESSION_CHANNEL, startDateTime, endDateTime, InpT2DefaultColor, isFilled, InpT2LineStyle, InpT2LineWidth);
       ObjectSetInteger(ChartID(), TT2_REGRESSION_CHANNEL, OBJPROP_TIMEFRAMES, InpT2VisibleTimeframes);
    }
 }

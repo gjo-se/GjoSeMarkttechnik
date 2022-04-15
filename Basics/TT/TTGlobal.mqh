@@ -5,6 +5,9 @@
 //+------------------------------------------------------------------+
 
 // TT2
+datetime tt2StartDateTime;
+double tt2StartValueHigh;
+double tt2StartValueLow;
 datetime tt2p1DateTime;
 double tt2p1ValueHigh;
 double tt2p1ValueLow;
@@ -23,6 +26,9 @@ double tt2p5ValueLow;
 datetime tt2p6DateTime;
 double tt2p6ValueHigh;
 double tt2p6ValueLow;
+datetime tt2EndDateTime;
+double tt2EndValueHigh;
+double tt2EndValueLow;
 
 int tt2SemiTrendDirection;
 
