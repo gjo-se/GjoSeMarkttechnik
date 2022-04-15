@@ -6,6 +6,8 @@
 
 void createTT2ZigZagTemplateLines() {
 
+   deleteTrendLineLike(TT2_ZIGZAGLINE);
+
    color lineColor = InpT2DefaultColor;
    if(tt2SemiTrendDirection == TREND_DIRECTION_LONG) lineColor = InpT2TLineZigZagTrendLongColor;
    if(tt2SemiTrendDirection == TREND_DIRECTION_SHORT) lineColor = InpT2TLineZigZagTrendShortColor;
