@@ -16,12 +16,18 @@ void getTT2TrendDirection() {
       if(tt2p1ValueHigh > tt2p2ValueHigh) tt2SemiTrendDirection = TREND_DIRECTION_SHORT;
    }
 
-    setTT2MovementAndRegressionLength();
+   setTT2MovementAndRegressionLength();
 }
 
 void setTT2MovementAndRegressionLength() {
 
-   if(tt2p1DateTime != 0 && tt2p3DateTime != 0) {
+   if(tt2p1DateTime != 0
+         && tt2p2DateTime != 0
+         && tt2p3DateTime != 0
+         && tt2p4DateTime != 0
+         && tt2p5DateTime != 0
+         && tt2p6DateTime != 0
+     ) {
 
       if(tt2SemiTrendDirection == TREND_DIRECTION_LONG) {
          tt2movementLengthP1P2 = (tt2p2ValueHigh - tt2p1ValueLow) / Point();
@@ -69,7 +75,13 @@ void getTT3TrendDirection() {
 
 void setTT3MovementAndRegressionLength() {
 
-   if(tt3p1DateTime != 0 && tt3p6DateTime != 0) {
+   if(tt3p1DateTime != 0
+         && tt3p2DateTime != 0
+         && tt3p3DateTime != 0
+         && tt3p4DateTime != 0
+         && tt3p5DateTime != 0
+         && tt3p6DateTime != 0
+     ) {
 
       if(tt3trendDirection == TREND_DIRECTION_LONG) {
          tt3movementLengthP1P2 = (tt3p2ValueHigh - tt3p1ValueLow) / Point();
@@ -117,12 +129,18 @@ void getTT4TrendDirection() {
       if(tt4p3ValueHigh > tt4p4ValueHigh) tt4trendDirection = TREND_DIRECTION_SHORT;
    }
 
-   setTT4MovementAndRegressionLegth();
+   setTT4MovementAndRegressionLength();
 }
 
-void setTT4MovementAndRegressionLegth() {
+void setTT4MovementAndRegressionLength() {
 
-   if(tt4p1DateTime != 0 && tt4p6DateTime != 0) {
+   if(tt4p1DateTime != 0
+         && tt4p2DateTime != 0
+         && tt4p3DateTime != 0
+         && tt4p4DateTime != 0
+         && tt4p5DateTime != 0
+         && tt4p6DateTime != 0
+     ) {
 
       if(tt4trendDirection == TREND_DIRECTION_LONG) {
          tt4movementLengthP1P2 = (tt4p2ValueHigh - tt4p1ValueLow) / Point();
