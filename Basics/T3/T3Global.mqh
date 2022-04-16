@@ -71,9 +71,6 @@ int t3trendDirection;
 string t3FiboLevelsArray[];
 int t3MovementLengthPoints;
 
-bool t3ObjectHasChanged;
-bool t4ObjectHasChanged;
-
 // Alerts
 bool sendAlerts;
 double t3AlertRegressionChannelLevel;

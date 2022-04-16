@@ -34,7 +34,6 @@ int               InpT4MinRegressionChannelLevel = 0; // T4 Min RegressionChanne
 int               InpT4MaxRegressionChannelLevel = 0; // T4 Max RegressionChannel
 bool              InpT4UseTrailingStopMarket = true;
 color             InpT4TailingStopLineColor = clrRed;
-ENUM_TIMEFRAMES   InpT4MaxTimeframe = PERIOD_H1;
 string            InpT4FiboLevels = "25,50,75";
 color             InpT4InSignalAreaColor = clrWheat;
 color             InpT4TrendLineColor = clrBlack;

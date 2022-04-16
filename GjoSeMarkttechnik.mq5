@@ -246,9 +246,6 @@ void OnChartEvent(const int id,
       createT3FiboRetracement();
       createT4FiboRetracement();
 
-      t3ObjectHasChanged = true;
-      t4ObjectHasChanged = true;
-
       if(sparam == T3_STOP_LOSS_TLINE) {
          t3IsBidStopLossLineOffsetAlertSendable = true;
          t3IsBidStopLossLineOffsetAlertSended = false;

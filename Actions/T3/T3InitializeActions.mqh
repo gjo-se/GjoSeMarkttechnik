@@ -47,9 +47,6 @@ void initializeT3GlobalsAction() {
    t3trendDirection = TREND_DIRECTION_ROTATION;
    t3MovementLengthPoints = 0;
 
-   t3ObjectHasChanged = false;
-   t3ObjectHasChanged = false;
-
    if((MQLInfoInteger(MQL_VISUAL_MODE) == 1 && InpSendPushOnTester == false) || InpDevMode == true) {
       sendAlerts = false;
    } else {

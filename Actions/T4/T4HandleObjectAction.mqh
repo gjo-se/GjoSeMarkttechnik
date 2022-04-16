@@ -78,23 +78,13 @@ void t4HandleObjectsAction() {
          }
       }
 
-      if(isNewCurrentBar == true || t4ObjectHasChanged == true) {
-         if(Period() <= InpT4MaxTimeframe) {
-            createT4ZigZagTrendDetectionLines();
-            createT4RegressionChannel();
-            createT4RegressionChannelLevels();
-            createT4FiboRetracement();
-            createt4InSignalRegressionChannelArea();
-            createT4ReEntryArea();
-         } else {
-            deleteTrendLineLike(T4_ZIGZAGLINE);
-            deleteRegressionChannel(T4_REGRESSION_CHANNEL);
-            deleteFiboLevelsObject(T4_FIBO_LEVELS);
-            deleteChannelObject(T4_IN_SIGNAL_REGRESSION_CHANNEL_AREA);
-            deleteChannelObject(T4_RE_ENTRY_AREA);
-         }
-
-         t4ObjectHasChanged = false;
+      if(isNewCurrentBar == true) {
+         createT4ZigZagTrendDetectionLines();
+         createT4RegressionChannel();
+         createT4RegressionChannelLevels();
+         createT4FiboRetracement();
+         createt4InSignalRegressionChannelArea();
+         createT4ReEntryArea();
       }
 
       handleInsideBars();

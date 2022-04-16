@@ -99,25 +99,14 @@ void t3HandleObjectsAction() {
          }
       }
 
-      if(isNewCurrentBar == true || t3ObjectHasChanged == true) {
-         if(Period() <= InpT3MaxTimeframe) {
-            createT3ZigZagTrendDetectionLines();
-            createT3RegressionChannel();
-            createT3RegressionChannelLevels();
-            createT3FiboRetracement();
-            createT3InSignalFiboLevelChannelArea();
-            createt3InSignalRegressionChannelArea();
-            createT3ReEntryArea();
-         } else {
-            deleteTrendLineLike(T3_ZIGZAGLINE);
-            deleteRegressionChannel(T3_REGRESSION_CHANNEL);
-            deleteFiboLevelsObject(T3_FIBO_LEVELS);
-            deleteChannelObject(T3_IN_SIGNAL_FIBO_LEVEL_AREA);
-            deleteChannelObject(T3_IN_SIGNAL_REGRESSION_CHANNEL_AREA);
-            deleteChannelObject(T3_RE_ENTRY_AREA);
-         }
-
-         t3ObjectHasChanged = false;
+      if(isNewCurrentBar == true) {
+         createT3ZigZagTrendDetectionLines();
+         createT3RegressionChannel();
+         createT3RegressionChannelLevels();
+         createT3FiboRetracement();
+         createT3InSignalFiboLevelChannelArea();
+         createt3InSignalRegressionChannelArea();
+         createT3ReEntryArea();
       }
 
       double t3StopLossValueLocal = ObjectGetValueByTime(0, T3_STOP_LOSS_TLINE, iTime(Symbol(), Period(), 0));
