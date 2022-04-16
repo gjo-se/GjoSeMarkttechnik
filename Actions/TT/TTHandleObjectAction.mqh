@@ -12,8 +12,6 @@ void handleTT2ObjectsInitAction() {
 
    createTT2ZigZagTemplateLines();
    createTT2RegressionChannel();
-   createTT2HighVolumeAreaTrendLines();
-   createTT2InSignalFiboLevelChannelArea();
 
 }
 

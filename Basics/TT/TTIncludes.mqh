@@ -14,7 +14,6 @@
 #include "..\\..\\Actions\\TT\\TTHandleTrendDetectionActions.mqh"
 #include "..\\..\\Actions\\TT\\TTInitializeActions.mqh"
 
-#include "..\\..\\Objects\\TT\\TTChannel.mqh"
 #include "..\\..\\Objects\\TT\\TTVLines.mqh"
 #include "..\\..\\Objects\\TT\\TTTrendLines.mqh"
 #include "..\\..\\Objects\\TT\\TTRegressionChannel.mqh"
