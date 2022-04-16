@@ -87,8 +87,6 @@ void t4HandleObjectsAction() {
          createT4ReEntryArea();
       }
 
-      handleInsideBars();
-
    } else {
       deleteTrendLineLike(T4_ZIGZAGLINE);
       deleteRegressionChannel(T4_REGRESSION_CHANNEL);

@@ -112,8 +112,6 @@ void t3HandleObjectsAction() {
       double t3StopLossValueLocal = ObjectGetValueByTime(0, T3_STOP_LOSS_TLINE, iTime(Symbol(), Period(), 0));
       if(t3StopLossValueLocal != 0) t3StopLossValue = t3StopLossValueLocal;
 
-      handleInsideBars();
-
    } else {
       deleteTrendLineLike(T3_ZIGZAGLINE);
       deleteRegressionChannel(T3_REGRESSION_CHANNEL);
@@ -184,39 +182,6 @@ double getT3P5HighLowValueByTrendDirection() {
       returnValue = (t3p1ValueLow < t3p2ValueLow) ? t3p5ValueLow : t3p5ValueHigh;
    }
    return returnValue;
-}
-//+------------------------------------------------------------------+
-
-void handleInsideBars() {
-
-   int lastBarShift = 1;
-   int penultimateBarShift = 2;
-
-   double lastClose = iClose(Symbol(), InpInsideBarTimeframe, lastBarShift);
-   double penultimateHigh = iHigh(Symbol(), InpInsideBarTimeframe, penultimateBarShift);
-   double penultimateLow = iLow(Symbol(), InpInsideBarTimeframe, penultimateBarShift);
-
-   if(
-      InpInsideBarMinRange != 0
-      && outSideBarDateTime == 0
-      && lastClose < penultimateHigh
-      && lastClose > penultimateLow
-      && (penultimateHigh - penultimateLow) >= InpInsideBarMinRange * Point()
-   ) {
-      outSideBarDateTime = iTime(Symbol(), InpInsideBarTimeframe, penultimateBarShift);
-   }
-
-   if(outSideBarDateTime != 0) {
-      createT3InsideBarTrendLines();
-      if(
-         lastClose > iHigh(Symbol(), InpInsideBarTimeframe, iBarShift(Symbol(), InpInsideBarTimeframe, outSideBarDateTime))
-         || lastClose < iLow(Symbol(), InpInsideBarTimeframe, iBarShift(Symbol(), InpInsideBarTimeframe, outSideBarDateTime))
-      ) {
-         outSideBarDateTime = 0;
-         deleteTrendLine(T3_INSIDEBAR_TOP_TLINE);
-         deleteTrendLine(T3_INSIDEBAR_BUTTOM_TLINE);
-      }
-   }
 }
 //+------------------------------------------------------------------+
 
