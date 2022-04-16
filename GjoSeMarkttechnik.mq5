@@ -47,7 +47,7 @@
    3.5.3 fixed diverse
    3.6.0 optimized Objects (VLINES, TLINES, Regression, Fibo)
    3.7.0 added TT2
-
+   3.8.0 added T2 Automatic
    ===============
 
 */
@@ -66,7 +66,7 @@
 #property copyright   "2022, GjoSe"
 #property link        "http://www.gjo-se.com"
 #property description "GjoSe Markttechnik"
-#define   VERSION "3.7.0"
+#define   VERSION "3.8.0"
 #property version VERSION
 #property strict
 
