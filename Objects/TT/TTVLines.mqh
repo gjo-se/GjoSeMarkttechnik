@@ -15,6 +15,12 @@ void setTT2LineValues() {
 //|                                                                  |
 //+------------------------------------------------------------------+
 void setTT2VLineDateTimes() {
+   if(ObjectFind(ChartID(), TT2_START_VLINE) >= 0) {
+      tt2StartDateTime = (datetime)ObjectGetInteger(ChartID(), TT2_START_VLINE, OBJPROP_TIME);
+      setTT2VLineStyles(TT2_START_VLINE);
+   } else {
+      tt2StartDateTime = 0;
+   }
    if(ObjectFind(ChartID(), TT2_P1_VLINE) >= 0) {
       tt2p1DateTime = (datetime)ObjectGetInteger(ChartID(), TT2_P1_VLINE, OBJPROP_TIME);
       setTT2VLineStyles(TT2_P1_VLINE);
@@ -50,6 +56,12 @@ void setTT2VLineDateTimes() {
       setTT2VLineStyles(TT2_P6_VLINE);
    } else {
       tt2p6DateTime = 0;
+   }
+   if(ObjectFind(ChartID(), TT2_END_VLINE) >= 0) {
+      tt2EndDateTime = (datetime)ObjectGetInteger(ChartID(), TT2_END_VLINE, OBJPROP_TIME);
+      setTT2VLineStyles(TT2_END_VLINE);
+   } else {
+      tt2EndDateTime = 0;
    }
 }
 

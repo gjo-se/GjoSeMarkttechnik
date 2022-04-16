@@ -4,12 +4,14 @@
 //|                                             https://www.mql5.com |
 //+------------------------------------------------------------------+
 
+const string   TT2_START_VLINE =           "TT2-Start";
 const string   TT2_P1_VLINE =              "TT2-P1";
 const string   TT2_P2_VLINE =              "TT2-P2";
 const string   TT2_P3_VLINE =              "TT2-P3";
 const string   TT2_P4_VLINE =              "TT2-P4";
 const string   TT2_P5_VLINE =              "TT2-P5";
 const string   TT2_P6_VLINE =              "TT2-P6";
+const string   TT2_END_VLINE =              "TT2-End";
 const string   TT2_ZIGZAGLINE =             "TT2-ZigZagLine";
 const string   TT2_REGRESSION_CHANNEL =    "TT2RegressionChannel";
 const string   TT2_MIN_HIGH_VOL_AREA =     "TT2MINHighVolumeArea";

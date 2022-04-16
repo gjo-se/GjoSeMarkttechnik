@@ -11,6 +11,9 @@
 void initializeTTGlobalsAction() {
 
 // TT2
+   tt2StartDateTime = 0;
+   tt2StartValueHigh = 0;
+   tt2StartValueLow = 0;
    tt2p1DateTime = 0;
    tt2p1ValueHigh = 0;
    tt2p1ValueLow = 0;
@@ -29,6 +32,9 @@ void initializeTTGlobalsAction() {
    tt2p6DateTime = 0;
    tt2p6ValueHigh = 0;
    tt2p6ValueLow = 0;
+   tt2EndDateTime = 0;
+   tt2EndValueHigh = 0;
+   tt2EndValueLow = 0;   
 
    tt2SemiTrendDirection = TREND_DIRECTION_ROTATION;
 

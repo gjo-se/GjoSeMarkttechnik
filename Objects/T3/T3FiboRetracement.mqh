@@ -79,18 +79,3 @@ void createT3FiboRetracement() {
       }
    }
 }
-
-void deleteFiboLevelsObject(const string pDimension) {
-
-   long chartId = ChartID();
-   int objectsTotal = ObjectsTotal(chartId, 0, -1);
-
-   string objectName;
-   for(int i = objectsTotal; i >= 0; i--) {
-      objectName = ObjectName(chartId, i);
-      if ( StringFind(objectName, pDimension) != -1 ) {
-         ObjectDelete(chartId, objectName);
-      }
-   }
-}
-//+------------------------------------------------------------------+
