@@ -27,16 +27,16 @@ void setT4AllBuyPositionsAreClosedState() {
 
    long positionTicket = 0;
    bool minOneBuyPositionIsOpen = false;
+   ulong magicNumber = 0;
 
    if(buyT4PositionIsOpenState == true) {
    	  long positionTicketsLocal[];
-   	  Positions.GetTickets(InpT4MagicNumber, positionTicketsLocal);
+   	  Positions.GetTickets(magicNumber, positionTicketsLocal);
       for(int positionTicketsId = 0; positionTicketsId < ArraySize(positionTicketsLocal); positionTicketsId++) {
          positionTicket = positionTicketsLocal[positionTicketsId];
          if(
             positionTicket > 0
             && PositionSymbol(positionTicket) == Symbol()
-            && PositionMagicNumber(positionTicket) == InpT4MagicNumber
             && PositionType(positionTicket) == ORDER_TYPE_BUY
          ) {
             minOneBuyPositionIsOpen = true;
@@ -45,6 +45,7 @@ void setT4AllBuyPositionsAreClosedState() {
 
       if(minOneBuyPositionIsOpen == false) {
          allT4BuyPositionsAreClosedState = true;
+         t4AlertClosePositionAction();
       } else {
          allT4BuyPositionsAreClosedState = false;
       }
@@ -54,19 +55,20 @@ void setT4AllBuyPositionsAreClosedState() {
 void setT4BuyPositionIsOpen() {
 
    long positionTicket = 0;
+   ulong magicNumber = 0;
 
    if(t4trendDirection == TREND_DIRECTION_LONG && buyT4PositionIsOpenState == false) {
       long positionTicketsLocal[];
-      Positions.GetTickets(InpT4MagicNumber, positionTicketsLocal);
+      Positions.GetTickets(magicNumber, positionTicketsLocal);
       for(int positionTicketsId = 0; positionTicketsId < ArraySize(positionTicketsLocal); positionTicketsId++) {
          positionTicket = positionTicketsLocal[positionTicketsId];
          if(
             positionTicket > 0
             && PositionSymbol(positionTicket) == Symbol()
-            && PositionMagicNumber(positionTicket) == InpT4MagicNumber
             && PositionType(positionTicket) == ORDER_TYPE_BUY
          ) {
             buyT4PositionIsOpenState = true;
+            t4AlertOpenPositionAction();
          }
       }
    }
@@ -77,15 +79,16 @@ void setT4MaxBuyPositionsAreOpen() {
 
    long     positionTicket = 0;
    int      openPositionCount = 0;
+   ulong magicNumber = 0;
+
    if(t4trendDirection == TREND_DIRECTION_LONG) {
       long positionTicketsLocal[];
-      Positions.GetTickets(InpT4MagicNumber, positionTicketsLocal);
+      Positions.GetTickets(magicNumber, positionTicketsLocal);
       for(int positionTicketsId = 0; positionTicketsId < ArraySize(positionTicketsLocal); positionTicketsId++) {
          positionTicket = positionTicketsLocal[positionTicketsId];
          if(
             positionTicket > 0
             && PositionSymbol(positionTicket) == Symbol()
-            && PositionMagicNumber(positionTicket) == InpT4MagicNumber
             && PositionType(positionTicket) == ORDER_TYPE_BUY
          ) {
             openPositionCount++;
@@ -104,16 +107,16 @@ void setT4MaxSellPositionsAreOpen() {
 
    long     positionTicket = 0;
    int      openPositionCount = 0;
+   ulong magicNumber = 0;
 
    if(t4trendDirection == TREND_DIRECTION_SHORT) {
       long positionTicketsLocal[];
-      Positions.GetTickets(InpT4MagicNumber, positionTicketsLocal);
+      Positions.GetTickets(magicNumber, positionTicketsLocal);
       for(int positionTicketsId = 0; positionTicketsId < ArraySize(positionTicketsLocal); positionTicketsId++) {
          positionTicket = positionTicketsLocal[positionTicketsId];
          if(
             positionTicket > 0
             && PositionSymbol(positionTicket) == Symbol()
-            && PositionMagicNumber(positionTicket) == InpT4MagicNumber
             && PositionType(positionTicket) == ORDER_TYPE_SELL
          ) {
             openPositionCount++;
@@ -131,19 +134,20 @@ void setT4MaxSellPositionsAreOpen() {
 void setT4SellPositionIsOpen() {
 
    long positionTicket = 0;
+   ulong magicNumber = 0;
 
    if(t4trendDirection == TREND_DIRECTION_SHORT && sellT4PositionIsOpenState == false) {
       long positionTicketsLocal[];
-      Positions.GetTickets(InpT4MagicNumber, positionTicketsLocal);
+      Positions.GetTickets(magicNumber, positionTicketsLocal);
       for(int positionTicketsId = 0; positionTicketsId < ArraySize(positionTicketsLocal); positionTicketsId++) {
          positionTicket = positionTicketsLocal[positionTicketsId];
          if(
             positionTicket > 0
             && PositionSymbol(positionTicket) == Symbol()
-            && PositionMagicNumber(positionTicket) == InpT4MagicNumber
             && PositionType(positionTicket) == ORDER_TYPE_SELL
          ) {
             sellT4PositionIsOpenState = true;
+            t4AlertOpenPositionAction();
          }
       }
    }
@@ -153,16 +157,16 @@ void setT4AllSellPositionsAreClosedState() {
 
    long positionTicket = 0;
    bool minOneSellPositionIsOpen = false;
+   ulong magicNumber = 0;
 
    if(sellT4PositionIsOpenState == true) {
       long positionTicketsLocal[];
-      Positions.GetTickets(InpT4MagicNumber, positionTicketsLocal);
+      Positions.GetTickets(magicNumber, positionTicketsLocal);
       for(int positionTicketsId = 0; positionTicketsId < ArraySize(positionTicketsLocal); positionTicketsId++) {
          positionTicket = positionTicketsLocal[positionTicketsId];
          if(
             positionTicket > 0
             && PositionSymbol(positionTicket) == Symbol()
-            && PositionMagicNumber(positionTicket) == InpT4MagicNumber
             && PositionType(positionTicket) == ORDER_TYPE_SELL
          ) {
             minOneSellPositionIsOpen = true;
@@ -171,6 +175,7 @@ void setT4AllSellPositionsAreClosedState() {
 
       if(minOneSellPositionIsOpen == false) {
          allT4SellPositionsAreClosedState = true;
+         t4AlertClosePositionAction();
       } else {
          allT4SellPositionsAreClosedState = false;
       }

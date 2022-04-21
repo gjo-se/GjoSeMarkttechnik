@@ -8,6 +8,26 @@
 //+------------------------------------------------------------------+
 //|                                                                  |
 //+------------------------------------------------------------------+
+void t4AlertOpenPositionAction() {
+   if(sendAlerts == true) {
+      string prio = "B";
+      string text = "Position opened";
+      string message = prio + ": " + text + " - " + Symbol();
+      Alert(message);
+      if(!SendNotification(message)) Alert("Cannot Push " + message + " Error: ", GetLastError());
+   }
+}
+
+void t4AlertClosePositionAction() {
+   if(sendAlerts == true) {
+      string prio = "B";
+      string text = "Position closed";
+      string message = prio + ": " + text + " - " + Symbol();
+      Alert(message);
+      if(!SendNotification(message)) Alert("Cannot Push " + message + " Error: ", GetLastError());
+   }
+}
+
 void t4AlertT4TrendBrokenAction() {
    if(sendAlerts == true) {
       string prio;
