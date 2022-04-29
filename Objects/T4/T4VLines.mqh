@@ -1,5 +1,5 @@
 //+------------------------------------------------------------------+
-//|                                            RegressionChannel.mqh |
+//|                                                     T4VLines.mqh |
 //|                                       Copyright 2021, Gregory Jo |
 //+------------------------------------------------------------------+
 
@@ -13,78 +13,21 @@
 void setT4LineValues() {
    setT4VLineDateTimes();
    setT4VLineValues();
+   setT4VLineStyles();
+   setT4VLinesAlerts();
 }
 
 //+------------------------------------------------------------------+
 //|                                                                  |
 //+------------------------------------------------------------------+
 void setT4VLineDateTimes() {
-   if(ObjectFind(ChartID(), T4_START_VLINE) >= 0) {
-      t4StartDateTime = (datetime)ObjectGetInteger(ChartID(), T4_START_VLINE, OBJPROP_TIME);
-      setT4VLineStyles(T4_START_VLINE);
-   } else {
-      t4StartDateTime = 0;
-   }
-   if(ObjectFind(ChartID(), T4_P1_VLINE) >= 0) {
-      t4p1DateTime = (datetime)ObjectGetInteger(ChartID(), T4_P1_VLINE, OBJPROP_TIME);
-      setT4VLineStyles(T4_P1_VLINE);
-      string errorText = "t4p1DateTime == 0";
-      if(t4p1DateTime == 0){
-            if(t4AlertT4VLineOn0Sended == false) t4AlertT4VLineOn0Action();
-            createErrorLabel(errorText);
-      }else{
-            deleteLabel(ERROR_LABEL + errorText);
-      }
-   } else {
-      t4p1DateTime = 0;
-   }
-   if(ObjectFind(ChartID(), T4_P2_VLINE) >= 0) {
-      t4p2DateTime = (datetime)ObjectGetInteger(ChartID(), T4_P2_VLINE, OBJPROP_TIME);
-      setT4VLineStyles(T4_P2_VLINE);
-      string errorText = "t4p2DateTime == 0";
-      if(t4p2DateTime == 0){
-            if(t4AlertT4VLineOn0Sended == false) t4AlertT4VLineOn0Action();
-            createErrorLabel(errorText);
-      }else{
-            deleteLabel(ERROR_LABEL + errorText);
-      }
-   } else {
-      t4p2DateTime = 0;
-   }
-   if(ObjectFind(ChartID(), T4_P3_VLINE) >= 0) {
-      t4p3DateTime = (datetime)ObjectGetInteger(ChartID(), T4_P3_VLINE, OBJPROP_TIME);
-      setT4VLineStyles(T4_P3_VLINE);
-   } else {
-      t4p3DateTime = 0;
-   }
-   if(ObjectFind(ChartID(), T4_P4_VLINE) >= 0) {
-      t4p4DateTime = (datetime)ObjectGetInteger(ChartID(), T4_P4_VLINE, OBJPROP_TIME);
-      setT4VLineStyles(T4_P4_VLINE);
-   } else {
-      t4p4DateTime = 0;
-   }
-   if(ObjectFind(ChartID(), T4_P5_VLINE) >= 0) {
-      t4p5DateTime = (datetime)ObjectGetInteger(ChartID(), T4_P5_VLINE, OBJPROP_TIME);
-      setT4VLineStyles(T4_P5_VLINE);
-   } else {
-      t4p5DateTime = 0;
-   }
-   if(ObjectFind(ChartID(), T4_END_VLINE) >= 0) {
-      t4EndDateTime = (datetime)ObjectGetInteger(ChartID(), T4_END_VLINE, OBJPROP_TIME);
-      setT4VLineStyles(T4_END_VLINE);
-   } else {
-      t4EndDateTime = 0;
-   }   
-   if(ObjectFind(ChartID(), T4_HH_VLINE) >= 0) {
-      t4HighestHighVLineDateTime = (datetime)ObjectGetInteger(ChartID(), T4_HH_VLINE, OBJPROP_TIME);
-   } else {
-      t4HighestHighVLineDateTime = 0;
-   }
-   if(ObjectFind(ChartID(), T4_LL_VLINE) >= 0) {
-      t4LowestLowVLineDateTime = (datetime)ObjectGetInteger(ChartID(), T4_LL_VLINE, OBJPROP_TIME);
-   } else {
-      t4LowestLowVLineDateTime = 0;
-   }
+   t4StartDateTime = getVlineDatetimeByTextLike(T4_START_VLINE);
+   t4p1DateTime = getVlineDatetimeByTextLike(T4_P1_VLINE);
+   t4p2DateTime = getVlineDatetimeByTextLike(T4_P2_VLINE);
+   t4p3DateTime = getVlineDatetimeByTextLike(T4_P3_VLINE);
+   t4p4DateTime = getVlineDatetimeByTextLike(T4_P4_VLINE);
+   t4p5DateTime = getVlineDatetimeByTextLike(T4_P5_VLINE);
+   t4EndDateTime = getVlineDatetimeByTextLike(T4_END_VLINE);
 }
 
 void setT4VLineValues() {
@@ -132,12 +75,21 @@ void setT4VLineValues() {
    if(t4p1DateTime != 0 && t4p2DateTime != 0) t4AlertT4VLineOn0Sended = false;
 }
 
-void setT4VLineStyles(const string pLineName) {
+void setT4VLineStyles(const string pLineName = "T4-") {
+
+   int objectsTotal = ObjectsTotal(ChartID(), 0, -1);
+   string objName;
+
+   for(int i = objectsTotal; i >= 0; i--) {
+      objName = ObjectName(ChartID(), i);
+      if(ObjectGetInteger(ChartID(), objName, OBJPROP_TYPE) == OBJ_VLINE) {
       ObjectSetInteger(ChartID(), pLineName, OBJPROP_WIDTH, InpT4LineWidth);
       ObjectSetInteger(ChartID(), pLineName, OBJPROP_STYLE, InpT4LineStyle);
       ObjectSetInteger(ChartID(), pLineName, OBJPROP_COLOR, InpT4VLineColor);
       ObjectSetInteger(ChartID(), pLineName, OBJPROP_BACK, true);
       ObjectSetInteger(ChartID(), pLineName, OBJPROP_TIMEFRAMES, InpT4VisibleTimeframes);
+      }
+   }          
 }
 
 void createT4HighestHighVLine() {
@@ -240,4 +192,23 @@ void createT4P5VLine(datetime pDateTime) {
    ObjectSetInteger(ChartID(), T4_P5_VLINE, OBJPROP_TIMEFRAMES, InpT4VisibleTimeframes);
 }
 //+------------------------------------------------------------------+
-//+------------------------------------------------------------------+
+
+void setT4VLinesAlerts() {
+   string errorText = "t4p1DateTime == 0";
+   if(ObjectFind(ChartID(), T4_P1_VLINE) >= 0 && t4p1DateTime == 0) {
+      if(t4AlertT4VLineOn0Sended == false) t4AlertT4VLineOn0Action();
+      createErrorLabel(errorText);
+   } else {
+      deleteLabel(ERROR_LABEL + errorText);
+   }
+
+   errorText = "t4p2DateTime == 0";
+   if(ObjectFind(ChartID(), T4_P2_VLINE) >= 0 && t4p2DateTime == 0) {
+      if(t4AlertT4VLineOn0Sended == false) t4AlertT4VLineOn0Action();
+      createErrorLabel(errorText);
+   } else {
+      deleteLabel(ERROR_LABEL + errorText);
+   }
+
+   if(t4p1DateTime != 0 && t4p2DateTime != 0) t4AlertT4VLineOn0Sended = false;
+}

@@ -1,5 +1,5 @@
 //+------------------------------------------------------------------+
-//|                                            RegressionChannel.mqh |
+//|                                                     T3VLines.mqh |
 //|                                       Copyright 2021, Gregory Jo |
 //+------------------------------------------------------------------+
 
@@ -13,80 +13,21 @@
 void setT3LineValues() {
    setT3VLineDateTimes();
    setT3VLineValues();
+   setT3VLineStyles();
+   setT3VLinesAlerts();
 }
 
 //+------------------------------------------------------------------+
 //|                                                                  |
 //+------------------------------------------------------------------+
 void setT3VLineDateTimes() {
-   if(ObjectFind(ChartID(), T3_START_VLINE) >= 0) {
-      t3StartDateTime = (datetime)ObjectGetInteger(ChartID(), T3_START_VLINE, OBJPROP_TIME);
-      setT3VLineStyles(T3_START_VLINE);
-   } else {
-      t3StartDateTime = 0;
-   }
-   if(ObjectFind(ChartID(), T3_P1_VLINE) >= 0) {
-      t3p1DateTime = (datetime)ObjectGetInteger(ChartID(), T3_P1_VLINE, OBJPROP_TIME);
-      setT3VLineStyles(T3_P1_VLINE);
-      string errorText = "t3p1DateTime == 0";
-      if(t3p1DateTime == 0){
-            if(t3AlertT3VLineOn0Sended == false) t3AlertT3VLineOn0Action();
-            createErrorLabel(errorText);
-      }else{
-            deleteLabel(ERROR_LABEL + errorText);
-      }
-   } else {
-      t3p1DateTime = 0;
-   }
-   if(ObjectFind(ChartID(), T3_P2_VLINE) >= 0) {
-      t3p2DateTime = (datetime)ObjectGetInteger(ChartID(), T3_P2_VLINE, OBJPROP_TIME);
-      setT3VLineStyles(T3_P2_VLINE);
-      string errorText = "t3p2DateTime == 0";
-      if(t3p2DateTime == 0){
-            if(t3AlertT3VLineOn0Sended == false) t3AlertT3VLineOn0Action();
-            createErrorLabel(errorText);
-      }else{
-            deleteLabel(ERROR_LABEL + errorText);
-      }
-   } else {
-      t3p2DateTime = 0;
-   }
-   if(ObjectFind(ChartID(), T3_P3_VLINE) >= 0) {
-      t3p3DateTime = (datetime)ObjectGetInteger(ChartID(), T3_P3_VLINE, OBJPROP_TIME);
-      setT3VLineStyles(T3_P3_VLINE);
-   } else {
-      t3p3DateTime = 0;
-   }
-   if(ObjectFind(ChartID(), T3_P4_VLINE) >= 0) {
-      t3p4DateTime = (datetime)ObjectGetInteger(ChartID(), T3_P4_VLINE, OBJPROP_TIME);
-      setT3VLineStyles(T3_P4_VLINE);
-   } else {
-      t3p4DateTime = 0;
-   }
-   if(ObjectFind(ChartID(), T3_P5_VLINE) >= 0) {
-      t3p5DateTime = (datetime)ObjectGetInteger(ChartID(), T3_P5_VLINE, OBJPROP_TIME);
-      setT3VLineStyles(T3_P5_VLINE);
-   } else {
-      t3p5DateTime = 0;
-   }
-   if(ObjectFind(ChartID(), T3_END_VLINE) >= 0) {
-      t3EndDateTime = (datetime)ObjectGetInteger(ChartID(), T3_END_VLINE, OBJPROP_TIME);
-      setT3VLineStyles(T3_END_VLINE);
-   } else {
-      t3EndDateTime = 0;
-   }
-   if(ObjectFind(ChartID(), T3_HH_VLINE) >= 0) {
-      t3HighestHighVLineDateTime = (datetime)ObjectGetInteger(ChartID(), T3_HH_VLINE, OBJPROP_TIME);
-   } else {
-      t3HighestHighVLineDateTime = 0;
-   }
-   if(ObjectFind(ChartID(), T3_LL_VLINE) >= 0) {
-      t3LowestLowVLineDateTime = (datetime)ObjectGetInteger(ChartID(), T3_LL_VLINE, OBJPROP_TIME);
-   } else {
-      t3LowestLowVLineDateTime = 0;
-   }
-   
-   if(t3p1DateTime != 0 && t3p2DateTime != 0) t3AlertT3VLineOn0Sended = false;
+   t3StartDateTime = getVlineDatetimeByTextLike(T3_START_VLINE);
+   t3p1DateTime = getVlineDatetimeByTextLike(T3_P1_VLINE);
+   t3p2DateTime = getVlineDatetimeByTextLike(T3_P2_VLINE);
+   t3p3DateTime = getVlineDatetimeByTextLike(T3_P3_VLINE);
+   t3p4DateTime = getVlineDatetimeByTextLike(T3_P4_VLINE);
+   t3p5DateTime = getVlineDatetimeByTextLike(T3_P5_VLINE);
+   t3EndDateTime = getVlineDatetimeByTextLike(T3_END_VLINE);
 }
 
 void setT3VLineValues() {
@@ -135,12 +76,21 @@ void setT3VLineValues() {
 }
 //+------------------------------------------------------------------+
 
-void setT3VLineStyles(const string pLineName) {
+void setT3VLineStyles(const string pLineName = "T3-") {
+
+   int objectsTotal = ObjectsTotal(ChartID(), 0, -1);
+   string objName;
+
+   for(int i = objectsTotal; i >= 0; i--) {
+      objName = ObjectName(ChartID(), i);
+      if(ObjectGetInteger(ChartID(), objName, OBJPROP_TYPE) == OBJ_VLINE) {
       ObjectSetInteger(ChartID(), pLineName, OBJPROP_WIDTH, InpT3LineWidth);
       ObjectSetInteger(ChartID(), pLineName, OBJPROP_STYLE, InpT3LineStyle);
       ObjectSetInteger(ChartID(), pLineName, OBJPROP_COLOR, InpT3VLineColor);
       ObjectSetInteger(ChartID(), pLineName, OBJPROP_BACK, true);
       ObjectSetInteger(ChartID(), pLineName, OBJPROP_TIMEFRAMES, InpT3VisibleTimeframes);
+      }
+   }      
 }
 
 void createT3HighestHighVLine() {
@@ -245,3 +195,23 @@ void createT3P5VLine(datetime pDateTime) {
    ObjectSetInteger(ChartID(), T3_P5_VLINE, OBJPROP_TIMEFRAMES, InpT3VisibleTimeframes);
 }
 //+------------------------------------------------------------------+
+
+void setT3VLinesAlerts() {
+   string errorText = "t3p1DateTime == 0";
+   if(ObjectFind(ChartID(), T3_P1_VLINE) >= 0 && t3p1DateTime == 0) {
+      if(t3AlertT3VLineOn0Sended == false) t3AlertT3VLineOn0Action();
+      createErrorLabel(errorText);
+   } else {
+      deleteLabel(ERROR_LABEL + errorText);
+   }
+
+   errorText = "t3p2DateTime == 0";
+   if(ObjectFind(ChartID(), T3_P2_VLINE) >= 0 && t3p2DateTime == 0) {
+      if(t3AlertT3VLineOn0Sended == false) t3AlertT3VLineOn0Action();
+      createErrorLabel(errorText);
+   } else {
+      deleteLabel(ERROR_LABEL + errorText);
+   }
+
+   if(t3p1DateTime != 0 && t3p2DateTime != 0) t3AlertT3VLineOn0Sended = false;
+}
