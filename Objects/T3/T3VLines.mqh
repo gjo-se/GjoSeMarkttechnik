@@ -76,19 +76,21 @@ void setT3VLineValues() {
 }
 //+------------------------------------------------------------------+
 
-void setT3VLineStyles(const string pLineName = "T3-") {
+void setT3VLineStyles(const string pSubString = "T3-") {
 
    int objectsTotal = ObjectsTotal(ChartID(), 0, -1);
    string objName;
 
    for(int i = objectsTotal; i >= 0; i--) {
       objName = ObjectName(ChartID(), i);
-      if(ObjectGetInteger(ChartID(), objName, OBJPROP_TYPE) == OBJ_VLINE) {
-      ObjectSetInteger(ChartID(), pLineName, OBJPROP_WIDTH, InpT3LineWidth);
-      ObjectSetInteger(ChartID(), pLineName, OBJPROP_STYLE, InpT3LineStyle);
-      ObjectSetInteger(ChartID(), pLineName, OBJPROP_COLOR, InpT3VLineColor);
-      ObjectSetInteger(ChartID(), pLineName, OBJPROP_BACK, true);
-      ObjectSetInteger(ChartID(), pLineName, OBJPROP_TIMEFRAMES, InpT3VisibleTimeframes);
+      if(ObjectGetInteger(ChartID(), objName, OBJPROP_TYPE) == OBJ_VLINE
+      && StringFind(objName, pSubString) != -1
+      ) {
+      ObjectSetInteger(ChartID(), objName, OBJPROP_WIDTH, InpT3LineWidth);
+      ObjectSetInteger(ChartID(), objName, OBJPROP_STYLE, InpT3LineStyle);
+      ObjectSetInteger(ChartID(), objName, OBJPROP_COLOR, InpT3VLineColor);
+      ObjectSetInteger(ChartID(), objName, OBJPROP_BACK, true);
+      ObjectSetInteger(ChartID(), objName, OBJPROP_TIMEFRAMES, InpT3VisibleTimeframes);
       }
    }      
 }

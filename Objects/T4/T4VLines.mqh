@@ -75,19 +75,21 @@ void setT4VLineValues() {
    if(t4p1DateTime != 0 && t4p2DateTime != 0) t4AlertT4VLineOn0Sended = false;
 }
 
-void setT4VLineStyles(const string pLineName = "T4-") {
+void setT4VLineStyles(const string pSubString = "T4-") {
 
    int objectsTotal = ObjectsTotal(ChartID(), 0, -1);
    string objName;
 
    for(int i = objectsTotal; i >= 0; i--) {
       objName = ObjectName(ChartID(), i);
-      if(ObjectGetInteger(ChartID(), objName, OBJPROP_TYPE) == OBJ_VLINE) {
-      ObjectSetInteger(ChartID(), pLineName, OBJPROP_WIDTH, InpT4LineWidth);
-      ObjectSetInteger(ChartID(), pLineName, OBJPROP_STYLE, InpT4LineStyle);
-      ObjectSetInteger(ChartID(), pLineName, OBJPROP_COLOR, InpT4VLineColor);
-      ObjectSetInteger(ChartID(), pLineName, OBJPROP_BACK, true);
-      ObjectSetInteger(ChartID(), pLineName, OBJPROP_TIMEFRAMES, InpT4VisibleTimeframes);
+      if(ObjectGetInteger(ChartID(), objName, OBJPROP_TYPE) == OBJ_VLINE
+      && StringFind(objName, pSubString) != -1
+      ) {
+      ObjectSetInteger(ChartID(), objName, OBJPROP_WIDTH, InpT4LineWidth);
+      ObjectSetInteger(ChartID(), objName, OBJPROP_STYLE, InpT4LineStyle);
+      ObjectSetInteger(ChartID(), objName, OBJPROP_COLOR, InpT4VLineColor);
+      ObjectSetInteger(ChartID(), objName, OBJPROP_BACK, true);
+      ObjectSetInteger(ChartID(), objName, OBJPROP_TIMEFRAMES, InpT4VisibleTimeframes);
       }
    }          
 }

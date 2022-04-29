@@ -80,14 +80,16 @@ void setTT2VLineValues() {
 //+------------------------------------------------------------------+
 //|                                                                  |
 //+------------------------------------------------------------------+
-void setTT2VLineStyles(const string pLineName = "TT2-") {
+void setTT2VLineStyles(const string pSubString = "TMP2-") {
 
    int objectsTotal = ObjectsTotal(ChartID(), 0, -1);
    string objName;
 
    for(int i = objectsTotal; i >= 0; i--) {
       objName = ObjectName(ChartID(), i);
-      if(ObjectGetInteger(ChartID(), objName, OBJPROP_TYPE) == OBJ_VLINE) {
+      if(ObjectGetInteger(ChartID(), objName, OBJPROP_TYPE) == OBJ_VLINE
+      && StringFind(objName, pSubString) != -1
+      ) {
          ObjectSetInteger(ChartID(), objName, OBJPROP_WIDTH, InpT2LineWidth);
          ObjectSetInteger(ChartID(), objName, OBJPROP_STYLE, InpT2LineStyle);
          ObjectSetInteger(ChartID(), objName, OBJPROP_COLOR, InpT2VLineColor);
@@ -173,18 +175,20 @@ void setTT3VLineValues() {
 //+------------------------------------------------------------------+
 //|                                                                  |
 //+------------------------------------------------------------------+
-void setTT3VLineStyles(const string pLineName = "TT3-") {
+void setTT3VLineStyles(const string pSubString = "TMP3-") {
    int objectsTotal = ObjectsTotal(ChartID(), 0, -1);
    string objName;
 
    for(int i = objectsTotal; i >= 0; i--) {
       objName = ObjectName(ChartID(), i);
-      if(ObjectGetInteger(ChartID(), objName, OBJPROP_TYPE) == OBJ_VLINE) {
-         ObjectSetInteger(ChartID(), pLineName, OBJPROP_WIDTH, InpT3LineWidth);
-         ObjectSetInteger(ChartID(), pLineName, OBJPROP_STYLE, InpT3LineStyle);
-         ObjectSetInteger(ChartID(), pLineName, OBJPROP_COLOR, InpT3VLineColor);
-         ObjectSetInteger(ChartID(), pLineName, OBJPROP_BACK, true);
-         ObjectSetInteger(ChartID(), pLineName, OBJPROP_TIMEFRAMES, InpT3VisibleTimeframes);
+      if(ObjectGetInteger(ChartID(), objName, OBJPROP_TYPE) == OBJ_VLINE
+      && StringFind(objName, pSubString) != -1
+      ) {
+         ObjectSetInteger(ChartID(), objName, OBJPROP_WIDTH, InpT3LineWidth);
+         ObjectSetInteger(ChartID(), objName, OBJPROP_STYLE, InpT3LineStyle);
+         ObjectSetInteger(ChartID(), objName, OBJPROP_COLOR, InpT3VLineColor);
+         ObjectSetInteger(ChartID(), objName, OBJPROP_BACK, true);
+         ObjectSetInteger(ChartID(), objName, OBJPROP_TIMEFRAMES, InpT3VisibleTimeframes);
       }
    }
 
@@ -268,18 +272,20 @@ void setTT4VLineValues() {
 //+------------------------------------------------------------------+
 //|                                                                  |
 //+------------------------------------------------------------------+
-void setTT4VLineStyles(const string pLineName = "TT4-") {
+void setTT4VLineStyles(const string pSubString = "TMP4-") {
    int objectsTotal = ObjectsTotal(ChartID(), 0, -1);
    string objName;
 
    for(int i = objectsTotal; i >= 0; i--) {
       objName = ObjectName(ChartID(), i);
-      if(ObjectGetInteger(ChartID(), objName, OBJPROP_TYPE) == OBJ_VLINE) {
-         ObjectSetInteger(ChartID(), pLineName, OBJPROP_WIDTH, InpT4LineWidth);
-         ObjectSetInteger(ChartID(), pLineName, OBJPROP_STYLE, InpT4LineStyle);
-         ObjectSetInteger(ChartID(), pLineName, OBJPROP_COLOR, InpT4VLineColor);
-         ObjectSetInteger(ChartID(), pLineName, OBJPROP_BACK, true);
-         ObjectSetInteger(ChartID(), pLineName, OBJPROP_TIMEFRAMES, InpT4VisibleTimeframes);
+      if(ObjectGetInteger(ChartID(), objName, OBJPROP_TYPE) == OBJ_VLINE
+      && StringFind(objName, pSubString) != -1
+      ) {
+         ObjectSetInteger(ChartID(), objName, OBJPROP_WIDTH, InpT4LineWidth);
+         ObjectSetInteger(ChartID(), objName, OBJPROP_STYLE, InpT4LineStyle);
+         ObjectSetInteger(ChartID(), objName, OBJPROP_COLOR, InpT4VLineColor);
+         ObjectSetInteger(ChartID(), objName, OBJPROP_BACK, true);
+         ObjectSetInteger(ChartID(), objName, OBJPROP_TIMEFRAMES, InpT4VisibleTimeframes);
       }
    }
 
