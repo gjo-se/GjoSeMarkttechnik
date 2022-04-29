@@ -35,8 +35,6 @@ void setT3Action() {
 
          if(t3LowestLowValue < t3MinHighVolumeAreaLevel) {
             t3LowestLowDateTime = 0;
-            string t3DisableTradeableButtonReason = "t3LowestLowValue < t3MinHighVolumeAreaLevel";
-            t3DisableTradeableButton(t3DisableTradeableButtonReason);
          }
          if(t3LowestLowValue < t3MinHighVolumeAreaLevel && Bid() > t3MinHighVolumeAreaLevel) {
             if(t3alertBidAgainInHighVolumeAreaSended == false) t3alertBidAgainInHighVolumeAreaAction();
@@ -63,8 +61,6 @@ void setT3Action() {
          if(t3HighestHighValue > t3MaxHighVolumeAreaLevel) {
             // TODO: das hier kann ich auch in Frage stellen
             t3HighestHighDateTime = 0;
-            string t3DisableTradeableButtonReason = "t3HighestHighValue > t3MaxHighVolumeAreaLevel";
-            t3DisableTradeableButton(t3DisableTradeableButtonReason);
          }
          if(t3HighestHighValue > t3MaxHighVolumeAreaLevel && Bid() < t3MaxHighVolumeAreaLevel) {
             if(t3alertBidAgainInHighVolumeAreaSended == false) t3alertBidAgainInHighVolumeAreaAction();

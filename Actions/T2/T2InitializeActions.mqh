@@ -9,6 +9,8 @@ void initializeT2ArraysAction() {
 
 void initializeT2GlobalsAction() {
 
+   t2AutoButtonState = ObjectGetInteger(ChartID(), T2_AUTO_BUTTON, OBJPROP_STATE);
+
    t2StartDateTime = 0;
    t2p1DateTime = 0;
    t2p1ValueHigh = 0;

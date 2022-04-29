@@ -26,13 +26,15 @@ void getT4TrendDirection() {
 
 void handleT4TrendDetectionAction() {
 
-   handleT4P2();
-   handleT4P3();
-   handleT4P4();
-   handleT4P5();
-   handleT4BuildNewTrend();
-   handleT4TrendBrokenOnP1();
-   handleT4TrendBrokenOnP3();
+   if(t4AutoButtonState == true) {
+      handleT4P2();
+      handleT4P3();
+      handleT4P4();
+      handleT4P5();
+      handleT4BuildNewTrend();
+      handleT4TrendBrokenOnP1();
+      handleT4TrendBrokenOnP3();
+   }
 }
 
 void handleT4P2() {

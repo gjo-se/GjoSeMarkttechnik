@@ -3,46 +3,33 @@
 //|                                       Copyright 2022, Gregory Jo |
 //+------------------------------------------------------------------+
 
-void createT3IsTradeableButton() {
+void createT3AutoButton() {
 
-   int xCoord = 250;
-   int yCoord = 25;
+   int xCoord = 125;
+   int yCoord = 60;
    int objWidth = 100;
    int objHeight = 24;
    ENUM_BASE_CORNER  chartCorner = CORNER_RIGHT_UPPER;
    color objColor = clrBlack;
    color backgroundColor = C'236,233,216';
    color borderColor = clrNONE;
-   string objText = "T3 initial off";
+   string objText = "T3 Auto off";
    string fontFamily = "Arial";
    int fontSize = 14;
    bool objState = false;
 
-   createButton(T3_IS_TRADEABLE_BUTTON, xCoord, yCoord, objWidth, objHeight, chartCorner, objColor, backgroundColor, borderColor, objText, fontFamily, fontSize, objState);
+   createButton(T3_AUTO_BUTTON, xCoord, yCoord, objWidth, objHeight, chartCorner, objColor, backgroundColor, borderColor, objText, fontFamily, fontSize, objState);
 
 }
 
-void handleT3IsTradeableButton() {
+void handleT3AutoButton() {
 
-   t3IsTradabelButtonState = ObjectGetInteger(0, T3_IS_TRADEABLE_BUTTON, OBJPROP_STATE);
-   if(t3IsTradabelButtonState == true) {
-      ObjectSetString(0, T3_IS_TRADEABLE_BUTTON, OBJPROP_TEXT, "T3 ON");
-      if(t3trendDirection == TREND_DIRECTION_LONG) ObjectSetInteger(0, T3_IS_TRADEABLE_BUTTON, OBJPROP_BGCOLOR, clrGreen);
-      if(t3trendDirection == TREND_DIRECTION_SHORT) ObjectSetInteger(0, T3_IS_TRADEABLE_BUTTON, OBJPROP_BGCOLOR, clrRed);
-      if(t3trendDirection == TREND_DIRECTION_ROTATION) ObjectSetInteger(0, T3_IS_TRADEABLE_BUTTON, OBJPROP_BGCOLOR, clrGray);
+   t3AutoButtonState = ObjectGetInteger(ChartID(), T3_AUTO_BUTTON, OBJPROP_STATE);
+   if(t3AutoButtonState == true) {
+      ObjectSetString(0, T3_AUTO_BUTTON, OBJPROP_TEXT, "T3 Auto ON");
+      ObjectSetInteger(0, T3_AUTO_BUTTON, OBJPROP_BGCOLOR, clrGreen);
    } else {
-      ObjectSetString(0, T3_IS_TRADEABLE_BUTTON, OBJPROP_TEXT, "T3 OFF");
-      ObjectSetInteger(0, T3_IS_TRADEABLE_BUTTON, OBJPROP_BGCOLOR, clrGray);
+      ObjectSetString(0, T3_AUTO_BUTTON, OBJPROP_TEXT, "T3 Auto OFF");
+      ObjectSetInteger(0, T3_AUTO_BUTTON, OBJPROP_BGCOLOR, clrGray);
    }
 }
-
-void t3DisableTradeableButton(string pReason) {
-
-   bool buttonState = false;
-
-   ObjectSetInteger(0, T3_IS_TRADEABLE_BUTTON, OBJPROP_STATE, buttonState);
-   t3IsTradabelButtonState = buttonState;
-   handleT3IsTradeableButton();
-   if(t3AlertDisableTradeableButtonSended == false) t3AlertDisableTradeableButtonAction(pReason);
-}
-//+------------------------------------------------------------------+

@@ -177,7 +177,6 @@ void t3CommentAction(string pVersion) {
    }
    t3comment += "\n";
    if(t3p1DateTime) {
-      t3comment += "Tradabel Button State: " + IntegerToString(t3IsTradabelButtonState) + "\n";
       if(t3AlertRegressionChannelLevel != 0) t3comment += "Alert RegressionChannel: " + DoubleToString(t3AlertRegressionChannelLevel, 2) + "\n";
       if(t3AlertFiboRetracementLevel != 0) t3comment += "Alert FiboRetracement: " + DoubleToString(t3AlertFiboRetracementLevel, 2) + "\n";
       t3comment += "\n";

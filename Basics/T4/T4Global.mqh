@@ -29,6 +29,7 @@ int         t4TrailingStopMAPeriod05;
 
 string t4comment;
 
+bool  t4AutoButtonState;
 bool  t4IsTradabelButtonState;
 
 int   buyPositionsCount;

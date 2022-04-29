@@ -21,7 +21,6 @@ bool getT3SellInSignal() {
 
    if(!TerminalInfoInteger(TERMINAL_TRADE_ALLOWED) || !MQLInfoInteger(MQL_TRADE_ALLOWED)) signal = false;
    if(t3trendDirection != TREND_DIRECTION_SHORT) signal = false;
-   if(t3IsTradabelButtonState == false) signal = false;
    if(maxT3SellPositionsAreOpenState == true) signal = false;
 
 //   if(getT3BidLowerShortReEntryAreaFilter() == true) return false;

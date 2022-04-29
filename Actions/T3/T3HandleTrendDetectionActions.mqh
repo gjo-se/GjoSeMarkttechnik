@@ -26,13 +26,15 @@ void getT3TrendDirection() {
 
 void handleT3TrendDetectionAction() {
 
-   handleT3P2();
-   handleT3P3();
-   handleT3P4();
-   handleT3P5();
-   handleT3BuildNewTrend();
-   handleT3TrendBrokenOnP1();
-   handleT3TrendBrokenOnP3();
+   if(t3AutoButtonState == true) {
+      handleT3P2();
+      handleT3P3();
+      handleT3P4();
+      handleT3P5();
+      handleT3BuildNewTrend();
+      handleT3TrendBrokenOnP1();
+      handleT3TrendBrokenOnP3();
+   }
 }
 //+------------------------------------------------------------------+
 

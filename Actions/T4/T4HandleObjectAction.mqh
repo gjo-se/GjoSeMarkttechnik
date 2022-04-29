@@ -22,6 +22,9 @@ void handleT4ObjectsInitAction() {
 
 void t4HandleObjectsAction() {
 
+   if(ObjectFind(ChartID(), T4_AUTO_BUTTON) < 0) {
+      createT4AutoButton();
+   }
    if(ObjectFind(ChartID(), T4_IS_TRADEABLE_BUTTON) < 0) {
       createT4IsTradeableButton();
    }

@@ -37,8 +37,8 @@ void handleT3ObjectsInitAction() {
 
 void t3HandleObjectsAction() {
 
-   if(ObjectFind(ChartID(), T3_IS_TRADEABLE_BUTTON) < 0) {
-      createT3IsTradeableButton();
+   if(ObjectFind(ChartID(), T3_AUTO_BUTTON) < 0) {
+      createT3AutoButton();
    }
 
    if(InpT3ObjectsShow == true) {
@@ -122,8 +122,6 @@ void t3HandleObjectsAction() {
    }
 
    if(allT3BuyPositionsAreClosedState || allT3SellPositionsAreClosedState) {
-      string t3DisableTradeableButtonReason = "allT3PositionsAreClosedState";
-      if(InpT3DisableTradabelButtonStateAfterClose == true) t3DisableTradeableButton(t3DisableTradeableButtonReason);
       deleteTrendLine(T3_STOP_LOSS_TLINE);
    }
 

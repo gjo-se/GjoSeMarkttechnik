@@ -119,7 +119,6 @@ int OnInit() {
 
    if(MQLInfoInteger(MQL_TESTER) == 1) {
 
-      t3IsTradabelButtonState = true;
       t4IsTradabelButtonState = true;
 
       if(MQLInfoInteger(MQL_VISUAL_MODE) != 1) {
@@ -356,10 +355,11 @@ void OnChartEvent(const int id,
    }
 
    if(id == CHARTEVENT_OBJECT_CLICK) {
-      if(sparam == T3_IS_TRADEABLE_BUTTON) {
-         handleT3IsTradeableButton();
-         handleCommentAction(VERSION);
-      }
+
+      if(sparam == T2_AUTO_BUTTON) handleT2AutoButton();
+      if(sparam == T3_AUTO_BUTTON) handleT3AutoButton();
+      if(sparam == T4_AUTO_BUTTON) handleT4AutoButton();
+
       if(sparam == T4_IS_TRADEABLE_BUTTON) {
          handleT4IsTradeableButton();
          handleCommentAction(VERSION);

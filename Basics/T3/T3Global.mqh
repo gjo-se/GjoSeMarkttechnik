@@ -36,7 +36,7 @@ int         t3TrailingStopMAPeriod05;
 bool isNewCurrentBar;
 string t3comment;
 
-bool  t3IsTradabelButtonState;
+bool  t3AutoButtonState;
 
 bool  buyT3PositionIsOpenState;
 bool  maxT3BuyPositionsAreOpenState;

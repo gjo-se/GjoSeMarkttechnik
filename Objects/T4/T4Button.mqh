@@ -6,7 +6,7 @@
 void createT4IsTradeableButton() {
 
    int xCoord = 125;
-   int yCoord = 25;
+   int yCoord = 90;
    int objWidth = 100;
    int objHeight = 24;
    ENUM_BASE_CORNER  chartCorner = CORNER_RIGHT_UPPER;
@@ -46,3 +46,34 @@ void t4DisableTradeableButton(string pReason) {
    if(t4AlertDisableTradeableButtonSended == false) t4AlertDisableTradeableButtonAction(pReason);
 }
 //+------------------------------------------------------------------+
+
+void createT4AutoButton() {
+
+   int xCoord = 125;
+   int yCoord = 90;
+   int objWidth = 100;
+   int objHeight = 24;
+   ENUM_BASE_CORNER  chartCorner = CORNER_RIGHT_UPPER;
+   color objColor = clrBlack;
+   color backgroundColor = C'236,233,216';
+   color borderColor = clrNONE;
+   string objText = "T4 Auto off";
+   string fontFamily = "Arial";
+   int fontSize = 14;
+   bool objState = false;
+
+   createButton(T4_AUTO_BUTTON, xCoord, yCoord, objWidth, objHeight, chartCorner, objColor, backgroundColor, borderColor, objText, fontFamily, fontSize, objState);
+
+}
+
+void handleT4AutoButton() {
+
+   t4AutoButtonState = ObjectGetInteger(ChartID(), T4_AUTO_BUTTON, OBJPROP_STATE);
+   if(t4AutoButtonState == true) {
+      ObjectSetString(0, T4_AUTO_BUTTON, OBJPROP_TEXT, "T4 Auto ON");
+      ObjectSetInteger(0, T4_AUTO_BUTTON, OBJPROP_BGCOLOR, clrGreen);
+   } else {
+      ObjectSetString(0, T4_AUTO_BUTTON, OBJPROP_TEXT, "T4 Auto OFF");
+      ObjectSetInteger(0, T4_AUTO_BUTTON, OBJPROP_BGCOLOR, clrGray);
+   }
+}

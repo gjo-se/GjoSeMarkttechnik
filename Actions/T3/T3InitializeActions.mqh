@@ -16,7 +16,7 @@ void initializeT3GlobalsAction() {
    isNewCurrentBar = false;
    t3comment = "";
 
-   t3IsTradabelButtonState = ObjectGetInteger(0, T3_IS_TRADEABLE_BUTTON, OBJPROP_STATE);
+   t3AutoButtonState = ObjectGetInteger(ChartID(), T3_AUTO_BUTTON, OBJPROP_STATE);
 
    buyT3PositionIsOpenState = false;
    maxT3BuyPositionsAreOpenState = false;

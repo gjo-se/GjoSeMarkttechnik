@@ -4,6 +4,8 @@
 //|                                             https://www.mql5.com |
 //+------------------------------------------------------------------+
 
+bool  t2AutoButtonState;
+
 datetime t2StartDateTime;
 datetime t2p1DateTime;
 double t2p1ValueHigh;

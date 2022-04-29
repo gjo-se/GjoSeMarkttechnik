@@ -9,6 +9,7 @@ void initializeT4GlobalsAction() {
    t4comment = "";
 
    t4IsTradabelButtonState = ObjectGetInteger(0, T4_IS_TRADEABLE_BUTTON, OBJPROP_STATE);
+   t4AutoButtonState = ObjectGetInteger(ChartID(), T4_AUTO_BUTTON, OBJPROP_STATE);
 
    t4StartDateTime = 0;
    t4p1DateTime = 0;

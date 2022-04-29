@@ -15,6 +15,7 @@
 #include "..\\..\\Actions\\T2\\T2HandleObjectAction.mqh"
 #include "..\\..\\Actions\\T2\\T2HandleTrendDetectionActions.mqh"
 
+#include "..\\..\\Objects\\T2\\T2Button.mqh"
 #include "..\\..\\Objects\\T2\\T2Channel.mqh"
 #include "..\\..\\Objects\\T2\\T2RegressionChannel.mqh"
 #include "..\\..\\Objects\\T2\\T2FiboRetracement.mqh"
