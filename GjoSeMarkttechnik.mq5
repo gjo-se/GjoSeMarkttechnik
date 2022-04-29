@@ -213,37 +213,41 @@ void OnChartEvent(const int id,
    if(id == CHARTEVENT_OBJECT_DRAG) {
 
       rewriteVLineNamesWithText();
+
       setTT2LineValues();
-      setT2LineValues();
-      setTT3LineValues();
-      setT3LineValues();
-      setTT4LineValues();
-      setT4LineValues();
-
       getTT2TrendDirection();
-      getT2TrendDirection();
-      getTT3TrendDirection();
-      getT3TrendDirection();
-      getTT4TrendDirection();
-      getT4TrendDirection();
-
       createTT2ZigZagTemplateLines();
-      createTT3ZigZagTemplateLines();
-      createT3ZigZagTrendDetectionLines();
-      createTT4ZigZagTemplateLines();
-      createT4ZigZagTrendDetectionLines();
-
       createTT2RegressionChannel();
+
+      setT2LineValues();
+      getT2TrendDirection();
+      createT2ZigZagTrendDetectionLines();
       createT2RegressionChannel();
+      createT2RegressionChannelLevels();
+      createT2FiboRetracement();
+
+      setTT3LineValues();
+      getTT3TrendDirection();
+      createTT3ZigZagTemplateLines();
       createTT3RegressionChannel();
+
+      setT3LineValues();
+      getT3TrendDirection();
+      createT3ZigZagTrendDetectionLines();
       createT3RegressionChannel();
       createT3RegressionChannelLevels();
+      createT3FiboRetracement();
+
+      setTT4LineValues();
+      getTT4TrendDirection();
+      createTT4ZigZagTemplateLines();
       createTT4RegressionChannel();
+
+      setT4LineValues();
+      getT4TrendDirection();
+      createT4ZigZagTrendDetectionLines();
       createT4RegressionChannel();
       createT4RegressionChannelLevels();
-
-      createT2FiboRetracement();
-      createT3FiboRetracement();
       createT4FiboRetracement();
 
       if(sparam == T3_STOP_LOSS_TLINE) {
