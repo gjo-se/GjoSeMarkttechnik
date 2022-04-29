@@ -23,6 +23,8 @@ void createT4RegressionChannel() {
    if(startDateTime != 0 && endDateTime != 0 ) {
       createRegressionChannel(T4_REGRESSION_CHANNEL, startDateTime, endDateTime, InpT4DefaultColor, isFilled, InpT4LineStyle, InpT4LineWidth);
       ObjectSetInteger(ChartID(), T4_REGRESSION_CHANNEL, OBJPROP_TIMEFRAMES, InpT4VisibleTimeframes);
+   }else{
+      deleteRegressionChannel(T4_REGRESSION_CHANNEL);
    }
 }
 
@@ -62,6 +64,8 @@ void createT4RegressionChannelLevels() {
       double t4RegressionChannel75EndValue   = t4RegressionChannel0EndValue + (t4RegressionChannel100EndValue - t4RegressionChannel0EndValue) / 4 * 3;
       createTrendLine(T4_REGRESSION_CHANNEL + "75", startDateTime, t4RegressionChannel75StartValue, endDateTime, t4RegressionChannel75EndValue, InpT4DefaultColor, thinLineWidth, InpT4LineStyle, "   75%");
       ObjectSetInteger(ChartID(), T4_REGRESSION_CHANNEL + "75", OBJPROP_TIMEFRAMES, InpT4VisibleTimeframes);
+   }else{
+      deleteTrendLineLike(T4_REGRESSION_CHANNEL);
    }
 }
 //+------------------------------------------------------------------+

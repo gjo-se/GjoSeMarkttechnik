@@ -12,6 +12,8 @@ void createT4ZigZagTrendDetectionLines() {
    if(t4SemiTrendDirection == TREND_DIRECTION_LONG) lineColor = InpT4TLineZigZagTrendLongColor;
    if(t4SemiTrendDirection == TREND_DIRECTION_SHORT) lineColor = InpT4TLineZigZagTrendShortColor;
 
+   deleteTrendLineLike(T4_ZIGZAGLINE);
+
    if(t4p1DateTime != 0 && t4p2DateTime != 0) {
       createTrendLine(T4_ZIGZAGLINE + "P1-P2", t4p1DateTime, getT4P1HighLowValueByTrendDirection(), t4p2DateTime, getT4P2HighLowValueByTrendDirection(), lineColor, InpT4LineWidth, InpT4LineStyle);
       ObjectSetInteger(ChartID(), T4_ZIGZAGLINE + "P1-P2", OBJPROP_TIMEFRAMES, InpT4VisibleTimeframes);

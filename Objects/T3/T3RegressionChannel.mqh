@@ -23,6 +23,8 @@ void createT3RegressionChannel() {
    if(startDateTime != 0 && endDateTime != 0 ) {
       createRegressionChannel(T3_REGRESSION_CHANNEL, startDateTime, endDateTime, InpT3DefaultColor, isFilled, InpT3LineStyle, InpT3LineWidth);
       ObjectSetInteger(ChartID(), T3_REGRESSION_CHANNEL, OBJPROP_TIMEFRAMES, InpT3VisibleTimeframes);
+   }else{
+      deleteRegressionChannel(T3_REGRESSION_CHANNEL);
    }
 }
 
@@ -62,6 +64,8 @@ void createT3RegressionChannelLevels() {
       double t3RegressionChannel75EndValue   = t3RegressionChannel0EndValue + (t3RegressionChannel100EndValue - t3RegressionChannel0EndValue) / 4 * 3;
       createTrendLine(T3_REGRESSION_CHANNEL + "75", startDateTime, t3RegressionChannel75StartValue, endDateTime, t3RegressionChannel75EndValue, InpT3DefaultColor, thinLineWidth, InpT3LineStyle, "   75%");
       ObjectSetInteger(ChartID(), T3_REGRESSION_CHANNEL + "75", OBJPROP_TIMEFRAMES, InpT3VisibleTimeframes);
+   }else{
+      deleteTrendLineLike(T3_REGRESSION_CHANNEL);
    }
 }
 //+------------------------------------------------------------------+
