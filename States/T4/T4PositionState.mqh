@@ -14,6 +14,7 @@
 //+------------------------------------------------------------------+
 void setT4PositionStates() {
 
+   setT4PositionsCountState();
    setT4BuyPositionIsOpen();
    setT4MaxBuyPositionsAreOpen();
    setT4AllBuyPositionsAreClosedState();
@@ -23,6 +24,48 @@ void setT4PositionStates() {
    setT4AllSellPositionsAreClosedState();
 }
 
+void setT4PositionsCountState() {
+
+   long  positionTicket = 0;
+   int   buyPositionsCountLocal = 0;
+   int   sellPositionsCountLocal = 0;
+   ulong magicNumber = 0;
+
+   long positionTicketsLocal[];
+   Positions.GetTickets(magicNumber, positionTicketsLocal);
+   for(int positionTicketsId = 0; positionTicketsId < ArraySize(positionTicketsLocal); positionTicketsId++) {
+      positionTicket = positionTicketsLocal[positionTicketsId];
+      if(
+         positionTicket > 0
+         && PositionSymbol(positionTicket) == Symbol()
+      ) {
+         if(PositionType(positionTicket) == ORDER_TYPE_BUY) buyPositionsCountLocal++;
+         if(PositionType(positionTicket) == ORDER_TYPE_SELL) sellPositionsCountLocal++;
+      }
+   }
+
+   if(buyPositionsCountLocal > buyPositionsCount) {
+      buyPositionsCount = buyPositionsCountLocal;
+      string alertText = "BUY Position opened";
+      t4AlertPositionCountAction(alertText);
+   }
+   if(buyPositionsCountLocal < buyPositionsCount) {
+      buyPositionsCount = buyPositionsCountLocal;
+      string alertText = "BUY Position closed";
+      t4AlertPositionCountAction(alertText);
+   }
+   if(sellPositionsCountLocal > sellPositionsCount) {
+      sellPositionsCount = sellPositionsCountLocal;
+      string alertText = "SELL Position opened";
+      t4AlertPositionCountAction(alertText);
+   }
+   if(sellPositionsCountLocal < sellPositionsCount) {
+      sellPositionsCount = sellPositionsCountLocal;
+      string alertText = "SELL Position closed";
+      t4AlertPositionCountAction(alertText);
+   }
+}
+
 void setT4AllBuyPositionsAreClosedState() {
 
    long positionTicket = 0;
@@ -30,8 +73,8 @@ void setT4AllBuyPositionsAreClosedState() {
    ulong magicNumber = 0;
 
    if(buyT4PositionIsOpenState == true) {
-   	  long positionTicketsLocal[];
-   	  Positions.GetTickets(magicNumber, positionTicketsLocal);
+      long positionTicketsLocal[];
+      Positions.GetTickets(magicNumber, positionTicketsLocal);
       for(int positionTicketsId = 0; positionTicketsId < ArraySize(positionTicketsLocal); positionTicketsId++) {
          positionTicket = positionTicketsLocal[positionTicketsId];
          if(
@@ -45,7 +88,6 @@ void setT4AllBuyPositionsAreClosedState() {
 
       if(minOneBuyPositionIsOpen == false) {
          allT4BuyPositionsAreClosedState = true;
-         t4AlertClosePositionAction();
       } else {
          allT4BuyPositionsAreClosedState = false;
       }
@@ -68,7 +110,6 @@ void setT4BuyPositionIsOpen() {
             && PositionType(positionTicket) == ORDER_TYPE_BUY
          ) {
             buyT4PositionIsOpenState = true;
-            t4AlertOpenPositionAction();
          }
       }
    }
@@ -147,7 +188,6 @@ void setT4SellPositionIsOpen() {
             && PositionType(positionTicket) == ORDER_TYPE_SELL
          ) {
             sellT4PositionIsOpenState = true;
-            t4AlertOpenPositionAction();
          }
       }
    }
@@ -175,7 +215,6 @@ void setT4AllSellPositionsAreClosedState() {
 
       if(minOneSellPositionIsOpen == false) {
          allT4SellPositionsAreClosedState = true;
-         t4AlertClosePositionAction();
       } else {
          allT4SellPositionsAreClosedState = false;
       }

@@ -31,6 +31,8 @@ string t4comment;
 
 bool  t4IsTradabelButtonState;
 
+int   buyPositionsCount;
+int   sellPositionsCount;
 bool  buyT4PositionIsOpenState;
 bool  maxT4BuyPositionsAreOpenState;
 bool  allT4BuyPositionsAreClosedState;

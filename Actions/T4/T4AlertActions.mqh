@@ -8,21 +8,10 @@
 //+------------------------------------------------------------------+
 //|                                                                  |
 //+------------------------------------------------------------------+
-void t4AlertOpenPositionAction() {
+void t4AlertPositionCountAction(const string pAlertText) {
    if(sendAlerts == true) {
       string prio = "B";
-      string text = "Position opened";
-      string message = prio + ": " + text + " - " + Symbol();
-      Alert(message);
-      if(!SendNotification(message)) Alert("Cannot Push " + message + " Error: ", GetLastError());
-   }
-}
-
-void t4AlertClosePositionAction() {
-   if(sendAlerts == true) {
-      string prio = "B";
-      string text = "Position closed";
-      string message = prio + ": " + text + " - " + Symbol();
+      string message = prio + ": " + pAlertText + " - " + Symbol();
       Alert(message);
       if(!SendNotification(message)) Alert("Cannot Push " + message + " Error: ", GetLastError());
    }
