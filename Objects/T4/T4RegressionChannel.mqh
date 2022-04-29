@@ -13,11 +13,7 @@ void createT4RegressionChannel() {
 
    datetime startDateTime = t4p1DateTime;
    if(t4StartDateTime != 0) startDateTime = t4StartDateTime;
-
    datetime endDateTime = TimeCurrent();
-   if(t4p3DateTime != 0) endDateTime = t4p3DateTime;
-   if(t4p4DateTime != 0) endDateTime = t4p4DateTime;
-   if(t4p5DateTime != 0) endDateTime = t4p5DateTime;
    if(t4EndDateTime != 0) endDateTime = t4EndDateTime;
 
    if(startDateTime != 0 && endDateTime != 0 ) {
@@ -36,7 +32,6 @@ void createT4RegressionChannelLevels() {
 
       datetime startDateTime = t4p1DateTime;
       if(t4StartDateTime != 0) startDateTime = t4StartDateTime;
-
       datetime endDateTime = iTime(Symbol(), PERIOD_CURRENT, InpT4ChannelEndShift);
       if(t4EndDateTime != 0) endDateTime = t4EndDateTime;
 
