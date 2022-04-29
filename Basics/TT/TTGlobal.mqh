@@ -45,6 +45,9 @@ double tt2MinHighVolumeAreaLevel;
 double tt2MaxHighVolumeAreaLevel;
 
 // TT3
+datetime tt3StartDateTime;
+double tt3StartValueHigh;
+double tt3StartValueLow;
 datetime tt3p1DateTime;
 double tt3p1ValueHigh;
 double tt3p1ValueLow;
@@ -63,6 +66,9 @@ double tt3p5ValueLow;
 datetime tt3p6DateTime;
 double tt3p6ValueHigh;
 double tt3p6ValueLow;
+datetime tt3EndDateTime;
+double tt3EndValueHigh;
+double tt3EndValueLow;
 
 int tt3trendDirection;
 
@@ -76,6 +82,9 @@ double tt3regressionLengthP4P5;
 double tt3movementLengthRegressionLengthRatio;
 
 // TT4
+datetime tt4StartDateTime;
+double tt4StartValueHigh;
+double tt4StartValueLow;
 datetime tt4p1DateTime;
 double tt4p1ValueHigh;
 double tt4p1ValueLow;
@@ -94,6 +103,9 @@ double tt4p5ValueLow;
 datetime tt4p6DateTime;
 double tt4p6ValueHigh;
 double tt4p6ValueLow;
+datetime tt4EndDateTime;
+double tt4EndValueHigh;
+double tt4EndValueLow;
 
 int tt4trendDirection;
 

@@ -9,60 +9,21 @@
 void setTT2LineValues() {
    setTT2VLineDateTimes();
    setTT2VLineValues();
+   setTT2VLineStyles();
 }
 
 //+------------------------------------------------------------------+
 //|                                                                  |
 //+------------------------------------------------------------------+
 void setTT2VLineDateTimes() {
-   if(ObjectFind(ChartID(), TT2_START_VLINE) >= 0) {
-      tt2StartDateTime = (datetime)ObjectGetInteger(ChartID(), TT2_START_VLINE, OBJPROP_TIME);
-      setTT2VLineStyles(TT2_START_VLINE);
-   } else {
-      tt2StartDateTime = 0;
-   }
-   if(ObjectFind(ChartID(), TT2_P1_VLINE) >= 0) {
-      tt2p1DateTime = (datetime)ObjectGetInteger(ChartID(), TT2_P1_VLINE, OBJPROP_TIME);
-      setTT2VLineStyles(TT2_P1_VLINE);
-   } else {
-      tt2p1DateTime = 0;
-   }
-   if(ObjectFind(ChartID(), TT2_P2_VLINE) >= 0) {
-      tt2p2DateTime = (datetime)ObjectGetInteger(ChartID(), TT2_P2_VLINE, OBJPROP_TIME);
-      setTT2VLineStyles(TT2_P2_VLINE);
-   } else {
-      tt2p2DateTime = 0;
-   }
-   if(ObjectFind(ChartID(), TT2_P3_VLINE) >= 0) {
-      tt2p3DateTime = (datetime)ObjectGetInteger(ChartID(), TT2_P3_VLINE, OBJPROP_TIME);
-      setTT2VLineStyles(TT2_P3_VLINE);
-   } else {
-      tt2p3DateTime = 0;
-   }
-   if(ObjectFind(ChartID(), TT2_P4_VLINE) >= 0) {
-      tt2p4DateTime = (datetime)ObjectGetInteger(ChartID(), TT2_P4_VLINE, OBJPROP_TIME);
-      setTT2VLineStyles(TT2_P4_VLINE);
-   } else {
-      tt2p4DateTime = 0;
-   }
-   if(ObjectFind(ChartID(), TT2_P5_VLINE) >= 0) {
-      tt2p5DateTime = (datetime)ObjectGetInteger(ChartID(), TT2_P5_VLINE, OBJPROP_TIME);
-      setTT2VLineStyles(TT2_P5_VLINE);
-   } else {
-      tt2p5DateTime = 0;
-   }
-   if(ObjectFind(ChartID(), TT2_P6_VLINE) >= 0) {
-      tt2p6DateTime = (datetime)ObjectGetInteger(ChartID(), TT2_P6_VLINE, OBJPROP_TIME);
-      setTT2VLineStyles(TT2_P6_VLINE);
-   } else {
-      tt2p6DateTime = 0;
-   }
-   if(ObjectFind(ChartID(), TT2_END_VLINE) >= 0) {
-      tt2EndDateTime = (datetime)ObjectGetInteger(ChartID(), TT2_END_VLINE, OBJPROP_TIME);
-      setTT2VLineStyles(TT2_END_VLINE);
-   } else {
-      tt2EndDateTime = 0;
-   }
+   tt2StartDateTime = getVlineDatetimeByTextLike(TT2_START_VLINE);
+   tt2p1DateTime = getVlineDatetimeByTextLike(TT2_P1_VLINE);
+   tt2p2DateTime = getVlineDatetimeByTextLike(TT2_P2_VLINE);
+   tt2p3DateTime = getVlineDatetimeByTextLike(TT2_P3_VLINE);
+   tt2p4DateTime = getVlineDatetimeByTextLike(TT2_P4_VLINE);
+   tt2p5DateTime = getVlineDatetimeByTextLike(TT2_P5_VLINE);
+   tt2p6DateTime = getVlineDatetimeByTextLike(TT2_P6_VLINE);
+   tt2EndDateTime = getVlineDatetimeByTextLike(TT2_END_VLINE);
 }
 
 void setTT2VLineValues() {
@@ -119,12 +80,21 @@ void setTT2VLineValues() {
 //+------------------------------------------------------------------+
 //|                                                                  |
 //+------------------------------------------------------------------+
-void setTT2VLineStyles(const string pLineName) {
-   ObjectSetInteger(ChartID(), pLineName, OBJPROP_WIDTH, InpT2LineWidth);
-   ObjectSetInteger(ChartID(), pLineName, OBJPROP_STYLE, InpT2LineStyle);
-   ObjectSetInteger(ChartID(), pLineName, OBJPROP_COLOR, InpT2VLineColor);
-   ObjectSetInteger(ChartID(), pLineName, OBJPROP_BACK, true);
-   ObjectSetInteger(ChartID(), pLineName, OBJPROP_TIMEFRAMES, InpT2VisibleTimeframes);
+void setTT2VLineStyles(const string pLineName = "TT2-") {
+
+   int objectsTotal = ObjectsTotal(ChartID(), 0, -1);
+   string objName;
+
+   for(int i = objectsTotal; i >= 0; i--) {
+      objName = ObjectName(ChartID(), i);
+      if(ObjectGetInteger(ChartID(), objName, OBJPROP_TYPE) == OBJ_VLINE) {
+         ObjectSetInteger(ChartID(), objName, OBJPROP_WIDTH, InpT2LineWidth);
+         ObjectSetInteger(ChartID(), objName, OBJPROP_STYLE, InpT2LineStyle);
+         ObjectSetInteger(ChartID(), objName, OBJPROP_COLOR, InpT2VLineColor);
+         ObjectSetInteger(ChartID(), objName, OBJPROP_BACK, true);
+         ObjectSetInteger(ChartID(), objName, OBJPROP_TIMEFRAMES, InpT2VisibleTimeframes);
+      }
+   }
 }
 //+------------------------------------------------------------------+
 //|                                                                  |
@@ -132,48 +102,21 @@ void setTT2VLineStyles(const string pLineName) {
 void setTT3LineValues() {
    setTT3VLineDateTimes();
    setTT3VLineValues();
+   setTT3VLineStyles();
 }
 
 //+------------------------------------------------------------------+
 //|                                                                  |
 //+------------------------------------------------------------------+
 void setTT3VLineDateTimes() {
-   if(ObjectFind(ChartID(), TT3_P1_VLINE) >= 0) {
-      tt3p1DateTime = (datetime)ObjectGetInteger(ChartID(), TT3_P1_VLINE, OBJPROP_TIME);
-      setTT3VLineStyles(TT3_P1_VLINE);
-   } else {
-      tt3p1DateTime = 0;
-   }
-   if(ObjectFind(ChartID(), TT3_P2_VLINE) >= 0) {
-      tt3p2DateTime = (datetime)ObjectGetInteger(ChartID(), TT3_P2_VLINE, OBJPROP_TIME);
-      setTT3VLineStyles(TT3_P2_VLINE);
-   } else {
-      tt3p2DateTime = 0;
-   }
-   if(ObjectFind(ChartID(), TT3_P3_VLINE) >= 0) {
-      tt3p3DateTime = (datetime)ObjectGetInteger(ChartID(), TT3_P3_VLINE, OBJPROP_TIME);
-      setTT3VLineStyles(TT3_P3_VLINE);
-   } else {
-      tt3p3DateTime = 0;
-   }
-   if(ObjectFind(ChartID(), TT3_P4_VLINE) >= 0) {
-      tt3p4DateTime = (datetime)ObjectGetInteger(ChartID(), TT3_P4_VLINE, OBJPROP_TIME);
-      setTT3VLineStyles(TT3_P4_VLINE);
-   } else {
-      tt3p4DateTime = 0;
-   }
-   if(ObjectFind(ChartID(), TT3_P5_VLINE) >= 0) {
-      tt3p5DateTime = (datetime)ObjectGetInteger(ChartID(), TT3_P5_VLINE, OBJPROP_TIME);
-      setTT3VLineStyles(TT3_P5_VLINE);
-   } else {
-      tt3p5DateTime = 0;
-   }
-   if(ObjectFind(ChartID(), TT3_P6_VLINE) >= 0) {
-      tt3p6DateTime = (datetime)ObjectGetInteger(ChartID(), TT3_P6_VLINE, OBJPROP_TIME);
-      setTT3VLineStyles(TT3_P6_VLINE);
-   } else {
-      tt3p6DateTime = 0;
-   }
+   tt3StartDateTime = getVlineDatetimeByTextLike(TT3_START_VLINE);
+   tt3p1DateTime = getVlineDatetimeByTextLike(TT3_P1_VLINE);
+   tt3p2DateTime = getVlineDatetimeByTextLike(TT3_P2_VLINE);
+   tt3p3DateTime = getVlineDatetimeByTextLike(TT3_P3_VLINE);
+   tt3p4DateTime = getVlineDatetimeByTextLike(TT3_P4_VLINE);
+   tt3p5DateTime = getVlineDatetimeByTextLike(TT3_P5_VLINE);
+   tt3p6DateTime = getVlineDatetimeByTextLike(TT3_P6_VLINE);
+   tt3EndDateTime = getVlineDatetimeByTextLike(TT3_END_VLINE);
 }
 
 void setTT3VLineValues() {
@@ -230,12 +173,21 @@ void setTT3VLineValues() {
 //+------------------------------------------------------------------+
 //|                                                                  |
 //+------------------------------------------------------------------+
-void setTT3VLineStyles(const string pLineName) {
-   ObjectSetInteger(ChartID(), pLineName, OBJPROP_WIDTH, InpT3LineWidth);
-   ObjectSetInteger(ChartID(), pLineName, OBJPROP_STYLE, InpT3LineStyle);
-   ObjectSetInteger(ChartID(), pLineName, OBJPROP_COLOR, InpT3VLineColor);
-   ObjectSetInteger(ChartID(), pLineName, OBJPROP_BACK, true);
-   ObjectSetInteger(ChartID(), pLineName, OBJPROP_TIMEFRAMES, InpT3VisibleTimeframes);
+void setTT3VLineStyles(const string pLineName = "TT3-") {
+   int objectsTotal = ObjectsTotal(ChartID(), 0, -1);
+   string objName;
+
+   for(int i = objectsTotal; i >= 0; i--) {
+      objName = ObjectName(ChartID(), i);
+      if(ObjectGetInteger(ChartID(), objName, OBJPROP_TYPE) == OBJ_VLINE) {
+         ObjectSetInteger(ChartID(), pLineName, OBJPROP_WIDTH, InpT3LineWidth);
+         ObjectSetInteger(ChartID(), pLineName, OBJPROP_STYLE, InpT3LineStyle);
+         ObjectSetInteger(ChartID(), pLineName, OBJPROP_COLOR, InpT3VLineColor);
+         ObjectSetInteger(ChartID(), pLineName, OBJPROP_BACK, true);
+         ObjectSetInteger(ChartID(), pLineName, OBJPROP_TIMEFRAMES, InpT3VisibleTimeframes);
+      }
+   }
+
 }
 
 //+------------------------------------------------------------------+
@@ -244,48 +196,21 @@ void setTT3VLineStyles(const string pLineName) {
 void setTT4LineValues() {
    setTT4VLineDateTimes();
    setTT4VLineValues();
+   setTT4VLineStyles();
 }
 
 //+------------------------------------------------------------------+
 //|                                                                  |
 //+------------------------------------------------------------------+
 void setTT4VLineDateTimes() {
-   if(ObjectFind(ChartID(), TT4_P1_VLINE) >= 0) {
-      tt4p1DateTime = (datetime)ObjectGetInteger(ChartID(), TT4_P1_VLINE, OBJPROP_TIME);
-      setTT4VLineStyles(TT4_P1_VLINE);
-   } else {
-      tt4p1DateTime = 0;
-   }
-   if(ObjectFind(ChartID(), TT4_P2_VLINE) >= 0) {
-      tt4p2DateTime = (datetime)ObjectGetInteger(ChartID(), TT4_P2_VLINE, OBJPROP_TIME);
-      setTT4VLineStyles(TT4_P2_VLINE);
-   } else {
-      tt4p2DateTime = 0;
-   }
-   if(ObjectFind(ChartID(), TT4_P3_VLINE) >= 0) {
-      tt4p3DateTime = (datetime)ObjectGetInteger(ChartID(), TT4_P3_VLINE, OBJPROP_TIME);
-      setTT4VLineStyles(TT4_P3_VLINE);
-   } else {
-      tt4p3DateTime = 0;
-   }
-   if(ObjectFind(ChartID(), TT4_P4_VLINE) >= 0) {
-      tt4p4DateTime = (datetime)ObjectGetInteger(ChartID(), TT4_P4_VLINE, OBJPROP_TIME);
-      setTT4VLineStyles(TT4_P4_VLINE);
-   } else {
-      tt4p4DateTime = 0;
-   }
-   if(ObjectFind(ChartID(), TT4_P5_VLINE) >= 0) {
-      tt4p5DateTime = (datetime)ObjectGetInteger(ChartID(), TT4_P5_VLINE, OBJPROP_TIME);
-      setTT4VLineStyles(TT4_P5_VLINE);
-   } else {
-      tt4p5DateTime = 0;
-   }
-   if(ObjectFind(ChartID(), TT4_P6_VLINE) >= 0) {
-      tt4p6DateTime = (datetime)ObjectGetInteger(ChartID(), TT4_P6_VLINE, OBJPROP_TIME);
-      setTT4VLineStyles(TT4_P6_VLINE);
-   } else {
-      tt4p6DateTime = 0;
-   }
+   tt4StartDateTime = getVlineDatetimeByTextLike(TT4_START_VLINE);
+   tt4p1DateTime = getVlineDatetimeByTextLike(TT4_P1_VLINE);
+   tt4p2DateTime = getVlineDatetimeByTextLike(TT4_P2_VLINE);
+   tt4p3DateTime = getVlineDatetimeByTextLike(TT4_P3_VLINE);
+   tt4p4DateTime = getVlineDatetimeByTextLike(TT4_P4_VLINE);
+   tt4p5DateTime = getVlineDatetimeByTextLike(TT4_P5_VLINE);
+   tt4p6DateTime = getVlineDatetimeByTextLike(TT4_P6_VLINE);
+   tt4EndDateTime = getVlineDatetimeByTextLike(TT4_END_VLINE);
 }
 
 void setTT4VLineValues() {
@@ -343,11 +268,20 @@ void setTT4VLineValues() {
 //+------------------------------------------------------------------+
 //|                                                                  |
 //+------------------------------------------------------------------+
-void setTT4VLineStyles(const string pLineName) {
-   ObjectSetInteger(ChartID(), pLineName, OBJPROP_WIDTH, InpT4LineWidth);
-   ObjectSetInteger(ChartID(), pLineName, OBJPROP_STYLE, InpT4LineStyle);
-   ObjectSetInteger(ChartID(), pLineName, OBJPROP_COLOR, InpT4VLineColor);
-   ObjectSetInteger(ChartID(), pLineName, OBJPROP_BACK, true);
-   ObjectSetInteger(ChartID(), pLineName, OBJPROP_TIMEFRAMES, InpT4VisibleTimeframes);
+void setTT4VLineStyles(const string pLineName = "TT4-") {
+   int objectsTotal = ObjectsTotal(ChartID(), 0, -1);
+   string objName;
+
+   for(int i = objectsTotal; i >= 0; i--) {
+      objName = ObjectName(ChartID(), i);
+      if(ObjectGetInteger(ChartID(), objName, OBJPROP_TYPE) == OBJ_VLINE) {
+         ObjectSetInteger(ChartID(), pLineName, OBJPROP_WIDTH, InpT4LineWidth);
+         ObjectSetInteger(ChartID(), pLineName, OBJPROP_STYLE, InpT4LineStyle);
+         ObjectSetInteger(ChartID(), pLineName, OBJPROP_COLOR, InpT4VLineColor);
+         ObjectSetInteger(ChartID(), pLineName, OBJPROP_BACK, true);
+         ObjectSetInteger(ChartID(), pLineName, OBJPROP_TIMEFRAMES, InpT4VisibleTimeframes);
+      }
+   }
+
 }
 //+------------------------------------------------------------------+
