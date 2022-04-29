@@ -6,14 +6,14 @@
 void createT4IsTradeableButton() {
 
    int xCoord = 125;
-   int yCoord = 90;
+   int yCoord = 120;
    int objWidth = 100;
    int objHeight = 24;
    ENUM_BASE_CORNER  chartCorner = CORNER_RIGHT_UPPER;
    color objColor = clrBlack;
    color backgroundColor = C'236,233,216';
    color borderColor = clrNONE;
-   string objText = "T4 initial off";
+   string objText = "T4 Trade off";
    string fontFamily = "Arial";
    int fontSize = 14;
    bool objState = false;
@@ -26,12 +26,12 @@ void handleT4IsTradeableButton() {
 
    t4IsTradabelButtonState = ObjectGetInteger(0, T4_IS_TRADEABLE_BUTTON, OBJPROP_STATE);
    if(t4IsTradabelButtonState == true) {
-      ObjectSetString(0, T4_IS_TRADEABLE_BUTTON, OBJPROP_TEXT, "T4 ON");
+      ObjectSetString(0, T4_IS_TRADEABLE_BUTTON, OBJPROP_TEXT, "T4 Trade ON");
       if(t4trendDirection == TREND_DIRECTION_LONG) ObjectSetInteger(0, T4_IS_TRADEABLE_BUTTON, OBJPROP_BGCOLOR, clrGreen);
       if(t4trendDirection == TREND_DIRECTION_SHORT) ObjectSetInteger(0, T4_IS_TRADEABLE_BUTTON, OBJPROP_BGCOLOR, clrRed);
       if(t4trendDirection == TREND_DIRECTION_ROTATION) ObjectSetInteger(0, T4_IS_TRADEABLE_BUTTON, OBJPROP_BGCOLOR, clrGray);
    } else {
-      ObjectSetString(0, T4_IS_TRADEABLE_BUTTON, OBJPROP_TEXT, "T4 OFF");
+      ObjectSetString(0, T4_IS_TRADEABLE_BUTTON, OBJPROP_TEXT, "T4 Trade OFF");
       ObjectSetInteger(0, T4_IS_TRADEABLE_BUTTON, OBJPROP_BGCOLOR, clrGray);
    }
 }
