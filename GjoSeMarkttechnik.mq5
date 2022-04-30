@@ -107,6 +107,7 @@ int OnInit() {
       setT4TrendLineValues();
 
       handleTT2ObjectsInitAction();
+      handleT2ObjectsInitAction();
       handleTT3ObjectsInitAction();
       handleT3ObjectsInitAction();
       handleTT4ObjectsInitAction();
@@ -147,7 +148,6 @@ void OnTick() {
       getT2TrendDirection();
       getT3TrendDirection();
       getT4TrendDirection();
-      createT3HighVolumeAreaTrendLines();
    }
 
    handleT3Indictaors();
@@ -224,6 +224,7 @@ void OnChartEvent(const int id,
       createT2RegressionChannel();
       createT2RegressionChannelLevels();
       createT2FiboRetracement();
+      createT2HighVolumeAreaTrendLines();
 
       setTT3LineValues();
       getTT3TrendDirection();
@@ -260,51 +261,23 @@ void OnChartEvent(const int id,
 
       if(sparam == T2_MIN_HIGH_VOL_AREA || sparam == T2_MAX_HIGH_VOL_AREA) {
 
-         datetime startDateTime = TimeCurrent();
-         if(t2p1DateTime != 0) startDateTime = t2p1DateTime;
-         if(t2p3DateTime != 0) startDateTime = t2p3DateTime;
-         if(t2p5DateTime != 0) startDateTime = t2p5DateTime;
+         t2MaxHighVolumeAreaLevel = ObjectGetDouble(ChartID(), T2_MAX_HIGH_VOL_AREA, OBJPROP_PRICE, 0);
+         if(ObjectFind(ChartID(), T2_MAX_HIGH_VOL_AREA) >= 0) {
+            ObjectSetString(ChartID(), T2_MAX_HIGH_VOL_AREA, OBJPROP_TEXT, T2_MAX_HIGH_VOL_AREA + ": " + DoubleToString(t2MaxHighVolumeAreaLevel, Digits()));
+            ObjectSetDouble(ChartID(), T2_MAX_HIGH_VOL_AREA, OBJPROP_PRICE, 0, t2MaxHighVolumeAreaLevel);
+            ObjectSetDouble(ChartID(), T2_MAX_HIGH_VOL_AREA, OBJPROP_PRICE, 1, t2MaxHighVolumeAreaLevel);
+         }
 
          t2MinHighVolumeAreaLevel = getTrendlineLevelByText(T2_MIN_HIGH_VOL_AREA, PERIOD_CURRENT, Symbol(), ChartID(), true);
          if(ObjectFind(ChartID(), T2_MIN_HIGH_VOL_AREA) >= 0) {
             ObjectSetString(ChartID(), T2_MIN_HIGH_VOL_AREA, OBJPROP_TEXT, T2_MIN_HIGH_VOL_AREA + ": " + DoubleToString(t2MinHighVolumeAreaLevel, Digits()));
+            datetime startDateTime = (datetime) ObjectGetInteger(ChartID(), T2_MAX_HIGH_VOL_AREA, OBJPROP_TIME, 0);
             ObjectSetInteger(ChartID(), T2_MIN_HIGH_VOL_AREA, OBJPROP_TIME, 0, startDateTime);
             ObjectSetDouble(ChartID(), T2_MIN_HIGH_VOL_AREA, OBJPROP_PRICE, 0, t2MinHighVolumeAreaLevel);
             ObjectSetDouble(ChartID(), T2_MIN_HIGH_VOL_AREA, OBJPROP_PRICE, 1, t2MinHighVolumeAreaLevel);
          }
 
-         t2MaxHighVolumeAreaLevel = getTrendlineLevelByText(T2_MAX_HIGH_VOL_AREA, PERIOD_CURRENT, Symbol(), ChartID(), true);
-         if(ObjectFind(ChartID(), T2_MAX_HIGH_VOL_AREA) >= 0) {
-            ObjectSetString(ChartID(), T2_MAX_HIGH_VOL_AREA, OBJPROP_TEXT, T2_MAX_HIGH_VOL_AREA + ": " + DoubleToString(t2MaxHighVolumeAreaLevel, Digits()));
-            ObjectSetInteger(ChartID(), T2_MAX_HIGH_VOL_AREA, OBJPROP_TIME, 0, startDateTime);
-            ObjectSetDouble(ChartID(), T2_MAX_HIGH_VOL_AREA, OBJPROP_PRICE, 0, t2MaxHighVolumeAreaLevel);
-            ObjectSetDouble(ChartID(), T2_MAX_HIGH_VOL_AREA, OBJPROP_PRICE, 1, t2MaxHighVolumeAreaLevel);
-         }
-
          createT2HighVolumeAreaChannel();
-      }
-
-      if(sparam == T3_MIN_HIGH_VOL_AREA || sparam == T3_MAX_HIGH_VOL_AREA) {
-
-         t3MinHighVolumeAreaLevel = getTrendlineLevelByText(T3_MIN_HIGH_VOL_AREA, PERIOD_CURRENT, Symbol(), ChartID(), true);
-         if(ObjectFind(ChartID(), T3_MIN_HIGH_VOL_AREA) >= 0) {
-            ObjectSetString(ChartID(), T3_MIN_HIGH_VOL_AREA, OBJPROP_TEXT, T3_MIN_HIGH_VOL_AREA + ": " + DoubleToString(t3MinHighVolumeAreaLevel, Digits()));
-            ObjectSetInteger(ChartID(), T3_MIN_HIGH_VOL_AREA, OBJPROP_TIME, 0, t3p3DateTime);
-            ObjectSetDouble(ChartID(), T3_MIN_HIGH_VOL_AREA, OBJPROP_PRICE, 0, t3MinHighVolumeAreaLevel);
-            ObjectSetDouble(ChartID(), T3_MIN_HIGH_VOL_AREA, OBJPROP_PRICE, 1, t3MinHighVolumeAreaLevel);
-         }
-
-         t3MaxHighVolumeAreaLevel = getTrendlineLevelByText(T3_MAX_HIGH_VOL_AREA, PERIOD_CURRENT, Symbol(), ChartID(), true);
-         if(ObjectFind(ChartID(), T3_MAX_HIGH_VOL_AREA) >= 0) {
-            ObjectSetString(ChartID(), T3_MAX_HIGH_VOL_AREA, OBJPROP_TEXT, T3_MAX_HIGH_VOL_AREA + ": " + DoubleToString(t3MaxHighVolumeAreaLevel, Digits()));
-            ObjectSetInteger(ChartID(), T3_MAX_HIGH_VOL_AREA, OBJPROP_TIME, 0, t3p3DateTime);
-            ObjectSetDouble(ChartID(), T3_MAX_HIGH_VOL_AREA, OBJPROP_PRICE, 0, t3MaxHighVolumeAreaLevel);
-            ObjectSetDouble(ChartID(), T3_MAX_HIGH_VOL_AREA, OBJPROP_PRICE, 1, t3MaxHighVolumeAreaLevel);
-         }
-
-         t3alertBidAgainInHighVolumeAreaSended = false;
-
-         createT3InSignalFiboLevelChannelArea();
       }
 
       if(sparam == T4_LONG_ENTRY_TLINE) {

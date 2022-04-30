@@ -13,7 +13,6 @@ void handleT3ObjectsInitAction() {
    deleteChannelObject(T3_RE_ENTRY_AREA);
 
    createT3ZigZagTrendDetectionLines();
-   createT3HighVolumeAreaTrendLines();
    createT3RegressionChannel();
    createT3RegressionChannelLevels();
    createT3FiboRetracement();

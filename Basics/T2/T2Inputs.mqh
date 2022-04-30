@@ -15,9 +15,7 @@ input group             "------------------------------ T2 HighVolume LEVELS ---
 
 input double            InpT2MaxHighVolumeAreaLevel = 0; // T2 Max HighVolume Area Level
 input double            InpT2MinHighVolumeAreaLevel = 0; // T2 Min HighVolume Area Level
-// TODO: TT2 in T2 ändern
-//input double            InpTT2MaxHighVolumeAreaLevel = 0; // T2 Max HighVolume Area Level
-//input double            InpTT2MinHighVolumeAreaLevel = 0; // T2 Min HighVolume Area Level
+
 // ****************  INTERN **************** //
 
 //input group             "---------- T2 Object-Styles ---------"

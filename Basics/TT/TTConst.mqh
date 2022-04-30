@@ -14,8 +14,6 @@ const string   TT2_P6_VLINE =                  "TMP2-P6";
 const string   TT2_END_VLINE =                 "TMP2-End";
 const string   TT2_ZIGZAGLINE =                "TMP2-ZigZagLine";
 const string   TT2_REGRESSION_CHANNEL =        "TMP2-RegressionChannel";
-const string   TT2_MIN_HIGH_VOL_AREA =         "TMP2-MINHighVolumeArea";
-const string   TT2_MAX_HIGH_VOL_AREA =         "TMP2-MAXHighVolumeArea";
 const string   TT2_IN_SIGNAL_FIBO_LEVEL_AREA = "TMP2-InSignalFiboLevelArea";
 
 const string   TT3_START_VLINE =           "TMP3-Start";
