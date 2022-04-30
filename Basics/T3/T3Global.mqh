@@ -104,9 +104,6 @@ double t3ReEntryAreaMaxStartValue;
 double t3ReEntryAreaMaxEndValue;
 bool   t3UseReEntryArea;
 
-double      t3OrderGridLimitOrderValuesArray[];
-double      t3OrderGridStopOrderValuesArray[];
-
 datetime    outSideBarDateTime;
 double      t3StopLossValue;
 double      t3TrailingStopLevel;

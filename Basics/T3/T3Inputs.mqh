@@ -23,8 +23,6 @@ input string            InpT3trailingStopMAPeriods = "200, 150, 100, 50, 10"; //
 
 input group             "------------------------------ T3 MONEY -----------------------"
 input double            InpMaxPositionRiskPercent = 1; // T3 & T4 max Position Risk %
-input int               InpT3OrderGridCount = 1; // T3 Anzahl Grid Orders
-
 
 // ****************  INTERN **************** //
 
