@@ -24,7 +24,6 @@ bool getT4BuyInSignal() {
    if(maxT4BuyPositionsAreOpenState == true) signal = false;
 
 
-//   if(getT4BidGreaterLongReEntryAreaFilter() == true) return false;
 //   if(t4LongIsTradable == false) return false;
 //   if(spreadGreaterThanMaxSpreadBuyInFilter() == true) signal = false;
 
@@ -77,15 +76,3 @@ bool getT4BidTriggerLongGridStopOrderSignal() {
    return signal;
 }
 
-bool getT4BidGreaterLongReEntryAreaFilter() {
-
-   bool filter = false;
-
-   if(Bid() > t4ReEntryAreaMaxEndValue) {
-      filter = true;
-   }
-
-   return filter;
-}
-
-//+------------------------------------------------------------------+

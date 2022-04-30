@@ -48,8 +48,6 @@ void initializeT3GlobalsAction() {
    t3IsBuyRegressionAlertSended = false;
    t3IsSellRegressionAlertSendable = false;
    t3IsSellRegressionAlertSended = false;
-   t3IsBidStopLossLineOffsetAlertSendable = false;
-   t3IsBidStopLossLineOffsetAlertSended = false;
    t3AlertDisableTradeableButtonSended = false;
    t3alertBidIsInSignalAreaSended = false;
    t3alertBidAgainInHighVolumeAreaSended = false;
@@ -74,12 +72,6 @@ void initializeT3GlobalsAction() {
 // OUTSIgnal
    t3MinProfitFiboRetracmentLevel = 0;
    t3CurrentBidMAOffset = 0;
-
-   t3ReEntryAreaMinStartValue = 0;
-   t3ReEntryAreaMinEndValue = 0;
-   t3ReEntryAreaMaxStartValue = 0;
-   t3ReEntryAreaMaxEndValue = 0;
-   t3UseReEntryArea = false;
 
    outSideBarDateTime = 0;
    t3StopLossValue = 0;
@@ -192,21 +184,6 @@ void convertInpT3StringsToArray() {
    if(InpT3MaxFiboRetracmentLevel != 0) {
       ArrayResize(t3FiboLevelsArray, ArraySize(t3FiboLevelsArray) + 1);
       t3FiboLevelsArray[ArraySize(t3FiboLevelsArray) - 1] = (string)InpT3MaxFiboRetracmentLevel;
-   }
-
-   if(InpT3MinReEntryRegressionChannelLevel != 0) {
-      ArrayResize(t3FiboLevelsArray, ArraySize(t3FiboLevelsArray) + 1);
-      t3FiboLevelsArray[ArraySize(t3FiboLevelsArray) - 1] = (string)InpT3MinReEntryRegressionChannelLevel;
-   }
-
-   if(InpT3MinReEntryFiboRetracmentLevel != 0) {
-      ArrayResize(t3FiboLevelsArray, ArraySize(t3FiboLevelsArray) + 1);
-      t3FiboLevelsArray[ArraySize(t3FiboLevelsArray) - 1] = (string)InpT3MinReEntryFiboRetracmentLevel;
-   }
-
-   if(InpT3MinProfitFiboRetracmentLevel != 0) {
-      ArrayResize(t3FiboLevelsArray, ArraySize(t3FiboLevelsArray) + 1);
-      t3FiboLevelsArray[ArraySize(t3FiboLevelsArray) - 1] = (string)InpT3MinProfitFiboRetracmentLevel;
    }
 
    string t3trailingStopMAPeriodsArrayStrings[];

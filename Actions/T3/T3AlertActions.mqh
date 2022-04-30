@@ -113,39 +113,6 @@ void t3AlertMAChangedAction() {
 //+------------------------------------------------------------------+
 //|                                                                  |
 //+------------------------------------------------------------------+
-void t3AlertOnBidStopLossLineOffset() {
-
-   if(t3StopLossValue != 0 && InpT3AlertOnBidStopLossLineOffset != 0) {
-      if(t3trendDirection == TREND_DIRECTION_LONG) {
-         if(Bid() > t3StopLossValue + InpT3AlertOnBidStopLossLineOffset * Point()) {
-            if(t3IsBidStopLossLineOffsetAlertSendable == true && t3IsBidStopLossLineOffsetAlertSended == false) {
-               string message = Symbol() + ": LONG-BidStopLossLineOffset ";
-               Alert(message);
-               if(!SendNotification(message)) Alert("Cannot BidStopLossLineOffset Push", GetLastError());
-               t3IsBidStopLossLineOffsetAlertSended = true;
-            }
-         } else {
-            t3IsBidStopLossLineOffsetAlertSendable = true;
-         }
-      }
-      if(t3trendDirection == TREND_DIRECTION_SHORT) {
-         if(Bid() < t3StopLossValue - InpT3AlertOnBidStopLossLineOffset * Point()) {
-            if(t3IsBidStopLossLineOffsetAlertSendable == true && t3IsBidStopLossLineOffsetAlertSended == false) {
-               string message = Symbol() + ": SHORT-BidStopLossLineOffset ";
-               Alert(message);
-               if(!SendNotification(message)) Alert("Cannot BidStopLossLineOffset Push", GetLastError());
-               t3IsBidStopLossLineOffsetAlertSended = true;
-            }
-         } else {
-            t3IsBidStopLossLineOffsetAlertSendable = true;
-         }
-      }
-   }
-}
-
-//+------------------------------------------------------------------+
-//|                                                                  |
-//+------------------------------------------------------------------+
 void handleCommentAction(string pVersion) {
    t3CommentAction(pVersion);
    t4CommentAction(pVersion);

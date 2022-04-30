@@ -15,11 +15,6 @@ const string   T3_END_VLINE =             "T3-End";
 const string   T3_ZIGZAGLINE =            "T3-ZigZagLine";
 const string   T3_REGRESSION_CHANNEL =    "T3RegressionChannel";
 const string   T3_FIBO_LEVELS =           "T3FiboLevels";
-const string   T3_IN_SIGNAL_FIBO_LEVEL_AREA = "T3InSignalFiboLevelArea";
-const string   T3_IN_SIGNAL_REGRESSION_CHANNEL_AREA = "T3InSignalRegressionChannelArea";
-const string   T3_RE_ENTRY_AREA =         "T3ReEntryArea";
-const string   T3_STOP_LOSS_TLINE =       "T3StopLossTrendLine";
-const string   T3_TRAILING_STOP_TLINE =   "T3TrailingStop";
 const string   T3_INSIDEBAR_TOP_TLINE =   "T3InsideBarTop";
 const string   T3_INSIDEBAR_BUTTOM_TLINE = "T3InsideBarButtom";
 

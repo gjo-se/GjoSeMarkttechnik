@@ -100,12 +100,6 @@ double t4MinProfitFiboRetracmentLevel;
 bool   t4ProfitLevelGreaterMinProfitFiboRetracmentLevel;
 double t4CurrentBidMAOffset;
 
-double t4ReEntryAreaMinStartValue;
-double t4ReEntryAreaMinEndValue;
-double t4ReEntryAreaMaxStartValue;
-double t4ReEntryAreaMaxEndValue;
-bool   t4UseReEntryArea;
-
 double      t4ShortEntryValue;
 double      t4LongEntryValue;
 

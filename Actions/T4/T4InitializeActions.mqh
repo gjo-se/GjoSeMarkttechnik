@@ -76,12 +76,6 @@ void initializeT4GlobalsAction() {
    t4ProfitLevelGreaterMinProfitFiboRetracmentLevel = false;
    t4CurrentBidMAOffset = 0;
 
-   t4ReEntryAreaMinStartValue = 0;
-   t4ReEntryAreaMinEndValue = 0;
-   t4ReEntryAreaMaxStartValue = 0;
-   t4ReEntryAreaMaxEndValue = 0;
-   t4UseReEntryArea = false;
-
    t4ShortEntryValue = 0;
    t4LongEntryValue = 0;
 
@@ -192,21 +186,6 @@ void convertInpT4StringsToArray() {
    if(InpT4MaxFiboRetracmentLevel != 0) {
       ArrayResize(t4FiboLevelsArray, ArraySize(t4FiboLevelsArray) + 1);
       t4FiboLevelsArray[ArraySize(t4FiboLevelsArray) - 1] = (string)InpT4MaxFiboRetracmentLevel;
-   }
-
-   if(InpT4MinReEntryRegressionChannelLevel != 0) {
-      ArrayResize(t4FiboLevelsArray, ArraySize(t4FiboLevelsArray) + 1);
-      t4FiboLevelsArray[ArraySize(t4FiboLevelsArray) - 1] = (string)InpT4MinReEntryRegressionChannelLevel;
-   }
-
-   if(InpT4MinReEntryFiboRetracmentLevel != 0) {
-      ArrayResize(t4FiboLevelsArray, ArraySize(t4FiboLevelsArray) + 1);
-      t4FiboLevelsArray[ArraySize(t4FiboLevelsArray) - 1] = (string)InpT4MinReEntryFiboRetracmentLevel;
-   }
-
-   if(InpT4MinProfitFiboRetracmentLevel != 0) {
-      ArrayResize(t4FiboLevelsArray, ArraySize(t4FiboLevelsArray) + 1);
-      t4FiboLevelsArray[ArraySize(t4FiboLevelsArray) - 1] = (string)InpT4MinProfitFiboRetracmentLevel;
    }
 
    StringSplit(InpT4trailingStopMAPeriods, StringGetCharacter(",", 0), t4trailingStopMAPeriodsArray);

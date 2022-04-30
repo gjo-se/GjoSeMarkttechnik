@@ -8,16 +8,11 @@ void handleT3ObjectsInitAction() {
    deleteTrendLineLike(T3_ZIGZAGLINE);
    deleteRegressionChannel(T3_REGRESSION_CHANNEL);
    deleteFiboLevelsObject(T3_FIBO_LEVELS);
-   deleteChannelObject(T3_IN_SIGNAL_FIBO_LEVEL_AREA);
-   deleteChannelObject(T3_IN_SIGNAL_REGRESSION_CHANNEL_AREA);
-   deleteChannelObject(T3_RE_ENTRY_AREA);
 
    createT3ZigZagTrendDetectionLines();
    createT3RegressionChannel();
    createT3RegressionChannelLevels();
    createT3FiboRetracement();
-   createT3InSignalFiboLevelChannelArea();
-   createt3InSignalRegressionChannelArea();
 
    t3HandleObjectsAction();
 }
@@ -36,21 +31,12 @@ void t3HandleObjectsAction() {
          createT3RegressionChannel();
          createT3RegressionChannelLevels();
          createT3FiboRetracement();
-         createT3InSignalFiboLevelChannelArea();
-         createt3InSignalRegressionChannelArea();
-         createT3ReEntryArea();
       }
-
-      double t3StopLossValueLocal = ObjectGetValueByTime(0, T3_STOP_LOSS_TLINE, iTime(Symbol(), Period(), 0));
-      if(t3StopLossValueLocal != 0) t3StopLossValue = t3StopLossValueLocal;
 
    } else {
       deleteTrendLineLike(T3_ZIGZAGLINE);
       deleteRegressionChannel(T3_REGRESSION_CHANNEL);
       deleteFiboLevelsObject(T3_FIBO_LEVELS);
-      deleteChannelObject(T3_IN_SIGNAL_FIBO_LEVEL_AREA);
-      deleteChannelObject(T3_IN_SIGNAL_REGRESSION_CHANNEL_AREA);
-      deleteChannelObject(T3_RE_ENTRY_AREA);
    }
 }
 

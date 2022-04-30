@@ -69,8 +69,6 @@ bool t3IsBuyRegressionAlertSendable;
 bool t3IsBuyRegressionAlertSended;
 bool t3IsSellRegressionAlertSendable;
 bool t3IsSellRegressionAlertSended;
-bool t3IsBidStopLossLineOffsetAlertSendable;
-bool t3IsBidStopLossLineOffsetAlertSended;
 bool t3AlertDisableTradeableButtonSended;
 bool t3alertBidIsInSignalAreaSended;
 bool t3alertBidAgainInHighVolumeAreaSended;
@@ -96,13 +94,6 @@ double t3MaxHighVolumeAreaLevel;
 // OUTSIgnal
 double t3MinProfitFiboRetracmentLevel;
 double t3CurrentBidMAOffset;
-
-
-double t3ReEntryAreaMinStartValue;
-double t3ReEntryAreaMinEndValue;
-double t3ReEntryAreaMaxStartValue;
-double t3ReEntryAreaMaxEndValue;
-bool   t3UseReEntryArea;
 
 datetime    outSideBarDateTime;
 double      t3StopLossValue;

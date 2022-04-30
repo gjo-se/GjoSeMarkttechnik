@@ -31,24 +31,6 @@ void createT4FiboRetracement() {
             t4AlertFiboRetracementLevel = t4FiboLevelValue;
          }
 
-         if(InpT4MinReEntryFiboRetracmentLevel != 0 && level == InpT4MinReEntryFiboRetracmentLevel) {
-            if(t4trendDirection == TREND_DIRECTION_LONG) {
-               t4ReEntryAreaMinStartValue = t4InSignalFiboLevelAreaMinStartValue;
-               t4ReEntryAreaMinEndValue = t4InSignalFiboLevelAreaMinEndValue;
-               t4ReEntryAreaMaxStartValue = t4FiboLevelValue;
-               t4ReEntryAreaMaxEndValue = t4FiboLevelValue;
-            } else {
-               t4ReEntryAreaMinStartValue = t4FiboLevelValue;
-               t4ReEntryAreaMinEndValue = t4FiboLevelValue;
-               t4ReEntryAreaMaxStartValue = t4InSignalFiboLevelAreaMaxStartValue;
-               t4ReEntryAreaMaxEndValue = t4InSignalFiboLevelAreaMaxEndValue;
-            }
-         }
-
-         if(level == InpT4MinProfitFiboRetracmentLevel) {
-            t4MinProfitFiboRetracmentLevel = t4FiboLevelValue;
-         }
-
          if(level == tt4movementLengthRegressionLengthRatio) {
             lineWidth = InpT4LineWidth;
             lineText  = "   " + DoubleToString(level, 1) + "% - T4 MovementLengt Ratio";

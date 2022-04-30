@@ -41,7 +41,6 @@
 #include "..\\..\\Objects\\T3\\T3FiboRetracement.mqh"
 #include "..\\..\\Objects\\T3\\T3VLines.mqh"
 #include "..\\..\\Objects\\T3\\T3TrendLines.mqh"
-#include "..\\..\\Objects\\T3\\T3Channel.mqh"
 #include "..\\..\\Objects\\T3\\T3Button.mqh"
 #include "..\\..\\Objects\\T3\\T3Labels.mqh"
 

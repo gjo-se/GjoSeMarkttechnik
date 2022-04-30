@@ -159,7 +159,6 @@ void OnTick() {
    if(InpPrintScreenshot == true) handleScreenshotAction();
 
    closeT4Actions();
-   t3AlertOnBidStopLossLineOffset();
    t4AlertOnBidStopLossLineOffset();
 
    t2HandleObjectsAction();
@@ -244,10 +243,6 @@ void OnChartEvent(const int id,
       createT4RegressionChannelLevels();
       createT4FiboRetracement();
 
-      if(sparam == T3_STOP_LOSS_TLINE) {
-         t3IsBidStopLossLineOffsetAlertSendable = true;
-         t3IsBidStopLossLineOffsetAlertSended = false;
-      }
       if(sparam == T4_STOP_LOSS_TLINE) {
          t4IsBidStopLossLineOffsetAlertSendable = true;
          t4IsBidStopLossLineOffsetAlertSended = false;

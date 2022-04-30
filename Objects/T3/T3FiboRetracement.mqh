@@ -51,24 +51,6 @@ void createT3FiboRetracement() {
             }
          }
 
-         if(InpT3MinReEntryFiboRetracmentLevel != 0 && level == InpT3MinReEntryFiboRetracmentLevel) {
-            if(t3trendDirection == TREND_DIRECTION_LONG) {
-               t3ReEntryAreaMinStartValue = t3InSignalFiboLevelAreaMinStartValue;
-               t3ReEntryAreaMinEndValue = t3InSignalFiboLevelAreaMinEndValue;
-               t3ReEntryAreaMaxStartValue = t3FiboLevelValue;
-               t3ReEntryAreaMaxEndValue = t3FiboLevelValue;
-            } else {
-               t3ReEntryAreaMinStartValue = t3FiboLevelValue;
-               t3ReEntryAreaMinEndValue = t3FiboLevelValue;
-               t3ReEntryAreaMaxStartValue = t3InSignalFiboLevelAreaMaxStartValue;
-               t3ReEntryAreaMaxEndValue = t3InSignalFiboLevelAreaMaxEndValue;
-            }
-         }
-
-         if(level == InpT3MinProfitFiboRetracmentLevel) {
-            t3MinProfitFiboRetracmentLevel = t3FiboLevelValue;
-         }
-
          if(level == tt3movementLengthRegressionLengthRatio) {
             lineWidth = InpT3LineWidth;
             lineText  = "   " + DoubleToString(level, 1) + "% - T3 MovementLengt Ratio";
