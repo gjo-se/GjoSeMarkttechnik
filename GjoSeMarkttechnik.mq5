@@ -103,7 +103,6 @@ int OnInit() {
       getTT4TrendDirection();
       getT4TrendDirection();
 
-      setT3TrendLineValues();
       setT4TrendLineValues();
 
       handleTT2ObjectsInitAction();
@@ -152,16 +151,13 @@ void OnTick() {
 
    handleT3Indictaors();
    handleT4Indictaors();
-   handleT3StatesAction();
    handleT4StatesAction();
    handleT2TrendDetectionAction();
    handleT3TrendDetectionAction();
    handleT4TrendDetectionAction();
-   setT3PositionStates();
    setT4PositionStates();
    if(InpPrintScreenshot == true) handleScreenshotAction();
 
-   closeT3Actions();
    closeT4Actions();
    t3AlertOnBidStopLossLineOffset();
    t4AlertOnBidStopLossLineOffset();
@@ -180,9 +176,7 @@ void OnTick() {
    if(getT3SellAlertRegressionSignal() == true) t3AlertSellRegressionAction();
    if(getT4SellAlertRegressionSignal() == true) t4AlertSellRegressionAction();
 
-   if(getT3BuyInSignal() == true) openT3BuyOrderAction();
    if(getT4BuyInSignal() == true) openT4BuyOrderAction();
-   if(getT3SellInSignal() == true) openT3SellOrderAction();
    if(getT4SellInSignal() == true) openT4SellOrderAction();
 
 }

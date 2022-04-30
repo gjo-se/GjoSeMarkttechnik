@@ -19,21 +19,14 @@
 
 #include "T3Global.mqh"
 #include "..\\..\\Actions\\T3\\T3AlertActions.mqh"
-#include "..\\..\\Actions\\T3\\T3CloseActions.mqh"
 #include "..\\..\\Actions\\T3\\T3HandleIndicators.mqh"
 #include "..\\..\\Actions\\T3\\T3HandleObjectAction.mqh"
-#include "..\\..\\Actions\\T3\\T3HandleStatesActions.mqh"
 #include "..\\..\\Actions\\T3\\T3HandleTrendDetectionActions.mqh"
 #include "..\\..\\Actions\\T3\\T3InitializeActions.mqh"
-#include "..\\..\\Actions\\T3\\T3OpenBuyActions.mqh"
-#include "..\\..\\Actions\\T3\\T3OpenSellActions.mqh"
 #include "..\\..\\Actions\\T3\\T3ScreenshotActions.mqh"
 
-#include "..\\..\\States\\T3\\T3PositionState.mqh"
 #include "..\\..\\States\\T3\\T3BuyAlertState.mqh"
-#include "..\\..\\States\\T3\\T3BuyInState.mqh"
 #include "..\\..\\States\\T3\\T3SellAlertState.mqh"
-#include "..\\..\\States\\T3\\T3SellInState.mqh"
 
 #include <GjoSe\\Utilities\\InclBasicUtilities.mqh>
 #include <GjoSe\\Objects\\InclHLine.mqh>

@@ -38,14 +38,6 @@ string t3comment;
 
 bool  t3AutoButtonState;
 
-bool  buyT3PositionIsOpenState;
-bool  maxT3BuyPositionsAreOpenState;
-bool  allT3BuyPositionsAreClosedState;
-
-bool  sellT3PositionIsOpenState;
-bool  maxT3SellPositionsAreOpenState;
-bool  allT3SellPositionsAreClosedState;
-
 datetime t3StartDateTime;
 datetime t3p1DateTime;
 double t3p1ValueHigh;
@@ -62,8 +54,6 @@ double t3p4ValueLow;
 datetime t3p5DateTime;
 double t3p5ValueHigh;
 double t3p5ValueLow;
-datetime t3HighestHighVLineDateTime;
-datetime t3LowestLowVLineDateTime;
 datetime t3EndDateTime;
 
 int t3SemiTrendDirection;
@@ -102,12 +92,9 @@ double t3InSignalRegressionChannelAreaMaxEndValue;
 // HighVolumeArea
 double t3MinHighVolumeAreaLevel;
 double t3MaxHighVolumeAreaLevel;
-bool   t3HighestHighIsInSignalArea;
-bool   t3LowestLowIsInSignalArea;
 
 // OUTSIgnal
 double t3MinProfitFiboRetracmentLevel;
-bool   t3ProfitLevelGreaterMinProfitFiboRetracmentLevel;
 double t3CurrentBidMAOffset;
 
 
@@ -116,16 +103,6 @@ double t3ReEntryAreaMinEndValue;
 double t3ReEntryAreaMaxStartValue;
 double t3ReEntryAreaMaxEndValue;
 bool   t3UseReEntryArea;
-
-//SHORT
-double      t3HighestHighValue;
-datetime    t3HighestHighDateTime;
-double      t3ShortEntryValue;
-
-// LONG
-double      t3LowestLowValue;
-datetime    t3LowestLowDateTime;
-double      t3LongEntryValue;
 
 double      t3OrderGridLimitOrderValuesArray[];
 double      t3OrderGridStopOrderValuesArray[];

@@ -31,56 +31,6 @@ void t4HandleObjectsAction() {
 
    if(InpT4ObjectsShow == true) {
 
-      if(t4trendDirection == TREND_DIRECTION_LONG) {
-
-         if(t4LowestLowDateTime != 0) {
-            double localT4LowestLowValue = 0;
-            if(iBarShift(Symbol(), Period(), t4LowestLowDateTime) != 0) {
-               localT4LowestLowValue = iLow(Symbol(), Period(), iLowest( Symbol(), Period(), MODE_LOW, iBarShift(Symbol(), Period(), t4LowestLowDateTime) + 1));
-            } else {
-               localT4LowestLowValue = iLow(Symbol(), PERIOD_CURRENT, 0);
-            }
-
-            if(localT4LowestLowValue != 0) {
-               t4LowestLowValue = localT4LowestLowValue;
-               double minRegressionPoints = (getT4P4HighLowValueByTrendDirection() / Point() - t4LowestLowValue / Point()) * InpT4MinRegressionPercent / 100;
-               createT4LowestLowTrendLine();
-               if(buyT4PositionIsOpenState == false) createT4OrderGridTrendLines();
-            }
-         }
-
-         if(t4LowestLowDateTime == 0 || maxT4BuyPositionsAreOpenState == true) {
-            deleteTrendLine(T4_LOWEST_LOW_TLINE);
-            deleteTrendLineLike(T4_ORDER_GRID_LIMIT_TLINE);
-            deleteTrendLineLike(T4_ORDER_GRID_STOP_TLINE);
-         }
-      }
-
-      if(t4trendDirection == TREND_DIRECTION_SHORT) {
-
-         if(t4HighestHighDateTime != 0) {
-            double localT4HighestHighValue = 0;
-            if(iBarShift(Symbol(), Period(), t4HighestHighDateTime) != 0) {
-               localT4HighestHighValue = iHigh(Symbol(), Period(), iHighest( Symbol(), Period(), MODE_HIGH, iBarShift(Symbol(), Period(), t4HighestHighDateTime) + 1));
-            } else {
-               localT4HighestHighValue = iHigh(Symbol(), Period(), 0);
-            }
-
-            if(localT4HighestHighValue != 0) {
-               t4HighestHighValue = localT4HighestHighValue;
-               double minRegressionPoints = (t4HighestHighValue / Point() - getT4P4HighLowValueByTrendDirection() / Point()) * InpT4MinRegressionPercent / 100;
-               createT4HighestHighTrendLine();
-               if(sellT4PositionIsOpenState == false) createT4OrderGridTrendLines();
-            }
-         }
-
-         if(t4HighestHighDateTime == 0 || maxT4SellPositionsAreOpenState == true) {
-            deleteTrendLine(T4_HIGHEST_HIGH_TLINE);
-            deleteTrendLineLike(T4_ORDER_GRID_LIMIT_TLINE);
-            deleteTrendLineLike(T4_ORDER_GRID_STOP_TLINE);
-         }
-      }
-
       if(isNewCurrentBar == true) {
          createT4ZigZagTrendDetectionLines();
          createT4RegressionChannel();

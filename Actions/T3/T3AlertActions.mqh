@@ -180,30 +180,6 @@ void t3CommentAction(string pVersion) {
       if(t3AlertRegressionChannelLevel != 0) t3comment += "Alert RegressionChannel: " + DoubleToString(t3AlertRegressionChannelLevel, 2) + "\n";
       if(t3AlertFiboRetracementLevel != 0) t3comment += "Alert FiboRetracement: " + DoubleToString(t3AlertFiboRetracementLevel, 2) + "\n";
       t3comment += "\n";
-      if(t3trendDirection == TREND_DIRECTION_LONG || t3SemiTrendDirection == TREND_DIRECTION_LONG) {
-         t3comment += "LONG: " + "\n";
-         t3comment += "getT3LowestLowIsInSignalAreaState(): " + IntegerToString(getT3LowestLowIsInSignalAreaState()) + "\n";
-         t3comment += "LowestLowVLineDateTime: " + TimeToString(t3LowestLowVLineDateTime) + "\n";
-         t3comment += "LowestLowValue: " + DoubleToString(t3LowestLowValue, Digits()) + "\n";
-         t3comment += "LongEntryValue: " + DoubleToString(t3LongEntryValue, Digits()) + "\n";
-         t3comment += "\n";
-         t3comment += "buyT3PositionIsOpenState: " + IntegerToString(buyT3PositionIsOpenState) + "\n";
-         t3comment += "Bid() >= t3LongEntryValue: " + IntegerToString(Bid() >= t3LongEntryValue) + "\n";
-         t3comment += "maxT3BuyPositionsAreOpenState: " + IntegerToString(maxT3BuyPositionsAreOpenState) + "\n";
-      }
-      if(t3trendDirection == TREND_DIRECTION_SHORT || t3SemiTrendDirection == TREND_DIRECTION_SHORT) {
-         t3comment += "SHORT: " + "\n";
-         t3comment += "getT3HighestHighIsInSignalAreaState(): " + IntegerToString(getT3HighestHighIsInSignalAreaState()) + "\n";
-         t3comment += "HihgestHighVLineDateTime: " + TimeToString(t3HighestHighVLineDateTime) + "\n";
-         t3comment += "HihgestHighValue: " + DoubleToString(iHigh(Symbol(), PERIOD_CURRENT, iBarShift(Symbol(), PERIOD_CURRENT, t3HighestHighDateTime)), Digits()) + "\n";
-         t3comment += "ShortEntryValue: " + DoubleToString(t3ShortEntryValue, Digits()) + "\n";
-         t3comment += "\n";
-         t3comment += "sellT3PositionIsOpenState: " + IntegerToString(sellT3PositionIsOpenState) + "\n";
-         t3comment += "Bid() <= t3ShortEntryValue: " + IntegerToString(Bid() <= t3ShortEntryValue) + "\n";
-         t3comment += "maxT3SellPositionsAreOpenState: " + IntegerToString(maxT3SellPositionsAreOpenState) + "\n";
-      }
-      t3comment += "\n";
-      t3comment += "t3 Trailing isActive: " + IntegerToString(t3ProfitLevelGreaterMinProfitFiboRetracmentLevel) + "\n";
       t3comment += "t3CurrentTrailingStopMAPeriod: " + IntegerToString(t3TrailingStopMAActive) + "\n";
       if(t3CurrentBidMAOffset > 0) t3comment += " CurrentOffset: " + DoubleToString(t3CurrentBidMAOffset, 0) + "\n";
       t3comment += "\n";

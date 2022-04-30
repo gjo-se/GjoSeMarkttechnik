@@ -94,30 +94,6 @@ void setT4VLineStyles(const string pSubString = "T4-") {
    }          
 }
 
-void createT4HighestHighVLine() {
-
-   long zOrder = 0;
-   bool isBackground = true;
-   bool isSelected = false;
-   bool isSelectable = true;
-
-   int barShift = 0;
-   createVLine(T4_HH_VLINE, iTime(Symbol(), Period(), barShift), InpT4TrendLineColor, 2, STYLE_SOLID, T4_HH_VLINE, zOrder, isBackground, isSelected, isSelectable);
-   t4HighestHighVLineDateTime = iTime(Symbol(), Period(), barShift);
-}
-
-void createT4LowestLowVLine() {
-
-   long zOrder = 0;
-   bool isBackground = true;
-   bool isSelected = false;
-   bool isSelectable = true;
-
-   int barShift = 0;
-   createVLine(T4_LL_VLINE, iTime(Symbol(), Period(), barShift), InpT4TrendLineColor, 2, STYLE_SOLID, T4_LL_VLINE, zOrder, isBackground, isSelected, isSelectable);
-   t4LowestLowVLineDateTime = iTime(Symbol(), Period(), barShift);
-}
-
 void createT4P1VLine(datetime pDateTime) {
 
    long zOrder = 0;

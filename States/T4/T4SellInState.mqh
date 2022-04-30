@@ -14,7 +14,6 @@ bool getT4SellInSignal() {
    bool signal = false;
 
    if(getT4BidLowerShortEntryLevelSignal() == true) signal = true;
-//   if(getT4HighestHighIsInSignalAreaState() == false) signal = false;
 
 //   if(getT4BidTriggerShortGridLimitOrderSignal() == true) signal = true;
 //   if(getT4BidTriggerShortGridStopOrderSignal() == true) signal = true;
@@ -30,21 +29,6 @@ bool getT4SellInSignal() {
 
    return(signal);
 
-}
-
-bool getT4HighestHighIsInSignalAreaState() {
-
-   bool state = false;
-
-   if(t4HighestHighIsInSignalArea) state = true;
-
-   if(t4UseReEntryArea == true) {
-      if(t4ReEntryAreaMinEndValue != 0 && Bid() >= t4ReEntryAreaMinEndValue
-            && t4ReEntryAreaMaxEndValue != 0 && Bid() <= t4ReEntryAreaMaxEndValue) {
-         state = true;
-      }
-   }
-   return state;
 }
 
 bool getT4BidLowerShortEntryLevelSignal() {

@@ -161,9 +161,6 @@ void t4CommentAction(string pVersion) {
       t4comment += "\n";
       if(t4trendDirection == TREND_DIRECTION_LONG || t4SemiTrendDirection == TREND_DIRECTION_LONG) {
          t4comment += "LONG: " + "\n";
-         t4comment += "getT4LowestLowIsInSignalAreaState(): " + IntegerToString(getT4LowestLowIsInSignalAreaState()) + "\n";
-         t4comment += "LowestLowVLineDateTime: " + TimeToString(t4LowestLowVLineDateTime) + "\n";
-         t4comment += "LowestLowValue: " + TimeToString(t4LowestLowDateTime) + " - " + DoubleToString(t4LowestLowValue, Digits()) + "\n";
          t4comment += "LongEntryValue: " + DoubleToString(t4LongEntryValue, Digits()) + "\n";
          t4comment += "\n";
          t4comment += "buyT4PositionIsOpenState: " + IntegerToString(buyT4PositionIsOpenState) + "\n";
@@ -172,9 +169,6 @@ void t4CommentAction(string pVersion) {
       }
       if(t4trendDirection == TREND_DIRECTION_SHORT || t4SemiTrendDirection == TREND_DIRECTION_SHORT) {
          t4comment += "SHORT: " + "\n";
-         t4comment += "getT4HighestHighIsInSignalAreaState(): " + IntegerToString(getT4HighestHighIsInSignalAreaState()) + "\n";
-         t4comment += "HihgestHighVLineDateTime: " + TimeToString(t4HighestHighVLineDateTime) + "\n";
-         t4comment += "HihgestHighValue: " + TimeToString(t4HighestHighDateTime) + " - " + DoubleToString(iHigh(Symbol(), PERIOD_CURRENT, iBarShift(Symbol(), PERIOD_CURRENT, t4HighestHighDateTime)), Digits()) + "\n";
          t4comment += "ShortEntryValue: " + DoubleToString(t4ShortEntryValue, Digits()) + "\n";
          t4comment += "\n";
          t4comment += "sellT4PositionIsOpenState: " + IntegerToString(sellT4PositionIsOpenState) + "\n";
@@ -182,7 +176,6 @@ void t4CommentAction(string pVersion) {
          t4comment += "maxT4SellPositionsAreOpenState: " + IntegerToString(maxT4SellPositionsAreOpenState) + "\n";
       }
       t4comment += "\n";
-      t4comment += "t4 Trailing isActive: " + IntegerToString(t4ProfitLevelGreaterMinProfitFiboRetracmentLevel) + "\n";
       t4comment += "t4CurrentTrailingStopMAPeriod: " + IntegerToString(t4TrailingStopMAActive) + "\n";
       if(t4CurrentBidMAOffset > 0) t4comment += " CurrentOffset: " + DoubleToString(t4CurrentBidMAOffset, 0) + "\n";
       t4comment += "\n";

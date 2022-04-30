@@ -18,14 +18,6 @@ void initializeT3GlobalsAction() {
 
    t3AutoButtonState = ObjectGetInteger(ChartID(), T3_AUTO_BUTTON, OBJPROP_STATE);
 
-   buyT3PositionIsOpenState = false;
-   maxT3BuyPositionsAreOpenState = false;
-   allT3BuyPositionsAreClosedState = false;
-
-   sellT3PositionIsOpenState = false;
-   maxT3SellPositionsAreOpenState = false;
-   allT3SellPositionsAreClosedState = false;
-
    t3StartDateTime = 0;
    t3p1DateTime = 0;
    t3p1ValueHigh = 0;
@@ -39,8 +31,6 @@ void initializeT3GlobalsAction() {
    t3p4DateTime = 0;
    t3p4ValueHigh = 0;
    t3p4ValueLow = 0;
-   t3HighestHighVLineDateTime = 0;
-   t3LowestLowVLineDateTime = 0;
    t3EndDateTime = 0;
 
    t3SemiTrendDirection = TREND_DIRECTION_ROTATION;
@@ -80,12 +70,9 @@ void initializeT3GlobalsAction() {
 // HighVolumeArea
    t3MinHighVolumeAreaLevel = 0;
    t3MaxHighVolumeAreaLevel = 0;
-   t3HighestHighIsInSignalArea = false;
-   t3LowestLowIsInSignalArea = false;
 
 // OUTSIgnal
    t3MinProfitFiboRetracmentLevel = 0;
-   t3ProfitLevelGreaterMinProfitFiboRetracmentLevel = false;
    t3CurrentBidMAOffset = 0;
 
    t3ReEntryAreaMinStartValue = 0;
@@ -93,17 +80,6 @@ void initializeT3GlobalsAction() {
    t3ReEntryAreaMaxStartValue = 0;
    t3ReEntryAreaMaxEndValue = 0;
    t3UseReEntryArea = false;
-
-
-// SHORT
-   t3HighestHighValue = 0;
-   t3HighestHighDateTime = 0;
-   t3ShortEntryValue = 0;
-
-// LONG
-   t3LowestLowValue = 0;
-   t3LowestLowDateTime = 0;
-   t3LongEntryValue = 0;
 
    outSideBarDateTime = 0;
    t3StopLossValue = 0;

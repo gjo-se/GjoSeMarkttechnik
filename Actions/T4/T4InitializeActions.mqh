@@ -27,8 +27,6 @@ void initializeT4GlobalsAction() {
    t4p5DateTime = 0;
    t4p5ValueHigh = 0;
    t4p5ValueLow = 0;
-   t4HighestHighVLineDateTime = 0;
-   t4LowestLowVLineDateTime = 0;
    t4EndDateTime = 0;
 
    t4SemiTrendDirection = TREND_DIRECTION_ROTATION;
@@ -70,10 +68,6 @@ void initializeT4GlobalsAction() {
    t4InSignalRegressionChannelAreaMaxStartValue = 0;
    t4InSignalRegressionChannelAreaMaxEndValue = 0;
 
-// HighVolumeArea
-   t4HighestHighIsInSignalArea = false;
-   t4LowestLowIsInSignalArea = false;
-
    t4MinRegressionForTrendDetectionLevel = 0;
    t4MinRegressionForTrendDetectionState = false;
 
@@ -88,15 +82,7 @@ void initializeT4GlobalsAction() {
    t4ReEntryAreaMaxEndValue = 0;
    t4UseReEntryArea = false;
 
-
-// SHORT
-   t4HighestHighValue = 0;
-   t4HighestHighDateTime = 0;
    t4ShortEntryValue = 0;
-
-// LONG
-   t4LowestLowValue = 0;
-   t4LowestLowDateTime = 0;
    t4LongEntryValue = 0;
 
    outSideBarDateTime = 0;

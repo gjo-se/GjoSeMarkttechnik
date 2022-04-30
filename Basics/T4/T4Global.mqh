@@ -58,8 +58,6 @@ double t4p4ValueLow;
 datetime t4p5DateTime;
 double t4p5ValueHigh;
 double t4p5ValueLow;
-datetime t4HighestHighVLineDateTime;
-datetime t4LowestLowVLineDateTime;
 datetime t4EndDateTime;
 
 int t4SemiTrendDirection;
@@ -94,10 +92,6 @@ double t4InSignalRegressionChannelAreaMinEndValue;
 double t4InSignalRegressionChannelAreaMaxStartValue;
 double t4InSignalRegressionChannelAreaMaxEndValue;
 
-// HighVolumeArea
-bool   t4HighestHighIsInSignalArea;
-bool   t4LowestLowIsInSignalArea;
-
 double t4MinRegressionForTrendDetectionLevel;
 bool   t4MinRegressionForTrendDetectionState;
 
@@ -112,14 +106,7 @@ double t4ReEntryAreaMaxStartValue;
 double t4ReEntryAreaMaxEndValue;
 bool   t4UseReEntryArea;
 
-//SHORT
-double      t4HighestHighValue;
-datetime    t4HighestHighDateTime;
 double      t4ShortEntryValue;
-
-// LONG
-double      t4LowestLowValue;
-datetime    t4LowestLowDateTime;
 double      t4LongEntryValue;
 
 double      t4OrderGridLimitOrderValuesArray[];

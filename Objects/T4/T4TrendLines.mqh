@@ -32,11 +32,6 @@ void createT4ZigZagTrendDetectionLines() {
    }
 }
 
-// SHORT
-void createT4HighestHighTrendLine() {
-   createTrendLine(T4_HIGHEST_HIGH_TLINE, iTime(Symbol(), Period(), iBarShift(Symbol(), Period(), t4HighestHighDateTime) + 3), t4HighestHighValue, iTime(Symbol(), Period(), 0), t4HighestHighValue, InpT4TrendLineColor, 3, STYLE_SOLID, T4_HIGHEST_HIGH_TLINE);
-}
-
 //+------------------------------------------------------------------+
 //|                                                                  |
 //+------------------------------------------------------------------+
@@ -56,11 +51,6 @@ void createT4ShortEntryTrendLine(double pT4ShortEntryLevel) {
    string lineText = T4_SHORT_ENTRY_TLINE + ": " + DoubleToString(pT4ShortEntryLevel, Digits()) + " Vol: " + realVolume + " (" + verifiedVolume + ")";
 
    createTrendLine(T4_SHORT_ENTRY_TLINE, iTime(Symbol(), PERIOD_M1, iBarShift(Symbol(), PERIOD_M1, t3p3DateTime)), pT4ShortEntryLevel, iTime(Symbol(), PERIOD_M1, 0), pT4ShortEntryLevel, lineColor, lineWidth, lineStyle, lineText, rayLeft, rayRight, zOrder, isBackground, isSelected, isSelectable);
-}
-
-// LONG
-void createT4LowestLowTrendLine() {
-   createTrendLine(T4_LOWEST_LOW_TLINE, iTime(Symbol(), Period(), iBarShift(Symbol(), Period(), t4LowestLowDateTime) + 3), t4LowestLowValue, iTime(Symbol(), Period(), 0), t4LowestLowValue, InpT4TrendLineColor, 3, STYLE_SOLID, T4_LOWEST_LOW_TLINE);
 }
 
 //+------------------------------------------------------------------+
@@ -190,8 +180,5 @@ void createT4OrderGridTrendLines() {
 void setT4TrendLineValues() {
    t4LongEntryValue = ObjectGetDouble(ChartID(), T4_LONG_ENTRY_TLINE, OBJPROP_PRICE, 1);
    t4ShortEntryValue = ObjectGetDouble(ChartID(), T4_SHORT_ENTRY_TLINE, OBJPROP_PRICE, 1);
-
-   t4HighestHighValue = getTrendlineLevelByText(T4_HIGHEST_HIGH_TLINE, PERIOD_CURRENT, Symbol(), ChartID());
-   t4LowestLowValue = getTrendlineLevelByText(T4_LOWEST_LOW_TLINE, PERIOD_CURRENT, Symbol(), ChartID());
 }
 //+------------------------------------------------------------------+
