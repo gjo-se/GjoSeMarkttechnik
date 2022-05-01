@@ -26,6 +26,28 @@ void t4HandleObjectsAction() {
       createT4IsTradeableButton();
    }
 
+   if(ObjectFind(ChartID(), T4_ALERT_BID_HIGHER_HINE) >= 0) {
+      double hLineValue = ObjectGetDouble(ChartID(), T4_ALERT_BID_HIGHER_HINE, OBJPROP_PRICE);
+      string hLineText  = ObjectGetString(ChartID(), T4_ALERT_BID_HIGHER_HINE, OBJPROP_TEXT);
+      if(Bid() > hLineValue) {
+         t4AlertBIDHigherHLineAction(hLineText);
+         ObjectSetString(ChartID(), T4_ALERT_BID_HIGHER_HINE, OBJPROP_TEXT, hLineText + "-triggert");
+         ObjectSetInteger(ChartID(), T4_ALERT_BID_HIGHER_HINE, OBJPROP_STYLE, STYLE_DASH);
+         ObjectSetString(ChartID(), T4_ALERT_BID_HIGHER_HINE, OBJPROP_NAME, T4_ALERT_BID_HIGHER_HINE + "-triggert");
+      }
+   }
+
+   if(ObjectFind(ChartID(), T4_ALERT_BID_LOWER_HINE) >= 0) {
+      double hLineValue = ObjectGetDouble(ChartID(), T4_ALERT_BID_LOWER_HINE, OBJPROP_PRICE);
+      string hLineText  = ObjectGetString(ChartID(), T4_ALERT_BID_LOWER_HINE, OBJPROP_TEXT);
+      if(Bid() < hLineValue) {
+         t4AlertBIDLowerHLineAction(hLineText);
+         ObjectSetString(ChartID(), T4_ALERT_BID_LOWER_HINE, OBJPROP_TEXT, hLineText + "-triggert");
+         ObjectSetInteger(ChartID(), T4_ALERT_BID_LOWER_HINE, OBJPROP_STYLE, STYLE_DASH);
+         ObjectSetString(ChartID(), T4_ALERT_BID_LOWER_HINE, OBJPROP_NAME, T4_ALERT_BID_LOWER_HINE + "-triggert");
+      }
+   }
+
    if(InpT4ObjectsShow == true) {
 
       if(isNewCurrentBar == true) {

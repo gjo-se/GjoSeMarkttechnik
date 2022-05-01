@@ -132,6 +132,7 @@ void handleT2P4() {
                && t2p2ValueHigh != 0
                && t2p4ValueTmp > t2p2ValueHigh
            ) {
+//            TODO: resetT3Trend();
             createT2P4VLine(t2p4DateTimeTmp);
             if(tt3p1DateTime == 0 && t2AlertT2P4CreatedTT3MissingSended == false) t2AlertT2P4CreatedTT3MissingAction();
             if(tt4p1DateTime == 0 && t2AlertT2P4CreatedTT4MissingSended == false) t2AlertT2P4CreatedTT4MissingAction();
@@ -151,6 +152,7 @@ void handleT2P4() {
                && t2p2ValueLow != 0
                && t2p4ValueTmp < t2p2ValueLow
            ) {
+//            TODO: resetT3Trend();
             createT2P4VLine(t2p4DateTimeTmp);
             if(tt3p1DateTime == 0 && t2AlertT2P4CreatedTT3MissingSended == false) t2AlertT2P4CreatedTT3MissingAction();
             if(tt4p1DateTime == 0 && t2AlertT2P4CreatedTT4MissingSended == false) t2AlertT2P4CreatedTT4MissingAction();

@@ -8,6 +8,24 @@
 //+------------------------------------------------------------------+
 //|                                                                  |
 //+------------------------------------------------------------------+
+void t4AlertBIDHigherHLineAction(const string pAlertText) {
+   if(sendAlerts == true) {
+      string prio = "B";
+      string message = prio + ": " + pAlertText + " - " + Symbol();
+      Alert(message);
+      if(!SendNotification(message)) Alert("Cannot Push " + message + " Error: ", GetLastError());
+   }
+}
+
+void t4AlertBIDLowerHLineAction(const string pAlertText) {
+   if(sendAlerts == true) {
+      string prio = "B";
+      string message = prio + ": " + pAlertText + " - " + Symbol();
+      Alert(message);
+      if(!SendNotification(message)) Alert("Cannot Push " + message + " Error: ", GetLastError());
+   }
+}
+
 void t4AlertPositionCountAction(const string pAlertText) {
    if(sendAlerts == true) {
       string prio = "B";
