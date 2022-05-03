@@ -120,6 +120,7 @@ int OnInit() {
    if(MQLInfoInteger(MQL_TESTER) == 1) {
 
       t4IsTradabelButtonState = true;
+      t2AutoButtonState = true;
 
       if(MQLInfoInteger(MQL_VISUAL_MODE) != 1) {
          t3p1DateTime = InpT3p1DateTime;
@@ -141,9 +142,6 @@ void OnTick() {
    (NewCurrentBar()) ? isNewCurrentBar = true : isNewCurrentBar = false;
 
    if(MQLInfoInteger(MQL_VISUAL_MODE) == 1) {
-      setT2LineValues();
-      setT3LineValues();
-      setT4LineValues();
       getT2TrendDirection();
       getT3TrendDirection();
       getT4TrendDirection();
