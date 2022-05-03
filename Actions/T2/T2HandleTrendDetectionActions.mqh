@@ -208,8 +208,7 @@ void handleT2BuildNewTrend() {
    datetime t2p4DateTimeTmp = 0;
    datetime t2p5DateTimeTmp = 0;
 
-   if(t2p5ValueHigh != 0
-         && t2p5DateTime < (int)TimeCurrent()
+   if(t2p5ValueHigh != 0 && t2p5DateTime < (int)TimeCurrent()
      ) {
 
       if(t2SemiTrendDirection == TREND_DIRECTION_LONG || t2trendDirection == TREND_DIRECTION_LONG) {
