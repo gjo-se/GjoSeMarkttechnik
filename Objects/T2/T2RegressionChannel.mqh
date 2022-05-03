@@ -13,12 +13,12 @@ void createT2RegressionChannel() {
 
    datetime startDateTime = t2p1DateTime;
    if(t2StartDateTime != 0) startDateTime = t2StartDateTime;
-   datetime endDateTime = TimeCurrent();
+   datetime endDateTime = iTime(Symbol(), PERIOD_CURRENT, InpT2ChannelEndShift);
    if(t2EndDateTime != 0) endDateTime = t2EndDateTime;
 
    if(startDateTime != 0 && endDateTime != 0 ) {
       createRegressionChannel(T2_REGRESSION_CHANNEL, startDateTime, endDateTime, InpT2DefaultColor, isFilled, InpT2LineStyle, InpT2LineWidth);
-      ObjectSetInteger(ChartID(), T2_REGRESSION_CHANNEL, OBJPROP_TIMEFRAMES, InpT2VisibleTimeframes);
+      ObjectSetInteger(ChartID(), T2_REGRESSION_CHANNEL, OBJPROP_TIMEFRAMES, 0);
    }else{
       deleteRegressionChannel(T2_REGRESSION_CHANNEL);
    }
@@ -52,7 +52,7 @@ void createT2RegressionChannelLevels() {
 
       double t2RegressionChannel50StartValue = t2RegressionChannel0StartValue + (t2RegressionChannel100StartValue - t2RegressionChannel0StartValue) / 2  ;
       double t2RegressionChannel50EndValue   = t2RegressionChannel0EndValue + (t2RegressionChannel100EndValue - t2RegressionChannel0EndValue) / 2;
-      createTrendLine(T2_REGRESSION_CHANNEL + "50", startDateTime, t2RegressionChannel50StartValue, endDateTime, t2RegressionChannel50EndValue, InpT2DefaultColor, thinLineWidth, InpT2LineStyle, "   50%");
+      createTrendLine(T2_REGRESSION_CHANNEL + "50", startDateTime, t2RegressionChannel50StartValue, endDateTime, t2RegressionChannel50EndValue, InpT2DefaultColor, InpT2LineWidth, InpT2LineStyle, "   50%");
       ObjectSetInteger(ChartID(), T2_REGRESSION_CHANNEL + "50", OBJPROP_TIMEFRAMES, InpT2VisibleTimeframes);
 
       double t2RegressionChannel75StartValue = t2RegressionChannel0StartValue + (t2RegressionChannel100StartValue - t2RegressionChannel0StartValue) / 4 * 3;
