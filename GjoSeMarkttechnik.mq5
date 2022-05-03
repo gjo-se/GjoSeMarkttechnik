@@ -314,6 +314,22 @@ void OnChartEvent(const int id,
             ObjectSetDouble(ChartID(), T4_STOP_LOSS_TLINE, OBJPROP_PRICE, 1, t4StopLossValue);
          }
       }
+
+      if(sparam == T4_ALERT_BID_HIGHER_HINE + T4_ALERT_HINE_TIGGERT) {
+         string originalText = ObjectGetString(ChartID(), T4_ALERT_BID_HIGHER_HINE + T4_ALERT_HINE_TIGGERT, OBJPROP_TEXT);
+         string newText = StringSubstr(originalText, 0, StringLen(originalText) - StringLen(T4_ALERT_HINE_TIGGERT));
+         ObjectSetString(ChartID(), T4_ALERT_BID_HIGHER_HINE + T4_ALERT_HINE_TIGGERT, OBJPROP_TEXT, newText);
+         ObjectSetInteger(ChartID(), T4_ALERT_BID_HIGHER_HINE + T4_ALERT_HINE_TIGGERT, OBJPROP_STYLE, STYLE_SOLID);
+         ObjectSetString(ChartID(), T4_ALERT_BID_HIGHER_HINE + T4_ALERT_HINE_TIGGERT, OBJPROP_NAME, T4_ALERT_BID_HIGHER_HINE);
+      }
+
+      if(sparam == T4_ALERT_BID_LOWER_HINE + T4_ALERT_HINE_TIGGERT) {
+         string originalText = ObjectGetString(ChartID(), T4_ALERT_BID_LOWER_HINE + T4_ALERT_HINE_TIGGERT, OBJPROP_TEXT);
+         string newText = StringSubstr(originalText, 0, StringLen(originalText) - StringLen(T4_ALERT_HINE_TIGGERT));
+         ObjectSetString(ChartID(), T4_ALERT_BID_LOWER_HINE + T4_ALERT_HINE_TIGGERT, OBJPROP_TEXT, newText);
+         ObjectSetInteger(ChartID(), T4_ALERT_BID_LOWER_HINE + T4_ALERT_HINE_TIGGERT, OBJPROP_STYLE, STYLE_SOLID);
+         ObjectSetString(ChartID(), T4_ALERT_BID_LOWER_HINE + T4_ALERT_HINE_TIGGERT, OBJPROP_NAME, T4_ALERT_BID_LOWER_HINE);
+      }
    }
 
    if(id == CHARTEVENT_OBJECT_CLICK) {

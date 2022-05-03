@@ -29,5 +29,6 @@ const string   T4_OK_VLINE =              "T4-OK";
 const string   T4_TRAILING_STOP_LINE =    "T4TrailingStopLine";
 const string   T4_ALERT_BID_HIGHER_HINE = "Alert BID>HLINE";
 const string   T4_ALERT_BID_LOWER_HINE =  "Alert BID<HLINE";
+const string   T4_ALERT_HINE_TIGGERT =    "-triggert";
 
 //+------------------------------------------------------------------+

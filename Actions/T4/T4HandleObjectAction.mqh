@@ -31,9 +31,9 @@ void t4HandleObjectsAction() {
       string hLineText  = ObjectGetString(ChartID(), T4_ALERT_BID_HIGHER_HINE, OBJPROP_TEXT);
       if(Bid() > hLineValue) {
          t4AlertBIDHigherHLineAction(hLineText);
-         ObjectSetString(ChartID(), T4_ALERT_BID_HIGHER_HINE, OBJPROP_TEXT, hLineText + "-triggert");
+         ObjectSetString(ChartID(), T4_ALERT_BID_HIGHER_HINE, OBJPROP_TEXT, hLineText + T4_ALERT_HINE_TIGGERT);
          ObjectSetInteger(ChartID(), T4_ALERT_BID_HIGHER_HINE, OBJPROP_STYLE, STYLE_DASH);
-         ObjectSetString(ChartID(), T4_ALERT_BID_HIGHER_HINE, OBJPROP_NAME, T4_ALERT_BID_HIGHER_HINE + "-triggert");
+         ObjectSetString(ChartID(), T4_ALERT_BID_HIGHER_HINE, OBJPROP_NAME, T4_ALERT_BID_HIGHER_HINE + T4_ALERT_HINE_TIGGERT);
       }
    }
 
@@ -42,9 +42,9 @@ void t4HandleObjectsAction() {
       string hLineText  = ObjectGetString(ChartID(), T4_ALERT_BID_LOWER_HINE, OBJPROP_TEXT);
       if(Bid() < hLineValue) {
          t4AlertBIDLowerHLineAction(hLineText);
-         ObjectSetString(ChartID(), T4_ALERT_BID_LOWER_HINE, OBJPROP_TEXT, hLineText + "-triggert");
+         ObjectSetString(ChartID(), T4_ALERT_BID_LOWER_HINE, OBJPROP_TEXT, hLineText + T4_ALERT_HINE_TIGGERT);
          ObjectSetInteger(ChartID(), T4_ALERT_BID_LOWER_HINE, OBJPROP_STYLE, STYLE_DASH);
-         ObjectSetString(ChartID(), T4_ALERT_BID_LOWER_HINE, OBJPROP_NAME, T4_ALERT_BID_LOWER_HINE + "-triggert");
+         ObjectSetString(ChartID(), T4_ALERT_BID_LOWER_HINE, OBJPROP_NAME, T4_ALERT_BID_LOWER_HINE + T4_ALERT_HINE_TIGGERT);
       }
    }
 
