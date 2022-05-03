@@ -314,19 +314,29 @@ void OnChartEvent(const int id,
       }
 
       if(sparam == T4_ALERT_BID_HIGHER_HINE + T4_ALERT_HINE_TIGGERT) {
+         t4AlertHigherHLineSended = false;
+         t4AlertHigherHLineValue = ObjectGetDouble(ChartID(), T4_ALERT_BID_HIGHER_HINE + T4_ALERT_HINE_TIGGERT, OBJPROP_PRICE);
          string originalText = ObjectGetString(ChartID(), T4_ALERT_BID_HIGHER_HINE + T4_ALERT_HINE_TIGGERT, OBJPROP_TEXT);
          string newText = StringSubstr(originalText, 0, StringLen(originalText) - StringLen(T4_ALERT_HINE_TIGGERT));
          ObjectSetString(ChartID(), T4_ALERT_BID_HIGHER_HINE + T4_ALERT_HINE_TIGGERT, OBJPROP_TEXT, newText);
          ObjectSetInteger(ChartID(), T4_ALERT_BID_HIGHER_HINE + T4_ALERT_HINE_TIGGERT, OBJPROP_STYLE, STYLE_SOLID);
          ObjectSetString(ChartID(), T4_ALERT_BID_HIGHER_HINE + T4_ALERT_HINE_TIGGERT, OBJPROP_NAME, T4_ALERT_BID_HIGHER_HINE);
       }
+      if(sparam == T4_ALERT_BID_HIGHER_HINE) {
+         t4AlertHigherHLineValue = ObjectGetDouble(ChartID(), T4_ALERT_BID_HIGHER_HINE, OBJPROP_PRICE);
+      }
 
       if(sparam == T4_ALERT_BID_LOWER_HINE + T4_ALERT_HINE_TIGGERT) {
+         t4AlertLowerHLineSended = false;
+         t4AlertLowerHLineValue = ObjectGetDouble(ChartID(), T4_ALERT_BID_LOWER_HINE + T4_ALERT_HINE_TIGGERT, OBJPROP_PRICE);
          string originalText = ObjectGetString(ChartID(), T4_ALERT_BID_LOWER_HINE + T4_ALERT_HINE_TIGGERT, OBJPROP_TEXT);
          string newText = StringSubstr(originalText, 0, StringLen(originalText) - StringLen(T4_ALERT_HINE_TIGGERT));
          ObjectSetString(ChartID(), T4_ALERT_BID_LOWER_HINE + T4_ALERT_HINE_TIGGERT, OBJPROP_TEXT, newText);
          ObjectSetInteger(ChartID(), T4_ALERT_BID_LOWER_HINE + T4_ALERT_HINE_TIGGERT, OBJPROP_STYLE, STYLE_SOLID);
          ObjectSetString(ChartID(), T4_ALERT_BID_LOWER_HINE + T4_ALERT_HINE_TIGGERT, OBJPROP_NAME, T4_ALERT_BID_LOWER_HINE);
+      }
+      if(sparam == T4_ALERT_BID_LOWER_HINE) {
+         t4AlertLowerHLineValue = ObjectGetDouble(ChartID(), T4_ALERT_BID_LOWER_HINE, OBJPROP_PRICE);
       }
    }
 

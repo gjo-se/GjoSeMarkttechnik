@@ -26,27 +26,21 @@ void t4HandleObjectsAction() {
       createT4IsTradeableButton();
    }
 
-   if(ObjectFind(ChartID(), T4_ALERT_BID_HIGHER_HINE) >= 0) {
-      double hLineValue = ObjectGetDouble(ChartID(), T4_ALERT_BID_HIGHER_HINE, OBJPROP_PRICE);
-      string hLineText  = ObjectGetString(ChartID(), T4_ALERT_BID_HIGHER_HINE, OBJPROP_TEXT);
-      if(Bid() > hLineValue) {
+      if(t4AlertHigherHLineValue != 0 && Bid() > t4AlertHigherHLineValue && t4AlertHigherHLineSended == false) {
+         string hLineText  = ObjectGetString(ChartID(), T4_ALERT_BID_HIGHER_HINE, OBJPROP_TEXT);
          t4AlertBIDHigherHLineAction(hLineText);
          ObjectSetString(ChartID(), T4_ALERT_BID_HIGHER_HINE, OBJPROP_TEXT, hLineText + T4_ALERT_HINE_TIGGERT);
          ObjectSetInteger(ChartID(), T4_ALERT_BID_HIGHER_HINE, OBJPROP_STYLE, STYLE_DASH);
          ObjectSetString(ChartID(), T4_ALERT_BID_HIGHER_HINE, OBJPROP_NAME, T4_ALERT_BID_HIGHER_HINE + T4_ALERT_HINE_TIGGERT);
       }
-   }
 
-   if(ObjectFind(ChartID(), T4_ALERT_BID_LOWER_HINE) >= 0) {
-      double hLineValue = ObjectGetDouble(ChartID(), T4_ALERT_BID_LOWER_HINE, OBJPROP_PRICE);
-      string hLineText  = ObjectGetString(ChartID(), T4_ALERT_BID_LOWER_HINE, OBJPROP_TEXT);
-      if(Bid() < hLineValue) {
+      if(t4AlertLowerHLineValue != 0 && Bid() < t4AlertLowerHLineValue && t4AlertLowerHLineSended == false) {
+         string hLineText  = ObjectGetString(ChartID(), T4_ALERT_BID_LOWER_HINE, OBJPROP_TEXT);
          t4AlertBIDLowerHLineAction(hLineText);
          ObjectSetString(ChartID(), T4_ALERT_BID_LOWER_HINE, OBJPROP_TEXT, hLineText + T4_ALERT_HINE_TIGGERT);
          ObjectSetInteger(ChartID(), T4_ALERT_BID_LOWER_HINE, OBJPROP_STYLE, STYLE_DASH);
          ObjectSetString(ChartID(), T4_ALERT_BID_LOWER_HINE, OBJPROP_NAME, T4_ALERT_BID_LOWER_HINE + T4_ALERT_HINE_TIGGERT);
       }
-   }
 
    if(InpT4ObjectsShow == true) {
 

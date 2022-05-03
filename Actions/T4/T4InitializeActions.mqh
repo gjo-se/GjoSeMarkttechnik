@@ -59,6 +59,11 @@ void initializeT4GlobalsAction() {
    t4AlertT4P5CreatedSended = false;
    t4AlertT4VLineOn0Sended = false;
 
+   if(ObjectFind(ChartID(), T4_ALERT_BID_HIGHER_HINE) >= 0) t4AlertHigherHLineValue = ObjectGetDouble(ChartID(), T4_ALERT_BID_HIGHER_HINE, OBJPROP_PRICE);
+   if(ObjectFind(ChartID(), T4_ALERT_BID_LOWER_HINE) >= 0) t4AlertLowerHLineValue = ObjectGetDouble(ChartID(), T4_ALERT_BID_LOWER_HINE, OBJPROP_PRICE);
+   t4AlertHigherHLineSended = false;
+   t4AlertLowerHLineSended = false;
+
    t4InSignalFiboLevelAreaMinStartValue = 0;
    t4InSignalFiboLevelAreaMinEndValue = 0;
    t4InSignalFiboLevelAreaMaxStartValue = 0;

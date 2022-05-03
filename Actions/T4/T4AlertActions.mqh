@@ -14,6 +14,7 @@ void t4AlertBIDHigherHLineAction(const string pAlertText) {
       string message = prio + ": " + pAlertText + " - " + Symbol();
       Alert(message);
       if(!SendNotification(message)) Alert("Cannot Push " + message + " Error: ", GetLastError());
+      t4AlertHigherHLineSended = true;
    }
 }
 
@@ -23,6 +24,7 @@ void t4AlertBIDLowerHLineAction(const string pAlertText) {
       string message = prio + ": " + pAlertText + " - " + Symbol();
       Alert(message);
       if(!SendNotification(message)) Alert("Cannot Push " + message + " Error: ", GetLastError());
+      t4AlertLowerHLineSended = true;
    }
 }
 
