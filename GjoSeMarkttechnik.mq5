@@ -115,7 +115,17 @@ int OnInit() {
       handleCommentAction(VERSION);
    }
 
+   int objectsTotal = ObjectsTotal(ChartID(), 0, -1);
+   string objName;
+   string autotrade = "autotrade";
 
+   for(int i = objectsTotal; i >= 0; i--) {
+      objName = ObjectName(ChartID(), i);
+      if(StringFind(objName, autotrade) != -1) {
+         ObjectSetInteger(ChartID(), objName, OBJPROP_TIMEFRAMES, OBJ_PERIOD_H1 | OBJ_PERIOD_M10 | OBJ_PERIOD_M1);
+         ObjectSetString(ChartID(), objName, OBJPROP_TEXT, "");
+      }
+   }
 
    if(MQLInfoInteger(MQL_TESTER) == 1) {
 
