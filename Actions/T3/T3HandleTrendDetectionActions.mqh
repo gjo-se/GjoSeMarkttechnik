@@ -8,14 +8,15 @@
 //+------------------------------------------------------------------+
 void getT3TrendDirection() {
 
-   double t3p2ValueTmp = 0;
+   double t3p2ValueLocal = 0;
+
    t3SemiTrendDirection = TREND_DIRECTION_ROTATION;
    t3trendDirection = TREND_DIRECTION_ROTATION;
 
    if(t3p1ValueHigh != 0) {
-      (t3p2ValueLow != 0) ? t3p2ValueTmp = t3p2ValueLow : t3p2ValueTmp = Bid();
-      if(t3p1ValueHigh < t3p2ValueTmp) t3SemiTrendDirection = TREND_DIRECTION_LONG;
-      if(t3p1ValueHigh > t3p2ValueTmp) t3SemiTrendDirection = TREND_DIRECTION_SHORT;
+      (t3p2ValueLow != 0) ? t3p2ValueLocal = t3p2ValueLow : t3p2ValueLocal = Bid();
+      if(t3p1ValueHigh < t3p2ValueLocal) t3SemiTrendDirection = TREND_DIRECTION_LONG;
+      if(t3p1ValueHigh > t3p2ValueLocal) t3SemiTrendDirection = TREND_DIRECTION_SHORT;
    }
 
    if(t3p3ValueHigh != 0 && t3p4ValueHigh != 0) {
@@ -40,59 +41,71 @@ void handleT3TrendDetectionAction() {
 
 void handleT3P2() {
 
-   datetime t3p1DateTimeTmp = 0;
-   datetime t3p2DateTimeTmp = 0;
-   double   t3p2ValueTmp = 0;
+   double   t3StartValueLocal = 0;
+   datetime t3p2DateTimeLocal = 0;
+   double   t3p2ValueLocal = 0;
    double   t3P1P2MovementPoints = 0;
+   string   errorText = "TT3 is Missing";
 
-   if(t3p1DateTime != 0
-         && t3p1DateTime < (int)TimeCurrent()
+   if(t3p1DateTime != 0 && t3p1DateTime < (int)TimeCurrent()
          && t3p3DateTime == 0
      ) {
 
-      if(t3SemiTrendDirection == TREND_DIRECTION_LONG) {
-         t3p2DateTimeTmp = iTime(Symbol(), PERIOD_M1, iHighest(Symbol(), PERIOD_M1, MODE_HIGH,  iBarShift(Symbol(), PERIOD_M1, t3p1DateTimeTmp) + 1));
-         t3p2ValueTmp = iHigh(Symbol(), PERIOD_M1, iBarShift(Symbol(), PERIOD_M1, t3p2DateTimeTmp));
-         t3P1P2MovementPoints = t3p2ValueTmp / Point() - t3p1ValueLow / Point();
+      if(tt3p1DateTime != 0) {
+         
+         t3AlertT3VLineOn0Sended = false;
+         deleteLabel(ERROR_LABEL + errorText);
+         
+         if(t3SemiTrendDirection == TREND_DIRECTION_LONG) {
+            t3StartValueLocal = iLow(Symbol(), PERIOD_M1, iBarShift(Symbol(), PERIOD_M1, t3p1DateTime));
+            t3p2DateTimeLocal = iTime(Symbol(), PERIOD_M1, iHighest(Symbol(), PERIOD_M1, MODE_HIGH,  iBarShift(Symbol(), PERIOD_M1, t3p1DateTime) + 1));
+            t3p2ValueLocal = iHigh(Symbol(), PERIOD_M1, iBarShift(Symbol(), PERIOD_M1, t3p2DateTimeLocal));
+            t3P1P2MovementPoints = t3p2ValueLocal / Point() - t3StartValueLocal / Point();
 
-         if(isNewCurrentBar == true && t3ScreenshotT3P2CreatedBefore == true && t3ScreenshotT3P2CreatedAfter == false) {
-            createScreenshot("T3P2-After");
-            t3ScreenshotT3P2CreatedAfter = true;
-         }
-
-         if(Bid() >= t3p2ValueTmp
-               && t3P1P2MovementPoints > (tt3movementLength * InpT3MinMovementLengthBasedOnTT3MovementPercent / 100)
-           ) {
-            if(t3ScreenshotT3P2CreatedBefore == false) {
-               createScreenshot("T3P2-Before");
-               t3ScreenshotT3P2CreatedBefore = true;
+            if(isNewCurrentBar == true && t3ScreenshotT3P2CreatedBefore == true && t3ScreenshotT3P2CreatedAfter == false) {
+               createScreenshot("T3P2-After");
+               t3ScreenshotT3P2CreatedAfter = true;
             }
-            createT3P2VLine(t3p2DateTimeTmp);
-            getT3TrendDirection();
+
+            if(Bid() >= t3p2ValueLocal
+                  && t3P1P2MovementPoints > (tt3movementLength * InpT3MinMovementLengthBasedOnTT3MovementPercent / 100)
+              ) {
+               if(t3ScreenshotT3P2CreatedBefore == false) {
+                  createScreenshot("T3P2-Before");
+                  t3ScreenshotT3P2CreatedBefore = true;
+               }
+               createT3P2VLine(t3p2DateTimeLocal);
+               getT3TrendDirection();
+            }
          }
+
+         if(t3SemiTrendDirection == TREND_DIRECTION_SHORT) {
+            t3StartValueLocal = iHigh(Symbol(), PERIOD_M1, iBarShift(Symbol(), PERIOD_M1, t3p1DateTime));
+            t3p2DateTimeLocal = iTime(Symbol(), PERIOD_M1, iLowest(Symbol(), PERIOD_M1, MODE_LOW,  iBarShift(Symbol(), PERIOD_M1, t3p1DateTime) + 1));
+            t3p2ValueLocal = iLow(Symbol(), PERIOD_M1, iBarShift(Symbol(), PERIOD_M1, t3p2DateTimeLocal));
+            t3P1P2MovementPoints = t3StartValueLocal / Point() - t3p2ValueLocal / Point();
+
+            if(isNewCurrentBar == true && t3ScreenshotT3P2CreatedBefore == true && t3ScreenshotT3P2CreatedAfter == false) {
+               createScreenshot("T3P2-After");
+               t3ScreenshotT3P2CreatedAfter = true;
+            }
+
+            if(Bid() <= t3p2ValueLocal
+                  && t3P1P2MovementPoints > (tt3movementLength * InpT3MinMovementLengthBasedOnTT3MovementPercent / 100)
+              ) {
+               if(t3ScreenshotT3P2CreatedBefore == false) {
+                  createScreenshot("T3P2-Before");
+                  t3ScreenshotT3P2CreatedBefore = true;
+               }
+               createT3P2VLine(t3p2DateTimeLocal);
+               getT3TrendDirection();
+            }
+         }
+      } else {
+         if(t3AlertT3VLineOn0Sended == false) t3AlertT3VLineOn0Action();
+         createErrorLabel(errorText);
       }
 
-      if(t3SemiTrendDirection == TREND_DIRECTION_SHORT) {
-         t3p2DateTimeTmp = iTime(Symbol(), PERIOD_M1, iLowest(Symbol(), PERIOD_M1, MODE_LOW,  iBarShift(Symbol(), PERIOD_M1, t3p1DateTimeTmp) + 1));
-         t3p2ValueTmp = iLow(Symbol(), PERIOD_M1, iBarShift(Symbol(), PERIOD_M1, t3p2DateTimeTmp));
-         t3P1P2MovementPoints = t3p1ValueHigh / Point() - t3p2ValueTmp / Point();
-
-         if(isNewCurrentBar == true && t3ScreenshotT3P2CreatedBefore == true && t3ScreenshotT3P2CreatedAfter == false) {
-            createScreenshot("T3P2-After");
-            t3ScreenshotT3P2CreatedAfter = true;
-         }
-
-         if(Bid() <= t3p2ValueTmp
-               && t3P1P2MovementPoints > (tt3movementLength * InpT3MinMovementLengthBasedOnTT3MovementPercent / 100)
-           ) {
-            if(t3ScreenshotT3P2CreatedBefore == false) {
-               createScreenshot("T3P2-Before");
-               t3ScreenshotT3P2CreatedBefore = true;
-            }
-            createT3P2VLine(t3p2DateTimeTmp);
-            getT3TrendDirection();
-         }
-      }
 
    }
 }
