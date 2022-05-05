@@ -47,9 +47,6 @@ void initializeTTGlobalsAction() {
    tt2regressionLengthP4P5 = 0;
    tt2movementLengthRegressionLengthRatio = 0;
 
-   tt2MinHighVolumeAreaLevel = 0;
-   tt2MaxHighVolumeAreaLevel = 0;
-
 // TT3
    tt3p1DateTime = 0;
    tt3p1ValueHigh = 0;

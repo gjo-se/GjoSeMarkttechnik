@@ -41,9 +41,6 @@ double tt2regressionLengthP2P3;
 double tt2regressionLengthP4P5;
 double tt2movementLengthRegressionLengthRatio;
 
-double tt2MinHighVolumeAreaLevel;
-double tt2MaxHighVolumeAreaLevel;
-
 // TT3
 datetime tt3StartDateTime;
 double tt3StartValueHigh;
