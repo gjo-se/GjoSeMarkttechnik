@@ -27,6 +27,8 @@ void setT3VLineDateTimes() {
    t3p3DateTime = getVlineDatetimeByTextLike(T3_P3_VLINE);
    t3p4DateTime = getVlineDatetimeByTextLike(T3_P4_VLINE);
    t3p5DateTime = getVlineDatetimeByTextLike(T3_P5_VLINE);
+   t3p6DateTime = getVlineDatetimeByTextLike(T3_P6_VLINE);
+   t3p7DateTime = getVlineDatetimeByTextLike(T3_P7_VLINE);
    t3EndDateTime = getVlineDatetimeByTextLike(T3_END_VLINE);
 }
 
@@ -72,6 +74,22 @@ void setT3VLineValues() {
       t3p5ValueLow = 0;
    }
 
+   if(t3p6DateTime != 0 && (int)t3p6DateTime < (int) TimeCurrent()) {
+      t3p6ValueHigh = iHigh(Symbol(), PERIOD_CURRENT, iBarShift(Symbol(), PERIOD_CURRENT, t3p6DateTime));
+      t3p6ValueLow = iLow(Symbol(), PERIOD_CURRENT, iBarShift(Symbol(), PERIOD_CURRENT, t3p6DateTime));
+   } else {
+      t3p6ValueHigh = 0;
+      t3p6ValueLow = 0;
+   }
+
+   if(t3p7DateTime != 0 && (int)t3p7DateTime < (int) TimeCurrent()) {
+      t3p7ValueHigh = iHigh(Symbol(), PERIOD_CURRENT, iBarShift(Symbol(), PERIOD_CURRENT, t3p7DateTime));
+      t3p7ValueLow = iLow(Symbol(), PERIOD_CURRENT, iBarShift(Symbol(), PERIOD_CURRENT, t3p7DateTime));
+   } else {
+      t3p7ValueHigh = 0;
+      t3p7ValueLow = 0;
+   }
+      
    if(t3p1DateTime != 0 && t3p2DateTime != 0) t3AlertT3VLineOn0Sended = false;
 }
 //+------------------------------------------------------------------+
@@ -169,6 +187,38 @@ void createT3P5VLine(datetime pDateTime) {
 
    createVLine(T3_P5_VLINE, t3p5DateTime, InpT3VLineColor, InpT3LineWidth, InpT3LineStyle, T3_P5_VLINE, zOrder, isBackground, isSelected, isSelectable);
    ObjectSetInteger(ChartID(), T3_P5_VLINE, OBJPROP_TIMEFRAMES, InpT3VisibleTimeframes);
+}
+//+------------------------------------------------------------------+
+
+void createT3P6VLine(datetime pDateTime) {
+
+   long zOrder = 0;
+   bool isBackground = true;
+   bool isSelected = false;
+   bool isSelectable = true;
+
+   t3p6DateTime = pDateTime;
+   t3p6ValueHigh = iHigh(Symbol(), PERIOD_CURRENT, iBarShift(Symbol(), PERIOD_CURRENT, t3p6DateTime));
+   t3p6ValueLow = iLow(Symbol(), PERIOD_CURRENT, iBarShift(Symbol(), PERIOD_CURRENT, t3p6DateTime));
+
+   createVLine(T3_P6_VLINE, t3p6DateTime, InpT3VLineColor, InpT3LineWidth, InpT3LineStyle, T3_P6_VLINE, zOrder, isBackground, isSelected, isSelectable);
+   ObjectSetInteger(ChartID(), T3_P6_VLINE, OBJPROP_TIMEFRAMES, InpT3VisibleTimeframes);
+}
+//+------------------------------------------------------------------+
+
+void createT3P7VLine(datetime pDateTime) {
+
+   long zOrder = 0;
+   bool isBackground = true;
+   bool isSelected = false;
+   bool isSelectable = true;
+
+   t3p7DateTime = pDateTime;
+   t3p7ValueHigh = iHigh(Symbol(), PERIOD_CURRENT, iBarShift(Symbol(), PERIOD_CURRENT, t3p7DateTime));
+   t3p7ValueLow = iLow(Symbol(), PERIOD_CURRENT, iBarShift(Symbol(), PERIOD_CURRENT, t3p7DateTime));
+
+   createVLine(T3_P7_VLINE, t3p7DateTime, InpT3VLineColor, InpT3LineWidth, InpT3LineStyle, T3_P7_VLINE, zOrder, isBackground, isSelected, isSelectable);
+   ObjectSetInteger(ChartID(), T3_P7_VLINE, OBJPROP_TIMEFRAMES, InpT3VisibleTimeframes);
 }
 //+------------------------------------------------------------------+
 

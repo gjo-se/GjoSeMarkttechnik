@@ -54,6 +54,12 @@ double t3p4ValueLow;
 datetime t3p5DateTime;
 double t3p5ValueHigh;
 double t3p5ValueLow;
+datetime t3p6DateTime;
+double t3p6ValueHigh;
+double t3p6ValueLow;
+datetime t3p7DateTime;
+double t3p7ValueHigh;
+double t3p7ValueLow;
 datetime t3EndDateTime;
 
 int t3SemiTrendDirection;
@@ -74,8 +80,9 @@ bool t3alertBidIsInSignalAreaSended;
 bool t3alertBidAgainInHighVolumeAreaSended;
 bool t3alertMAChangedSended;
 bool t3AlertT3TrendBrokenSended;
-bool t3AlertT3P5CreatedTT4MissingSended;
 bool t3AlertT3VLineOn0Sended;
+bool t3AlertT3P6CreatedSended;
+bool t3AlertT3P6CreatedTT4MissingSended;
 
 // INSignal
 double t3InSignalFiboLevelAreaMinStartValue;
@@ -107,6 +114,10 @@ bool        t3ScreenshotT3P4CreatedBefore;
 bool        t3ScreenshotT3P4CreatedAfter;
 bool        t3ScreenshotT3P5CreatedBefore;
 bool        t3ScreenshotT3P5CreatedAfter;
+bool        t3ScreenshotT3P6CreatedBefore;
+bool        t3ScreenshotT3P6CreatedAfter;
+bool        t3ScreenshotT3P7CreatedBefore;
+bool        t3ScreenshotT3P7CreatedAfter;
 bool        t3ScreenshotT3BuildNewTrendBefore;
 bool        t3ScreenshotT3BuildNewTrendAfter;
 bool        t3ScreenshotT3TrendBrokenOnP1Before;

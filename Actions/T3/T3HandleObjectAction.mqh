@@ -96,3 +96,25 @@ double getT3P5HighLowValueByTrendDirection() {
 }
 //+------------------------------------------------------------------+
 
+//+------------------------------------------------------------------+
+//|                                                                  |
+//+------------------------------------------------------------------+
+double getT3P6HighLowValueByTrendDirection() {
+   double returnValue = 0;
+   if(t3p1ValueLow != 0 && t3p2ValueLow != 0) {
+      returnValue = (t3p1ValueLow > t3p2ValueLow) ? t3p6ValueLow : t3p6ValueHigh;
+   }
+   return returnValue;
+}
+
+//+------------------------------------------------------------------+
+//|                                                                  |
+//+------------------------------------------------------------------+
+double getT3P7HighLowValueByTrendDirection() {
+   double returnValue = 0;
+   if(t3p1ValueLow != 0 && t3p2ValueLow != 0) {
+      returnValue = (t3p1ValueLow < t3p2ValueLow) ? t3p7ValueLow : t3p7ValueHigh;
+   }
+   return returnValue;
+}
+//+------------------------------------------------------------------+

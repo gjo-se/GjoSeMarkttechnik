@@ -7,6 +7,17 @@
 //+------------------------------------------------------------------+
 //|                                                                  |
 //+------------------------------------------------------------------+
+
+void t3AlertT3P6CreatedAction() {
+   if(sendAlerts == true) {
+      string prio = "A";
+      string text = "T3-P6 created";
+      string message = prio + ": " + text + " - " + Symbol();
+      Alert(message);
+      if(!SendNotification(message)) Alert("Cannot Push " + message + " Error: ", GetLastError());
+      t3AlertT3P6CreatedSended = true;
+   }
+}
 void t3AlertT3TrendBrokenAction() {
    if(sendAlerts == true) {
       string prio = "C";
@@ -18,14 +29,14 @@ void t3AlertT3TrendBrokenAction() {
    }
 }
 
-void t3AlertT3P5CreatedTT4MissingAction() {
+void t3AlertT3P6CreatedTT4MissingAction() {
    if(sendAlerts == true) {
       string prio = "ERROR";
-      string text = "T3 P5 + TT4 Missing";
+      string text = "T3-P6 + TT4 Missing";
       string message = prio + ": " + text + " - " + Symbol();
       Alert(message);
       if(!SendNotification(message)) Alert("Cannot Push " + message + " Error: ", GetLastError());
-      t3AlertT3P5CreatedTT4MissingSended = true;
+      t3AlertT3P6CreatedTT4MissingSended = true;
    }
 }
 

@@ -191,7 +191,6 @@ void setTT3VLineStyles(const string pSubString = "TMP3-") {
          ObjectSetInteger(ChartID(), objName, OBJPROP_TIMEFRAMES, InpT3VisibleTimeframes);
       }
    }
-
 }
 
 //+------------------------------------------------------------------+

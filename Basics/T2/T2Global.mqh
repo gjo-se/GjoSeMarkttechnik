@@ -31,7 +31,6 @@ string t2FiboLevelsArray[];
 
 // Alerts
 bool t2AlertT2P4CreatedTT3MissingSended;
-bool t2AlertT2P4CreatedTT4MissingSended;
 bool t2AlertT2P4CreatedHighVolumeAreaMissingSended;
 bool t2AlertT2P4CreatedSended;
 bool t2AlertT2P5CreatedSended;

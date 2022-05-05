@@ -131,6 +131,8 @@ int OnInit() {
 
       t4IsTradabelButtonState = true;
       t2AutoButtonState = true;
+      t3AutoButtonState = true;
+      t4AutoButtonState = true;
 
       if(MQLInfoInteger(MQL_VISUAL_MODE) != 1) {
          t3p1DateTime = InpT3p1DateTime;
@@ -183,8 +185,8 @@ void OnTick() {
    if(getT3SellAlertRegressionSignal() == true) t3AlertSellRegressionAction();
    if(getT4SellAlertRegressionSignal() == true) t4AlertSellRegressionAction();
 
-   if(getT4BuyInSignal() == true) openT4BuyOrderAction();
-   if(getT4SellInSignal() == true) openT4SellOrderAction();
+   //if(getT4BuyInSignal() == true) openT4BuyOrderAction();
+   //if(getT4SellInSignal() == true) openT4SellOrderAction();
 
 }
 

@@ -10,15 +10,16 @@
 void createT3RegressionChannel() {
 
    bool isFilled = false;
+   int  visbility = 0;
 
    datetime startDateTime = t3p1DateTime;
    if(t3StartDateTime != 0) startDateTime = t3StartDateTime;
-   datetime endDateTime = TimeCurrent();
+   datetime endDateTime = iTime(Symbol(), PERIOD_CURRENT, InpT3ChannelEndShift);
    if(t3EndDateTime != 0) endDateTime = t3EndDateTime;
 
    if(startDateTime != 0 && endDateTime != 0 ) {
       createRegressionChannel(T3_REGRESSION_CHANNEL, startDateTime, endDateTime, InpT3DefaultColor, isFilled, InpT3LineStyle, InpT3LineWidth);
-      ObjectSetInteger(ChartID(), T3_REGRESSION_CHANNEL, OBJPROP_TIMEFRAMES, InpT3VisibleTimeframes);
+      ObjectSetInteger(ChartID(), T3_REGRESSION_CHANNEL, OBJPROP_TIMEFRAMES, visbility);
    }else{
       deleteRegressionChannel(T3_REGRESSION_CHANNEL);
    }
@@ -28,7 +29,7 @@ void createT3RegressionChannelLevels() {
 
    int thinLineWidth = 1;
 
-   if(t3p1DateTime != 0 && t3p3DateTime != 0) {
+   if(t3p1DateTime != 0 && t3p4DateTime != 0) {
 
       datetime startDateTime = t3p1DateTime;
       if(t3StartDateTime != 0) startDateTime = t3StartDateTime;

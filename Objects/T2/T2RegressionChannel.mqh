@@ -10,6 +10,7 @@
 void createT2RegressionChannel() {
 
    bool isFilled = false;
+   int  visbility = 0;
 
    datetime startDateTime = t2p1DateTime;
    if(t2StartDateTime != 0) startDateTime = t2StartDateTime;
@@ -18,7 +19,7 @@ void createT2RegressionChannel() {
 
    if(startDateTime != 0 && endDateTime != 0 ) {
       createRegressionChannel(T2_REGRESSION_CHANNEL, startDateTime, endDateTime, InpT2DefaultColor, isFilled, InpT2LineStyle, InpT2LineWidth);
-      ObjectSetInteger(ChartID(), T2_REGRESSION_CHANNEL, OBJPROP_TIMEFRAMES, 0);
+      ObjectSetInteger(ChartID(), T2_REGRESSION_CHANNEL, OBJPROP_TIMEFRAMES, visbility);
    }else{
       deleteRegressionChannel(T2_REGRESSION_CHANNEL);
    }
@@ -28,7 +29,7 @@ void createT2RegressionChannelLevels() {
 
    int thinLineWidth = 1;
 
-   if(t2p1DateTime != 0 && t2p3DateTime != 0) {
+   if(t2p1DateTime != 0 && t2p4DateTime != 0) {
 
       datetime startDateTime = t2p1DateTime;
       if(t2StartDateTime != 0) startDateTime = t2StartDateTime;

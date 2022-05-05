@@ -15,17 +15,6 @@ void t2AlertT2P4CreatedTT3MissingAction() {
    }
 }
 
-void t2AlertT2P4CreatedTT4MissingAction() {
-   if(sendAlerts == true) {
-      string prio = "ERROR";
-      string text = "T2 P4 + TT4 Missing";
-      string message = prio + ": " + text + " - " + Symbol();
-      Alert(message);
-      if(!SendNotification(message)) Alert("Cannot Push " + message + " Error: ", GetLastError());
-      t2AlertT2P4CreatedTT4MissingSended = true;
-   }
-}
-
 void t2AlertT2P4CreatedHighVolumeAreaMissingAction() {
    if(sendAlerts == true) {
       string prio = "ERROR";

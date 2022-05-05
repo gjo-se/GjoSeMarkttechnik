@@ -31,6 +31,15 @@ void initializeT3GlobalsAction() {
    t3p4DateTime = 0;
    t3p4ValueHigh = 0;
    t3p4ValueLow = 0;
+   t3p5DateTime = 0;
+   t3p5ValueHigh = 0;
+   t3p5ValueLow = 0;
+   t3p6DateTime = 0;
+   t3p6ValueHigh = 0;
+   t3p6ValueLow = 0;
+   t3p7DateTime = 0;
+   t3p7ValueHigh = 0;
+   t3p7ValueLow = 0;
    t3EndDateTime = 0;
 
    t3SemiTrendDirection = TREND_DIRECTION_ROTATION;
@@ -53,8 +62,9 @@ void initializeT3GlobalsAction() {
    t3alertBidAgainInHighVolumeAreaSended = false;
    t3alertMAChangedSended = false;
    t3AlertT3TrendBrokenSended = false;
-   t3AlertT3P5CreatedTT4MissingSended = false;
    t3AlertT3VLineOn0Sended = false;
+   t3AlertT3P6CreatedSended = false;
+   t3AlertT3P6CreatedTT4MissingSended = false;
 
    t3InSignalFiboLevelAreaMinStartValue = 0;
    t3InSignalFiboLevelAreaMinEndValue = 0;
@@ -85,6 +95,10 @@ void initializeT3GlobalsAction() {
    t3ScreenshotT3P4CreatedAfter = false;
    t3ScreenshotT3P5CreatedBefore = false;
    t3ScreenshotT3P5CreatedAfter = false;
+   t3ScreenshotT3P6CreatedBefore = false;
+   t3ScreenshotT3P6CreatedAfter = false;
+   t3ScreenshotT3P7CreatedBefore = false;
+   t3ScreenshotT3P7CreatedAfter = false;
    t3ScreenshotT3BuildNewTrendBefore = false;
    t3ScreenshotT3BuildNewTrendAfter = false;
    t3ScreenshotT3TrendBrokenOnP1Before = false;

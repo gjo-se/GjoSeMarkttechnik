@@ -32,7 +32,6 @@ void initializeT2GlobalsAction() {
 
 // Alerts
    t2AlertT2P4CreatedTT3MissingSended = false;
-   t2AlertT2P4CreatedTT4MissingSended = false;
    t2AlertT2P4CreatedHighVolumeAreaMissingSended = false;
    t2AlertT2P4CreatedSended = false;
    t2AlertT2P5CreatedSended = false;
