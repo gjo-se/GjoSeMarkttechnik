@@ -26,8 +26,6 @@ void setT4VLineDateTimes() {
    t4p2DateTime = getVlineDatetimeByTextLike(T4_P2_VLINE);
    t4p3DateTime = getVlineDatetimeByTextLike(T4_P3_VLINE);
    t4p4DateTime = getVlineDatetimeByTextLike(T4_P4_VLINE);
-   t4p5DateTime = getVlineDatetimeByTextLike(T4_P5_VLINE);
-   t4EndDateTime = getVlineDatetimeByTextLike(T4_END_VLINE);
 }
 
 void setT4VLineValues() {
@@ -62,14 +60,6 @@ void setT4VLineValues() {
    } else {
       t4p4ValueHigh = 0;
       t4p4ValueLow = 0;
-   }
-
-   if(t4p5DateTime != 0 && (int)t4p5DateTime < (int) TimeCurrent()) {
-      t4p5ValueHigh = iHigh(Symbol(), PERIOD_CURRENT, iBarShift(Symbol(), PERIOD_CURRENT, t4p5DateTime));
-      t4p5ValueLow = iLow(Symbol(), PERIOD_CURRENT, iBarShift(Symbol(), PERIOD_CURRENT, t4p5DateTime));
-   } else {
-      t4p5ValueHigh = 0;
-      t4p5ValueLow = 0;
    }
 
    if(t4p1DateTime != 0 && t4p2DateTime != 0) t4AlertT4VLineOn0Sended = false;
@@ -152,22 +142,6 @@ void createT4P4VLine(datetime pDateTime) {
 
    createVLine(T4_P4_VLINE, t4p4DateTime, InpT4VLineColor, InpT4LineWidth, InpT4LineStyle, T4_P4_VLINE, zOrder, isBackground, isSelected, isSelectable);
    ObjectSetInteger(ChartID(), T4_P4_VLINE, OBJPROP_TIMEFRAMES, InpT4VisibleTimeframes);
-}
-//+------------------------------------------------------------------+
-
-void createT4P5VLine(datetime pDateTime) {
-
-   long zOrder = 0;
-   bool isBackground = true;
-   bool isSelected = false;
-   bool isSelectable = true;
-
-   t4p5DateTime = pDateTime;
-   t4p5ValueHigh = iHigh(Symbol(), PERIOD_CURRENT, iBarShift(Symbol(), PERIOD_CURRENT, t4p5DateTime));
-   t4p5ValueLow = iLow(Symbol(), PERIOD_CURRENT, iBarShift(Symbol(), PERIOD_CURRENT, t4p5DateTime));
-
-   createVLine(T4_P5_VLINE, t4p5DateTime, InpT4VLineColor, InpT4LineWidth, InpT4LineStyle, T4_P5_VLINE, zOrder, isBackground, isSelected, isSelectable);
-   ObjectSetInteger(ChartID(), T4_P5_VLINE, OBJPROP_TIMEFRAMES, InpT4VisibleTimeframes);
 }
 //+------------------------------------------------------------------+
 

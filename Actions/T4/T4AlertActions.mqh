@@ -37,22 +37,6 @@ void t4AlertPositionCountAction(const string pAlertText) {
    }
 }
 
-void t4AlertT4TrendBrokenAction() {
-   if(sendAlerts == true) {
-      string prio;
-      if(buyT4PositionIsOpenState == true || sellT4PositionIsOpenState == true){
-         prio = "A";
-      }else{
-         prio = "C";
-      }
-      string text = "T4 Broken";
-      string message = prio + ": " + text + " - " + Symbol();
-      Alert(message);
-      if(!SendNotification(message)) Alert("Cannot Push " + message + " Error: ", GetLastError());
-      t4AlertT4TrendBrokenSended = true;
-   }
-}
-
 void t4AlertT4P3CreatedAction() {
    if(sendAlerts == true) {
       string prio = "AA";
@@ -194,7 +178,6 @@ void t4CommentAction(string pVersion) {
       t4comment += "T4-P2: " + TimeToString(t4p2DateTime) + " HIGH: " + DoubleToString(t4p2ValueHigh, Digits()) +  " LOW: " + DoubleToString(t4p2ValueLow, Digits()) + "\n";
       t4comment += "T4-P3: " + TimeToString(t4p3DateTime) + " HIGH: " + DoubleToString(t4p3ValueHigh, Digits()) +  " LOW: " + DoubleToString(t4p3ValueLow, Digits()) + "\n";
       t4comment += "T4-P4: " + TimeToString(t4p4DateTime) + " HIGH: " + DoubleToString(t4p4ValueHigh, Digits()) +  " LOW: " + DoubleToString(t4p4ValueLow, Digits()) + "\n";
-      t4comment += "T4-P5: " + TimeToString(t4p5DateTime) + " HIGH: " + DoubleToString(t4p5ValueHigh, Digits()) +  " LOW: " + DoubleToString(t4p5ValueLow, Digits()) + "\n";
    }
 }
 //+------------------------------------------------------------------+

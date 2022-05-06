@@ -24,10 +24,6 @@ void initializeT4GlobalsAction() {
    t4p4DateTime = 0;
    t4p4ValueHigh = 0;
    t4p4ValueLow = 0;
-   t4p5DateTime = 0;
-   t4p5ValueHigh = 0;
-   t4p5ValueLow = 0;
-   t4EndDateTime = 0;
 
    t4SemiTrendDirection = TREND_DIRECTION_ROTATION;
    t4trendDirection = TREND_DIRECTION_ROTATION;
@@ -95,14 +91,6 @@ void initializeT4GlobalsAction() {
    t4ScreenshotT4P3CreatedAfter = false;
    t4ScreenshotT4P4CreatedBefore = false;
    t4ScreenshotT4P4CreatedAfter = false;
-   t4ScreenshotT4P5CreatedBefore = false;
-   t4ScreenshotT4P5CreatedAfter = false;
-   t4ScreenshotT4BuildNewTrendBefore = false;
-   t4ScreenshotT4BuildNewTrendAfter = false;
-   t4ScreenshotT4TrendBrokenOnP1Before = false;
-   t4ScreenshotT4TrendBrokenOnP1After = false;
-   t4ScreenshotT4TrendBrokenOnP3Before = false;
-   t4ScreenshotT4TrendBrokenOnP3After = false;      
 }
 
 //+------------------------------------------------------------------+

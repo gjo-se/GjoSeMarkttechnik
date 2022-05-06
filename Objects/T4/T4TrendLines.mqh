@@ -26,10 +26,6 @@ void createT4ZigZagTrendDetectionLines() {
       createTrendLine(T4_ZIGZAGLINE + "P3-P4", t4p3DateTime, getT4P3HighLowValueByTrendDirection(), t4p4DateTime, getT4P4HighLowValueByTrendDirection(), lineColor, InpT4LineWidth, InpT4LineStyle);
       ObjectSetInteger(ChartID(), T4_ZIGZAGLINE + "P3-P4", OBJPROP_TIMEFRAMES, InpT4VisibleTimeframes);
    }
-   if(t4p4DateTime != 0 && t4p5DateTime != 0) {
-      createTrendLine(T4_ZIGZAGLINE + "P4-P5", t4p4DateTime, getT4P4HighLowValueByTrendDirection(), t4p5DateTime, getT4P5HighLowValueByTrendDirection(), lineColor, InpT4LineWidth, InpT4LineStyle);
-      ObjectSetInteger(ChartID(), T4_ZIGZAGLINE + "P4-P5", OBJPROP_TIMEFRAMES, InpT4VisibleTimeframes);
-   }
 }
 
 //+------------------------------------------------------------------+

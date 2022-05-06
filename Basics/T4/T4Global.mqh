@@ -55,10 +55,6 @@ double t4p3ValueLow;
 datetime t4p4DateTime;
 double t4p4ValueHigh;
 double t4p4ValueLow;
-datetime t4p5DateTime;
-double t4p5ValueHigh;
-double t4p5ValueLow;
-datetime t4EndDateTime;
 
 int t4SemiTrendDirection;
 int t4trendDirection;
@@ -121,14 +117,6 @@ bool        t4ScreenshotT4P3CreatedBefore;
 bool        t4ScreenshotT4P3CreatedAfter;
 bool        t4ScreenshotT4P4CreatedBefore;
 bool        t4ScreenshotT4P4CreatedAfter;
-bool        t4ScreenshotT4P5CreatedBefore;
-bool        t4ScreenshotT4P5CreatedAfter;
-bool        t4ScreenshotT4BuildNewTrendBefore;
-bool        t4ScreenshotT4BuildNewTrendAfter;
-bool        t4ScreenshotT4TrendBrokenOnP1Before;
-bool        t4ScreenshotT4TrendBrokenOnP1After;
-bool        t4ScreenshotT4TrendBrokenOnP3Before;
-bool        t4ScreenshotT4TrendBrokenOnP3After;
 
 
 //+------------------------------------------------------------------+

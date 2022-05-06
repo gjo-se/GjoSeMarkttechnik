@@ -107,15 +107,3 @@ double getT4P4HighLowValueByTrendDirection() {
    }
    return returnValue;
 }
-
-//+------------------------------------------------------------------+
-//|                                                                  |
-//+------------------------------------------------------------------+
-double getT4P5HighLowValueByTrendDirection() {
-   double returnValue = 0;
-   if(t4p1ValueLow != 0 && t4p2ValueLow != 0) {
-      returnValue = (t4p1ValueLow < t4p2ValueLow) ? t4p5ValueLow : t4p5ValueHigh;
-   }
-   return returnValue;
-}
-//+------------------------------------------------------------------+
