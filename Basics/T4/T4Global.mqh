@@ -29,8 +29,11 @@ int         t4TrailingStopMAPeriod05;
 
 string t4comment;
 
+bool  t4AutoButtonState;
 bool  t4IsTradabelButtonState;
 
+int   buyPositionsCount;
+int   sellPositionsCount;
 bool  buyT4PositionIsOpenState;
 bool  maxT4BuyPositionsAreOpenState;
 bool  allT4BuyPositionsAreClosedState;
@@ -52,12 +55,6 @@ double t4p3ValueLow;
 datetime t4p4DateTime;
 double t4p4ValueHigh;
 double t4p4ValueLow;
-datetime t4p5DateTime;
-double t4p5ValueHigh;
-double t4p5ValueLow;
-datetime t4HighestHighVLineDateTime;
-datetime t4LowestLowVLineDateTime;
-datetime t4EndDateTime;
 
 int t4SemiTrendDirection;
 int t4trendDirection;
@@ -77,9 +74,12 @@ bool t4IsBidStopLossLineOffsetAlertSended;
 bool t4AlertDisableTradeableButtonSended;
 bool t4alertMAChangedSended;
 bool t4AlertT4TrendBrokenSended;
-bool t4AlertT4P4CreatedSended;
-bool t4AlertT4P5CreatedSended;
+bool t4AlertT4P3CreatedSended;
 bool t4AlertT4VLineOn0Sended;
+double t4AlertHigherHLineValue;
+bool t4AlertHigherHLineSended;
+double t4AlertLowerHLineValue;
+bool t4AlertLowerHLineSended;
 
 // INSignal
 double t4InSignalFiboLevelAreaMinStartValue;
@@ -91,10 +91,6 @@ double t4InSignalRegressionChannelAreaMinEndValue;
 double t4InSignalRegressionChannelAreaMaxStartValue;
 double t4InSignalRegressionChannelAreaMaxEndValue;
 
-// HighVolumeArea
-bool   t4HighestHighIsInSignalArea;
-bool   t4LowestLowIsInSignalArea;
-
 double t4MinRegressionForTrendDetectionLevel;
 bool   t4MinRegressionForTrendDetectionState;
 
@@ -103,20 +99,7 @@ double t4MinProfitFiboRetracmentLevel;
 bool   t4ProfitLevelGreaterMinProfitFiboRetracmentLevel;
 double t4CurrentBidMAOffset;
 
-double t4ReEntryAreaMinStartValue;
-double t4ReEntryAreaMinEndValue;
-double t4ReEntryAreaMaxStartValue;
-double t4ReEntryAreaMaxEndValue;
-bool   t4UseReEntryArea;
-
-//SHORT
-double      t4HighestHighValue;
-datetime    t4HighestHighDateTime;
 double      t4ShortEntryValue;
-
-// LONG
-double      t4LowestLowValue;
-datetime    t4LowestLowDateTime;
 double      t4LongEntryValue;
 
 double      t4OrderGridLimitOrderValuesArray[];
@@ -134,14 +117,6 @@ bool        t4ScreenshotT4P3CreatedBefore;
 bool        t4ScreenshotT4P3CreatedAfter;
 bool        t4ScreenshotT4P4CreatedBefore;
 bool        t4ScreenshotT4P4CreatedAfter;
-bool        t4ScreenshotT4P5CreatedBefore;
-bool        t4ScreenshotT4P5CreatedAfter;
-bool        t4ScreenshotT4BuildNewTrendBefore;
-bool        t4ScreenshotT4BuildNewTrendAfter;
-bool        t4ScreenshotT4TrendBrokenOnP1Before;
-bool        t4ScreenshotT4TrendBrokenOnP1After;
-bool        t4ScreenshotT4TrendBrokenOnP3Before;
-bool        t4ScreenshotT4TrendBrokenOnP3After;
 
 
 //+------------------------------------------------------------------+

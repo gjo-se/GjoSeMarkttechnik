@@ -14,6 +14,8 @@ void createT2ZigZagTrendDetectionLines() {
    if(t2SemiTrendDirection == TREND_DIRECTION_LONG) lineColor = InpT2TLineZigZagTrendLongColor;
    if(t2SemiTrendDirection == TREND_DIRECTION_SHORT) lineColor = InpT2TLineZigZagTrendShortColor;
 
+   deleteTrendLineLike(T2_ZIGZAGLINE);
+
    if(t2p1DateTime != 0 && t2p2DateTime != 0) {
       createTrendLine(T2_ZIGZAGLINE + "P1-P2", t2p1DateTime, getT2P1HighLowValueByTrendDirection(), t2p2DateTime, getT2P2HighLowValueByTrendDirection(), lineColor, InpT2LineWidth, InpT2LineStyle);
       ObjectSetInteger(ChartID(), T2_ZIGZAGLINE + "P1-P2", OBJPROP_TIMEFRAMES, InpT2VisibleTimeframes);
@@ -46,14 +48,33 @@ void createT2HighVolumeAreaTrendLines() {
    bool isSelected = false;
    bool isSelectable = true;
 
-   t2MinHighVolumeAreaLevel = (getTrendlineLevelByText(T2_MIN_HIGH_VOL_AREA, PERIOD_CURRENT, Symbol(), ChartID(), true));
-   if(t2MinHighVolumeAreaLevel == 0) t2MinHighVolumeAreaLevel = InpT2MinHighVolumeAreaLevel;
+   if(ObjectFind(ChartID(), T2_MAX_HIGH_VOL_AREA) >= 0) {
+      deleteTrendLine(T2_MAX_HIGH_VOL_AREA, ChartID());
+      t2MaxHighVolumeAreaLevel = 0;
+   }
+   if(ObjectFind(ChartID(), T2_MIN_HIGH_VOL_AREA) >= 0) {
+      deleteTrendLine(T2_MIN_HIGH_VOL_AREA, ChartID());
+      t2MinHighVolumeAreaLevel = 0;
+   }
+   if(ObjectFind(ChartID(), T2_HIGH_VOL_CHANNEL) >= 0) {
+      deleteChannel(ChartID(), T2_HIGH_VOL_CHANNEL);
+   }
 
-   t2MaxHighVolumeAreaLevel = (getTrendlineLevelByText(T2_MAX_HIGH_VOL_AREA, PERIOD_CURRENT, Symbol(), ChartID(), true));
+   t2MaxHighVolumeAreaLevel = ObjectGetDouble(ChartID(), T2_MAX_HIGH_VOL_AREA, OBJPROP_PRICE, 0);
    if(t2MaxHighVolumeAreaLevel == 0) t2MaxHighVolumeAreaLevel = InpT2MaxHighVolumeAreaLevel;
 
-   if(t2p4DateTime != 0 && t2p4DateTime < (int) TimeCurrent() && t2MinHighVolumeAreaLevel != 0 && t2MaxHighVolumeAreaLevel != 0) {
-      if(ObjectFind(ChartID(), T2_MIN_HIGH_VOL_AREA) < 0) createTrendLine(T2_MIN_HIGH_VOL_AREA, t2p3DateTime, t2MinHighVolumeAreaLevel, iTime(Symbol(), PERIOD_CURRENT, 0), t2MinHighVolumeAreaLevel, levelColor, lineWidth, style, " " + T2_MIN_HIGH_VOL_AREA + ": " + DoubleToString(t2MinHighVolumeAreaLevel, Digits()), rayLeft, rayRight, zOrder, isBackground, isSelected, isSelectable);
-      if(ObjectFind(ChartID(), T2_MAX_HIGH_VOL_AREA) < 0) createTrendLine(T2_MAX_HIGH_VOL_AREA, t2p3DateTime, t2MaxHighVolumeAreaLevel, iTime(Symbol(), PERIOD_CURRENT, 0), t2MaxHighVolumeAreaLevel, levelColor, lineWidth, style, " " + T2_MAX_HIGH_VOL_AREA + ": " + DoubleToString(t2MaxHighVolumeAreaLevel, Digits()), rayLeft, rayRight, zOrder, isBackground, isSelected, isSelectable);
+   t2MinHighVolumeAreaLevel = ObjectGetDouble(ChartID(), T2_MIN_HIGH_VOL_AREA, OBJPROP_PRICE, 0);
+   if(t2MinHighVolumeAreaLevel == 0) t2MinHighVolumeAreaLevel = InpT2MinHighVolumeAreaLevel;
+
+   if(t2MinHighVolumeAreaLevel != 0 && t2MaxHighVolumeAreaLevel != 0) {
+      if(ObjectFind(ChartID(), T2_MAX_HIGH_VOL_AREA) < 0) {
+         createTrendLine(T2_MAX_HIGH_VOL_AREA, t2p3DateTime, t2MaxHighVolumeAreaLevel, iTime(Symbol(), PERIOD_CURRENT, 0), t2MaxHighVolumeAreaLevel, levelColor, lineWidth, style, " " + T2_MAX_HIGH_VOL_AREA + ": " + DoubleToString(t2MaxHighVolumeAreaLevel, Digits()), rayLeft, rayRight, zOrder, isBackground, isSelected, isSelectable);
+         ObjectSetInteger(ChartID(), T2_MAX_HIGH_VOL_AREA, OBJPROP_TIMEFRAMES, InpT2VisibleTimeframes);
+      }
+      if(ObjectFind(ChartID(), T2_MIN_HIGH_VOL_AREA) < 0) {
+         createTrendLine(T2_MIN_HIGH_VOL_AREA, t2p3DateTime, t2MinHighVolumeAreaLevel, iTime(Symbol(), PERIOD_CURRENT, 0), t2MinHighVolumeAreaLevel, levelColor, lineWidth, style, " " + T2_MIN_HIGH_VOL_AREA + ": " + DoubleToString(t2MinHighVolumeAreaLevel, Digits()), rayLeft, rayRight, zOrder, isBackground, isSelected, isSelectable);
+         ObjectSetInteger(ChartID(), T2_MIN_HIGH_VOL_AREA, OBJPROP_TIMEFRAMES, InpT2VisibleTimeframes);
+      }
    }
 }
+//+------------------------------------------------------------------+

@@ -36,15 +36,7 @@ int         t3TrailingStopMAPeriod05;
 bool isNewCurrentBar;
 string t3comment;
 
-bool  t3IsTradabelButtonState;
-
-bool  buyT3PositionIsOpenState;
-bool  maxT3BuyPositionsAreOpenState;
-bool  allT3BuyPositionsAreClosedState;
-
-bool  sellT3PositionIsOpenState;
-bool  maxT3SellPositionsAreOpenState;
-bool  allT3SellPositionsAreClosedState;
+bool  t3AutoButtonState;
 
 datetime t3StartDateTime;
 datetime t3p1DateTime;
@@ -62,17 +54,18 @@ double t3p4ValueLow;
 datetime t3p5DateTime;
 double t3p5ValueHigh;
 double t3p5ValueLow;
-datetime t3HighestHighVLineDateTime;
-datetime t3LowestLowVLineDateTime;
+datetime t3p6DateTime;
+double t3p6ValueHigh;
+double t3p6ValueLow;
+datetime t3p7DateTime;
+double t3p7ValueHigh;
+double t3p7ValueLow;
 datetime t3EndDateTime;
 
 int t3SemiTrendDirection;
 int t3trendDirection;
 string t3FiboLevelsArray[];
 int t3MovementLengthPoints;
-
-bool t3ObjectHasChanged;
-bool t4ObjectHasChanged;
 
 // Alerts
 bool sendAlerts;
@@ -82,15 +75,14 @@ bool t3IsBuyRegressionAlertSendable;
 bool t3IsBuyRegressionAlertSended;
 bool t3IsSellRegressionAlertSendable;
 bool t3IsSellRegressionAlertSended;
-bool t3IsBidStopLossLineOffsetAlertSendable;
-bool t3IsBidStopLossLineOffsetAlertSended;
 bool t3AlertDisableTradeableButtonSended;
 bool t3alertBidIsInSignalAreaSended;
 bool t3alertBidAgainInHighVolumeAreaSended;
 bool t3alertMAChangedSended;
 bool t3AlertT3TrendBrokenSended;
-bool t3AlertT3P5CreatedTT4MissingSended;
 bool t3AlertT3VLineOn0Sended;
+bool t3AlertT3P6CreatedSended;
+bool t3AlertT3P6CreatedTT4MissingSended;
 
 // INSignal
 double t3InSignalFiboLevelAreaMinStartValue;
@@ -105,33 +97,10 @@ double t3InSignalRegressionChannelAreaMaxEndValue;
 // HighVolumeArea
 double t3MinHighVolumeAreaLevel;
 double t3MaxHighVolumeAreaLevel;
-bool   t3HighestHighIsInSignalArea;
-bool   t3LowestLowIsInSignalArea;
 
 // OUTSIgnal
 double t3MinProfitFiboRetracmentLevel;
-bool   t3ProfitLevelGreaterMinProfitFiboRetracmentLevel;
 double t3CurrentBidMAOffset;
-
-
-double t3ReEntryAreaMinStartValue;
-double t3ReEntryAreaMinEndValue;
-double t3ReEntryAreaMaxStartValue;
-double t3ReEntryAreaMaxEndValue;
-bool   t3UseReEntryArea;
-
-//SHORT
-double      t3HighestHighValue;
-datetime    t3HighestHighDateTime;
-double      t3ShortEntryValue;
-
-// LONG
-double      t3LowestLowValue;
-datetime    t3LowestLowDateTime;
-double      t3LongEntryValue;
-
-double      t3OrderGridLimitOrderValuesArray[];
-double      t3OrderGridStopOrderValuesArray[];
 
 datetime    outSideBarDateTime;
 double      t3StopLossValue;
@@ -145,6 +114,10 @@ bool        t3ScreenshotT3P4CreatedBefore;
 bool        t3ScreenshotT3P4CreatedAfter;
 bool        t3ScreenshotT3P5CreatedBefore;
 bool        t3ScreenshotT3P5CreatedAfter;
+bool        t3ScreenshotT3P6CreatedBefore;
+bool        t3ScreenshotT3P6CreatedAfter;
+bool        t3ScreenshotT3P7CreatedBefore;
+bool        t3ScreenshotT3P7CreatedAfter;
 bool        t3ScreenshotT3BuildNewTrendBefore;
 bool        t3ScreenshotT3BuildNewTrendAfter;
 bool        t3ScreenshotT3TrendBrokenOnP1Before;

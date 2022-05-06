@@ -58,6 +58,11 @@ void setTT2MovementAndRegressionLength() {
       if(tt2regressionLength != 0 && tt2movementLength != 0) {
          tt2movementLengthRegressionLengthRatio = tt2regressionLength / tt2movementLength * 100;
       }
+      
+      if(tt2movementLengthRegressionLengthRatio != 0) {
+         ArrayResize(t2FiboLevelsArray, ArraySize(t2FiboLevelsArray) + 1);
+         t2FiboLevelsArray[ArraySize(t2FiboLevelsArray) - 1] = (string)tt2movementLengthRegressionLengthRatio;
+      }      
    }
 }
 

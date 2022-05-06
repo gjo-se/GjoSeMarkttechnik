@@ -15,7 +15,6 @@ input int               InpT4MinRegressionLengthBasedOnTT4RegressionPercent = 66
 input int               InpT4AlertOnFiboRetracmentLevel = 0;
 
 input group             "------------------------------ T4 TRAILING --------------------"
-input int               InpT4MinProfitFiboRetracmentLevel = 0; // T4 TrailingStop Start Level
 input int               InpT4TrailingStopOffset = 0; // T4 TrailingStop Offset
 input ENUM_TIMEFRAMES   InpT4trailingStopMATimeframe = PERIOD_M1; // T4 MA TrailingStop Timeframe
 input string            InpT4trailingStopMAPeriods = "200, 150, 100, 50, 10"; // T4 MA TrailingStop Periods
@@ -34,7 +33,6 @@ int               InpT4MinRegressionChannelLevel = 0; // T4 Min RegressionChanne
 int               InpT4MaxRegressionChannelLevel = 0; // T4 Max RegressionChannel
 bool              InpT4UseTrailingStopMarket = true;
 color             InpT4TailingStopLineColor = clrRed;
-ENUM_TIMEFRAMES   InpT4MaxTimeframe = PERIOD_H1;
 string            InpT4FiboLevels = "25,50,75";
 color             InpT4InSignalAreaColor = clrWheat;
 color             InpT4TrendLineColor = clrBlack;
@@ -63,10 +61,6 @@ color             InpT4VLineColor = clrSilver;
 color             InpT4TLineZigZagTrendLongColor = clrLightGreen;
 color             InpT4TLineZigZagTrendShortColor = clrLightSalmon;
 
-
-
-
-
 // group             "---------- StrategyTester ---------" // (Objects in Strategy Tester nicht vorhanden)
 datetime          InpT4p1DateTime = D'2022.01.01 00:00';
 datetime          InpT4p2DateTime = D'2022.01.01 00:00';
@@ -84,9 +78,3 @@ ENUM_TIMEFRAMES   InpT4RegressionChannelTimeframe = PERIOD_M10;
 int               InpT4RegressionChannelEndShift = 20;
 int               InpT4StopLossOnRegressionChannelLevel = 120;
 double            InpT4TrendOKOnMulti = 1.5;
-
-// group             "---------------------- T4 - ReEntry ---------------------------"
-int               InpT4MinReEntryRegressionChannelLevel = 0;
-int               InpT4MinReEntryFiboRetracmentLevel = 0;
-color             InpT4ReEntryMinRegressionColor = clrDarkKhaki;
-color             InpT4ReEntryAreaColor = clrBeige;

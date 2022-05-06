@@ -8,43 +8,43 @@
 //+------------------------------------------------------------------+
 //|                                                                  |
 //+------------------------------------------------------------------+
-void t4AlertT4TrendBrokenAction() {
+void t4AlertBIDHigherHLineAction(const string pAlertText) {
    if(sendAlerts == true) {
-      string prio;
-      if(buyT4PositionIsOpenState == true || sellT4PositionIsOpenState == true){
-         prio = "A";
-      }else{
-         prio = "C";
-      }
-      string text = "T4 Broken";
-      string message = prio + ": " + text + " - " + Symbol();
+      string prio = "B";
+      string message = prio + ": " + pAlertText + " - " + Symbol();
       Alert(message);
       if(!SendNotification(message)) Alert("Cannot Push " + message + " Error: ", GetLastError());
-      t4AlertT4TrendBrokenSended = true;
+      t4AlertHigherHLineSended = true;
    }
 }
 
-void t4AlertT4P4CreatedAction() {
+void t4AlertBIDLowerHLineAction(const string pAlertText) {
    if(sendAlerts == true) {
-      string prio = "A";
-      string text = "T3 != T4 P4";
-      string message = prio + ": " + text + " - " + Symbol();
+      string prio = "B";
+      string message = prio + ": " + pAlertText + " - " + Symbol();
       Alert(message);
       if(!SendNotification(message)) Alert("Cannot Push " + message + " Error: ", GetLastError());
-      t4AlertT4P4CreatedSended = true;
+      t4AlertLowerHLineSended = true;
    }
 }
-//+------------------------------------------------------------------+
-//|                                                                  |
-//+------------------------------------------------------------------+
-void t4AlertT4P5CreatedAction() {
+
+void t4AlertPositionCountAction(const string pAlertText) {
    if(sendAlerts == true) {
-      string prio = "A";
-      string text = "T4 P5";
+      string prio = "B";
+      string message = prio + ": " + pAlertText + " - " + Symbol();
+      Alert(message);
+      if(!SendNotification(message)) Alert("Cannot Push " + message + " Error: ", GetLastError());
+   }
+}
+
+void t4AlertT4P3CreatedAction() {
+   if(sendAlerts == true) {
+      string prio = "AA";
+      string text = "T4-P3 SIGNAL!";
       string message = prio + ": " + text + " - " + Symbol();
       Alert(message);
       if(!SendNotification(message)) Alert("Cannot Push " + message + " Error: ", GetLastError());
-      t4AlertT4P5CreatedSended = true;
+      t4AlertT4P3CreatedSended = true;
    }
 }
 
@@ -152,9 +152,6 @@ void t4CommentAction(string pVersion) {
       t4comment += "\n";
       if(t4trendDirection == TREND_DIRECTION_LONG || t4SemiTrendDirection == TREND_DIRECTION_LONG) {
          t4comment += "LONG: " + "\n";
-         t4comment += "getT4LowestLowIsInSignalAreaState(): " + IntegerToString(getT4LowestLowIsInSignalAreaState()) + "\n";
-         t4comment += "LowestLowVLineDateTime: " + TimeToString(t4LowestLowVLineDateTime) + "\n";
-         t4comment += "LowestLowValue: " + TimeToString(t4LowestLowDateTime) + " - " + DoubleToString(t4LowestLowValue, Digits()) + "\n";
          t4comment += "LongEntryValue: " + DoubleToString(t4LongEntryValue, Digits()) + "\n";
          t4comment += "\n";
          t4comment += "buyT4PositionIsOpenState: " + IntegerToString(buyT4PositionIsOpenState) + "\n";
@@ -163,9 +160,6 @@ void t4CommentAction(string pVersion) {
       }
       if(t4trendDirection == TREND_DIRECTION_SHORT || t4SemiTrendDirection == TREND_DIRECTION_SHORT) {
          t4comment += "SHORT: " + "\n";
-         t4comment += "getT4HighestHighIsInSignalAreaState(): " + IntegerToString(getT4HighestHighIsInSignalAreaState()) + "\n";
-         t4comment += "HihgestHighVLineDateTime: " + TimeToString(t4HighestHighVLineDateTime) + "\n";
-         t4comment += "HihgestHighValue: " + TimeToString(t4HighestHighDateTime) + " - " + DoubleToString(iHigh(Symbol(), PERIOD_CURRENT, iBarShift(Symbol(), PERIOD_CURRENT, t4HighestHighDateTime)), Digits()) + "\n";
          t4comment += "ShortEntryValue: " + DoubleToString(t4ShortEntryValue, Digits()) + "\n";
          t4comment += "\n";
          t4comment += "sellT4PositionIsOpenState: " + IntegerToString(sellT4PositionIsOpenState) + "\n";
@@ -173,7 +167,6 @@ void t4CommentAction(string pVersion) {
          t4comment += "maxT4SellPositionsAreOpenState: " + IntegerToString(maxT4SellPositionsAreOpenState) + "\n";
       }
       t4comment += "\n";
-      t4comment += "t4 Trailing isActive: " + IntegerToString(t4ProfitLevelGreaterMinProfitFiboRetracmentLevel) + "\n";
       t4comment += "t4CurrentTrailingStopMAPeriod: " + IntegerToString(t4TrailingStopMAActive) + "\n";
       if(t4CurrentBidMAOffset > 0) t4comment += " CurrentOffset: " + DoubleToString(t4CurrentBidMAOffset, 0) + "\n";
       t4comment += "\n";
@@ -185,7 +178,6 @@ void t4CommentAction(string pVersion) {
       t4comment += "T4-P2: " + TimeToString(t4p2DateTime) + " HIGH: " + DoubleToString(t4p2ValueHigh, Digits()) +  " LOW: " + DoubleToString(t4p2ValueLow, Digits()) + "\n";
       t4comment += "T4-P3: " + TimeToString(t4p3DateTime) + " HIGH: " + DoubleToString(t4p3ValueHigh, Digits()) +  " LOW: " + DoubleToString(t4p3ValueLow, Digits()) + "\n";
       t4comment += "T4-P4: " + TimeToString(t4p4DateTime) + " HIGH: " + DoubleToString(t4p4ValueHigh, Digits()) +  " LOW: " + DoubleToString(t4p4ValueLow, Digits()) + "\n";
-      t4comment += "T4-P5: " + TimeToString(t4p5DateTime) + " HIGH: " + DoubleToString(t4p5ValueHigh, Digits()) +  " LOW: " + DoubleToString(t4p5ValueLow, Digits()) + "\n";
    }
 }
 //+------------------------------------------------------------------+

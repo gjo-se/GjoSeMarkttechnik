@@ -28,8 +28,6 @@
 #include "..\\..\\States\\T4\\T4SellAlertState.mqh"
 #include "..\\..\\States\\T4\\T4SellInState.mqh"
 
-#include "..\\..\\Objects\\T4\\T4RegressionChannel.mqh"
-#include "..\\..\\Objects\\T4\\T4FiboRetracement.mqh"
 #include "..\\..\\Objects\\T4\\T4VLines.mqh"
 #include "..\\..\\Objects\\T4\\T4TrendLines.mqh"
 #include "..\\..\\Objects\\T4\\T4Channel.mqh"

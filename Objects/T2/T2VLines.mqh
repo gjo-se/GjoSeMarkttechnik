@@ -1,10 +1,6 @@
 //+------------------------------------------------------------------+
-//|                                            RegressionChannel.mqh |
+//|                                                     T2VLines.mqh |
 //|                                       Copyright 2021, Gregory Jo |
-//+------------------------------------------------------------------+
-
-//+------------------------------------------------------------------+
-//|                                                                  |
 //+------------------------------------------------------------------+
 
 //+------------------------------------------------------------------+
@@ -13,70 +9,21 @@
 void setT2LineValues() {
    setT2VLineDateTimes();
    setT2VLineValues();
+   setT2VLineStyles();
+   setT2VLinesAlerts();
 }
 
 //+------------------------------------------------------------------+
 //|                                                                  |
 //+------------------------------------------------------------------+
 void setT2VLineDateTimes() {
-   if(ObjectFind(ChartID(), T2_START_VLINE) >= 0) {
-      t2StartDateTime = (datetime)ObjectGetInteger(ChartID(), T2_START_VLINE, OBJPROP_TIME);
-      setT2VLineStyles(T2_START_VLINE);
-   } else {
-      t2StartDateTime = 0;
-   }
-   if(ObjectFind(ChartID(), T2_P1_VLINE) >= 0) {
-      t2p1DateTime = (datetime)ObjectGetInteger(ChartID(), T2_P1_VLINE, OBJPROP_TIME);
-      setT2VLineStyles(T2_P1_VLINE);
-      string errorText = "t2p1DateTime == 0";
-      if(t2p1DateTime == 0) {
-         if(t2AlertT2VLineOn0Sended == false) t2AlertT2VLineOn0Action();
-         createErrorLabel(errorText);
-      } else {
-         deleteLabel(ERROR_LABEL + errorText);
-      }
-   } else {
-      t2p1DateTime = 0;
-   }
-   if(ObjectFind(ChartID(), T2_P2_VLINE) >= 0) {
-      t2p2DateTime = (datetime)ObjectGetInteger(ChartID(), T2_P2_VLINE, OBJPROP_TIME);
-      setT2VLineStyles(T2_P2_VLINE);
-      string errorText = "t2p2DateTime == 0";
-      if(t2p2DateTime == 0) {
-         if(t2AlertT2VLineOn0Sended == false) t2AlertT2VLineOn0Action();
-         createErrorLabel(errorText);
-      } else {
-         deleteLabel(ERROR_LABEL + errorText);
-      }
-   } else {
-      t2p2DateTime = 0;
-   }
-   if(ObjectFind(ChartID(), T2_P3_VLINE) >= 0) {
-      t2p3DateTime = (datetime)ObjectGetInteger(ChartID(), T2_P3_VLINE, OBJPROP_TIME);
-      setT2VLineStyles(T2_P3_VLINE);
-   } else {
-      t2p3DateTime = 0;
-   }
-   if(ObjectFind(ChartID(), T2_P4_VLINE) >= 0) {
-      t2p4DateTime = (datetime)ObjectGetInteger(ChartID(), T2_P4_VLINE, OBJPROP_TIME);
-      setT2VLineStyles(T2_P4_VLINE);
-   } else {
-      t2p4DateTime = 0;
-   }
-   if(ObjectFind(ChartID(), T2_P5_VLINE) >= 0) {
-      t2p5DateTime = (datetime)ObjectGetInteger(ChartID(), T2_P5_VLINE, OBJPROP_TIME);
-      setT2VLineStyles(T2_P5_VLINE);
-   } else {
-      t2p5DateTime = 0;
-   }
-   if(ObjectFind(ChartID(), T2_END_VLINE) >= 0) {
-      t2EndDateTime = (datetime)ObjectGetInteger(ChartID(), T2_END_VLINE, OBJPROP_TIME);
-      setT2VLineStyles(T2_END_VLINE);
-   } else {
-      t2EndDateTime = 0;
-   }
-
-   if(t2p1DateTime != 0 && t2p2DateTime != 0) t2AlertT2VLineOn0Sended = false;
+   t2StartDateTime = getVlineDatetimeByTextLike(T2_START_VLINE);
+   t2p1DateTime = getVlineDatetimeByTextLike(T2_P1_VLINE);
+   t2p2DateTime = getVlineDatetimeByTextLike(T2_P2_VLINE);
+   t2p3DateTime = getVlineDatetimeByTextLike(T2_P3_VLINE);
+   t2p4DateTime = getVlineDatetimeByTextLike(T2_P4_VLINE);
+   t2p5DateTime = getVlineDatetimeByTextLike(T2_P5_VLINE);
+   t2EndDateTime = getVlineDatetimeByTextLike(T2_END_VLINE);
 }
 
 void setT2VLineValues() {
@@ -120,20 +67,29 @@ void setT2VLineValues() {
       t2p5ValueHigh = 0;
       t2p5ValueLow = 0;
    }
-
-   if(t2p1DateTime != 0 && t2p2DateTime != 0) t2AlertT2VLineOn0Sended = false;
 }
 //+------------------------------------------------------------------+
 
 //+------------------------------------------------------------------+
 //|                                                                  |
 //+------------------------------------------------------------------+
-void setT2VLineStyles(const string pLineName) {
-   ObjectSetInteger(ChartID(), pLineName, OBJPROP_WIDTH, InpT2LineWidth);
-   ObjectSetInteger(ChartID(), pLineName, OBJPROP_STYLE, InpT2LineStyle);
-   ObjectSetInteger(ChartID(), pLineName, OBJPROP_COLOR, InpT2VLineColor);
-   ObjectSetInteger(ChartID(), pLineName, OBJPROP_BACK, true);
-   ObjectSetInteger(ChartID(), pLineName, OBJPROP_TIMEFRAMES, InpT2VisibleTimeframes);
+void setT2VLineStyles(const string pSubString = "T2-") {
+
+   int objectsTotal = ObjectsTotal(ChartID(), 0, -1);
+   string objName;
+
+   for(int i = objectsTotal; i >= 0; i--) {
+      objName = ObjectName(ChartID(), i);
+      if(ObjectGetInteger(ChartID(), objName, OBJPROP_TYPE) == OBJ_VLINE
+      && StringFind(objName, pSubString) != -1
+      ) {
+         ObjectSetInteger(ChartID(), objName, OBJPROP_WIDTH, InpT2LineWidth);
+         ObjectSetInteger(ChartID(), objName, OBJPROP_STYLE, InpT2LineStyle);
+         ObjectSetInteger(ChartID(), objName, OBJPROP_COLOR, InpT2VLineColor);
+         ObjectSetInteger(ChartID(), objName, OBJPROP_BACK, true);
+         ObjectSetInteger(ChartID(), objName, OBJPROP_TIMEFRAMES, InpT2VisibleTimeframes);
+      }
+   }
 }
 
 void createT2P1VLine(datetime pDateTime) {
@@ -210,5 +166,29 @@ void createT2P5VLine(datetime pDateTime) {
 
    createVLine(T2_P5_VLINE, t2p5DateTime, InpT2VLineColor, InpT2LineWidth, InpT2LineStyle, T2_P5_VLINE, zOrder, isBackground, isSelected, isSelectable);
    ObjectSetInteger(ChartID(), T2_P5_VLINE, OBJPROP_TIMEFRAMES, InpT2VisibleTimeframes);
+}
+//+------------------------------------------------------------------+
+
+//+------------------------------------------------------------------+
+//|                                                                  |
+//+------------------------------------------------------------------+
+void setT2VLinesAlerts() {
+   string errorText = "t2p1DateTime == 0";
+   if(ObjectFind(ChartID(), T2_P1_VLINE) >= 0 && t2p1DateTime == 0) {
+      if(t2AlertT2VLineOn0Sended == false) t2AlertT2VLineOn0Action();
+      createErrorLabel(errorText);
+   } else {
+      deleteLabel(ERROR_LABEL + errorText);
+   }
+
+   errorText = "t2p2DateTime == 0";
+   if(ObjectFind(ChartID(), T2_P2_VLINE) >= 0 && t2p2DateTime == 0) {
+      if(t2AlertT2VLineOn0Sended == false) t2AlertT2VLineOn0Action();
+      createErrorLabel(errorText);
+   } else {
+      deleteLabel(ERROR_LABEL + errorText);
+   }
+
+   if(t2p1DateTime != 0 && t2p2DateTime != 0) t2AlertT2VLineOn0Sended = false;
 }
 //+------------------------------------------------------------------+

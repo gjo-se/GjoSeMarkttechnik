@@ -8,8 +8,6 @@ void openT4BuyOrderAction() {
    Trade.MagicNumber(InpT4MagicNumber);
    Trade.FillType(SYMBOL_FILLING_FOK);
    Trade.Buy(Symbol(), VerifyVolume(Symbol(), getT4BuyVolume()), t4StopLossValue, getT4BuyTakeProfit(), InpT4Comment);
-
-   t4UseReEntryArea = true;
 }
 
 double getT4BuyTakeProfit() {
@@ -37,5 +35,9 @@ double getT4BuyVolume() {
    return t4LotSize;
 }
 
+// TODO: auslagern, für buy & Sell
+double getPointValueBySymbol(string pPositionSymbol) {
+   return SymbolInfoDouble(Symbol(), SYMBOL_TRADE_TICK_VALUE) / SymbolInfoDouble(Symbol(), SYMBOL_TRADE_TICK_SIZE) * Point();
+}
 
 //+------------------------------------------------------------------+

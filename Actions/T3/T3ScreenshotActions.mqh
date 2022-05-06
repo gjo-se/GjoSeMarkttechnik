@@ -5,8 +5,8 @@
 //+------------------------------------------------------------------+
 
 void handleScreenshotAction() {
-   if(buyT3PositionIsOpenState || sellT3PositionIsOpenState) createScreenshot();
-   if(allT3BuyPositionsAreClosedState || allT3SellPositionsAreClosedState) createScreenshot();
+//   if(buyT3PositionIsOpenState || sellT3PositionIsOpenState) createScreenshot();
+//   if(allT3BuyPositionsAreClosedState || allT3SellPositionsAreClosedState) createScreenshot();
 }
 //+------------------------------------------------------------------+
 

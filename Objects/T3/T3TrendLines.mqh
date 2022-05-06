@@ -3,8 +3,6 @@
 //|                                       Copyright 2022, Gregory Jo |
 //+------------------------------------------------------------------+
 
-
-
 //+------------------------------------------------------------------+
 //|                                                                  |
 //+------------------------------------------------------------------+
@@ -13,6 +11,8 @@ void createT3ZigZagTrendDetectionLines() {
    color lineColor = InpT3DefaultColor;
    if(t3SemiTrendDirection == TREND_DIRECTION_LONG) lineColor = InpT3TLineZigZagTrendLongColor;
    if(t3SemiTrendDirection == TREND_DIRECTION_SHORT) lineColor = InpT3TLineZigZagTrendShortColor;
+
+   deleteTrendLineLike(T3_ZIGZAGLINE);
 
    if(t3p1DateTime != 0 && t3p2DateTime != 0) {
       createTrendLine(T3_ZIGZAGLINE + "P1-P2", t3p1DateTime, getT3P1HighLowValueByTrendDirection(), t3p2DateTime, getT3P2HighLowValueByTrendDirection(), lineColor, InpT3LineWidth, InpT3LineStyle);
@@ -30,79 +30,14 @@ void createT3ZigZagTrendDetectionLines() {
       createTrendLine(T3_ZIGZAGLINE + "P4-P5", t3p4DateTime, getT3P4HighLowValueByTrendDirection(), t3p5DateTime, getT3P5HighLowValueByTrendDirection(), lineColor, InpT3LineWidth, InpT3LineStyle);
       ObjectSetInteger(ChartID(), T3_ZIGZAGLINE + "P4-P5", OBJPROP_TIMEFRAMES, InpT3VisibleTimeframes);
    }
-}
-
-//+------------------------------------------------------------------+
-//|                                                                  |
-//+------------------------------------------------------------------+
-void createT3HighVolumeAreaTrendLines() {
-   int lineWidth = 2;
-   color levelColor = clrMaroon;
-   ENUM_LINE_STYLE style = STYLE_SOLID;
-   bool rayLeft = false;
-   bool rayRight = true;
-   long zOrder = 0;
-   bool isBackground = true;
-   bool isSelected = false;
-   bool isSelectable = true;
-
-   t3MinHighVolumeAreaLevel = (getTrendlineLevelByText(T3_MIN_HIGH_VOL_AREA, PERIOD_CURRENT, Symbol(), ChartID(), true));
-   if(t3MinHighVolumeAreaLevel == 0) t3MinHighVolumeAreaLevel = InpT3MinHighVolumeAreaLevel;
-
-   t3MaxHighVolumeAreaLevel = (getTrendlineLevelByText(T3_MAX_HIGH_VOL_AREA, PERIOD_CURRENT, Symbol(), ChartID(), true));
-   if(t3MaxHighVolumeAreaLevel == 0) t3MaxHighVolumeAreaLevel = InpT3MaxHighVolumeAreaLevel;
-
-   if(t3p4DateTime != 0 && t3p4DateTime < (int) TimeCurrent() && t3MinHighVolumeAreaLevel != 0 && t3MaxHighVolumeAreaLevel != 0) {
-      if(ObjectFind(ChartID(), T3_MIN_HIGH_VOL_AREA) < 0) createTrendLine(T3_MIN_HIGH_VOL_AREA, t3p3DateTime, t3MinHighVolumeAreaLevel, iTime(Symbol(), PERIOD_CURRENT, 0), t3MinHighVolumeAreaLevel, levelColor, lineWidth, style, " " + T3_MIN_HIGH_VOL_AREA + ": " + DoubleToString(t3MinHighVolumeAreaLevel, Digits()), rayLeft, rayRight, zOrder, isBackground, isSelected, isSelectable);
-      if(ObjectFind(ChartID(), T3_MAX_HIGH_VOL_AREA) < 0) createTrendLine(T3_MAX_HIGH_VOL_AREA, t3p3DateTime, t3MaxHighVolumeAreaLevel, iTime(Symbol(), PERIOD_CURRENT, 0), t3MaxHighVolumeAreaLevel, levelColor, lineWidth, style, " " + T3_MAX_HIGH_VOL_AREA + ": " + DoubleToString(t3MaxHighVolumeAreaLevel, Digits()), rayLeft, rayRight, zOrder, isBackground, isSelected, isSelectable);
+   if(t3p5DateTime != 0 && t3p6DateTime != 0) {
+      createTrendLine(T3_ZIGZAGLINE + "P5-P6", t3p5DateTime, getT3P5HighLowValueByTrendDirection(), t3p6DateTime, getT3P6HighLowValueByTrendDirection(), lineColor, InpT3LineWidth, InpT3LineStyle);
+      ObjectSetInteger(ChartID(), T3_ZIGZAGLINE + "P5-P6", OBJPROP_TIMEFRAMES, InpT3VisibleTimeframes);
    }
-}
-
-// SHORT
-void createT3HighestHighTrendLine() {
-   createTrendLine(T3_HIGHEST_HIGH_TLINE, iTime(Symbol(), Period(), iBarShift(Symbol(), Period(), t3HighestHighDateTime) + 3), t3HighestHighValue, iTime(Symbol(), Period(), 0), t3HighestHighValue, InpT3TrendLineColor, 3, STYLE_SOLID, T3_HIGHEST_HIGH_TLINE);
-}
-
-//+------------------------------------------------------------------+
-//|                                                                  |
-//+------------------------------------------------------------------+
-void createT3ShortEntryTrendLine() {
-   createTrendLine(T3_SHORT_ENTRY_TLINE, iTime(Symbol(), PERIOD_M1, iBarShift(Symbol(), PERIOD_M1, t3HighestHighDateTime) + 3), t3ShortEntryValue, iTime(Symbol(), PERIOD_M1, 0), t3ShortEntryValue, InpT3TrendLineColor, 3, STYLE_SOLID, T3_SHORT_ENTRY_TLINE);
-}
-
-// LONG
-void createT3LowestLowTrendLine() {
-   createTrendLine(T3_LOWEST_LOW_TLINE, iTime(Symbol(), Period(), iBarShift(Symbol(), Period(), t3LowestLowDateTime) + 3), t3LowestLowValue, iTime(Symbol(), Period(), 0), t3LowestLowValue, InpT3TrendLineColor, 3, STYLE_SOLID, T3_LOWEST_LOW_TLINE);
-}
-
-//+------------------------------------------------------------------+
-//|                                                                  |
-//+------------------------------------------------------------------+
-void createT3LongEntryTrendLine() {
-   createTrendLine(T3_LONG_ENTRY_TLINE, iTime(Symbol(), PERIOD_M1, iBarShift(Symbol(), PERIOD_M1, t3LowestLowDateTime) + 3), t3LongEntryValue, iTime(Symbol(), PERIOD_M1, 0), t3LongEntryValue, InpT3TrendLineColor, 3, STYLE_SOLID, T3_LONG_ENTRY_TLINE);
-}
-
-//+------------------------------------------------------------------+
-//|                                                                  |
-//+------------------------------------------------------------------+
-void createT3StopLossTrendline(double pStopLossLevel) {
-   int barShift = 10;
-   bool rayLeft = false;
-   bool rayRight = true;
-   long zOrder = 0;
-   bool isBackground = true;
-   bool isSelected = false;
-   bool isSelectable = true;
-
-   createTrendLine(T3_STOP_LOSS_TLINE, iTime(Symbol(), PERIOD_M1, barShift), pStopLossLevel, iTime(Symbol(), PERIOD_M1, 0), pStopLossLevel, InpT3TrendLineColor, 2, STYLE_SOLID, T3_STOP_LOSS_TLINE, rayLeft, rayRight, zOrder, isBackground, isSelected, isSelectable);
-}
-
-//+------------------------------------------------------------------+
-//|                                                                  |
-//+------------------------------------------------------------------+
-void createT3TrailingStopTrendLine() {
-   int barShift = 3;
-   createTrendLine(T3_TRAILING_STOP_TLINE, iTime(Symbol(), PERIOD_M1, barShift), t3TrailingStopLevel, iTime(Symbol(), PERIOD_M1, 0), t3TrailingStopLevel, InpT3TailingStopLineColor, 3, STYLE_SOLID, T3_TRAILING_STOP_TLINE);
+   if(t3p6DateTime != 0 && t3p7DateTime != 0) {
+      createTrendLine(T3_ZIGZAGLINE + "P6-P7", t3p6DateTime, getT3P6HighLowValueByTrendDirection(), t3p7DateTime, getT3P7HighLowValueByTrendDirection(), lineColor, InpT3LineWidth, InpT3LineStyle);
+      ObjectSetInteger(ChartID(), T3_ZIGZAGLINE + "P6-P7", OBJPROP_TIMEFRAMES, InpT3VisibleTimeframes);
+   }
 }
 
 //+------------------------------------------------------------------+
@@ -116,79 +51,3 @@ void createT3InsideBarTrendLines() {
    createTrendLine(T3_INSIDEBAR_TOP_TLINE, outSideBarDateTime, topValue, iTime(Symbol(), Period(), 0), topValue, InpInsideBarLineColor, 3, STYLE_SOLID, T3_INSIDEBAR_TOP_TLINE);
    createTrendLine(T3_INSIDEBAR_BUTTOM_TLINE, outSideBarDateTime, buttomValue, iTime(Symbol(), Period(), 0), buttomValue, InpInsideBarLineColor, 3, STYLE_SOLID, T3_INSIDEBAR_BUTTOM_TLINE);
 }
-
-void createT3OrderGridTrendLines() {
-
-   int barShift = 10;
-   double orderGridLimitOrderValue = 0;
-   double orderGridStopOrderValue = 0;
-
-   initializeArray(t3OrderGridLimitOrderValuesArray);
-   initializeArray(t3OrderGridStopOrderValuesArray);
-
-   if(t3trendDirection == TREND_DIRECTION_LONG) {
-
-      color  gridLineColor = clrMaroon;
-
-      // orderGridStopOrder
-      for(int orderGridId = 1; orderGridId < InpT3OrderGridCount; orderGridId++)  {
-         double minRegressionPoints = t3LongEntryValue / Point() - t3LowestLowValue / Point();
-         orderGridStopOrderValue = t3LongEntryValue + (minRegressionPoints / InpT3OrderGridCount * orderGridId * Point());
-         string realVolume = DoubleToString(getT3BuyVolume(orderGridStopOrderValue), 2);
-         string verifiedVolume = DoubleToString(VerifyVolume(Symbol(), getT3BuyVolume(orderGridStopOrderValue)), 2);
-         createTrendLine(T3_ORDER_GRID_STOP_TLINE + "_" + IntegerToString(orderGridId), t3p4DateTime, orderGridStopOrderValue, iTime(Symbol(), Period(), 0), orderGridStopOrderValue, gridLineColor, 1, STYLE_DOT, T3_ORDER_GRID_STOP_TLINE + "_" + IntegerToString(orderGridId) + " V: " + realVolume + " (" + verifiedVolume + "): " +  DoubleToString(orderGridStopOrderValue, Digits()));
-         ArrayResize(t3OrderGridStopOrderValuesArray, ArraySize(t3OrderGridStopOrderValuesArray) + 1);
-         t3OrderGridStopOrderValuesArray[ArraySize(t3OrderGridStopOrderValuesArray) - 1] = orderGridStopOrderValue;
-      }
-
-      // orderGridLimitOrder
-      for(int orderGridId = 1; orderGridId < InpT3OrderGridCount; orderGridId++) {
-         double minRegressionPoints = t3LongEntryValue / Point() - t3LowestLowValue / Point();
-         orderGridLimitOrderValue = t3LongEntryValue - (minRegressionPoints / InpT3OrderGridCount * orderGridId * Point());
-         string realVolume = DoubleToString(getT3BuyVolume(orderGridLimitOrderValue), 2);
-         string verifiedVolume = DoubleToString(VerifyVolume(Symbol(), getT3BuyVolume(orderGridLimitOrderValue)), 2);
-         createTrendLine(T3_ORDER_GRID_LIMIT_TLINE + "_" + IntegerToString(orderGridId), t3p4DateTime, orderGridLimitOrderValue, iTime(Symbol(), Period(), 0), orderGridLimitOrderValue, gridLineColor, 1, STYLE_DOT, T3_ORDER_GRID_LIMIT_TLINE + "_" + IntegerToString(orderGridId) + " V: " + realVolume + " (" + verifiedVolume + "): " + DoubleToString(orderGridLimitOrderValue, Digits()));
-         ArrayResize(t3OrderGridLimitOrderValuesArray, ArraySize(t3OrderGridLimitOrderValuesArray) + 1);
-         t3OrderGridLimitOrderValuesArray[ArraySize(t3OrderGridLimitOrderValuesArray) - 1] = orderGridLimitOrderValue;
-      }
-   }
-
-   if(t3trendDirection == TREND_DIRECTION_SHORT) {
-
-      color  gridLineColor = clrMaroon;
-
-      // orderGridStopOrder
-      for(int orderGridId = 1; orderGridId < InpT3OrderGridCount; orderGridId++)  {
-         double minRegressionPoints = t3HighestHighValue / Point() - t3ShortEntryValue / Point();
-         orderGridStopOrderValue = t3ShortEntryValue - (minRegressionPoints / InpT3OrderGridCount * orderGridId * Point());
-         string realVolume = DoubleToString(getT3SellVolume(orderGridStopOrderValue), 2);
-         string verifiedVolume = DoubleToString(VerifyVolume(Symbol(), getT3SellVolume(orderGridStopOrderValue)), 2);
-         createTrendLine(T3_ORDER_GRID_STOP_TLINE + "_" + IntegerToString(orderGridId), t3p4DateTime, orderGridStopOrderValue, iTime(Symbol(), Period(), 0), orderGridStopOrderValue, gridLineColor, 1, STYLE_DOT, T3_ORDER_GRID_STOP_TLINE + "_" + IntegerToString(orderGridId) + " V: " + realVolume + " (" + verifiedVolume + "): " +  DoubleToString(orderGridStopOrderValue, Digits()));
-         ArrayResize(t3OrderGridStopOrderValuesArray, ArraySize(t3OrderGridStopOrderValuesArray) + 1);
-         t3OrderGridStopOrderValuesArray[ArraySize(t3OrderGridStopOrderValuesArray) - 1] = orderGridStopOrderValue;
-      }
-
-      // orderGridLimitOrder
-      for(int orderGridId = 1; orderGridId < InpT3OrderGridCount; orderGridId++) {
-         double minRegressionPoints = t3HighestHighValue / Point() - t3ShortEntryValue / Point();
-         orderGridLimitOrderValue = t3ShortEntryValue + (minRegressionPoints / InpT3OrderGridCount * orderGridId * Point());
-         string realVolume = DoubleToString(getT3SellVolume(orderGridLimitOrderValue), 2);
-         string verifiedVolume = DoubleToString(VerifyVolume(Symbol(), getT3SellVolume(orderGridLimitOrderValue)), 2);
-         createTrendLine(T3_ORDER_GRID_LIMIT_TLINE + "_" + IntegerToString(orderGridId), t3p4DateTime, orderGridLimitOrderValue, iTime(Symbol(), Period(), 0), orderGridLimitOrderValue, gridLineColor, 1, STYLE_DOT, T3_ORDER_GRID_LIMIT_TLINE + "_" + IntegerToString(orderGridId) + " V: " + realVolume + " (" + verifiedVolume + "): " +  DoubleToString(orderGridLimitOrderValue, Digits()));
-         ArrayResize(t3OrderGridLimitOrderValuesArray, ArraySize(t3OrderGridLimitOrderValuesArray) + 1);
-         t3OrderGridLimitOrderValuesArray[ArraySize(t3OrderGridLimitOrderValuesArray) - 1] = orderGridLimitOrderValue;
-      }
-   }
-}
-
-//+------------------------------------------------------------------+
-//|                                                                  |
-//+------------------------------------------------------------------+
-void setT3TrendLineValues() {
-   t3LongEntryValue = ObjectGetDouble(ChartID(), T3_LONG_ENTRY_TLINE, OBJPROP_PRICE, 1);
-   t3ShortEntryValue = ObjectGetDouble(ChartID(), T3_SHORT_ENTRY_TLINE, OBJPROP_PRICE, 1);
-
-   t3HighestHighValue = getTrendlineLevelByText(T3_HIGHEST_HIGH_TLINE, PERIOD_CURRENT, Symbol(), ChartID());
-   t3LowestLowValue = getTrendlineLevelByText(T3_LOWEST_LOW_TLINE, PERIOD_CURRENT, Symbol(), ChartID());
-}
-//+------------------------------------------------------------------+

@@ -9,6 +9,8 @@ void initializeT2ArraysAction() {
 
 void initializeT2GlobalsAction() {
 
+   t2AutoButtonState = ObjectGetInteger(ChartID(), T2_AUTO_BUTTON, OBJPROP_STATE);
+
    t2StartDateTime = 0;
    t2p1DateTime = 0;
    t2p1ValueHigh = 0;
@@ -30,7 +32,6 @@ void initializeT2GlobalsAction() {
 
 // Alerts
    t2AlertT2P4CreatedTT3MissingSended = false;
-   t2AlertT2P4CreatedTT4MissingSended = false;
    t2AlertT2P4CreatedHighVolumeAreaMissingSended = false;
    t2AlertT2P4CreatedSended = false;
    t2AlertT2P5CreatedSended = false;

@@ -26,13 +26,15 @@ void getT2TrendDirection() {
 
 void handleT2TrendDetectionAction() {
 
-   handleT2P2();
-   handleT2P3();
-   handleT2P4();
-   handleT2P5();
-   handleT2BuildNewTrend();
-   handleT2TrendBrokenOnP1();
-   handleT2TrendBrokenOnP3();
+   if(t2AutoButtonState == true){
+       handleT2P2();
+       handleT2P3();
+       handleT2P4();
+       handleT2P5();
+       handleT2BuildNewTrend();
+       handleT2TrendBrokenOnP1();
+       handleT2TrendBrokenOnP3();
+   }
 }
 //+------------------------------------------------------------------+
 
@@ -132,10 +134,9 @@ void handleT2P4() {
            ) {
             createT2P4VLine(t2p4DateTimeTmp);
             if(tt3p1DateTime == 0 && t2AlertT2P4CreatedTT3MissingSended == false) t2AlertT2P4CreatedTT3MissingAction();
-            if(tt4p1DateTime == 0 && t2AlertT2P4CreatedTT4MissingSended == false) t2AlertT2P4CreatedTT4MissingAction();
             if(t2MaxHighVolumeAreaLevel == 0 && t2AlertT2P4CreatedHighVolumeAreaMissingSended == false) t2AlertT2P4CreatedHighVolumeAreaMissingAction();
-            if(tt3p1DateTime != 0 && tt4p1DateTime != 0 && t2MaxHighVolumeAreaLevel != 0 && t2AlertT2P4CreatedSended == false) t2AlertT2P4CreatedAction();
             getT2TrendDirection();
+            resetT3Trend();
          }
       }
 
@@ -151,10 +152,9 @@ void handleT2P4() {
            ) {
             createT2P4VLine(t2p4DateTimeTmp);
             if(tt3p1DateTime == 0 && t2AlertT2P4CreatedTT3MissingSended == false) t2AlertT2P4CreatedTT3MissingAction();
-            if(tt4p1DateTime == 0 && t2AlertT2P4CreatedTT4MissingSended == false) t2AlertT2P4CreatedTT4MissingAction();
             if(t2MaxHighVolumeAreaLevel == 0 && t2AlertT2P4CreatedHighVolumeAreaMissingSended == false) t2AlertT2P4CreatedHighVolumeAreaMissingAction();
-            if(tt3p1DateTime != 0 && tt4p1DateTime != 0 && t2MaxHighVolumeAreaLevel != 0 && t2AlertT2P4CreatedSended == false) t2AlertT2P4CreatedAction();
             getT2TrendDirection();
+            resetT3Trend();
          }
       }
    }
@@ -204,8 +204,7 @@ void handleT2BuildNewTrend() {
    datetime t2p4DateTimeTmp = 0;
    datetime t2p5DateTimeTmp = 0;
 
-   if(t2p5ValueHigh != 0
-         && t2p5DateTime < (int)TimeCurrent()
+   if(t2p5ValueHigh != 0 && t2p5DateTime < (int)TimeCurrent()
      ) {
 
       if(t2SemiTrendDirection == TREND_DIRECTION_LONG || t2trendDirection == TREND_DIRECTION_LONG) {
@@ -406,7 +405,6 @@ void resetT2Trend() {
    deleteFiboLevelsObject(T2_FIBO_LEVELS);
 
    t2AlertT2P4CreatedTT3MissingSended = false;
-   t2AlertT2P4CreatedTT4MissingSended = false;
    t2AlertT2P4CreatedHighVolumeAreaMissingSended = false;
    t2AlertT2P4CreatedSended = false;
    t2AlertT2P5CreatedSended = false;

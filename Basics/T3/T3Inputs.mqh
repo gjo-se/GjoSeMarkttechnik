@@ -16,15 +16,12 @@ input double            InpT3MinHighVolumeAreaLevel = 0; // T3 Min HighVolume Ar
 input int               InpT3AlertOnFiboRetracmentLevel = 0; // T3 Alert on Fibo Level
 
 input group             "------------------------------ T3 TRAILING --------------------"
-input int               InpT3MinProfitFiboRetracmentLevel = -5; // T3 TrailingStop Start Level
 input int               InpT3TrailingStopOffset = 0; // T3 TrailingStop Offset
 input ENUM_TIMEFRAMES   InpT3trailingStopMATimeframe = PERIOD_M10; // T3 MA TrailingStop Timeframe
 input string            InpT3trailingStopMAPeriods = "200, 150, 100, 50, 10"; // T3 MA TrailingStop Periods
 
 input group             "------------------------------ T3 MONEY -----------------------"
 input double            InpMaxPositionRiskPercent = 1; // T3 & T4 max Position Risk %
-input int               InpT3OrderGridCount = 1; // T3 Anzahl Grid Orders
-
 
 // ****************  INTERN **************** //
 
@@ -44,7 +41,6 @@ string            InpT3Comment = "T3 MarktTechnik"; // T3 Comment
 long              InpMaxSlippage = 3; // T3 & T4 max Slippage
 bool              InpT3ShowCommentDashboard = true;
 bool              InpT3ObjectsShow = true;
-ENUM_TIMEFRAMES   InpT3MaxTimeframe = PERIOD_H1;
 string            InpT3FiboLevels = "25,50,75";
 color             InpT3InSignalAreaColor = clrWheat;
 bool              InpPrintScreenshot = false;
@@ -80,10 +76,3 @@ datetime          InpT3p4DateTime = D'2022.01.01 00:00';
 bool              InpT3TesterHideIndicators = false;
 bool              InpDevMode = false;
 bool              InpSendPushOnTester = true;
-
-// ****************  RAUS **************** //
-int               InpT3AlertOnBidStopLossLineOffset = 0;
-int               InpT3MinReEntryRegressionChannelLevel = 0;
-int               InpT3MinReEntryFiboRetracmentLevel = 0;
-color             InpT3ReEntryMinRegressionColor = clrDarkKhaki;
-color             InpT3ReEntryAreaColor = clrBeige;

@@ -20,7 +20,7 @@ void handleT3Indictaors() {
          ChartIndicatorAdd(ChartID(), subWindow, t3TrailingStopMAHandle00);
       }
 
-      if(t3ProfitLevelGreaterMinProfitFiboRetracmentLevel == true) {
+//      if(t3ProfitLevelGreaterMinProfitFiboRetracmentLevel == true) {
 
          if(t3TrailingStopMAActive == t3TrailingStopMAPeriod00 && t3TrailingStopMAPeriod01 != 0 && t3CurrentBidMAOffset > InpT3TrailingStopOffset) {
             t3TrailingStopMAActive = t3TrailingStopMAPeriod01;
@@ -82,7 +82,7 @@ void handleT3Indictaors() {
             if(t3trendDirection == TREND_DIRECTION_SHORT) t3CurrentBidMAOffset = t3TrailingStopMALevel / Point() - Bid() / Point();
             ChartIndicatorAdd(ChartID(), subWindow, t3TrailingStopMAHandle05);
          }
-      }
+//      }
    }
 }
 //+------------------------------------------------------------------+

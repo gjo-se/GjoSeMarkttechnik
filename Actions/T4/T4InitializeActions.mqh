@@ -9,6 +9,7 @@ void initializeT4GlobalsAction() {
    t4comment = "";
 
    t4IsTradabelButtonState = ObjectGetInteger(0, T4_IS_TRADEABLE_BUTTON, OBJPROP_STATE);
+   t4AutoButtonState = ObjectGetInteger(ChartID(), T4_AUTO_BUTTON, OBJPROP_STATE);
 
    t4StartDateTime = 0;
    t4p1DateTime = 0;
@@ -23,16 +24,12 @@ void initializeT4GlobalsAction() {
    t4p4DateTime = 0;
    t4p4ValueHigh = 0;
    t4p4ValueLow = 0;
-   t4p5DateTime = 0;
-   t4p5ValueHigh = 0;
-   t4p5ValueLow = 0;
-   t4HighestHighVLineDateTime = 0;
-   t4LowestLowVLineDateTime = 0;
-   t4EndDateTime = 0;
 
    t4SemiTrendDirection = TREND_DIRECTION_ROTATION;
    t4trendDirection = TREND_DIRECTION_ROTATION;
 
+   buyPositionsCount = 0;
+   sellPositionsCount = 0;
    buyT4PositionIsOpenState = false;
    maxT4BuyPositionsAreOpenState = false;
    allT4BuyPositionsAreClosedState = false;
@@ -54,9 +51,13 @@ void initializeT4GlobalsAction() {
    t4AlertDisableTradeableButtonSended = false;
    t4alertMAChangedSended = false;
    t4AlertT4TrendBrokenSended = false;
-   t4AlertT4P4CreatedSended = false;
-   t4AlertT4P5CreatedSended = false;
+   t4AlertT4P3CreatedSended = false;
    t4AlertT4VLineOn0Sended = false;
+
+   if(ObjectFind(ChartID(), T4_ALERT_BID_HIGHER_HINE) >= 0) t4AlertHigherHLineValue = ObjectGetDouble(ChartID(), T4_ALERT_BID_HIGHER_HINE, OBJPROP_PRICE);
+   if(ObjectFind(ChartID(), T4_ALERT_BID_LOWER_HINE) >= 0) t4AlertLowerHLineValue = ObjectGetDouble(ChartID(), T4_ALERT_BID_LOWER_HINE, OBJPROP_PRICE);
+   t4AlertHigherHLineSended = false;
+   t4AlertLowerHLineSended = false;
 
    t4InSignalFiboLevelAreaMinStartValue = 0;
    t4InSignalFiboLevelAreaMinEndValue = 0;
@@ -67,10 +68,6 @@ void initializeT4GlobalsAction() {
    t4InSignalRegressionChannelAreaMaxStartValue = 0;
    t4InSignalRegressionChannelAreaMaxEndValue = 0;
 
-// HighVolumeArea
-   t4HighestHighIsInSignalArea = false;
-   t4LowestLowIsInSignalArea = false;
-
    t4MinRegressionForTrendDetectionLevel = 0;
    t4MinRegressionForTrendDetectionState = false;
 
@@ -79,21 +76,7 @@ void initializeT4GlobalsAction() {
    t4ProfitLevelGreaterMinProfitFiboRetracmentLevel = false;
    t4CurrentBidMAOffset = 0;
 
-   t4ReEntryAreaMinStartValue = 0;
-   t4ReEntryAreaMinEndValue = 0;
-   t4ReEntryAreaMaxStartValue = 0;
-   t4ReEntryAreaMaxEndValue = 0;
-   t4UseReEntryArea = false;
-
-
-// SHORT
-   t4HighestHighValue = 0;
-   t4HighestHighDateTime = 0;
    t4ShortEntryValue = 0;
-
-// LONG
-   t4LowestLowValue = 0;
-   t4LowestLowDateTime = 0;
    t4LongEntryValue = 0;
 
    outSideBarDateTime = 0;
@@ -108,14 +91,6 @@ void initializeT4GlobalsAction() {
    t4ScreenshotT4P3CreatedAfter = false;
    t4ScreenshotT4P4CreatedBefore = false;
    t4ScreenshotT4P4CreatedAfter = false;
-   t4ScreenshotT4P5CreatedBefore = false;
-   t4ScreenshotT4P5CreatedAfter = false;
-   t4ScreenshotT4BuildNewTrendBefore = false;
-   t4ScreenshotT4BuildNewTrendAfter = false;
-   t4ScreenshotT4TrendBrokenOnP1Before = false;
-   t4ScreenshotT4TrendBrokenOnP1After = false;
-   t4ScreenshotT4TrendBrokenOnP3Before = false;
-   t4ScreenshotT4TrendBrokenOnP3After = false;      
 }
 
 //+------------------------------------------------------------------+
@@ -203,21 +178,6 @@ void convertInpT4StringsToArray() {
    if(InpT4MaxFiboRetracmentLevel != 0) {
       ArrayResize(t4FiboLevelsArray, ArraySize(t4FiboLevelsArray) + 1);
       t4FiboLevelsArray[ArraySize(t4FiboLevelsArray) - 1] = (string)InpT4MaxFiboRetracmentLevel;
-   }
-
-   if(InpT4MinReEntryRegressionChannelLevel != 0) {
-      ArrayResize(t4FiboLevelsArray, ArraySize(t4FiboLevelsArray) + 1);
-      t4FiboLevelsArray[ArraySize(t4FiboLevelsArray) - 1] = (string)InpT4MinReEntryRegressionChannelLevel;
-   }
-
-   if(InpT4MinReEntryFiboRetracmentLevel != 0) {
-      ArrayResize(t4FiboLevelsArray, ArraySize(t4FiboLevelsArray) + 1);
-      t4FiboLevelsArray[ArraySize(t4FiboLevelsArray) - 1] = (string)InpT4MinReEntryFiboRetracmentLevel;
-   }
-
-   if(InpT4MinProfitFiboRetracmentLevel != 0) {
-      ArrayResize(t4FiboLevelsArray, ArraySize(t4FiboLevelsArray) + 1);
-      t4FiboLevelsArray[ArraySize(t4FiboLevelsArray) - 1] = (string)InpT4MinProfitFiboRetracmentLevel;
    }
 
    StringSplit(InpT4trailingStopMAPeriods, StringGetCharacter(",", 0), t4trailingStopMAPeriodsArray);

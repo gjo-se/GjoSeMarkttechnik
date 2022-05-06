@@ -4,6 +4,8 @@
 //|                                             https://www.mql5.com |
 //+------------------------------------------------------------------+
 
+bool  t2AutoButtonState;
+
 datetime t2StartDateTime;
 datetime t2p1DateTime;
 double t2p1ValueHigh;
@@ -29,7 +31,6 @@ string t2FiboLevelsArray[];
 
 // Alerts
 bool t2AlertT2P4CreatedTT3MissingSended;
-bool t2AlertT2P4CreatedTT4MissingSended;
 bool t2AlertT2P4CreatedHighVolumeAreaMissingSended;
 bool t2AlertT2P4CreatedSended;
 bool t2AlertT2P5CreatedSended;

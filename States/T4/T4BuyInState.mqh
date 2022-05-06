@@ -14,7 +14,6 @@ bool getT4BuyInSignal() {
    bool signal = false;
 
    if(getT4BidGreaterLongEntryLevelSignal() == true) signal = true;
-//   if(getT4LowestLowIsInSignalAreaState() == false) signal = false;
 
 //   if(getT4BidTriggerLongGridLimitOrderSignal() == true) signal = true;
 //   if(getT4BidTriggerLongGridStopOrderSignal() == true) signal = true;
@@ -25,27 +24,11 @@ bool getT4BuyInSignal() {
    if(maxT4BuyPositionsAreOpenState == true) signal = false;
 
 
-//   if(getT4BidGreaterLongReEntryAreaFilter() == true) return false;
 //   if(t4LongIsTradable == false) return false;
 //   if(spreadGreaterThanMaxSpreadBuyInFilter() == true) signal = false;
 
    return(signal);
 
-}
-
-bool getT4LowestLowIsInSignalAreaState() {
-
-   bool state = false;
-
-   if(t4LowestLowIsInSignalArea) state = true;
-
-   if(t4UseReEntryArea == true) {
-      if(t4ReEntryAreaMinEndValue != 0 && Bid() >= t4ReEntryAreaMinEndValue
-            && t4ReEntryAreaMaxEndValue != 0 && Bid() <= t4ReEntryAreaMaxEndValue) {
-         state = true;
-      }
-   }
-   return state;
 }
 
 bool getT4BidGreaterLongEntryLevelSignal() {
@@ -93,15 +76,3 @@ bool getT4BidTriggerLongGridStopOrderSignal() {
    return signal;
 }
 
-bool getT4BidGreaterLongReEntryAreaFilter() {
-
-   bool filter = false;
-
-   if(Bid() > t4ReEntryAreaMaxEndValue) {
-      filter = true;
-   }
-
-   return filter;
-}
-
-//+------------------------------------------------------------------+

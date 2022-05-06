@@ -16,15 +16,7 @@ void initializeT3GlobalsAction() {
    isNewCurrentBar = false;
    t3comment = "";
 
-   t3IsTradabelButtonState = ObjectGetInteger(0, T3_IS_TRADEABLE_BUTTON, OBJPROP_STATE);
-
-   buyT3PositionIsOpenState = false;
-   maxT3BuyPositionsAreOpenState = false;
-   allT3BuyPositionsAreClosedState = false;
-
-   sellT3PositionIsOpenState = false;
-   maxT3SellPositionsAreOpenState = false;
-   allT3SellPositionsAreClosedState = false;
+   t3AutoButtonState = ObjectGetInteger(ChartID(), T3_AUTO_BUTTON, OBJPROP_STATE);
 
    t3StartDateTime = 0;
    t3p1DateTime = 0;
@@ -39,16 +31,20 @@ void initializeT3GlobalsAction() {
    t3p4DateTime = 0;
    t3p4ValueHigh = 0;
    t3p4ValueLow = 0;
-   t3HighestHighVLineDateTime = 0;
-   t3LowestLowVLineDateTime = 0;
+   t3p5DateTime = 0;
+   t3p5ValueHigh = 0;
+   t3p5ValueLow = 0;
+   t3p6DateTime = 0;
+   t3p6ValueHigh = 0;
+   t3p6ValueLow = 0;
+   t3p7DateTime = 0;
+   t3p7ValueHigh = 0;
+   t3p7ValueLow = 0;
    t3EndDateTime = 0;
 
    t3SemiTrendDirection = TREND_DIRECTION_ROTATION;
    t3trendDirection = TREND_DIRECTION_ROTATION;
    t3MovementLengthPoints = 0;
-
-   t3ObjectHasChanged = false;
-   t3ObjectHasChanged = false;
 
    if((MQLInfoInteger(MQL_VISUAL_MODE) == 1 && InpSendPushOnTester == false) || InpDevMode == true) {
       sendAlerts = false;
@@ -61,15 +57,14 @@ void initializeT3GlobalsAction() {
    t3IsBuyRegressionAlertSended = false;
    t3IsSellRegressionAlertSendable = false;
    t3IsSellRegressionAlertSended = false;
-   t3IsBidStopLossLineOffsetAlertSendable = false;
-   t3IsBidStopLossLineOffsetAlertSended = false;
    t3AlertDisableTradeableButtonSended = false;
    t3alertBidIsInSignalAreaSended = false;
    t3alertBidAgainInHighVolumeAreaSended = false;
    t3alertMAChangedSended = false;
    t3AlertT3TrendBrokenSended = false;
-   t3AlertT3P5CreatedTT4MissingSended = false;
    t3AlertT3VLineOn0Sended = false;
+   t3AlertT3P6CreatedSended = false;
+   t3AlertT3P6CreatedTT4MissingSended = false;
 
    t3InSignalFiboLevelAreaMinStartValue = 0;
    t3InSignalFiboLevelAreaMinEndValue = 0;
@@ -83,30 +78,10 @@ void initializeT3GlobalsAction() {
 // HighVolumeArea
    t3MinHighVolumeAreaLevel = 0;
    t3MaxHighVolumeAreaLevel = 0;
-   t3HighestHighIsInSignalArea = false;
-   t3LowestLowIsInSignalArea = false;
 
 // OUTSIgnal
    t3MinProfitFiboRetracmentLevel = 0;
-   t3ProfitLevelGreaterMinProfitFiboRetracmentLevel = false;
    t3CurrentBidMAOffset = 0;
-
-   t3ReEntryAreaMinStartValue = 0;
-   t3ReEntryAreaMinEndValue = 0;
-   t3ReEntryAreaMaxStartValue = 0;
-   t3ReEntryAreaMaxEndValue = 0;
-   t3UseReEntryArea = false;
-
-
-// SHORT
-   t3HighestHighValue = 0;
-   t3HighestHighDateTime = 0;
-   t3ShortEntryValue = 0;
-
-// LONG
-   t3LowestLowValue = 0;
-   t3LowestLowDateTime = 0;
-   t3LongEntryValue = 0;
 
    outSideBarDateTime = 0;
    t3StopLossValue = 0;
@@ -120,6 +95,10 @@ void initializeT3GlobalsAction() {
    t3ScreenshotT3P4CreatedAfter = false;
    t3ScreenshotT3P5CreatedBefore = false;
    t3ScreenshotT3P5CreatedAfter = false;
+   t3ScreenshotT3P6CreatedBefore = false;
+   t3ScreenshotT3P6CreatedAfter = false;
+   t3ScreenshotT3P7CreatedBefore = false;
+   t3ScreenshotT3P7CreatedAfter = false;
    t3ScreenshotT3BuildNewTrendBefore = false;
    t3ScreenshotT3BuildNewTrendAfter = false;
    t3ScreenshotT3TrendBrokenOnP1Before = false;
@@ -219,21 +198,6 @@ void convertInpT3StringsToArray() {
    if(InpT3MaxFiboRetracmentLevel != 0) {
       ArrayResize(t3FiboLevelsArray, ArraySize(t3FiboLevelsArray) + 1);
       t3FiboLevelsArray[ArraySize(t3FiboLevelsArray) - 1] = (string)InpT3MaxFiboRetracmentLevel;
-   }
-
-   if(InpT3MinReEntryRegressionChannelLevel != 0) {
-      ArrayResize(t3FiboLevelsArray, ArraySize(t3FiboLevelsArray) + 1);
-      t3FiboLevelsArray[ArraySize(t3FiboLevelsArray) - 1] = (string)InpT3MinReEntryRegressionChannelLevel;
-   }
-
-   if(InpT3MinReEntryFiboRetracmentLevel != 0) {
-      ArrayResize(t3FiboLevelsArray, ArraySize(t3FiboLevelsArray) + 1);
-      t3FiboLevelsArray[ArraySize(t3FiboLevelsArray) - 1] = (string)InpT3MinReEntryFiboRetracmentLevel;
-   }
-
-   if(InpT3MinProfitFiboRetracmentLevel != 0) {
-      ArrayResize(t3FiboLevelsArray, ArraySize(t3FiboLevelsArray) + 1);
-      t3FiboLevelsArray[ArraySize(t3FiboLevelsArray) - 1] = (string)InpT3MinProfitFiboRetracmentLevel;
    }
 
    string t3trailingStopMAPeriodsArrayStrings[];
