@@ -55,8 +55,7 @@ void initializeT4GlobalsAction() {
    t4AlertDisableTradeableButtonSended = false;
    t4alertMAChangedSended = false;
    t4AlertT4TrendBrokenSended = false;
-   t4AlertT4P4CreatedSended = false;
-   t4AlertT4P5CreatedSended = false;
+   t4AlertT4P3CreatedSended = false;
    t4AlertT4VLineOn0Sended = false;
 
    if(ObjectFind(ChartID(), T4_ALERT_BID_HIGHER_HINE) >= 0) t4AlertHigherHLineValue = ObjectGetDouble(ChartID(), T4_ALERT_BID_HIGHER_HINE, OBJPROP_PRICE);

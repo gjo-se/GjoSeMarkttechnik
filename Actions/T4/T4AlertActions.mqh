@@ -53,27 +53,14 @@ void t4AlertT4TrendBrokenAction() {
    }
 }
 
-void t4AlertT4P4CreatedAction() {
+void t4AlertT4P3CreatedAction() {
    if(sendAlerts == true) {
-      string prio = "A";
-      string text = "T3 != T4 P4";
+      string prio = "AA";
+      string text = "T4-P3 SIGNAL!";
       string message = prio + ": " + text + " - " + Symbol();
       Alert(message);
       if(!SendNotification(message)) Alert("Cannot Push " + message + " Error: ", GetLastError());
-      t4AlertT4P4CreatedSended = true;
-   }
-}
-//+------------------------------------------------------------------+
-//|                                                                  |
-//+------------------------------------------------------------------+
-void t4AlertT4P5CreatedAction() {
-   if(sendAlerts == true) {
-      string prio = "A";
-      string text = "T4 P5";
-      string message = prio + ": " + text + " - " + Symbol();
-      Alert(message);
-      if(!SendNotification(message)) Alert("Cannot Push " + message + " Error: ", GetLastError());
-      t4AlertT4P5CreatedSended = true;
+      t4AlertT4P3CreatedSended = true;
    }
 }
 
