@@ -48,6 +48,11 @@
    3.6.0 optimized Objects (VLINES, TLINES, Regression, Fibo)
    3.7.0 added TT2
    3.8.0 added T2 Automatic
+   3.8.1 deactivate T3 & T4 - new TMP Version
+   3.8.2 Alert on Position open/close
+   3.8.3 T2 diverse
+   3.8.4 added HLINE Alerts
+   3.9.0 TrendDetection T2/T3/T4 new Level
    ===============
 
 */
@@ -66,7 +71,7 @@
 #property copyright   "2022, GjoSe"
 #property link        "http://www.gjo-se.com"
 #property description "GjoSe Markttechnik"
-#define   VERSION "3.8.0"
+#define   VERSION "3.9.0"
 #property version VERSION
 #property strict
 
