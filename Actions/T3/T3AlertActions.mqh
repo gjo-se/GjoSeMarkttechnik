@@ -154,6 +154,13 @@ void t3CommentAction(string pVersion) {
       t3comment += "tt3movementRegressionLengthRatio: " + DoubleToString(tt3movementLengthRegressionLengthRatio, 0) + " %" + "\n";
    }
    t3comment += "\n";
+   t3comment += "T4: " + "\n\n";
+   if(tt4movementLengthRegressionLengthRatio != 0) {
+      t3comment += "tt4movementLength: " + DoubleToString(tt4movementLength, 0) + " (" + DoubleToString(tt4movementLengthP1P2, 0) + " / " +  DoubleToString(tt4movementLengthP3P4, 0) + " / " + DoubleToString(tt4movementLengthP5P6, 0) + ") Points" + "\n";
+      t3comment += "tt4regressionLength: " + DoubleToString(tt4regressionLength, 0) + " (" + DoubleToString(tt4regressionLengthP2P3, 0) + " / " +  DoubleToString(tt4regressionLengthP4P5, 0) + ") Points" + "\n";
+      t3comment += "tt4movementRegressionLengthRatio: " + DoubleToString(tt4movementLengthRegressionLengthRatio, 0) + " %" + "\n";
+   }
+   t3comment += "\n";
    if(t3p1DateTime) {
       if(t3AlertRegressionChannelLevel != 0) t3comment += "Alert RegressionChannel: " + DoubleToString(t3AlertRegressionChannelLevel, 2) + "\n";
       if(t3AlertFiboRetracementLevel != 0) t3comment += "Alert FiboRetracement: " + DoubleToString(t3AlertFiboRetracementLevel, 2) + "\n";
