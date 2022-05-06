@@ -43,7 +43,6 @@ void handleT3TrendDetectionAction() {
 
 void handleT3P2() {
 
-   double   t3StartValueLocal = 0;
    datetime t3p2DateTimeLocal = 0;
    double   t3p2ValueLocal = 0;
    double   t3P1P2MovementPoints = 0;
@@ -59,10 +58,9 @@ void handleT3P2() {
          deleteLabel(ERROR_LABEL + errorText);
          
          if(t3SemiTrendDirection == TREND_DIRECTION_LONG) {
-            t3StartValueLocal = iLow(Symbol(), PERIOD_M1, iBarShift(Symbol(), PERIOD_M1, t3p1DateTime));
             t3p2DateTimeLocal = iTime(Symbol(), PERIOD_M1, iHighest(Symbol(), PERIOD_M1, MODE_HIGH,  iBarShift(Symbol(), PERIOD_M1, t3p1DateTime) + 1));
             t3p2ValueLocal = iHigh(Symbol(), PERIOD_M1, iBarShift(Symbol(), PERIOD_M1, t3p2DateTimeLocal));
-            t3P1P2MovementPoints = t3p2ValueLocal / Point() - t3StartValueLocal / Point();
+            t3P1P2MovementPoints = t3p2ValueLocal / Point() - t3p1ValueLow / Point();
 
             if(isNewCurrentBar == true && t3ScreenshotT3P2CreatedBefore == true && t3ScreenshotT3P2CreatedAfter == false) {
                createScreenshot("T3P2-After");
@@ -82,10 +80,9 @@ void handleT3P2() {
          }
 
          if(t3SemiTrendDirection == TREND_DIRECTION_SHORT) {
-            t3StartValueLocal = iHigh(Symbol(), PERIOD_M1, iBarShift(Symbol(), PERIOD_M1, t3p1DateTime));
             t3p2DateTimeLocal = iTime(Symbol(), PERIOD_M1, iLowest(Symbol(), PERIOD_M1, MODE_LOW,  iBarShift(Symbol(), PERIOD_M1, t3p1DateTime) + 1));
             t3p2ValueLocal = iLow(Symbol(), PERIOD_M1, iBarShift(Symbol(), PERIOD_M1, t3p2DateTimeLocal));
-            t3P1P2MovementPoints = t3StartValueLocal / Point() - t3p2ValueLocal / Point();
+            t3P1P2MovementPoints = t3p1ValueHigh / Point() - t3p2ValueLocal / Point();
 
             if(isNewCurrentBar == true && t3ScreenshotT3P2CreatedBefore == true && t3ScreenshotT3P2CreatedAfter == false) {
                createScreenshot("T3P2-After");
@@ -104,7 +101,9 @@ void handleT3P2() {
             }
          }
       } else {
+        // TODO: der erscheint mir blödsinnig!!
          if(t3AlertT3VLineOn0Sended == false) t3AlertT3VLineOn0Action();
+
          createErrorLabel(errorText);
       }
    }
