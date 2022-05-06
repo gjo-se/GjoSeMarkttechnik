@@ -8,14 +8,15 @@
 //+------------------------------------------------------------------+
 void getT4TrendDirection() {
 
-   double t4p2ValueTmp = 0;
+   double t4p2ValueLocal = 0;
+
    t4SemiTrendDirection = TREND_DIRECTION_ROTATION;
    t4trendDirection = TREND_DIRECTION_ROTATION;
 
-   if(t4p1ValueHigh != 0 || t3p5ValueHigh != 0) {
-      (t4p2ValueLow != 0) ? t4p2ValueTmp = t4p2ValueLow : t4p2ValueTmp = Bid();
-      if(t4p1ValueHigh < t4p2ValueTmp) t4SemiTrendDirection = TREND_DIRECTION_LONG;
-      if(t4p1ValueHigh > t4p2ValueTmp) t4SemiTrendDirection = TREND_DIRECTION_SHORT;
+   if(t4p1ValueHigh != 0) {
+      (t4p2ValueLow != 0) ? t4p2ValueLocal = t4p2ValueLow : t4p2ValueLocal = Bid();
+      if(t4p1ValueHigh < t4p2ValueLocal) t4SemiTrendDirection = TREND_DIRECTION_LONG;
+      if(t4p1ValueHigh > t4p2ValueLocal) t4SemiTrendDirection = TREND_DIRECTION_SHORT;
    }
 
    if(t4p3ValueHigh != 0 && t4p4ValueHigh != 0) {
@@ -39,62 +40,67 @@ void handleT4TrendDetectionAction() {
 
 void handleT4P2() {
 
-   datetime t4p1DateTimeTmp = 0;
-   datetime t4p2DateTimeTmp = 0;
-   double   t4p2ValueTmp = 0;
-   double t4P1P2MovementPoints = 0;
+   datetime t4p2DateTimeLocal = 0;
+   double   t4p2ValueLocal = 0;
+   double   t4P1P2MovementPoints = 0;
+   string   errorText = "TT4 is Missing";
 
-   (t4p1DateTime != 0) ? t4p1DateTimeTmp = t4p1DateTime : t4p1DateTimeTmp = t3p5DateTime;
 
-   if(t4p1DateTimeTmp != 0
-         && t4p1DateTimeTmp < (int)TimeCurrent()
+   if(t4p1DateTime != 0 && t4p1DateTime < (int)TimeCurrent()
          && t4p3DateTime == 0
      ) {
 
-      if(t4SemiTrendDirection == TREND_DIRECTION_LONG) {
-         t4p2DateTimeTmp = iTime(Symbol(), PERIOD_M1, iHighest(Symbol(), PERIOD_M1, MODE_HIGH,  iBarShift(Symbol(), PERIOD_M1, t4p1DateTimeTmp) + 1));
-         t4p2ValueTmp = iHigh(Symbol(), PERIOD_M1, iBarShift(Symbol(), PERIOD_M1, t4p2DateTimeTmp));
-         t4P1P2MovementPoints = t4p2ValueTmp / Point() - t4p1ValueLow / Point();
+      if(tt4p1DateTime != 0) {
 
-         if(isNewCurrentBar == true && t4ScreenshotT4P2CreatedBefore == true && t4ScreenshotT4P2CreatedAfter == false) {
-            createScreenshot("T4P2-After");
-            t4ScreenshotT4P2CreatedAfter = true;
-         }
+         deleteLabel(ERROR_LABEL + errorText);
 
-         if(Bid() >= t4p2ValueTmp
-               && t4P1P2MovementPoints > (tt4movementLength * InpT4MinMovementLengthBasedOnTT4MovementPercent / 100)
-           ) {
-            if(t4ScreenshotT4P2CreatedBefore == false) {
-               createScreenshot("T4P2-Before");
-               t4ScreenshotT4P2CreatedBefore = true;
+         if(t4SemiTrendDirection == TREND_DIRECTION_LONG) {
+            t4p2DateTimeLocal = iTime(Symbol(), PERIOD_M1, iHighest(Symbol(), PERIOD_M1, MODE_HIGH,  iBarShift(Symbol(), PERIOD_M1, t4p1DateTime) + 1));
+            t4p2ValueLocal = iHigh(Symbol(), PERIOD_M1, iBarShift(Symbol(), PERIOD_M1, t4p2DateTimeLocal));
+            t4P1P2MovementPoints = t4p2ValueLocal / Point() - t4p1ValueLow / Point();
+
+            if(isNewCurrentBar == true && t4ScreenshotT4P2CreatedBefore == true && t4ScreenshotT4P2CreatedAfter == false) {
+               createScreenshot("T4P2-After");
+               t4ScreenshotT4P2CreatedAfter = true;
             }
-            createT4P2VLine(t4p2DateTimeTmp);
-            getT4TrendDirection();
-         }
-      }
 
-      if(t4SemiTrendDirection == TREND_DIRECTION_SHORT) {
-         t4p2DateTimeTmp = iTime(Symbol(), PERIOD_M1, iLowest(Symbol(), PERIOD_M1, MODE_LOW,  iBarShift(Symbol(), PERIOD_M1, t4p1DateTimeTmp) + 1));
-         t4p2ValueTmp = iLow(Symbol(), PERIOD_M1, iBarShift(Symbol(), PERIOD_M1, t4p2DateTimeTmp));
-         t4P1P2MovementPoints = t4p1ValueHigh / Point() - t4p2ValueTmp / Point();
-
-         if(isNewCurrentBar == true && t4ScreenshotT4P2CreatedBefore == true && t4ScreenshotT4P2CreatedAfter == false) {
-            createScreenshot("T4P2-After");
-            t4ScreenshotT4P2CreatedAfter = true;
-         }
-
-         if(Bid() <= t4p2ValueTmp
-               && t4P1P2MovementPoints > (tt4movementLength * InpT4MinMovementLengthBasedOnTT4MovementPercent / 100)
-           ) {
-            if(t4ScreenshotT4P2CreatedBefore == false) {
-               createScreenshot("T4P2-Before");
-               t4ScreenshotT4P2CreatedBefore = true;
+            if(Bid() >= t4p2ValueLocal
+                  && t4P1P2MovementPoints > (tt4movementLength * InpT4MinMovementLengthBasedOnTT4MovementPercent / 100)
+              ) {
+               if(t4ScreenshotT4P2CreatedBefore == false) {
+                  createScreenshot("T4P2-Before");
+                  t4ScreenshotT4P2CreatedBefore = true;
+               }
+               createT4P2VLine(t4p2DateTimeLocal);
+               getT4TrendDirection();
             }
-            createT4P2VLine(t4p2DateTimeTmp);
-            getT4TrendDirection();
          }
-      }
 
+         if(t4SemiTrendDirection == TREND_DIRECTION_SHORT) {
+            t4p2DateTimeLocal = iTime(Symbol(), PERIOD_M1, iLowest(Symbol(), PERIOD_M1, MODE_LOW,  iBarShift(Symbol(), PERIOD_M1, t4p1DateTime) + 1));
+            t4p2ValueLocal = iLow(Symbol(), PERIOD_M1, iBarShift(Symbol(), PERIOD_M1, t4p2DateTimeLocal));
+            t4P1P2MovementPoints = t4p1ValueHigh / Point() - t4p2ValueLocal / Point();
+
+            if(isNewCurrentBar == true && t4ScreenshotT4P2CreatedBefore == true && t4ScreenshotT4P2CreatedAfter == false) {
+               createScreenshot("T4P2-After");
+               t4ScreenshotT4P2CreatedAfter = true;
+            }
+
+            if(Bid() <= t4p2ValueLocal
+                  && t4P1P2MovementPoints > (tt4movementLength * InpT4MinMovementLengthBasedOnTT4MovementPercent / 100)
+              ) {
+               if(t4ScreenshotT4P2CreatedBefore == false) {
+                  createScreenshot("T4P2-Before");
+                  t4ScreenshotT4P2CreatedBefore = true;
+               }
+               createT4P2VLine(t4p2DateTimeLocal);
+               getT4TrendDirection();
+            }
+         }
+
+      } else {
+         createErrorLabel(errorText);
+      }
    }
 }
 
