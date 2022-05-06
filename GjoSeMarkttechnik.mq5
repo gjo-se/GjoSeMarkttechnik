@@ -249,9 +249,6 @@ void OnChartEvent(const int id,
       setT4LineValues();
       getT4TrendDirection();
       createT4ZigZagTrendDetectionLines();
-      createT4RegressionChannel();
-      createT4RegressionChannelLevels();
-      createT4FiboRetracement();
 
       if(sparam == T4_STOP_LOSS_TLINE) {
          t4IsBidStopLossLineOffsetAlertSendable = true;

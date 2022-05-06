@@ -6,13 +6,7 @@
 void handleT4ObjectsInitAction() {
 
    deleteTrendLineLike(T4_ZIGZAGLINE);
-   deleteRegressionChannel(T4_REGRESSION_CHANNEL);
-   deleteFiboLevelsObject(T4_FIBO_LEVELS);
-
    createT4ZigZagTrendDetectionLines();
-   createT4RegressionChannel();
-   createT4RegressionChannelLevels();
-   createT4FiboRetracement();
 
    t4HandleObjectsAction();
 }
@@ -46,15 +40,10 @@ void t4HandleObjectsAction() {
 
       if(isNewCurrentBar == true) {
          createT4ZigZagTrendDetectionLines();
-         createT4RegressionChannel();
-         createT4RegressionChannelLevels();
-         createT4FiboRetracement();
       }
 
    } else {
       deleteTrendLineLike(T4_ZIGZAGLINE);
-      deleteRegressionChannel(T4_REGRESSION_CHANNEL);
-      deleteFiboLevelsObject(T4_FIBO_LEVELS);
    }
 
    if(allT4BuyPositionsAreClosedState || allT4SellPositionsAreClosedState) {
