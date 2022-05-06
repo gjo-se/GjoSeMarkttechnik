@@ -312,6 +312,7 @@ void handleT3P6() {
             if(t3AlertT3P6CreatedSended == false) t3AlertT3P6CreatedAction();
             createT3P6VLine(t3p6DateTimeTmp);
             getT3TrendDirection();
+            resetT4Trend();
          }
       }
 
@@ -338,6 +339,7 @@ void handleT3P6() {
             if(t3AlertT3P6CreatedSended == false) t3AlertT3P6CreatedAction();
             createT3P6VLine(t3p6DateTimeTmp);
             getT3TrendDirection();
+            resetT4Trend();
          }
       }
    }
