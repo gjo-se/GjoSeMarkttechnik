@@ -232,7 +232,6 @@ void OnChartEvent(const int id,
       createT2RegressionChannel();
       createT2RegressionChannelLevels();
       createT2FiboRetracement();
-      createT2HighVolumeAreaTrendLines();
 
       setTT3LineValues();
       getTT3TrendDirection();
