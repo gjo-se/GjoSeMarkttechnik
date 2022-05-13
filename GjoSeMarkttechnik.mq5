@@ -133,6 +133,12 @@ int OnInit() {
       }
    }
 
+   if(Period() <= PERIOD_H1) {
+      ChartSetInteger(ChartID(), CHART_SHOW_TRADE_LEVELS, 1);
+   } else {
+      ChartSetInteger(ChartID(), CHART_SHOW_TRADE_LEVELS, 0);
+   }
+
    if(MQLInfoInteger(MQL_TESTER) == 1) {
 
       t4IsTradabelButtonState = true;
