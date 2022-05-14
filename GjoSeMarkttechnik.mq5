@@ -121,6 +121,17 @@ int OnInit() {
       handleCommentAction(VERSION);
    }
 
+   if(ObjectFind(ChartID(), T4_ALERT_BID_HIGHER_HINE) >= 0) {
+      ObjectSetInteger(ChartID(), T4_ALERT_BID_HIGHER_HINE, OBJPROP_WIDTH, 1);
+      ObjectSetInteger(ChartID(), T4_ALERT_BID_HIGHER_HINE, OBJPROP_COLOR, clrMediumBlue);
+      ObjectSetInteger(ChartID(), T4_ALERT_BID_HIGHER_HINE, OBJPROP_TIMEFRAMES, InpT2VisibleTimeframes | InpT3VisibleTimeframes);
+   }
+   if(ObjectFind(ChartID(), T4_ALERT_BID_LOWER_HINE) >= 0) {
+      ObjectSetInteger(ChartID(), T4_ALERT_BID_LOWER_HINE, OBJPROP_WIDTH, 1);
+      ObjectSetInteger(ChartID(), T4_ALERT_BID_LOWER_HINE, OBJPROP_COLOR, clrMediumBlue);
+      ObjectSetInteger(ChartID(), T4_ALERT_BID_LOWER_HINE, OBJPROP_TIMEFRAMES, InpT2VisibleTimeframes | InpT3VisibleTimeframes);
+   }
+
    int objectsTotal = ObjectsTotal(ChartID(), 0, -1);
    string objName;
    string autotrade = "autotrade";
