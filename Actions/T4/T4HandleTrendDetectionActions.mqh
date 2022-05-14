@@ -41,14 +41,13 @@ void handleT4P2() {
    double   t4P1P2MovementPoints = 0;
    string   errorText = "TT4 is Missing";
 
+   deleteLabel(ERROR_LABEL + errorText);
 
    if(t4p1DateTime != 0 && t4p1DateTime < (int)TimeCurrent()
          && t4p3DateTime == 0
      ) {
 
       if(tt4p1DateTime != 0) {
-
-         deleteLabel(ERROR_LABEL + errorText);
 
          if(t4SemiTrendDirection == TREND_DIRECTION_LONG) {
             t4p2DateTimeLocal = iTime(Symbol(), PERIOD_M1, iHighest(Symbol(), PERIOD_M1, MODE_HIGH,  iBarShift(Symbol(), PERIOD_M1, t4p1DateTime) + 1));

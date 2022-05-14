@@ -48,6 +48,8 @@ void handleT3P2() {
    double   t3P1P2MovementPoints = 0;
    string   errorText = "TT3 is Missing";
 
+   deleteLabel(ERROR_LABEL + errorText);
+
    if(t3p1DateTime != 0 && t3p1DateTime < (int)TimeCurrent()
          && t3p3DateTime == 0
      ) {
@@ -55,8 +57,7 @@ void handleT3P2() {
       if(tt3p1DateTime != 0) {
          
          t3AlertT3VLineOn0Sended = false;
-         deleteLabel(ERROR_LABEL + errorText);
-         
+
          if(t3SemiTrendDirection == TREND_DIRECTION_LONG) {
             t3p2DateTimeLocal = iTime(Symbol(), PERIOD_M1, iHighest(Symbol(), PERIOD_M1, MODE_HIGH,  iBarShift(Symbol(), PERIOD_M1, t3p1DateTime) + 1));
             t3p2ValueLocal = iHigh(Symbol(), PERIOD_M1, iBarShift(Symbol(), PERIOD_M1, t3p2DateTimeLocal));
