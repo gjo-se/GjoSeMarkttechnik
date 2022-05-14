@@ -13,8 +13,7 @@ void createTT2RegressionChannel() {
    datetime startDateTime = tt2p1DateTime;
    if(tt2StartDateTime != 0) startDateTime = tt2StartDateTime;
 
-   datetime endDateTime = TimeCurrent();
-   if(tt2p3DateTime != 0) endDateTime = tt2p3DateTime;
+   datetime endDateTime = tt2p3DateTime;
    if(tt2p4DateTime != 0) endDateTime = tt2p4DateTime;
    if(tt2p5DateTime != 0) endDateTime = tt2p5DateTime;
    if(tt2p6DateTime != 0) endDateTime = tt2p6DateTime;
@@ -33,8 +32,7 @@ void createTT3RegressionChannel() {
    datetime startDateTime = tt3p1DateTime;
    if(tt3StartDateTime != 0) startDateTime = tt3StartDateTime;
 
-   datetime endDateTime = TimeCurrent();
-   if(tt3p3DateTime != 0) endDateTime = tt3p3DateTime;
+   datetime endDateTime = tt3p3DateTime;
    if(tt3p4DateTime != 0) endDateTime = tt3p4DateTime;
    if(tt3p5DateTime != 0) endDateTime = tt3p5DateTime;
    if(tt3p6DateTime != 0) endDateTime = tt3p6DateTime;
@@ -53,8 +51,7 @@ void createTT4RegressionChannel() {
    datetime startDateTime = tt4p1DateTime;
    if(tt4StartDateTime != 0) startDateTime = tt4StartDateTime;
 
-   datetime endDateTime = TimeCurrent();
-   if(tt4p3DateTime != 0) endDateTime = tt4p3DateTime;
+   datetime endDateTime = tt4p3DateTime;
    if(tt4p4DateTime != 0) endDateTime = tt4p4DateTime;
    if(tt4p5DateTime != 0) endDateTime = tt4p5DateTime;
    if(tt4p6DateTime != 0) endDateTime = tt4p6DateTime;
