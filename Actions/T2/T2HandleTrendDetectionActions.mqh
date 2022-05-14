@@ -402,7 +402,7 @@ void resetT2Trend() {
    deleteTrendLine(T2_ZIGZAGLINE + "P4-P5");
 
    deleteRegressionChannel(T2_REGRESSION_CHANNEL);
-   deleteFiboLevelsObject(T2_FIBO_LEVELS);
+   deleteTrendLineLike(T2_FIBO_LEVELS);
 
    t2AlertT2P4CreatedTT3MissingSended = false;
    t2AlertT2P4CreatedHighVolumeAreaMissingSended = false;

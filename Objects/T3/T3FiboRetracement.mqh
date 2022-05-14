@@ -13,6 +13,8 @@ void createT3FiboRetracement() {
 
    if(t3p4DateTime != 0 && (int)t3p4DateTime < (int) TimeCurrent()) {
 
+      deleteTrendLineLike(T3_FIBO_LEVELS);
+
       datetime endDateTime;
       (t3EndDateTime != 0) ? endDateTime = t3EndDateTime : endDateTime = iTime(Symbol(), PERIOD_CURRENT, InpT3ChannelEndShift);
 

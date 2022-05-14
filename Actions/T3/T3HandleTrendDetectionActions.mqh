@@ -615,7 +615,7 @@ void resetT3Trend() {
    deleteTrendLine(T3_ZIGZAGLINE + "P6-P7");
 
    deleteRegressionChannel(T3_REGRESSION_CHANNEL);
-   deleteFiboLevelsObject(T3_FIBO_LEVELS);
+   deleteTrendLineLike(T3_FIBO_LEVELS);
 
    t3AlertT3P6CreatedTT4MissingSended = false;
    t3AlertT3P6CreatedSended = false;

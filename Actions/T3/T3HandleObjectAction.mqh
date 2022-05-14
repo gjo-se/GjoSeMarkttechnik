@@ -7,7 +7,7 @@ void handleT3ObjectsInitAction() {
 
    deleteTrendLineLike(T3_ZIGZAGLINE);
    deleteRegressionChannel(T3_REGRESSION_CHANNEL);
-   deleteFiboLevelsObject(T3_FIBO_LEVELS);
+   deleteTrendLineLike(T3_FIBO_LEVELS);
 
    createT3ZigZagTrendDetectionLines();
    createT3RegressionChannel();
@@ -36,7 +36,7 @@ void t3HandleObjectsAction() {
    } else {
       deleteTrendLineLike(T3_ZIGZAGLINE);
       deleteRegressionChannel(T3_REGRESSION_CHANNEL);
-      deleteFiboLevelsObject(T3_FIBO_LEVELS);
+      deleteTrendLineLike(T3_FIBO_LEVELS);
    }
 }
 

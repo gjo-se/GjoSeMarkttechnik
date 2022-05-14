@@ -13,6 +13,8 @@ void createT2FiboRetracement() {
 
    if(t2p4DateTime != 0 && (int)t2p4DateTime < (int) TimeCurrent()) {
 
+      deleteTrendLineLike(T2_FIBO_LEVELS);
+
       datetime endDateTime;
       (t2EndDateTime != 0) ? endDateTime = t2EndDateTime : endDateTime = iTime(Symbol(), PERIOD_CURRENT, InpT2ChannelEndShift);
 
@@ -37,18 +39,3 @@ void createT2FiboRetracement() {
       }
    }
 }
-
-void deleteFiboLevelsObject(const string pDimension) {
-
-   long chartId = ChartID();
-   int objectsTotal = ObjectsTotal(chartId, 0, -1);
-
-   string objectName;
-   for(int i = objectsTotal; i >= 0; i--) {
-      objectName = ObjectName(chartId, i);
-      if ( StringFind(objectName, pDimension) != -1 ) {
-         ObjectDelete(chartId, objectName);
-      }
-   }
-}
-//+------------------------------------------------------------------+
