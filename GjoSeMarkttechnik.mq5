@@ -121,6 +121,19 @@ int OnInit() {
       handleCommentAction(VERSION);
    }
 
+   if(Period() == PERIOD_H1) {
+      setT2VLineStyles();
+      setTT2VLineStyles();
+   }
+   if(Period() == PERIOD_M10) {
+      setT3VLineStyles();
+      setTT3VLineStyles();
+   }
+   if(Period() == PERIOD_M1) {
+      setT4VLineStyles();
+      setTT4VLineStyles();
+   }
+
    if(ObjectFind(ChartID(), T4_ALERT_BID_HIGHER_HINE) >= 0) {
       ObjectSetInteger(ChartID(), T4_ALERT_BID_HIGHER_HINE, OBJPROP_WIDTH, 1);
       ObjectSetInteger(ChartID(), T4_ALERT_BID_HIGHER_HINE, OBJPROP_COLOR, clrMediumBlue);
@@ -241,12 +254,15 @@ void OnChartEvent(const int id,
 
       rewriteVLineNamesWithText();
 
+
       setTT2LineValues();
+      if(Period() == PERIOD_H1) setTT2VLineStyles();
       getTT2TrendDirection();
       createTT2ZigZagTemplateLines();
       createTT2RegressionChannel();
 
       setT2LineValues();
+      if(Period() == PERIOD_H1) setT2VLineStyles();
       getT2TrendDirection();
       createT2ZigZagTrendDetectionLines();
       createT2RegressionChannel();
@@ -254,11 +270,13 @@ void OnChartEvent(const int id,
       createT2FiboRetracement();
 
       setTT3LineValues();
+      if(Period() == PERIOD_M10) setTT3VLineStyles();
       getTT3TrendDirection();
       createTT3ZigZagTemplateLines();
       createTT3RegressionChannel();
 
       setT3LineValues();
+      if(Period() == PERIOD_M10) setT3VLineStyles();
       getT3TrendDirection();
       createT3ZigZagTrendDetectionLines();
       createT3RegressionChannel();
@@ -266,11 +284,13 @@ void OnChartEvent(const int id,
       createT3FiboRetracement();
 
       setTT4LineValues();
+      if(Period() == PERIOD_M1) setTT4VLineStyles();
       getTT4TrendDirection();
       createTT4ZigZagTemplateLines();
       createTT4RegressionChannel();
 
       setT4LineValues();
+      if(Period() == PERIOD_M1) setT4VLineStyles();
       getT4TrendDirection();
       createT4ZigZagTrendDetectionLines();
 

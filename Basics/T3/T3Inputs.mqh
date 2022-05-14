@@ -57,8 +57,7 @@ ENUM_LINE_STYLE   InpT3LineStyle = STYLE_SOLID;
 int               InpT3VisibleTimeframes = OBJ_PERIOD_M10|OBJ_PERIOD_M1;
 
 color             InpT3DefaultColor = clrDarkKhaki;
-color             InpT3InvisibleColor = clrWhite;
-color             InpT3VLineColor = clrOldLace;
+color             InpT3VLineColor = clrMoccasin;
 color             InpT3TLineZigZagTrendLongColor = clrGreen;
 color             InpT3TLineZigZagTrendShortColor = clrRed;
 

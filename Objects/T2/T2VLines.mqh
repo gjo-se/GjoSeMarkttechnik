@@ -9,7 +9,6 @@
 void setT2LineValues() {
    setT2VLineDateTimes();
    setT2VLineValues();
-   setT2VLineStyles();
    setT2VLinesAlerts();
 }
 
