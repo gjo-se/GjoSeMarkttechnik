@@ -14,7 +14,8 @@ void handleScreenshotAction() {
 //|                                                                  |
 //+------------------------------------------------------------------+
 void createScreenshot(string pScreenShotText = "") {
-   string screenShotName = "Screenshots/" + Symbol() + "-" + pScreenShotText + "-" + (string)(int)TimeCurrent() + ".png";
+   string dateOnly = StringSubstr((string)TimeCurrent(), 0, StringLen((string)TimeCurrent()) - 9);
+   string screenShotName = "Screenshots/" + Symbol() + "/" + pScreenShotText + "-" + dateOnly + ".png";
    int    width = 1000;
    int    heigth = 800;
    if(!ChartScreenShot(ChartID(), screenShotName, width, heigth)) {

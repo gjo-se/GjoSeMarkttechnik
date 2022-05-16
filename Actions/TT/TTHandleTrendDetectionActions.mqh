@@ -58,11 +58,8 @@ void setTT2MovementAndRegressionLength() {
       if(tt2regressionLength != 0 && tt2movementLength != 0) {
          tt2movementLengthRegressionLengthRatio = tt2regressionLength / tt2movementLength * 100;
       }
-      
-      if(tt2movementLengthRegressionLengthRatio != 0) {
-         ArrayResize(t2FiboLevelsArray, ArraySize(t2FiboLevelsArray) + 1);
-         t2FiboLevelsArray[ArraySize(t2FiboLevelsArray) - 1] = (string)tt2movementLengthRegressionLengthRatio;
-      }      
+
+      convertInpT2StringsToArray();
    }
 }
 
@@ -118,10 +115,7 @@ void setTT3MovementAndRegressionLength() {
          tt3movementLengthRegressionLengthRatio = tt3regressionLength / tt3movementLength * 100;
       }
 
-      if(tt3movementLengthRegressionLengthRatio != 0) {
-         ArrayResize(t3FiboLevelsArray, ArraySize(t3FiboLevelsArray) + 1);
-         t3FiboLevelsArray[ArraySize(t3FiboLevelsArray) - 1] = (string)tt3movementLengthRegressionLengthRatio;
-      }
+      convertInpT3StringsToArray();
    }
 }
 
@@ -178,6 +172,8 @@ void setTT4MovementAndRegressionLength() {
       }
 
       if(tt4movementLengthRegressionLengthRatio != 0) {
+         ArrayResize(t4FiboLevelsArray, 0);
+         StringSplit(InpT4FiboLevels, StringGetCharacter(",", 0), t4FiboLevelsArray);
          ArrayResize(t4FiboLevelsArray, ArraySize(t4FiboLevelsArray) + 1);
          t4FiboLevelsArray[ArraySize(t4FiboLevelsArray) - 1] = (string)tt4movementLengthRegressionLengthRatio;
       }

@@ -65,6 +65,7 @@ datetime t3EndDateTime;
 int t3SemiTrendDirection;
 int t3trendDirection;
 string t3FiboLevelsArray[];
+double t3TrendBrokeOnFiboLevel;
 int t3MovementLengthPoints;
 
 // Alerts
@@ -106,23 +107,8 @@ datetime    outSideBarDateTime;
 double      t3StopLossValue;
 double      t3TrailingStopLevel;
 
-bool        t3ScreenshotT3P2CreatedBefore;
-bool        t3ScreenshotT3P2CreatedAfter;
-bool        t3ScreenshotT3P3CreatedBefore;
-bool        t3ScreenshotT3P3CreatedAfter;
-bool        t3ScreenshotT3P4CreatedBefore;
-bool        t3ScreenshotT3P4CreatedAfter;
-bool        t3ScreenshotT3P5CreatedBefore;
-bool        t3ScreenshotT3P5CreatedAfter;
-bool        t3ScreenshotT3P6CreatedBefore;
-bool        t3ScreenshotT3P6CreatedAfter;
-bool        t3ScreenshotT3P7CreatedBefore;
-bool        t3ScreenshotT3P7CreatedAfter;
 bool        t3ScreenshotT3BuildNewTrendBefore;
-bool        t3ScreenshotT3BuildNewTrendAfter;
 bool        t3ScreenshotT3TrendBrokenOnP1Before;
-bool        t3ScreenshotT3TrendBrokenOnP1After;
 bool        t3ScreenshotT3TrendBrokenOnP3Before;
-bool        t3ScreenshotT3TrendBrokenOnP3After;
 
 //+------------------------------------------------------------------+

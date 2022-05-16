@@ -27,6 +27,7 @@ datetime t2EndDateTime;
 int t2SemiTrendDirection;
 int t2trendDirection;
 int t2MovementLengthPoints;
+double t2TrendBrokeOnFiboLevel;
 string t2FiboLevelsArray[];
 
 // Alerts
@@ -44,8 +45,5 @@ double t2MinHighVolumeAreaLevel;
 
 // Screenshots
 bool t2ScreenshotT2BuildNewTrendBefore;
-bool t2ScreenshotT2BuildNewTrendAfter;
 bool t2ScreenshotT2TrendBrokenOnP1Before;
-bool t2ScreenshotT2TrendBrokenOnP1After;
 bool t2ScreenshotT2TrendBrokenOnP3Before;
-bool t2ScreenshotT2TrendBrokenOnP3After;

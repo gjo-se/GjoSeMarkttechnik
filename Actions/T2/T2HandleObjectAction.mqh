@@ -7,7 +7,7 @@ void handleT2ObjectsInitAction() {
 
    deleteTrendLineLike(T2_ZIGZAGLINE);
    deleteRegressionChannel(T2_REGRESSION_CHANNEL);
-   deleteFiboLevelsObject(T2_FIBO_LEVELS);
+   deleteTrendLineLike(T2_FIBO_LEVELS);
 
    createT2ZigZagTrendDetectionLines();
    createT2HighVolumeAreaTrendLines();

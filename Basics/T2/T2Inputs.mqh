@@ -25,10 +25,10 @@ int               InpT2VisibleTimeframes = OBJ_PERIOD_H1|OBJ_PERIOD_M10;
 
 color             InpT2DefaultColor = clrTomato;
 color             InpT2LigthColor = clrWheat;
-color             InpT2InvisibleColor = clrWhite;
-color             InpT2VLineColor = clrPeachPuff;
+color             InpT2VLineColor = clrLightPink;
 color             InpT2TLineZigZagTrendLongColor = clrGreen;
 color             InpT2TLineZigZagTrendShortColor = clrRed;
 
 string            InpT2FiboLevels = "25,50,75";
+int               InpT2TrendBrokeOnFiboLevel = 120;
 int               InpT2ChannelEndShift = 10; // T2 Anzahl Candles Offset RegressionChannel

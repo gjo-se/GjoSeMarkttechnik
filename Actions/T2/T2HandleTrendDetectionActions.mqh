@@ -116,7 +116,6 @@ void handleT2P4() {
 
    datetime t2p4DateTimeTmp = 0;
    double   t2p4ValueTmp = 0;
-   double   t2P2P4MovementPoints = 0;
 
    if(t2p3ValueHigh != 0 && t2p3DateTime < (int)TimeCurrent()
          && t2p5DateTime == 0
@@ -125,10 +124,8 @@ void handleT2P4() {
       if(t2SemiTrendDirection == TREND_DIRECTION_LONG || t2trendDirection == TREND_DIRECTION_LONG) {
          t2p4DateTimeTmp = iTime(Symbol(), PERIOD_M1, iHighest(Symbol(), PERIOD_M1, MODE_HIGH,  iBarShift(Symbol(), PERIOD_M1, t2p3DateTime) + 1));
          t2p4ValueTmp = iHigh(Symbol(), PERIOD_M1, iBarShift(Symbol(), PERIOD_M1, t2p4DateTimeTmp));
-         t2P2P4MovementPoints = t2p4ValueTmp / Point() - t2p3ValueLow / Point();
 
          if(Bid() >= t2p4ValueTmp
-               && t2P2P4MovementPoints > (tt2movementLength * InpT2MinMovementLengthBasedOnTT2MovementPercent / 100)
                && t2p2ValueHigh != 0
                && t2p4ValueTmp > t2p2ValueHigh
            ) {
@@ -143,10 +140,8 @@ void handleT2P4() {
       if(t2SemiTrendDirection == TREND_DIRECTION_SHORT || t2trendDirection == TREND_DIRECTION_SHORT) {
          t2p4DateTimeTmp = iTime(Symbol(), PERIOD_M1, iLowest(Symbol(), PERIOD_M1, MODE_LOW,  iBarShift(Symbol(), PERIOD_M1, t2p3DateTime) + 1));
          t2p4ValueTmp = iLow(Symbol(), PERIOD_M1, iBarShift(Symbol(), PERIOD_M1, t2p4DateTimeTmp));
-         t2P2P4MovementPoints = t2p3ValueHigh / Point() - t2p4ValueTmp / Point();
 
          if(Bid() <= t2p4ValueTmp
-               && t2P2P4MovementPoints > (tt2movementLength * InpT2MinMovementLengthBasedOnTT2MovementPercent / 100)
                && t2p2ValueLow != 0
                && t2p4ValueTmp < t2p2ValueLow
            ) {
@@ -199,38 +194,35 @@ void handleT2P5() {
 
 void handleT2BuildNewTrend() {
 
-   double   t2P5P6MovementPoints = 0;
    datetime t2p3DateTimeTmp = 0;
+   string   t2p3ObjectName = "";
    datetime t2p4DateTimeTmp = 0;
+   string   t2p4ObjectName = "";
    datetime t2p5DateTimeTmp = 0;
+   string   t2p5ObjectName = "";
 
    if(t2p5ValueHigh != 0 && t2p5DateTime < (int)TimeCurrent()
      ) {
 
       if(t2SemiTrendDirection == TREND_DIRECTION_LONG || t2trendDirection == TREND_DIRECTION_LONG) {
-         t2P5P6MovementPoints = Bid() / Point() - t2p5ValueLow / Point();
 
-         if(isNewCurrentBar == true && t2ScreenshotT2BuildNewTrendBefore == true && t2ScreenshotT2BuildNewTrendAfter == false) {
-            createScreenshot("T2BuildNewTrend-After");
-            t2ScreenshotT2BuildNewTrendAfter = true;
-         }
-
-         if(t2P5P6MovementPoints > (tt2movementLength * InpT2MinMovementLengthBasedOnTT2MovementPercent / 100)
-               && t2p4ValueHigh != 0
-               && Bid() > t2p4ValueHigh
-           ) {
+         if(t2p4ValueHigh != 0 && Bid() > t2p4ValueHigh) {
             if(t2ScreenshotT2BuildNewTrendBefore == false) {
+               ChartSetSymbolPeriod(ChartID(), Symbol(), PERIOD_H1);
                createScreenshot("T2BuildNewTrend-Before");
                t2ScreenshotT2BuildNewTrendBefore = true;
             }
             if(t2p3DateTime != 0 && t2p4DateTime != 0 && t2p5DateTime != 0) {
                t2p3DateTimeTmp = t2p3DateTime;
+               t2p3ObjectName = getVlineNameByNameLike(T2_P3_VLINE);
                t2p4DateTimeTmp = t2p4DateTime;
+               t2p4ObjectName = getVlineNameByNameLike(T2_P4_VLINE);
                t2p5DateTimeTmp = t2p5DateTime;
+               t2p5ObjectName = getVlineNameByNameLike(T2_P5_VLINE);
                resetT2Trend();
-               createT2P1VLine(t2p3DateTimeTmp);
-               createT2P2VLine(t2p4DateTimeTmp);
-               createT2P3VLine(t2p5DateTimeTmp);
+               createT2P1VLine(t2p3DateTimeTmp, t2p3ObjectName);
+               createT2P2VLine(t2p4DateTimeTmp, t2p4ObjectName);
+               createT2P3VLine(t2p5DateTimeTmp, t2p5ObjectName);
                if(t2AlertT2BuildNewTrendSended == false) t2AlertT2BuildNewTrendAction();
                getT2TrendDirection();
             }
@@ -238,29 +230,24 @@ void handleT2BuildNewTrend() {
       }
 
       if(t2SemiTrendDirection == TREND_DIRECTION_SHORT || t2trendDirection == TREND_DIRECTION_SHORT) {
-         t2P5P6MovementPoints = t2p5ValueHigh / Point() - Bid() / Point();
 
-         if(isNewCurrentBar == true && t2ScreenshotT2BuildNewTrendBefore == true && t2ScreenshotT2BuildNewTrendAfter == false) {
-            createScreenshot("T2BuildNewTrend-After");
-            t2ScreenshotT2BuildNewTrendAfter = true;
-         }
-
-         if(t2P5P6MovementPoints > (tt2movementLength * InpT2MinMovementLengthBasedOnTT2MovementPercent / 100)
-               && t2p4ValueLow != 0
-               && Bid() < t2p4ValueLow
-           ) {
+         if(t2p4ValueLow != 0 && Bid() < t2p4ValueLow) {
             if(t2ScreenshotT2BuildNewTrendBefore == false) {
+               ChartSetSymbolPeriod(ChartID(), Symbol(), PERIOD_H1);
                createScreenshot("T2BuildNewTrend-Before");
                t2ScreenshotT2BuildNewTrendBefore = true;
             }
             if(t2p3DateTime != 0 && t2p4DateTime != 0 && t2p5DateTime != 0) {
                t2p3DateTimeTmp = t2p3DateTime;
+               t2p3ObjectName = getVlineNameByNameLike(T2_P3_VLINE);
                t2p4DateTimeTmp = t2p4DateTime;
+               t2p4ObjectName = getVlineNameByNameLike(T2_P4_VLINE);
                t2p5DateTimeTmp = t2p5DateTime;
+               t2p5ObjectName = getVlineNameByNameLike(T2_P5_VLINE);
                resetT2Trend();
-               createT2P1VLine(t2p3DateTimeTmp);
-               createT2P2VLine(t2p4DateTimeTmp);
-               createT2P3VLine(t2p5DateTimeTmp);
+               createT2P1VLine(t2p3DateTimeTmp, t2p3ObjectName);
+               createT2P2VLine(t2p4DateTimeTmp, t2p4ObjectName);
+               createT2P3VLine(t2p5DateTimeTmp, t2p5ObjectName);
                if(t2AlertT2BuildNewTrendSended == false) t2AlertT2BuildNewTrendAction();
                getT2TrendDirection();
             }
@@ -272,29 +259,32 @@ void handleT2BuildNewTrend() {
 void handleT2TrendBrokenOnP1() {
 
    datetime t2p2DateTimeTmp = 0;
+   string   t2p2ObjectName = "";
    datetime t2p3DateTimeTmp = 0;
+   string   t2p3ObjectName = "";
 
-   if(t2p1ValueHigh != 0
-         && t2p2ValueLow != 0
-         && t2p3ValueHigh != 0
-         && t2p1DateTime <= (int)TimeCurrent()
-         && t2p2DateTime <= (int)TimeCurrent()
-         && t2p3DateTime <= (int)TimeCurrent()
+   if(t2p1ValueHigh != 0 && t2p1DateTime <= (int)TimeCurrent()
+         && t2p2ValueLow != 0 && t2p2DateTime <= (int)TimeCurrent()
+         && t2p3ValueHigh != 0 && t2p3DateTime <= (int)TimeCurrent()
+         && t2TrendBrokeOnFiboLevel != 0
      ) {
 
       if(t2SemiTrendDirection == TREND_DIRECTION_LONG || t2trendDirection == TREND_DIRECTION_LONG) {
 
-         if(Bid() < t2p1ValueLow) {
+         if(Bid() < t2TrendBrokeOnFiboLevel) {
             if(t2ScreenshotT2TrendBrokenOnP1Before == false) {
+               ChartSetSymbolPeriod(ChartID(), Symbol(), PERIOD_H1);
                createScreenshot("T2TrendBrokenOnP1-Before");
                t2ScreenshotT2TrendBrokenOnP1Before = true;
             }
             if(t2p2DateTime != 0 && t2p3DateTime != 0) {
                t2p2DateTimeTmp = t2p2DateTime;
+               t2p2ObjectName = getVlineNameByNameLike(T2_P2_VLINE);
                t2p3DateTimeTmp = t2p3DateTime;
+               t2p3ObjectName = getVlineNameByNameLike(T2_P3_VLINE);
                resetT2Trend();
-               createT2P1VLine(t2p2DateTimeTmp);
-               createT2P2VLine(t2p3DateTimeTmp);
+               createT2P1VLine(t2p2DateTimeTmp, t2p2ObjectName);
+               createT2P2VLine(t2p3DateTimeTmp, t2p3ObjectName);
                if(t2AlertT2TrendBrokenSended == false) t2AlertT2TrendBrokenAction();
                getT2TrendDirection();
             }
@@ -303,57 +293,57 @@ void handleT2TrendBrokenOnP1() {
 
       if(t2SemiTrendDirection == TREND_DIRECTION_SHORT || t2trendDirection == TREND_DIRECTION_SHORT) {
 
-         if(Bid() > t2p1ValueHigh) {
+         if(Bid() > t2TrendBrokeOnFiboLevel) {
             if(t2ScreenshotT2TrendBrokenOnP1Before == false) {
+               ChartSetSymbolPeriod(ChartID(), Symbol(), PERIOD_H1);
                createScreenshot("T2TrendBrokenOnP1-Before");
                t2ScreenshotT2TrendBrokenOnP1Before = true;
             }
             if(t2p2DateTime != 0 && t2p3DateTime != 0) {
                t2p2DateTimeTmp = t2p2DateTime;
+               t2p2ObjectName = getVlineNameByNameLike(T2_P2_VLINE);
                t2p3DateTimeTmp = t2p3DateTime;
+               t2p3ObjectName = getVlineNameByNameLike(T2_P3_VLINE);
                resetT2Trend();
-               createT2P1VLine(t2p2DateTimeTmp);
-               createT2P2VLine(t2p3DateTimeTmp);
+               createT2P1VLine(t2p2DateTimeTmp, t2p2ObjectName);
+               createT2P2VLine(t2p3DateTimeTmp, t2p3ObjectName);
                if(t2AlertT2TrendBrokenSended == false) t2AlertT2TrendBrokenAction();
                getT2TrendDirection();
             }
          }
       }
    }
-
-   if(isNewCurrentBar == true && t2ScreenshotT2TrendBrokenOnP1Before == true && t2ScreenshotT2TrendBrokenOnP1After == false) {
-      createScreenshot("T2TrendBrokenOnP1-After");
-      t2ScreenshotT2TrendBrokenOnP1After = true;
-   }
-
 }
 
 void handleT2TrendBrokenOnP3() {
 
    datetime t2p4DateTimeTmp = 0;
+   string   t2p4ObjectName = "";
    datetime t2p5DateTimeTmp = 0;
+   string   t2p5ObjectName = "";
 
-   if(t2p3ValueHigh != 0
-         && t2p4ValueLow != 0
-         && t2p5ValueHigh != 0
-         && t2p3DateTime < TimeCurrent()
-         && t2p4DateTime < TimeCurrent()
-         && t2p5DateTime < (int)TimeCurrent()
+   if(t2p3ValueHigh != 0 && t2p3DateTime < TimeCurrent()
+         && t2p4ValueLow != 0 && t2p4DateTime < TimeCurrent()
+         && t2p5ValueHigh != 0 && t2p5DateTime < TimeCurrent()
+         && t2TrendBrokeOnFiboLevel != 0
      ) {
 
       if(t2SemiTrendDirection == TREND_DIRECTION_LONG || t2trendDirection == TREND_DIRECTION_LONG) {
 
-         if(Bid() < t2p3ValueLow) {
+         if(Bid() < t2TrendBrokeOnFiboLevel) {
             if(t2ScreenshotT2TrendBrokenOnP3Before == false) {
+               ChartSetSymbolPeriod(ChartID(), Symbol(), PERIOD_H1);
                createScreenshot("T2TrendBrokenOnP3-Before");
                t2ScreenshotT2TrendBrokenOnP3Before = true;
             }
             if(t2p4DateTime != 0 && t2p5DateTime != 0) {
                t2p4DateTimeTmp = t2p4DateTime;
+               t2p4ObjectName = getVlineNameByNameLike(T2_P4_VLINE);
                t2p5DateTimeTmp = t2p5DateTime;
+               t2p5ObjectName = getVlineNameByNameLike(T2_P5_VLINE);
                resetT2Trend();
-               createT2P1VLine(t2p4DateTimeTmp);
-               createT2P2VLine(t2p5DateTimeTmp);
+               createT2P1VLine(t2p4DateTimeTmp, t2p4ObjectName);
+               createT2P2VLine(t2p5DateTimeTmp, t2p5ObjectName);
                if(t2AlertT2TrendBrokenSended == false) t2AlertT2TrendBrokenAction();
                getT2TrendDirection();
             }
@@ -362,37 +352,35 @@ void handleT2TrendBrokenOnP3() {
 
       if(t2SemiTrendDirection == TREND_DIRECTION_SHORT || t2trendDirection == TREND_DIRECTION_SHORT) {
 
-         if(Bid() > t2p3ValueHigh) {
+         if(Bid() > t2TrendBrokeOnFiboLevel) {
             if(t2ScreenshotT2TrendBrokenOnP3Before == false) {
+               ChartSetSymbolPeriod(ChartID(), Symbol(), PERIOD_H1);
                createScreenshot("T2TrendBrokenOnP3-Before");
                t2ScreenshotT2TrendBrokenOnP3Before = true;
             }
             if(t2p4DateTime != 0 && t2p5DateTime != 0) {
                t2p4DateTimeTmp = t2p4DateTime;
+               t2p4ObjectName = getVlineNameByNameLike(T2_P4_VLINE);
                t2p5DateTimeTmp = t2p5DateTime;
+               t2p5ObjectName = getVlineNameByNameLike(T2_P5_VLINE);
                resetT2Trend();
-               createT2P1VLine(t2p4DateTimeTmp);
-               createT2P2VLine(t2p5DateTimeTmp);
+               createT2P1VLine(t2p4DateTimeTmp, t2p4ObjectName);
+               createT2P2VLine(t2p5DateTimeTmp, t2p5ObjectName);
                if(t2AlertT2TrendBrokenSended == false) t2AlertT2TrendBrokenAction();
                getT2TrendDirection();
             }
          }
       }
    }
-
-   if(isNewCurrentBar == true && t2ScreenshotT2TrendBrokenOnP3Before == true && t2ScreenshotT2TrendBrokenOnP3After == false) {
-      createScreenshot("T2TrendBrokenOnP3-After");
-      t2ScreenshotT2TrendBrokenOnP3After = true;
-   }
 }
 
 void resetT2Trend() {
 
-   deleteVLine(T2_P1_VLINE);
-   deleteVLine(T2_P2_VLINE);
-   deleteVLine(T2_P3_VLINE);
-   deleteVLine(T2_P4_VLINE);
-   deleteVLine(T2_P5_VLINE);
+   deleteVlineLike(T2_P1_VLINE);
+   deleteVlineLike(T2_P2_VLINE);
+   deleteVlineLike(T2_P3_VLINE);
+   deleteVlineLike(T2_P4_VLINE);
+   deleteVlineLike(T2_P5_VLINE);
    setT2LineValues();
    getT2TrendDirection();
 
@@ -402,7 +390,7 @@ void resetT2Trend() {
    deleteTrendLine(T2_ZIGZAGLINE + "P4-P5");
 
    deleteRegressionChannel(T2_REGRESSION_CHANNEL);
-   deleteFiboLevelsObject(T2_FIBO_LEVELS);
+   deleteTrendLineLike(T2_FIBO_LEVELS);
 
    t2AlertT2P4CreatedTT3MissingSended = false;
    t2AlertT2P4CreatedHighVolumeAreaMissingSended = false;
@@ -413,10 +401,7 @@ void resetT2Trend() {
    t2AlertT2VLineOn0Sended = false;
 
    t2ScreenshotT2BuildNewTrendBefore = false;
-   t2ScreenshotT2BuildNewTrendAfter = false;
    t2ScreenshotT2TrendBrokenOnP1Before = false;
-   t2ScreenshotT2TrendBrokenOnP1After = false;
    t2ScreenshotT2TrendBrokenOnP3Before = false;
-   t2ScreenshotT2TrendBrokenOnP3After = false;
 }
 //+------------------------------------------------------------------+

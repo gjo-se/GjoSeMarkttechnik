@@ -10,20 +10,38 @@ void createT3FiboRetracement() {
    ENUM_LINE_STYLE lineStyle = InpT3LineStyle;
    color lineColor = InpT3DefaultColor;
    string lineText = "";
+   datetime startDateTime = 0;
+   datetime endDateTime = 0;
+   double   firstPointLevel = 0;
+   double   secondPointLevel = 0;
 
-   if(t3p4DateTime != 0 && (int)t3p4DateTime < (int) TimeCurrent()) {
+   if(t3p1DateTime != 0 && t3p2DateTime != 0) {
+      startDateTime = t3p1DateTime;
+      firstPointLevel = getT3P1HighLowValueByTrendDirection();
+      secondPointLevel = getT3P2HighLowValueByTrendDirection();
+   }
+   if(t3p3DateTime != 0 && t3p4DateTime != 0) {
+      startDateTime = t3p3DateTime;
+      firstPointLevel = getT3P3HighLowValueByTrendDirection();
+      secondPointLevel = getT3P4HighLowValueByTrendDirection();
+   }
 
-      datetime endDateTime;
-      (t3EndDateTime != 0) ? endDateTime = t3EndDateTime : endDateTime = iTime(Symbol(), PERIOD_CURRENT, InpT3ChannelEndShift);
+   (t3EndDateTime != 0) ? endDateTime = t3EndDateTime : endDateTime = iTime(Symbol(), PERIOD_CURRENT, InpT3ChannelEndShift);
 
-      createTrendLine(T3_FIBO_LEVELS + "100", t3p3DateTime, getT3P3HighLowValueByTrendDirection(), endDateTime, getT3P3HighLowValueByTrendDirection(), lineColor, lineWidth, lineStyle, "   100%");
+   if(startDateTime != 0 && startDateTime < TimeCurrent()
+         && endDateTime != 0 && endDateTime < TimeCurrent()
+     ) {
+
+      deleteTrendLineLike(T3_FIBO_LEVELS);
+
+      createTrendLine(T3_FIBO_LEVELS + "100", startDateTime, firstPointLevel, endDateTime, firstPointLevel, lineColor, lineWidth, lineStyle, "   100%");
       ObjectSetInteger(ChartID(), T3_FIBO_LEVELS + "100", OBJPROP_TIMEFRAMES, InpT3VisibleTimeframes);
-      createTrendLine(T3_FIBO_LEVELS + "0", t3p3DateTime, getT3P4HighLowValueByTrendDirection(), endDateTime, getT3P4HighLowValueByTrendDirection(), lineColor, lineWidth, lineStyle, "   0%");
+      createTrendLine(T3_FIBO_LEVELS + "0", startDateTime, secondPointLevel, endDateTime, secondPointLevel, lineColor, lineWidth, lineStyle, "   0%");
       ObjectSetInteger(ChartID(), T3_FIBO_LEVELS + "0", OBJPROP_TIMEFRAMES, InpT3VisibleTimeframes);
 
       for( int t3FiboLevelsId = 0; t3FiboLevelsId < ArraySize(t3FiboLevelsArray); t3FiboLevelsId++) {
          double level = (double)t3FiboLevelsArray[t3FiboLevelsId];
-         double t3FiboLevelValue = getT3P4HighLowValueByTrendDirection() + (getT3P3HighLowValueByTrendDirection() - getT3P4HighLowValueByTrendDirection()) / 100 * level  ;
+         double t3FiboLevelValue = secondPointLevel + (firstPointLevel - secondPointLevel) / 100 * level  ;
          lineWidth = thinLineWidth;
          lineText         = "   " + DoubleToString(level, 1) + "%";
 
@@ -55,9 +73,16 @@ void createT3FiboRetracement() {
             lineWidth = InpT3LineWidth;
             lineText  = "   " + DoubleToString(level, 1) + "% - T3 MovementLengt Ratio";
          }
+         
+         if(level == (double)InpT3TrendBrokeOnFiboLevel) {
+            lineWidth = InpT3LineWidth;
+            lineText  = "   " + DoubleToString(level, 1) + "% - T3 Trend Broke";
+            t3TrendBrokeOnFiboLevel = t3FiboLevelValue;
+         }         
 
-         createTrendLine(T3_FIBO_LEVELS + DoubleToString(level, 1), t3p3DateTime, t3FiboLevelValue, endDateTime, t3FiboLevelValue, lineColor, lineWidth, lineStyle, lineText);
+         createTrendLine(T3_FIBO_LEVELS + DoubleToString(level, 1), startDateTime, t3FiboLevelValue, endDateTime, t3FiboLevelValue, lineColor, lineWidth, lineStyle, lineText);
          ObjectSetInteger(ChartID(), T3_FIBO_LEVELS + DoubleToString(level, 1), OBJPROP_TIMEFRAMES, InpT3VisibleTimeframes);
       }
    }
 }
+//+------------------------------------------------------------------+

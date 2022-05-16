@@ -45,6 +45,8 @@ void initializeT3GlobalsAction() {
    t3SemiTrendDirection = TREND_DIRECTION_ROTATION;
    t3trendDirection = TREND_DIRECTION_ROTATION;
    t3MovementLengthPoints = 0;
+   t3TrendBrokeOnFiboLevel = 0;
+
 
    if((MQLInfoInteger(MQL_VISUAL_MODE) == 1 && InpSendPushOnTester == false) || InpDevMode == true) {
       sendAlerts = false;
@@ -86,25 +88,10 @@ void initializeT3GlobalsAction() {
    outSideBarDateTime = 0;
    t3StopLossValue = 0;
    t3TrailingStopLevel = 0;
-   
-   t3ScreenshotT3P2CreatedBefore = false;
-   t3ScreenshotT3P2CreatedAfter = false;
-   t3ScreenshotT3P3CreatedBefore = false;
-   t3ScreenshotT3P3CreatedAfter = false;
-   t3ScreenshotT3P4CreatedBefore = false;
-   t3ScreenshotT3P4CreatedAfter = false;
-   t3ScreenshotT3P5CreatedBefore = false;
-   t3ScreenshotT3P5CreatedAfter = false;
-   t3ScreenshotT3P6CreatedBefore = false;
-   t3ScreenshotT3P6CreatedAfter = false;
-   t3ScreenshotT3P7CreatedBefore = false;
-   t3ScreenshotT3P7CreatedAfter = false;
+
    t3ScreenshotT3BuildNewTrendBefore = false;
-   t3ScreenshotT3BuildNewTrendAfter = false;
    t3ScreenshotT3TrendBrokenOnP1Before = false;
-   t3ScreenshotT3TrendBrokenOnP1After = false;
    t3ScreenshotT3TrendBrokenOnP3Before = false;
-   t3ScreenshotT3TrendBrokenOnP3After = false;       
 }
 
 //+------------------------------------------------------------------+
@@ -168,6 +155,8 @@ void initializeT3IndicatorsAction() {
 //|                                                                  |
 //+------------------------------------------------------------------+
 void convertInpT3StringsToArray() {
+
+   ArrayResize(t3FiboLevelsArray, 0);
    StringSplit(InpT3FiboLevels, StringGetCharacter(",", 0), t3FiboLevelsArray);
 
    if(InpT3AlertOnRegressionChannelLevel != 0) {
@@ -205,6 +194,16 @@ void convertInpT3StringsToArray() {
    for(int t3trailingStopMAPeriodsId = 0; t3trailingStopMAPeriodsId < ArraySize(t3trailingStopMAPeriodsArrayStrings); t3trailingStopMAPeriodsId++) {
       ArrayResize(t3trailingStopMAPeriodsArray, ArraySize(t3trailingStopMAPeriodsArray) + 1);
       t3trailingStopMAPeriodsArray[t3trailingStopMAPeriodsId] = (int)t3trailingStopMAPeriodsArrayStrings[t3trailingStopMAPeriodsId];
+   }
+
+   if(tt3movementLengthRegressionLengthRatio != 0) {
+      ArrayResize(t3FiboLevelsArray, ArraySize(t3FiboLevelsArray) + 1);
+      t3FiboLevelsArray[ArraySize(t3FiboLevelsArray) - 1] = (string)tt3movementLengthRegressionLengthRatio;
+   }
+
+   if(InpT3TrendBrokeOnFiboLevel != 0) {
+      ArrayResize(t3FiboLevelsArray, ArraySize(t3FiboLevelsArray) + 1);
+      t3FiboLevelsArray[ArraySize(t3FiboLevelsArray) - 1] = (string)InpT3TrendBrokeOnFiboLevel;
    }
 }
 //+------------------------------------------------------------------+

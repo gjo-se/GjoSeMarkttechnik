@@ -9,7 +9,6 @@
 void setTT2LineValues() {
    setTT2VLineDateTimes();
    setTT2VLineValues();
-   setTT2VLineStyles();
 }
 
 //+------------------------------------------------------------------+
@@ -104,7 +103,6 @@ void setTT2VLineStyles(const string pSubString = "TMP2-") {
 void setTT3LineValues() {
    setTT3VLineDateTimes();
    setTT3VLineValues();
-   setTT3VLineStyles();
 }
 
 //+------------------------------------------------------------------+
@@ -199,7 +197,6 @@ void setTT3VLineStyles(const string pSubString = "TMP3-") {
 void setTT4LineValues() {
    setTT4VLineDateTimes();
    setTT4VLineValues();
-   setTT4VLineStyles();
 }
 
 //+------------------------------------------------------------------+

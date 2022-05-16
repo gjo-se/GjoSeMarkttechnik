@@ -54,6 +54,7 @@
    3.8.4 added HLINE Alerts
    3.9.0 TrendDetection T2/T3/T4 new Level
    3.9.1 fixed HighVolumeArea
+   4.0.0 fixed TrendDetection & Screenshots T2/T3/T4
    ===============
 
 */
@@ -72,7 +73,7 @@
 #property copyright   "2022, GjoSe"
 #property link        "http://www.gjo-se.com"
 #property description "GjoSe Markttechnik"
-#define   VERSION "3.9.1"
+#define   VERSION "4.0.0"
 #property version VERSION
 #property strict
 
@@ -121,6 +122,30 @@ int OnInit() {
       handleCommentAction(VERSION);
    }
 
+   if(Period() == PERIOD_H1) {
+      setT2VLineStyles();
+      setTT2VLineStyles();
+   }
+   if(Period() == PERIOD_M10) {
+      setT3VLineStyles();
+      setTT3VLineStyles();
+   }
+   if(Period() == PERIOD_M1) {
+      setT4VLineStyles();
+      setTT4VLineStyles();
+   }
+
+   if(ObjectFind(ChartID(), T4_ALERT_BID_HIGHER_HINE) >= 0) {
+      ObjectSetInteger(ChartID(), T4_ALERT_BID_HIGHER_HINE, OBJPROP_WIDTH, 1);
+      ObjectSetInteger(ChartID(), T4_ALERT_BID_HIGHER_HINE, OBJPROP_COLOR, clrMediumBlue);
+      ObjectSetInteger(ChartID(), T4_ALERT_BID_HIGHER_HINE, OBJPROP_TIMEFRAMES, InpT2VisibleTimeframes | InpT3VisibleTimeframes);
+   }
+   if(ObjectFind(ChartID(), T4_ALERT_BID_LOWER_HINE) >= 0) {
+      ObjectSetInteger(ChartID(), T4_ALERT_BID_LOWER_HINE, OBJPROP_WIDTH, 1);
+      ObjectSetInteger(ChartID(), T4_ALERT_BID_LOWER_HINE, OBJPROP_COLOR, clrMediumBlue);
+      ObjectSetInteger(ChartID(), T4_ALERT_BID_LOWER_HINE, OBJPROP_TIMEFRAMES, InpT2VisibleTimeframes | InpT3VisibleTimeframes);
+   }
+
    int objectsTotal = ObjectsTotal(ChartID(), 0, -1);
    string objName;
    string autotrade = "autotrade";
@@ -131,6 +156,12 @@ int OnInit() {
          ObjectSetInteger(ChartID(), objName, OBJPROP_TIMEFRAMES, OBJ_PERIOD_H1 | OBJ_PERIOD_M10 | OBJ_PERIOD_M1);
          ObjectSetString(ChartID(), objName, OBJPROP_TEXT, "");
       }
+   }
+
+   if(Period() <= PERIOD_H1) {
+      ChartSetInteger(ChartID(), CHART_SHOW_TRADE_LEVELS, 1);
+   } else {
+      ChartSetInteger(ChartID(), CHART_SHOW_TRADE_LEVELS, 0);
    }
 
    if(MQLInfoInteger(MQL_TESTER) == 1) {
@@ -180,8 +211,10 @@ void OnTick() {
    t2HandleObjectsAction();
    t3HandleObjectsAction();
    t4HandleObjectsAction();
+
    if(isNewCurrentBar) {
       handleCommentAction(VERSION);
+      createT2HighVolumeAreaChannel();
 //      if((buyT3PositionIsOpenState == true || sellT3PositionIsOpenState == true) && buyT4PositionIsOpenState == false && sellT4PositionIsOpenState == false) ChartSetSymbolPeriod(ChartID(), Symbol(), InpT3trailingStopMATimeframe);
 //      if(buyT4PositionIsOpenState == true || sellT4PositionIsOpenState == true) ChartSetSymbolPeriod(ChartID(), Symbol(), InpT4trailingStopMATimeframe);
    }
@@ -222,12 +255,15 @@ void OnChartEvent(const int id,
 
       rewriteVLineNamesWithText();
 
+
       setTT2LineValues();
+      if(Period() == PERIOD_H1) setTT2VLineStyles();
       getTT2TrendDirection();
       createTT2ZigZagTemplateLines();
       createTT2RegressionChannel();
 
       setT2LineValues();
+      if(Period() == PERIOD_H1) setT2VLineStyles();
       getT2TrendDirection();
       createT2ZigZagTrendDetectionLines();
       createT2RegressionChannel();
@@ -235,11 +271,13 @@ void OnChartEvent(const int id,
       createT2FiboRetracement();
 
       setTT3LineValues();
+      if(Period() == PERIOD_M10) setTT3VLineStyles();
       getTT3TrendDirection();
       createTT3ZigZagTemplateLines();
       createTT3RegressionChannel();
 
       setT3LineValues();
+      if(Period() == PERIOD_M10) setT3VLineStyles();
       getT3TrendDirection();
       createT3ZigZagTrendDetectionLines();
       createT3RegressionChannel();
@@ -247,11 +285,13 @@ void OnChartEvent(const int id,
       createT3FiboRetracement();
 
       setTT4LineValues();
+      if(Period() == PERIOD_M1) setTT4VLineStyles();
       getTT4TrendDirection();
       createTT4ZigZagTemplateLines();
       createTT4RegressionChannel();
 
       setT4LineValues();
+      if(Period() == PERIOD_M1) setT4VLineStyles();
       getT4TrendDirection();
       createT4ZigZagTrendDetectionLines();
 
@@ -260,24 +300,20 @@ void OnChartEvent(const int id,
          t4IsBidStopLossLineOffsetAlertSended = false;
       }
 
-      if(sparam == T2_MIN_HIGH_VOL_AREA || sparam == T2_MAX_HIGH_VOL_AREA) {
-
+      if(sparam == T2_MAX_HIGH_VOL_AREA) {
          t2MaxHighVolumeAreaLevel = ObjectGetDouble(ChartID(), T2_MAX_HIGH_VOL_AREA, OBJPROP_PRICE, 0);
-         if(ObjectFind(ChartID(), T2_MAX_HIGH_VOL_AREA) >= 0) {
-            ObjectSetString(ChartID(), T2_MAX_HIGH_VOL_AREA, OBJPROP_TEXT, T2_MAX_HIGH_VOL_AREA + ": " + DoubleToString(t2MaxHighVolumeAreaLevel, Digits()));
-            ObjectSetDouble(ChartID(), T2_MAX_HIGH_VOL_AREA, OBJPROP_PRICE, 0, t2MaxHighVolumeAreaLevel);
-            ObjectSetDouble(ChartID(), T2_MAX_HIGH_VOL_AREA, OBJPROP_PRICE, 1, t2MaxHighVolumeAreaLevel);
-         }
-
-         t2MinHighVolumeAreaLevel = getTrendlineLevelByText(T2_MIN_HIGH_VOL_AREA, PERIOD_CURRENT, Symbol(), ChartID(), true);
-         if(ObjectFind(ChartID(), T2_MIN_HIGH_VOL_AREA) >= 0) {
-            ObjectSetString(ChartID(), T2_MIN_HIGH_VOL_AREA, OBJPROP_TEXT, T2_MIN_HIGH_VOL_AREA + ": " + DoubleToString(t2MinHighVolumeAreaLevel, Digits()));
-            datetime startDateTime = (datetime) ObjectGetInteger(ChartID(), T2_MAX_HIGH_VOL_AREA, OBJPROP_TIME, 0);
-            ObjectSetInteger(ChartID(), T2_MIN_HIGH_VOL_AREA, OBJPROP_TIME, 0, startDateTime);
-            ObjectSetDouble(ChartID(), T2_MIN_HIGH_VOL_AREA, OBJPROP_PRICE, 0, t2MinHighVolumeAreaLevel);
-            ObjectSetDouble(ChartID(), T2_MIN_HIGH_VOL_AREA, OBJPROP_PRICE, 1, t2MinHighVolumeAreaLevel);
-         }
-
+         ObjectSetString(ChartID(), T2_MAX_HIGH_VOL_AREA, OBJPROP_TEXT, T2_MAX_HIGH_VOL_AREA + ": " + DoubleToString(t2MaxHighVolumeAreaLevel, Digits()));
+         ObjectSetDouble(ChartID(), T2_MAX_HIGH_VOL_AREA, OBJPROP_PRICE, 1, t2MaxHighVolumeAreaLevel);
+         datetime startDateTime = (datetime) ObjectGetInteger(ChartID(), T2_MAX_HIGH_VOL_AREA, OBJPROP_TIME, 0);
+         ObjectSetInteger(ChartID(), T2_MIN_HIGH_VOL_AREA, OBJPROP_TIME, 0, startDateTime);
+         createT2HighVolumeAreaChannel();
+      }
+      if(sparam == T2_MIN_HIGH_VOL_AREA) {
+         t2MinHighVolumeAreaLevel = ObjectGetDouble(ChartID(), T2_MIN_HIGH_VOL_AREA, OBJPROP_PRICE, 0);
+         ObjectSetString(ChartID(), T2_MIN_HIGH_VOL_AREA, OBJPROP_TEXT, T2_MIN_HIGH_VOL_AREA + ": " + DoubleToString(t2MinHighVolumeAreaLevel, Digits()));
+         ObjectSetDouble(ChartID(), T2_MIN_HIGH_VOL_AREA, OBJPROP_PRICE, 1, t2MinHighVolumeAreaLevel);
+         datetime startDateTime = (datetime) ObjectGetInteger(ChartID(), T2_MIN_HIGH_VOL_AREA, OBJPROP_TIME, 0);
+         ObjectSetInteger(ChartID(), T2_MAX_HIGH_VOL_AREA, OBJPROP_TIME, 0, startDateTime);
          createT2HighVolumeAreaChannel();
       }
 
