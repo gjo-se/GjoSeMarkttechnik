@@ -27,6 +27,7 @@ datetime t2EndDateTime;
 int t2SemiTrendDirection;
 int t2trendDirection;
 int t2MovementLengthPoints;
+double t2TrendBrokeOnFiboLevel;
 string t2FiboLevelsArray[];
 
 // Alerts

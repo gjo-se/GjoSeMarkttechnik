@@ -30,4 +30,5 @@ color             InpT2TLineZigZagTrendLongColor = clrGreen;
 color             InpT2TLineZigZagTrendShortColor = clrRed;
 
 string            InpT2FiboLevels = "25,50,75";
+int               InpT2TrendBrokeOnFiboLevel = 120;
 int               InpT2ChannelEndShift = 10; // T2 Anzahl Candles Offset RegressionChannel

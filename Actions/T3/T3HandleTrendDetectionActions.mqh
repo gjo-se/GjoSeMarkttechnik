@@ -484,17 +484,15 @@ void handleT3TrendBrokenOnP1() {
    datetime t3p2DateTimeTmp = 0;
    datetime t3p3DateTimeTmp = 0;
 
-   if(t3p1ValueHigh != 0
-         && t3p2ValueLow != 0
-         && t3p3ValueHigh != 0
-         && t3p1DateTime <= (int)TimeCurrent()
-         && t3p2DateTime <= (int)TimeCurrent()
-         && t3p3DateTime <= (int)TimeCurrent()
+   if(t3p1ValueHigh != 0 && t3p1DateTime <= (int)TimeCurrent()
+         && t3p2ValueLow != 0 && t3p2DateTime <= (int)TimeCurrent()
+         && t3p3ValueHigh != 0 && t3p3DateTime <= (int)TimeCurrent()
+         && t3TrendBrokeOnFiboLevel != 0
      ) {
 
       if(t3SemiTrendDirection == TREND_DIRECTION_LONG || t3trendDirection == TREND_DIRECTION_LONG) {
 
-         if(Bid() < t3p1ValueLow) {
+         if(Bid() < t3TrendBrokeOnFiboLevel) {
             if(t3ScreenshotT3TrendBrokenOnP1Before == false) {
                createScreenshot("T3TrendBrokenOnP1-Before");
                t3ScreenshotT3TrendBrokenOnP1Before = true;
@@ -513,7 +511,7 @@ void handleT3TrendBrokenOnP1() {
 
       if(t3SemiTrendDirection == TREND_DIRECTION_SHORT || t3trendDirection == TREND_DIRECTION_SHORT) {
 
-         if(Bid() > t3p1ValueHigh) {
+         if(Bid() > t3TrendBrokeOnFiboLevel) {
             if(t3ScreenshotT3TrendBrokenOnP1Before == false) {
                createScreenshot("T3TrendBrokenOnP1-Before");
                t3ScreenshotT3TrendBrokenOnP1Before = true;
@@ -543,17 +541,15 @@ void handleT3TrendBrokenOnP3() {
    datetime t3p4DateTimeTmp = 0;
    datetime t3p5DateTimeTmp = 0;
 
-   if(t3p3ValueHigh != 0
-         && t3p4ValueLow != 0
-         && t3p5ValueHigh != 0
-         && t3p3DateTime < TimeCurrent()
-         && t3p4DateTime < TimeCurrent()
-         && t3p5DateTime < (int)TimeCurrent()
+   if(t3p3ValueHigh != 0 && t3p3DateTime < TimeCurrent()
+         && t3p4ValueLow != 0 && t3p4DateTime < TimeCurrent()
+         && t3p5ValueHigh != 0 && t3p5DateTime < TimeCurrent()
+         && t3TrendBrokeOnFiboLevel != 0
      ) {
 
       if(t3SemiTrendDirection == TREND_DIRECTION_LONG || t3trendDirection == TREND_DIRECTION_LONG) {
 
-         if(Bid() < t3p3ValueLow) {
+         if(Bid() < t3TrendBrokeOnFiboLevel) {
             if(t3ScreenshotT3TrendBrokenOnP3Before == false) {
                createScreenshot("T3TrendBrokenOnP3-Before");
                t3ScreenshotT3TrendBrokenOnP3Before = true;
@@ -572,7 +568,7 @@ void handleT3TrendBrokenOnP3() {
 
       if(t3SemiTrendDirection == TREND_DIRECTION_SHORT || t3trendDirection == TREND_DIRECTION_SHORT) {
 
-         if(Bid() > t3p3ValueHigh) {
+         if(Bid() > t3TrendBrokeOnFiboLevel) {
             if(t3ScreenshotT3TrendBrokenOnP3Before == false) {
                createScreenshot("T3TrendBrokenOnP3-Before");
                t3ScreenshotT3TrendBrokenOnP3Before = true;

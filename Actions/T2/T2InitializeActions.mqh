@@ -29,6 +29,7 @@ void initializeT2GlobalsAction() {
    t2SemiTrendDirection = TREND_DIRECTION_ROTATION;
    t2trendDirection = TREND_DIRECTION_ROTATION;
    t2MovementLengthPoints = 0;
+   t2TrendBrokeOnFiboLevel = 0;
 
 // Alerts
    t2AlertT2P4CreatedTT3MissingSended = false;
@@ -52,6 +53,22 @@ void initializeT2GlobalsAction() {
    t2ScreenshotT2TrendBrokenOnP3After = false;
 }
 
+//+------------------------------------------------------------------+
+//|                                                                  |
+//+------------------------------------------------------------------+
 void convertInpT2StringsToArray() {
+   ArrayResize(t2FiboLevelsArray, 0);
+
    StringSplit(InpT2FiboLevels, StringGetCharacter(",", 0), t2FiboLevelsArray);
+
+   if(tt2movementLengthRegressionLengthRatio != 0) {
+      ArrayResize(t2FiboLevelsArray, ArraySize(t2FiboLevelsArray) + 1);
+      t2FiboLevelsArray[ArraySize(t2FiboLevelsArray) - 1] = (string)tt2movementLengthRegressionLengthRatio;
+   }
+
+   if(InpT2TrendBrokeOnFiboLevel != 0) {
+      ArrayResize(t2FiboLevelsArray, ArraySize(t2FiboLevelsArray) + 1);
+      t2FiboLevelsArray[ArraySize(t2FiboLevelsArray) - 1] = (string)InpT2TrendBrokeOnFiboLevel;
+   }
 }
+//+------------------------------------------------------------------+

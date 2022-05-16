@@ -65,6 +65,7 @@ datetime t3EndDateTime;
 int t3SemiTrendDirection;
 int t3trendDirection;
 string t3FiboLevelsArray[];
+double t3TrendBrokeOnFiboLevel;
 int t3MovementLengthPoints;
 
 // Alerts
