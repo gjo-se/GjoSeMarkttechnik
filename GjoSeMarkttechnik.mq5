@@ -54,6 +54,7 @@
    3.8.4 added HLINE Alerts
    3.9.0 TrendDetection T2/T3/T4 new Level
    3.9.1 fixed HighVolumeArea
+   4.0.0 fixed TrendDetection & Screenshots T2/T3/T4
    ===============
 
 */
@@ -72,7 +73,7 @@
 #property copyright   "2022, GjoSe"
 #property link        "http://www.gjo-se.com"
 #property description "GjoSe Markttechnik"
-#define   VERSION "3.9.1"
+#define   VERSION "4.0.0"
 #property version VERSION
 #property strict
 
