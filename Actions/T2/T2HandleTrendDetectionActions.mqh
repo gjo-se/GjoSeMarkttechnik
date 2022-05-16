@@ -201,8 +201,11 @@ void handleT2BuildNewTrend() {
 
    double   t2P5P6MovementPoints = 0;
    datetime t2p3DateTimeTmp = 0;
+   string   t2p3ObjectName = "";
    datetime t2p4DateTimeTmp = 0;
+   string   t2p4ObjectName = "";
    datetime t2p5DateTimeTmp = 0;
+   string   t2p5ObjectName = "";
 
    if(t2p5ValueHigh != 0 && t2p5DateTime < (int)TimeCurrent()
      ) {
@@ -225,12 +228,15 @@ void handleT2BuildNewTrend() {
             }
             if(t2p3DateTime != 0 && t2p4DateTime != 0 && t2p5DateTime != 0) {
                t2p3DateTimeTmp = t2p3DateTime;
+               t2p3ObjectName = getVlineNameByNameLike(T2_P3_VLINE);
                t2p4DateTimeTmp = t2p4DateTime;
+               t2p4ObjectName = getVlineNameByNameLike(T2_P4_VLINE);
                t2p5DateTimeTmp = t2p5DateTime;
+               t2p5ObjectName = getVlineNameByNameLike(T2_P5_VLINE);
                resetT2Trend();
-               createT2P1VLine(t2p3DateTimeTmp);
-               createT2P2VLine(t2p4DateTimeTmp);
-               createT2P3VLine(t2p5DateTimeTmp);
+               createT2P1VLine(t2p3DateTimeTmp, t2p3ObjectName);
+               createT2P2VLine(t2p4DateTimeTmp, t2p4ObjectName);
+               createT2P3VLine(t2p5DateTimeTmp, t2p5ObjectName);
                if(t2AlertT2BuildNewTrendSended == false) t2AlertT2BuildNewTrendAction();
                getT2TrendDirection();
             }
@@ -255,12 +261,15 @@ void handleT2BuildNewTrend() {
             }
             if(t2p3DateTime != 0 && t2p4DateTime != 0 && t2p5DateTime != 0) {
                t2p3DateTimeTmp = t2p3DateTime;
+               t2p3ObjectName = getVlineNameByNameLike(T2_P3_VLINE);
                t2p4DateTimeTmp = t2p4DateTime;
+               t2p4ObjectName = getVlineNameByNameLike(T2_P4_VLINE);
                t2p5DateTimeTmp = t2p5DateTime;
+               t2p5ObjectName = getVlineNameByNameLike(T2_P5_VLINE);
                resetT2Trend();
-               createT2P1VLine(t2p3DateTimeTmp);
-               createT2P2VLine(t2p4DateTimeTmp);
-               createT2P3VLine(t2p5DateTimeTmp);
+               createT2P1VLine(t2p3DateTimeTmp, t2p3ObjectName);
+               createT2P2VLine(t2p4DateTimeTmp, t2p4ObjectName);
+               createT2P3VLine(t2p5DateTimeTmp, t2p5ObjectName);
                if(t2AlertT2BuildNewTrendSended == false) t2AlertT2BuildNewTrendAction();
                getT2TrendDirection();
             }
@@ -272,7 +281,9 @@ void handleT2BuildNewTrend() {
 void handleT2TrendBrokenOnP1() {
 
    datetime t2p2DateTimeTmp = 0;
+   string   t2p2ObjectName = "";
    datetime t2p3DateTimeTmp = 0;
+   string   t2p3ObjectName = "";
 
    if(t2p1ValueHigh != 0 && t2p1DateTime <= (int)TimeCurrent()
          && t2p2ValueLow != 0 && t2p2DateTime <= (int)TimeCurrent()
@@ -289,10 +300,12 @@ void handleT2TrendBrokenOnP1() {
             }
             if(t2p2DateTime != 0 && t2p3DateTime != 0) {
                t2p2DateTimeTmp = t2p2DateTime;
+               t2p2ObjectName = getVlineNameByNameLike(T2_P2_VLINE);
                t2p3DateTimeTmp = t2p3DateTime;
+               t2p3ObjectName = getVlineNameByNameLike(T2_P3_VLINE);
                resetT2Trend();
-               createT2P1VLine(t2p2DateTimeTmp);
-               createT2P2VLine(t2p3DateTimeTmp);
+               createT2P1VLine(t2p2DateTimeTmp, t2p2ObjectName);
+               createT2P2VLine(t2p3DateTimeTmp, t2p3ObjectName);
                if(t2AlertT2TrendBrokenSended == false) t2AlertT2TrendBrokenAction();
                getT2TrendDirection();
             }
@@ -308,10 +321,12 @@ void handleT2TrendBrokenOnP1() {
             }
             if(t2p2DateTime != 0 && t2p3DateTime != 0) {
                t2p2DateTimeTmp = t2p2DateTime;
+               t2p2ObjectName = getVlineNameByNameLike(T2_P2_VLINE);
                t2p3DateTimeTmp = t2p3DateTime;
+               t2p3ObjectName = getVlineNameByNameLike(T2_P3_VLINE);
                resetT2Trend();
-               createT2P1VLine(t2p2DateTimeTmp);
-               createT2P2VLine(t2p3DateTimeTmp);
+               createT2P1VLine(t2p2DateTimeTmp, t2p2ObjectName);
+               createT2P2VLine(t2p3DateTimeTmp, t2p3ObjectName);
                if(t2AlertT2TrendBrokenSended == false) t2AlertT2TrendBrokenAction();
                getT2TrendDirection();
             }
@@ -329,7 +344,9 @@ void handleT2TrendBrokenOnP1() {
 void handleT2TrendBrokenOnP3() {
 
    datetime t2p4DateTimeTmp = 0;
+   string   t2p4ObjectName = "";
    datetime t2p5DateTimeTmp = 0;
+   string   t2p5ObjectName = "";
 
    if(t2p3ValueHigh != 0 && t2p3DateTime < TimeCurrent()
          && t2p4ValueLow != 0 && t2p4DateTime < TimeCurrent()
@@ -346,10 +363,12 @@ void handleT2TrendBrokenOnP3() {
             }
             if(t2p4DateTime != 0 && t2p5DateTime != 0) {
                t2p4DateTimeTmp = t2p4DateTime;
+               t2p4ObjectName = getVlineNameByNameLike(T2_P4_VLINE);
                t2p5DateTimeTmp = t2p5DateTime;
+               t2p5ObjectName = getVlineNameByNameLike(T2_P5_VLINE);
                resetT2Trend();
-               createT2P1VLine(t2p4DateTimeTmp);
-               createT2P2VLine(t2p5DateTimeTmp);
+               createT2P1VLine(t2p4DateTimeTmp, t2p4ObjectName);
+               createT2P2VLine(t2p5DateTimeTmp, t2p5ObjectName);
                if(t2AlertT2TrendBrokenSended == false) t2AlertT2TrendBrokenAction();
                getT2TrendDirection();
             }
@@ -365,10 +384,12 @@ void handleT2TrendBrokenOnP3() {
             }
             if(t2p4DateTime != 0 && t2p5DateTime != 0) {
                t2p4DateTimeTmp = t2p4DateTime;
+               t2p4ObjectName = getVlineNameByNameLike(T2_P4_VLINE);
                t2p5DateTimeTmp = t2p5DateTime;
+               t2p5ObjectName = getVlineNameByNameLike(T2_P5_VLINE);
                resetT2Trend();
-               createT2P1VLine(t2p4DateTimeTmp);
-               createT2P2VLine(t2p5DateTimeTmp);
+               createT2P1VLine(t2p4DateTimeTmp, t2p4ObjectName);
+               createT2P2VLine(t2p5DateTimeTmp, t2p5ObjectName);
                if(t2AlertT2TrendBrokenSended == false) t2AlertT2TrendBrokenAction();
                getT2TrendDirection();
             }
@@ -384,11 +405,11 @@ void handleT2TrendBrokenOnP3() {
 
 void resetT2Trend() {
 
-   deleteVLine(T2_P1_VLINE);
-   deleteVLine(T2_P2_VLINE);
-   deleteVLine(T2_P3_VLINE);
-   deleteVLine(T2_P4_VLINE);
-   deleteVLine(T2_P5_VLINE);
+   deleteVlineLike(T2_P1_VLINE);
+   deleteVlineLike(T2_P2_VLINE);
+   deleteVlineLike(T2_P3_VLINE);
+   deleteVlineLike(T2_P4_VLINE);
+   deleteVlineLike(T2_P5_VLINE);
    setT2LineValues();
    getT2TrendDirection();
 

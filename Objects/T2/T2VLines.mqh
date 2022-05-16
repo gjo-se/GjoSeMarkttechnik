@@ -91,80 +91,95 @@ void setT2VLineStyles(const string pSubString = "T2-") {
    }
 }
 
-void createT2P1VLine(datetime pDateTime) {
+void createT2P1VLine(const datetime pDateTime, const string pObjName = "") {
 
    long zOrder = 0;
    bool isBackground = true;
    bool isSelected = true;
    bool isSelectable = true;
+   string objName = T2_P1_VLINE;
 
    t2p1DateTime = pDateTime;
    t2p1ValueHigh = iHigh(Symbol(), PERIOD_CURRENT, iBarShift(Symbol(), PERIOD_CURRENT, t2p1DateTime));
    t2p1ValueLow = iLow(Symbol(), PERIOD_CURRENT, iBarShift(Symbol(), PERIOD_CURRENT, t2p1DateTime));
 
-   createVLine(T2_P1_VLINE, t2p1DateTime, InpT2VLineColor, InpT2LineWidth, InpT2LineStyle, T2_P1_VLINE, zOrder, isBackground, isSelected, isSelectable);
-   ObjectSetInteger(ChartID(), T2_P1_VLINE, OBJPROP_TIMEFRAMES, InpT2VisibleTimeframes);
+   if(pObjName != "") objName = pObjName;
+
+   createVLine(objName, t2p1DateTime, InpT2VLineColor, InpT2LineWidth, InpT2LineStyle, objName, zOrder, isBackground, isSelected, isSelectable);
+   ObjectSetInteger(ChartID(), objName, OBJPROP_TIMEFRAMES, InpT2VisibleTimeframes);
 }
 
-void createT2P2VLine(datetime pDateTime) {
+void createT2P2VLine(const datetime pDateTime, const string pObjName = "") {
 
    long zOrder = 0;
    bool isBackground = true;
    bool isSelected = true;
    bool isSelectable = true;
+   string objName = T2_P2_VLINE;
 
    t2p2DateTime = pDateTime;
    t2p2ValueHigh = iHigh(Symbol(), PERIOD_CURRENT, iBarShift(Symbol(), PERIOD_CURRENT, t2p2DateTime));
    t2p2ValueLow = iLow(Symbol(), PERIOD_CURRENT, iBarShift(Symbol(), PERIOD_CURRENT, t2p2DateTime));
 
-   createVLine(T2_P2_VLINE, t2p2DateTime, InpT2VLineColor, InpT2LineWidth, InpT2LineStyle, T2_P2_VLINE, zOrder, isBackground, isSelected, isSelectable);
-   ObjectSetInteger(ChartID(), T2_P2_VLINE, OBJPROP_TIMEFRAMES, InpT2VisibleTimeframes);
+   if(pObjName != "") objName = pObjName;
+
+   createVLine(objName, t2p2DateTime, InpT2VLineColor, InpT2LineWidth, InpT2LineStyle, objName, zOrder, isBackground, isSelected, isSelectable);
+   ObjectSetInteger(ChartID(), objName, OBJPROP_TIMEFRAMES, InpT2VisibleTimeframes);
 }
 
-void createT2P3VLine(datetime pDateTime) {
+void createT2P3VLine(const datetime pDateTime, const string pObjName = "") {
 
    long zOrder = 0;
    bool isBackground = true;
    bool isSelected = true;
    bool isSelectable = true;
+   string objName = T2_P3_VLINE;
 
    t2p3DateTime = pDateTime;
    t2p3ValueHigh = iHigh(Symbol(), PERIOD_CURRENT, iBarShift(Symbol(), PERIOD_CURRENT, t2p3DateTime));
    t2p3ValueLow = iLow(Symbol(), PERIOD_CURRENT, iBarShift(Symbol(), PERIOD_CURRENT, t2p3DateTime));
 
-   createVLine(T2_P3_VLINE, t2p3DateTime, InpT2VLineColor, InpT2LineWidth, InpT2LineStyle, T2_P3_VLINE, zOrder, isBackground, isSelected, isSelectable);
-   ObjectSetInteger(ChartID(), T2_P3_VLINE, OBJPROP_TIMEFRAMES, InpT2VisibleTimeframes);
+   if(pObjName != "") objName = pObjName;
+
+   createVLine(objName, t2p3DateTime, InpT2VLineColor, InpT2LineWidth, InpT2LineStyle, objName, zOrder, isBackground, isSelected, isSelectable);
+   ObjectSetInteger(ChartID(), objName, OBJPROP_TIMEFRAMES, InpT2VisibleTimeframes);
 }
 
-void createT2P4VLine(datetime pDateTime) {
+void createT2P4VLine(const datetime pDateTime, const string pObjName = "") {
 
    long zOrder = 0;
    bool isBackground = true;
    bool isSelected = false;
    bool isSelectable = true;
+   string objName = T2_P4_VLINE;
 
    t2p4DateTime = pDateTime;
    t2p4ValueHigh = iHigh(Symbol(), PERIOD_CURRENT, iBarShift(Symbol(), PERIOD_CURRENT, t2p4DateTime));
    t2p4ValueLow = iLow(Symbol(), PERIOD_CURRENT, iBarShift(Symbol(), PERIOD_CURRENT, t2p4DateTime));
 
-   createVLine(T2_P4_VLINE, t2p4DateTime, InpT2VLineColor, InpT2LineWidth, InpT2LineStyle, T2_P4_VLINE, zOrder, isBackground, isSelected, isSelectable);
-   ObjectSetInteger(ChartID(), T2_P4_VLINE, OBJPROP_TIMEFRAMES, InpT2VisibleTimeframes);
+   if(pObjName != "") objName = pObjName;
+
+   createVLine(objName, t2p4DateTime, InpT2VLineColor, InpT2LineWidth, InpT2LineStyle, objName, zOrder, isBackground, isSelected, isSelectable);
+   ObjectSetInteger(ChartID(), objName, OBJPROP_TIMEFRAMES, InpT2VisibleTimeframes);
 }
 //+------------------------------------------------------------------+
 
-void createT2P5VLine(datetime pDateTime) {
+void createT2P5VLine(const datetime pDateTime, const string pObjName = "") {
 
    long zOrder = 0;
    bool isBackground = true;
    bool isSelected = false;
    bool isSelectable = true;
+   string objName = T2_P5_VLINE;
 
    t2p5DateTime = pDateTime;
    t2p5ValueHigh = iHigh(Symbol(), PERIOD_CURRENT, iBarShift(Symbol(), PERIOD_CURRENT, t2p5DateTime));
    t2p5ValueLow = iLow(Symbol(), PERIOD_CURRENT, iBarShift(Symbol(), PERIOD_CURRENT, t2p5DateTime));
 
-   createVLine(T2_P5_VLINE, t2p5DateTime, InpT2VLineColor, InpT2LineWidth, InpT2LineStyle, T2_P5_VLINE, zOrder, isBackground, isSelected, isSelectable);
-   ObjectSetInteger(ChartID(), T2_P5_VLINE, OBJPROP_TIMEFRAMES, InpT2VisibleTimeframes);
+   if(pObjName != "") objName = pObjName;
+
+   createVLine(objName, t2p5DateTime, InpT2VLineColor, InpT2LineWidth, InpT2LineStyle, objName, zOrder, isBackground, isSelected, isSelectable);
+   ObjectSetInteger(ChartID(), objName, OBJPROP_TIMEFRAMES, InpT2VisibleTimeframes);
 }
 //+------------------------------------------------------------------+
 
