@@ -46,11 +46,8 @@ void initializeT2GlobalsAction() {
 
 // Screenshots
    t2ScreenshotT2BuildNewTrendBefore = false;
-   t2ScreenshotT2BuildNewTrendAfter = false;
    t2ScreenshotT2TrendBrokenOnP1Before = false;
-   t2ScreenshotT2TrendBrokenOnP1After = false;
    t2ScreenshotT2TrendBrokenOnP3Before = false;
-   t2ScreenshotT2TrendBrokenOnP3After = false;
 }
 
 //+------------------------------------------------------------------+

@@ -89,24 +89,9 @@ void initializeT3GlobalsAction() {
    t3StopLossValue = 0;
    t3TrailingStopLevel = 0;
 
-   t3ScreenshotT3P2CreatedBefore = false;
-   t3ScreenshotT3P2CreatedAfter = false;
-   t3ScreenshotT3P3CreatedBefore = false;
-   t3ScreenshotT3P3CreatedAfter = false;
-   t3ScreenshotT3P4CreatedBefore = false;
-   t3ScreenshotT3P4CreatedAfter = false;
-   t3ScreenshotT3P5CreatedBefore = false;
-   t3ScreenshotT3P5CreatedAfter = false;
-   t3ScreenshotT3P6CreatedBefore = false;
-   t3ScreenshotT3P6CreatedAfter = false;
-   t3ScreenshotT3P7CreatedBefore = false;
-   t3ScreenshotT3P7CreatedAfter = false;
    t3ScreenshotT3BuildNewTrendBefore = false;
-   t3ScreenshotT3BuildNewTrendAfter = false;
    t3ScreenshotT3TrendBrokenOnP1Before = false;
-   t3ScreenshotT3TrendBrokenOnP1After = false;
    t3ScreenshotT3TrendBrokenOnP3Before = false;
-   t3ScreenshotT3TrendBrokenOnP3After = false;
 }
 
 //+------------------------------------------------------------------+

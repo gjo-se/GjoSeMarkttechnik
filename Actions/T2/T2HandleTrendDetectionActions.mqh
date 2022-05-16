@@ -206,13 +206,9 @@ void handleT2BuildNewTrend() {
 
       if(t2SemiTrendDirection == TREND_DIRECTION_LONG || t2trendDirection == TREND_DIRECTION_LONG) {
 
-         if(isNewCurrentBar == true && t2ScreenshotT2BuildNewTrendBefore == true && t2ScreenshotT2BuildNewTrendAfter == false) {
-            createScreenshot("T2BuildNewTrend-After");
-            t2ScreenshotT2BuildNewTrendAfter = true;
-         }
-
          if(t2p4ValueHigh != 0 && Bid() > t2p4ValueHigh) {
             if(t2ScreenshotT2BuildNewTrendBefore == false) {
+               ChartSetSymbolPeriod(ChartID(), Symbol(), PERIOD_H1);
                createScreenshot("T2BuildNewTrend-Before");
                t2ScreenshotT2BuildNewTrendBefore = true;
             }
@@ -235,13 +231,9 @@ void handleT2BuildNewTrend() {
 
       if(t2SemiTrendDirection == TREND_DIRECTION_SHORT || t2trendDirection == TREND_DIRECTION_SHORT) {
 
-         if(isNewCurrentBar == true && t2ScreenshotT2BuildNewTrendBefore == true && t2ScreenshotT2BuildNewTrendAfter == false) {
-            createScreenshot("T2BuildNewTrend-After");
-            t2ScreenshotT2BuildNewTrendAfter = true;
-         }
-
          if(t2p4ValueLow != 0 && Bid() < t2p4ValueLow) {
             if(t2ScreenshotT2BuildNewTrendBefore == false) {
+               ChartSetSymbolPeriod(ChartID(), Symbol(), PERIOD_H1);
                createScreenshot("T2BuildNewTrend-Before");
                t2ScreenshotT2BuildNewTrendBefore = true;
             }
@@ -281,6 +273,7 @@ void handleT2TrendBrokenOnP1() {
 
          if(Bid() < t2TrendBrokeOnFiboLevel) {
             if(t2ScreenshotT2TrendBrokenOnP1Before == false) {
+               ChartSetSymbolPeriod(ChartID(), Symbol(), PERIOD_H1);
                createScreenshot("T2TrendBrokenOnP1-Before");
                t2ScreenshotT2TrendBrokenOnP1Before = true;
             }
@@ -302,6 +295,7 @@ void handleT2TrendBrokenOnP1() {
 
          if(Bid() > t2TrendBrokeOnFiboLevel) {
             if(t2ScreenshotT2TrendBrokenOnP1Before == false) {
+               ChartSetSymbolPeriod(ChartID(), Symbol(), PERIOD_H1);
                createScreenshot("T2TrendBrokenOnP1-Before");
                t2ScreenshotT2TrendBrokenOnP1Before = true;
             }
@@ -319,12 +313,6 @@ void handleT2TrendBrokenOnP1() {
          }
       }
    }
-
-   if(isNewCurrentBar == true && t2ScreenshotT2TrendBrokenOnP1Before == true && t2ScreenshotT2TrendBrokenOnP1After == false) {
-      createScreenshot("T2TrendBrokenOnP1-After");
-      t2ScreenshotT2TrendBrokenOnP1After = true;
-   }
-
 }
 
 void handleT2TrendBrokenOnP3() {
@@ -344,6 +332,7 @@ void handleT2TrendBrokenOnP3() {
 
          if(Bid() < t2TrendBrokeOnFiboLevel) {
             if(t2ScreenshotT2TrendBrokenOnP3Before == false) {
+               ChartSetSymbolPeriod(ChartID(), Symbol(), PERIOD_H1);
                createScreenshot("T2TrendBrokenOnP3-Before");
                t2ScreenshotT2TrendBrokenOnP3Before = true;
             }
@@ -365,6 +354,7 @@ void handleT2TrendBrokenOnP3() {
 
          if(Bid() > t2TrendBrokeOnFiboLevel) {
             if(t2ScreenshotT2TrendBrokenOnP3Before == false) {
+               ChartSetSymbolPeriod(ChartID(), Symbol(), PERIOD_H1);
                createScreenshot("T2TrendBrokenOnP3-Before");
                t2ScreenshotT2TrendBrokenOnP3Before = true;
             }
@@ -381,11 +371,6 @@ void handleT2TrendBrokenOnP3() {
             }
          }
       }
-   }
-
-   if(isNewCurrentBar == true && t2ScreenshotT2TrendBrokenOnP3Before == true && t2ScreenshotT2TrendBrokenOnP3After == false) {
-      createScreenshot("T2TrendBrokenOnP3-After");
-      t2ScreenshotT2TrendBrokenOnP3After = true;
    }
 }
 
@@ -416,10 +401,7 @@ void resetT2Trend() {
    t2AlertT2VLineOn0Sended = false;
 
    t2ScreenshotT2BuildNewTrendBefore = false;
-   t2ScreenshotT2BuildNewTrendAfter = false;
    t2ScreenshotT2TrendBrokenOnP1Before = false;
-   t2ScreenshotT2TrendBrokenOnP1After = false;
    t2ScreenshotT2TrendBrokenOnP3Before = false;
-   t2ScreenshotT2TrendBrokenOnP3After = false;
 }
 //+------------------------------------------------------------------+

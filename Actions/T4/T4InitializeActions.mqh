@@ -86,11 +86,8 @@ void initializeT4GlobalsAction() {
    t4RegressionChannelStopLossLineLevel = 0;
    
    t4ScreenshotT4P2CreatedBefore = false;
-   t4ScreenshotT4P2CreatedAfter = false;
    t4ScreenshotT4P3CreatedBefore = false;
-   t4ScreenshotT4P3CreatedAfter = false;
    t4ScreenshotT4P4CreatedBefore = false;
-   t4ScreenshotT4P4CreatedAfter = false;
 }
 
 //+------------------------------------------------------------------+

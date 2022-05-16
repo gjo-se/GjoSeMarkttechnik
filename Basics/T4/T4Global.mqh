@@ -112,11 +112,7 @@ double      t4TrailingStopLevel;
 double      t4RegressionChannelStopLossLineLevel;
 
 bool        t4ScreenshotT4P2CreatedBefore;
-bool        t4ScreenshotT4P2CreatedAfter;
 bool        t4ScreenshotT4P3CreatedBefore;
-bool        t4ScreenshotT4P3CreatedAfter;
 bool        t4ScreenshotT4P4CreatedBefore;
-bool        t4ScreenshotT4P4CreatedAfter;
-
 
 //+------------------------------------------------------------------+

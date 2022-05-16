@@ -63,18 +63,9 @@ void handleT3P2() {
             t3p2ValueLocal = iHigh(Symbol(), PERIOD_M1, iBarShift(Symbol(), PERIOD_M1, t3p2DateTimeLocal));
             t3P1P2MovementPoints = t3p2ValueLocal / Point() - t3p1ValueLow / Point();
 
-            if(isNewCurrentBar == true && t3ScreenshotT3P2CreatedBefore == true && t3ScreenshotT3P2CreatedAfter == false) {
-               createScreenshot("T3P2-After");
-               t3ScreenshotT3P2CreatedAfter = true;
-            }
-
             if(Bid() >= t3p2ValueLocal
                   && t3P1P2MovementPoints > (tt3movementLength * InpT3MinMovementLengthBasedOnTT3MovementPercent / 100)
               ) {
-               if(t3ScreenshotT3P2CreatedBefore == false) {
-                  createScreenshot("T3P2-Before");
-                  t3ScreenshotT3P2CreatedBefore = true;
-               }
                createT3P2VLine(t3p2DateTimeLocal);
                getT3TrendDirection();
             }
@@ -85,18 +76,9 @@ void handleT3P2() {
             t3p2ValueLocal = iLow(Symbol(), PERIOD_M1, iBarShift(Symbol(), PERIOD_M1, t3p2DateTimeLocal));
             t3P1P2MovementPoints = t3p1ValueHigh / Point() - t3p2ValueLocal / Point();
 
-            if(isNewCurrentBar == true && t3ScreenshotT3P2CreatedBefore == true && t3ScreenshotT3P2CreatedAfter == false) {
-               createScreenshot("T3P2-After");
-               t3ScreenshotT3P2CreatedAfter = true;
-            }
-
             if(Bid() <= t3p2ValueLocal
                   && t3P1P2MovementPoints > (tt3movementLength * InpT3MinMovementLengthBasedOnTT3MovementPercent / 100)
               ) {
-               if(t3ScreenshotT3P2CreatedBefore == false) {
-                  createScreenshot("T3P2-Before");
-                  t3ScreenshotT3P2CreatedBefore = true;
-               }
                createT3P2VLine(t3p2DateTimeLocal);
                getT3TrendDirection();
             }
@@ -126,18 +108,9 @@ void handleT3P3() {
          t3p3ValueTmp = iLow(Symbol(), PERIOD_M1, iBarShift(Symbol(), PERIOD_M1, t3p3DateTimeTmp));
          t3P2P3RegressionPoints = t3p2ValueHigh / Point() - t3p3ValueTmp / Point();
 
-         if(isNewCurrentBar == true && t3ScreenshotT3P3CreatedBefore == true && t3ScreenshotT3P3CreatedAfter == false) {
-            createScreenshot("T3P3-After");
-            t3ScreenshotT3P3CreatedAfter = true;
-         }
-
          if(Bid() <= t3p3ValueTmp
                && t3P2P3RegressionPoints > (tt3regressionLength * InpT3MinRegressionLengthBasedOnTT3RegressionPercent / 100)
            ) {
-            if(t3ScreenshotT3P3CreatedBefore == false) {
-               createScreenshot("T3P3-Before");
-               t3ScreenshotT3P3CreatedBefore = true;
-            }
             createT3P3VLine(t3p3DateTimeTmp);
          }
       }
@@ -147,18 +120,9 @@ void handleT3P3() {
          t3p3ValueTmp = iHigh(Symbol(), PERIOD_M1, iBarShift(Symbol(), PERIOD_M1, t3p3DateTimeTmp));
          t3P2P3RegressionPoints = t3p3ValueTmp / Point() - t3p2ValueLow / Point();
 
-         if(isNewCurrentBar == true && t3ScreenshotT3P3CreatedBefore == true && t3ScreenshotT3P3CreatedAfter == false) {
-            createScreenshot("T3P3-After");
-            t3ScreenshotT3P3CreatedAfter = true;
-         }
-
          if(Bid() >= t3p3ValueTmp
                && t3P2P3RegressionPoints > (tt3regressionLength * InpT3MinRegressionLengthBasedOnTT3RegressionPercent / 100)
            ) {
-            if(t3ScreenshotT3P3CreatedBefore == false) {
-               createScreenshot("T3P3-Before");
-               t3ScreenshotT3P3CreatedBefore = true;
-            }
             createT3P3VLine(t3p3DateTimeTmp);
          }
       }
@@ -179,19 +143,10 @@ void handleT3P4() {
          t3p4DateTimeTmp = iTime(Symbol(), PERIOD_M1, iHighest(Symbol(), PERIOD_M1, MODE_HIGH,  iBarShift(Symbol(), PERIOD_M1, t3p3DateTime) + 1));
          t3p4ValueTmp = iHigh(Symbol(), PERIOD_M1, iBarShift(Symbol(), PERIOD_M1, t3p4DateTimeTmp));
 
-         if(isNewCurrentBar == true && t3ScreenshotT3P4CreatedBefore == true && t3ScreenshotT3P4CreatedAfter == false) {
-            createScreenshot("T3P4-After");
-            t3ScreenshotT3P4CreatedAfter = true;
-         }
-
          if(Bid() >= t3p4ValueTmp
                && t3p2ValueHigh != 0
                && t3p4ValueTmp > t3p2ValueHigh
            ) {
-            if(t3ScreenshotT3P4CreatedBefore == false) {
-               createScreenshot("T3P4-Before");
-               t3ScreenshotT3P4CreatedBefore = true;
-            }
             createT3P4VLine(t3p4DateTimeTmp);
             getT3TrendDirection();
          }
@@ -201,19 +156,10 @@ void handleT3P4() {
          t3p4DateTimeTmp = iTime(Symbol(), PERIOD_M1, iLowest(Symbol(), PERIOD_M1, MODE_LOW,  iBarShift(Symbol(), PERIOD_M1, t3p3DateTime) + 1));
          t3p4ValueTmp = iLow(Symbol(), PERIOD_M1, iBarShift(Symbol(), PERIOD_M1, t3p4DateTimeTmp));
 
-         if(isNewCurrentBar == true && t3ScreenshotT3P4CreatedBefore == true && t3ScreenshotT3P4CreatedAfter == false) {
-            createScreenshot("T3P4-After");
-            t3ScreenshotT3P4CreatedAfter = true;
-         }
-
          if(Bid() <= t3p4ValueTmp
                && t3p2ValueLow != 0
                && t3p4ValueTmp < t3p2ValueLow
            ) {
-            if(t3ScreenshotT3P4CreatedBefore == false) {
-               createScreenshot("T3P4-Before");
-               t3ScreenshotT3P4CreatedBefore = true;
-            }
             createT3P4VLine(t3p4DateTimeTmp);
             getT3TrendDirection();
          }
@@ -236,19 +182,10 @@ void handleT3P5() {
          t3p5ValueTmp = iLow(Symbol(), PERIOD_M1, iBarShift(Symbol(), PERIOD_M1, t3p5DateTimeTmp));
          t3P4P5RegressionPoints = t3p4ValueHigh / Point() - t3p5ValueTmp / Point();
 
-         if(isNewCurrentBar == true && t3ScreenshotT3P5CreatedBefore == true && t3ScreenshotT3P5CreatedAfter == false) {
-            createScreenshot("T3P5-After");
-            t3ScreenshotT3P5CreatedAfter = true;
-         }
-
          if(Bid() <= t3p5ValueTmp
                && t3P4P5RegressionPoints > (tt3regressionLength * InpT3MinRegressionLengthBasedOnTT3RegressionPercent / 100)
            ) {
             createT3P5VLine(t3p5DateTimeTmp);
-            if(t3ScreenshotT3P5CreatedBefore == false) {
-               createScreenshot("T3P5-Before");
-               t3ScreenshotT3P5CreatedBefore = true;
-            }
          }
       }
 
@@ -257,19 +194,10 @@ void handleT3P5() {
          t3p5ValueTmp = iHigh(Symbol(), PERIOD_M1, iBarShift(Symbol(), PERIOD_M1, t3p5DateTimeTmp));
          t3P4P5RegressionPoints = t3p5ValueTmp / Point() - t3p4ValueLow / Point();
 
-         if(isNewCurrentBar == true && t3ScreenshotT3P5CreatedBefore == true && t3ScreenshotT3P5CreatedAfter == false) {
-            createScreenshot("T3P5-After");
-            t3ScreenshotT3P5CreatedAfter = true;
-         }
-
          if(Bid() >= t3p5ValueTmp
                && t3P4P5RegressionPoints > (tt3regressionLength * InpT3MinRegressionLengthBasedOnTT3RegressionPercent / 100)
            ) {
             createT3P5VLine(t3p5DateTimeTmp);
-            if(t3ScreenshotT3P5CreatedBefore == false) {
-               createScreenshot("T3P5-Before");
-               t3ScreenshotT3P5CreatedBefore = true;
-            }
          }
       }
    }
@@ -288,19 +216,10 @@ void handleT3P6() {
          t3p6DateTimeTmp = iTime(Symbol(), PERIOD_M1, iHighest(Symbol(), PERIOD_M1, MODE_HIGH,  iBarShift(Symbol(), PERIOD_M1, t3p5DateTime) + 1));
          t3p6ValueTmp = iHigh(Symbol(), PERIOD_M1, iBarShift(Symbol(), PERIOD_M1, t3p6DateTimeTmp));
 
-         if(isNewCurrentBar == true && t3ScreenshotT3P6CreatedBefore == true && t3ScreenshotT3P6CreatedAfter == false) {
-            createScreenshot("T3P6-After");
-            t3ScreenshotT3P6CreatedAfter = true;
-         }
-
          if(Bid() >= t3p6ValueTmp
                && t3p2ValueHigh != 0
                && t3p6ValueTmp > t3p2ValueHigh
            ) {
-            if(t3ScreenshotT3P6CreatedBefore == false) {
-               createScreenshot("T3P6-Before");
-               t3ScreenshotT3P6CreatedBefore = true;
-            }
             if(tt4p1DateTime == 0 && t3AlertT3P6CreatedTT4MissingSended == false) t3AlertT3P6CreatedTT4MissingAction();
             if(t3AlertT3P6CreatedSended == false) t3AlertT3P6CreatedAction();
             createT3P6VLine(t3p6DateTimeTmp);
@@ -313,19 +232,10 @@ void handleT3P6() {
          t3p6DateTimeTmp = iTime(Symbol(), PERIOD_M1, iLowest(Symbol(), PERIOD_M1, MODE_LOW,  iBarShift(Symbol(), PERIOD_M1, t3p5DateTime) + 1));
          t3p6ValueTmp = iLow(Symbol(), PERIOD_M1, iBarShift(Symbol(), PERIOD_M1, t3p6DateTimeTmp));
 
-         if(isNewCurrentBar == true && t3ScreenshotT3P6CreatedBefore == true && t3ScreenshotT3P6CreatedAfter == false) {
-            createScreenshot("T3P6-After");
-            t3ScreenshotT3P6CreatedAfter = true;
-         }
-
          if(Bid() <= t3p6ValueTmp
                && t3p2ValueLow != 0
                && t3p6ValueTmp < t3p2ValueLow
            ) {
-            if(t3ScreenshotT3P6CreatedBefore == false) {
-               createScreenshot("T3P6-Before");
-               t3ScreenshotT3P6CreatedBefore = true;
-            }
             if(tt4p1DateTime == 0 && t3AlertT3P6CreatedTT4MissingSended == false) t3AlertT3P6CreatedTT4MissingAction();
             if(t3AlertT3P6CreatedSended == false) t3AlertT3P6CreatedAction();
             createT3P6VLine(t3p6DateTimeTmp);
@@ -350,20 +260,10 @@ void handleT3P7() {
          t3p7ValueTmp = iLow(Symbol(), PERIOD_M1, iBarShift(Symbol(), PERIOD_M1, t3p7DateTimeTmp));
          t3P6P7RegressionPoints = t3p6ValueHigh / Point() - t3p7ValueTmp / Point();
 
-         if(isNewCurrentBar == true && t3ScreenshotT3P7CreatedBefore == true && t3ScreenshotT3P7CreatedAfter == false) {
-            createScreenshot("T3P7-After");
-            t3ScreenshotT3P7CreatedAfter = true;
-         }
-
          if(Bid() <= t3p7ValueTmp
                && t3P6P7RegressionPoints > (tt3regressionLength * InpT3MinRegressionLengthBasedOnTT3RegressionPercent / 100)
            ) {
             createT3P7VLine(t3p7DateTimeTmp);
-            if(t3ScreenshotT3P7CreatedBefore == false) {
-               createScreenshot("T3P7-Before");
-               t3ScreenshotT3P7CreatedBefore = true;
-            }
-//            if(tt4p1DateTime == 0 && t3AlertT3P7CreatedTT4MissingSended == false) t3AlertT3P7CreatedTT4MissingAction();
          }
       }
 
@@ -372,20 +272,10 @@ void handleT3P7() {
          t3p7ValueTmp = iHigh(Symbol(), PERIOD_M1, iBarShift(Symbol(), PERIOD_M1, t3p7DateTimeTmp));
          t3P6P7RegressionPoints = t3p7ValueTmp / Point() - t3p6ValueLow / Point();
 
-         if(isNewCurrentBar == true && t3ScreenshotT3P7CreatedBefore == true && t3ScreenshotT3P7CreatedAfter == false) {
-            createScreenshot("T3P7-After");
-            t3ScreenshotT3P7CreatedAfter = true;
-         }
-
          if(Bid() >= t3p7ValueTmp
                && t3P6P7RegressionPoints > (tt3regressionLength * InpT3MinRegressionLengthBasedOnTT3RegressionPercent / 100)
            ) {
             createT3P7VLine(t3p7DateTimeTmp);
-            if(t3ScreenshotT3P7CreatedBefore == false) {
-               createScreenshot("T3P7-Before");
-               t3ScreenshotT3P7CreatedBefore = true;
-            }
-//            if(tt4p1DateTime == 0 && t3AlertT3P7CreatedTT4MissingSended == false) t3AlertT3P7CreatedTT4MissingAction();
          }
       }
    }
@@ -409,13 +299,9 @@ void handleT3BuildNewTrend() {
 
       if(t3SemiTrendDirection == TREND_DIRECTION_LONG || t3trendDirection == TREND_DIRECTION_LONG) {
 
-         if(isNewCurrentBar == true && t3ScreenshotT3BuildNewTrendBefore == true && t3ScreenshotT3BuildNewTrendAfter == false) {
-            createScreenshot("T3BuildNewTrend-After");
-            t3ScreenshotT3BuildNewTrendAfter = true;
-         }
-
          if(t3p6ValueHigh != 0 && Bid() > t3p6ValueHigh) {
             if(t3ScreenshotT3BuildNewTrendBefore == false) {
+               ChartSetSymbolPeriod(ChartID(), Symbol(), PERIOD_M10);
                createScreenshot("T3BuildNewTrend-Before");
                t3ScreenshotT3BuildNewTrendBefore = true;
             }
@@ -443,13 +329,9 @@ void handleT3BuildNewTrend() {
 
       if(t3SemiTrendDirection == TREND_DIRECTION_SHORT || t3trendDirection == TREND_DIRECTION_SHORT) {
 
-         if(isNewCurrentBar == true && t3ScreenshotT3BuildNewTrendBefore == true && t3ScreenshotT3BuildNewTrendAfter == false) {
-            createScreenshot("T3BuildNewTrend-After");
-            t3ScreenshotT3BuildNewTrendAfter = true;
-         }
-
          if(t3p6ValueLow != 0 && Bid() < t3p6ValueLow) {
             if(t3ScreenshotT3BuildNewTrendBefore == false) {
+               ChartSetSymbolPeriod(ChartID(), Symbol(), PERIOD_M10);
                createScreenshot("T3BuildNewTrend-Before");
                t3ScreenshotT3BuildNewTrendBefore = true;
             }
@@ -494,6 +376,7 @@ void handleT3TrendBrokenOnP1() {
 
          if(Bid() < t3TrendBrokeOnFiboLevel) {
             if(t3ScreenshotT3TrendBrokenOnP1Before == false) {
+               ChartSetSymbolPeriod(ChartID(), Symbol(), PERIOD_M10);
                createScreenshot("T3TrendBrokenOnP1-Before");
                t3ScreenshotT3TrendBrokenOnP1Before = true;
             }
@@ -515,6 +398,7 @@ void handleT3TrendBrokenOnP1() {
 
          if(Bid() > t3TrendBrokeOnFiboLevel) {
             if(t3ScreenshotT3TrendBrokenOnP1Before == false) {
+               ChartSetSymbolPeriod(ChartID(), Symbol(), PERIOD_M10);
                createScreenshot("T3TrendBrokenOnP1-Before");
                t3ScreenshotT3TrendBrokenOnP1Before = true;
             }
@@ -532,12 +416,6 @@ void handleT3TrendBrokenOnP1() {
          }
       }
    }
-
-   if(isNewCurrentBar == true && t3ScreenshotT3TrendBrokenOnP1Before == true && t3ScreenshotT3TrendBrokenOnP1After == false) {
-      createScreenshot("T3TrendBrokenOnP1-After");
-      t3ScreenshotT3TrendBrokenOnP1After = true;
-   }
-
 }
 
 void handleT3TrendBrokenOnP3() {
@@ -557,6 +435,7 @@ void handleT3TrendBrokenOnP3() {
 
          if(Bid() < t3TrendBrokeOnFiboLevel) {
             if(t3ScreenshotT3TrendBrokenOnP3Before == false) {
+               ChartSetSymbolPeriod(ChartID(), Symbol(), PERIOD_M10);
                createScreenshot("T3TrendBrokenOnP3-Before");
                t3ScreenshotT3TrendBrokenOnP3Before = true;
             }
@@ -578,6 +457,7 @@ void handleT3TrendBrokenOnP3() {
 
          if(Bid() > t3TrendBrokeOnFiboLevel) {
             if(t3ScreenshotT3TrendBrokenOnP3Before == false) {
+               ChartSetSymbolPeriod(ChartID(), Symbol(), PERIOD_M10);
                createScreenshot("T3TrendBrokenOnP3-Before");
                t3ScreenshotT3TrendBrokenOnP3Before = true;
             }
@@ -594,11 +474,6 @@ void handleT3TrendBrokenOnP3() {
             }
          }
       }
-   }
-
-   if(isNewCurrentBar == true && t3ScreenshotT3TrendBrokenOnP3Before == true && t3ScreenshotT3TrendBrokenOnP3After == false) {
-      createScreenshot("T3TrendBrokenOnP3-After");
-      t3ScreenshotT3TrendBrokenOnP3After = true;
    }
 }
 
@@ -628,23 +503,8 @@ void resetT3Trend() {
    t3AlertT3P6CreatedSended = false;
    t3AlertT3TrendBrokenSended = false;
 
-   t3ScreenshotT3P2CreatedBefore = false;
-   t3ScreenshotT3P2CreatedAfter = false;
-   t3ScreenshotT3P3CreatedBefore = false;
-   t3ScreenshotT3P3CreatedAfter = false;
-   t3ScreenshotT3P4CreatedBefore = false;
-   t3ScreenshotT3P4CreatedAfter = false;
-   t3ScreenshotT3P5CreatedBefore = false;
-   t3ScreenshotT3P5CreatedAfter = false;
-   t3ScreenshotT3P6CreatedBefore = false;
-   t3ScreenshotT3P6CreatedAfter = false;
-   t3ScreenshotT3P7CreatedBefore = false;
-   t3ScreenshotT3P7CreatedAfter = false;
    t3ScreenshotT3BuildNewTrendBefore = false;
-   t3ScreenshotT3BuildNewTrendAfter = false;
    t3ScreenshotT3TrendBrokenOnP1Before = false;
-   t3ScreenshotT3TrendBrokenOnP1After = false;
    t3ScreenshotT3TrendBrokenOnP3Before = false;
-   t3ScreenshotT3TrendBrokenOnP3After = false;
 }
 //+------------------------------------------------------------------+
