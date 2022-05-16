@@ -169,7 +169,6 @@ void handleT3P4() {
 
    datetime t3p4DateTimeTmp = 0;
    double   t3p4ValueTmp = 0;
-   double   t3P2P4MovementPoints = 0;
 
    if(t3p3ValueHigh != 0
          && t3p3DateTime < (int)TimeCurrent()
@@ -179,7 +178,6 @@ void handleT3P4() {
       if(t3SemiTrendDirection == TREND_DIRECTION_LONG || t3trendDirection == TREND_DIRECTION_LONG) {
          t3p4DateTimeTmp = iTime(Symbol(), PERIOD_M1, iHighest(Symbol(), PERIOD_M1, MODE_HIGH,  iBarShift(Symbol(), PERIOD_M1, t3p3DateTime) + 1));
          t3p4ValueTmp = iHigh(Symbol(), PERIOD_M1, iBarShift(Symbol(), PERIOD_M1, t3p4DateTimeTmp));
-         t3P2P4MovementPoints = t3p4ValueTmp / Point() - t3p3ValueLow / Point();
 
          if(isNewCurrentBar == true && t3ScreenshotT3P4CreatedBefore == true && t3ScreenshotT3P4CreatedAfter == false) {
             createScreenshot("T3P4-After");
@@ -187,7 +185,6 @@ void handleT3P4() {
          }
 
          if(Bid() >= t3p4ValueTmp
-               && t3P2P4MovementPoints > (tt3movementLength * InpT3MinMovementLengthBasedOnTT3MovementPercent / 100)
                && t3p2ValueHigh != 0
                && t3p4ValueTmp > t3p2ValueHigh
            ) {
@@ -203,7 +200,6 @@ void handleT3P4() {
       if(t3SemiTrendDirection == TREND_DIRECTION_SHORT || t3trendDirection == TREND_DIRECTION_SHORT) {
          t3p4DateTimeTmp = iTime(Symbol(), PERIOD_M1, iLowest(Symbol(), PERIOD_M1, MODE_LOW,  iBarShift(Symbol(), PERIOD_M1, t3p3DateTime) + 1));
          t3p4ValueTmp = iLow(Symbol(), PERIOD_M1, iBarShift(Symbol(), PERIOD_M1, t3p4DateTimeTmp));
-         t3P2P4MovementPoints = t3p3ValueHigh / Point() - t3p4ValueTmp / Point();
 
          if(isNewCurrentBar == true && t3ScreenshotT3P4CreatedBefore == true && t3ScreenshotT3P4CreatedAfter == false) {
             createScreenshot("T3P4-After");
@@ -211,7 +207,6 @@ void handleT3P4() {
          }
 
          if(Bid() <= t3p4ValueTmp
-               && t3P2P4MovementPoints > (tt3movementLength * InpT3MinMovementLengthBasedOnTT3MovementPercent / 100)
                && t3p2ValueLow != 0
                && t3p4ValueTmp < t3p2ValueLow
            ) {
@@ -284,7 +279,6 @@ void handleT3P6() {
 
    datetime t3p6DateTimeTmp = 0;
    double   t3p6ValueTmp = 0;
-   double   t3P2P4MovementPoints = 0;
 
    if(t3p5ValueHigh != 0 && t3p5DateTime < (int)TimeCurrent()
          && t3p7DateTime == 0
@@ -293,7 +287,6 @@ void handleT3P6() {
       if(t3SemiTrendDirection == TREND_DIRECTION_LONG || t3trendDirection == TREND_DIRECTION_LONG) {
          t3p6DateTimeTmp = iTime(Symbol(), PERIOD_M1, iHighest(Symbol(), PERIOD_M1, MODE_HIGH,  iBarShift(Symbol(), PERIOD_M1, t3p5DateTime) + 1));
          t3p6ValueTmp = iHigh(Symbol(), PERIOD_M1, iBarShift(Symbol(), PERIOD_M1, t3p6DateTimeTmp));
-         t3P2P4MovementPoints = t3p6ValueTmp / Point() - t3p5ValueLow / Point();
 
          if(isNewCurrentBar == true && t3ScreenshotT3P6CreatedBefore == true && t3ScreenshotT3P6CreatedAfter == false) {
             createScreenshot("T3P6-After");
@@ -301,7 +294,6 @@ void handleT3P6() {
          }
 
          if(Bid() >= t3p6ValueTmp
-               && t3P2P4MovementPoints > (tt3movementLength * InpT3MinMovementLengthBasedOnTT3MovementPercent / 100)
                && t3p2ValueHigh != 0
                && t3p6ValueTmp > t3p2ValueHigh
            ) {
@@ -320,7 +312,6 @@ void handleT3P6() {
       if(t3SemiTrendDirection == TREND_DIRECTION_SHORT || t3trendDirection == TREND_DIRECTION_SHORT) {
          t3p6DateTimeTmp = iTime(Symbol(), PERIOD_M1, iLowest(Symbol(), PERIOD_M1, MODE_LOW,  iBarShift(Symbol(), PERIOD_M1, t3p5DateTime) + 1));
          t3p6ValueTmp = iLow(Symbol(), PERIOD_M1, iBarShift(Symbol(), PERIOD_M1, t3p6DateTimeTmp));
-         t3P2P4MovementPoints = t3p5ValueHigh / Point() - t3p6ValueTmp / Point();
 
          if(isNewCurrentBar == true && t3ScreenshotT3P6CreatedBefore == true && t3ScreenshotT3P6CreatedAfter == false) {
             createScreenshot("T3P6-After");
@@ -328,7 +319,6 @@ void handleT3P6() {
          }
 
          if(Bid() <= t3p6ValueTmp
-               && t3P2P4MovementPoints > (tt3movementLength * InpT3MinMovementLengthBasedOnTT3MovementPercent / 100)
                && t3p2ValueLow != 0
                && t3p6ValueTmp < t3p2ValueLow
            ) {
@@ -403,7 +393,6 @@ void handleT3P7() {
 
 void handleT3BuildNewTrend() {
 
-   double   t3P7P8MovementPoints = 0;
    datetime t3p3DateTimeTmp = 0;
    string   t3p3ObjectName = "";
    datetime t3p4DateTimeTmp = 0;
@@ -419,16 +408,13 @@ void handleT3BuildNewTrend() {
      ) {
 
       if(t3SemiTrendDirection == TREND_DIRECTION_LONG || t3trendDirection == TREND_DIRECTION_LONG) {
-         t3P7P8MovementPoints = Bid() / Point() - t3p7ValueLow / Point();
 
          if(isNewCurrentBar == true && t3ScreenshotT3BuildNewTrendBefore == true && t3ScreenshotT3BuildNewTrendAfter == false) {
             createScreenshot("T3BuildNewTrend-After");
             t3ScreenshotT3BuildNewTrendAfter = true;
          }
 
-         if(t3P7P8MovementPoints > (tt3movementLength * InpT3MinMovementLengthBasedOnTT3MovementPercent / 100)
-               && t3p6ValueHigh != 0 && Bid() > t3p6ValueHigh
-           ) {
+         if(t3p6ValueHigh != 0 && Bid() > t3p6ValueHigh) {
             if(t3ScreenshotT3BuildNewTrendBefore == false) {
                createScreenshot("T3BuildNewTrend-Before");
                t3ScreenshotT3BuildNewTrendBefore = true;
@@ -456,16 +442,13 @@ void handleT3BuildNewTrend() {
       }
 
       if(t3SemiTrendDirection == TREND_DIRECTION_SHORT || t3trendDirection == TREND_DIRECTION_SHORT) {
-         t3P7P8MovementPoints = t3p7ValueHigh / Point() - Bid() / Point();
 
          if(isNewCurrentBar == true && t3ScreenshotT3BuildNewTrendBefore == true && t3ScreenshotT3BuildNewTrendAfter == false) {
             createScreenshot("T3BuildNewTrend-After");
             t3ScreenshotT3BuildNewTrendAfter = true;
          }
 
-         if(t3P7P8MovementPoints > (tt3movementLength * InpT3MinMovementLengthBasedOnTT3MovementPercent / 100)
-               && t3p6ValueLow != 0 && Bid() < t3p6ValueLow
-           ) {
+         if(t3p6ValueLow != 0 && Bid() < t3p6ValueLow) {
             if(t3ScreenshotT3BuildNewTrendBefore == false) {
                createScreenshot("T3BuildNewTrend-Before");
                t3ScreenshotT3BuildNewTrendBefore = true;
