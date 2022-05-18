@@ -173,7 +173,7 @@ void handleT2P5() {
                && t2P4P5RegressionPoints > (tt2regressionLength * InpT2MinRegressionLengthBasedOnTT2RegressionPercent / 100)
            ) {
             createT2P5VLine(t2p5DateTimeTmp);
-            if(t2AlertT2P5CreatedSended == false) t2AlertT2P5CreatedAction();
+            if(t2AlertT2P5CreatedSended == false && t3p1DateTime == 0) t2AlertT2P5CreatedAction();
          }
       }
 
@@ -186,7 +186,7 @@ void handleT2P5() {
                && t2P4P5RegressionPoints > (tt2regressionLength * InpT2MinRegressionLengthBasedOnTT2RegressionPercent / 100)
            ) {
             createT2P5VLine(t2p5DateTimeTmp);
-            if(t2AlertT2P5CreatedSended == false) t2AlertT2P5CreatedAction();
+            if(t2AlertT2P5CreatedSended == false && t3p1DateTime == 0) t2AlertT2P5CreatedAction();
          }
       }
    }
