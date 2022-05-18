@@ -28,8 +28,8 @@ void initializeT4GlobalsAction() {
    t4SemiTrendDirection = TREND_DIRECTION_ROTATION;
    t4trendDirection = TREND_DIRECTION_ROTATION;
 
-   buyPositionsCount = 0;
-   sellPositionsCount = 0;
+   setT4PositionsCountStateInit();
+
    buyT4PositionIsOpenState = false;
    maxT4BuyPositionsAreOpenState = false;
    allT4BuyPositionsAreClosedState = false;
