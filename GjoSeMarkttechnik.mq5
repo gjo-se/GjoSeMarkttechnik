@@ -189,6 +189,7 @@ int OnInit() {
 void OnTick() {
 
    (NewCurrentBar()) ? isNewCurrentBar = true : isNewCurrentBar = false;
+   (NewD1Bar()) ? isNewD1Bar = true : isNewD1Bar = false;
 
    if(MQLInfoInteger(MQL_VISUAL_MODE) == 1) {
       getT2TrendDirection();
@@ -217,6 +218,10 @@ void OnTick() {
       createT2HighVolumeAreaChannel();
 //      if((buyT3PositionIsOpenState == true || sellT3PositionIsOpenState == true) && buyT4PositionIsOpenState == false && sellT4PositionIsOpenState == false) ChartSetSymbolPeriod(ChartID(), Symbol(), InpT3trailingStopMATimeframe);
 //      if(buyT4PositionIsOpenState == true || sellT4PositionIsOpenState == true) ChartSetSymbolPeriod(ChartID(), Symbol(), InpT4trailingStopMATimeframe);
+   }
+
+   if(isNewD1Bar){
+      ChartSaveTemplate(ChartID(), Symbol());
    }
 
    if(getT3BuyAlertRegressionSignal() == true) t3AlertBuyRegressionAction();

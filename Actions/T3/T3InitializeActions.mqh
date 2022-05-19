@@ -14,6 +14,7 @@ void initializeEAAction() {
 void initializeT3GlobalsAction() {
 
    isNewCurrentBar = false;
+   isNewD1Bar = false;
    t3comment = "";
 
    t3AutoButtonState = ObjectGetInteger(ChartID(), T3_AUTO_BUTTON, OBJPROP_STATE);
