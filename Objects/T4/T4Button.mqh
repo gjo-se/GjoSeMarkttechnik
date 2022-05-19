@@ -15,7 +15,7 @@ void createT4IsTradeableButton() {
    color borderColor = clrNONE;
    string objText = "T4 Trade off";
    string fontFamily = "Arial";
-   int fontSize = 14;
+   int fontSize = 12;
    bool objState = false;
 
    createButton(T4_IS_TRADEABLE_BUTTON, xCoord, yCoord, objWidth, objHeight, chartCorner, objColor, backgroundColor, borderColor, objText, fontFamily, fontSize, objState);
@@ -59,7 +59,7 @@ void createT4AutoButton() {
    color borderColor = clrNONE;
    string objText = "T4 Auto off";
    string fontFamily = "Arial";
-   int fontSize = 14;
+   int fontSize = 12;
    bool objState = false;
 
    createButton(T4_AUTO_BUTTON, xCoord, yCoord, objWidth, objHeight, chartCorner, objColor, backgroundColor, borderColor, objText, fontFamily, fontSize, objState);
@@ -75,5 +75,36 @@ void handleT4AutoButton() {
    } else {
       ObjectSetString(0, T4_AUTO_BUTTON, OBJPROP_TEXT, "T4 Auto OFF");
       ObjectSetInteger(0, T4_AUTO_BUTTON, OBJPROP_BGCOLOR, clrGray);
+   }
+}
+
+void createT4TMPButton() {
+
+   int xCoord = 230;
+   int yCoord = 90;
+   int objWidth = 100;
+   int objHeight = 24;
+   ENUM_BASE_CORNER  chartCorner = CORNER_RIGHT_UPPER;
+   color objColor = clrBlack;
+   color backgroundColor = C'236,233,216';
+   color borderColor = clrNONE;
+   string objText = "TMP-4";
+   string fontFamily = "Arial";
+   int fontSize = 12;
+   bool objState = false;
+
+   createButton(T4_TMP_BUTTON, xCoord, yCoord, objWidth, objHeight, chartCorner, objColor, backgroundColor, borderColor, objText, fontFamily, fontSize, objState);
+
+}
+
+void handleT4TMPButton() {
+
+   t4TMPButtonState = ObjectGetInteger(ChartID(), T4_TMP_BUTTON, OBJPROP_STATE);
+   if(t4TMPButtonState == true) {
+      ObjectSetString(0, T4_TMP_BUTTON, OBJPROP_TEXT, "TMP-4 ON");
+      ObjectSetInteger(0, T4_TMP_BUTTON, OBJPROP_BGCOLOR, clrGreen);
+   } else {
+      ObjectSetString(0, T4_TMP_BUTTON, OBJPROP_TEXT, "TMP-4 OFF");
+      ObjectSetInteger(0, T4_TMP_BUTTON, OBJPROP_BGCOLOR, clrGray);
    }
 }

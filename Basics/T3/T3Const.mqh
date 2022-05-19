@@ -5,6 +5,7 @@
 //+------------------------------------------------------------------+
 
 const string   T3_AUTO_BUTTON =           "T3-Auto-Button";
+const string   T3_TMP_BUTTON =            "T3-TMP-Button";
 const string   T3_START_VLINE =           "T3-Start";
 const string   T3_P1_VLINE =              "T3-P1";
 const string   T3_P2_VLINE =              "T3-P2";

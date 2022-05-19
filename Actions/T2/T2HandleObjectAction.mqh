@@ -25,6 +25,9 @@ void t2HandleObjectsAction() {
    if(ObjectFind(ChartID(), T2_AUTO_BUTTON) < 0) {
       createT2AutoButton();
    }
+   if(ObjectFind(ChartID(), T2_TMP_BUTTON) < 0 && tt2p1DateTime != 0) {
+      createT2TMPButton();
+   }
 
    if(isNewCurrentBar == true) {
       createT2ZigZagTrendDetectionLines();

@@ -38,6 +38,7 @@ bool isNewD1Bar;
 string t3comment;
 
 bool  t3AutoButtonState;
+bool  t3TMPButtonState;
 
 datetime t3StartDateTime;
 datetime t3p1DateTime;

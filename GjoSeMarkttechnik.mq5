@@ -401,6 +401,10 @@ void OnChartEvent(const int id,
       if(sparam == T3_AUTO_BUTTON) handleT3AutoButton();
       if(sparam == T4_AUTO_BUTTON) handleT4AutoButton();
 
+      if(sparam == T2_TMP_BUTTON) handleT2TMPButton();
+      if(sparam == T3_TMP_BUTTON) handleT3TMPButton();
+      if(sparam == T4_TMP_BUTTON) handleT4TMPButton();
+
       if(sparam == T4_IS_TRADEABLE_BUTTON) {
          handleT4IsTradeableButton();
          handleCommentAction(VERSION);
