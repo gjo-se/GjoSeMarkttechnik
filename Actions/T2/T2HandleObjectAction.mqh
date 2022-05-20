@@ -29,7 +29,7 @@ void t2HandleObjectsAction() {
       createT2TMPButton();
    }
 
-   if(isNewCurrentBar == true) {
+   if(isNewM1Bar == true) {
       createT2ZigZagTrendDetectionLines();
       createT2RegressionChannel();
       createT2RegressionChannelLevels();

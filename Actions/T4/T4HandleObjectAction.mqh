@@ -41,7 +41,7 @@ void t4HandleObjectsAction() {
 
    if(InpT4ObjectsShow == true) {
 
-      if(isNewCurrentBar == true) {
+      if(isNewM1Bar == true) {
          createT4ZigZagTrendDetectionLines();
       }
 

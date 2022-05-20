@@ -33,7 +33,7 @@ double      t3TrailingStopMABuffer05[];
 int         t3TrailingStopMAHandle05;
 int         t3TrailingStopMAPeriod05;
 
-bool isNewCurrentBar;
+bool isNewM1Bar;
 bool isNewD1Bar;
 string t3comment;
 

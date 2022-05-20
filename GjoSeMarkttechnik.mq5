@@ -189,7 +189,7 @@ int OnInit() {
 
 void OnTick() {
 
-   (NewCurrentBar()) ? isNewCurrentBar = true : isNewCurrentBar = false;
+   (NewM1Bar()) ? isNewM1Bar = true : isNewM1Bar = false;
    (NewD1Bar()) ? isNewD1Bar = true : isNewD1Bar = false;
 
    if(MQLInfoInteger(MQL_VISUAL_MODE) == 1) {
@@ -214,7 +214,7 @@ void OnTick() {
    t3HandleObjectsAction();
    t4HandleObjectsAction();
 
-   if(isNewCurrentBar) {
+   if(isNewM1Bar) {
       handleCommentAction(VERSION);
       createT2HighVolumeAreaChannel();
 //      if((buyT3PositionIsOpenState == true || sellT3PositionIsOpenState == true) && buyT4PositionIsOpenState == false && sellT4PositionIsOpenState == false) ChartSetSymbolPeriod(ChartID(), Symbol(), InpT3trailingStopMATimeframe);

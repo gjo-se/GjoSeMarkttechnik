@@ -30,7 +30,7 @@ void t3HandleObjectsAction() {
 
    if(InpT3ObjectsShow == true) {
 
-      if(isNewCurrentBar == true) {
+      if(isNewM1Bar == true) {
          createT3ZigZagTrendDetectionLines();
          createT3RegressionChannel();
          createT3RegressionChannelLevels();

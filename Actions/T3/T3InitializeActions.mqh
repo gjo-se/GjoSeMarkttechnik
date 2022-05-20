@@ -13,7 +13,7 @@ void initializeEAAction() {
 
 void initializeT3GlobalsAction() {
 
-   isNewCurrentBar = false;
+   isNewM1Bar = false;
    isNewD1Bar = false;
    t3comment = "";
 
