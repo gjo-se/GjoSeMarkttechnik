@@ -13,10 +13,12 @@ void initializeEAAction() {
 
 void initializeT3GlobalsAction() {
 
-   isNewCurrentBar = false;
+   isNewM1Bar = false;
+   isNewD1Bar = false;
    t3comment = "";
 
    t3AutoButtonState = ObjectGetInteger(ChartID(), T3_AUTO_BUTTON, OBJPROP_STATE);
+   t3TMPButtonState = ObjectGetInteger(ChartID(), T3_TMP_BUTTON, OBJPROP_STATE);
 
    t3StartDateTime = 0;
    t3p1DateTime = 0;

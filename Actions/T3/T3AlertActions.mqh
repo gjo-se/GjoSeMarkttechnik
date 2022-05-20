@@ -8,6 +8,9 @@
 //|                                                                  |
 //+------------------------------------------------------------------+
 
+//+------------------------------------------------------------------+
+//|                                                                  |
+//+------------------------------------------------------------------+
 void t3AlertT3P6CreatedAction() {
    if(sendAlerts == true) {
       string prio = "A";
@@ -18,6 +21,9 @@ void t3AlertT3P6CreatedAction() {
       t3AlertT3P6CreatedSended = true;
    }
 }
+//+------------------------------------------------------------------+
+//|                                                                  |
+//+------------------------------------------------------------------+
 void t3AlertT3TrendBrokenAction() {
    if(sendAlerts == true) {
       string prio = "C";
@@ -29,6 +35,9 @@ void t3AlertT3TrendBrokenAction() {
    }
 }
 
+//+------------------------------------------------------------------+
+//|                                                                  |
+//+------------------------------------------------------------------+
 void t3AlertT3P6CreatedTT4MissingAction() {
    if(sendAlerts == true) {
       string prio = "ERROR";
@@ -40,6 +49,9 @@ void t3AlertT3P6CreatedTT4MissingAction() {
    }
 }
 
+//+------------------------------------------------------------------+
+//|                                                                  |
+//+------------------------------------------------------------------+
 void t3AlertT3VLineOn0Action() {
    if(sendAlerts == true) {
       string message = Symbol() + ": " + "T3 VLINE on 0 ";
@@ -145,6 +157,12 @@ void t3CommentAction(string pVersion) {
       t3comment += "tt2movementLength: " + DoubleToString(tt2movementLength, 0) + " (" + DoubleToString(tt2movementLengthP1P2, 0) + " / " +  DoubleToString(tt2movementLengthP3P4, 0) + " / " + DoubleToString(tt2movementLengthP5P6, 0) + ") Points" + "\n";
       t3comment += "tt2regressionLength: " + DoubleToString(tt2regressionLength, 0) + " (" + DoubleToString(tt2regressionLengthP2P3, 0) + " / " +  DoubleToString(tt2regressionLengthP4P5, 0) + ") Points" + "\n";
       t3comment += "tt2movementRegressionLengthRatio: " + DoubleToString(tt2movementLengthRegressionLengthRatio, 0) + " %" + "\n";
+
+      double rewardPerPosition = AccountInfoDouble(ACCOUNT_EQUITY) *  InpRewardPercent / 100 / InpPostionsPerSymbol;
+      double tt2movementLengthCorrect = tt2movementLength * InpT2MinMovementLengthBasedOnTT2MovementPercent / 100;
+      double tt2movementLengthValue = tt2movementLengthCorrect * getPointValueBySymbol(Symbol());
+      double t4LotSizePerPosition = rewardPerPosition / tt2movementLengthValue;
+      t3comment += "LotSize per Position: " + DoubleToString(t4LotSizePerPosition, 2) + "\n";
    }
    t3comment += "\n";
    t3comment += "T3: " + "\n\n";

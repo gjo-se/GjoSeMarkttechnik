@@ -25,8 +25,11 @@ void t2HandleObjectsAction() {
    if(ObjectFind(ChartID(), T2_AUTO_BUTTON) < 0) {
       createT2AutoButton();
    }
+   if(ObjectFind(ChartID(), T2_TMP_BUTTON) < 0 && tt2p1DateTime != 0) {
+      createT2TMPButton();
+   }
 
-   if(isNewCurrentBar == true) {
+   if(isNewM1Bar == true) {
       createT2ZigZagTrendDetectionLines();
       createT2RegressionChannel();
       createT2RegressionChannelLevels();

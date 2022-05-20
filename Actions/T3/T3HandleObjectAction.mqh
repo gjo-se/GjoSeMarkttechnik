@@ -24,9 +24,13 @@ void t3HandleObjectsAction() {
       createT3AutoButton();
    }
 
+   if(ObjectFind(ChartID(), T3_TMP_BUTTON) < 0 && tt3p1DateTime != 0) {
+      createT3TMPButton();
+   }
+
    if(InpT3ObjectsShow == true) {
 
-      if(isNewCurrentBar == true) {
+      if(isNewM1Bar == true) {
          createT3ZigZagTrendDetectionLines();
          createT3RegressionChannel();
          createT3RegressionChannelLevels();

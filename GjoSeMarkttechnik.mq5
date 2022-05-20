@@ -55,6 +55,7 @@
    3.9.0 TrendDetection T2/T3/T4 new Level
    3.9.1 fixed HighVolumeArea
    4.0.0 fixed TrendDetection & Screenshots T2/T3/T4
+   4.0.1 fixed TrendDetection T2/T3/T4
    ===============
 
 */
@@ -73,7 +74,7 @@
 #property copyright   "2022, GjoSe"
 #property link        "http://www.gjo-se.com"
 #property description "GjoSe Markttechnik"
-#define   VERSION "4.0.0"
+#define   VERSION "4.0.1"
 #property version VERSION
 #property strict
 
@@ -188,7 +189,8 @@ int OnInit() {
 
 void OnTick() {
 
-   (NewCurrentBar()) ? isNewCurrentBar = true : isNewCurrentBar = false;
+   (NewM1Bar()) ? isNewM1Bar = true : isNewM1Bar = false;
+   (NewD1Bar()) ? isNewD1Bar = true : isNewD1Bar = false;
 
    if(MQLInfoInteger(MQL_VISUAL_MODE) == 1) {
       getT2TrendDirection();
@@ -212,11 +214,15 @@ void OnTick() {
    t3HandleObjectsAction();
    t4HandleObjectsAction();
 
-   if(isNewCurrentBar) {
+   if(isNewM1Bar) {
       handleCommentAction(VERSION);
       createT2HighVolumeAreaChannel();
 //      if((buyT3PositionIsOpenState == true || sellT3PositionIsOpenState == true) && buyT4PositionIsOpenState == false && sellT4PositionIsOpenState == false) ChartSetSymbolPeriod(ChartID(), Symbol(), InpT3trailingStopMATimeframe);
 //      if(buyT4PositionIsOpenState == true || sellT4PositionIsOpenState == true) ChartSetSymbolPeriod(ChartID(), Symbol(), InpT4trailingStopMATimeframe);
+   }
+
+   if(isNewD1Bar){
+      ChartSaveTemplate(ChartID(), Symbol());
    }
 
    if(getT3BuyAlertRegressionSignal() == true) t3AlertBuyRegressionAction();
@@ -395,6 +401,10 @@ void OnChartEvent(const int id,
       if(sparam == T2_AUTO_BUTTON) handleT2AutoButton();
       if(sparam == T3_AUTO_BUTTON) handleT3AutoButton();
       if(sparam == T4_AUTO_BUTTON) handleT4AutoButton();
+
+      if(sparam == T2_TMP_BUTTON) handleT2TMPButton();
+      if(sparam == T3_TMP_BUTTON) handleT3TMPButton();
+      if(sparam == T4_TMP_BUTTON) handleT4TMPButton();
 
       if(sparam == T4_IS_TRADEABLE_BUTTON) {
          handleT4IsTradeableButton();

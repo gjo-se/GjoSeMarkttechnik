@@ -5,6 +5,7 @@
 //+------------------------------------------------------------------+
 
 bool  t2AutoButtonState;
+bool  t2TMPButtonState;
 
 datetime t2StartDateTime;
 datetime t2p1DateTime;

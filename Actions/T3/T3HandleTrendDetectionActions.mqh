@@ -284,15 +284,15 @@ void handleT3P7() {
 void handleT3BuildNewTrend() {
 
    datetime t3p3DateTimeTmp = 0;
-   string   t3p3ObjectName = "";
    datetime t3p4DateTimeTmp = 0;
-   string   t3p4ObjectName = "";
    datetime t3p5DateTimeTmp = 0;
-   string   t3p5ObjectName = "";
    datetime t3p6DateTimeTmp = 0;
-   string   t3p6ObjectName = "";
    datetime t3p7DateTimeTmp = 0;
-   string   t3p7ObjectName = "";
+   string   t3p1ObjectName = "";
+   string   t3p2ObjectName = "";
+   string   t3p3ObjectName = "";
+   string   t3p4ObjectName = "";
+   string   t3p5ObjectName = "";
 
    if(t3p7ValueHigh != 0 && t3p7DateTime < (int)TimeCurrent()
      ) {
@@ -307,21 +307,21 @@ void handleT3BuildNewTrend() {
             }
             if(t3p5DateTime != 0 && t3p6DateTime != 0 && t3p7DateTime != 0) {
                t3p3DateTimeTmp = t3p3DateTime;
-               t3p3ObjectName = getVlineNameByNameLike(T3_P3_VLINE);
                t3p4DateTimeTmp = t3p4DateTime;
-               t3p4ObjectName = getVlineNameByNameLike(T3_P4_VLINE);
                t3p5DateTimeTmp = t3p5DateTime;
-               t3p5ObjectName = getVlineNameByNameLike(T3_P5_VLINE);
                t3p6DateTimeTmp = t3p6DateTime;
-               t3p6ObjectName = getVlineNameByNameLike(T3_P6_VLINE);
                t3p7DateTimeTmp = t3p7DateTime;
-               t3p7ObjectName = getVlineNameByNameLike(T3_P7_VLINE);
+               t3p1ObjectName = getVlineNameByNameLike(T3_P1_VLINE);
+               t3p2ObjectName = getVlineNameByNameLike(T3_P2_VLINE);
+               t3p3ObjectName = getVlineNameByNameLike(T3_P3_VLINE);
+               t3p4ObjectName = getVlineNameByNameLike(T3_P4_VLINE);
+               t3p5ObjectName = getVlineNameByNameLike(T3_P5_VLINE);
                resetT3Trend();
-               createT3P1VLine(t3p3DateTimeTmp, t3p3ObjectName);
-               createT3P2VLine(t3p4DateTimeTmp, t3p4ObjectName);
-               createT3P3VLine(t3p5DateTimeTmp, t3p5ObjectName);
-               createT3P4VLine(t3p6DateTimeTmp, t3p6ObjectName);
-               createT3P5VLine(t3p7DateTimeTmp, t3p7ObjectName);
+               createT3P1VLine(t3p3DateTimeTmp, t3p1ObjectName);
+               createT3P2VLine(t3p4DateTimeTmp, t3p2ObjectName);
+               createT3P3VLine(t3p5DateTimeTmp, t3p3ObjectName);
+               createT3P4VLine(t3p6DateTimeTmp, t3p4ObjectName);
+               createT3P5VLine(t3p7DateTimeTmp, t3p5ObjectName);
                getT3TrendDirection();
             }
          }
@@ -337,21 +337,21 @@ void handleT3BuildNewTrend() {
             }
             if(t3p5DateTime != 0 && t3p6DateTime != 0 && t3p7DateTime != 0) {
                t3p3DateTimeTmp = t3p3DateTime;
-               t3p3ObjectName = getVlineNameByNameLike(T3_P3_VLINE);
                t3p4DateTimeTmp = t3p4DateTime;
-               t3p4ObjectName = getVlineNameByNameLike(T3_P4_VLINE);
                t3p5DateTimeTmp = t3p5DateTime;
-               t3p5ObjectName = getVlineNameByNameLike(T3_P5_VLINE);
                t3p6DateTimeTmp = t3p6DateTime;
-               t3p6ObjectName = getVlineNameByNameLike(T3_P6_VLINE);
                t3p7DateTimeTmp = t3p7DateTime;
-               t3p7ObjectName = getVlineNameByNameLike(T3_P7_VLINE);
+               t3p1ObjectName = getVlineNameByNameLike(T3_P1_VLINE);
+               t3p2ObjectName = getVlineNameByNameLike(T3_P2_VLINE);
+               t3p3ObjectName = getVlineNameByNameLike(T3_P3_VLINE);
+               t3p4ObjectName = getVlineNameByNameLike(T3_P4_VLINE);
+               t3p5ObjectName = getVlineNameByNameLike(T3_P5_VLINE);
                resetT3Trend();
-               createT3P1VLine(t3p3DateTimeTmp, t3p3ObjectName);
-               createT3P2VLine(t3p4DateTimeTmp, t3p4ObjectName);
-               createT3P3VLine(t3p5DateTimeTmp, t3p5ObjectName);
-               createT3P4VLine(t3p6DateTimeTmp, t3p6ObjectName);
-               createT3P5VLine(t3p7DateTimeTmp, t3p7ObjectName);
+               createT3P1VLine(t3p3DateTimeTmp, t3p1ObjectName);
+               createT3P2VLine(t3p4DateTimeTmp, t3p2ObjectName);
+               createT3P3VLine(t3p5DateTimeTmp, t3p3ObjectName);
+               createT3P4VLine(t3p6DateTimeTmp, t3p4ObjectName);
+               createT3P5VLine(t3p7DateTimeTmp, t3p5ObjectName);
                getT3TrendDirection();
             }
          }
@@ -362,9 +362,7 @@ void handleT3BuildNewTrend() {
 void handleT3TrendBrokenOnP1() {
 
    datetime t3p2DateTimeTmp = 0;
-   string   t3p2ObjectName = "";
    datetime t3p3DateTimeTmp = 0;
-   string   t3p3ObjectName = "";
 
    if(t3p1ValueHigh != 0 && t3p1DateTime <= (int)TimeCurrent()
          && t3p2ValueLow != 0 && t3p2DateTime <= (int)TimeCurrent()
@@ -382,12 +380,10 @@ void handleT3TrendBrokenOnP1() {
             }
             if(t3p2DateTime != 0 && t3p3DateTime != 0) {
                t3p2DateTimeTmp = t3p2DateTime;
-               t3p2ObjectName = getVlineNameByNameLike(T3_P2_VLINE);
                t3p3DateTimeTmp = t3p3DateTime;
-               t3p3ObjectName = getVlineNameByNameLike(T3_P3_VLINE);
                resetT3Trend();
-               createT3P1VLine(t3p2DateTimeTmp, t3p2ObjectName);
-               createT3P2VLine(t3p3DateTimeTmp, t3p3ObjectName);
+               createT3P1VLine(t3p2DateTimeTmp, T3_P1_VLINE);
+               createT3P2VLine(t3p3DateTimeTmp, T3_P2_VLINE);
                getT3TrendDirection();
                if(t3AlertT3TrendBrokenSended == false) t3AlertT3TrendBrokenAction();
             }
@@ -404,12 +400,10 @@ void handleT3TrendBrokenOnP1() {
             }
             if(t3p2DateTime != 0 && t3p3DateTime != 0) {
                t3p2DateTimeTmp = t3p2DateTime;
-               t3p2ObjectName = getVlineNameByNameLike(T3_P2_VLINE);
                t3p3DateTimeTmp = t3p3DateTime;
-               t3p3ObjectName = getVlineNameByNameLike(T3_P3_VLINE);
                resetT3Trend();
-               createT3P1VLine(t3p2DateTimeTmp, t3p2ObjectName);
-               createT3P2VLine(t3p3DateTimeTmp, t3p3ObjectName);
+               createT3P1VLine(t3p2DateTimeTmp, T3_P1_VLINE);
+               createT3P2VLine(t3p3DateTimeTmp, T3_P2_VLINE);
                getT3TrendDirection();
                if(t3AlertT3TrendBrokenSended == false) t3AlertT3TrendBrokenAction();
             }
@@ -421,9 +415,7 @@ void handleT3TrendBrokenOnP1() {
 void handleT3TrendBrokenOnP3() {
 
    datetime t3p4DateTimeTmp = 0;
-   string   t3p4ObjectName = "";
    datetime t3p5DateTimeTmp = 0;
-   string   t3p5ObjectName = "";
 
    if(t3p3ValueHigh != 0 && t3p3DateTime < TimeCurrent()
          && t3p4ValueLow != 0 && t3p4DateTime < TimeCurrent()
@@ -441,12 +433,10 @@ void handleT3TrendBrokenOnP3() {
             }
             if(t3p4DateTime != 0 && t3p5DateTime != 0) {
                t3p4DateTimeTmp = t3p4DateTime;
-               t3p4ObjectName = getVlineNameByNameLike(T3_P4_VLINE);
                t3p5DateTimeTmp = t3p5DateTime;
-               t3p5ObjectName = getVlineNameByNameLike(T3_P5_VLINE);
                resetT3Trend();
-               createT3P1VLine(t3p4DateTimeTmp, t3p4ObjectName);
-               createT3P2VLine(t3p5DateTimeTmp, t3p5ObjectName);
+               createT3P1VLine(t3p4DateTimeTmp, T3_P1_VLINE);
+               createT3P2VLine(t3p5DateTimeTmp, T3_P2_VLINE);
                getT3TrendDirection();
                if(t3AlertT3TrendBrokenSended == false) t3AlertT3TrendBrokenAction();
             }
@@ -463,12 +453,10 @@ void handleT3TrendBrokenOnP3() {
             }
             if(t3p4DateTime != 0 && t3p5DateTime != 0) {
                t3p4DateTimeTmp = t3p4DateTime;
-               t3p4ObjectName = getVlineNameByNameLike(T3_P4_VLINE);
                t3p5DateTimeTmp = t3p5DateTime;
-               t3p5ObjectName = getVlineNameByNameLike(T3_P5_VLINE);
                resetT3Trend();
-               createT3P1VLine(t3p4DateTimeTmp, t3p4ObjectName);
-               createT3P2VLine(t3p5DateTimeTmp, t3p5ObjectName);
+               createT3P1VLine(t3p4DateTimeTmp, T3_P1_VLINE);
+               createT3P2VLine(t3p5DateTimeTmp, T3_P2_VLINE);
                getT3TrendDirection();
                if(t3AlertT3TrendBrokenSended == false) t3AlertT3TrendBrokenAction();
             }

@@ -24,6 +24,28 @@ void setT4PositionStates() {
    setT4AllSellPositionsAreClosedState();
 }
 
+void setT4PositionsCountStateInit() {
+
+   buyPositionsCount = 0;
+   sellPositionsCount = 0;
+
+   long  positionTicket = 0;
+   ulong magicNumber = 0;
+
+   long positionTicketsLocal[];
+   Positions.GetTickets(magicNumber, positionTicketsLocal);
+   for(int positionTicketsId = 0; positionTicketsId < ArraySize(positionTicketsLocal); positionTicketsId++) {
+      positionTicket = positionTicketsLocal[positionTicketsId];
+      if(
+         positionTicket > 0
+         && PositionSymbol(positionTicket) == Symbol()
+      ) {
+         if(PositionType(positionTicket) == ORDER_TYPE_BUY) buyPositionsCount++;
+         if(PositionType(positionTicket) == ORDER_TYPE_SELL) sellPositionsCount++;
+      }
+   }
+}
+
 void setT4PositionsCountState() {
 
    long  positionTicket = 0;

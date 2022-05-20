@@ -5,6 +5,7 @@
 //+------------------------------------------------------------------+
 
 const string   T4_AUTO_BUTTON =           "T4-Auto-Button";
+const string   T4_TMP_BUTTON =            "T4-TMP-Button";
 const string   T4_IS_TRADEABLE_BUTTON =   "T4-isTradeableButton";
 const string   T4_START_VLINE =           "T4-Start";
 const string   T4_P1_VLINE =              "T4-P1";

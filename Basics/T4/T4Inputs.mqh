@@ -26,6 +26,8 @@ input int               InpT4OrderGridCount = 1; // Anzahl T4 Grid Orders
 //+------------------------------------------------------------------+
 
 // ****************  INTERN **************** //
+double            InpRewardPercent = 3;
+int               InpPostionsPerSymbol = 2;
 int               InpT4MinRegressionPercent = 0; // T4 % MIN Regression for EntryLevel
 int               InpT4MinFiboRetracmentLevel = 0; // T4 Min Fibo
 int               InpT4MaxFiboRetracmentLevel = 0; // T4 Max Fibo

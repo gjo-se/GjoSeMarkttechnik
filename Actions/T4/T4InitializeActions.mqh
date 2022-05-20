@@ -10,6 +10,7 @@ void initializeT4GlobalsAction() {
 
    t4IsTradabelButtonState = ObjectGetInteger(0, T4_IS_TRADEABLE_BUTTON, OBJPROP_STATE);
    t4AutoButtonState = ObjectGetInteger(ChartID(), T4_AUTO_BUTTON, OBJPROP_STATE);
+   t4TMPButtonState = ObjectGetInteger(ChartID(), T4_TMP_BUTTON, OBJPROP_STATE);
 
    t4StartDateTime = 0;
    t4p1DateTime = 0;
@@ -28,8 +29,8 @@ void initializeT4GlobalsAction() {
    t4SemiTrendDirection = TREND_DIRECTION_ROTATION;
    t4trendDirection = TREND_DIRECTION_ROTATION;
 
-   buyPositionsCount = 0;
-   sellPositionsCount = 0;
+   setT4PositionsCountStateInit();
+
    buyT4PositionIsOpenState = false;
    maxT4BuyPositionsAreOpenState = false;
    allT4BuyPositionsAreClosedState = false;

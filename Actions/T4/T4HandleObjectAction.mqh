@@ -16,6 +16,9 @@ void t4HandleObjectsAction() {
    if(ObjectFind(ChartID(), T4_AUTO_BUTTON) < 0) {
       createT4AutoButton();
    }
+   if(ObjectFind(ChartID(), T4_TMP_BUTTON) < 0 && tt4p1DateTime != 0) {
+      createT4TMPButton();
+   }
    if(ObjectFind(ChartID(), T4_IS_TRADEABLE_BUTTON) < 0) {
       createT4IsTradeableButton();
    }
@@ -38,7 +41,7 @@ void t4HandleObjectsAction() {
 
    if(InpT4ObjectsShow == true) {
 
-      if(isNewCurrentBar == true) {
+      if(isNewM1Bar == true) {
          createT4ZigZagTrendDetectionLines();
       }
 
