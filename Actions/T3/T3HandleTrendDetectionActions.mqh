@@ -217,8 +217,8 @@ void handleT3P6() {
          t3p6ValueTmp = iHigh(Symbol(), PERIOD_M1, iBarShift(Symbol(), PERIOD_M1, t3p6DateTimeTmp));
 
          if(Bid() >= t3p6ValueTmp
-               && t3p2ValueHigh != 0
-               && t3p6ValueTmp > t3p2ValueHigh
+               && t3p4ValueHigh != 0
+               && t3p6ValueTmp > t3p4ValueHigh
            ) {
             if(tt4p1DateTime == 0 && t3AlertT3P6CreatedTT4MissingSended == false) t3AlertT3P6CreatedTT4MissingAction();
             if(t3AlertT3P6CreatedSended == false) t3AlertT3P6CreatedAction();
@@ -233,8 +233,8 @@ void handleT3P6() {
          t3p6ValueTmp = iLow(Symbol(), PERIOD_M1, iBarShift(Symbol(), PERIOD_M1, t3p6DateTimeTmp));
 
          if(Bid() <= t3p6ValueTmp
-               && t3p2ValueLow != 0
-               && t3p6ValueTmp < t3p2ValueLow
+               && t3p4ValueLow != 0
+               && t3p6ValueTmp < t3p4ValueLow
            ) {
             if(tt4p1DateTime == 0 && t3AlertT3P6CreatedTT4MissingSended == false) t3AlertT3P6CreatedTT4MissingAction();
             if(t3AlertT3P6CreatedSended == false) t3AlertT3P6CreatedAction();
