@@ -120,8 +120,9 @@ int OnInit() {
       handleTT4ObjectsInitAction();
       handleT4ObjectsInitAction();
 
-      handleCommentAction(VERSION);
    }
+
+   handleCommentAction(VERSION);
 
    if(Period() == PERIOD_H1) {
       setT2VLineStyles();
@@ -213,6 +214,8 @@ void OnTick() {
    t2HandleObjectsAction();
    t3HandleObjectsAction();
    t4HandleObjectsAction();
+
+   if(t3comment == "") handleCommentAction(VERSION);
 
    if(isNewM1Bar) {
       handleCommentAction(VERSION);
