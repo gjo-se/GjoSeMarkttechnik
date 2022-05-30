@@ -56,7 +56,7 @@ void handleT3P2() {
      ) {
 
       if(tt3p1DateTime != 0) {
-         
+
          t3AlertT3VLineOn0Sended = false;
 
          if(t3SemiTrendDirection == TREND_DIRECTION_LONG) {
@@ -69,6 +69,10 @@ void handleT3P2() {
                   && t3P1P2MovementPoints > (tt3movementLength * InpT3MinMovementLengthBasedOnTT3MovementPercent / 100)
               ) {
                createT3P2VLine(t3p2DateTimeLocal, t3p2ObjectName);
+               if(t4p1DateTime != 0 && t4p2DateTime != 0 && t4p1DateTime > t4p2DateTime) {
+                  resetT4Trend();
+                  createT3P2VLine(t3p2DateTimeLocal, t3p2ObjectName);
+               }
                getT3TrendDirection();
             }
          }
@@ -83,11 +87,15 @@ void handleT3P2() {
                   && t3P1P2MovementPoints > (tt3movementLength * InpT3MinMovementLengthBasedOnTT3MovementPercent / 100)
               ) {
                createT3P2VLine(t3p2DateTimeLocal, t3p2ObjectName);
+               if(t4p1DateTime != 0 && t4p2DateTime != 0 && t4p1DateTime > t4p2DateTime) {
+                  resetT4Trend();
+                  createT3P2VLine(t3p2DateTimeLocal, t3p2ObjectName);
+               }
                getT3TrendDirection();
             }
          }
       } else {
-        // TODO: der erscheint mir blödsinnig!!
+         // TODO: der erscheint mir blödsinnig!!
          if(t3AlertT3VLineOn0Sended == false) t3AlertT3VLineOn0Action();
 
          createErrorLabel(errorText);
@@ -117,6 +125,10 @@ void handleT3P3() {
                && t3P2P3RegressionPoints > (tt3regressionLength * InpT3MinRegressionLengthBasedOnTT3RegressionPercent / 100)
            ) {
             createT3P3VLine(t3p3DateTimeTmp, t3p3ObjectName);
+            if(t4p1DateTime != 0 && t4p2DateTime != 0 && t4p1DateTime > t4p2DateTime) {
+               resetT4Trend();
+               createT3P3VLine(t3p3DateTimeTmp, t3p3ObjectName);
+            }
          }
       }
 
@@ -130,6 +142,10 @@ void handleT3P3() {
                && t3P2P3RegressionPoints > (tt3regressionLength * InpT3MinRegressionLengthBasedOnTT3RegressionPercent / 100)
            ) {
             createT3P3VLine(t3p3DateTimeTmp, t3p3ObjectName);
+            if(t4p1DateTime != 0 && t4p2DateTime != 0 && t4p1DateTime > t4p2DateTime) {
+               resetT4Trend();
+               createT3P3VLine(t3p3DateTimeTmp, t3p3ObjectName);
+            }
          }
       }
    }
@@ -156,6 +172,10 @@ void handleT3P4() {
                && t3p4ValueTmp > t3p2ValueHigh
            ) {
             createT3P4VLine(t3p4DateTimeTmp, t3p4ObjectName);
+            if(t4p1DateTime != 0 && t4p2DateTime != 0 && t4p1DateTime > t4p2DateTime) {
+               resetT4Trend();
+               createT3P4VLine(t3p4DateTimeTmp, t3p4ObjectName);
+            }
             getT3TrendDirection();
          }
       }
@@ -170,6 +190,10 @@ void handleT3P4() {
                && t3p4ValueTmp < t3p2ValueLow
            ) {
             createT3P4VLine(t3p4DateTimeTmp, t3p4ObjectName);
+            if(t4p1DateTime != 0 && t4p2DateTime != 0 && t4p1DateTime > t4p2DateTime) {
+               resetT4Trend();
+               createT3P4VLine(t3p4DateTimeTmp, t3p4ObjectName);
+            }
             getT3TrendDirection();
          }
       }
@@ -197,6 +221,10 @@ void handleT3P5() {
                && t3P4P5RegressionPoints > (tt3regressionLength * InpT3MinRegressionLengthBasedOnTT3RegressionPercent / 100)
            ) {
             createT3P5VLine(t3p5DateTimeTmp, t3p5ObjectName);
+            if(t4p1DateTime != 0 && t4p2DateTime != 0 && t4p1DateTime > t4p2DateTime) {
+               resetT4Trend();
+               createT3P5VLine(t3p5DateTimeTmp, t3p5ObjectName);
+            }
          }
       }
 
@@ -210,6 +238,10 @@ void handleT3P5() {
                && t3P4P5RegressionPoints > (tt3regressionLength * InpT3MinRegressionLengthBasedOnTT3RegressionPercent / 100)
            ) {
             createT3P5VLine(t3p5DateTimeTmp, t3p5ObjectName);
+            if(t4p1DateTime != 0 && t4p2DateTime != 0 && t4p1DateTime > t4p2DateTime) {
+               resetT4Trend();
+               createT3P5VLine(t3p5DateTimeTmp, t3p5ObjectName);
+            }
          }
       }
    }
@@ -237,7 +269,10 @@ void handleT3P6() {
             if(tt4p1DateTime == 0 && t3AlertT3P6CreatedTT4MissingSended == false) t3AlertT3P6CreatedTT4MissingAction();
             if(t3AlertT3P6CreatedSended == false) t3AlertT3P6CreatedAction();
             createT3P6VLine(t3p6DateTimeTmp, t3p6ObjectName);
-            resetT4Trend();
+            if(t4p1DateTime != 0 && t4p2DateTime != 0 && t4p1DateTime > t4p2DateTime) {
+               resetT4Trend();
+               createT3P6VLine(t3p6DateTimeTmp, t3p6ObjectName);
+            }
          }
       }
 
@@ -253,7 +288,10 @@ void handleT3P6() {
             if(tt4p1DateTime == 0 && t3AlertT3P6CreatedTT4MissingSended == false) t3AlertT3P6CreatedTT4MissingAction();
             if(t3AlertT3P6CreatedSended == false) t3AlertT3P6CreatedAction();
             createT3P6VLine(t3p6DateTimeTmp, t3p6ObjectName);
-            resetT4Trend();
+            if(t4p1DateTime != 0 && t4p2DateTime != 0 && t4p1DateTime > t4p2DateTime) {
+               resetT4Trend();
+               createT3P6VLine(t3p6DateTimeTmp, t3p6ObjectName);
+            }
          }
       }
    }
@@ -279,6 +317,10 @@ void handleT3P7() {
                && t3P6P7RegressionPoints > (tt3regressionLength * InpT3MinRegressionLengthBasedOnTT3RegressionPercent / 100)
            ) {
             createT3P7VLine(t3p7DateTimeTmp, t3p7ObjectName);
+            if(t4p1DateTime != 0 && t4p2DateTime != 0 && t4p1DateTime > t4p2DateTime) {
+               resetT4Trend();
+               createT3P7VLine(t3p7DateTimeTmp, t3p7ObjectName);
+            }
          }
       }
 
@@ -292,6 +334,10 @@ void handleT3P7() {
                && t3P6P7RegressionPoints > (tt3regressionLength * InpT3MinRegressionLengthBasedOnTT3RegressionPercent / 100)
            ) {
             createT3P7VLine(t3p7DateTimeTmp, t3p7ObjectName);
+            if(t4p1DateTime != 0 && t4p2DateTime != 0 && t4p1DateTime > t4p2DateTime) {
+               resetT4Trend();
+               createT3P7VLine(t3p7DateTimeTmp, t3p7ObjectName);
+            }
          }
       }
    }

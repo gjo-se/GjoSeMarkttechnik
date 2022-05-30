@@ -59,6 +59,14 @@ void handleT2P2() {
                && t2P1P2MovementPoints > (tt2movementLength * InpT2MinMovementLengthBasedOnTT2MovementPercent / 100)
            ) {
             createT2P2VLine(t2p2DateTimeTmp, t2p2ObjectName);
+            if(t3p1DateTime != 0 && t3p2DateTime != 0 && t3p1DateTime > t3p2DateTime){
+                resetT3Trend();
+                createT2P2VLine(t2p2DateTimeTmp, t2p2ObjectName);
+            }
+            if(t4p1DateTime != 0 && t4p2DateTime != 0 && t4p1DateTime > t4p2DateTime){
+                resetT4Trend();
+                createT2P2VLine(t2p2DateTimeTmp, t2p2ObjectName);
+            }
             getT2TrendDirection();
          }
       }
@@ -73,6 +81,14 @@ void handleT2P2() {
                && t2P1P2MovementPoints > (tt2movementLength * InpT2MinMovementLengthBasedOnTT2MovementPercent / 100)
            ) {
             createT2P2VLine(t2p2DateTimeTmp, t2p2ObjectName);
+            if(t3p1DateTime != 0 && t3p2DateTime != 0 && t3p1DateTime > t3p2DateTime){
+                resetT3Trend();
+                createT2P2VLine(t2p2DateTimeTmp, t2p2ObjectName);
+            }
+            if(t4p1DateTime != 0 && t4p2DateTime != 0 && t4p1DateTime > t4p2DateTime){
+                resetT4Trend();
+                createT2P2VLine(t2p2DateTimeTmp, t2p2ObjectName);
+            }
             getT2TrendDirection();
          }
       }
@@ -101,6 +117,14 @@ void handleT2P3() {
                && t2P2P3RegressionPoints > (tt2regressionLength * InpT2MinRegressionLengthBasedOnTT2RegressionPercent / 100)
            ) {
             createT2P3VLine(t2p3DateTimeTmp, t2p3ObjectName);
+            if(t3p1DateTime != 0 && t3p2DateTime != 0 && t3p1DateTime > t3p2DateTime){
+                resetT3Trend();
+                createT2P3VLine(t2p3DateTimeTmp, t2p3ObjectName);
+            }
+            if(t4p1DateTime != 0 && t4p2DateTime != 0 && t4p1DateTime > t4p2DateTime){
+                resetT4Trend();
+                createT2P3VLine(t2p3DateTimeTmp, t2p3ObjectName);
+            }
          }
       }
 
@@ -114,6 +138,14 @@ void handleT2P3() {
                && t2P2P3RegressionPoints > (tt2regressionLength * InpT2MinRegressionLengthBasedOnTT2RegressionPercent / 100)
            ) {
             createT2P3VLine(t2p3DateTimeTmp, t2p3ObjectName);
+            if(t3p1DateTime != 0 && t3p2DateTime != 0 && t3p1DateTime > t3p2DateTime){
+                resetT3Trend();
+                createT2P3VLine(t2p3DateTimeTmp, t2p3ObjectName);
+            }
+            if(t4p1DateTime != 0 && t4p2DateTime != 0 && t4p1DateTime > t4p2DateTime){
+                resetT4Trend();
+                createT2P3VLine(t2p3DateTimeTmp, t2p3ObjectName);
+            }
          }
       }
    }
@@ -139,10 +171,17 @@ void handleT2P4() {
                && t2p4ValueTmp > t2p2ValueHigh
            ) {
             createT2P4VLine(t2p4DateTimeTmp, t2p4ObjectName);
+            if(t3p1DateTime != 0 && t3p2DateTime != 0 && t3p1DateTime > t3p2DateTime){
+                resetT3Trend();
+                createT2P4VLine(t2p4DateTimeTmp, t2p4ObjectName);
+            }
+            if(t4p1DateTime != 0 && t4p2DateTime != 0 && t4p1DateTime > t4p2DateTime){
+                resetT4Trend();
+                createT2P4VLine(t2p4DateTimeTmp, t2p4ObjectName);
+            }
             if(tt3p1DateTime == 0 && t2AlertT2P4CreatedTT3MissingSended == false) t2AlertT2P4CreatedTT3MissingAction();
             if(t2MaxHighVolumeAreaLevel == 0 && t2AlertT2P4CreatedHighVolumeAreaMissingSended == false) t2AlertT2P4CreatedHighVolumeAreaMissingAction();
             getT2TrendDirection();
-            resetT3Trend();
          }
       }
 
@@ -156,10 +195,17 @@ void handleT2P4() {
                && t2p4ValueTmp < t2p2ValueLow
            ) {
             createT2P4VLine(t2p4DateTimeTmp, t2p4ObjectName);
+            if(t3p1DateTime != 0 && t3p2DateTime != 0 && t3p1DateTime > t3p2DateTime){
+                resetT3Trend();
+                createT2P4VLine(t2p4DateTimeTmp, t2p4ObjectName);
+            }
+            if(t4p1DateTime != 0 && t4p2DateTime != 0 && t4p1DateTime > t4p2DateTime){
+                resetT4Trend();
+                createT2P4VLine(t2p4DateTimeTmp, t2p4ObjectName);
+            }
             if(tt3p1DateTime == 0 && t2AlertT2P4CreatedTT3MissingSended == false) t2AlertT2P4CreatedTT3MissingAction();
             if(t2MaxHighVolumeAreaLevel == 0 && t2AlertT2P4CreatedHighVolumeAreaMissingSended == false) t2AlertT2P4CreatedHighVolumeAreaMissingAction();
             getT2TrendDirection();
-            resetT3Trend();
          }
       }
    }
@@ -185,6 +231,14 @@ void handleT2P5() {
                && t2P4P5RegressionPoints > (tt2regressionLength * InpT2MinRegressionLengthBasedOnTT2RegressionPercent / 100)
            ) {
             createT2P5VLine(t2p5DateTimeTmp, t2p5ObjectName);
+            if(t3p1DateTime != 0 && t3p2DateTime != 0 && t3p1DateTime > t3p2DateTime){
+                resetT3Trend();
+                createT2P5VLine(t2p5DateTimeTmp, t2p5ObjectName);
+            }
+            if(t4p1DateTime != 0 && t4p2DateTime != 0 && t4p1DateTime > t4p2DateTime){
+                resetT4Trend();
+                createT2P5VLine(t2p5DateTimeTmp, t2p5ObjectName);
+            }
             if(t2AlertT2P5CreatedSended == false && t3p1DateTime == 0) t2AlertT2P5CreatedAction();
          }
       }
@@ -199,6 +253,14 @@ void handleT2P5() {
                && t2P4P5RegressionPoints > (tt2regressionLength * InpT2MinRegressionLengthBasedOnTT2RegressionPercent / 100)
            ) {
             createT2P5VLine(t2p5DateTimeTmp, t2p5ObjectName);
+            if(t3p1DateTime != 0 && t3p2DateTime != 0 && t3p1DateTime > t3p2DateTime){
+                resetT3Trend();
+                createT2P5VLine(t2p5DateTimeTmp, t2p5ObjectName);
+            }
+            if(t4p1DateTime != 0 && t4p2DateTime != 0 && t4p1DateTime > t4p2DateTime){
+                resetT4Trend();
+                createT2P5VLine(t2p5DateTimeTmp, t2p5ObjectName);
+            }
             if(t2AlertT2P5CreatedSended == false && t3p1DateTime == 0) t2AlertT2P5CreatedAction();
          }
       }
