@@ -267,7 +267,7 @@ void handleT3P6() {
                && t3p6ValueTmp > t3p4ValueHigh
            ) {
             if(tt4p1DateTime == 0 && t3AlertT3P6CreatedTT4MissingSended == false) t3AlertT3P6CreatedTT4MissingAction();
-            if(t3AlertT3P6CreatedSended == false) t3AlertT3P6CreatedAction();
+            if(t3AlertT3P6CreatedSended == false && t4p1DateTime == 0) t3AlertT3P6CreatedAction();
             createT3P6VLine(t3p6DateTimeTmp, t3p6ObjectName);
             if(t4p1DateTime != 0 && t4p2DateTime != 0 && t4p1DateTime > t4p2DateTime) {
                resetT4Trend();
@@ -286,7 +286,7 @@ void handleT3P6() {
                && t3p6ValueTmp < t3p4ValueLow
            ) {
             if(tt4p1DateTime == 0 && t3AlertT3P6CreatedTT4MissingSended == false) t3AlertT3P6CreatedTT4MissingAction();
-            if(t3AlertT3P6CreatedSended == false) t3AlertT3P6CreatedAction();
+            if(t3AlertT3P6CreatedSended == false && t4p1DateTime == 0) t3AlertT3P6CreatedAction();
             createT3P6VLine(t3p6DateTimeTmp, t3p6ObjectName);
             if(t4p1DateTime != 0 && t4p2DateTime != 0 && t4p1DateTime > t4p2DateTime) {
                resetT4Trend();
