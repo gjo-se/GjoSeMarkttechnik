@@ -80,8 +80,8 @@ void setT2VLineStyles(const string pSubString = "T2-") {
    for(int i = objectsTotal; i >= 0; i--) {
       objName = ObjectName(ChartID(), i);
       if(ObjectGetInteger(ChartID(), objName, OBJPROP_TYPE) == OBJ_VLINE
-      && StringFind(objName, pSubString) != -1
-      ) {
+            && StringFind(objName, pSubString) != -1
+        ) {
          ObjectSetInteger(ChartID(), objName, OBJPROP_WIDTH, InpT2LineWidth);
          ObjectSetInteger(ChartID(), objName, OBJPROP_STYLE, InpT2LineStyle);
          ObjectSetInteger(ChartID(), objName, OBJPROP_COLOR, InpT2VLineColor);
@@ -103,7 +103,18 @@ void createT2P1VLine(const datetime pDateTime, const string pObjName = "") {
    t2p1ValueHigh = iHigh(Symbol(), PERIOD_CURRENT, iBarShift(Symbol(), PERIOD_CURRENT, t2p1DateTime));
    t2p1ValueLow = iLow(Symbol(), PERIOD_CURRENT, iBarShift(Symbol(), PERIOD_CURRENT, t2p1DateTime));
 
-   if(pObjName != "") objName = pObjName;
+   if(pObjName == objName + " T3-P1") {
+      objName = pObjName;
+      t3p1DateTime = pDateTime;
+      t3p1ValueHigh = iHigh(Symbol(), PERIOD_CURRENT, iBarShift(Symbol(), PERIOD_CURRENT, t3p1DateTime));
+      t3p1ValueLow = iLow(Symbol(), PERIOD_CURRENT, iBarShift(Symbol(), PERIOD_CURRENT, t3p1DateTime));
+   }
+   if(pObjName == objName + " T4-P1") {
+      objName = pObjName;
+      t4p1DateTime = pDateTime;
+      t4p1ValueHigh = iHigh(Symbol(), PERIOD_CURRENT, iBarShift(Symbol(), PERIOD_CURRENT, t4p1DateTime));
+      t4p1ValueLow = iLow(Symbol(), PERIOD_CURRENT, iBarShift(Symbol(), PERIOD_CURRENT, t4p1DateTime));
+   }
 
    createVLine(objName, t2p1DateTime, InpT2VLineColor, InpT2LineWidth, InpT2LineStyle, objName, zOrder, isBackground, isSelected, isSelectable);
    ObjectSetInteger(ChartID(), objName, OBJPROP_TIMEFRAMES, InpT2VisibleTimeframes);
@@ -121,7 +132,18 @@ void createT2P2VLine(const datetime pDateTime, const string pObjName = "") {
    t2p2ValueHigh = iHigh(Symbol(), PERIOD_CURRENT, iBarShift(Symbol(), PERIOD_CURRENT, t2p2DateTime));
    t2p2ValueLow = iLow(Symbol(), PERIOD_CURRENT, iBarShift(Symbol(), PERIOD_CURRENT, t2p2DateTime));
 
-   if(pObjName != "") objName = pObjName;
+   if(pObjName == objName + " T3-P1") {
+      objName = pObjName;
+      t3p1DateTime = pDateTime;
+      t3p1ValueHigh = iHigh(Symbol(), PERIOD_CURRENT, iBarShift(Symbol(), PERIOD_CURRENT, t3p1DateTime));
+      t3p1ValueLow = iLow(Symbol(), PERIOD_CURRENT, iBarShift(Symbol(), PERIOD_CURRENT, t3p1DateTime));
+   }
+   if(pObjName == objName + " T4-P1") {
+      objName = pObjName;
+      t4p1DateTime = pDateTime;
+      t4p1ValueHigh = iHigh(Symbol(), PERIOD_CURRENT, iBarShift(Symbol(), PERIOD_CURRENT, t4p1DateTime));
+      t4p1ValueLow = iLow(Symbol(), PERIOD_CURRENT, iBarShift(Symbol(), PERIOD_CURRENT, t4p1DateTime));
+   }
 
    createVLine(objName, t2p2DateTime, InpT2VLineColor, InpT2LineWidth, InpT2LineStyle, objName, zOrder, isBackground, isSelected, isSelectable);
    ObjectSetInteger(ChartID(), objName, OBJPROP_TIMEFRAMES, InpT2VisibleTimeframes);
@@ -139,7 +161,18 @@ void createT2P3VLine(const datetime pDateTime, const string pObjName = "") {
    t2p3ValueHigh = iHigh(Symbol(), PERIOD_CURRENT, iBarShift(Symbol(), PERIOD_CURRENT, t2p3DateTime));
    t2p3ValueLow = iLow(Symbol(), PERIOD_CURRENT, iBarShift(Symbol(), PERIOD_CURRENT, t2p3DateTime));
 
-   if(pObjName != "") objName = pObjName;
+   if(pObjName == objName + " T3-P1") {
+      objName = pObjName;
+      t3p1DateTime = pDateTime;
+      t3p1ValueHigh = iHigh(Symbol(), PERIOD_CURRENT, iBarShift(Symbol(), PERIOD_CURRENT, t3p1DateTime));
+      t3p1ValueLow = iLow(Symbol(), PERIOD_CURRENT, iBarShift(Symbol(), PERIOD_CURRENT, t3p1DateTime));
+   }
+   if(pObjName == objName + " T4-P1") {
+      objName = pObjName;
+      t4p1DateTime = pDateTime;
+      t4p1ValueHigh = iHigh(Symbol(), PERIOD_CURRENT, iBarShift(Symbol(), PERIOD_CURRENT, t4p1DateTime));
+      t4p1ValueLow = iLow(Symbol(), PERIOD_CURRENT, iBarShift(Symbol(), PERIOD_CURRENT, t4p1DateTime));
+   }
 
    createVLine(objName, t2p3DateTime, InpT2VLineColor, InpT2LineWidth, InpT2LineStyle, objName, zOrder, isBackground, isSelected, isSelectable);
    ObjectSetInteger(ChartID(), objName, OBJPROP_TIMEFRAMES, InpT2VisibleTimeframes);
@@ -157,7 +190,18 @@ void createT2P4VLine(const datetime pDateTime, const string pObjName = "") {
    t2p4ValueHigh = iHigh(Symbol(), PERIOD_CURRENT, iBarShift(Symbol(), PERIOD_CURRENT, t2p4DateTime));
    t2p4ValueLow = iLow(Symbol(), PERIOD_CURRENT, iBarShift(Symbol(), PERIOD_CURRENT, t2p4DateTime));
 
-   if(pObjName != "") objName = pObjName;
+   if(pObjName == objName + " T3-P1") {
+      objName = pObjName;
+      t3p1DateTime = pDateTime;
+      t3p1ValueHigh = iHigh(Symbol(), PERIOD_CURRENT, iBarShift(Symbol(), PERIOD_CURRENT, t3p1DateTime));
+      t3p1ValueLow = iLow(Symbol(), PERIOD_CURRENT, iBarShift(Symbol(), PERIOD_CURRENT, t3p1DateTime));
+   }
+   if(pObjName == objName + " T4-P1") {
+      objName = pObjName;
+      t4p1DateTime = pDateTime;
+      t4p1ValueHigh = iHigh(Symbol(), PERIOD_CURRENT, iBarShift(Symbol(), PERIOD_CURRENT, t4p1DateTime));
+      t4p1ValueLow = iLow(Symbol(), PERIOD_CURRENT, iBarShift(Symbol(), PERIOD_CURRENT, t4p1DateTime));
+   }
 
    createVLine(objName, t2p4DateTime, InpT2VLineColor, InpT2LineWidth, InpT2LineStyle, objName, zOrder, isBackground, isSelected, isSelectable);
    ObjectSetInteger(ChartID(), objName, OBJPROP_TIMEFRAMES, InpT2VisibleTimeframes);
@@ -176,7 +220,18 @@ void createT2P5VLine(const datetime pDateTime, const string pObjName = "") {
    t2p5ValueHigh = iHigh(Symbol(), PERIOD_CURRENT, iBarShift(Symbol(), PERIOD_CURRENT, t2p5DateTime));
    t2p5ValueLow = iLow(Symbol(), PERIOD_CURRENT, iBarShift(Symbol(), PERIOD_CURRENT, t2p5DateTime));
 
-   if(pObjName != "") objName = pObjName;
+   if(pObjName == objName + " T3-P1") {
+      objName = pObjName;
+      t3p1DateTime = pDateTime;
+      t3p1ValueHigh = iHigh(Symbol(), PERIOD_CURRENT, iBarShift(Symbol(), PERIOD_CURRENT, t3p1DateTime));
+      t3p1ValueLow = iLow(Symbol(), PERIOD_CURRENT, iBarShift(Symbol(), PERIOD_CURRENT, t3p1DateTime));
+   }
+   if(pObjName == objName + " T4-P1") {
+      objName = pObjName;
+      t4p1DateTime = pDateTime;
+      t4p1ValueHigh = iHigh(Symbol(), PERIOD_CURRENT, iBarShift(Symbol(), PERIOD_CURRENT, t4p1DateTime));
+      t4p1ValueLow = iLow(Symbol(), PERIOD_CURRENT, iBarShift(Symbol(), PERIOD_CURRENT, t4p1DateTime));
+   }
 
    createVLine(objName, t2p5DateTime, InpT2VLineColor, InpT2LineWidth, InpT2LineStyle, objName, zOrder, isBackground, isSelected, isSelectable);
    ObjectSetInteger(ChartID(), objName, OBJPROP_TIMEFRAMES, InpT2VisibleTimeframes);

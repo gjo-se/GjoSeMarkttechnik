@@ -135,7 +135,9 @@ void handleT4P4() {
    datetime t4p4DateTimeLocal = 0;
    double   t4p4ValueLocal = 0;
 
-   if(t4p3ValueHigh != 0 && t4p3DateTime < (int)TimeCurrent()) {
+   if(t4p3ValueHigh != 0 && t4p3DateTime < (int)TimeCurrent()
+         && t4p4DateTime == 0
+     ) {
 
       if(t4SemiTrendDirection == TREND_DIRECTION_LONG || t4trendDirection == TREND_DIRECTION_LONG) {
          t4p4DateTimeLocal = iTime(Symbol(), PERIOD_M1, iHighest(Symbol(), PERIOD_M1, MODE_HIGH,  iBarShift(Symbol(), PERIOD_M1, t4p3DateTime) + 1));

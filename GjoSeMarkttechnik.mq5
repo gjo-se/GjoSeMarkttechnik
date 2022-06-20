@@ -56,6 +56,7 @@
    3.9.1 fixed HighVolumeArea
    4.0.0 fixed TrendDetection & Screenshots T2/T3/T4
    4.0.1 fixed TrendDetection T2/T3/T4
+   4.0.2 fixed diverse
    ===============
 
 */
@@ -74,7 +75,7 @@
 #property copyright   "2022, GjoSe"
 #property link        "http://www.gjo-se.com"
 #property description "GjoSe Markttechnik"
-#define   VERSION "4.0.1"
+#define   VERSION "4.0.2"
 #property version VERSION
 #property strict
 
@@ -120,8 +121,9 @@ int OnInit() {
       handleTT4ObjectsInitAction();
       handleT4ObjectsInitAction();
 
-      handleCommentAction(VERSION);
    }
+
+   handleCommentAction(VERSION);
 
    if(Period() == PERIOD_H1) {
       setT2VLineStyles();
@@ -213,6 +215,8 @@ void OnTick() {
    t2HandleObjectsAction();
    t3HandleObjectsAction();
    t4HandleObjectsAction();
+
+   if(t3comment == "") handleCommentAction(VERSION);
 
    if(isNewM1Bar) {
       handleCommentAction(VERSION);

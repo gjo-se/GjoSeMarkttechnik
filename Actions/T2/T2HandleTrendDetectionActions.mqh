@@ -41,6 +41,7 @@ void handleT2TrendDetectionAction() {
 void handleT2P2() {
 
    datetime t2p2DateTimeTmp = 0;
+   string   t2p2ObjectName = "";
    double   t2p2ValueTmp = 0;
    double   t2P1P2MovementPoints = 0;
 
@@ -51,24 +52,43 @@ void handleT2P2() {
       if(t2SemiTrendDirection == TREND_DIRECTION_LONG) {
          t2p2DateTimeTmp = iTime(Symbol(), PERIOD_M1, iHighest(Symbol(), PERIOD_M1, MODE_HIGH,  iBarShift(Symbol(), PERIOD_M1, t2p1DateTime) + 1));
          t2p2ValueTmp = iHigh(Symbol(), PERIOD_M1, iBarShift(Symbol(), PERIOD_M1, t2p2DateTimeTmp));
+         t2p2ObjectName = getVlineNameByNameLike(T2_P2_VLINE);
          t2P1P2MovementPoints = t2p2ValueTmp / Point() - t2p1ValueLow / Point();
 
          if(Bid() >= t2p2ValueTmp
                && t2P1P2MovementPoints > (tt2movementLength * InpT2MinMovementLengthBasedOnTT2MovementPercent / 100)
            ) {
-            createT2P2VLine(t2p2DateTimeTmp);
+            createT2P2VLine(t2p2DateTimeTmp, t2p2ObjectName);
+            if(t3p1DateTime != 0 && t3p2DateTime != 0 && t3p1DateTime > t3p2DateTime){
+                resetT3Trend();
+                createT2P2VLine(t2p2DateTimeTmp, t2p2ObjectName);
+            }
+            if(t4p1DateTime != 0 && t4p2DateTime != 0 && t4p1DateTime > t4p2DateTime){
+                resetT4Trend();
+                createT2P2VLine(t2p2DateTimeTmp, t2p2ObjectName);
+            }
+            getT2TrendDirection();
          }
       }
 
       if(t2SemiTrendDirection == TREND_DIRECTION_SHORT) {
          t2p2DateTimeTmp = iTime(Symbol(), PERIOD_M1, iLowest(Symbol(), PERIOD_M1, MODE_LOW,  iBarShift(Symbol(), PERIOD_M1, t2p1DateTime) + 1));
          t2p2ValueTmp = iLow(Symbol(), PERIOD_M1, iBarShift(Symbol(), PERIOD_M1, t2p2DateTimeTmp));
+         t2p2ObjectName = getVlineNameByNameLike(T2_P2_VLINE);
          t2P1P2MovementPoints = t2p1ValueHigh / Point() - t2p2ValueTmp / Point();
 
          if(Bid() <= t2p2ValueTmp
                && t2P1P2MovementPoints > (tt2movementLength * InpT2MinMovementLengthBasedOnTT2MovementPercent / 100)
            ) {
-            createT2P2VLine(t2p2DateTimeTmp);
+            createT2P2VLine(t2p2DateTimeTmp, t2p2ObjectName);
+            if(t3p1DateTime != 0 && t3p2DateTime != 0 && t3p1DateTime > t3p2DateTime){
+                resetT3Trend();
+                createT2P2VLine(t2p2DateTimeTmp, t2p2ObjectName);
+            }
+            if(t4p1DateTime != 0 && t4p2DateTime != 0 && t4p1DateTime > t4p2DateTime){
+                resetT4Trend();
+                createT2P2VLine(t2p2DateTimeTmp, t2p2ObjectName);
+            }
             getT2TrendDirection();
          }
       }
@@ -79,6 +99,7 @@ void handleT2P2() {
 void handleT2P3() {
 
    datetime t2p3DateTimeTmp = 0;
+   string   t2p3ObjectName = "";
    double   t2p3ValueTmp = 0;
    double   t2P2P3RegressionPoints = 0;
 
@@ -89,24 +110,42 @@ void handleT2P3() {
       if(t2SemiTrendDirection == TREND_DIRECTION_LONG) {
          t2p3DateTimeTmp = iTime(Symbol(), PERIOD_M1, iLowest(Symbol(), PERIOD_M1, MODE_LOW,  iBarShift(Symbol(), PERIOD_M1, t2p2DateTime) + 1));
          t2p3ValueTmp = iLow(Symbol(), PERIOD_M1, iBarShift(Symbol(), PERIOD_M1, t2p3DateTimeTmp));
+         t2p3ObjectName = getVlineNameByNameLike(T2_P3_VLINE);
          t2P2P3RegressionPoints = t2p2ValueHigh / Point() - t2p3ValueTmp / Point();
 
          if(Bid() <= t2p3ValueTmp
                && t2P2P3RegressionPoints > (tt2regressionLength * InpT2MinRegressionLengthBasedOnTT2RegressionPercent / 100)
            ) {
-            createT2P3VLine(t2p3DateTimeTmp);
+            createT2P3VLine(t2p3DateTimeTmp, t2p3ObjectName);
+            if(t3p1DateTime != 0 && t3p2DateTime != 0 && t3p1DateTime > t3p2DateTime){
+                resetT3Trend();
+                createT2P3VLine(t2p3DateTimeTmp, t2p3ObjectName);
+            }
+            if(t4p1DateTime != 0 && t4p2DateTime != 0 && t4p1DateTime > t4p2DateTime){
+                resetT4Trend();
+                createT2P3VLine(t2p3DateTimeTmp, t2p3ObjectName);
+            }
          }
       }
 
       if(t2SemiTrendDirection == TREND_DIRECTION_SHORT) {
          t2p3DateTimeTmp = iTime(Symbol(), PERIOD_M1, iHighest(Symbol(), PERIOD_M1, MODE_HIGH,  iBarShift(Symbol(), PERIOD_M1, t2p2DateTime) + 1));
          t2p3ValueTmp = iHigh(Symbol(), PERIOD_M1, iBarShift(Symbol(), PERIOD_M1, t2p3DateTimeTmp));
+         t2p3ObjectName = getVlineNameByNameLike(T2_P3_VLINE);
          t2P2P3RegressionPoints = t2p3ValueTmp / Point() - t2p2ValueLow / Point();
 
          if(Bid() >= t2p3ValueTmp
                && t2P2P3RegressionPoints > (tt2regressionLength * InpT2MinRegressionLengthBasedOnTT2RegressionPercent / 100)
            ) {
-            createT2P3VLine(t2p3DateTimeTmp);
+            createT2P3VLine(t2p3DateTimeTmp, t2p3ObjectName);
+            if(t3p1DateTime != 0 && t3p2DateTime != 0 && t3p1DateTime > t3p2DateTime){
+                resetT3Trend();
+                createT2P3VLine(t2p3DateTimeTmp, t2p3ObjectName);
+            }
+            if(t4p1DateTime != 0 && t4p2DateTime != 0 && t4p1DateTime > t4p2DateTime){
+                resetT4Trend();
+                createT2P3VLine(t2p3DateTimeTmp, t2p3ObjectName);
+            }
          }
       }
    }
@@ -115,6 +154,7 @@ void handleT2P3() {
 void handleT2P4() {
 
    datetime t2p4DateTimeTmp = 0;
+   string   t2p4ObjectName = "";
    double   t2p4ValueTmp = 0;
 
    if(t2p3ValueHigh != 0 && t2p3DateTime < (int)TimeCurrent()
@@ -124,32 +164,48 @@ void handleT2P4() {
       if(t2SemiTrendDirection == TREND_DIRECTION_LONG || t2trendDirection == TREND_DIRECTION_LONG) {
          t2p4DateTimeTmp = iTime(Symbol(), PERIOD_M1, iHighest(Symbol(), PERIOD_M1, MODE_HIGH,  iBarShift(Symbol(), PERIOD_M1, t2p3DateTime) + 1));
          t2p4ValueTmp = iHigh(Symbol(), PERIOD_M1, iBarShift(Symbol(), PERIOD_M1, t2p4DateTimeTmp));
+         t2p4ObjectName = getVlineNameByNameLike(T2_P4_VLINE);
 
          if(Bid() >= t2p4ValueTmp
                && t2p2ValueHigh != 0
                && t2p4ValueTmp > t2p2ValueHigh
            ) {
-            createT2P4VLine(t2p4DateTimeTmp);
+            createT2P4VLine(t2p4DateTimeTmp, t2p4ObjectName);
+            if(t3p1DateTime != 0 && t3p2DateTime != 0 && t3p1DateTime > t3p2DateTime){
+                resetT3Trend();
+                createT2P4VLine(t2p4DateTimeTmp, t2p4ObjectName);
+            }
+            if(t4p1DateTime != 0 && t4p2DateTime != 0 && t4p1DateTime > t4p2DateTime){
+                resetT4Trend();
+                createT2P4VLine(t2p4DateTimeTmp, t2p4ObjectName);
+            }
             if(tt3p1DateTime == 0 && t2AlertT2P4CreatedTT3MissingSended == false) t2AlertT2P4CreatedTT3MissingAction();
             if(t2MaxHighVolumeAreaLevel == 0 && t2AlertT2P4CreatedHighVolumeAreaMissingSended == false) t2AlertT2P4CreatedHighVolumeAreaMissingAction();
             getT2TrendDirection();
-            resetT3Trend();
          }
       }
 
       if(t2SemiTrendDirection == TREND_DIRECTION_SHORT || t2trendDirection == TREND_DIRECTION_SHORT) {
          t2p4DateTimeTmp = iTime(Symbol(), PERIOD_M1, iLowest(Symbol(), PERIOD_M1, MODE_LOW,  iBarShift(Symbol(), PERIOD_M1, t2p3DateTime) + 1));
          t2p4ValueTmp = iLow(Symbol(), PERIOD_M1, iBarShift(Symbol(), PERIOD_M1, t2p4DateTimeTmp));
+         t2p4ObjectName = getVlineNameByNameLike(T2_P4_VLINE);
 
          if(Bid() <= t2p4ValueTmp
                && t2p2ValueLow != 0
                && t2p4ValueTmp < t2p2ValueLow
            ) {
-            createT2P4VLine(t2p4DateTimeTmp);
+            createT2P4VLine(t2p4DateTimeTmp, t2p4ObjectName);
+            if(t3p1DateTime != 0 && t3p2DateTime != 0 && t3p1DateTime > t3p2DateTime){
+                resetT3Trend();
+                createT2P4VLine(t2p4DateTimeTmp, t2p4ObjectName);
+            }
+            if(t4p1DateTime != 0 && t4p2DateTime != 0 && t4p1DateTime > t4p2DateTime){
+                resetT4Trend();
+                createT2P4VLine(t2p4DateTimeTmp, t2p4ObjectName);
+            }
             if(tt3p1DateTime == 0 && t2AlertT2P4CreatedTT3MissingSended == false) t2AlertT2P4CreatedTT3MissingAction();
             if(t2MaxHighVolumeAreaLevel == 0 && t2AlertT2P4CreatedHighVolumeAreaMissingSended == false) t2AlertT2P4CreatedHighVolumeAreaMissingAction();
             getT2TrendDirection();
-            resetT3Trend();
          }
       }
    }
@@ -159,6 +215,7 @@ void handleT2P5() {
 
    datetime t2p5DateTimeTmp = 0;
    double   t2p5ValueTmp = 0;
+   string   t2p5ObjectName = "";
    double   t2P4P5RegressionPoints = 0;
 
    if(t2p4ValueLow != 0 && t2p4DateTime < (int)TimeCurrent()
@@ -167,12 +224,21 @@ void handleT2P5() {
       if(t2trendDirection == TREND_DIRECTION_LONG) {
          t2p5DateTimeTmp = iTime(Symbol(), PERIOD_M1, iLowest(Symbol(), PERIOD_M1, MODE_LOW,  iBarShift(Symbol(), PERIOD_M1, t2p4DateTime) + 1));
          t2p5ValueTmp = iLow(Symbol(), PERIOD_M1, iBarShift(Symbol(), PERIOD_M1, t2p5DateTimeTmp));
+         t2p5ObjectName = getVlineNameByNameLike(T2_P5_VLINE);
          t2P4P5RegressionPoints = t2p4ValueHigh / Point() - t2p5ValueTmp / Point();
 
          if(Bid() <= t2p5ValueTmp
                && t2P4P5RegressionPoints > (tt2regressionLength * InpT2MinRegressionLengthBasedOnTT2RegressionPercent / 100)
            ) {
-            createT2P5VLine(t2p5DateTimeTmp);
+            createT2P5VLine(t2p5DateTimeTmp, t2p5ObjectName);
+            if(t3p1DateTime != 0 && t3p2DateTime != 0 && t3p1DateTime > t3p2DateTime){
+                resetT3Trend();
+                createT2P5VLine(t2p5DateTimeTmp, t2p5ObjectName);
+            }
+            if(t4p1DateTime != 0 && t4p2DateTime != 0 && t4p1DateTime > t4p2DateTime){
+                resetT4Trend();
+                createT2P5VLine(t2p5DateTimeTmp, t2p5ObjectName);
+            }
             if(t2AlertT2P5CreatedSended == false && t3p1DateTime == 0) t2AlertT2P5CreatedAction();
          }
       }
@@ -180,12 +246,21 @@ void handleT2P5() {
       if(t2trendDirection == TREND_DIRECTION_SHORT) {
          t2p5DateTimeTmp = iTime(Symbol(), PERIOD_M1, iHighest(Symbol(), PERIOD_M1, MODE_HIGH,  iBarShift(Symbol(), PERIOD_M1, t2p4DateTime) + 1));
          t2p5ValueTmp = iHigh(Symbol(), PERIOD_M1, iBarShift(Symbol(), PERIOD_M1, t2p5DateTimeTmp));
+         t2p5ObjectName = getVlineNameByNameLike(T2_P5_VLINE);
          t2P4P5RegressionPoints = t2p5ValueTmp / Point() - t2p4ValueLow / Point();
 
          if(Bid() >= t2p5ValueTmp
                && t2P4P5RegressionPoints > (tt2regressionLength * InpT2MinRegressionLengthBasedOnTT2RegressionPercent / 100)
            ) {
-            createT2P5VLine(t2p5DateTimeTmp);
+            createT2P5VLine(t2p5DateTimeTmp, t2p5ObjectName);
+            if(t3p1DateTime != 0 && t3p2DateTime != 0 && t3p1DateTime > t3p2DateTime){
+                resetT3Trend();
+                createT2P5VLine(t2p5DateTimeTmp, t2p5ObjectName);
+            }
+            if(t4p1DateTime != 0 && t4p2DateTime != 0 && t4p1DateTime > t4p2DateTime){
+                resetT4Trend();
+                createT2P5VLine(t2p5DateTimeTmp, t2p5ObjectName);
+            }
             if(t2AlertT2P5CreatedSended == false && t3p1DateTime == 0) t2AlertT2P5CreatedAction();
          }
       }
