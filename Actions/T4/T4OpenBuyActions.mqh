@@ -37,7 +37,7 @@ double getT4BuyVolume() {
 
 // TODO: auslagern, für buy & Sell
 double getPointValueBySymbol(string pPositionSymbol) {
-   return SymbolInfoDouble(Symbol(), SYMBOL_TRADE_TICK_VALUE) / SymbolInfoDouble(Symbol(), SYMBOL_TRADE_TICK_SIZE) * Point();
+   return SymbolInfoDouble(pPositionSymbol, SYMBOL_TRADE_TICK_VALUE) / SymbolInfoDouble(pPositionSymbol, SYMBOL_TRADE_TICK_SIZE) * Point();
 }
 
 //+------------------------------------------------------------------+
