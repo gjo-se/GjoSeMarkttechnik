@@ -71,52 +71,6 @@ void getTT3TrendDirection() {
       if(tt3p3ValueHigh < tt3p4ValueHigh) tt3trendDirection = TREND_DIRECTION_LONG;
       if(tt3p3ValueHigh > tt3p4ValueHigh) tt3trendDirection = TREND_DIRECTION_SHORT;
    }
-
-   setTT3MovementAndRegressionLength();
-}
-
-void setTT3MovementAndRegressionLength() {
-
-   if(tt3p1DateTime != 0
-         && tt3p2DateTime != 0
-         && tt3p3DateTime != 0
-         && tt3p4DateTime != 0
-         && tt3p5DateTime != 0
-         && tt3p6DateTime != 0
-     ) {
-
-      if(tt3trendDirection == TREND_DIRECTION_LONG) {
-         tt3movementLengthP1P2 = (tt3p2ValueHigh - tt3p1ValueLow) / Point();
-         tt3movementLengthP3P4 = (tt3p4ValueHigh - tt3p3ValueLow) / Point();
-         tt3movementLengthP5P6 = (tt3p6ValueHigh - tt3p5ValueLow) / Point();
-
-         tt3regressionLengthP2P3 = (tt3p2ValueHigh - tt3p3ValueLow) / Point();
-         tt3regressionLengthP4P5 = (tt3p4ValueHigh - tt3p5ValueLow) / Point();
-      }
-
-      if(tt3trendDirection == TREND_DIRECTION_SHORT) {
-         tt3movementLengthP1P2 = (tt3p1ValueHigh - tt3p2ValueLow) / Point();
-         tt3movementLengthP3P4 = (tt3p3ValueHigh - tt3p4ValueLow) / Point();
-         tt3movementLengthP5P6 = (tt3p5ValueHigh - tt3p6ValueLow) / Point();
-
-         tt3regressionLengthP2P3 = (tt3p3ValueHigh - tt3p2ValueLow) / Point();
-         tt3regressionLengthP4P5 = (tt3p5ValueHigh - tt3p4ValueLow) / Point();
-      }
-
-      if(tt3movementLengthP1P2 != 0 && tt3movementLengthP3P4 != 0 && tt3movementLengthP5P6 != 0) {
-         tt3movementLength = (tt3movementLengthP1P2 + tt3movementLengthP3P4 + tt3movementLengthP5P6) / 3;
-      }
-
-      if(tt3regressionLengthP2P3 != 0 && tt3regressionLengthP4P5 != 0) {
-         tt3regressionLength = (tt3regressionLengthP2P3 + tt3regressionLengthP4P5) / 2;
-      }
-
-      if(tt3regressionLength != 0 && tt3movementLength != 0) {
-         tt3movementLengthRegressionLengthRatio = tt3regressionLength / tt3movementLength * 100;
-      }
-
-      convertInpT3StringsToArray();
-   }
 }
 
 void getTT4TrendDirection() {

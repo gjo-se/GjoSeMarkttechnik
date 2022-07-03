@@ -21,7 +21,7 @@ void createT3RegressionChannel() {
    if(startDateTime != 0 && endDateTime != 0 ) {
       createRegressionChannel(T3_REGRESSION_CHANNEL, startDateTime, endDateTime, InpT3DefaultColor, isFilled, InpT3LineStyle, InpT3LineWidth);
       ObjectSetInteger(ChartID(), T3_REGRESSION_CHANNEL, OBJPROP_TIMEFRAMES, visbility);
-   }else{
+   } else {
       deleteRegressionChannel(T3_REGRESSION_CHANNEL);
    }
 }
@@ -61,8 +61,21 @@ void createT3RegressionChannelLevels() {
       double t3RegressionChannel75EndValue   = t3RegressionChannel0EndValue + (t3RegressionChannel100EndValue - t3RegressionChannel0EndValue) / 4 * 3;
       createTrendLine(T3_REGRESSION_CHANNEL + "75", startDateTime, t3RegressionChannel75StartValue, endDateTime, t3RegressionChannel75EndValue, InpT3DefaultColor, thinLineWidth, InpT3LineStyle, "   75%");
       ObjectSetInteger(ChartID(), T3_REGRESSION_CHANNEL + "75", OBJPROP_TIMEFRAMES, InpT3VisibleTimeframes);
-   }else{
+
+      double t3RegressionChannelMiddleStartValue   = ObjectGetValueByTime(ChartID(), T3_REGRESSION_CHANNEL, startDateTime, 0);
+      double t3RegressionChannelMinAverageStartValue = t3RegressionChannelMiddleStartValue - (tt3RegressionChannelWidthAveragePoints * Point() / 2);
+      double t3RegressionChannelMaxAverageStartValue = t3RegressionChannelMiddleStartValue + (tt3RegressionChannelWidthAveragePoints * Point() / 2);
+      double t3RegressionChannelMiddleEndValue   = ObjectGetValueByTime(ChartID(), T3_REGRESSION_CHANNEL, endDateTime, 0);
+      double t3RegressionChannelMinAverageEndValue = t3RegressionChannelMiddleEndValue - (tt3RegressionChannelWidthAveragePoints * Point() / 2);
+      double t3RegressionChannelMaxAverageEndValue = t3RegressionChannelMiddleEndValue + (tt3RegressionChannelWidthAveragePoints * Point() / 2);
+      createTrendLine(T3_REGRESSION_CHANNEL + "AverageMin", startDateTime, t3RegressionChannelMinAverageStartValue, endDateTime, t3RegressionChannelMinAverageEndValue, clrMaroon, InpT3LineWidth, InpT3LineStyle, "   AVG");
+      ObjectSetInteger(ChartID(), T3_REGRESSION_CHANNEL + "AverageMin", OBJPROP_TIMEFRAMES, InpT3VisibleTimeframes);
+      createTrendLine(T3_REGRESSION_CHANNEL + "AverageMax", startDateTime, t3RegressionChannelMaxAverageStartValue, endDateTime, t3RegressionChannelMaxAverageEndValue, clrMaroon, InpT3LineWidth, InpT3LineStyle, "   AVG");
+      ObjectSetInteger(ChartID(), T3_REGRESSION_CHANNEL + "AverageMax", OBJPROP_TIMEFRAMES, InpT3VisibleTimeframes);
+
+   } else {
       deleteTrendLineLike(T3_REGRESSION_CHANNEL);
    }
 }
+//+------------------------------------------------------------------+
 //+------------------------------------------------------------------+

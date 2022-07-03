@@ -57,6 +57,8 @@
    4.0.0 fixed TrendDetection & Screenshots T2/T3/T4
    4.0.1 fixed TrendDetection T2/T3/T4
    4.0.2 fixed diverse
+   4.0.3 changed visbility T2-RegressionChannel
+   4.1.0 added tt3RegressionChannelLengthAveragePoints & tt3RegressionChannelWidthAveragePoints
    ===============
 
 */
@@ -75,7 +77,7 @@
 #property copyright   "2022, GjoSe"
 #property link        "http://www.gjo-se.com"
 #property description "GjoSe Markttechnik"
-#define   VERSION "4.0.2"
+#define   VERSION "4.1.0"
 #property version VERSION
 #property strict
 
@@ -104,6 +106,9 @@ int OnInit() {
       setT3LineValues();
       setTT4LineValues();
       setT4LineValues();
+
+      setTT3RegressionChannelValues();
+      setTT3RegressionChannelAverage();
 
       getTT2TrendDirection();
       getT2TrendDirection();
@@ -141,12 +146,12 @@ int OnInit() {
    if(ObjectFind(ChartID(), T4_ALERT_BID_HIGHER_HINE) >= 0) {
       ObjectSetInteger(ChartID(), T4_ALERT_BID_HIGHER_HINE, OBJPROP_WIDTH, 1);
       ObjectSetInteger(ChartID(), T4_ALERT_BID_HIGHER_HINE, OBJPROP_COLOR, clrMediumBlue);
-      ObjectSetInteger(ChartID(), T4_ALERT_BID_HIGHER_HINE, OBJPROP_TIMEFRAMES, InpT2VisibleTimeframes | InpT3VisibleTimeframes);
+      ObjectSetInteger(ChartID(), T4_ALERT_BID_HIGHER_HINE, OBJPROP_TIMEFRAMES, OBJ_PERIOD_D1 | InpT2VisibleTimeframes | InpT3VisibleTimeframes);
    }
    if(ObjectFind(ChartID(), T4_ALERT_BID_LOWER_HINE) >= 0) {
       ObjectSetInteger(ChartID(), T4_ALERT_BID_LOWER_HINE, OBJPROP_WIDTH, 1);
       ObjectSetInteger(ChartID(), T4_ALERT_BID_LOWER_HINE, OBJPROP_COLOR, clrMediumBlue);
-      ObjectSetInteger(ChartID(), T4_ALERT_BID_LOWER_HINE, OBJPROP_TIMEFRAMES, InpT2VisibleTimeframes | InpT3VisibleTimeframes);
+      ObjectSetInteger(ChartID(), T4_ALERT_BID_LOWER_HINE, OBJPROP_TIMEFRAMES, OBJ_PERIOD_D1 | InpT2VisibleTimeframes | InpT3VisibleTimeframes);
    }
 
    int objectsTotal = ObjectsTotal(ChartID(), 0, -1);
@@ -285,6 +290,8 @@ void OnChartEvent(const int id,
       getTT3TrendDirection();
       createTT3ZigZagTemplateLines();
       createTT3RegressionChannel();
+      setTT3RegressionChannelValues();
+      setTT3RegressionChannelAverage();
 
       setT3LineValues();
       if(Period() == PERIOD_M10) setT3VLineStyles();
