@@ -70,20 +70,26 @@ void setTT3RegressionChannelValues() {
    int objectsTotal = ObjectsTotal(chartId, 0, -1);
    int regressionChannelCount = 0;
    double regressionChannelWidthPoints = 0;
+   double regressionChannelLengthPoints = 0;
    datetime startDateTime = 0;
-   double   maxValue = 0;
-   double   minValue = 0;
+   datetime endDateTime = 0;
+   double   startMaxValue = 0;
+   double   startMinValue = 0;
+   double   endMinValue = 0;
 
    string objectName;
    for(int i = objectsTotal; i >= 0; i--) {
       objectName = ObjectName(chartId, i);
       if ( StringFind(objectName, TT3_REGRESSION_CHANNEL) != -1 && ObjectGetInteger(chartId, objectName, OBJPROP_TYPE) == OBJ_REGRESSION) {
          startDateTime = (datetime)ObjectGetInteger(ChartID(), objectName, OBJPROP_TIME, 0);
-         maxValue = ObjectGetValueByTime(ChartID(), objectName, startDateTime, 1);
-         minValue = ObjectGetValueByTime(ChartID(), objectName, startDateTime, 2);
+         endDateTime = (datetime)ObjectGetInteger(ChartID(), objectName, OBJPROP_TIME, 1);
+         startMaxValue = ObjectGetValueByTime(ChartID(), objectName, startDateTime, 1);
+         startMinValue = ObjectGetValueByTime(ChartID(), objectName, startDateTime, 2);
+         endMinValue = ObjectGetValueByTime(ChartID(), objectName, endDateTime, 2);
 
-         if(minValue != 0 && maxValue != 0) {
-            regressionChannelWidthPoints += (MathMax(minValue, maxValue) - MathMin(minValue, maxValue)) / Point();
+         if(startMinValue != 0 && startMaxValue != 0) {
+            regressionChannelWidthPoints += (MathMax(startMinValue, startMaxValue) - MathMin(startMinValue, startMaxValue)) / Point();
+            regressionChannelLengthPoints += (MathMax(startMinValue, endMinValue) - MathMin(startMinValue, endMinValue)) / Point();
             regressionChannelCount++;
             ObjectSetInteger(ChartID(), objectName, OBJPROP_COLOR, clrDarkKhaki);
             ObjectSetInteger(ChartID(), objectName, OBJPROP_TIMEFRAMES, InpT3VisibleTimeframes);
@@ -95,6 +101,7 @@ void setTT3RegressionChannelValues() {
    }
 
    tt3RegressionChannelWidthAveragePoints = regressionChannelWidthPoints / regressionChannelCount;
+   tt3RegressionChannelLengthAveragePoints = regressionChannelLengthPoints / regressionChannelCount;
 }
 
 void setTT3RegressionChannelAverage() {
@@ -105,23 +112,41 @@ void setTT3RegressionChannelAverage() {
    double startMiddleValue = 0;
    datetime endDateTime = 0;
    double endMiddleValue = 0;
+   double startMinAverageValue = 0;
+   double endMinAverageValue = 0;
+   double startMaxAverageValue = 0;
+   double endMaxAverageValue = 0;
+   int startCandleIndex = 0;
+   int endCandleIndex = 0;
+   double realPoints = 0;
+   double pointPerCandle = 0;
+   int destinationCandleIndex = 0;
+   datetime destinationCandleDatetime = 0;
+   double destinationMinValue = 0;
+   double destinationMaxValue = 0;
 
    string objectName;
    for(int i = objectsTotal; i >= 0; i--) {
       objectName = ObjectName(chartId, i);
       if ( StringFind(objectName, TT3_REGRESSION_CHANNEL) != -1 && ObjectGetInteger(chartId, objectName, OBJPROP_TYPE) == OBJ_REGRESSION) {
          startDateTime = (datetime)ObjectGetInteger(ChartID(), objectName, OBJPROP_TIME, 0);
-         startMiddleValue   = ObjectGetValueByTime(ChartID(), objectName, startDateTime, 0);
          endDateTime = (datetime)ObjectGetInteger(ChartID(), objectName, OBJPROP_TIME, 1);
+         startMiddleValue   = ObjectGetValueByTime(ChartID(), objectName, startDateTime, 0);
          endMiddleValue   = ObjectGetValueByTime(ChartID(), objectName, endDateTime, 0);
-         double startMinAverageValue = startMiddleValue - (tt3RegressionChannelWidthAveragePoints * Point() / 2);
-         double endMinAverageValue = endMiddleValue - (tt3RegressionChannelWidthAveragePoints * Point() / 2);
-         double startMaxAverageValue = startMiddleValue + (tt3RegressionChannelWidthAveragePoints * Point() / 2);
-         double endMaxAverageValue = endMiddleValue + (tt3RegressionChannelWidthAveragePoints * Point() / 2);
+         startMinAverageValue = startMiddleValue - (tt3RegressionChannelWidthAveragePoints * Point() / 2);
+         startMaxAverageValue = startMiddleValue + (tt3RegressionChannelWidthAveragePoints * Point() / 2);
+         startCandleIndex = iBarShift(Symbol(), Period(), startDateTime);
+         endCandleIndex = iBarShift(Symbol(), Period(), endDateTime);
+         realPoints = (endMiddleValue - startMiddleValue) / Point();
+         pointPerCandle = realPoints / (startCandleIndex - endCandleIndex);
+         destinationCandleIndex = startCandleIndex - (int)(MathAbs(tt3RegressionChannelLengthAveragePoints / pointPerCandle));
+         destinationCandleDatetime = iTime(Symbol(), Period(), destinationCandleIndex);
+         destinationMinValue = startMinAverageValue - (pointPerCandle * (destinationCandleIndex - startCandleIndex) * Point());
+         destinationMaxValue = startMaxAverageValue - (pointPerCandle * (destinationCandleIndex - startCandleIndex) * Point());
 
-         createTrendLine(objectName + "AverageMin", startDateTime, startMinAverageValue, endDateTime, endMinAverageValue, clrMaroon, InpT3LineWidth, InpT3LineStyle, "   AVG");
+         createTrendLine(objectName + "AverageMin", startDateTime, startMinAverageValue, destinationCandleDatetime, destinationMinValue, clrMaroon, InpT3LineWidth, InpT3LineStyle, "   AVG");
          ObjectSetInteger(ChartID(), objectName + "AverageMin", OBJPROP_TIMEFRAMES, InpT3VisibleTimeframes);
-         createTrendLine(objectName + "AverageMax", startDateTime, startMaxAverageValue, endDateTime, endMaxAverageValue, clrMaroon, InpT3LineWidth, InpT3LineStyle, "   AVG");
+         createTrendLine(objectName + "AverageMax", startDateTime, startMaxAverageValue, destinationCandleDatetime, destinationMaxValue, clrMaroon, InpT3LineWidth, InpT3LineStyle, "   AVG");
          ObjectSetInteger(ChartID(), objectName + "AverageMax", OBJPROP_TIMEFRAMES, InpT3VisibleTimeframes);
       }
    }

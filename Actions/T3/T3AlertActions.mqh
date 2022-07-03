@@ -168,6 +168,7 @@ void t3CommentAction(string pVersion) {
    t3comment += "T3: " + "\n\n";
    if(tt3RegressionChannelWidthAveragePoints != 0) {
       t3comment += "tt3RegressionChannelWidthAveragePoints: " + DoubleToString(tt3RegressionChannelWidthAveragePoints, 0) + "\n";
+      t3comment += "tt3RegressionChannelLengthAveragePoints: " + DoubleToString(tt3RegressionChannelLengthAveragePoints, 0) + "\n";
       t3comment += "tt3movementLength: " + DoubleToString(tt3RegressionChannelWidthAveragePoints * InpT3MinMovementLengthBasedOnTT3MovementPercent / 100, 0) + "\n";
       t3comment += "tt3regressionLength: " + DoubleToString(tt3RegressionChannelWidthAveragePoints * InpT3MinRegressionLengthBasedOnTT3RegressionPercent / 100, 0) + "\n";
    }

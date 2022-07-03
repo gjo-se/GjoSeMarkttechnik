@@ -68,6 +68,7 @@ double tt3EndValueHigh;
 double tt3EndValueLow;
 
 double tt3RegressionChannelWidthAveragePoints;
+double tt3RegressionChannelLengthAveragePoints;
 
 int tt3trendDirection;
 

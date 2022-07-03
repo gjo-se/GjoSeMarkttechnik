@@ -68,6 +68,7 @@ void initializeTTGlobalsAction() {
    tt3p6ValueLow = 0;
 
    tt3RegressionChannelWidthAveragePoints = 0;
+   tt3RegressionChannelLengthAveragePoints = 0;
 
    tt3trendDirection = TREND_DIRECTION_ROTATION;
 
