@@ -57,6 +57,8 @@
    4.0.0 fixed TrendDetection & Screenshots T2/T3/T4
    4.0.1 fixed TrendDetection T2/T3/T4
    4.0.2 fixed diverse
+   4.0.3 changed visbility T2-RegressionChannel
+   4.1.0 added tt3RegressionChannelLengthAveragePoints & tt3RegressionChannelWidthAveragePoints
    ===============
 
 */
@@ -75,7 +77,7 @@
 #property copyright   "2022, GjoSe"
 #property link        "http://www.gjo-se.com"
 #property description "GjoSe Markttechnik"
-#define   VERSION "4.0.2"
+#define   VERSION "4.1.0"
 #property version VERSION
 #property strict
 
