@@ -66,7 +66,7 @@ void handleT3P2() {
             t3P1P2MovementPoints = t3p2ValueLocal / Point() - t3p1ValueLow / Point();
 
             if(Bid() >= t3p2ValueLocal
-                  && t3P1P2MovementPoints > (tt3movementLength * InpT3MinMovementLengthBasedOnTT3MovementPercent / 100)
+                  && t3P1P2MovementPoints > (tt3RegressionChannelWidthAveragePoints * InpT3MinMovementLengthBasedOnTT3MovementPercent / 100)
               ) {
                createT3P2VLine(t3p2DateTimeLocal, t3p2ObjectName);
                if(t4p1DateTime != 0 && t4p2DateTime != 0 && t4p1DateTime > t4p2DateTime) {
@@ -84,7 +84,7 @@ void handleT3P2() {
             t3P1P2MovementPoints = t3p1ValueHigh / Point() - t3p2ValueLocal / Point();
 
             if(Bid() <= t3p2ValueLocal
-                  && t3P1P2MovementPoints > (tt3movementLength * InpT3MinMovementLengthBasedOnTT3MovementPercent / 100)
+                  && t3P1P2MovementPoints > (tt3RegressionChannelWidthAveragePoints * InpT3MinMovementLengthBasedOnTT3MovementPercent / 100)
               ) {
                createT3P2VLine(t3p2DateTimeLocal, t3p2ObjectName);
                if(t4p1DateTime != 0 && t4p2DateTime != 0 && t4p1DateTime > t4p2DateTime) {
@@ -122,7 +122,7 @@ void handleT3P3() {
          t3P2P3RegressionPoints = t3p2ValueHigh / Point() - t3p3ValueTmp / Point();
 
          if(Bid() <= t3p3ValueTmp
-               && t3P2P3RegressionPoints > (tt3regressionLength * InpT3MinRegressionLengthBasedOnTT3RegressionPercent / 100)
+               && t3P2P3RegressionPoints > (tt3RegressionChannelWidthAveragePoints * InpT3MinRegressionLengthBasedOnTT3RegressionPercent / 100)
            ) {
             createT3P3VLine(t3p3DateTimeTmp, t3p3ObjectName);
             if(t4p1DateTime != 0 && t4p2DateTime != 0 && t4p1DateTime > t4p2DateTime) {
@@ -139,7 +139,7 @@ void handleT3P3() {
          t3P2P3RegressionPoints = t3p3ValueTmp / Point() - t3p2ValueLow / Point();
 
          if(Bid() >= t3p3ValueTmp
-               && t3P2P3RegressionPoints > (tt3regressionLength * InpT3MinRegressionLengthBasedOnTT3RegressionPercent / 100)
+               && t3P2P3RegressionPoints > (tt3RegressionChannelWidthAveragePoints * InpT3MinRegressionLengthBasedOnTT3RegressionPercent / 100)
            ) {
             createT3P3VLine(t3p3DateTimeTmp, t3p3ObjectName);
             if(t4p1DateTime != 0 && t4p2DateTime != 0 && t4p1DateTime > t4p2DateTime) {
@@ -218,7 +218,7 @@ void handleT3P5() {
          t3P4P5RegressionPoints = t3p4ValueHigh / Point() - t3p5ValueTmp / Point();
 
          if(Bid() <= t3p5ValueTmp
-               && t3P4P5RegressionPoints > (tt3regressionLength * InpT3MinRegressionLengthBasedOnTT3RegressionPercent / 100)
+               && t3P4P5RegressionPoints > (tt3RegressionChannelWidthAveragePoints * InpT3MinRegressionLengthBasedOnTT3RegressionPercent / 100)
            ) {
             createT3P5VLine(t3p5DateTimeTmp, t3p5ObjectName);
             if(t4p1DateTime != 0 && t4p2DateTime != 0 && t4p1DateTime > t4p2DateTime) {
@@ -235,7 +235,7 @@ void handleT3P5() {
          t3P4P5RegressionPoints = t3p5ValueTmp / Point() - t3p4ValueLow / Point();
 
          if(Bid() >= t3p5ValueTmp
-               && t3P4P5RegressionPoints > (tt3regressionLength * InpT3MinRegressionLengthBasedOnTT3RegressionPercent / 100)
+               && t3P4P5RegressionPoints > (tt3RegressionChannelWidthAveragePoints * InpT3MinRegressionLengthBasedOnTT3RegressionPercent / 100)
            ) {
             createT3P5VLine(t3p5DateTimeTmp, t3p5ObjectName);
             if(t4p1DateTime != 0 && t4p2DateTime != 0 && t4p1DateTime > t4p2DateTime) {
@@ -314,7 +314,7 @@ void handleT3P7() {
          t3P6P7RegressionPoints = t3p6ValueHigh / Point() - t3p7ValueTmp / Point();
 
          if(Bid() <= t3p7ValueTmp
-               && t3P6P7RegressionPoints > (tt3regressionLength * InpT3MinRegressionLengthBasedOnTT3RegressionPercent / 100)
+               && t3P6P7RegressionPoints > (tt3RegressionChannelWidthAveragePoints * InpT3MinRegressionLengthBasedOnTT3RegressionPercent / 100)
            ) {
             createT3P7VLine(t3p7DateTimeTmp, t3p7ObjectName);
             if(t4p1DateTime != 0 && t4p2DateTime != 0 && t4p1DateTime > t4p2DateTime) {
@@ -331,7 +331,7 @@ void handleT3P7() {
          t3P6P7RegressionPoints = t3p7ValueTmp / Point() - t3p6ValueLow / Point();
 
          if(Bid() >= t3p7ValueTmp
-               && t3P6P7RegressionPoints > (tt3regressionLength * InpT3MinRegressionLengthBasedOnTT3RegressionPercent / 100)
+               && t3P6P7RegressionPoints > (tt3RegressionChannelWidthAveragePoints * InpT3MinRegressionLengthBasedOnTT3RegressionPercent / 100)
            ) {
             createT3P7VLine(t3p7DateTimeTmp, t3p7ObjectName);
             if(t4p1DateTime != 0 && t4p2DateTime != 0 && t4p1DateTime > t4p2DateTime) {

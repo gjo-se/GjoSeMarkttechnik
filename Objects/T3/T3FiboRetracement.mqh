@@ -69,11 +69,6 @@ void createT3FiboRetracement() {
             }
          }
 
-         if(level == tt3movementLengthRegressionLengthRatio) {
-            lineWidth = InpT3LineWidth;
-            lineText  = "   " + DoubleToString(level, 1) + "% - T3 MovementLengt Ratio";
-         }
-         
          if(level == (double)InpT3TrendBrokeOnFiboLevel) {
             lineWidth = InpT3LineWidth;
             lineText  = "   " + DoubleToString(level, 1) + "% - T3 Trend Broke";

@@ -71,15 +71,6 @@ double tt3RegressionChannelWidthAveragePoints;
 
 int tt3trendDirection;
 
-double tt3movementLength;
-double tt3movementLengthP1P2;
-double tt3movementLengthP3P4;
-double tt3movementLengthP5P6;
-double tt3regressionLength;
-double tt3regressionLengthP2P3;
-double tt3regressionLengthP4P5;
-double tt3movementLengthRegressionLengthRatio;
-
 // TT4
 datetime tt4StartDateTime;
 double tt4StartValueHigh;

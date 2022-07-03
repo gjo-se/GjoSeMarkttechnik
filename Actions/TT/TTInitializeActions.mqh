@@ -71,15 +71,6 @@ void initializeTTGlobalsAction() {
 
    tt3trendDirection = TREND_DIRECTION_ROTATION;
 
-   tt3movementLength = 0;
-   tt3movementLengthP1P2 = 0;
-   tt3movementLengthP3P4 = 0;
-   tt3movementLengthP5P6 = 0;
-   tt3regressionLength = 0;
-   tt3regressionLengthP2P3 = 0;
-   tt3regressionLengthP4P5 = 0;
-   tt3movementLengthRegressionLengthRatio = 0;
-
 // TT4
    tt4p1DateTime = 0;
    tt4p1ValueHigh = 0;

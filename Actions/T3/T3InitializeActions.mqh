@@ -198,11 +198,6 @@ void convertInpT3StringsToArray() {
       t3trailingStopMAPeriodsArray[t3trailingStopMAPeriodsId] = (int)t3trailingStopMAPeriodsArrayStrings[t3trailingStopMAPeriodsId];
    }
 
-   if(tt3movementLengthRegressionLengthRatio != 0) {
-      ArrayResize(t3FiboLevelsArray, ArraySize(t3FiboLevelsArray) + 1);
-      t3FiboLevelsArray[ArraySize(t3FiboLevelsArray) - 1] = (string)tt3movementLengthRegressionLengthRatio;
-   }
-
    if(InpT3TrendBrokeOnFiboLevel != 0) {
       ArrayResize(t3FiboLevelsArray, ArraySize(t3FiboLevelsArray) + 1);
       t3FiboLevelsArray[ArraySize(t3FiboLevelsArray) - 1] = (string)InpT3TrendBrokeOnFiboLevel;

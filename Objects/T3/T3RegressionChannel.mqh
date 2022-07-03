@@ -63,11 +63,11 @@ void createT3RegressionChannelLevels() {
       ObjectSetInteger(ChartID(), T3_REGRESSION_CHANNEL + "75", OBJPROP_TIMEFRAMES, InpT3VisibleTimeframes);
 
       double t3RegressionChannelMiddleStartValue   = ObjectGetValueByTime(ChartID(), T3_REGRESSION_CHANNEL, startDateTime, 0);
-      double t3RegressionChannelMinAverageStartValue = t3RegressionChannelMiddleStartValue - (tt3RegressionChannelWidthAveragePoints * Point());
-      double t3RegressionChannelMaxAverageStartValue = t3RegressionChannelMiddleStartValue + (tt3RegressionChannelWidthAveragePoints * Point());
+      double t3RegressionChannelMinAverageStartValue = t3RegressionChannelMiddleStartValue - (tt3RegressionChannelWidthAveragePoints * Point() / 2);
+      double t3RegressionChannelMaxAverageStartValue = t3RegressionChannelMiddleStartValue + (tt3RegressionChannelWidthAveragePoints * Point() / 2);
       double t3RegressionChannelMiddleEndValue   = ObjectGetValueByTime(ChartID(), T3_REGRESSION_CHANNEL, endDateTime, 0);
-      double t3RegressionChannelMinAverageEndValue = t3RegressionChannelMiddleEndValue - (tt3RegressionChannelWidthAveragePoints * Point());
-      double t3RegressionChannelMaxAverageEndValue = t3RegressionChannelMiddleEndValue + (tt3RegressionChannelWidthAveragePoints * Point());
+      double t3RegressionChannelMinAverageEndValue = t3RegressionChannelMiddleEndValue - (tt3RegressionChannelWidthAveragePoints * Point() / 2);
+      double t3RegressionChannelMaxAverageEndValue = t3RegressionChannelMiddleEndValue + (tt3RegressionChannelWidthAveragePoints * Point() / 2);
       createTrendLine(T3_REGRESSION_CHANNEL + "AverageMin", startDateTime, t3RegressionChannelMinAverageStartValue, endDateTime, t3RegressionChannelMinAverageEndValue, clrMaroon, InpT3LineWidth, InpT3LineStyle, "   AVG");
       ObjectSetInteger(ChartID(), T3_REGRESSION_CHANNEL + "AverageMin", OBJPROP_TIMEFRAMES, InpT3VisibleTimeframes);
       createTrendLine(T3_REGRESSION_CHANNEL + "AverageMax", startDateTime, t3RegressionChannelMaxAverageStartValue, endDateTime, t3RegressionChannelMaxAverageEndValue, clrMaroon, InpT3LineWidth, InpT3LineStyle, "   AVG");
