@@ -55,7 +55,7 @@ bool              InpT3UseTrailingStopMarket = true;
 //input group             "---------- T3 Object-Styles ---------"
 int               InpT3LineWidth = 3;
 ENUM_LINE_STYLE   InpT3LineStyle = STYLE_SOLID;
-int               InpT3VisibleTimeframes = OBJ_PERIOD_M10|OBJ_PERIOD_M1;
+int               InpT3VisibleTimeframes = OBJ_PERIOD_H1|OBJ_PERIOD_M10|OBJ_PERIOD_M1;
 
 color             InpT3DefaultColor = clrDarkKhaki;
 color             InpT3VLineColor = clrMoccasin;

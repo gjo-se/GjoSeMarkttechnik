@@ -25,7 +25,7 @@ const string   TT3_P5_VLINE =              "TMP3-P5";
 const string   TT3_P6_VLINE =              "TMP3-P6";
 const string   TT3_END_VLINE =             "TMP3-End";
 const string   TT3_ZIGZAGLINE =            "TMP3-ZigZagLine";
-const string   TT3_REGRESSION_CHANNEL =    "TMP3RegressionChannel";
+const string   TT3_REGRESSION_CHANNEL =    "TMP3-RC";
 
 const string   TT4_START_VLINE =           "TMP4-Start";
 const string   TT4_P1_VLINE =              "TMP4-P1";

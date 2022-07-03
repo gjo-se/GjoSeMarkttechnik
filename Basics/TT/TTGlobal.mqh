@@ -67,6 +67,8 @@ datetime tt3EndDateTime;
 double tt3EndValueHigh;
 double tt3EndValueLow;
 
+double tt3RegressionChannelWidthAveragePoints;
+
 int tt3trendDirection;
 
 double tt3movementLength;
