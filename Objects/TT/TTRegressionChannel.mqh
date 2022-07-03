@@ -79,8 +79,8 @@ void setTT3RegressionChannelValues() {
       objectName = ObjectName(chartId, i);
       if ( StringFind(objectName, TT3_REGRESSION_CHANNEL) != -1 && ObjectGetInteger(chartId, objectName, OBJPROP_TYPE) == OBJ_REGRESSION) {
          startDateTime = (datetime)ObjectGetInteger(ChartID(), objectName, OBJPROP_TIME, 0);
-         maxValue = ObjectGetValueByTime(ChartID(), objectName, startDateTime, 0);
-         minValue = ObjectGetValueByTime(ChartID(), objectName, startDateTime, 1);
+         maxValue = ObjectGetValueByTime(ChartID(), objectName, startDateTime, 1);
+         minValue = ObjectGetValueByTime(ChartID(), objectName, startDateTime, 2);
 
          if(minValue != 0 && maxValue != 0) {
             regressionChannelWidthPoints += (MathMax(minValue, maxValue) - MathMin(minValue, maxValue)) / Point();
@@ -114,10 +114,10 @@ void setTT3RegressionChannelAverage() {
          startMiddleValue   = ObjectGetValueByTime(ChartID(), objectName, startDateTime, 0);
          endDateTime = (datetime)ObjectGetInteger(ChartID(), objectName, OBJPROP_TIME, 1);
          endMiddleValue   = ObjectGetValueByTime(ChartID(), objectName, endDateTime, 0);
-         double startMinAverageValue = startMiddleValue - (tt3RegressionChannelWidthAveragePoints * Point());
-         double endMinAverageValue = endMiddleValue - (tt3RegressionChannelWidthAveragePoints * Point());
-         double startMaxAverageValue = startMiddleValue + (tt3RegressionChannelWidthAveragePoints * Point());
-         double endMaxAverageValue = endMiddleValue + (tt3RegressionChannelWidthAveragePoints * Point());
+         double startMinAverageValue = startMiddleValue - (tt3RegressionChannelWidthAveragePoints * Point() / 2);
+         double endMinAverageValue = endMiddleValue - (tt3RegressionChannelWidthAveragePoints * Point() / 2);
+         double startMaxAverageValue = startMiddleValue + (tt3RegressionChannelWidthAveragePoints * Point() / 2);
+         double endMaxAverageValue = endMiddleValue + (tt3RegressionChannelWidthAveragePoints * Point() / 2);
 
          createTrendLine(objectName + "AverageMin", startDateTime, startMinAverageValue, endDateTime, endMinAverageValue, clrMaroon, InpT3LineWidth, InpT3LineStyle, "   AVG");
          ObjectSetInteger(ChartID(), objectName + "AverageMin", OBJPROP_TIMEFRAMES, InpT3VisibleTimeframes);
